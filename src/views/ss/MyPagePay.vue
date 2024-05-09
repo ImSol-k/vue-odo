@@ -1,9 +1,13 @@
 <template>
-	<div></div>
+	<div>MyPagePay</div>
 </template>
+
+
+
+
 <script>
 	export default {
-		name: "",
+		name: "MyPagePay",
 		components: {},
 		data() {
 			return {};
@@ -13,4 +17,9 @@
 	};
 </script>
 
-<style></style>
+
+
+
+
+<style>
+</style>
