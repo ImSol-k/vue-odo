@@ -6,7 +6,8 @@
 body {
     /* color: #333; */
     background-color: #ededed;
-    font-family: 'SUITE-Regular';
+    font-family: "맑은고딕";
+    font-size: 20px;
 }
 
 ul, ol {

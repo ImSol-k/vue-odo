@@ -5,7 +5,7 @@
 import '../../assets/css/Initialization.css'
 
 	export default {
-		name: "",
+		name: "CompanyInfoView",
 		components: {},
 		data() {
 			return {};
