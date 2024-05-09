@@ -2,6 +2,8 @@
 	<div></div>
 </template>
 <script>
+import '../../assets/css/Initialization.css'
+
 	export default {
 		name: "",
 		components: {},
