@@ -1,5 +1,5 @@
 <template>
-	<div></div>
+	<div>asfdsdf</div>
 </template>
 <script>
 	export default {
