@@ -122,3 +122,18 @@ header .bottom .my {
     color: #888;
     background: url('../../images/icon/header_icons/my.png') no-repeat center / contain ;
 }
+
+/* ----------- footer ----------------- */
+footer {
+    width: 100%;
+    background: #f8f8f8;
+}
+footer .icon-box {
+
+}
+footer .icon-box li {
+    width: 26px;
+}
+footer .icon-box img {
+    width: 100%;
+}
