@@ -129,7 +129,7 @@ footer {
     background: #f8f8f8;
 }
 footer .icon-box {
-
+    display: flex;
 }
 footer .icon-box li {
     width: 26px;
