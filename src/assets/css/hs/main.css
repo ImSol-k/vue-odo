@@ -122,3 +122,28 @@ header .bottom .my {
     color: #888;
     background: url('../../images/icon/header_icons/my.png') no-repeat center / contain ;
 }
+
+/* ----------- footer ----------------- */
+footer {
+    width: 100%;
+    background: #f8f8f8;
+    padding: 40px 0;
+    font-size: 12px;
+    letter-spacing: -1.7px;
+}
+.f-t-ul {
+    display: flex;
+}
+footer h4 {
+    font-size: 20px;
+}
+
+footer .icon-box {
+    display: flex;
+}
+footer .icon-box li {
+    width: 26px;
+}
+footer .icon-box img {
+    width: 100%;
+}

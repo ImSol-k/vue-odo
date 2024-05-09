@@ -1,22 +1,24 @@
 <template>
 		<AppHeader />
         <!-- //header -->
-		<div></div>
+		<div class="wrap">
+			
+		</div>
 
-		<!-- <AppFooter /> -->
+		<AppFooter />
         <!-- //footer -->
 </template>
 <script>
 import "@/assets/css/hs/main.css"
 
-// import AppFooter from "@/components/AppFooter.vue"
+import AppFooter from "@/components/AppFooter.vue"
 import AppHeader from "@/components/AppHeader.vue"
 
 	export default {
 		name: "MainView",
 		components: {
 			AppHeader,
-			// AppFooter
+			AppFooter
 		},
 		data() {
 			return {};
