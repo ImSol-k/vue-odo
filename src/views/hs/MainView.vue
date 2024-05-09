@@ -3,7 +3,7 @@
 </template>
 <script>
 	export default {
-		name: "",
+		name: "MainView",
 		components: {},
 		data() {
 			return {};

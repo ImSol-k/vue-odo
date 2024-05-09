@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
+//하석
+import MainView from '../views/hs/MainView.vue'
 //소리
 import CompanyJoinView from '../views/sr/CompanyJoinView.vue'
 //재현
@@ -9,6 +11,11 @@ import MyPagePay from '../views/ss/MyPagePay.vue'
 import ModifyView from '../views/mj/ModifyView.vue'
 
 const routes = [
+  {
+    path: '/',
+    name: 'main',
+    component: MainView
+  },
   {
     path: '/companyjoin',
     name: 'companyjoin',
