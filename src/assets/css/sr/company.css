@@ -4,4 +4,12 @@
 
 .companyJoinTitle>h1{
     text-align: center;
+    font-size: 32px;
+}
+.companyJoinImg>img{
+    margin: 0p auto;
+    width: 70px;
+}
+.companyJoinImg>p{
+    float: left;
 }
