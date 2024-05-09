@@ -127,7 +127,17 @@ header .bottom .my {
 footer {
     width: 100%;
     background: #f8f8f8;
+    padding: 40px 0;
+    font-size: 12px;
+    letter-spacing: -1.7px;
 }
+.f-t-ul {
+    display: flex;
+}
+footer h4 {
+    font-size: 20px;
+}
+
 footer .icon-box {
     display: flex;
 }

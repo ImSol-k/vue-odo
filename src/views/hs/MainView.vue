@@ -1,7 +1,9 @@
 <template>
 		<AppHeader />
         <!-- //header -->
-		<div></div>
+		<div class="wrap">
+			
+		</div>
 
 		<AppFooter />
         <!-- //footer -->
