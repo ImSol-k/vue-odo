@@ -19,6 +19,19 @@
     width: 915px;
     height: 950px;
 }
+.MporderContainer .MpRight h2{
+    font-size: 32px;
+    display: flex;
+}
+.MporderContainer .MpRight .container .Right{
+    width: 60px;
+    height: 30px;
+    
+}
+
+.MporderContainer .MpRight li{
+    font-size: 24px;
+}
 
 .MporderContainer .MpRight .ModifyImg img{
     width: 80px;

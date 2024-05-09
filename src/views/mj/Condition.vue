@@ -7,6 +7,9 @@
             </div>
             <div class="MpRight">
                 <h2>이용약관</h2>
+                <p>
+                    
+                </p>
                 
             </div>
         </div>
