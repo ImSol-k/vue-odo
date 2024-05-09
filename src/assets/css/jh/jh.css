@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* color: #333; */
+    background-color: #ededed;
+    font-family: "맑은고딕";
+    font-size: 20px;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
+a:link {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:active {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #000000;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: block;
+    content: "";
+    line-height: 0;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.wrap {
+    width: 1200px;
+    height: 100vh;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.img{
+    width: 140px;
+    height: 140px;
+}
+
+.a{
+    float: left;
+}
+
+.companyname{
+    font-size: 36px;
+    height: 40px;
+    float: left;
+}
+
+.companypro{
+    font-size: 24px;
+    height: 100px;
+}
+
+.companybutton{
+    font-size: 20px;
+    color: #636363;
+    background-color: #ffffff;
+    border: none;
+    height: 40px;
+}
+
+.cover1{
+    margin-left: 20px;
+    width: 300px;
+    height: 220px;
+    background-color: #d9d9d9;
+    float: left;
+}
+
+.cover2{
+    margin-left: 330px;
+    width: 850px;
+    height: 220px;
+    background-color: #d9d9d9;
+}
+
+.img2{
+    margin-top: 35px;
+    margin-left: 10px;
+    width: 140px;
+    height: 140px;
+    float: left;
+}
+
+.classpro{
+    font-size: 18px;
+    margin-top: 15px;
+    margin-right: 10px;
+    margin-left: 170px;
+}
+
+.img3{
+    width: 30px;
+    height: 30px;
+    margin-left: 100px;
+    padding-top: 5px;
+}
+
+.cover4{
+    float: left;
+}
+
+.avg{
+    margin-left: 10px;
+    padding-top: 5px;
+}
+
+.count1{
+    margin-left: 400px;
+    padding-top: 5px;
+}
+
+.text1{
+    padding-top: 5px;
+}
