@@ -3,6 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import CompanyJoinView from '../views/sr/CompanyJoinView.vue'
 //재현
 import CompanyInfoView from '../views/jh/CompanyInfoView.vue'
+//승수
+import MyPagePay from '../views/ss/MyPagePay.vue'
+//미지
+import ModifyView from '../views/mj/ModifyView.vue'
 
 const routes = [
   {
@@ -14,6 +18,16 @@ const routes = [
     path: '/companyinfo',
     name: 'companyinfo',
     component: CompanyInfoView
+  },
+  {
+    path: '/mypage/pay',
+    name: 'mypagePay',
+    component: MyPagePay
+  },
+  {
+    path: '/mypage/modify',
+    name: 'mypagemodify',
+    component: ModifyView
   }
 ]
 
