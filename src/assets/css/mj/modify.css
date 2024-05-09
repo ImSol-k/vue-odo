@@ -1,0 +1,15 @@
+.MporderContainer{
+    width: 1200px;
+    background-color: antiquewhite;
+    display: flex;
+    padding: 25px 0;
+    margin: 30px 0;
+}
+
+/* nav */
+.MporderContainer .MpLeft{
+    background-color: aquamarine;
+    width: 200px;
+}
+
+/* 오른쪽내용영역 */
