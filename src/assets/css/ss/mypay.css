@@ -1,0 +1,44 @@
+/* mymy-nav*/
+.mymy-nav {
+    display: inline-block;
+}
+
+.mymy-nav button {
+    width: 80px;
+    border: none;
+    color: #000;
+    cursor: pointer;
+}
+
+.mymy-paybox {
+    margin-top: 10px;
+    border-top: 1px solid #000;
+}
+
+.mymy-paybox:last-child {
+    border: none;
+}
+
+.mymy-pay {
+    box-sizing: border-box;
+    border-bottom: 1px solid #000;
+   
+    height: 300px;
+    border: 1px solid #000;
+}
+
+.mymy-pay ul {
+    margin: 0 0 0 20px;
+}
+
+.mymy-pay #pay-pro {
+    width: 200px;
+}
+.mymy-pay #pay-star {
+    width: 40px;
+}
+
+
+
+
+
