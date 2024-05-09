@@ -1,22 +1,27 @@
+/************************
+ * 사업자 가입 
+ ************************/
 .companyJoinTitle{
     margin: 0px auto;
 }
 .companyJoinTitle>h1{
     text-align: center;
     font-size: 32px;
+    padding-top: 30px;
 }
 
 /* 프로필사진등록 */
 .companyJoinImg{
     display: flex;
-    margin: 20px auto;
+    margin: 25px auto;
     justify-content: center;
     flex-direction: row; 
     align-items: center;
 }
 .companyJoinImg>img{
     width: 80px;
-    margin: 10px;
+    margin-left: 6%;
+    margin-right: 15px;
 }
 .companyJoinImg>div{
     display: flex;
@@ -29,27 +34,146 @@
 
 /* 정보입력 */
 .companyJoinInfo>div{
-    width: 500px;
+    width: 407px;
     margin: 10px auto;
     /* text-align: center; */
+    /* padding-left: 18%; */
 }
-.companyJoinInfo>div>label{
+/* .companyJoinInfo>div>label{
     float: left;
     width: 150px;
     text-align: center;
     font-size: 20px;
-    /* margin-right: 20px; */
-}
+    /* margin-right: 20px; 
+} */
 .companyJoinInfo>div>input{
-    height: 25px;
-    width: 250px;
+    height: 40px;
+    width: 300px;
+    padding-left: 5px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    font-size: 17px;
 }
-.companyJoinInfo>div>button{
-    height: 28px;
-}
-.companyJoinInfo>div>p{
-    margin-left: 146px;
-    width: 330px;
+.companyJoinInfo>div>input[type="button"]{
+    width: 90px;
+    margin-left: 10px;
     font-size: 13px;
+    border: none;
+}
+.companyJoinInfo>div>p {
+    width: 330px;
+    font-size: 12px;
     /* text-align: right; */
+}
+.companyAddress>input{
+    margin: 5px 0px 5px 0px;
+}
+#sample6_postcode{
+    width: 200px;
+}
+
+.companyHpChack>input{
+    height: 30px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    font-size: 13px;
+    margin: 5px 5px 5px 0px;
+}
+.companyHpChack>input[type="button"]{
+    width: 60px;
+    border: none;
+}
+.companyHpChack>p{
+    width: 330px;
+    font-size: 12px;
+}
+
+.companyJoinButton{
+    width: 407px;
+    display: flex;
+    justify-content: center; /* 가로 가운데 정렬 */
+}
+.companyJoinButton>button{
+    margin: 10px 20px;
+    width: 120px;
+    height: 50px;
+    border: none;
+    border-radius: 7px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.companyJoinButton>button:nth-child(2){
+    background-color: #8521FF;
+    color: #fff;
+}
+
+/************************
+ * 업체페이지
+ ************************/
+
+.companyInfoMenu>h1{
+    padding: 20px 0px 10px 0px;
+    font-size: 28px;
+}
+
+.companyInfoMenu{
+    width: 260px;
+    float: left;
+    margin-left: 5px;
+}
+.companyInfoMenu>ul{
+    /* margin: 10px 0px 0px 30px; */
+    font-size: 18px;
+}
+
+.companyInfoMenu>ul>li:first-child{
+    font-size: 20px;
+    background-color: #f4f4f4;
+    /* border-top: 2px solid #d9d9d9;
+    border-bottom: 2px solid #d9d9d9; */
+    padding: 5px;
+}
+
+.companyInfoMenu>ul>li{
+    margin: 5px auto;
+    padding-left: 8px;
+}
+.whatClass{
+    margin: 0px 8px;
+}
+.whatClass>span{
+    cursor: pointer;
+    padding: 0px 10px;
+    font-size: 15px;
+}
+.whatClass>span:first-child{
+    border-right: 1px solid #000;
+}
+.companyInfoClassList{
+    float: left;
+    margin: 10px auto;
+    width: 930px;
+}
+.companyInfoClassList>p{
+    border-bottom: 1px solid #d9d9d9;
+    padding: 5px 10px;
+    margin: 5px 10px;
+    font-size: 26px;
+}
+.companyInfoClassfor{
+    margin: 20px;
+}
+.companyInfoClassfor>li>img{
+    float: left;
+    width: 40px;
+    margin-right: 10px;
+}
+.companyInfoClassfor>li>div{
+    float: left;
+}
+.companyInfoClassfor>li>div>p:nth-child(2){
+    font-size: 15px;
+}
+.classListObj{
+    cursor: pointer;
 }
