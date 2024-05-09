@@ -9,7 +9,32 @@
 /* nav */
 .MporderContainer .MpLeft{
     background-color: aquamarine;
-    width: 200px;
+    width: 250px;
 }
 
 /* 오른쪽내용영역 */
+.MporderContainer .MpRight{
+    margin-left: 15px;
+    background-color: beige;
+    width: 915px;
+    height: 950px;
+}
+
+.MporderContainer .MpRight .ModifyImg img{
+    width: 80px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.MporderContainer .MpRight .group{
+    font-weight: bold;
+}
+.MporderContainer .MpRight .fixid{
+    border: solid 1px #333;
+}
+.MporderContainer .MpRight .password{
+    width: 150px;
+}
+.MporderContainer .MpRight .e-mail{
+    width: 150px;
+    height: 80px;
+}
