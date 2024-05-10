@@ -56,10 +56,35 @@
 
 		<div class="mymy-content">
 			<div class="mymy-head">
-				<span>후기</span>
+				<span>쿠폰</span>
 			</div>
 			<div class="mymy-main">
-				aaa
+				<div class="in-coupon">
+					<label for="insert-coupon">쿠폰 등록하기</label>
+					<input id="insert-coupon" type="text" placeholder="쿠폰번호를 입력하세요">
+					<button type="button">등록</button>
+				</div>
+				<!-- in-coupon -->
+				<div class="couponMsg">
+					<span>보유한 쿠폰</span>
+				</div>
+				
+				<!-- 보유한 쿠폰 없을때 -->
+				<!-- <div class="no-coupon">
+					<img src="@/assets/images/icon/ss/nocoupon.png"><br>
+					<span>보유한 쿠폰이 없어요</span>
+				</div> -->
+				<!-- //no-coupon -->
+
+				<!-- 보유한 쿠폰 있을때 -->
+				<div class="on-coupon">
+					<div class="coupon-set">
+						<img src="@/assets/images/icon/ss/cou.png">
+						<span class="cou-name">쿠폰이름</span>
+					</div>
+					
+
+				</div>
 			</div>
 			<!-- mymy-main -->
 		</div>
@@ -79,7 +104,7 @@
 <script>
 import '@/assets/css/Initialization.css';
 import '@/assets/css/ss/ss.css';
-import '@/assets/css/ss/myreview.css';
+import '@/assets/css/ss/mycoupon.css';
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
 

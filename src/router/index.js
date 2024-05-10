@@ -18,6 +18,9 @@ import MyPagePay from '../views/ss/MyPagePay.vue'
 import MyPageReview from '../views/ss/MyPageReview.vue'
 import MyPageCoupon from '../views/ss/MyPageCoupon.vue'
 import MyPageWriteForm from '../views/ss/MyPageWriteForm.vue'
+import LoginPage from '@/views/ss/LoginPage.vue'
+import UserJoinPage from '@/views/ss/UserJoinPage.vue'
+import JoinSelect from '@/views/ss/JoinSelect.vue'
 //미지
 import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
@@ -102,6 +105,21 @@ const routes = [
     path: '/mypage/review/form',
     name: 'mypagereviewform',
     component: MyPageWriteForm
+  },
+  {
+    path: '/join',
+    name: 'join',
+    component: JoinSelect
+  },
+  {
+    path: '/userjoin',
+    name: 'userjoin',
+    component: UserJoinPage
+  },
+  {
+    path: '/login',
+    name : 'login',
+    component : LoginPage
   },
   //=== 미지 =================================
   {
