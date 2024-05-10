@@ -4,10 +4,13 @@ import MainView from '../views/hs/MainView.vue'
 //소리
 import CompanyJoinView from '../views/sr/CompanyJoinView.vue'
 import CompanyPageView from '../views/sr/CompanyPageView.vue'
+import MemberManagerView from '../views/sr/MemberManagerView.vue'
+import ClassCalendarView from '../views/sr/ClassCalendarView.vue'
 //재현
 import CompanyInfoView from '../views/jh/CompanyInfoView.vue'
 import CompanyInfoModify from '../views/jh/CompanyInfoModify.vue'
 import WishListClass from '../views/jh/WishListClass.vue'
+import WishListCompany from '../views/jh/WishListCompany.vue'
 //승수
 import MyPagePay from '../views/ss/MyPagePay.vue'
 import MyPageReview from '../views/ss/MyPageReview.vue'
@@ -16,11 +19,13 @@ import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
 
 const routes = [
+  //=== 하석 =================================
   {
     path: '/',
     name: 'main',
     component: MainView
   },
+  //=== 소리 =================================
   {
     path: '/companyjoin',
     name: 'companyjoin',
@@ -31,6 +36,17 @@ const routes = [
     name: 'companypage',
     component: CompanyPageView
   },
+  {
+    path: '/membermanager',
+    name: 'membermanager',
+    component: MemberManagerView
+  },
+  {
+    path: '/classcalender',
+    name: 'classcalender',
+    component: ClassCalendarView
+  },
+  //=== 재현 =================================
   {
     path: '/companyinfo',
     name: 'companyinfo',
@@ -47,6 +63,12 @@ const routes = [
     component: WishListClass
   },
   {
+    path: '/wishlistcompany',
+    name: 'wishlistcompany',
+    component: WishListCompany
+  },
+  //=== 승수 =================================
+  {
     path: '/mypage/pay',
     name: 'mypagePay',
     component: MyPagePay
@@ -56,6 +78,7 @@ const routes = [
     name: '/ypagereview',
     component: MyPageReview
   },
+  //=== 미지 =================================
   {
     path: '/mypage/modify',
     name: 'mypagemodify',
