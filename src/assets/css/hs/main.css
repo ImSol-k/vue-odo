@@ -321,10 +321,12 @@ footer .icon-box img {
 
 /* 메뉴 리스트 */
 .dropdown-menu > ul {
-    margin: 40px 0 0 10px;
+    margin: 40px 0 0 0;
 }
-
-.dropdown-menu ul > li > a {
+.dropdown-menu > ul > li {
+    margin-bottom: 20px;
+}
+.dropdown-menu > ul > li > a {
     font-size: 18px;
     font-weight: bold;
     color: #2c2c2c;
@@ -333,15 +335,38 @@ footer .icon-box img {
 }
 
 /* 서브메뉴 리스트 */
-.dropdown-menu ul > li > ul {
+.dropdown-menu ul > li > ul.subMenuList {
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.7s ease;
 }
-.dropdown-menu ul > li > ul a {
+.dropdown-menu ul > li > ul.subMenuList.show {
+    max-height: 160px;
+    opacity: 1;
+}
+.dropdown-menu ul > li > ul.subMenuList li{
+    width: 0;
+    height: 0px;
+}
+.dropdown-menu ul > li > ul.subMenuList.show li {
+    width: 100px;
+    height: 30px;
+}
+.dropdown-menu ul > li > ul.subMenuList a {
+    display: block;
+    width: 0;
+    height: 0;
     font-size: 13px;
     font-weight: normal;
     color: #999;
     padding: 5px 0;
 }
-.dropdown-menu ul > li > ul a:hover {
+.dropdown-menu ul > li > ul.subMenuList.show a {
+    display: block;
+    width: 100px;
+    height: 30px;
+}
+.dropdown-menu ul > li > ul.subMenuList a:hover {
     color: #2c2c2c;
     text-decoration: underline;
 }
