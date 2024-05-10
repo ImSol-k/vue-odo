@@ -40,13 +40,15 @@
     width: 950px;
     box-sizing: border-box;
     border-bottom: 1px solid #000;
+    height: 300px;
 }
 
-.mymy-pay {
+.mymy-pay{
+    display: block;
     box-sizing: border-box;
-    width: 220px;
-    float: left;
+    width: 200px;
     height: 300px;
+    float: left;
 }
 .mymy-pay ul {
     padding: 5px;
@@ -57,19 +59,16 @@
     cursor: pointer;
 }
 
-.mymy-pay span {
+.mymy-pay  ul span {
     display: block;
-    width: 200px;
-    text-overflow: ellipsis;
     font-size: 15px;
+    text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    cursor: pointer;
-    padding: 5px;
 }
 
 .mymy-pay #pay-star {
-    width: 40px;
+    width: 35px;
     padding: 3px;
     /* filter: opacity(0.6) drop-shadow(0 0 0 #ff0000); */
 }

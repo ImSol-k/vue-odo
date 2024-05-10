@@ -31,52 +31,64 @@
 					</div>
 					
 					<div class="contents_body">
-						<div class="ModifyImg">
-						<img src="@/assets/images/icon/man_icon.png" alt="">
-					</div>
+						<div class="box" style=" background: bdbdbd;">
+							<img class="profile" src="@/assets/images/icon/man_icon.png" alt="">
+						</div>
 					<br>
-					<div class="form-blank">
-						<label class="group">닉네임</label>
+					<div class="area">
+						<div class="form-blank">
+							<label class="group">닉네임</label>
+						</div>
+						<div>
+							<span id="fixid"> 이미지</span>
+						</div>
+					</div>
+					<div class="area">
+						<div class="form-blank">
+							<label class="group">휴대폰번호</label>
+						</div>
+						<div>
+							<input type="text" id="hp" class="form_w100" v-model=required>
+						</div>
+					</div>
+					<div class="area">
+						<div class="form-blank">
+							<label class="group">이메일</label>
+						</div>
+						<div>
+							<input type="text" id="e-mail" class="form_w100" v-model= required>
+						</div>
+					</div>
+					<div class="area">
+						<div class="form-blank">
+							<label class="group">비밀번호</label>
+						</div>
+						<div>
+							<input type="password" id="password" class="form_w100" v-model= required>
+						</div>
+					</div>
+					<div class="area">
+						<div class="form-blank">
+							<label class="group">생년월일</label>
+						</div>
+						<div>
+							<input type="text" id="birth" class="form_w100" v-model= required>
+						</div>
 					</div>
 					<div>
-						<span id="fixid"> 이미지</span>
-					</div>
-					<div class="form-blank">
-						<label class="group">휴대폰번호</label>
-					</div>
-					<div>
-						<input type="text" id="hp" class="form_w100" v-model=required>
-					</div>
-					<div class="form-blank">
-						<label class="group">이메일</label>
-					</div>
-					<div>
-						<input type="text" id="e-mail" class="form_w100" v-model= required>
-					</div>
-					<div class="form-blank">
-						<label class="group">비밀번호</label>
-					</div>
-					<div>
-						<input type="password" id="password" class="form_w100" v-model= required>
-					</div>
-					<div class="form-blank">
-						<label class="group">생년월일</label>
-					</div>
-					<div>
-						<input type="text" id="birth" class="form_w100" v-model= required>
-					</div>
-					<div class="form-blank">
-						<label class="group">성별</label>
-					</div>
-					<div>
-						<span id="fixid"> **</span>
-					</div>
+						<div class="form-blank">
+							<label class="group">성별</label>
+						</div>
+						<div>
+							<span id="fixid"> **</span>
+						</div>
 					</div>
 					
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 		<!-- 푸터 -->
 		<AppFooter/>
 </template>
