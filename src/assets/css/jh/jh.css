@@ -59,6 +59,7 @@ a:hover {
 
 .a{
     float: left;
+    margin-left: 20px;
 }
 
 .companyname{
@@ -70,6 +71,7 @@ a:hover {
 .companypro{
     font-size: 24px;
     height: 100px;
+    margin-right: 20px;
 }
 
 .companybutton{
@@ -111,10 +113,9 @@ a:hover {
 }
 
 .img3{
-    width: 30px;
-    height: 30px;
-    margin-left: 100px;
-    padding-top: 5px;
+    width: 25px;
+    height: 25px;
+    float: left;
 }
 
 .cover4{
@@ -122,15 +123,29 @@ a:hover {
 }
 
 .avg{
-    margin-left: 10px;
+    margin-left: 100px;
     padding-top: 5px;
 }
 
 .count1{
-    margin-left: 400px;
+    margin-left: 50px;
     padding-top: 5px;
 }
 
 .text1{
     padding-top: 5px;
+}
+
+#chart{
+    width: 440px;
+    height: 200px;
+}
+
+.cover5{
+    padding-top: 40px;
+}
+
+.cover6{
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
