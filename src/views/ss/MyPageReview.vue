@@ -56,45 +56,11 @@
 
 			<div class="mymy-content">
 				<div class="mymy-head">
-					<span>결제내역</span>
+					<span>후기</span>
 				</div>
-				<!-- mymy-head -->
-
 				<div class="mymy-main">
-					<div class="mymy-nav">
-						<button type="button">원데이</button>
-						<span>ㅣ</span>
-						<button type="button">정규</button>
-					</div>
-					<!-- mymy-nav -->
-
-					<div class="mymy-paybox">
-						<!-- 결제내역이 없으면 -->
-						<!-- <div class="mymy-nopay">
-							<img id="nopayImg" src="@/assets/images/icon/ss/nopay.png"><br>
-							<span>결제한 내역이 없어요</span><br>
-						</div> -->
-						<!-- mymy-nopay -->
-						
-						<!-- 결제내역이 있으면 -->
-						<div class="mymy-pay">
-							<ul>
-								<li><img id="pay-pro" src="../../assets/images/icon/ss/default-profile.png"></li>
-								<li><span>내가 들었던 클래스 이름이 나올텐데</span></li>
-								<li>
-									<img id="pay-star" src="../../assets/images/icon/ss/star.png">
-									<img id="pay-star" src="../../assets/images/icon/ss/star.png">
-									<img id="pay-star" src="../../assets/images/icon/ss/star.png">
-									<img id="pay-star" src="../../assets/images/icon/ss/star.png">
-									<img id="pay-star" src="../../assets/images/icon/ss/star.png">
-								</li>
-							</ul>
-						</div>
-						<!-- mymy-pay -->
-					</div>
-					<!-- mymy-paybox -->
+					
 				</div>
-				<!-- mymy-main -->
 			</div>
 			<!-- mypage-content -->
 
@@ -110,12 +76,11 @@
 <script>
 import '@/assets/css/Initialization.css';
 import '@/assets/css/ss/ss.css';
-import '@/assets/css/ss/mypay.css';
 import AppHeader from '@/components/AppHeader.vue';
 
 
 export default {
-	name: "MyPagePay",
+	name: "MyPageReview",
 	components: {
 		AppHeader
 	},
