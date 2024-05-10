@@ -5,86 +5,95 @@
     <AppHeader />
     <div class="wrap">
 
-        
-
-        <div>
-            <p class="p50">클래스 정보</p>
-        </div>
-        <div class="clearfix cover50">
+        <div class="cover58">
             <div>
-                <img class="img50" src="../../assets/images/logo.png" alt="">
-            </div>
-            <div class="cover51">
-                <p>업체명</p>
-                <p>클래스명</p>
-                <div class="cover52">
-                    <img class="img51" src="../../assets/images/logo.png" alt="">
-                    <p>별점</p>
+                <div class="cover56">
+                    <p class="p50">클래스 정보</p>
                 </div>
             </div>
-            <div class="cover53">
-                <p>날자</p>
-                <p>2024-05-10 20:00:00</p>
-            </div>
-        </div>
-
-        <div>
-            <p class="p50"> 결제수단</p>
-        </div>
-
-        <div>
-            <div class="cover54">
-                <form action="">
-                    <li>
-                        <ul class="ul1">
-                            <label>신용카드</label>
-                            <input type="radio" style="width:30px;height:20px;border:1px;" name="pay" value="10" checked="checked">
-                        </ul>
-                        <ul class="ul1">
-                            <label>네이버페이</label>
-                            <input type="radio" style="width:30px;height:20px;border:1px;" name="pay" value="10" checked="checked">
-                        </ul>
-                        <ul class="ul1">
-                            <label>토스페이</label>
-                            <input type="radio" style="width:30px;height:20px;border:1px;" name="pay" value="10" checked="checked">
-                        </ul>
-                        <ul class="ul1">
-                            <label>휴대폰결제</label>
-                            <input type="radio" style="width:30px;height:20px;border:1px;" name="pay" value="10" checked="checked">
-                        </ul>
-                    </li>
-                    <div>
-                        <p class="p51">쿠폰</p>
-                        <div class="claerfix">
-                            <p v-if="a > 0" class="p52">{{ Number(this.a).toLocaleString('ko-KR') }}</p>
-                            <p v-if="a == '사용안함'" class="p52">{{ this.a }}</p>
-                            <button v-on:click.prevent="listup">쿠폰</button>
-                        </div>
+            <div class="clearfix cover50">
+                <div>
+                    <img class="img50" src="../../assets/images/logo.png" alt="">
+                </div>
+                <div class="cover51">
+                    <p>업체명</p>
+                    <p>클래스명</p>
+                    <div class="cover52">
+                        <img class="img51" src="../../assets/images/logo.png" alt="">
+                        <p>별점</p>
                     </div>
-                </form>
+                </div>
+                <div class="cover53">
+                    <p>날자</p>
+                    <p>2024-05-10 20:00:00</p>
+                </div>
             </div>
         </div>
 
-        <div class="clearfix">
-            <div>
-                <p class="p53">결제금액</p>
-                <p>{{ Number(1000000).toLocaleString('ko-KR') }}원</p>
+        <div class="cover57">
+            <div class="cover55">
+                <p class="p50"> 결제수단</p>
             </div>
+
             <div>
-                <p class="p53">쿠폰사용금액</p>
-                <p v-if="a > 0">{{ Number(this.a).toLocaleString('ko-KR') }}</p>
-                <p v-if="a == '사용안함'">{{ this.a }}</p>
-            </div>
-            <div>
-                <p class="p54">총결제금액</p>
-                <p>{{ Number(500000).toLocaleString('ko-KR') }}</p>
-            </div>
-            <div>
-                <button>결제하기</button>
+                <div class="cover54">
+                    <form action="">
+                        <li>
+                            <ul class="ul1">
+                                <label>신용카드</label>
+                                <input type="radio" style="width:30px;height:20px;border:1px;" name="pay" value="10"
+                                    checked="checked">
+                            </ul>
+                            <ul class="ul1">
+                                <label>네이버페이</label>
+                                <input type="radio" style="width:30px;height:20px;border:1px;" name="pay" value="10"
+                                    checked="checked">
+                            </ul>
+                            <ul class="ul1">
+                                <label>토스페이</label>
+                                <input type="radio" style="width:30px;height:20px;border:1px;" name="pay" value="10"
+                                    checked="checked">
+                            </ul>
+                            <ul class="ul1">
+                                <label>휴대폰결제</label>
+                                <input type="radio" style="width:30px;height:20px;border:1px;" name="pay" value="10"
+                                    checked="checked">
+                            </ul>
+                        </li>
+                        <div>
+                            <p class="p51">쿠폰</p>
+                            <div class="claerfix cover59">
+                                <p v-if="a > 0" class="p52">{{ Number(this.a).toLocaleString('ko-KR') }}</p>
+                                <p v-if="a == '사용안함'" class="p52">{{ this.a }}</p>
+                                <button class="bu50" v-on:click.prevent="listup">쿠폰</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
-        
+        <div class="cover590">
+            <div class="clearfix">
+                <div >
+                    <p class="p53">결제금액</p>
+                    <p class="p54">{{ Number(1000000).toLocaleString('ko-KR') }}원</p>
+                </div>
+                <div>
+                    <p class="p53">쿠폰사용금액</p>
+                    <p class="p54" v-if="a > 0">{{ Number(this.a).toLocaleString('ko-KR') }}</p>
+                    <p class="p54" v-if="a == '사용안함'">{{ this.a }}</p>
+                </div>
+                <div>
+                    <p class="p55">총결제금액</p>
+                    <p class="p56">{{ Number(500000).toLocaleString('ko-KR') }}</p>
+                </div>
+                <div>
+                    <button class="bu52">결제하기</button>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 

@@ -92,8 +92,8 @@
 }
 
 .cover6{
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-bottom: 20px;
 }
 
 .preview-image{
@@ -108,6 +108,7 @@
 .cover20{
     margin-left: 200px;
     margin-right: 200px;
+    padding-top: 40px;
 }
 
 .p20{
@@ -136,6 +137,7 @@
 .cover22{
     text-align: right;
     margin-right: 200px;
+    height: 60px;
 }
 
 .bu20{
@@ -254,9 +256,10 @@
 }
 
 .p50{
+    margin-left: 20px;
     font-size: 36px;
     font-weight: bold;
-    margin-left: 200px;
+    width: 800px;
     /* margin-top: 50px; */
 }
 
@@ -275,9 +278,6 @@
 }
 
 .cover50{
-    margin-left: 200px;
-    margin-right: 200px;
-    /* margin-top: 30px; */
     font-size: 24px;
 }
 
@@ -310,12 +310,10 @@
 }
 
 .cover54{
-    margin-left: 200px;
     margin-top: 20px;
     font-size: 24px;
     width: 800px;
-    border: 1px solid #000000;
-    border-radius: 10px;
+    
 }
 
 .cover54 li{
@@ -323,6 +321,8 @@
 }
 
 .p51{
+    margin-left: 20px;
+    margin-bottom: 20px;
     font-size: 36px;
     font-weight: bold;
 }
@@ -330,6 +330,7 @@
 .p52{
     width: 600px;
     float: left;
+    margin-left: 25px;
 }
 
 
@@ -367,14 +368,87 @@
 
 .p53{
     float: left;
+    font-size: 24px;
+    width: 400px;
+    padding: 10px;
 }
 
 .p54{
     float: left;
-    
+    font-size: 24px;
+    width: 400px;
+    text-align: right;
+    padding: 10px;
 }
 
 .ul1{
     margin-bottom: 20px;
     font-size: 24px;
+    padding-left: 25px;
+}
+
+.cover55{
+    margin-top: 40px;
+    padding-bottom: 20px;
+}
+
+.cover56{
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+.cover57{
+    margin-left: 200px;
+    width: 800px;
+    border: 1px solid #000000;
+    border-radius: 30px;
+    margin-top: 20px;
+}
+
+.cover58{
+    margin-left: 200px;
+    width: 800px;
+}
+
+.cover59{
+    margin: 20px;
+}
+
+.bu50{
+    font-size: 20px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.cover590{
+    margin-left: 200px;
+    margin-top: 20px;
+    width: 800px;
+}
+
+.p55{
+    float: left;
+    font-size: 36px;
+    width: 400px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.p56{
+    float: left;
+    font-size: 36px;
+    width: 400px;
+    padding: 10px;
+    text-align: right;    
+    font-weight: bold;
+    color: #8521FF;
+}
+
+.bu52{
+    width: 800px;
+    height: 50px;
+    margin-bottom: 40px;
+    background-color: #8521FF;
+    color: #ffffff;
+    font-size: 36px;
 }

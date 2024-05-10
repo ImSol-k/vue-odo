@@ -4,20 +4,21 @@
     <AppHeader />
     <div class="wrap">
 
-        
-        <!--사진 + 업체명-->
-        <div class="clearfix cover20">
-            <div class="preview-image">
-                <img class="img20" :src="previewImage" >
-            </div>
+        <div>
+            <!--사진 + 업체명-->
+            <div class="clearfix cover20">
+                <div class="preview-image">
+                    <img class="img20" :src="previewImage">
+                </div>
 
-            <div>
-                <p class="p20">업체명</p>
-            </div>
+                <div>
+                    <p class="p20">업체명</p>
+                </div>
 
-            <div class="input">
-                <input type="file" id="profile" name="profile" class="file-input" style="font-size: 24px;"
-                    @change="handleImageChange">
+                <div class="input">
+                    <input type="file" id="profile" name="profile" class="file-input" style="font-size: 24px;"
+                        @change="handleImageChange">
+                </div>
             </div>
         </div>
         <!--소개글-->
@@ -32,7 +33,7 @@
             <button class="bu20">수정</button>
             <button class="bu21">취소</button>
         </div>
-        
+
 
     </div>
     <AppFooter />
