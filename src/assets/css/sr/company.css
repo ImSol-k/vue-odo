@@ -237,13 +237,14 @@
   width: 100px;
   margin: 5px 10px;
 }
-.addPageSelectClass {
-  height: 30px;
-  width: 200px;
-}
 .addPageSelectClassMemory {
-  display: block;
+  /* display: block; */
   height: 30px;
   width: 220px;
   margin-top: 10px;
 }
+.addPageSelectClass {
+  height: 30px;
+  width: 200px;
+}
+
