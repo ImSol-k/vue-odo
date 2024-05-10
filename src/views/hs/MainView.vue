@@ -1,9 +1,10 @@
 <template>
 	<AppHeader />
 	<!-- //header -->
-	<div class="asdf">
-		asdf
-	</div>
+	<section class="main-slide"></section>
+	<section class="free-best"></section>
+	<div class="banner"></div>
+	<section class="pay-best"></section>
 	<AppFooter />
 	<!-- //footer -->
 </template>
@@ -27,9 +28,3 @@ import AppHeader from "@/components/AppHeader.vue"
 	created(){}
 	};
 </script>
-
-<style>
-div.asdf {
-	height: 500px;
-}
-</style>

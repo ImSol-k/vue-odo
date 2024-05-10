@@ -311,6 +311,7 @@ footer .icon-box img {
     border-right: 1px solid #ccc;
     padding: 20px;
     transition: left 0.5s ease;
+    overflow: auto;
     /* left 속성에 대한 부드러운 애니메이션 설정 */
 }
 
