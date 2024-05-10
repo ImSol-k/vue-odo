@@ -47,7 +47,7 @@ a:hover {
 
 .wrap {
     width: 1200px;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #fff;
     margin: 0 auto;
 }
@@ -206,3 +206,81 @@ a:hover {
     margin-left: 10px;
     border-radius: 10px;
 }
+
+.img30{
+    width: 115px;
+    height: 115px;
+}
+
+.cover30{
+    font-size: 36px;
+}
+
+.cover31{
+    text-align: center;
+    margin-top: 150px;
+    height: 1000px;
+}
+
+.cover32{
+    width: 260px;
+    height: 260px;
+    position: relative;
+    
+}
+
+.img31{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 70%;
+    left: 70%;
+}
+
+.cover33{
+    margin-top: 50px;
+    
+}
+
+.cover34{
+    width: 260px;
+    margin-right: 40px;
+    margin-left: 20px;
+    float: left;
+}
+
+.cover41{
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 450px;
+    float: left;
+}
+
+.cover40{
+    
+}
+
+.img40{
+    width: 125px;
+    height: 125px;
+    float: left;
+}
+
+
+
+.cover42{
+    width: 300px;
+    margin-left: 150px;
+    margin-top: 15px;
+}
+
+.p40{
+    font-size: 36px;
+    padding-bottom: 10px;
+}
+
+.p41{
+    font-size: 20px;
+}
+
+

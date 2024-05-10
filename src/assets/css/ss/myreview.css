@@ -1,1 +1,68 @@
 /* 리뷰페이지 css*/
+
+/* 리뷰 없을때 */
+.no-review {
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;
+    min-height: 500px;
+}
+
+.no-review #noreviewImg {
+    width: 200px;
+    margin-top: 150px;
+}
+
+/* 리뷰 있을때 */
+
+.review {
+    box-sizing: border-box;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    width: 950px;
+    min-height: 300px;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.re1 {
+    box-sizing: border-box;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.re1 .re1-img1 {
+    width: 80px;
+    float: left;
+}
+
+.re1 .re1-id {
+    font-size: 24px;
+}
+
+.re1 .re1-img2 {
+    width: 20px;
+}
+
+.re1 .re1-date {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+.re2 {
+    background-color: #d6d6d6;
+    font-size: 20px;
+    text-align: left;
+    min-height: 80px;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin-bottom: 5px;
+}
+
+.review img{
+    width: 80px;
+}
