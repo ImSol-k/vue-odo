@@ -1,9 +1,9 @@
 <template><!--업체 소개페이지-->
+
+	<AppHeader/>
+	<!--헤더-->
 	<div class="wrap">
 
-		<!--헤더-->
-
-		<AppHeader/>
 
 		<!--업체소개글-->
 		<div class="cover5">
@@ -43,16 +43,15 @@
 				</div>
 			</div>
 		</div>
-		
-
-		<AppFooter/>
 
 	</div>
+	<AppFooter/>
 </template>
 <script>
 import AppHeader from "@/components/AppHeader.vue"
 import AppFooter from "@/components/AppFooter.vue"
 import '@/assets/css/jh/jh.css'
+import '@/assets/css/Initialization.css'
 
 import { Chart, registerables } from 'chart.js'
 Chart.register(...registerables)

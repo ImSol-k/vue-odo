@@ -75,11 +75,7 @@
 												
 						<div class="rf-2 clearfix">
 							<span>클래스는 사용해 보셨나요?</span><br>
-							<img src="@/assets/images/icon/ss/star.png">
-							<img src="@/assets/images/icon/ss/star.png">
-							<img src="@/assets/images/icon/ss/star.png">
-							<img src="@/assets/images/icon/ss/star.png">
-							<img src="@/assets/images/icon/ss/star.png">
+							<img v-on:click="star" v-for="i in 5" :key="i" src="@/assets/images/icon/ss/star.png">
 						</div>
 						<!-- rf-2 / 별점 부분 -->
 
@@ -136,7 +132,7 @@
 
 						<div class="rf-6">
 							<span>리뷰를 작성해 주세요</span><br>
-							<textarea></textarea>
+							<textarea value=""></textarea>
 						</div>
 						<!-- rf-6 / 리뷰작성란 -->
 						
@@ -205,15 +201,17 @@ export default {
 		// 등록버튼 클릭시 
 		insertReview(){
 			console.log('후기등록');
+		},
+
+		// 별점
+		star(){
+			console.log('star');
 		}
 
 	},
 	created(){}
 };
 </script>
-
-
-
 
 
 <style>

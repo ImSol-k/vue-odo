@@ -1,9 +1,11 @@
 <template><!--업체 소개페이지-->
+
+    <!--헤더-->
+
+    <AppHeader />
     <div class="wrap">
 
-        <!--헤더-->
-
-        <AppHeader />
+        
 
         <div>
             <p class="p50">클래스 정보</p>
@@ -82,7 +84,7 @@
             </div>
         </div>
 
-        <AppFooter />
+        
 
     </div>
 
@@ -101,13 +103,13 @@
             </form>
         </div>
     </div>
-
+    <AppFooter />
 </template>
 <script>
 import AppHeader from "@/components/AppHeader.vue"
 import AppFooter from "@/components/AppFooter.vue"
 import '@/assets/css/jh/jh.css'
-
+import '@/assets/css/Initialization.css'
 
 
 export default {
