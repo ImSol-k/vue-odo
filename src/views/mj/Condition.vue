@@ -5,7 +5,20 @@
         <div class="wrap">
             <div class="MpLeft">
                 <!-- nav -->
-                <h2>내 활동</h2>
+					<ul>
+						<li><strong>내 활동</strong></li>
+						<li><router-link to="">결제 내역</router-link></li>
+						<li><router-link to="">위시리스트</router-link></li>
+						<li><router-link to="">쿠폰</router-link></li>
+						<li><router-link to="">후기</router-link></li>
+					</ul>
+					<hr>
+					<ul>
+						<li><strong>고객센터</strong></li>
+						<li><router-link to="">공지사항</router-link></li>
+						<li><router-link to="">약관 및 정책</router-link></li>
+					</ul>
+					<hr>
             </div>
             <div class="MpRight">
                 <h2>이용약관</h2>
@@ -288,12 +301,12 @@
                     1. 이 약관의 해석 및 회사와 회원간의 분쟁에 대하여는 대한민국의 법령을 적용합니다.
                     2. 서비스 이용 중 발생한 회원과 회사간의 소송은 민사소송법에 의한 관할법원에 제소합니다.
 
-                    <부칙>
+                    <!-- <부칙> -->
 
                     제1조 (시행일자)
                     2019년 3월 15일부터 시행됩니다.
 
-                    <부칙> (2023년 5월 31일 개정)
+                    <!-- <부칙> (2023년 5월 31일 개정) -->
                     개정약관은 2023년 5월 31일부터 시행됩니다. 
                 </div>
                 
@@ -303,7 +316,6 @@
     <!-- 푸터 -->
 		<AppFooter/>
 </template>
-</template>
 <script>
 import '@/assets/css/Initialization.css'
 import "@/assets/css/mj/condition.css"
@@ -311,7 +323,7 @@ import AppFooter from '@/components/AppFooter.vue';
 import AppHeader from '@/components/AppHeader.vue';
 
 	export default {
-		name: "Condition",
+		name: "ConditionView",
 		components: {
 			AppHeader,
 			AppFooter
