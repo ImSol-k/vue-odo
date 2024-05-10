@@ -7,16 +7,21 @@
                 <li><a href="#">제휴문의</a></li>
             </ul>
 
-            <h4>고객센터</h4>
-            <div>
-                <span>채팅상담:</span>
-                <button>카카오톡 채널 원데이원클래스</button>
-            </div>
-
-            <h4>호스트 지원센터</h4>
-            <div>
-                <span>채팅상담:</span>
-                <button>카카오톡 채널 원데이원클래스 호스트</button>
+            <div class="center-box">
+                <div>
+                    <h4>고객센터</h4>
+                    <div>
+                        <span>채팅상담:</span>
+                        <button>카카오톡 채널 원데이원클래스</button>
+                    </div>
+                </div>
+                <div>
+                    <h4>호스트 지원센터</h4>
+                    <div>
+                        <span>채팅상담:</span>
+                        <button>카카오톡 채널 원데이원클래스 호스트</button>
+                    </div>
+                </div>
             </div>
 
             <div class="hour">
