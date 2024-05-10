@@ -14,7 +14,7 @@
 
 /* 오른쪽내용영역 */
 .MporderContainer .MpRight{
-    margin-left: 15px;
+    margin-left: 40px;
     background-color: beige;
     width: 915px;
     height: 950px;
@@ -26,7 +26,6 @@
 .MporderContainer .MpRight .container .Right{
     width: 60px;
     height: 30px;
-    
 }
 
 .MporderContainer .MpRight li{
@@ -50,4 +49,23 @@
 .MporderContainer .MpRight .e-mail{
     width: 150px;
     height: 80px;
+}
+.MporderContainer .Right {
+    float:right;
+    margin-top: -30px;
+    margin-right:10px;
+}
+.MporderContainer .Right button {
+    width:55px;
+    height:35px;
+}
+
+
+.contents_body {
+    margin-top:30px;
+}
+.form_w100 {
+    width:400px;
+    height:40px;
+    font-size:20px;
 }

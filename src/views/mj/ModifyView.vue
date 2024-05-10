@@ -29,8 +29,9 @@
 					<div class="container Right">
 						<button>저장</button>
 					</div>
-					<hr>
-					<div class="ModifyImg">
+					
+					<div class="contents_body">
+						<div class="ModifyImg">
 						<img src="@/assets/images/icon/man_icon.png" alt="">
 					</div>
 					<br>
@@ -44,25 +45,25 @@
 						<label class="group">휴대폰번호</label>
 					</div>
 					<div>
-						<input type="hp" id="hp">
+						<input type="text" id="hp" class="form_w100" v-model=required>
 					</div>
 					<div class="form-blank">
 						<label class="group">이메일</label>
 					</div>
 					<div>
-						<input type="e-mail" id="e-mail" v-model= required>
+						<input type="text" id="e-mail" class="form_w100" v-model= required>
 					</div>
 					<div class="form-blank">
 						<label class="group">비밀번호</label>
 					</div>
 					<div>
-						<input type="password" id="password" v-model= required>
+						<input type="password" id="password" class="form_w100" v-model= required>
 					</div>
 					<div class="form-blank">
 						<label class="group">생년월일</label>
 					</div>
 					<div>
-						<input type="birth" id="birth" v-model= required>
+						<input type="text" id="birth" class="form_w100" v-model= required>
 					</div>
 					<div class="form-blank">
 						<label class="group">성별</label>
@@ -70,6 +71,8 @@
 					<div>
 						<span id="fixid"> **</span>
 					</div>
+					</div>
+					
 				</div>
 			</div>
 		</div>
