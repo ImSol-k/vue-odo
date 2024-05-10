@@ -132,6 +132,13 @@ export default {
         
         toggleMenu() {
             this.isMenuOpen = !this.isMenuOpen;
+            this.isSubMenuOpen1 = false;
+            this.isSubMenuOpen2 = false;
+            this.isSubMenuOpen3 = false;
+            this.isSubMenuOpen4 = false;
+            this.isSubMenuOpen5 = false;
+            this.isSubMenuOpen6 = false;
+            this.isSubMenuOpen7 = false;
         },
         toggleSubMenu1(){
             this.isSubMenuOpen1 = !this.isSubMenuOpen1;
