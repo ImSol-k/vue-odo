@@ -12,6 +12,7 @@ import CompanyInfoView from '../views/jh/CompanyInfoView.vue'
 import CompanyInfoModify from '../views/jh/CompanyInfoModify.vue'
 import WishListClass from '../views/jh/WishListClass.vue'
 import WishListCompany from '../views/jh/WishListCompany.vue'
+import PaymentView from '../views/jh/PaymentView.vue'
 //승수
 import MyPagePay from '../views/ss/MyPagePay.vue'
 import MyPageReview from '../views/ss/MyPageReview.vue'
@@ -75,6 +76,11 @@ const routes = [
     path: '/wishlistcompany',
     name: 'wishlistcompany',
     component: WishListCompany
+  },
+  {
+    path: '/payment',
+    name: 'payment',
+    component: PaymentView
   },
   //=== 승수 =================================
   {
