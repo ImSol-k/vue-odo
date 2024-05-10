@@ -70,11 +70,7 @@
 					<div class="re1 clearfix">
 						<img class="re1-img1" src="@/assets/images/icon/ss/default-profile.png">
 						<span class="re1-id">아이디들어올자리</span><br>
-						<img class="re1-img2" src="@/assets/images/icon/ss/star.png">
-						<img class="re1-img2" src="@/assets/images/icon/ss/star.png">
-						<img class="re1-img2" src="@/assets/images/icon/ss/star.png">
-						<img class="re1-img2" src="@/assets/images/icon/ss/star.png">
-						<img class="re1-img2" src="@/assets/images/icon/ss/star.png">
+						<img v-for="i in 5" :key="i" class="re1-img2" src="@/assets/images/icon/ss/star.png">
 						<span class="re1-date">2024-05-05 12:30:40</span>
 					</div>
 					<!-- re1 -->

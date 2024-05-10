@@ -1,9 +1,10 @@
 <template><!--업체 소개페이지-->
+    <!--헤더-->
+
+    <AppHeader />
     <div class="wrap">
 
-        <!--헤더-->
-
-        <AppHeader />
+        
         <!--사진 + 업체명-->
         <div class="clearfix cover20">
             <div class="preview-image">
@@ -31,14 +32,16 @@
             <button class="bu20">수정</button>
             <button class="bu21">취소</button>
         </div>
-        <AppFooter />
+        
 
     </div>
+    <AppFooter />
 </template>
 <script>
 import AppHeader from "@/components/AppHeader.vue"
 import AppFooter from "@/components/AppFooter.vue"
 import '@/assets/css/jh/jh.css'
+import '@/assets/css/Initialization.css'
 
 
 

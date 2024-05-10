@@ -1,0 +1,61 @@
+/* 쿠폰 페이지 */
+
+/* 쿠폰 입력창*/
+.in-coupon {
+    box-sizing: border-box;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+}
+
+/* 쿠폰 위에 메세지 */
+.couponMsg {
+    margin: 10px auto;
+}
+
+/* 쿠폰 없을때 */
+.no-coupon {
+    box-sizing: border-box;
+    border-bottom: 1px solid #000;
+    text-align: center;
+    min-height: 500px;
+}
+
+.no-coupon img {
+    width: 200px;
+    margin-top: 150px;
+}
+.no-coupon span {
+    display: block;
+    margin-top: -30px;
+}
+
+/* 쿠폰 있을때 */
+
+.on-coupon {
+    box-sizing: border-box;
+    padding: 5px;
+    min-height: 500px;
+}
+
+.coupon-set {
+    box-sizing: border-box;
+    border: 1px solid #000;
+    display: inline-block;
+    margin: 30px 30px 50px 30px;
+    cursor: pointer;
+}
+
+.coupon-set img {
+    display: flex;
+    width: 330px;
+    float: left;
+}
+
+.coupon-set .cou-name {
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: -220px;
+}

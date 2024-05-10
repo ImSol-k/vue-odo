@@ -57,27 +57,29 @@
 						<p>❌인증번호가 일치하지 않습니다.</p>
 					</div>
 				</div>
-				<div class="companyJoinButton">
-					<button>취소</button>
-					<button>가입</button>
-				</div>
+			</div>
+			<div class="companyJoinButton">
+				<button>취소</button>
+				<button>가입</button>
 			</div>
 				
 			
 		</div><!--companyJoinTitle-->
 		<!-- <AppFooter/> -->
 	</div>
+	<AppFooter/>
 </template>
 <script>
 import '@/assets/css/Initialization.css'
 import '@/assets/css/sr/company.css'
 import "@/assets/css/hs/main.css"
 import AppHeader from "@/components/AppHeader.vue"
+import AppFooter from "@/components/AppFooter.vue";
 
 
 	export default {
 		name: "CompanyJoinView",
-		components: { AppHeader },
+		components: { AppHeader,AppFooter },
 		data() {
 			return {};
 	},
