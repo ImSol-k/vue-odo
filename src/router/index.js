@@ -7,11 +7,13 @@ import CompanyPageView from '../views/sr/CompanyPageView.vue'
 //재현
 import CompanyInfoView from '../views/jh/CompanyInfoView.vue'
 import CompanyInfoModify from '../views/jh/CompanyInfoModify.vue'
+import WishListClass from '../views/jh/WishListClass.vue'
 //승수
 import MyPagePay from '../views/ss/MyPagePay.vue'
 import MyPageReview from '../views/ss/MyPageReview.vue'
 //미지
 import ModifyView from '../views/mj/ModifyView.vue'
+import Condition from '../views/mj/Condition.vue'
 
 const routes = [
   {
@@ -40,6 +42,11 @@ const routes = [
     component: CompanyInfoModify
   },
   {
+    path: '/wishlistclass',
+    name: 'wishlistclass',
+    component: WishListClass
+  },
+  {
     path: '/mypage/pay',
     name: 'mypagePay',
     component: MyPagePay
@@ -53,6 +60,11 @@ const routes = [
     path: '/mypage/modify',
     name: 'mypagemodify',
     component: ModifyView
+  },
+  {
+    path: '/mypage/condition',
+    name: 'mypagecondition',
+    component: Condition
   }
 ]
 

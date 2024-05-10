@@ -117,17 +117,17 @@
 }
 
 .companyInfoMenu{
-    width: 260px;
+    width: 230px;
     float: left;
     margin-left: 5px;
 }
 .companyInfoMenu>ul{
     /* margin: 10px 0px 0px 30px; */
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .companyInfoMenu>ul>li:first-child{
-    font-size: 20px;
+    font-size: 18px;
     background-color: #f4f4f4;
     /* border-top: 2px solid #d9d9d9;
     border-bottom: 2px solid #d9d9d9; */
@@ -143,11 +143,11 @@
 }
 .whatClass>span{
     cursor: pointer;
-    padding: 0px 10px;
+    padding: 3px 10px;
     font-size: 15px;
 }
 .whatClass>span:first-child{
-    border-right: 1px solid #000;
+    /* border-right: 1px solid #000; */
 }
 .companyInfoClassList{
     float: left;
@@ -165,15 +165,49 @@
 }
 .companyInfoClassfor>li>img{
     float: left;
-    width: 40px;
+    width: 60px;
     margin-right: 10px;
 }
 .companyInfoClassfor>li>div{
     float: left;
 }
+.companyInfoClassfor>li>div>p:nth-child(1){
+    font-size: 18px;
+}
 .companyInfoClassfor>li>div>p:nth-child(2){
-    font-size: 15px;
+    font-size: 13px;
+    height: 40px;
 }
 .classListObj{
     cursor: pointer;
+    width: 300px;
 }
+/* .classListObj>p:nth-child(2){
+    height: 40px;
+    display: flex;
+    font-size: 12px;
+} */
+.classListOption{
+    display: flex;
+    flex-direction: column;
+    /* margin: 5px; */
+}
+.classListOption>button{
+    margin: 2px 5px;
+    height: 24px;
+    width: 70px;
+}
+
+
+/******************* 
+ * 회원리스트 */
+ .memberListTable{
+    float: left;
+    display: flex;
+ }
+ .memberListTable>table{
+    font-size: 15px;
+ }
+ .memberListTable>table>tbody{
+    text-align: center;
+ }
