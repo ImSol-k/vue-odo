@@ -19,6 +19,7 @@
     /* background-color: beige; */
     width: 915px;
     height: 850px;
+    overflow-y:scroll;
 }
 .MporderContainer .MpRight h2{
     font-size: 32px;
