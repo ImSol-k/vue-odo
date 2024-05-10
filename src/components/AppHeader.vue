@@ -1,4 +1,46 @@
 <template>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown-menu" :class="{ 'show': isMenuOpen }">
+        <!-- Close Button -->
+        <div class="drop-close" @click="toggleMenu">
+            <img src="../assets/images/icon/header_icons/x.png" alt="">
+        </div>
+        <!-- Menu Items -->
+        <ul>
+            <li>
+                <a href="#">쿠킹</a>
+                <ul>
+                    <li><a href="#">한식</a></li>
+                    <li><a href="#">일식</a></li>
+                    <li><a href="#">중식</a></li>
+                    <li><a href="#">양식</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">베이킹</a>
+            </li>
+            <li>
+                <a href="#">음료</a>
+            </li>
+            <li>
+                <a href="#">뷰티</a>
+            </li>
+            <li>
+                <a href="#">공예</a>
+            </li>
+            <li>
+                <a href="#">스포츠</a>
+            </li>
+            <li>
+                <a href="#">심리/상담</a>
+            </li>
+            <li>
+                <a href="#">IT</a>
+            </li>
+        </ul>
+    </div>
+
     <header>
         <div class="top">
             <div class="inner">
@@ -13,7 +55,7 @@
         </div>
         <div class="inner">
             <div class="bottom">
-                <div class="hamberger">
+                <div class="hamberger" @click="toggleMenu">
                     <img src="../assets/images/icon/header_icons/category.png" alt="">
                     <p>카테고리</p>
                 </div>
@@ -33,13 +75,21 @@
 </template>
 
 <script>
+
 export default {
-    name: "AppFooter",
-    components: {},
-    data() {
-        return {};
+    name: "AppHeader",
+    components: {
     },
-    methods: {},
+    data() {
+        return {
+            isMenuOpen: false,
+        };
+    },
+    methods: {
+        toggleMenu() {
+            this.isMenuOpen = !this.isMenuOpen;
+        },
+    },
     created() { }
 };
 </script>
