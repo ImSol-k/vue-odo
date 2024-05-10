@@ -1,7 +1,11 @@
 /* 결제내역 페이지 css */
 /* mymy-nav*/
 .mymy-nav {
-    display: inline-block;
+    box-sizing: border-box;
+    width: 950px;
+    display: block;
+    padding : 0 0 10px 0 ; 
+    border-bottom: 1px solid #000;
 }
 
 .mymy-nav button {
@@ -32,25 +36,92 @@
     border: none;
 }
 
-.mymy-pay {
+.pay {
+    width: 950px;
     box-sizing: border-box;
     border-bottom: 1px solid #000;
-   
     height: 300px;
-    border: 1px solid #000;
 }
 
+.mymy-pay{
+    display: block;
+    box-sizing: border-box;
+    width: 200px;
+    height: 300px;
+    float: left;
+}
 .mymy-pay ul {
-    margin: 0 0 0 20px;
+    padding: 5px;
 }
 
 .mymy-pay #pay-pro {
     width: 200px;
-}
-.mymy-pay #pay-star {
-    width: 40px;
+    cursor: pointer;
 }
 
+.mymy-pay  ul span {
+    display: block;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.mymy-pay #pay-star {
+    width: 35px;
+    padding: 3px;
+    /* filter: opacity(0.6) drop-shadow(0 0 0 #ff0000); */
+}
+
+.mymy-payCon {
+    box-sizing: border-box;
+    width: 730px;
+    height: 300px;
+    /* border: 1px solid #000; */
+    float: left;
+    padding: 10px;
+}
+
+.mymy-payCon .paycon1 p {
+    /* border: 1px solid #000; */
+    width: 500px;
+    height: 150px;
+}
+
+.paycon1 {
+    width: 500px;
+    float: left;
+}
+
+.paycon1 p {
+    display: block;
+    /* border: 1px solid #000; */
+    width: 500px;
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
+    /* white-space: nowrap; */
+}
+
+.paycon2 {
+    width: 200px;
+    /* border: 1px solid #000; */
+    text-align: center;
+    float: left;
+    margin-bottom: 30px;
+}
+
+.paycon2 img {
+    width: 150px;
+}
+
+.mymy-payCon button {
+    width: 70px;
+    height: 30px;
+    margin-top: 10px;
+    margin-right: 20px;
+    float: right;
+    cursor: pointer;
+}
 
 
 
