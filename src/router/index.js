@@ -16,7 +16,7 @@ import WishListCompany from '../views/jh/WishListCompany.vue'
 import MyPagePay from '../views/ss/MyPagePay.vue'
 import MyPageReview from '../views/ss/MyPageReview.vue'
 import MyPageCoupon from '../views/ss/MyPageCoupon.vue'
-import MypageWriteForm from '../views/ss/MypageWriteForm.vue'
+import MyPageWriteForm from '../views/ss/MyPageWriteForm.vue'
 //미지
 import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
@@ -94,7 +94,7 @@ const routes = [
   {
     path: '/mypage/review/form',
     name: 'mypagereviewform',
-    component: MypageWriteForm
+    component: MyPageWriteForm
   },
   //=== 미지 =================================
   {
