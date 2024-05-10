@@ -77,20 +77,22 @@
 						<!-- mymy-nopay -->
 						
 						<!-- 결제내역이 있으면 -->
-						<div class="mymy-pay">
-							<ul>
-								<li><img id="pay-pro" src="../../assets/images/icon/ss/default-profile.png"></li>
-								<li><span>내가 들었던 클래스 이름이 나올텐데</span></li>
-								<li>
-									<img id="pay-star" src="../../assets/images/icon/ss/star.png">
-									<img id="pay-star" src="../../assets/images/icon/ss/star.png">
-									<img id="pay-star" src="../../assets/images/icon/ss/star.png">
-									<img id="pay-star" src="../../assets/images/icon/ss/star.png">
-									<img id="pay-star" src="../../assets/images/icon/ss/star.png">
-								</li>
-							</ul>
+						<div class="clearfix">
+							<div class="mymy-pay">
+								<ul>
+									<li><img id="pay-pro" src="../../assets/images/icon/ss/default-profile.png"></li>
+									<li><span>내가 들었던 클래스 이름이 나올텐데</span></li>
+									<li>
+										<img id="pay-star" src="../../assets/images/icon/ss/star.png">
+										<img id="pay-star" src="../../assets/images/icon/ss/star.png">
+										<img id="pay-star" src="../../assets/images/icon/ss/star.png">
+										<img id="pay-star" src="../../assets/images/icon/ss/star.png">
+										<img id="pay-star" src="../../assets/images/icon/ss/star.png">
+									</li>
+								</ul>
+							</div>
+							<!-- mymy-pay -->
 						</div>
-						<!-- mymy-pay -->
 					</div>
 					<!-- mymy-paybox -->
 				</div>

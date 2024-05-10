@@ -6,10 +6,7 @@
         <AppHeader />
 
         <div>
-            <input type="file" id="upload-image" hidden />
-            <label for="upload-image">
-                <img src="../../assets/images/회사이미지.png" />
-            </label>
+            
 
         </div>
 
@@ -30,7 +27,7 @@ export default {
         AppHeader,
         AppFooter
     },
-    data: {},
+    data() { },
 
     methods: {
 
@@ -38,7 +35,7 @@ export default {
     created() {
 
     }
-};
+}
 </script>
 
 <style></style>
