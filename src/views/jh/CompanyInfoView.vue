@@ -16,7 +16,7 @@
 						<p class="companyname">업체명</p>
 						<button class="companybutton">업체 소개글 수정하기</button>
 					</div>
-					<p class="companypro">잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어</p>
+					<p class="companypro p30">잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어</p>
 				</div>
 			</div>
 		</div>
@@ -24,7 +24,7 @@
 		<div class="clearfix cover6" v-for="(chartData, index) in chartDataArray" :key="index">
 			<div class="cover1">
 				<img class="img2" src="../../assets/images/회사이미지.png" alt="">
-				<p class="classpro">클래스 소개글 샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라</p>
+				<p class="classpro p31">클래스 소개글 샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라</p>
 			</div>
 
 			<div class="cover2">

@@ -28,8 +28,8 @@
 
         <!--취소/수정버튼-->
         <div class="cover22">
-            <button class="bu20">취소</button>
-            <button class="bu21">수정</button>
+            <button class="bu20">수정</button>
+            <button class="bu21">취소</button>
         </div>
         <AppFooter />
 

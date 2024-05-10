@@ -87,8 +87,13 @@
                         </div>
 
                         <div class="cover42">
-                            <div class="cover43">
-                                <p class="p40">업체명></p>
+                            <div>
+                                <div class="cover43">
+                                    <p class="p40">업체명></p>
+                                </div>
+                                <div>
+                                    <img class="img41" src="../../assets/images/하트2.png" alt="">
+                                </div>
                             </div>
                             <p class="p41">클래스 00 | 리뷰 00 | 찜 00</p>
                         </div>
