@@ -1,14 +1,16 @@
-*{
+* {
     padding: 0;
     margin: 0;
     list-style: none;
     box-sizing: border-box;
     text-decoration: none;
 }
+
 .inner {
     width: 1200px;
     margin: 0 auto;
 }
+
 /* ---------------------header-------------- */
 header {
     width: 100%;
@@ -17,26 +19,31 @@ header {
     border-bottom: 1px solid #dddddd;
     background: #fff;
 }
+
 /* header top */
 header .top {
     background: #f4f4f4;
 }
+
 header .top .inner {
     height: 30px;
     display: flex;
     justify-content: space-between;
     line-height: 30px;
 }
+
 header .top ul {
     width: 300px;
     display: flex;
     justify-content: space-between;
 }
+
 header .top a {
     color: #777;
     font-weight: bold;
     font-size: 12px;
 }
+
 /* header bottom */
 header .bottom {
     height: 100px;
@@ -46,29 +53,34 @@ header .bottom {
     color: #aaa;
     font-weight: bold;
 }
+
 header .bottom .hamberger {
     width: 50px;
     text-align: center;
     cursor: pointer;
 }
+
 header .bottom .bar {
     width: 1px;
     height: 56px;
     background: #ddd;
     margin: 0 30px;
 }
+
 .hamberger img {
     width: 26px;
     margin-bottom: 5px;
 }
+
 header .logo {
     width: 180px;
     height: 50px;
     display: block;
     text-indent: -9999px;
     margin-right: 60px;
-    background: url('../../images/icon/header_icons/KakaoTalk_20240509_102443065.png') no-repeat center / contain;
+    background: url('../../images/icon/header_icons/logo_2.png') no-repeat center / contain;
 }
+
 header .serch-box {
     width: 450px;
     height: 45px;
@@ -78,12 +90,14 @@ header .serch-box {
     background: #e4e4e4;
     margin-right: 290px;
 }
+
 .serch-box img {
     width: 30px;
     height: 30px;
     display: block;
     margin: 0 10px;
 }
+
 .serch-box input {
     width: 375px;
     height: 30px;
@@ -93,12 +107,15 @@ header .serch-box {
     font-weight: bold;
     margin-top: 5px;
 }
+
 .serch-box input::placeholder {
     color: #aaa;
 }
+
 .serch-box input:focus {
     outline: none;
 }
+
 header .bottom ul {
     width: 100px;
     height: 60px;
@@ -106,6 +123,7 @@ header .bottom ul {
     justify-content: space-between;
     text-align: center;
 }
+
 header .bottom .like {
     width: 30px;
     height: 45px;
@@ -114,13 +132,14 @@ header .bottom .like {
     color: #888;
     background: url('../../images/icon/header_icons/like.png') no-repeat center / contain;
 }
+
 header .bottom .my {
     width: 25px;
     height: 45px;
     display: block;
     line-height: 100px;
     color: #888;
-    background: url('../../images/icon/header_icons/my.png') no-repeat center / contain ;
+    background: url('../../images/icon/header_icons/my.png') no-repeat center / contain;
 }
 
 /* ----------- footer ----------------- */
@@ -132,6 +151,7 @@ footer {
     letter-spacing: -1.7px;
     text-align: center;
 }
+
 .f-t-ul {
     width: 250px;
     height: 30px;
@@ -141,33 +161,40 @@ footer {
     font-weight: bold;
     margin: 0 auto;
 }
+
 .f-t-ul li a {
     color: #777;
 }
+
 .f-t-ul li a:hover {
     color: #333;
     text-decoration: underline;
 }
+
 footer .center-box {
     width: 570px;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
 }
+
 footer h4 {
     color: #333;
     font-size: 20px;
     margin: 20px 0;
 }
+
 footer h4.en {
     letter-spacing: -0.1px;
 }
+
 footer span {
     font-size: 12px;
     font-weight: bold;
     color: #666;
     margin-right: 15px;
 }
+
 footer button {
     padding: 5px;
     font-size: 11px;
@@ -177,6 +204,7 @@ footer button {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 footer button::before {
     content: '';
     width: 16px;
@@ -185,6 +213,7 @@ footer button::before {
     background: url('../../images/icon/footer_icons_modify/chat.png') no-repeat center / contain;
     display: inline-block;
 }
+
 footer .hour {
     padding: 30px 0;
     margin: 30px 0;
@@ -195,16 +224,19 @@ footer .hour {
     letter-spacing: -0.8px;
     font-weight: bold;
 }
+
 footer .hour p:first-child {
     margin-bottom: 20px;
 }
-footer .inner > p {
+
+footer .inner>p {
     color: #999;
     letter-spacing: -0.28px;
     font-weight: bold;
     font-size: 12px;
     line-height: 25px;
 }
+
 .f-m-ul {
     width: 320px;
     display: flex;
@@ -213,17 +245,21 @@ footer .inner > p {
     font-weight: bold;
     margin: 20px auto;
 }
+
 .f-m-ul li:not(:last-child)::after {
     content: '|';
     margin-left: 10px;
     color: #ccc;
 }
+
 .f-m-ul li a {
     color: #555;
 }
+
 .f-m-ul li:nth-child(2) a {
     color: #000;
 }
+
 footer a.download {
     width: 768px;
     height: 45px;
@@ -235,6 +271,7 @@ footer a.download {
     line-height: 45px;
     margin: 0 auto;
 }
+
 footer a.download img {
     display: inline-block;
     width: 16px;
@@ -242,6 +279,7 @@ footer a.download img {
     margin-right: 5px;
     margin-bottom: -3px;
 }
+
 footer .icon-box {
     width: 300px;
     height: 25px;
@@ -250,9 +288,77 @@ footer .icon-box {
     align-items: center;
     margin: 30px auto 0;
 }
+
 footer .icon-box li {
     width: 22px;
 }
+
 footer .icon-box img {
     width: 100%;
+}
+
+/* 드롭다운 */
+.dropdown-menu {
+    position: fixed;
+    top: 0;
+    left: -200px;
+    /* 메뉴가 숨겨진 초기 위치 */
+    width: 200px;
+    /* 메뉴의 너비 */
+    height: 100vh;
+    /* 화면 전체 높이 */
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    transition: left 0.5s ease;
+    /* left 속성에 대한 부드러운 애니메이션 설정 */
+}
+
+.dropdown-menu.show {
+    left: 0;
+    /* 메뉴를 화면으로 이동시키는 위치 */
+}
+
+/* 메뉴 리스트 */
+.dropdown-menu > ul {
+    margin: 40px 0 0 10px;
+}
+
+.dropdown-menu ul > li > a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c2c2c;
+    display: block;
+    padding: 10px 0;
+}
+
+/* 서브메뉴 리스트 */
+.dropdown-menu ul > li > ul {
+}
+.dropdown-menu ul > li > ul a {
+    font-size: 13px;
+    font-weight: normal;
+    color: #999;
+    padding: 5px 0;
+}
+.dropdown-menu ul > li > ul a:hover {
+    color: #2c2c2c;
+    text-decoration: underline;
+}
+
+/* 드롭다운 닫기 버튼 */
+.drop-close {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    text-align: center;
+    line-height: 16px;
+    top: 15px;
+    right: 20px;
+}
+
+.drop-close img {
+    width: 13px;
+    height: 13px;
 }
