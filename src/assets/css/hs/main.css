@@ -311,6 +311,7 @@ footer .icon-box img {
     border-right: 1px solid #ccc;
     padding: 20px;
     transition: left 0.5s ease;
+    overflow: auto;
     /* left 속성에 대한 부드러운 애니메이션 설정 */
 }
 
@@ -321,7 +322,7 @@ footer .icon-box img {
 
 /* 메뉴 리스트 */
 .dropdown-menu > ul {
-    margin: 40px 0 0 0;
+    margin: 40px 0 0 35px;
 }
 .dropdown-menu > ul > li {
     margin-bottom: 20px;
@@ -338,7 +339,7 @@ footer .icon-box img {
 .dropdown-menu ul > li > ul.subMenuList {
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.7s ease;
+    transition: max-height 0.5s ease;
 }
 .dropdown-menu ul > li > ul.subMenuList.show {
     max-height: 160px;
