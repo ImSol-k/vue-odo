@@ -10,13 +10,13 @@
             <h4>고객센터</h4>
             <div>
                 <span>채팅상담:</span>
-                <button>카카오톡 채널</button>
+                <button>카카오톡 채널 원데이원클래스</button>
             </div>
 
             <h4>호스트 지원센터</h4>
             <div>
                 <span>채팅상담:</span>
-                <button>카카오톡 채널</button>
+                <button>카카오톡 채널 원데이원클래스 호스트</button>
             </div>
 
             <div class="hour">
@@ -45,12 +45,12 @@
             </a>
 
             <ul class="icon-box">
-                <li><a href=""><img src="../assets/images/icon/footer_icons_modify/f_instagram.png" alt=""></a></li>
-                <li><a href=""><img src="../assets/images/icon/footer_icons_modify/f_facebook.png" alt=""></a></li>
-                <li><a href=""><img src="../assets/images/icon/footer_icons_modify/f_naver.png" alt=""></a></li>
-                <li><a href=""><img src="../assets/images/icon/footer_icons_modify/f_youtube.png" alt=""></a></li>
-                <li><a href=""><img src="../assets/images/icon/footer_icons_modify/f_apple.png" alt=""></a></li>
-                <li><a href=""><img src="../assets/images/icon/footer_icons_modify/f_playstore.png" alt=""></a></li>
+                <li><a href="#"><img src="../assets/images/icon/footer_icons_modify/f_instagram.png" alt=""></a></li>
+                <li><a href="#"><img src="../assets/images/icon/footer_icons_modify/f_facebook.png" alt=""></a></li>
+                <li><a href="#"><img src="../assets/images/icon/footer_icons_modify/f_naver.png" alt=""></a></li>
+                <li><a href="#"><img src="../assets/images/icon/footer_icons_modify/f_youtube.png" alt=""></a></li>
+                <li><a href="#"><img src="../assets/images/icon/footer_icons_modify/f_apple.png" alt=""></a></li>
+                <li><a href="#"><img src="../assets/images/icon/footer_icons_modify/f_playstore.png" alt=""></a></li>
             </ul>
         </div>
     </footer>
