@@ -72,8 +72,8 @@
                             <img class="img30" src="../../assets/images/하트.png" alt="">
                         </div>
                         <div class="cover30">
-                            <p>아직 찜한 클래스가 없어요</p>
-                            <p>관심있는 클래스를 선택해보세요</p>
+                            <p>아직 찜한 업체가 없어요</p>
+                            <p>관심있는 업체를 선택해보세요</p>
                         </div>
                         
 
@@ -81,15 +81,16 @@
                     </div>
                     -->
 
-                    <div class="cover33 clearfix">
-                        <!--위시리스트 있을때-->
-                        <div class="cover34" v-for="(a,i) in a" :key="i">
-                            <div class="cover32">
-                                <img class="img31" src="../../assets/images/하트2.png" alt="">
+                    <div class="cover41 clearfix" v-for="(a, i) in a" :key="i">
+                        <div class="cover40">
+                            <img class="img40" src="../../assets/images/회사이미지.png" alt="">
+                        </div>
+
+                        <div class="cover42">
+                            <div class="cover43">
+                                <p class="p40">업체명></p>
                             </div>
-                            <p>지역이름</p>
-                            <p>설명~설명~설명~설명~설명~설명~설명~설명~설명~설</p>
-                            <p>무료</p>
+                            <p class="p41">클래스 00 | 리뷰 00 | 찜 00</p>
                         </div>
                     </div>
                 </div>
@@ -117,7 +118,7 @@ export default {
     },
     data() {
         return {
-            a:[1,2,3,4,5,6]
+            a: [1, 2, 3, 4, 5, 6]
         }
     },
 
@@ -130,8 +131,4 @@ export default {
 }
 </script>
 
-<style>
-.cover32 {
-    background-image: url(../../assets/images/회사이미지.png);
-}
-</style>
+<style></style>

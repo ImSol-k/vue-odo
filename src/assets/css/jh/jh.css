@@ -47,7 +47,7 @@ a:hover {
 
 .wrap {
     width: 1200px;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #fff;
     margin: 0 auto;
 }
@@ -248,3 +248,39 @@ a:hover {
     margin-left: 20px;
     float: left;
 }
+
+.cover41{
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 450px;
+    float: left;
+}
+
+.cover40{
+    
+}
+
+.img40{
+    width: 125px;
+    height: 125px;
+    float: left;
+}
+
+
+
+.cover42{
+    width: 300px;
+    margin-left: 150px;
+    margin-top: 15px;
+}
+
+.p40{
+    font-size: 36px;
+    padding-bottom: 10px;
+}
+
+.p41{
+    font-size: 20px;
+}
+
+
