@@ -33,9 +33,12 @@
 }
 
 /* 정보입력 */
+.companyJoinInfo{
+  margin-left: 160px;
+}
 .companyJoinInfo > div {
-  width: 407px;
-  margin: 10px auto;
+  width: 550px;
+  margin: 20px auto;
   /* text-align: center; */
   /* padding-left: 18%; */
 }
@@ -44,7 +47,6 @@
     width: 150px;
     text-align: center;
     font-size: 20px;
-    /* margin-right: 20px; 
 } */
 .companyJoinInfo > div > input {
   height: 40px;
@@ -63,6 +65,7 @@
 .companyJoinInfo > div > p {
   width: 330px;
   font-size: 12px;
+  /* margin-left: 150px; */
   /* text-align: right; */
 }
 .companyAddress > input {
@@ -92,6 +95,7 @@
   width: 407px;
   display: flex;
   justify-content: center; /* 가로 가운데 정렬 */
+  margin: 0 auto;
 }
 .companyJoinButton > button {
   margin: 10px 20px;
@@ -119,6 +123,7 @@
 .companyInfoMenu {
   width: 280px;
   float: left;
+  margin-left: 10px;
 }
 .companyInfoMenu > ul {
   /* margin: 10px 0px 0px 30px; */
@@ -206,6 +211,7 @@
 }
 .memberListTable > table {
   font-size: 18px;
+  margin-bottom: 50px;
 }
 .memberListTable > table > thead {
   border-bottom: 1px solid #d9d9d9;
@@ -225,28 +231,118 @@
   margin: 10px;
   display: flex;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
-.classAddImg {
+.classAddBox select {
+  border-radius: 5px;
+}
+.classAddImgTitle {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.classAddBox > img {
+.classAddImg {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.classAddBox > div > img {
   width: 100px;
   margin: 5px 10px;
 }
 .addPageSelectClassMemory {
-  /* display: block; */
   height: 30px;
-  width: 220px;
+  width: 240px;
   margin-top: 10px;
 }
-.classAddInfo{
-    display: flex;
+.classAddInfo .classAddInfoBox {
+  display: flex;
+  flex-direction: column;
+  width: 510px;
+}
+.classAddInfoBox>div{
+  margin: 15px 0px;
 }
 .addPageSelectClass {
   height: 30px;
-  width: 200px;
+  width: 360px;
+  margin: 5% 10%;
+}
+.classSchedule {
+  display: flex;
+  /* flex-direction: row; */
+}
+.classAddInfoBox > div > input[type="text"] {
+  height: 32px;
+  width: 300px;
+}
+.classAddInfoBox > div > label:first-child {
+  /* display: flex; */
+  width: 120px;
+  float: left;
+  font-size: 17px;
+  text-align: center;
+}
+.classScheduleSelectBox > select {
+  width: 60px;
+  margin: 0px 3px;
+}
+.classScheduleSelectBox > button {
+  width: 23px;
+  height: 23px;
+  border: none;
+  border-radius: 3px;
+  margin: 3px;
+}
+.classCategorySelectBox > select {
+  width: 120px;
+  height: 25px;
+  margin: 0px 3px;
+}
+.additionalInfo {
+  display: flex;
+}
+.additionalInfo > div > label {
+  font-size: 18px;
+}
+.additionalInfo > div > input {
+  height: 25px;
+  margin: 0 5px;
+}
+.additionalInfo > div:nth-child(1) > input {
+  width: 120px;
+}
+.additionalInfo > div:nth-child(2) > input {
+  width: 100px;
+}
+.addSelectImg{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.addSelectImg > div > button {
+  width: 23px;
+  height: 23px;
+  border: none;
+  border-radius: 3px;
+  margin: 3px;
+}
+.addInfoImg > div > button:nth-child(1) {
+  background-color: #8521ff;
+}
+.isAddBtn>button{
+  border: none;
+  border-radius: 10px;
+  width: 120px;
+  height: 50px;
+  margin: 30px 30px;
+  font-size: 20px;
+}
+.isAddBtn>button:nth-child(1){
+  background-color: #f4f4f4;
+}
+.isAddBtn>button:nth-child(2){
+  background-color: #8521ff;
+  color: #fff;
 }
