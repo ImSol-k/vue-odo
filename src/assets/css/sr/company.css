@@ -224,22 +224,26 @@
 .classAddBox {
   margin: 10px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  flex-direction: row;
   align-items: center;
 }
-.classAddBox >div{
-    flex-direction: row;
+.classAddImg {
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
 }
-.classAddBox >div>img {
+.classAddBox > img {
   width: 100px;
   margin: 5px 10px;
 }
-.addPageSelectClass{
-    height: 30px;
-    width: 200px;
+.addPageSelectClass {
+  height: 30px;
+  width: 200px;
 }
-.addPageSelectClassMemory{
-    display: block;
-    height: 30px;
-    width: 220px;
+.addPageSelectClassMemory {
+  display: block;
+  height: 30px;
+  width: 220px;
+  margin-top: 10px;
 }
