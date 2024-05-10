@@ -20,6 +20,7 @@ import MyPageWriteForm from '../views/ss/MyPageWriteForm.vue'
 //미지
 import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
+import AnnouncementView from '../views/mj/AnnouncementView.vue'
 
 const routes = [
   //=== 하석 =================================
@@ -106,7 +107,12 @@ const routes = [
     path: '/mypage/condition',
     name: 'mypagecondition',
     component: Condition
-  }
+  },
+  {
+    path: '/mypage/notice',
+    name: 'mypagenotice',
+    component: AnnouncementView
+  },
 ]
 
 const router = createRouter({

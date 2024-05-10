@@ -29,7 +29,7 @@
                 </option>
               </select>
             </div>
-          <div>
+          <div class="classAddInfo">
             <select name="" id="" class="addPageSelectClass">
               <option value="" disabled selected>관련 정규클래스 선택</option>
               <option value="" v-for="i in 5" :key="i">
