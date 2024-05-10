@@ -24,7 +24,7 @@ export default {
 		AppHeader,
 		AppFooter
 	},
-	data:{},
+	data(){},
 	
 	methods: {
 		

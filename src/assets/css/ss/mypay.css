@@ -35,7 +35,7 @@
 .mymy-pay {
     box-sizing: border-box;
     border-bottom: 1px solid #000;
-   
+    float: left;
     height: 300px;
     border: 1px solid #000;
 }
@@ -47,6 +47,13 @@
 .mymy-pay #pay-pro {
     width: 200px;
 }
+
+.mymy-pay span {
+    display: block;
+    border: 1px solid #000;
+    text-overflow: ellipsis;
+}
+
 .mymy-pay #pay-star {
     width: 40px;
 }
