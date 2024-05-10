@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import MainView from '../views/hs/MainView.vue'
 //소리
 import CompanyJoinView from '../views/sr/CompanyJoinView.vue'
+import CompanyPageView from '../views/sr/CompanyPageView.vue'
 //재현
 import CompanyInfoView from '../views/jh/CompanyInfoView.vue'
 //승수
@@ -20,6 +21,11 @@ const routes = [
     path: '/companyjoin',
     name: 'companyjoin',
     component: CompanyJoinView
+  },
+  {
+    path: '/companypage',
+    name: 'companypage',
+    component: CompanyPageView
   },
   {
     path: '/companyinfo',
