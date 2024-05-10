@@ -122,19 +122,155 @@
 							
 						</div>
 						<!-- pay -->
+						<div class="pay clearfix">
+							<div class="mymy-pay">
+								<ul>
+									<li><img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png"></li>
+									<li><span>내가 들었던 클래스 이름이 나올텐데</span></li>
+									<li>
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+									</li>
+								</ul>
+							</div>
+							<!-- mymy-pay -->
+							<div class="mymy-payCon clearfix">
+								<div class="paycon1">
+									<span>2024.05.05 사용한 날짜</span><br>
+									<p>
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+									</p><br>
+									<span>출석 : 10/10</span><br>
+									
+								</div>
+								<div class="paycon2">
+									<img src="@/assets/images/icon/ss/default-profile.png"><br>
+									<span>추천클래스 이름</span>
+								</div>
+								<button type="button">문의</button>
+								<button type="button">후기작성</button>
+								
+							</div>
+							<!-- mymy-payCon -->
+							
+						</div>
+						<!-- pay -->
+						<div class="pay clearfix">
+							<div class="mymy-pay">
+								<ul>
+									<li><img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png"></li>
+									<li><span>내가 들었던 클래스 이름이 나올텐데</span></li>
+									<li>
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+									</li>
+								</ul>
+							</div>
+							<!-- mymy-pay -->
+							<div class="mymy-payCon clearfix">
+								<div class="paycon1">
+									<span>2024.05.05 사용한 날짜</span><br>
+									<p>
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+									</p><br>
+									<span>출석 : 10/10</span><br>
+									
+								</div>
+								<div class="paycon2">
+									<img src="@/assets/images/icon/ss/default-profile.png"><br>
+									<span>추천클래스 이름</span>
+								</div>
+								<button type="button">문의</button>
+								<button type="button">후기작성</button>
+								
+							</div>
+							<!-- mymy-payCon -->
+							
+						</div>
+						<!-- pay -->
+						<div class="pay clearfix">
+							<div class="mymy-pay">
+								<ul>
+									<li><img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png"></li>
+									<li><span>내가 들었던 클래스 이름이 나올텐데</span></li>
+									<li>
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+									</li>
+								</ul>
+							</div>
+							<!-- mymy-pay -->
+							<div class="mymy-payCon clearfix">
+								<div class="paycon1">
+									<span>2024.05.05 사용한 날짜</span><br>
+									<p>
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+									</p><br>
+									<span>출석 : 10/10</span><br>
+									
+								</div>
+								<div class="paycon2">
+									<img src="@/assets/images/icon/ss/default-profile.png"><br>
+									<span>추천클래스 이름</span>
+								</div>
+								<button type="button">문의</button>
+								<button type="button">후기작성</button>
+								
+							</div>
+							<!-- mymy-payCon -->
+							
+						</div>
+						<!-- pay -->
+
 					</div>
 					<!-- mymy-paybox -->
 				</div>
 				<!-- mymy-main -->
 			</div>
 			<!-- mypage-content -->
-
 		</div>
 		<!-- mymy -->
-		
 	</div>
 	<!-- wrap -->
+
 	<AppFooter/>
+	<!-- footer -->
 </template>
 
 
