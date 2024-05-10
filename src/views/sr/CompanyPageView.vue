@@ -6,16 +6,8 @@
       <div class="companyInfoClassList">
         <p>운영중인 클래스</p>
         <div class="whatClass">
-          <span
-            v-on:click.prevent="selectClass(1)"
-            :class="{ classChack: isClass }"
-            >원데이</span
-          >
-          <span
-            v-on:click.prevent="selectClass(2)"
-            :class="{ classChack: !isClass }"
-            >정규</span
-          >
+          <span v-on:click.prevent="selectClass(1)" :class="{ classChack: isClass }">원데이</span>
+          <span v-on:click.prevent="selectClass(2)" :class="{ classChack: !isClass }">정규</span>
         </div>
 
         <ul class="companyInfoClassfor clearfix" v-for="i in 6" :key="i">

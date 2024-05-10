@@ -5,8 +5,8 @@
       <AppMenu />
       <div class="companyInfoClassList">
         <p>일정표</p>
-        <div id="calendar-container">
-          <div id="calendar"></div>
+        <div class="demo-app">
+          <FullCalendar :options="calendarOptions" />
         </div>
       </div>
     </div>
@@ -20,7 +20,11 @@ import AppMenu from "@/components/CompanyMenu.vue";
 
 export default {
   name: "MemberManagerView",
-  components: { AppHeader, AppFooter, AppMenu },
+  components: {
+    AppHeader,
+    AppFooter,
+    AppMenu,
+  },
   data() {
     return {};
   },
@@ -29,4 +33,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

@@ -119,7 +119,6 @@
 .companyInfoMenu {
   width: 280px;
   float: left;
-  margin-left: 5px;
 }
 .companyInfoMenu > ul {
   /* margin: 10px 0px 0px 30px; */
@@ -217,4 +216,30 @@
 }
 .memberListTable > table > tbody > td {
   margin: 15px 0px;
+}
+
+/***********************
+ * 클래스 등록
+ ***********************/
+.classAddBox {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.classAddBox >div{
+    flex-direction: row;
+}
+.classAddBox >div>img {
+  width: 100px;
+  margin: 5px 10px;
+}
+.addPageSelectClass{
+    height: 30px;
+    width: 200px;
+}
+.addPageSelectClassMemory{
+    display: block;
+    height: 30px;
+    width: 220px;
 }
