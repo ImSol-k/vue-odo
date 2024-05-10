@@ -1,5 +1,7 @@
 <template>
     <diV>
+        <!-- AppHeader -->
+		<AppHeader />
         <div class="wrap">
             <div class="MpLeft">
                 <!-- nav -->
@@ -298,4 +300,28 @@
             </div>
         </div>
     </diV>
+    <!-- 푸터 -->
+		<AppFooter/>
 </template>
+</template>
+<script>
+import '@/assets/css/Initialization.css'
+import "@/assets/css/mj/condition.css"
+import AppFooter from '@/components/AppFooter.vue';
+import AppHeader from '@/components/AppHeader.vue';
+
+	export default {
+		name: "Condition",
+		components: {
+			AppHeader,
+			AppFooter
+		},
+		data() {
+			return {};
+	},
+	methods: {},
+	created(){}
+	};
+</script>
+
+<style></style>
