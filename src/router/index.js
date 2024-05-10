@@ -6,6 +6,7 @@ import CompanyJoinView from '../views/sr/CompanyJoinView.vue'
 import CompanyPageView from '../views/sr/CompanyPageView.vue'
 import MemberManagerView from '../views/sr/MemberManagerView.vue'
 import ClassCalendarView from '../views/sr/ClassCalendarView.vue'
+import ClassAddView from '../views/sr/ClassAddView.vue'
 //재현
 import CompanyInfoView from '../views/jh/CompanyInfoView.vue'
 import CompanyInfoModify from '../views/jh/CompanyInfoModify.vue'
@@ -14,6 +15,8 @@ import WishListCompany from '../views/jh/WishListCompany.vue'
 //승수
 import MyPagePay from '../views/ss/MyPagePay.vue'
 import MyPageReview from '../views/ss/MyPageReview.vue'
+import MyPageCoupon from '../views/ss/MyPageCoupon.vue'
+import MyPageWriteForm from '../views/ss/MyPageWriteForm.vue'
 //미지
 import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
@@ -46,6 +49,11 @@ const routes = [
     name: 'classcalender',
     component: ClassCalendarView
   },
+  {
+    path: '/classadd',
+    name: 'classadd',
+    component: ClassAddView
+  },
   //=== 재현 =================================
   {
     path: '/companyinfo',
@@ -75,8 +83,18 @@ const routes = [
   },
   {
     path: '/mypage/review',
-    name: '/ypagereview',
+    name: 'mypagereview',
     component: MyPageReview
+  },
+  {
+    path: '/mypage/coupon',
+    name: 'mypagecoupon',
+    component: MyPageCoupon
+  },
+  {
+    path: '/mypage/review/form',
+    name: 'mypagereviewform',
+    component: MyPageWriteForm
   },
   //=== 미지 =================================
   {
