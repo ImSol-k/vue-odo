@@ -83,7 +83,6 @@
 							<span id="fixid"> **</span>
 						</div>
 					</div>
-					
 				</div>
 			</div>
 		</div>
