@@ -6,6 +6,7 @@ import CompanyJoinView from '../views/sr/CompanyJoinView.vue'
 import CompanyPageView from '../views/sr/CompanyPageView.vue'
 //재현
 import CompanyInfoView from '../views/jh/CompanyInfoView.vue'
+import CompanyInfoModify from '../views/jh/CompanyInfoModify.vue'
 //승수
 import MyPagePay from '../views/ss/MyPagePay.vue'
 import MyPageReview from '../views/ss/MyPageReview.vue'
@@ -32,6 +33,11 @@ const routes = [
     path: '/companyinfo',
     name: 'companyinfo',
     component: CompanyInfoView
+  },
+  {
+    path: '/companymodify',
+    name: 'companymodify',
+    component: CompanyInfoModify
   },
   {
     path: '/mypage/pay',
