@@ -8,6 +8,7 @@ import CompanyPageView from '../views/sr/CompanyPageView.vue'
 import CompanyInfoView from '../views/jh/CompanyInfoView.vue'
 //승수
 import MyPagePay from '../views/ss/MyPagePay.vue'
+import MyPageReview from '../views/ss/MyPageReview.vue'
 //미지
 import ModifyView from '../views/mj/ModifyView.vue'
 
@@ -36,6 +37,11 @@ const routes = [
     path: '/mypage/pay',
     name: 'mypagePay',
     component: MyPagePay
+  },
+  {
+    path: '/mypage/review',
+    name: '/ypagereview',
+    component: MyPageReview
   },
   {
     path: '/mypage/modify',
