@@ -96,7 +96,7 @@
                     <p>카테고리</p>
                 </div>
                 <div class="bar"></div>
-                <h1><a href="#" class="logo">logo</a></h1>
+                <h1><router-link to="/" class="logo">logo</router-link></h1>
                 <div class="serch-box">
                     <img src="../assets/images/icon/header_icons/search.svg" alt="">
                     <input type="search" name="" id="" placeholder="지금 생각나는 취미를 검색하세요.">
