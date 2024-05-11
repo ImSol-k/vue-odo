@@ -1,7 +1,9 @@
 <template><!--업체 소개페이지-->
+
+    <AppHeader />
     <div class="wrap">
 
-        <AppHeader />
+        
 
         <div class="mymy-header">
 
@@ -99,15 +101,16 @@
 
         </div>
 
-        <AppFooter />
-
     </div>
+
+    <AppFooter />
 </template>
 <script>
 import AppHeader from "@/components/AppHeader.vue"
 import AppFooter from "@/components/AppFooter.vue"
 import '@/assets/css/jh/jh.css'
 import '@/assets/css/ss/ss.css'
+import '@/assets/css/Initialization.css'
 
 
 export default {
