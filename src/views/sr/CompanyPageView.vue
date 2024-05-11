@@ -20,8 +20,8 @@
               </p>
             </div>
             <div class="classListOption">
-              <button>예약확인</button>
-              <button>일정확인</button>
+              <router-link class="classRouterLink" to="/membermanager">예약확인</router-link>
+              <router-link class="classRouterLink" to="/classcalender">일정확인</router-link>
             </div>
           </li>
           <li v-else>
@@ -33,8 +33,8 @@
               </p>
             </div>
             <div class="classListOption">
-              <button>회원관리</button>
-              <button>일정확인</button>
+              <router-link class="classRouterLink" to="/membermanager">예약확인</router-link>
+              <router-link class="classRouterLink" to="/classcalender">일정확인</router-link>
             </div>
           </li>
         </ul>

@@ -51,7 +51,30 @@
               </div>
               <div class="classSchedule">
                 <label for="">일정</label>
-                <div class="classScheduleSelectBox">
+                <div class="classScheduleFor">
+                  <div
+                    class="classScheduleBox"
+                    v-for="i in onedayDate.length"
+                    :key="i"
+                  >
+                    <VueDatePicker
+                      class="VueDatePickerOne"
+                      locale="ko"
+                      time-picker-inline
+                      v-model="onedayDate[i]"
+                    />
+                    <button v-on:click.prevent="schedulClick(2, i)">
+                      삭제
+                    </button>
+                    <button
+                      v-on:click.prevent="schedulClick(1, 0)"
+                      v-show="onedayDate.length == i"
+                    >
+                      추가
+                    </button>
+                  </div>
+                </div>
+                <!-- <div class="classScheduleSelectBox">
                   <select name="" id="">
                     <option value="" disabled selected>월</option>
                     <option value="" v-for="i in 12" :key="i">{{ i }}월</option>
@@ -77,7 +100,7 @@
                   </select>
                   <button>+</button>
                   <button>-</button>
-                </div>
+                </div> -->
                 <!--classScheduleSelectBox-->
               </div>
               <!--classSchedule-->
@@ -172,14 +195,30 @@
               </div>
               <div class="classParticipation">
                 <label for="">중도참여</label>
-                <label for="possibility">가능</label>
-                <input type="radio" name="possibility" id="possibility">
-                <label for="impossibility">불가능</label>
-                <input type="radio" name="possibility" id="impossibility">
+                <label class="classRadioText" for="possibility">가능</label>
+                <input type="radio" name="possibility" id="possibility" />
+                <label class="classRadioText" for="impossibility">불가능</label>
+                <input type="radio" name="possibility" id="impossibility" />
               </div>
               <div class="classSchedule">
                 <label for="">일정</label>
-                <div class="classScheduleSelectBox">
+                <div>
+                  <VueDatePicker
+                    class="VueDatePicker"
+                    locale="ko"
+                    v-model="startDate"
+                    :enable-time-picker="false"
+                  />
+                </div>
+                <div>
+                  <VueDatePicker
+                    class="VueDatePicker"
+                    locale="ko"
+                    v-model="endDate"
+                    :enable-time-picker="false"
+                  />
+                </div>
+                <!-- <div class="classScheduleSelectBox">
                   <select name="" id="">
                     <option value="" disabled selected>시작일</option>
                     <option value="" v-for="i in 12" :key="i">{{ i }}월</option>
@@ -188,7 +227,7 @@
                     <option value="" disabled selected>종료일</option>
                     <option value="" v-for="i in 31" :key="i">{{ i }}일</option>
                   </select>
-                </div>
+                </div> -->
                 <!--classScheduleSelectBox-->
               </div>
               <!--classSchedule-->
@@ -252,7 +291,8 @@
             <button>취소</button>
             <button>등록</button>
           </div>
-        </div><!--classAddBox---->
+        </div>
+        <!--classAddBox---->
       </div>
     </div>
   </div>
@@ -268,7 +308,10 @@ export default {
   components: { AppHeader, AppFooter, AppMenu },
   data() {
     return {
-      isClass: false,
+      isClass: true,
+      startDate: null,
+      endDate: null,
+      onedayDate: [null],
     };
   },
   methods: {
@@ -279,6 +322,22 @@ export default {
         this.isClass = false;
       }
     },
+    schedulClick(num, i) {
+      if (this.onedayDate.length >= 10) {
+        console.log("최대10개까지 등록가능");
+      } else if (this.onedayDate.length < 0) {
+        console.log("1개이상 등록필수");
+      } else {
+        if (num == 1) {
+          console.log("일정추가");
+          this.onedayDate.push(null);
+        } else {
+          console.log("일정삭제");
+          this.onedayDate.splice(i, 1);
+        }
+      }
+    },
+    dateSetting() {},
   },
   created() {},
 };

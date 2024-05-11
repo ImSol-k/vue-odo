@@ -141,6 +141,7 @@
 .companyInfoMenu > ul > li {
   margin: 5px auto;
   padding-left: 8px;
+  cursor: pointer;
 }
 .whatClass {
   margin: 0px 8px;
@@ -155,7 +156,7 @@
 }
 .companyInfoClassList {
   float: left;
-  margin: 23px 20px 0px 20px;
+  margin: 23px 20px 80px 20px;
   width: 870px;
 }
 .companyInfoClassList > p {
@@ -196,10 +197,11 @@
   flex-direction: column;
   /* margin: 5px; */
 }
-.classListOption > button {
+.classListOption > .classRouterLink {
   margin: 2px 5px;
   height: 24px;
   width: 70px;
+  font-size: 13px;
 }
 
 /******************* 
@@ -273,9 +275,22 @@
   display: flex;
   /* flex-direction: row; */
 }
+.classSchedule>div>.VueDatePicker{
+  width: 145px;
+  height: 30px;
+  margin-right: 10px;
+  border-color: #d9d9d9;
+}
 .classAddInfoBox > div > input[type="text"] {
-  height: 32px;
+  height: 35px;
   width: 300px;
+  padding-left: 7px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+}
+.classAddInfoBox > div > input[type="text"]:focus{
+  border: 2px solid #8521ff;
+  outline: none;
 }
 .classAddInfoBox > div > label:first-child {
   /* display: flex; */
@@ -284,7 +299,30 @@
   font-size: 17px;
   text-align: center;
 }
-.classScheduleSelectBox > select {
+.classRadioText{
+  font-size: 13px;
+  margin: 0px 3px 0px 8px;
+}
+.classScheduleFor{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.classScheduleBox{
+  display: flex;
+  align-items: center;
+}
+.classScheduleBox>button{
+  width: 50px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+}
+.classScheduleBox>.VueDatePickerOne{
+  margin-right: 10px;
+  width: 250px;
+}
+/* .classScheduleSelectBox > select {
   width: 60px;
   margin: 0px 3px;
 }
@@ -294,11 +332,13 @@
   border: none;
   border-radius: 3px;
   margin: 3px;
-}
+} */
 .classCategorySelectBox > select {
   width: 120px;
   height: 25px;
   margin: 0px 3px;
+  border: 1px solid #d9d9d9;
+  color: #a0a0a0;
 }
 .additionalInfo {
   display: flex;
