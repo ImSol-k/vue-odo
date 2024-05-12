@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 //하석
 import MainView from '../views/hs/MainView.vue'
+import ClassDetailPageView from '../views/hs/ClassDetailPageView.vue'
 //소리
 import CompanyJoinView from '../views/sr/CompanyJoinView.vue'
 import CompanyPageView from '../views/sr/CompanyPageView.vue'
@@ -33,6 +34,11 @@ const routes = [
     path: '/',
     name: 'main',
     component: MainView
+  },
+  {
+    path: '/classdetailpage',
+    name: 'classdetailpage',
+    component: ClassDetailPageView
   },
   //=== 소리 =================================
   {

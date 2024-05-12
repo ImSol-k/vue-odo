@@ -169,6 +169,7 @@
 		</section>
 		<div class="banner"></div>
 	</div> <!-- //inner -->
+	
 	<AppFooter />
 	<!-- //footer -->
 </template>
