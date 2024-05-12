@@ -52,12 +52,52 @@
 			<ul class="classList">
 				<li><router-link to="">
 					<div class="img-box">
-						<img src="" alt="">
+						<img src="../../assets/images/hs/main_slide_2.jpg" alt="">
 						<img src="" alt="">
 					</div>
 					<p class="location">강남/서초</p>
 					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
 					<div class="review-box">
+						<span>★★★★★</span>
+						<span>후기 123</span>
+					</div>
+					<p class="class-price">무료</p>
+				</router-link></li>
+				<li><router-link to="">
+					<div class="img-box">
+						<img src="../../assets/images/hs/main_slide_3.jpg" alt="">
+						<img src="" alt="">
+					</div>
+					<p class="location">강남/서초</p>
+					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
+					<div class="review-box">
+						<span>★★★★★</span>
+						<span>후기 123</span>
+					</div>
+					<p class="class-price">무료</p>
+				</router-link></li>
+				<li><router-link to="">
+					<div class="img-box">
+						<img src="../../assets/images/hs/main_slide_4.jpg" alt="">
+						<img src="" alt="">
+					</div>
+					<p class="location">강남/서초</p>
+					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
+					<div class="review-box">
+						<span>★★★★★</span>
+						<span>후기 123</span>
+					</div>
+					<p class="class-price">무료</p>
+				</router-link></li>
+				<li><router-link to="">
+					<div class="img-box">
+						<img src="../../assets/images/hs/main_slide_5.jpg" alt="">
+						<img src="" alt="">
+					</div>
+					<p class="location">강남/서초</p>
+					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
+					<div class="review-box">
+						<span>★★★★★</span>
 						<span>후기 123</span>
 					</div>
 					<p class="class-price">무료</p>
@@ -65,8 +105,70 @@
 			</ul>
 		</section>
 		<div class="banner"></div>
-		<section class="pay-best"></section>
-	</div>
+		<section class="pay-best">
+			<div class="title-box">
+				<h3>유료 베스트 클래스
+					<img src="../../assets/images/하트2.png" alt="">
+				</h3>
+				<router-link to="#">전체보기</router-link>
+			</div>
+			<ul class="classList">
+				<li><router-link to="">
+					<div class="img-box">
+						<img src="../../assets/images/hs/main_slide_1.jpg" alt="">
+						<img src="" alt="">
+					</div>
+					<p class="location">강남/서초</p>
+					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
+					<div class="review-box">
+						<span>★★★★★</span>
+						<span>후기 123</span>
+					</div>
+					<p class="class-price">40,000원</p>
+				</router-link></li>
+				<li><router-link to="">
+					<div class="img-box">
+						<img src="../../assets/images/hs/main_slide_1.jpg" alt="">
+						<img src="" alt="">
+					</div>
+					<p class="location">강남/서초</p>
+					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
+					<div class="review-box">
+						<span>★★★★★</span>
+						<span>후기 123</span>
+					</div>
+					<p class="class-price">40,000원</p>
+				</router-link></li>
+				<li><router-link to="">
+					<div class="img-box">
+						<img src="../../assets/images/hs/main_slide_1.jpg" alt="">
+						<img src="" alt="">
+					</div>
+					<p class="location">강남/서초</p>
+					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
+					<div class="review-box">
+						<span>★★★★★</span>
+						<span>후기 123</span>
+					</div>
+					<p class="class-price">40,000원</p>
+				</router-link></li>
+				<li><router-link to="">
+					<div class="img-box">
+						<img src="../../assets/images/hs/main_slide_1.jpg" alt="">
+						<img src="" alt="">
+					</div>
+					<p class="location">강남/서초</p>
+					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
+					<div class="review-box">
+						<span>★★★★★</span>
+						<span>후기 123</span>
+					</div>
+					<p class="class-price">40,000원</p>
+				</router-link></li>
+			</ul>
+		</section>
+		<div class="banner"></div>
+	</div> <!-- //inner -->
 	<AppFooter />
 	<!-- //footer -->
 </template>

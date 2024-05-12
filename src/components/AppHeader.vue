@@ -159,7 +159,15 @@ export default {
         toggleSubMenu7() {
             this.isSubMenuOpen[7] = !this.isSubMenuOpen[7];
         },
+        // closeDropdownMenu(e){
+        //     let dropdown = document.querySelector('.dropdown-menu');
+
+        //     if(e.target != dropdown) {
+        //         this.isMenuOpen = false;
+        //     }
+        // },
     },
-    created() { }
+    created() {
+    }
 };
 </script>

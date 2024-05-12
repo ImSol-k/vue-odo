@@ -1,12 +1,10 @@
 /* category-icons */
 ul.category-icons {
-    height: 180px;
+    height: 160px;
     display: flex;
     justify-content: space-between;
     text-align: center;
-    border: 1px solid #000;
-}
-ul.category-icons li {
+    margin-top: 40px;
 }
 ul.category-icons img {
     width: 110px;
@@ -20,14 +18,55 @@ ul.category-icons img {
 div.title-box {
     display: flex;
     justify-content: space-between;
-    margin: 40px 0;
+    margin: 40px 0 15px;
 }
 div.title-box h3 img {
     width: 27px;
     margin-bottom: -5px;
 }
+ul.classList {
+    display: flex;
+    justify-content: space-between;
+}
 ul.classList li {
-    width: 300px;
-    height: 400px;
+    width: 270px;
+    height: 450px;
+}
+ul.classList li .img-box {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+}
+ul.classList li .img-box img:first-child {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+ul.classList p.location {
+    font-size: 14px;
+    color: #666;
+    margin: 10px;
+}
+ul.classList p.classTitle {
+    margin: 10px;
+    font-size: 18px;
+}
+ul.classList .review-box {
+    margin: 10px;
+    font-size: 14px;
+}
+ul.classList .review-box span:last-child {
+    margin-left: 10px;
+}
+ul.classList .class-price {
+    margin: 10px;
+    padding: 15px 0;
+    border-top: 1px solid #ccc;
+}
+/* banner */
+.banner {
+    width: 100%;
+    height: 150px;
     border: 1px solid #000;
+    margin: 30px 0;
 }
