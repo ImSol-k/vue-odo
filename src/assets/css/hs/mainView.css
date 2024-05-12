@@ -55,6 +55,9 @@ ul.classList .review-box {
     margin: 10px;
     font-size: 14px;
 }
+ul.classList .review-box span:first-child {
+    color: #8521FF;
+}
 ul.classList .review-box span:last-child {
     margin-left: 10px;
 }
