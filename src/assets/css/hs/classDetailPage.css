@@ -26,6 +26,7 @@
 
 .companySection {
     display: flex;
+    position: relative;
     border: 1px solid #000;
 }
 .companySection .companyLogo {
@@ -35,6 +36,10 @@
 }
 .company-like-btn {
     width: 40px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateX(-50%);
 }
 .company-like-btn img {
     width: 100%;

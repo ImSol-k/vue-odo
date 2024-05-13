@@ -51,7 +51,7 @@ export default {
         eventClick: function (info) {
           Swal.fire({
              title: '일정',
-             html: "스케줄: "+ info.event.title + "<br/>일시: " + new Date(info.event.start),
+             html: "스케줄: "+ info.event.title + "<br/>일시: " + new Date(info.event.start).toLocaleString().substring(0,20).replace('/g', ''),
              })
           //alert('스케줄: ' + info.event.title + '\n' + '일시: ' + (info.event.start));
 
