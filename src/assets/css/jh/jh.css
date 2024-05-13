@@ -1,26 +1,26 @@
-.img{
+.img {
     width: 140px;
     height: 140px;
 }
 
-.a{
+.a {
     float: left;
     margin-left: 20px;
 }
 
-.companyname{
+.companyname {
     font-size: 36px;
     height: 40px;
     float: left;
 }
 
-.companypro{
+.companypro {
     font-size: 24px;
     height: 100px;
     margin-right: 20px;
 }
 
-.companybutton{
+.companybutton {
     font-size: 20px;
     color: #636363;
     background-color: #ffffff;
@@ -28,7 +28,7 @@
     height: 40px;
 }
 
-.cover1{
+.cover1 {
     margin-left: 20px;
     width: 300px;
     height: 220px;
@@ -36,14 +36,14 @@
     float: left;
 }
 
-.cover2{
+.cover2 {
     margin-left: 330px;
     width: 850px;
     height: 220px;
     background-color: #d9d9d9;
 }
 
-.img2{
+.img2 {
     margin-top: 35px;
     margin-left: 10px;
     width: 140px;
@@ -51,67 +51,83 @@
     float: left;
 }
 
-.classpro{
+.classpro {
     font-size: 18px;
     margin-top: 15px;
     margin-right: 10px;
     margin-left: 170px;
 }
 
-.img3{
+.img3 {
     width: 25px;
     height: 25px;
     float: left;
 }
 
-.cover4{
+.cover4 {
     float: left;
 }
 
-.avg{
+.avg {
     margin-left: 100px;
     padding-top: 5px;
 }
 
-.count1{
+.count1 {
     margin-left: 50px;
     padding-top: 5px;
 }
 
-.text1{
+.text1 {
     padding-top: 5px;
 }
 
-#chart{
+#chart {
     width: 440px;
     height: 200px;
 }
 
-.cover5{
-    padding-top: 40px;
+.cover5 {
+    padding-top: 100px;
+    padding-bottom: 50px;
 }
 
-.cover6{
-    margin-top: 10px;
-    padding-bottom: 20px;
+.cover6 {
+    margin-top: 30px;
+    padding-bottom: 60px;
+    min-height: 200px;
 }
 
-.preview-image{
+.preview-image {
     float: left;
 }
 
-.img20{
+.img20 {
     width: 270px;
     height: 270px;
 }
 
-.cover20{
+.cover20 {
     margin-left: 200px;
     margin-right: 200px;
-    padding-top: 40px;
+    padding-top: 100px;
 }
 
-.p20{
+#custom_textarea {
+    width: 800px;
+    height: 200px;
+    font-size: 18px;
+    background-color: #8b8b8b1c;
+    resize: none;
+    color: black;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 24px;
+    overflow: auto;
+}
+
+.p20 {
     font-size: 36px;
     font-weight: bold;
     margin-left: 310px;
@@ -119,64 +135,66 @@
     margin-bottom: 60px;
 }
 
-.file-input{
+.file-input {
     margin-left: 40px;
 }
 
-.cover21{
+.cover21 {
     margin-left: 200px;
     margin-top: 100px;
     margin-right: 200px;
     margin-bottom: 30px;
     height: 200px;
     background-color: #d9d9d9;
-    padding: 10px;
     font-size: 24px;
 }
 
-.cover22{
+.cover22 {
     text-align: right;
+    margin-top: 50px;
     margin-right: 200px;
-    height: 60px;
+    margin-left: 200px;
+    height: 80px;
+    padding-bottom: 100px;
 }
 
-.bu20{
+.bu20 {
     font-size: 24px;
     width: 80px;
     margin-right: 10px;
     border-radius: 10px;
 }
 
-.bu21{
+.bu21 {
     font-size: 24px;
     width: 80px;
     margin-left: 10px;
     border-radius: 10px;
 }
 
-.img30{
+.img30 {
     width: 115px;
     height: 115px;
 }
 
-.cover30{
+.cover30 {
     font-size: 36px;
 }
 
-.cover31{
+.cover31 {
     text-align: center;
     margin-top: 150px;
     height: 1000px;
 }
 
-.cover32{
+.cover32 {
     width: 260px;
     height: 260px;
     position: relative;
-    
+
 }
 
-.img31{
+.img31 {
     width: 80px;
     height: 80px;
     position: absolute;
@@ -184,30 +202,31 @@
     left: 70%;
 }
 
-.cover33{
+.cover33 {
     margin-top: 50px;
-    
+    margin-bottom: 20px;
+
 }
 
-.cover34{
+.cover34 {
     width: 260px;
     margin-right: 40px;
     margin-left: 20px;
+    margin-bottom: 30px;
     float: left;
 }
 
-.cover41{
+.cover41 {
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     width: 450px;
     float: left;
 }
 
-.cover40{
-    
-}
+.cover40 {}
 
-.img40{
+.img40 {
     width: 125px;
     height: 125px;
     float: left;
@@ -215,31 +234,31 @@
 
 
 
-.cover42{
+.cover42 {
     width: 300px;
     margin-left: 150px;
     margin-top: 15px;
 }
 
-.p40{
+.p40 {
     font-size: 36px;
 }
 
-.p41{
+.p41 {
     font-size: 20px;
 }
 
-.img41{
+.img41 {
     width: 45px;
     height: 45px;
     margin-top: 10px;
 }
 
-.cover43{
+.cover43 {
     float: left;
 }
 
-.p30{
+.p30 {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -247,7 +266,7 @@
     -webkit-box-orient: vertical;
 }
 
-.p31{
+.p31 {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -255,7 +274,7 @@
     -webkit-box-orient: vertical;
 }
 
-.p50{
+.p50 {
     margin-left: 20px;
     font-size: 36px;
     font-weight: bold;
@@ -263,7 +282,7 @@
     /* margin-top: 50px; */
 }
 
-.img50{
+.img50 {
     width: 200px;
     height: 200px;
     border-radius: 50px;
@@ -271,17 +290,17 @@
     float: left;
 }
 
-.img51{
+.img51 {
     width: 25px;
     height: 25px;
     float: left;
 }
 
-.cover50{
+.cover50 {
     font-size: 24px;
 }
 
-.cover51{
+.cover51 {
     font-size: 24px;
     padding: 10px;
     padding-left: 30px;
@@ -291,43 +310,43 @@
     float: left;
 }
 
-.cover51>p{
+.cover51>p {
     padding: 10px;
 }
 
-.cover52{
+.cover52 {
     margin: 10px;
 }
 
-.cover53{
+.cover53 {
     padding-top: 80px;
     padding-left: 20px;
     float: left;
 }
 
-.cover53>p{
+.cover53>p {
     padding-bottom: 20px;
 }
 
-.cover54{
+.cover54 {
     margin-top: 20px;
     font-size: 24px;
     width: 800px;
-    
+
 }
 
-.cover54 li{
+.cover54 li {
     padding: 20px;
 }
 
-.p51{
+.p51 {
     margin-left: 20px;
     margin-bottom: 20px;
     font-size: 36px;
     font-weight: bold;
 }
 
-.p52{
+.p52 {
     width: 600px;
     float: left;
     margin-left: 25px;
@@ -336,44 +355,53 @@
 
 
 #addModal {
-	width: 100%; /* 가로전체 */
-	height: 100%; /* 세로전체 */
-	display: none; /* 시작할때 숨김처리 */
-	position: fixed; /* 화면에 고정 */
-	left: 0; /* 왼쪽에서 0에서 시작 */
-	top: 0; /* 위쪽에서 0에서 시작 */
-	z-index: 999; /* 제일위에 */
-	overflow: auto; /* 내용이 많으면 스크롤 생김 */
-	background-color: rgba(0, 0, 0, 0.4); /* 배경이 검정색에 반투명 */
+    width: 100%;
+    /* 가로전체 */
+    height: 100%;
+    /* 세로전체 */
+    display: none;
+    /* 시작할때 숨김처리 */
+    position: fixed;
+    /* 화면에 고정 */
+    left: 0;
+    /* 왼쪽에서 0에서 시작 */
+    top: 0;
+    /* 위쪽에서 0에서 시작 */
+    z-index: 999;
+    /* 제일위에 */
+    overflow: auto;
+    /* 내용이 많으면 스크롤 생김 */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* 배경이 검정색에 반투명 */
 }
 
 #addModal .modal-content {
-	width: 800px;
-	margin: 100px auto;
-	padding: 0px 20px 20px 20px;
-	border: 1px solid #000000;
-	background-color: #ffffff;
+    width: 800px;
+    margin: 100px auto;
+    padding: 0px 20px 20px 20px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
     font-size: 24px;
 }
 
 #addModal .modal-content .closeBtn {
-	margin-left: 750px;
-	text-align: right;
-	width: 15px;
-	color: #000000;
-	font-size: 28px;
-	font-weight: bold;
-	cursor: pointer;
+    margin-left: 750px;
+    text-align: right;
+    width: 15px;
+    color: #000000;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.p53{
+.p53 {
     float: left;
     font-size: 24px;
     width: 400px;
     padding: 10px;
 }
 
-.p54{
+.p54 {
     float: left;
     font-size: 24px;
     width: 400px;
@@ -381,23 +409,23 @@
     padding: 10px;
 }
 
-.ul1{
+.ul1 {
     margin-bottom: 20px;
     font-size: 24px;
     padding-left: 25px;
 }
 
-.cover55{
+.cover55 {
     margin-top: 40px;
     padding-bottom: 20px;
 }
 
-.cover56{
+.cover56 {
     padding-top: 40px;
     padding-bottom: 30px;
 }
 
-.cover57{
+.cover57 {
     margin-left: 200px;
     width: 800px;
     border: 1px solid #000000;
@@ -405,28 +433,28 @@
     margin-top: 20px;
 }
 
-.cover58{
+.cover58 {
     margin-left: 200px;
     width: 800px;
 }
 
-.cover59{
+.cover59 {
     margin: 20px;
 }
 
-.bu50{
+.bu50 {
     font-size: 20px;
     width: 100px;
     border-radius: 10px;
 }
 
-.cover590{
+.cover590 {
     margin-left: 200px;
     margin-top: 20px;
     width: 800px;
 }
 
-.p55{
+.p55 {
     float: left;
     font-size: 36px;
     width: 400px;
@@ -434,17 +462,17 @@
     font-weight: bold;
 }
 
-.p56{
+.p56 {
     float: left;
     font-size: 36px;
     width: 400px;
     padding: 10px;
-    text-align: right;    
+    text-align: right;
     font-weight: bold;
     color: #8521FF;
 }
 
-.bu52{
+.bu52 {
     width: 800px;
     height: 50px;
     margin-bottom: 40px;
@@ -453,43 +481,43 @@
     font-size: 36px;
 }
 
-.cover60{
+.cover60 {
     padding-top: 100px;
     padding-bottom: 100px;
     text-align: center;
     font-size: 40px;
 }
 
-.cover61{
+.cover61 {
     margin-left: 30px;
     margin-right: 30px;
 }
 
-.td60{
+.td60 {
     padding-left: 20px;
     font-weight: bold;
     font-size: 36px;
 }
 
-.td61{
+.td61 {
     padding-left: 30px;
     padding-right: 30px;
     font-size: 24px;
 }
 
-.td62{
+.td62 {
     padding-right: 50px;
     text-align: right;
     font-size: 24px;
     height: 65px;
 }
 
-.td63{
+.td63 {
     font-weight: bold;
     font-size: 36px;
 }
 
-.cover62{
+.cover62 {
     width: 1100px;
     margin-left: 50px;
     margin-top: 50px;
@@ -497,12 +525,12 @@
     margin-right: 50px;
 }
 
-.a60{
+.a60 {
     font-size: 36px;
     font-weight: bold;
 }
 
-.cover63{
+.cover63 {
     width: 1100px;
     margin-left: 50px;
     margin-top: 20px;
@@ -511,14 +539,14 @@
     font-size: 24px;
 }
 
-.cover64{
+.cover64 {
     float: left;
     width: 300px;
     margin-left: 70px;
     font-size: 24px;
 }
 
-.img60{
+.img60 {
     width: 300px;
     height: 300px;
 }

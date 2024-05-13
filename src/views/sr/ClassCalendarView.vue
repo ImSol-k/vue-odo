@@ -19,6 +19,7 @@ import AppFooter from "@/components/AppFooter.vue";
 import AppMenu from "@/components/CompanyMenu.vue";
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import Swal from "sweetalert2";
 
 
 export default {
@@ -48,7 +49,11 @@ export default {
           { title: 'Meeting', start: '2024-05-22 18:00:00' },
         ],
         eventClick: function (info) {
-          alert('스케줄: ' + info.event.title + '\n' + '일시: ' + (info.event.start));
+          Swal.fire({
+             title: '일정',
+             html: "스케줄: "+ info.event.title + "<br/>일시: " + new Date(info.event.start),
+             })
+          //alert('스케줄: ' + info.event.title + '\n' + '일시: ' + (info.event.start));
 
           // change the border color just for fun
         }
