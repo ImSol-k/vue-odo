@@ -27,6 +27,7 @@ import JoinSelect from '@/views/ss/JoinSelect.vue'
 import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
 import AnnouncementView from '../views/mj/AnnouncementView.vue'
+import staticinfoView from '../views/mj/staticinfoView.vue'
 
 const routes = [
   //=== 하석 =================================
@@ -148,6 +149,11 @@ const routes = [
     path: '/mypage/notice',
     name: 'mypagenotice',
     component: AnnouncementView
+  },
+  {
+    path: '/mypage/staticinfo',
+    name: 'staticinfo/mypagenotice',
+    component: staticinfoView
   },
 ]
 

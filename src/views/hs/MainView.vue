@@ -176,6 +176,69 @@
 			</ul>
 		</section>
 		<div class="banner"></div>
+		<section class="pay-best">
+			<div class="title-box">
+				<h3>신규 클래스
+					<img src="../../assets/images/하트2.png" alt="">
+				</h3>
+				<router-link to="#">전체보기</router-link>
+			</div>
+			<ul class="classList">
+				<li><router-link to="">
+					<div class="img-box">
+						<img src="../../assets/images/hs/coffee.jpg" alt="">
+						<img src="" alt="">
+					</div>
+					<p class="location">강남/서초</p>
+					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
+					<div class="review-box">
+						<span class="starPoint">★★★★★</span>
+						<span>후기 123</span>
+					</div>
+					<p class="class-price">40,000원</p>
+				</router-link></li>
+				<li><router-link to="">
+					<div class="img-box">
+						<img src="../../assets/images/hs/coffee.jpg" alt="">
+						<img src="" alt="">
+					</div>
+					<p class="location">강남/서초</p>
+					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
+					<div class="review-box">
+						<span class="starPoint">★★★★★</span>
+						<span>후기 123</span>
+					</div>
+					<p class="class-price">40,000원</p>
+				</router-link></li>
+				<li><router-link to="">
+					<div class="img-box">
+						<img src="../../assets/images/hs/coffee.jpg" alt="">
+						<img src="" alt="">
+					</div>
+					<p class="location">강남/서초</p>
+					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
+					<div class="review-box">
+						<span class="starPoint">★★★★★</span>
+						<span>후기 123</span>
+					</div>
+					<p class="class-price">40,000원</p>
+				</router-link></li>
+				<li><router-link to="">
+					<div class="img-box">
+						<img src="../../assets/images/hs/coffee.jpg" alt="">
+						<img src="" alt="">
+					</div>
+					<p class="location">강남/서초</p>
+					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
+					<div class="review-box">
+						<span class="starPoint">★★★★★</span>
+						<span>후기 123</span>
+					</div>
+					<p class="class-price">40,000원</p>
+				</router-link></li>
+			</ul>
+		</section>
+		<div class="banner"></div>
 	</div> <!-- //inner -->
 	
 	<AppFooter />
@@ -221,7 +284,6 @@ export default defineComponent({
 .carousel__item {
 	max-height: 380px;
 	width: 100%;
-	background-color: green;
 	color: var(--vc-clr-white);
 	font-size: 20px;
 	display: flex;
@@ -236,9 +298,21 @@ export default defineComponent({
 	padding: 10px;
 }
 
+.carousel__pagination-button::after {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+}
+.carousel__pagination-button--active::after {
+	background: #8521FF;
+}
+
 .carousel__prev,
 .carousel__next {
 	box-sizing: content-box;
 	color: #fff;
+}
+.carousel__prev:hover, .carousel__next:hover {
+	color: #8521FF;
 }
 </style>
