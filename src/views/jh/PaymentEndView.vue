@@ -7,7 +7,7 @@
 		</div>
 
 		<div>
-			<table class="cover61">
+			<table class="cover61" border="1px solid #000000">
 				<tbody>
 					<tr>
 						<td rowspan="3" width="380px" height="380px"><img src="../../assets/images/회사이미지.png" alt=""></td>
