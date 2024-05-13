@@ -34,8 +34,28 @@
 }
 
 .mymy-nopay #nopayImg {
-    margin-top: 150px;
+    margin: 150px auto 10px auto;
+    display: block;
     width: 200px;
+}
+.mymy-nopay span {
+    display: block;
+    font-size: 15px;
+}
+.mymy-nopay a {
+    box-sizing: border-box;
+    display: inline-block;
+    /* border: 1px solid #000; */
+    border-radius: 3px;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    margin: 10px auto;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #8521FF;
 }
 
 .mymy-paybox:last-child {
@@ -46,14 +66,16 @@
 .pay {
     display: block;
     width: 950px;
+    /* border: 1px solid #000; */
     box-sizing: border-box;
     border-bottom: 1px solid #000;
-    height: 300px;
+    height: 280px;
     margin-top: 10px;
 }
 
 .mymy-pay{
     display: block;
+    /* border: 1px solid #000; */
     box-sizing: border-box;
     width: 200px;
     height: 250px;
@@ -61,11 +83,13 @@
     margin-bottom: 10px;
 }
 .mymy-pay ul {
+    /* border: 1px solid #000; */
     padding: 5px;
 }
 /* 이미지 나오는 부분 */
 .mymy-pay #pay-pro {
     box-sizing: border-box;
+    /* border: 1px solid #000; */
     display: block;
     width: 180px;
     cursor: pointer;
@@ -77,8 +101,9 @@
     display: -webkit-box;
     font-size: 14px;
     text-overflow: ellipsis;
+    text-align: center;
     overflow: hidden;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     white-space: no-wrap;
     margin: 0 auto 10px auto; 
@@ -103,55 +128,115 @@
 
 /**********************/
 
+/* 설명 + 출석 부분*/
 .mymy-payCon {
     box-sizing: border-box;
-    width: 730px;
-    height: 300px;
+    max-width: 730px;
+    max-height: 270px;
     /* border: 1px solid #000; */
     float: left;
     padding: 10px;
 }
 
-.mymy-payCon .paycon1 p {
-    /* border: 1px solid #000; */
-    width: 500px;
-    height: 150px;
-}
-
+/* paycon1 */
 .paycon1 {
     width: 500px;
     float: left;
 }
 
-.paycon1 p {
-    display: block;
+.paycon1 .paycon1-txt1{
+    box-sizing: border-box;
     /* border: 1px solid #000; */
-    width: 500px;
-    overflow: hidden;
-    /* text-overflow: ellipsis; */
-    /* white-space: nowrap; */
+    display: inline-block;
+    font-size: 13px;
+    margin-bottom: 5px;
+    padding-left: 1.5px;
 }
 
+.paycon1 p {
+    display: -webkit-box;
+    /* border: 1px solid #000; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    white-space: no-wrap;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    /* padding-left: 5px; */
+    font-size: 18px;
+    height: 170px;
+}
+
+.paycon1 .paycon1-txt2 {
+    box-sizing: border-box;
+    display: inline-block;
+    /* border: 1px solid #000; */
+    margin-top: 10px;
+    font-size: 16px;
+    /* position: fixed; */
+}
+
+/* paycon2 */
+
 .paycon2 {
+    box-sizing: border-box;
     width: 200px;
     /* border: 1px solid #000; */
     text-align: center;
     float: left;
-    margin-bottom: 30px;
+    margin: 10px auto 30px auto;
+    cursor: pointer; 
 }
 
 .paycon2 img {
-    width: 150px;
+    box-sizing: border-box;
+    display: block;
+    width: 130px;
+    margin: 0 auto; 
 }
 
-.mymy-payCon button {
+.paycon2 .paycon2-txt {
+    box-sizing: border-box;
+    display: -webkit-box;
+    margin: 10px auto 0 auto;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    text-align: center;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: no-wrap;
+}
+
+
+/* paycon3 */
+
+.mymy-payCon .paycon3 {
+    box-sizing: border-box;
+    display: block;
+    width: 200px;
+    /* border: 1px solid #000; */
+    float: right;
+    text-align: center;
+}
+
+.paycon3 a {
+    box-sizing: border-box;
+    display: inline-block;
     width: 70px;
     height: 30px;
-    margin-top: 10px;
-    margin-right: 20px;
-    float: right;
-    cursor: pointer;
+    line-height: 26px;
+    margin: 0 10px;
+    padding: 2px;
+    border: none;
+    border-radius: 3px;
+    letter-spacing: -1.0px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #8521FF;
 }
+
 
 
 
