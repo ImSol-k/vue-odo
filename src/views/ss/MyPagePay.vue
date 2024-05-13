@@ -22,38 +22,7 @@
 		
 		<div class="mymy clearfix">
 
-			<div class="mymy-side">
-				<ul>
-					<li>내 활동</li>
-					<li><router-link to="/mypage/pay">결제 내역</router-link></li>
-					<li><router-link to="/wishlistclass">위시리스트</router-link></li>
-					<li><router-link to="/mypage/coupon">쿠폰</router-link></li>
-					<li><router-link to="/mypage/review">후기</router-link></li>
-				</ul>
-				<ul>
-					<li>고객센터</li>
-					<li>공지사항</li>
-					<li>약관 및 정책</li>
-				</ul>
-
-				<div class="cli-image">
-					<div class="cli-1">
-						<img src="@/assets/images/icon/ss/kakao.png"><br>
-						<span>카카오톡 채널</span>
-					</div>
-					<div class="cli-2 clearfix">
-						<img src="@/assets/images/icon/ss/kakao.png"><br>
-						<span>카카오톡 채널</span>
-					</div>
-					<div class="cli-3">
-						<span>운영시간</span><br>
-						<span>
-							&nbsp;&nbsp;평일 10:00 ~ 17:00<br>
-							&nbsp;(점심 12:00 ~ 13:00)
-						</span>
-					</div>
-				</div>
-			</div>
+			<MyPageSide />
 			<!-- mypage-side -->
 
 			<div class="mymy-content">
@@ -117,7 +86,7 @@
 									<span>추천클래스 이름</span>
 								</div>
 								<button type="button">문의</button>
-								<button type="button">후기작성</button>
+								<button type="button" v-on:click="goReviewForm">후기작성</button>
 								
 							</div>
 							<!-- mymy-payCon -->
@@ -148,13 +117,15 @@ import '@/assets/css/ss/ss.css';
 import '@/assets/css/ss/mypay.css';
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
+import MyPageSide from '@/components/MyPageSide.vue';
 
 
 export default {
 	name: "MyPagePay",
 	components: {
 		AppHeader,
-		AppFooter
+		AppFooter,
+		MyPageSide
 	},
 	data() {
 		return {};
@@ -162,7 +133,10 @@ export default {
 	methods: {
 		goModify(){
 			this.$router.push('/mypage/modify');
-		}
+		},
+		goReviewForm(){
+			this.$router.push('/mypage/review/form');
+		},
 	},
 	created(){}
 };
