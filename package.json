@@ -17,6 +17,8 @@
     "chartjs-plugin-datalabels": "^2.2.0",
     "core-js": "^3.8.3",
     "dayjs": "^1.11.11",
+    "raw-loader": "^4.0.2",
+    "sweetalert2": "^11.11.0",
     "vue": "^3.2.13",
     "vue-router": "^4.1.0",
     "vue3-carousel": "^0.3.3",

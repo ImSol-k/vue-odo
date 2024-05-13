@@ -14,9 +14,9 @@
 
 /* 오른쪽내용영역 */
 .MporderContainer .MpRight{
-    margin-left: 20px;
+    margin-left: 10px;
     /* background-color: beige; */
-    width: 1000px;
+    width: 915px;
     height: 950px;
     overflow-y:scroll;
 }
