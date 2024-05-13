@@ -34,13 +34,15 @@
 					<div class="review-form">
 						
 						<div class="rf-1 clearfix">
-							<img src="@/assets/images/icon/ss/default-profile.png">
-							<span>누구나 쉽게 배우는 디자인 연습 </span>
-							<p>
-								누구나 쉽게 배울수 있는 수업이에요<br>
-								디자인은 정말 하기 싫어요<br>
-								내가 지금 이걸 왜 하고 있는걸까 생각해볼까요
-							</p>
+							<div class="rf-1-1">
+								<img src="@/assets/images/icon/ss/default-profile.png">
+								<span>누구나 쉽게 배우는 디자인 연습 </span>
+								<p>
+									누구나 쉽게 배울수 있는 수업이에요<br>
+									디자인은 정말 하기 싫어요<br>
+									내가 지금 이걸 왜 하고 있는걸까 생각해볼까요
+								</p>
+							</div>
 						</div>
 						<!-- rf-1 / 클래스사진 + 클래스 설명 -->
 												
@@ -107,9 +109,13 @@
 						</div>
 						<!-- rf-6 / 리뷰작성란 -->
 						
-						<div class="rf-7">
+						<div class="filebox">
+							<!-- https://velog.io/@sklove96/inputtypefile-%EC%BB%A4%EC%8A%A4%ED%85%80%ED%95%98%EA%B8%B0 -->
 							<span>사진첨부하기</span><br>
-							<input type="file" name="revImg" v-on:change.prevent="getfile">
+							<input class="upload-name" value="첨부파일" placeholder="첨부파일">
+							<label for="file">파일찾기</label>
+							<input id="file" type="file">
+							
 						</div>
 						<!-- rf-7 / 사진첨부 -->
 
@@ -134,16 +140,13 @@
 <!-- footer -->
 </template>
 
-
-
-
 <script>
 import '@/assets/css/Initialization.css';
 import '@/assets/css/ss/ss.css';
 import '@/assets/css/ss/myrevform.css';
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
-import MyPageSide from '@/components/MyPageSide.vue'
+import MyPageSide from '@/components/MyPageSide.vue';
 
 export default {
 	name: "MyPageWriteForm",
@@ -182,8 +185,20 @@ export default {
 		}
 
 	},
-	created(){}
+	mounted(){
+		
+	},
+	created(){
+		
+	}
 };
+
+
+
+
+
+
+
 </script>
 
 
