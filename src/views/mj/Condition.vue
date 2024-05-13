@@ -27,7 +27,7 @@
                         <ul>
                             <li id="tab1" class="btnCon">
                                 <input type="radio" checked name="tabmenu" id="tabmenu1">
-                                <label for="">이용약관</label>
+                                <label for="tabmenu1">이용약관</label>
                                 <div class="tabCon" >
                                     이용약관<br>
                                     제1조 (목적)<br>
