@@ -20,30 +20,44 @@ import AppMenu from "@/components/CompanyMenu.vue";
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 
+
 export default {
   name: "MemberManagerView",
   components: {
     AppHeader,
     AppFooter,
     AppMenu,
-    FullCalendar 
+    FullCalendar
   },
   data() {
     return {
       calendarOptions: {
         plugins: [dayGridPlugin],
         initialView: 'dayGridMonth',
-        weekends: false,
+        headerToolbar: { // 헤더에 표시할 툴 바
+          start: 'prev next today',
+          center: 'title',
+          end: 'dayGridMonth,dayGridWeek,dayGridDay'
+        },
+        contentHeight: 1000,
+        weekend: true,
+        locale: 'ko',
         events: [
-          { title: 'Meeting', start: new Date() }
-        ]
+          { title: 'Meeting', start: new Date() },
+          { title: 'Meeting', start: '2024-05-10 08:00:00', end: '2024-05-12 01:00:00' },
+          { title: 'Meeting', start: '2024-05-22 18:00:00' },
+        ],
+        eventClick: function (info) {
+          alert('스케줄: ' + info.event.title + '\n' + '일시: ' + (info.event.start));
+
+          // change the border color just for fun
+        }
       }
     };
   },
   methods: {},
-  created() {},
+  created() { },
 };
 </script>
 
-<style>
-</style>
+<style></style>
