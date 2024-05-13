@@ -12,12 +12,15 @@
     font-size: 36px;
     height: 40px;
     float: left;
+    width: 200px;
 }
 
 .companypro {
     font-size: 24px;
-    height: 100px;
-    margin-right: 20px;
+    margin-left: 50px;
+    margin-top: 30px;
+    margin-right: 50px;
+    width: 1100px;
 }
 
 .companybutton {
@@ -96,6 +99,15 @@
     margin-top: 30px;
     padding-bottom: 60px;
     min-height: 200px;
+}
+
+.cover7{
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.cover8{
+    padding-left: 200px;
 }
 
 .preview-image {

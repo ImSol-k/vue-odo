@@ -11,13 +11,16 @@
 				<div class="a">
 					<img class="img" src="../../assets/images/회사이미지.png" alt="" >
 				</div>
-				<div>
-					<div>
+				<div class="cover8">
+					<div class="cover7">
 						<p class="companyname">업체명</p>
 						<button class="companybutton">업체 소개글 수정하기</button>
 					</div>
-					<p class="companypro p30">잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어</p>
+					<p>클래스 00	|	찜 00</p>
 				</div>
+			</div>
+			<div>
+				<p class="companypro">잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어잘낫어</p>
 			</div>
 		</div>
 		<!--클래스별 통계-->
