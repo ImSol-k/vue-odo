@@ -18,38 +18,7 @@
 
         <div class="mymy clearfix">
 
-            <div class="mymy-side">
-                <ul>
-                    <li>내 활동</li>
-                    <li>결제 내역</li>
-                    <li>위시리스트</li>
-                    <li>쿠폰</li>
-                    <li>후기</li>
-                </ul>
-                <ul>
-                    <li>고객센터</li>
-                    <li>공지사항</li>
-                    <li>약관 및 정책</li>
-                </ul>
-
-                <div class="cli-image">
-                    <div class="cli-1">
-                        <img src="../../assets/images/icon/ss/kakao.png"><br>
-                        <span>카카오톡 채널</span>
-                    </div>
-                    <div class="cli-2 clearfix">
-                        <img src="../../assets/images/icon/ss/kakao.png"><br>
-                        <span>카카오톡 채널</span>
-                    </div>
-                    <div class="cli-3">
-                        <span>운영시간</span><br>
-                        <span>
-                            &nbsp;&nbsp;평일 10:00 ~ 17:00<br>
-                            &nbsp;(점심 12:00 ~ 13:00)
-                        </span>
-                    </div>
-                </div>
-            </div>
+            <mymyside/>
             <!-- mypage-side -->
 
             <div class="mymy-content">
@@ -114,6 +83,7 @@
 <script>
 import AppHeader from "@/components/AppHeader.vue"
 import AppFooter from "@/components/AppFooter.vue"
+import mymyside from "@/components/MyPageSide.vue"
 import '@/assets/css/jh/jh.css'
 import '@/assets/css/ss/ss.css'
 import '@/assets/css/Initialization.css'
@@ -121,7 +91,8 @@ import '@/assets/css/Initialization.css'
 export default {
     components: {
         AppHeader,
-        AppFooter
+        AppFooter,
+        mymyside
     },
     data() {
         return {
