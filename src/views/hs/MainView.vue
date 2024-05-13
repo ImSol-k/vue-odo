@@ -6,7 +6,7 @@
 			<Carousel :autoplay="2500" :wrap-around="true">
 				<Slide v-for="slide in slides" :key="slide">
 					<div class="carousel__item">
-						<img class="slideImg" src="{{slide}}" alt="">
+						<img class="slideImg" :src="slide" alt="">
 					</div>
 				</Slide>
 
@@ -17,28 +17,36 @@
 			</Carousel>
 		</section>
 		<ul class="category-icons">
-			<li><router-link to=""><img src="@/assets/images/하트.png" alt="">
+			<li><router-link to="">
+					<div><img src="@/assets/images/icon/hs/main_category_icon/cooking.png" alt=""></div>
 					<p>쿠킹</p>
 				</router-link></li>
-			<li><router-link to=""><img src="" alt="">
+			<li><router-link to="">
+					<div><img src="@/assets/images/icon/hs/main_category_icon/baking.png" alt=""></div>
 					<p>베이킹</p>
 				</router-link></li>
-			<li><router-link to=""><img src="" alt="">
+			<li><router-link to="">
+					<div><img src="@/assets/images/icon/hs/main_category_icon/drink.png" alt=""></div>
 					<p>음료</p>
 				</router-link></li>
-			<li><router-link to=""><img src="" alt="">
+			<li><router-link to="">
+					<div><img src="@/assets/images/icon/hs/main_category_icon/beauty.png" alt=""></div>
 					<p>뷰티</p>
 				</router-link></li>
-			<li><router-link to=""><img src="" alt="">
+			<li><router-link to="">
+					<div><img src="@/assets/images/icon/hs/main_category_icon/craft.png" alt=""></div>
 					<p>공예</p>
 				</router-link></li>
-			<li><router-link to=""><img src="" alt="">
+			<li><router-link to="">
+					<div><img src="@/assets/images/icon/hs/main_category_icon/sports.png" alt=""></div>
 					<p>스포츠</p>
 				</router-link></li>
-			<li><router-link to=""><img src="" alt="">
+			<li><router-link to="">
+					<div><img src="@/assets/images/icon/hs/main_category_icon/councelling.png" alt=""></div>
 					<p>심리/상담</p>
 				</router-link></li>
-			<li><router-link to=""><img src="" alt="">
+			<li><router-link to="">
+					<div><img src="@/assets/images/icon/hs/main_category_icon/it.png" alt=""></div>
 					<p>IT</p>
 				</router-link></li>
 		</ul>
@@ -58,7 +66,7 @@
 					<p class="location">강남/서초</p>
 					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
 					<div class="review-box">
-						<span>★★★★★</span>
+						<span class="starPoint">★★★★★</span>
 						<span>후기 123</span>
 					</div>
 					<p class="class-price">무료</p>
@@ -71,7 +79,7 @@
 					<p class="location">강남/서초</p>
 					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
 					<div class="review-box">
-						<span>★★★★★</span>
+						<span class="starPoint">★★★★★</span>
 						<span>후기 123</span>
 					</div>
 					<p class="class-price">무료</p>
@@ -84,7 +92,7 @@
 					<p class="location">강남/서초</p>
 					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
 					<div class="review-box">
-						<span>★★★★★</span>
+						<span class="starPoint">★★★★★</span>
 						<span>후기 123</span>
 					</div>
 					<p class="class-price">무료</p>
@@ -97,7 +105,7 @@
 					<p class="location">강남/서초</p>
 					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
 					<div class="review-box">
-						<span>★★★★★</span>
+						<span class="starPoint">★★★★★</span>
 						<span>후기 123</span>
 					</div>
 					<p class="class-price">무료</p>
@@ -121,7 +129,7 @@
 					<p class="location">강남/서초</p>
 					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
 					<div class="review-box">
-						<span>★★★★★</span>
+						<span class="starPoint">★★★★★</span>
 						<span>후기 123</span>
 					</div>
 					<p class="class-price">40,000원</p>
@@ -134,7 +142,7 @@
 					<p class="location">강남/서초</p>
 					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
 					<div class="review-box">
-						<span>★★★★★</span>
+						<span class="starPoint">★★★★★</span>
 						<span>후기 123</span>
 					</div>
 					<p class="class-price">40,000원</p>
@@ -147,7 +155,7 @@
 					<p class="location">강남/서초</p>
 					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
 					<div class="review-box">
-						<span>★★★★★</span>
+						<span class="starPoint">★★★★★</span>
 						<span>후기 123</span>
 					</div>
 					<p class="class-price">40,000원</p>
@@ -160,7 +168,7 @@
 					<p class="location">강남/서초</p>
 					<p class="classTitle">소풍을 즐기는 새로운 방법, 루하루 티크닉 세트[SQN..</p>
 					<div class="review-box">
-						<span>★★★★★</span>
+						<span class="starPoint">★★★★★</span>
 						<span>후기 123</span>
 					</div>
 					<p class="class-price">40,000원</p>
@@ -211,7 +219,7 @@ export default defineComponent({
 </script>
 <style>
 .carousel__item {
-	min-height: 380px;
+	max-height: 380px;
 	width: 100%;
 	background-color: green;
 	color: var(--vc-clr-white);
@@ -219,6 +227,9 @@ export default defineComponent({
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+.slideImg {
+	width: 100%;
 }
 
 .carousel__slide {
@@ -229,4 +240,5 @@ export default defineComponent({
 .carousel__next {
 	box-sizing: content-box;
 	color: #fff;
-}</style>
+}
+</style>
