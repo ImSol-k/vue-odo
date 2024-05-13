@@ -5,14 +5,16 @@
 	
 	<div class="wrap">
 		
-		<div class="mymy-header">
+		<div class="mymy-header clearfix">
 			
-			<img src="@/assets/images/icon/ss/default-profile.png" alt="">
+			<img src="@/assets/images/icon/ss/default-profile.png" 
+				alt="회원 프로필"
+				v-on:click.prevent="goModify">
 			<ul>
-				<li>mypage@naver.com</li>
+				<li>mypage@naver.com(닉네임나올자리)</li>
 				<li>일반회원</li>
 				<li>
-					<button type="button">정보 수정</button>
+					<router-link class="goLogin" to="/mypage/modify" >정보 수정</router-link>
 				</li>
 			</ul>
 		</div>
@@ -20,38 +22,7 @@
 		
 		<div class="mymy clearfix">
 
-			<div class="mymy-side">
-				<ul>
-					<li>내 활동</li>
-					<li><a href="#">결제 내역</a></li>
-					<li>위시리스트</li>
-					<li>쿠폰</li>
-					<li>후기</li>
-				</ul>
-				<ul>
-					<li>고객센터</li>
-					<li>공지사항</li>
-					<li>약관 및 정책</li>
-				</ul>
-
-				<div class="cli-image">
-					<div class="cli-1">
-						<img src="@/assets/images/icon/ss/kakao.png"><br>
-						<span>카카오톡 채널</span>
-					</div>
-					<div class="cli-2 clearfix">
-						<img src="@/assets/images/icon/ss/kakao.png"><br>
-						<span>카카오톡 채널</span>
-					</div>
-					<div class="cli-3">
-						<span>운영시간</span><br>
-						<span>
-							&nbsp;&nbsp;평일 10:00 ~ 17:00<br>
-							&nbsp;(점심 12:00 ~ 13:00)
-						</span>
-					</div>
-				</div>
-			</div>
+			<MyPageSide />
 			<!-- mypage-side -->
 
 			<div class="mymy-content">
@@ -77,7 +48,7 @@
 						<!-- mymy-nopay -->
 						
 						<!-- 결제내역이 있으면 -->
-						<div class="pay clearfix">
+						<div class="pay clearfix" v-for="i in 5" :key="i">
 							<div class="mymy-pay">
 								<ul>
 									<li><img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png"></li>
@@ -115,149 +86,13 @@
 									<span>추천클래스 이름</span>
 								</div>
 								<button type="button">문의</button>
-								<button type="button">후기작성</button>
+								<button type="button" v-on:click="goReviewForm">후기작성</button>
 								
 							</div>
 							<!-- mymy-payCon -->
 							
 						</div>
 						<!-- pay -->
-						<div class="pay clearfix">
-							<div class="mymy-pay">
-								<ul>
-									<li><img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png"></li>
-									<li><span>내가 들었던 클래스 이름이 나올텐데</span></li>
-									<li>
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-									</li>
-								</ul>
-							</div>
-							<!-- mymy-pay -->
-							<div class="mymy-payCon clearfix">
-								<div class="paycon1">
-									<span>2024.05.05 사용한 날짜</span><br>
-									<p>
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-									</p><br>
-									<span>출석 : 10/10</span><br>
-									
-								</div>
-								<div class="paycon2">
-									<img src="@/assets/images/icon/ss/default-profile.png"><br>
-									<span>추천클래스 이름</span>
-								</div>
-								<button type="button">문의</button>
-								<button type="button">후기작성</button>
-								
-							</div>
-							<!-- mymy-payCon -->
-							
-						</div>
-						<!-- pay -->
-						<div class="pay clearfix">
-							<div class="mymy-pay">
-								<ul>
-									<li><img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png"></li>
-									<li><span>내가 들었던 클래스 이름이 나올텐데</span></li>
-									<li>
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-									</li>
-								</ul>
-							</div>
-							<!-- mymy-pay -->
-							<div class="mymy-payCon clearfix">
-								<div class="paycon1">
-									<span>2024.05.05 사용한 날짜</span><br>
-									<p>
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-									</p><br>
-									<span>출석 : 10/10</span><br>
-									
-								</div>
-								<div class="paycon2">
-									<img src="@/assets/images/icon/ss/default-profile.png"><br>
-									<span>추천클래스 이름</span>
-								</div>
-								<button type="button">문의</button>
-								<button type="button">후기작성</button>
-								
-							</div>
-							<!-- mymy-payCon -->
-							
-						</div>
-						<!-- pay -->
-						<div class="pay clearfix">
-							<div class="mymy-pay">
-								<ul>
-									<li><img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png"></li>
-									<li><span>내가 들었던 클래스 이름이 나올텐데</span></li>
-									<li>
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-									</li>
-								</ul>
-							</div>
-							<!-- mymy-pay -->
-							<div class="mymy-payCon clearfix">
-								<div class="paycon1">
-									<span>2024.05.05 사용한 날짜</span><br>
-									<p>
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-									</p><br>
-									<span>출석 : 10/10</span><br>
-									
-								</div>
-								<div class="paycon2">
-									<img src="@/assets/images/icon/ss/default-profile.png"><br>
-									<span>추천클래스 이름</span>
-								</div>
-								<button type="button">문의</button>
-								<button type="button">후기작성</button>
-								
-							</div>
-							<!-- mymy-payCon -->
-							
-						</div>
-						<!-- pay -->
-
 					</div>
 					<!-- mymy-paybox -->
 				</div>
@@ -282,18 +117,27 @@ import '@/assets/css/ss/ss.css';
 import '@/assets/css/ss/mypay.css';
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
+import MyPageSide from '@/components/MyPageSide.vue';
 
 
 export default {
 	name: "MyPagePay",
 	components: {
 		AppHeader,
-		AppFooter
+		AppFooter,
+		MyPageSide
 	},
 	data() {
 		return {};
 	},
-	methods: {},
+	methods: {
+		goModify(){
+			this.$router.push('/mypage/modify');
+		},
+		goReviewForm(){
+			this.$router.push('/mypage/review/form');
+		},
+	},
 	created(){}
 };
 </script>
