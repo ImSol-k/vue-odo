@@ -1,6 +1,7 @@
 
 /* 오른쪽내용영역 */
 .MporderContainer .mpRight{
+    margin-left: 10px;
     font-size: 18px;
     width: 200px;
 }

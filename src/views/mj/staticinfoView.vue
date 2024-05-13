@@ -48,7 +48,7 @@
                             <div>
                                 <div>
                                     <div class="conditions">개인정보 처리방침
-                                        <img src="@/assets/images/icon/mj/static_button.png" alt="이용약관" class="info">
+                                        <img src="@/assets/images/icon/mj/static_button.png" alt="개인정보 처리방침" class="info">
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                             <div>
                                 <div>
                                     <div class="conditions">위치서비스 이용약관
-                                        <img src="@/assets/images/icon/mj/static_button.png" alt="이용약관" class="info">
+                                        <img src="@/assets/images/icon/mj/static_button.png" alt="위치서비스 이용약관" class="info">
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,5 @@
 .MporderContainer .MpRight .title{
-    border-bottom: 1px solid rgb(27, 17, 219);
+    border-bottom: 1px solid #d2d2d2;
     padding: 25px 0;
     font-weight: bold;
 }
@@ -10,8 +10,11 @@
     align-items: center;
     height: 100%;
     padding: 30px 0px;
-    border-bottom: 1px solid rgb(27, 17, 219);
+    padding-left: 10px;
+    border-bottom: 1px solid #d2d2d2;
 }
 .MporderContainer .MpRight .conditions .info{
-    padding-left: 820px;
+    padding-left: 680px;
+    align-items: center;
+    display: flex;
 }
