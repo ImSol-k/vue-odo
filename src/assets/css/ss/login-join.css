@@ -88,6 +88,7 @@
 /* 회원가입 선택 박스*/
 .join-box {
     box-sizing: border-box;
+    /* border: 1px solid #000; */
     margin-top: 10px;
     display: block;
 }
@@ -125,6 +126,7 @@
     margin-bottom: 20px;
 }
 
+/* join1 */
 .join-box .join1 input {
     font-weight: 100;
     letter-spacing: -0.5px;
@@ -152,6 +154,7 @@
     color: #a19e9e;
 }
 /**************/
+/* join2 */
 .lj-form .join2 {
     display: none;
 }
@@ -198,6 +201,18 @@
     font-size: 15px;
     cursor: pointer;
     color: #5c5b5b;
+}
+
+/* join3 */
+.join3 {
+    display: none;
+}
+
+.join3 .login-btn {
+    display: inline-block;
+    width: 150px;
+    line-height: 56px;
+    margin: 15px 10px;
 }
 
 

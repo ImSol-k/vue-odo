@@ -39,6 +39,14 @@
 				</div>
 			</div>
 			<!-- join2 -->
+			<div class="join3">
+				<div class="join-box">
+					<span>ㅁㅁㅁ님 반가워요</span><br>
+					<span>회원가입이 완료되었어요</span><br>
+					<router-link to="/" class="login-btn">홈으로 가기</router-link>
+					<router-link to="/login" class="login-btn">로그인하러가기</router-link>
+				</div>
+			</div>
 			
 		</div>
 		<!-- lj-form -->
@@ -103,6 +111,11 @@ export default {
 		// 회원가입 버튼 클릭했을 때
 		join (){
 			console.log(this.joinVo);
+			let join3 = document.querySelector('.join3');
+			let join2 = document.querySelector('.join2');
+			join2.style.display = 'none';
+			join3.style.display = 'block';
+			
 		}
 	},
 	created(){
