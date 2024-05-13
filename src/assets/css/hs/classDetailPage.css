@@ -11,6 +11,11 @@
     margin: 0 60px;
 }
 /* class title */
+.headInfoBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .headInfoBox h1 {
     font-size: 23px;
     margin-bottom: 10px;
@@ -23,23 +28,56 @@
     font-weight: normal;
     font-size: 17px;
 }
-
+/* compnany section */
 .companySection {
     display: flex;
     position: relative;
-    border: 1px solid #000;
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
 }
 .companySection .companyLogo {
-    width: 80px;
-    height: 80px;
-    border: 1px solid #000;
+    width: 75px;
+    height: 75px;
+    margin-right: 20px;
+}
+.companySection .companyLogo img {
+    width: 100%;
+}
+.companySection .nameBox {
+    padding-top: 15px;
+}
+.companySection .nameBox p:first-child {
+    font-size: 20px;
+}
+
+.companySection .nameBox p:first-child::after {
+    content: '';
+    display: inline-block;
+    background: url('../../images/icon/arrow_right.png') no-repeat center / contain;
+    background-size: 19px 19px;
+    width: 20px;
+    height: 19px;
+    margin-left: 5px;
+}
+.companySection .nameBox p:last-child span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #aaa;
+}
+.companySection .nameBox span:not(:last-child)::after {
+    content: '';
+    width: 1px;
+    height: 10px;
+    display: inline-block;
+    margin: 0 10px;
+    background: #ddd;
 }
 .company-like-btn {
-    width: 40px;
+    width: 35px;
     position: absolute;
     top: 50%;
     right: 0;
-    transform: translateX(-50%);
+    transform: translateY(-50%);
 }
 .company-like-btn img {
     width: 100%;
