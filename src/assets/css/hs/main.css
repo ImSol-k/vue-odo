@@ -48,7 +48,7 @@ header .top a {
 
 /* header bottom */
 header .bottom {
-    height: 100px;
+    height: 89px;
     display: flex;
     align-items: center;
     font-size: 14px;

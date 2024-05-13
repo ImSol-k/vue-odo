@@ -1,4 +1,44 @@
+/* head section */
+.headSection {
+    padding: 40px 0;
+    display: flex;
+    border-bottom: 1px solid #dedede;
+}
+.headSection > img.representImg {
+    width: 400px;
+    height: 400px;
+    border-radius: 20px;
+    margin: 0 60px;
+}
+/* class title */
+.headInfoBox h1 {
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+.headInfoBox p {
+    font-size: 25px;
+    font-weight: bold;
+}
+.headInfoBox p span {
+    font-weight: normal;
+    font-size: 17px;
+}
 
+.companySection {
+    display: flex;
+    border: 1px solid #000;
+}
+.companySection .companyLogo {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #000;
+}
+.company-like-btn {
+    width: 40px;
+}
+.company-like-btn img {
+    width: 100%;
+}
 /* 하단 고정바 (찜, 참여하기 버튼) */
 .floatingActionBar {
     width: 100%;
@@ -16,13 +56,14 @@
     justify-content: space-between;
 }
 .floatingActionBar .like-actBtn {
-    width: 40px;
+    width: 33px;
     display: block;
     text-align: center;
-    font-size: 16px;
+    font-size: 13px;
 }
 .floatingActionBar .like-actBtn img {
     width: 100%;
+    margin-bottom: -4px;
 }
 .floatingActionBar button {
     width: 90%;

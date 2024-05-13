@@ -4,25 +4,35 @@
 
 	<div class="inner">
 		<div class="headSection">
-			<img src="" alt="">
+			<img class="representImg" src="../../assets/images/hs/cake.jpg" alt="">
 
 			<div class="headInfoBox">
-				<h2>소풍을 즐기는 새로운 방법, 루하루 티크닉 세트 [SQNC 055]</h2>
-				<p>30,000원</p>
+				<h1>소풍을 즐기는 새로운 방법, 루하루 티크닉 세트 [SQNC 055]</h1>
+				<p>30,000<span>원</span></p>
 
 				<div class="companySection">
-					<router-link to="">
+					<router-link to="" class="companyLogo">
 						<img src="" alt="">
 					</router-link>
 					<router-link to="" class="nameBox">
-						<p></p>
-						<p></p>
+						<p>골든블루마리나</p>
+						<p>
+							<span>클래스 0</span>
+							<span>후기 0</span>
+							<span>찜 0</span>
+						</p>
 					</router-link>
 					<router-link to="" class="company-like-btn">
-						<img src="" alt="">
+						<img src="../../assets/images/하트.png" alt="">
 					</router-link>
 				</div>
 			</div>
+		</div>
+		<!-- //headerSection-->
+
+		<div class="classInfoSection">
+			<h2>클래스 정보</h2>
+			<div></div>
 		</div>
 	</div>
 	<!-- //inner -->
