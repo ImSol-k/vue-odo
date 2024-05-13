@@ -7,12 +7,14 @@
 			<img class="representImg" src="../../assets/images/hs/cake.jpg" alt="">
 
 			<div class="headInfoBox">
-				<h1>소풍을 즐기는 새로운 방법, 루하루 티크닉 세트 [SQNC 055]</h1>
-				<p>30,000<span>원</span></p>
+				<div>
+					<h1>소풍을 즐기는 새로운 방법, 루하루 티크닉 세트 [SQNC 055]</h1>
+					<p>30,000<span>원</span></p>
+				</div>
 
 				<div class="companySection">
 					<router-link to="" class="companyLogo">
-						<img src="" alt="">
+						<img src="../../assets/images/hs/rainbow_apple_icon.png" alt="">
 					</router-link>
 					<router-link to="" class="nameBox">
 						<p>골든블루마리나</p>
