@@ -36,8 +36,29 @@
                         <a>
                             <div>
                                 <div>
-                                    <div>이용약관</div>
-                                    <div>
+                                    <div class="conditions">이용약관
+                                        <img src="@/assets/images/icon/mj/static_button.png" alt="이용약관" class="info">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a>
+                            <div>
+                                <div>
+                                    <div class="conditions">개인정보 처리방침
+                                        <img src="@/assets/images/icon/mj/static_button.png" alt="이용약관" class="info">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a>
+                            <div>
+                                <div>
+                                    <div class="conditions">위치서비스 이용약관
                                         <img src="@/assets/images/icon/mj/static_button.png" alt="이용약관" class="info">
                                     </div>
                                 </div>
@@ -53,7 +74,7 @@
 </template>
 <script>
 import '@/assets/css/Initialization.css'
-import '@/assets/css/staticInfo.css'
+import '@/assets/css/mj/staticInfo.css' 
 import AppFooter from '@/components/AppFooter.vue';
 import AppHeader from '@/components/AppHeader.vue';
 
