@@ -10,7 +10,7 @@
 				<ul>
 					<li>고객센터</li>
 					<li><router-link to="/mypage/notice" class="sideLink" title="공지사항">공지사항</router-link></li>
-					<li><router-link to="/mypage/staticinfo" class="sideLink" title="약관 및 정책">약관 및 정책</router-link></li>
+					<li><router-link to="/mypage/condition" class="sideLink" title="약관 및 정책">약관 및 정책</router-link></li>
 				</ul>
 
 				<div class="cli-image">
