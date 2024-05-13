@@ -29,7 +29,7 @@
 
                 <div class="mymy-main">
                     <div class="mymy-nav">
-                        <button type="button">클래스</button>
+                        <button type="button"><RouterLink to="/wishlistclass">클래스</RouterLink></button>
                         <span>ㅣ</span>
                         <button type="button">업체</button>
                     </div>
