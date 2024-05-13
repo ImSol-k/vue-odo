@@ -1,16 +1,3 @@
-.MporderContainer{
-    width: 1200px;
-    background-color: antiquewhite;
-}
-
-/* nav */
-.MporderContainer .MpLeft{
-    background-color: aquamarine;
-    width: 250px;
-    margin-left: 10px;
-}
-
-
 
 /* 오른쪽내용영역 */
 .MporderContainer .mpRight{

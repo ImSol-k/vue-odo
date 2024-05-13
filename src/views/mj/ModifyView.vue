@@ -24,7 +24,7 @@
 					<hr>
 				</div>
 				<!-- 오른쪽내용영역 -->
-				<div class="MpRight">
+				<div class="MpRight" style="overflow: hidden;">
 					<h2>내 정보</h2>
 					<div class="container Right">
 						<button>저장</button>

@@ -1,27 +1,43 @@
 /* category-icons */
 ul.category-icons {
-    height: 160px;
+    height: 120px;
     display: flex;
     justify-content: space-between;
     text-align: center;
     margin-top: 40px;
+    padding: 0 30px;
+}
+ul.category-icons div {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
 }
 ul.category-icons img {
-    width: 110px;
-    height: 110px;
-    display: block;
-    border-radius: 50%;
-    margin-bottom: 20px;
-    border: 1px solid blue;
+    width: 50px;
+    margin-top: 14px;
+}
+ul.category-icons p {
+    font-size: 14px;
+    font-weight: bold;
+    color: #777;
 }
 /* section free-best */
 div.title-box {
     display: flex;
     justify-content: space-between;
-    margin: 40px 0 15px;
+    margin: 30px 0;
+}
+div.title-box h3 {
+    font-size: 20px;
+    color: #2c2c2c;
+}
+div.title-box a {
+    font-size: 15px;
+    font-weight: bold;
+    color: #2c2c2c;
 }
 div.title-box h3 img {
-    width: 27px;
+    width: 24px;
     margin-bottom: -5px;
 }
 ul.classList {
@@ -29,47 +45,55 @@ ul.classList {
     justify-content: space-between;
 }
 ul.classList li {
-    width: 270px;
+    width: 250px;
     height: 450px;
 }
 ul.classList li .img-box {
     width: 100%;
-    height: 250px;
+    height: 230px;
     border-radius: 10px;
 }
 ul.classList li .img-box img:first-child {
     width: 100%;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 7px;
 }
 ul.classList p.location {
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: bold;
     color: #666;
     margin: 10px;
 }
 ul.classList p.classTitle {
     margin: 10px;
-    font-size: 18px;
+    font-size: 15px;
+    font-weight: bold;
 }
 ul.classList .review-box {
     margin: 10px;
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: bold;
 }
 ul.classList .review-box span:first-child {
     color: #8521FF;
+    font-size: 17px;
 }
 ul.classList .review-box span:last-child {
-    margin-left: 10px;
+    margin-left: 5px;
+    color: #333;
 }
 ul.classList .class-price {
     margin: 10px;
-    padding: 15px 0;
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 16px;
+    color: #2c2c2c;
     border-top: 1px solid #ccc;
 }
 /* banner */
 .banner {
     width: 100%;
-    height: 150px;
-    border: 1px solid #000;
-    margin: 30px 0;
+    height: 130px;
+    border: 1px solid #999;
+    margin: 20px 0;
 }

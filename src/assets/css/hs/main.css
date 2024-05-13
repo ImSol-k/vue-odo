@@ -9,6 +9,7 @@
 .inner {
     width: 1200px;
     margin: 0 auto;
+    background: #fff;
 }
 
 /* ---------------------header-------------- */
@@ -30,6 +31,7 @@ header .top .inner {
     display: flex;
     justify-content: space-between;
     line-height: 30px;
+    background: none;
 }
 
 header .top ul {
@@ -229,7 +231,9 @@ footer .hour {
 footer .hour p:first-child {
     margin-bottom: 20px;
 }
-
+footer .inner {
+    background: none;
+}
 footer .inner>p {
     color: #999;
     letter-spacing: -0.28px;
