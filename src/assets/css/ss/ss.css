@@ -4,7 +4,7 @@
     width: 1200px;
     height: 140px;
     margin-bottom: 10px;
-    border-bottom: 1px solid #000;
+    border-bottom: 0.1px solid #d6d6d6;
     letter-spacing: -0.9px;
 }
 
@@ -28,10 +28,10 @@
 /* 마이페이지 헤더 */
 .mymy-header img {
     float: left;
-    width: 135px;
-    height: 135px;
-    margin : 0 30px;
+    width: 120px;
+    margin : 10px 20px;
     cursor: pointer;
+    border-radius: 32px;
 }
 
 .mymy-header ul {
@@ -41,13 +41,21 @@
 }
 
 .mymy-header ul>li {
-    margin : 5px 0 0 0;
+    margin : 5px 0 5px 0;
+    font-size: 18px;
+    line-height: 26px;
 }
-.mymy-header button {
-    margin : 0 0;
+.mymy-header ul>li:nth-child(2){
+    font-size: 13px;
+}
+
+.mymy-header .goLogin {
+    box-sizing: border-box;
+    display: inline-block;
     padding: 5px;
     width: 80px;
     cursor: pointer;
+    text-align: center;
     background-color: #F4F4F4;
     border-radius: 5px;
     border: none;
@@ -60,7 +68,7 @@
 /***************************/
 /* 마이페이지 사이드 */
 .mymy-side ul {
-    font-size: 18px;
+    font-size: 15px;
     margin: 0 0 20px 0;
     border-bottom: 1px solid #000;
 }
@@ -71,11 +79,14 @@
 }
 
 .mymy-side ul>li:first-child {
+    box-sizing: border-box;
     cursor: default;
-    font-size: 25px;
-    font-weight: bold;
-    color: #bbbaba;
-    margin-bottom: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(204, 204, 204);
+    margin-bottom: 15px;
+    letter-spacing: -0.42px;
+    line-height: 22px;
 }
 
 .mymy-side .cli-1{
