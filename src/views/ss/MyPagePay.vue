@@ -33,32 +33,29 @@
 
 				<div class="mymy-main">
 					<div class="mymy-nav">
-						<button type="button">원데이</button>
+						<span type="button" v-on:click.prevent="selectClass(1)" :class="{ pickClass : isClass}">원데이</span>
 						<span>ㅣ</span>
-						<button type="button">정규</button>
+						<span type="button" v-on:click.prevent="selectClass(2)" :class="{ pickClass : !isClass}">정규</span>
 					</div>
 					<!-- mymy-nav -->
 
 					<div class="mymy-paybox">
 						<!-- 결제내역이 없으면 -->
-						<!-- <div class="mymy-nopay">
+						<div class="mymy-nopay">
 							<img id="nopayImg" src="@/assets/images/icon/ss/nopay.png"><br>
 							<span>결제한 내역이 없어요</span><br>
-						</div> -->
+						</div>
 						<!-- mymy-nopay -->
 						
+						
 						<!-- 결제내역이 있으면 -->
-						<div class="pay clearfix" v-for="i in 5" :key="i">
+						<div class="pay clearfix" v-for="i in 2" :key="i">
 							<div class="mymy-pay">
 								<ul>
 									<li><img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png"></li>
-									<li><span>내가 들었던 클래스 이름이 나올텐데</span></li>
+									<li><a>내가 들었던 클래스 이름이 나올텐데 어쩌구 저쩌구 제목이 길어지면 어떻게 될까요</a></li>
 									<li>
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
-										<img id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<img v-for="(i) in 5" :key="i" id="pay-star" src="@/assets/images/icon/ss/star.png">
 									</li>
 								</ul>
 							</div>
@@ -89,12 +86,11 @@
 								<button type="button" v-on:click="goReviewForm">후기작성</button>
 								
 							</div>
-							<!-- mymy-payCon -->
-							
+							<!-- mymy-payCon -->	
 						</div>
 						<!-- pay -->
 					</div>
-					<!-- mymy-paybox -->
+					<!-- mymy-paybox  -->
 				</div>
 				<!-- mymy-main -->
 			</div>
@@ -128,7 +124,9 @@ export default {
 		MyPageSide
 	},
 	data() {
-		return {};
+		return {
+			isClass : true
+		};
 	},
 	methods: {
 		goModify(){
@@ -137,14 +135,23 @@ export default {
 		goReviewForm(){
 			this.$router.push('/mypage/review/form');
 		},
+		selectClass(no){
+			if(no == 1){
+				this.isClass = true;
+				console.log(this.isClass);
+			} else {
+				this.isClass = false;
+				console.log(this.isClass);
+			}
+		}
+
 	},
 	created(){}
 };
 </script>
 
-
-
-
-
 <style>
+.pickClass {
+	border-bottom: 2px solid #8521FF;
+}
 </style>
