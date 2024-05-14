@@ -1,5 +1,5 @@
 <template>
-    <AppHeader />
+	<AppHeader />
 	<!-- //header -->
 
 	<div class="inner">
@@ -47,9 +47,9 @@
 			<button class="moreInfoBtn">상세정보 더보기</button>
 		</div>
 		<!-- //classIntroduce -->
-		
+
 		<h2>진행하는 장소</h2>
-		<div class="map" style="width: 1200px;height: 300px;border: 1px solid #ddd;"></div>
+		<div id="map" style="width:1200px;height:400px;"></div>
 
 		<h2>포함 사항</h2>
 		<div class="badge-box">
@@ -60,7 +60,7 @@
 		<div class="badge-box">
 			<span class="red badge">상세 페이지 확인</span>
 		</div>
-		
+
 		<h2>준비물</h2>
 		<div class="badge-box">
 			<span class="grey badge">상세 페이지 확인</span>
@@ -71,6 +71,13 @@
 		<p>환불 정책</p>
 
 		<h2>이런 클래스 어때요?</h2>
+
+		<div class="orderModal" style="width: 400px;height: 350px;border: 1px solid pink;">
+			<div class="modalClose">X</div>
+			<div class="modalInside">
+				옵션 선택
+			</div>
+		</div>
 
 	</div>
 	<!-- //inner -->
@@ -86,7 +93,7 @@
 	</div>
 	<!-- //floatingActionBar -->
 
-    <AppFooter />
+	<AppFooter />
 	<!-- //footer -->
 </template>
 <script>
@@ -95,16 +102,52 @@ import "@/assets/css/hs/classDetailPage.css"
 import AppFooter from "@/components/AppFooter.vue"
 import AppHeader from "@/components/AppHeader.vue"
 
-	export default {
-		name: "ClassDetailPageView",
-		components: {
-            AppHeader,
-            AppFooter,
-        },
-		data() {
-			return {};
+export default {
+	name: "ClassDetailPageView",
+	components: {
+		AppHeader,
+		AppFooter,
 	},
-	methods: {},
-	created(){}
-	};
+	data() {
+		return {};
+	},
+	mounted() {
+		if (window.kakao && window.kakao.maps) {
+			this.initMap();
+		} else {
+			const script = document.createElement('script');
+			/* global kakao */
+			script.onload = () => kakao.maps.load(this.initMap);
+			script.src =
+				'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=dcd5445d7a7dc0572e91ed1fd7ad2d2b';
+			document.head.appendChild(script);
+		}
+	},
+	methods: {
+		initMap() {
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+				mapOption = {
+					center: new kakao.maps.LatLng(37.498287, 127.027064), // 지도의 중심좌표
+					level: 3, // 지도의 확대 레벨
+				};
+
+			var map = new kakao.maps.Map(mapContainer, mapOption);
+			var positions = [
+					{
+						latlng: new kakao.maps.LatLng(37.498287, 127.027064),
+					},
+				];
+
+			positions.forEach(function (pos) {
+				var marker = new kakao.maps.Marker({
+					position: pos.latlng,
+				});
+				marker.setMap(map);
+			});
+
+		},
+
+	},
+	created() { },
+};
 </script>
