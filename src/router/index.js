@@ -27,7 +27,7 @@ import JoinSelect from '@/views/ss/JoinSelect.vue'
 import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
 import AnnouncementView from '../views/mj/AnnouncementView.vue'
-import ReadView from '../views/mj/ReadView.vue'
+import ReadView from '../views/mj/readView.vue'
 
 const routes = [
   //=== 하석 =================================

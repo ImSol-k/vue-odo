@@ -18,14 +18,14 @@
                         <tr>
                             <td id="title">작성일</td>
                             <td>24.05.14</td>
-                            <td id="title">작성자</td>
-                            <td>이미지</td>
+                            <td>조회수</td>
+                            <td>000</td>
                         </tr>
                         <tr>
                             <td id="title">제목</td>
                             <td>공지드립니다</td>
-                            <td>조회수</td>
-                            <td>000</td>
+                            <td id="title">작성자</td>
+                            <td>이미지</td>
                         </tr>
                         <tr>
                             <td id="title">내용</td>
@@ -37,14 +37,10 @@
                                 <input type="file">
                             </td>
                         </tr>
-                        <tr align="center" valign="middle">
-                            <td colspan="5">
-                                <input type="button" value="목록"
-                                onclick=""
-                                hover="">
-                            </td>
-                        </tr>
                     </table>
+                    <div class="container">
+                        <input type="button" value="목록" class="button">
+                    </div>
                 </div>
             </div>
         </div>
