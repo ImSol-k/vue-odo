@@ -104,12 +104,16 @@
 }
 h2 {
     font-size: 20px;
+    color: #2c2c2c;
+    margin-bottom: 20px;
 }
 /* 클래스 소개 */
 .classIntroduceSection {
-    padding: 30px 0;
+    padding: 30px 0 60px;
     letter-spacing: -1.2px;
     border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 50px;
 }
 .classIntroduceSection .classIntroImgBox {
     width: 100%;
@@ -132,6 +136,27 @@ h2 {
 .moreInfoBtn:hover {
     background: #ddd;
 }
+
+/* badges */
+.badge {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+.badge.green {
+    color: #004518;
+    border: 1px solid #9bd491;
+}
+.badge.red {
+    color: #4e0000;
+    border: 1px solid #d49991;
+}
+.badge.grey {
+    color: #666;
+    border: 1px solid #ddd;
+}
 /* 하단 고정바 (찜, 참여하기 버튼) */
 .floatingActionBar {
     width: 100%;
@@ -153,6 +178,7 @@ h2 {
     display: block;
     text-align: center;
     font-size: 13px;
+    cursor: pointer;
 }
 .floatingActionBar .like-actBtn img {
     width: 100%;
@@ -167,4 +193,5 @@ h2 {
     color: #fff;
     font-weight: bold;
     font-size: 16px;
+    cursor: pointer;
 }
