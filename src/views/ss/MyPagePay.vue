@@ -55,9 +55,11 @@
 							<div class="mymy-pay">
 								<ul>
 									<li>
-										<img id="pay-heart" src="@/assets/images/icon/ss/heart.png">
-										<img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png">
+										<!-- https://codingbroker.tistory.com/55 하트그리기 -->
 										
+										<!-- <img id="pay-heart" src="@/assets/images/icon/ss/heart.png"> -->
+										<img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png">
+										<div class="heart" v-on:click.prevent="wish"></div>
 									</li>
 									<li><a href="#">aaa내가 들었던 클래스 이름asdasdasdasdasdasdasdasdasdasd</a></li>
 									<li>
@@ -85,9 +87,15 @@
 								</div>
 								<!-- paycon1 -->
 
-								<div class="paycon2 clearfix">
-									<img src="@/assets/images/icon/ss/default-profile.png">
-									<span class="paycon2-txt">추천클래스 이름</span>
+								<div class="paycon2 clearfix" >
+									<div  class="paycon2-1">
+										<img src="@/assets/images/icon/ss/default-profile.png">
+										<span class="paycon2-txt">추천클래스 이름</span>
+									</div>
+									<!-- <div class="paycon2-2">
+										
+										<span>운영중인 정규클래스가 없어요</span>
+									</div> -->
 								</div>
 								<!-- paycon2 -->
 								<div class="paycon3 clearfix">
@@ -123,7 +131,7 @@
 								<div class="paycon1 ">
 									<span class="paycon1-txt1">사용한 날짜 : 2024.10.12 </span>
 									<p>
-										&nbsp;클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
 										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
 										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
 										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
@@ -139,8 +147,13 @@
 								<!-- paycon1 -->
 
 								<div class="paycon2 clearfix">
-									<img src="@/assets/images/icon/ss/default-profile.png">
-									<span class="paycon2-txt">추천클래스 이름</span>
+									<div>
+										<img src="@/assets/images/icon/ss/default-profile.png">
+										<span class="paycon2-txt">추천클래스 이름</span>
+									</div>
+									<div>
+										<!-- <span>등록된 추천클래스가 없어요</span> -->
+									</div>
 								</div>
 								<!-- paycon2 -->
 								<div class="paycon3 clearfix">
@@ -203,11 +216,12 @@ export default {
 		selectClass(no){
 			if(no == 1){
 				this.isClass = true;
-				console.log(this.isClass);
 			} else {
 				this.isClass = false;
-				console.log(this.isClass);
 			}
+		},
+		wish(){
+			console.log('wish');
 		}
 
 	},

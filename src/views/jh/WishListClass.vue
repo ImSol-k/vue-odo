@@ -32,9 +32,9 @@
 
                 <div class="mymy-main">
 					<div class="mymy-nav">
-						<span type="button" class="isClass">원데이</span>
+						<span type="button" class="isClass">클래스</span>
 						<span>ㅣ</span>
-						<span type="button" class="isClass"><RouterLink to="wishlistcompany">정규</RouterLink></span>
+						<span type="button" class="isClass"><RouterLink to="wishlistcompany">업체</RouterLink></span>
 					</div>
                     <!-- mymy-nav -->
                     <!--위시 리스트 없을때-->
