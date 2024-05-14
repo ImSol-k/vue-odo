@@ -2,34 +2,35 @@
     width: 50px;
 }
 .button{
-    padding: 5px 10px;
+    width:80px;
+    padding: 10px 20px 10px 20px;
     margin-top: 5px;
     margin-left: 300px;
-    background-color: #d6d6d6;
-    border: 1px solid #d6d6d6;
-    border-radius: 25%;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 30px;
     text-align: center;
-}
-.button1{
-    padding: 5px 10px;
-    margin-top: 5px;
-    background-color: #d6d6d6;
-    border: 1px solid #d6d6d6;
-    border-radius: 25%;
-    display :inline-block;
+    transition: 1s;
 }
 .button:hober{
     background-color: #a8a8a8;
 }
-.button:focus {
 
+.button:hover {
+    width:120px; 
     box-shadow: 0 0 0 1px #a8a8a8;
-    background-color: #a8a8a8;
-
+    background-color: #9560d6;
+    color:white;
+    border:0;
 }
 
-.button:active {
 
-    background-color: #a8a8a8;
-
+#notice_btn div{
+    width:310px;
+    margin:0 auto;
+ 
+}
+#notice_btn input{
+    text-align: center;
+    margin-left:10px;
 }

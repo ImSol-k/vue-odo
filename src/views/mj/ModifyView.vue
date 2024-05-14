@@ -29,7 +29,7 @@
 							<label class="group">닉네임</label>
 						</div>
 						<div>
-							<span id="fixid"> 이미지</span>
+							<input type="text" id="nickname" class="form_w100" placeholder="이미지" v-model=required>
 						</div>
 					</div>
 					<div class="area">
@@ -37,7 +37,7 @@
 							<label class="group">휴대폰번호</label>
 						</div>
 						<div>
-							<input type="text" id="hp" class="form_w100" v-model=required>
+							<input type="text" id="hp" class="form_w100" disabled placeholder ="010-3333-3333" v-model=required>
 						</div>
 					</div>
 					<div class="area">
@@ -45,7 +45,7 @@
 							<label class="group">이메일</label>
 						</div>
 						<div>
-							<input type="text" id="e-mail" class="form_w100" v-model= required>
+							<input type="text" id="e-mail" class="form_w100" disabled placeholder ="admin@admin.com" v-model= required>
 						</div>
 					</div>
 					<div class="area">
@@ -53,7 +53,7 @@
 							<label class="group">비밀번호</label>
 						</div>
 						<div>
-							<input type="password" id="password" class="form_w100" v-model= required>
+							<input type="password" id="password" class="form_w100" disabled placeholder ="****" v-model= required>
 						</div>
 					</div>
 					<div class="area">
@@ -61,7 +61,7 @@
 							<label class="group">생년월일</label>
 						</div>
 						<div>
-							<input type="text" id="birth" class="form_w100" v-model= required>
+							<input type="text" id="birth" class="form_w100" disabled placeholder ="981217" v-model= required>
 						</div>
 					</div>
 					<div>
@@ -69,7 +69,7 @@
 							<label class="group">성별</label>
 						</div>
 						<div>
-							<label id="fixid"> **</label>
+							<input type="text" id="gender" class="form_w100" disabled placeholder ="**" v-model= required>
 						</div>
 					</div>
 				</div>

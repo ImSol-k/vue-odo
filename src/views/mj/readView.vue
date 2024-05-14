@@ -14,7 +14,7 @@
 				</div>
 				<!-- 오른쪽내용영역 -->	
                 <div>
-                    <table id="detailboard" width="800" border="1" bordercolor="lightgray">
+                    <table id="detailboard" width="900" border="1" bordercolor="lightgray">
                         <tr>
                             <td id="title">작성일</td>
                             <td>2024.05.14</td>
@@ -47,10 +47,13 @@
                             </td>
                         </tr>
                     </div>
-                    <div>
-                        <input type="button" value="수정" class="button">
-                        <input type="button" value="삭제" class="button1">
-                        <input type="button" value="목록" class="button1">
+                    <div id="notice_btn">
+                        <div>
+                            <input type="button" value="수정" class="button">
+                            <input type="button" value="삭제" class="button">
+                            <input type="button" value="목록" class="button">
+                        </div>
+                        
                     </div>
                 </div>
             </div>
