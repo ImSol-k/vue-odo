@@ -47,8 +47,45 @@
 			<!-- //headerSection-->
 
 			<div class="reviewSection">
-				리뷰 ㅗ
-				<router-link to="">00개 후기 더보기 ></router-link>
+				<ul>
+					<li>
+						<router-link to="">
+							<img src="../../assets/images/hs/camera.jpg" alt="">
+							<div>
+								<img src="" alt=""> <span>김민규</span>
+							</div>
+							<p>후기어쩌고</p>
+						</router-link>
+					</li>
+					<li>
+						<router-link to="">
+							<img src="../../assets/images/hs/camera.jpg" alt="">
+							<div>
+								<img src="" alt=""> <span>김민규</span>
+							</div>
+							<p>후기어쩌고</p>
+						</router-link>
+					</li>
+					<li>
+						<router-link to="">
+							<img src="../../assets/images/hs/camera.jpg" alt="">
+							<div>
+								<img src="" alt=""> <span>김민규</span>
+							</div>
+							<p>후기어쩌고</p>
+						</router-link>
+					</li>
+					<li>
+						<router-link to="">
+							<img src="../../assets/images/hs/camera.jpg" alt="">
+							<div>
+								<img src="" alt=""> <span>김민규</span>
+							</div>
+							<p>후기어쩌고</p>
+						</router-link>
+					</li>
+				</ul>
+				<router-link class="moreReviewBtn" to="">00개 후기 더보기 ></router-link>
 			</div>
 			<!-- //reviewSection -->
 
