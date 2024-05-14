@@ -5,15 +5,23 @@ ul.category-icons {
     justify-content: space-between;
     text-align: center;
     margin-top: 40px;
-    padding: 0 30px;
+    padding: 0 180px;
+}
+ul.category-icons li {
+    transition: transform 0.1s linear;
+}
+ul.category-icons li:hover {
+    transform: scale(1.07);
 }
 ul.category-icons div {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background: #eee;
+    border-radius: 20px;
+    margin-bottom: 2px;
 }
 ul.category-icons img {
-    width: 50px;
+    width: 40px;
     margin-top: 14px;
 }
 ul.category-icons p {
@@ -45,8 +53,12 @@ ul.classList {
     justify-content: space-between;
 }
 ul.classList li {
-    width: 250px;
+    width: 285px;
     height: 450px;
+    transition: transform 0.1s linear;
+}
+ul.classList li:hover {
+    transform: scale(1.07);
 }
 ul.classList li .img-box {
     width: 100%;
