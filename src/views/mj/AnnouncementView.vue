@@ -13,6 +13,10 @@
                 <div class="MpRight" style="overflow: hidden;">
 
                     <h2>공지사항</h2>
+
+                    <div class="container Right">
+                      <button>글쓰기</button>
+                    </div>
                 
                     <table class="list-table">
                       <thead>
