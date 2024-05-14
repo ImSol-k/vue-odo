@@ -109,6 +109,42 @@
     /* -webkit-filter: brightness(3); */
 }
 
+/* 하트 표시 */
+.heart {
+    z-index: 3;
+    width: 15px;
+    height: 15px;
+    background: #ea2027;
+    position: relative;
+    margin-top: -20px;
+    margin-left: 150px;
+    margin-bottom: 10px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.heart::before{
+    content: "";
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: -50%;
+    border-radius: 50%;
+    background: #ea2027;
+}
+
+.heart::after{
+    content: "";
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: -50%;
+    border-radius: 50%;
+    background: #ea2027;
+}
+
+
+
 /* 제목 나오는 부분 */
 .mymy-pay a {
     box-sizing: border-box;
@@ -196,6 +232,7 @@
 .paycon2 {
     box-sizing: border-box;
     width: 200px;
+    height: 175px;
     /* border: 1px solid #000; */
     text-align: center;
     float: left;
