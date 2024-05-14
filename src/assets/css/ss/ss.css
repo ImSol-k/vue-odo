@@ -171,7 +171,7 @@
     display: inline-block;
     font-size: 20px;
     margin-bottom: 5px;
-    border-bottom: 3px solid rgba(133, 33, 255, 0.6);
+    border-bottom: 2px solid #d6d6d6;
 }
 .mymy-content .mymy-head span{
     display: block;

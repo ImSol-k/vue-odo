@@ -105,7 +105,8 @@
     margin-left: 150px;
     margin-top: 150px;
     cursor: pointer;
-
+    filter: opacity(0.5) drop-shadow(0 0 0 red);
+    /* -webkit-filter: brightness(3); */
 }
 
 /* 제목 나오는 부분 */
@@ -168,6 +169,7 @@
 
 .paycon1 p {
     display: -webkit-box;
+    
     /* border: 1px solid #000; */
     overflow: hidden;
     text-overflow: ellipsis;
@@ -247,7 +249,7 @@
     font-size: 15px;
     font-weight: 500;
     color: #fff;
-    background-color: #8521FF;
+    background-color: rgba(133, 33, 255, 0.6);
 }
 
 
