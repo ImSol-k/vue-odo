@@ -10,9 +10,9 @@
 			<table class="cover61" border="1px solid #000000">
 				<tbody>
 					<tr>
-						<td rowspan="3" width="380px" height="380px"><img src="../../assets/images/회사이미지.png" alt=""></td>
+						<td rowspan="3" width="250px" height="250px"><img class="img61" src="../../assets/images/회사이미지.png" alt=""></td>
 						<td width="200px" class="td60">업체명</td>
-						<td width="560px" class="td61">삼송</td>
+						<td width="350px" class="td61">삼송</td>
 					</tr>
 					<tr>
 						<td class="td60">클래스명</td>
@@ -27,7 +27,11 @@
 						<td colspan="2" class="td62">네이버페이</td>
 					</tr>
 					<tr>
-						<td class="td60">결제금액</td>
+						<td class="td60">할인금액</td>
+						<td colspan="2" class="td62">{{ Number(5000).toLocaleString('ko-KR') }}</td>
+					</tr>
+					<tr>
+						<td class="td60">총결제금액</td>
 						<td colspan="2" class="td62 td63">{{ Number(100000).toLocaleString('ko-KR') }}</td>
 					</tr>
 				</tbody>
@@ -35,7 +39,7 @@
 			</table>
 
 			<div class="cover62">
-				<a class="a60" href="">결제내역</a>
+				<button class="bu60">결제내역 보러가기</button>
 			</div>
 
 			<div class="cover63">
