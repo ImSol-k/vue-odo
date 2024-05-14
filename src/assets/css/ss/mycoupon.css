@@ -1,35 +1,35 @@
 /* 쿠폰 페이지 */
 
-/* 쿠폰 입력창*/
-.in-coupon {
-    box-sizing: border-box;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
-    height: 80px;
-    text-align: center;
-    line-height: 80px;
-}
-
 /* 쿠폰 위에 메세지 */
 .couponMsg {
+    border-bottom: 1px solid #aaa9a9;
     margin: 10px auto;
+    padding-bottom: 15px;
+    font-size: 16px;
+}
+
+/* 쿠폰 박스 */
+.coupon-box {
+    border-bottom: 1px solid #aaa9a9;
+    min-height: 500px;
+    margin-bottom: 20px;
 }
 
 /* 쿠폰 없을때 */
 .no-coupon {
     box-sizing: border-box;
-    border-bottom: 1px solid #000;
     text-align: center;
-    min-height: 500px;
 }
 
 .no-coupon img {
-    width: 200px;
-    margin-top: 150px;
+    width: 180px;
+    margin-top: 130px;
 }
 .no-coupon span {
     display: block;
     margin-top: -30px;
+    font-size: 18px;
+    letter-spacing: -2.1px;
 }
 
 /* 쿠폰 있을때 */
@@ -37,12 +37,12 @@
 .on-coupon {
     box-sizing: border-box;
     padding: 5px;
-    min-height: 500px;
+    float: left;
+    margin: 10px 40px;
 }
 
 .coupon-set {
     box-sizing: border-box;
-    border: 1px solid #000;
     display: inline-block;
     margin: 30px 30px 50px 30px;
     cursor: pointer;
@@ -50,12 +50,42 @@
 
 .coupon-set img {
     display: flex;
+    position: relative;
     width: 330px;
     float: left;
+    z-index: 1;
 }
 
-.coupon-set .cou-name {
-    display: inline-block;
+.coupon-set2 {
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 2;
+    width: 190px;
     margin-top: 20px;
-    margin-left: -220px;
+    margin-left: 110px;
 }
+
+.coupon-set2 .cou-price {
+    display: block;
+    width: 150px;
+    height: 40px;
+    line-height: 34px;
+    font-size: 30px;
+    margin-bottom: 5px;
+    padding: 3px;
+    color: #8521FF;
+}
+
+.coupon-set2 .cou-name {
+    display: block;
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 15px;
+}
+
+
+
