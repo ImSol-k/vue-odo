@@ -48,7 +48,9 @@
                         </tr>
                     </div>
                     <div>
-                        <input type="button" value="목록" class="button">
+                        <input type="button" value="수정" class="button">
+                        <input type="button" value="삭제" class="button1">
+                        <input type="button" value="목록" class="button1">
                     </div>
                 </div>
             </div>
