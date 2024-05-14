@@ -61,9 +61,7 @@
 								<input type="radio" id="1-star" name="rating" value="1" />
 								<label for="1-star" class="star">&#9733;</label>
 							</div>
-
-
-							<!-- <img v-on:click="star" v-for="i in 5" :key="i" src="@/assets/images/icon/ss/star.png"> -->
+							<!-- star-rating -->
 						</div>
 						<!-- rf-2 / 별점 부분 -->
 

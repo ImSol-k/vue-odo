@@ -41,7 +41,7 @@
 
 				<div class="mymy-paybox">
 					<!-- 결제내역이 없으면 -->
-					<div class="mymy-nopay">
+					<div class="mymy-nopay" >
 						<img id="nopayImg" src="@/assets/images/icon/ss/nopay.png">
 						<span>결제한 내역이 없어요</span>
 						<router-link to="/">홈으로 가기</router-link>
@@ -51,19 +51,34 @@
 					
 					<!-- 결제내역이 있으면 -->
 					<div v-if="isClass">
-						<div class="pay clearfix" v-for="i in 3" :key="i">
+						<div class="pay clearfix" v-for="i in 1" :key="i">
 							<div class="mymy-pay">
 								<ul>
 									<li>
 										<!-- https://codingbroker.tistory.com/55 하트그리기 -->
-										
 										<!-- <img id="pay-heart" src="@/assets/images/icon/ss/heart.png"> -->
 										<img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png">
 										<div class="heart" v-on:click.prevent="wish"></div>
 									</li>
-									<li><a href="#">aaa내가 들었던 클래스 이름asdasdasdasdasdasdasdasdasdasd</a></li>
 									<li>
-										<img v-for="(i) in 5" :key="i" id="pay-star" src="@/assets/images/icon/ss/star.png">
+										<!-- <img v-for="(i) in 5" :key="i" id="pay-star" src="@/assets/images/icon/ss/star.png"> -->
+										<!-- https://melthleeth.tistory.com/entry/HTML-CSS%EB%A1%9C-%EB%B3%84%EC%B0%8D%EA%B8%B0-Star-Rating -->
+										<div class="star-ratings">
+											<div class="star-ratings-fill" :style="{ width: ratingToPercent + '%' }">
+												<span>★</span>
+												<span>★</span>
+												<span>★</span>
+												<span>★</span>
+												<span>★</span>
+											</div>
+											<div class="star-ratings-base">
+												<span>★</span>
+												<span>★</span>
+												<span>★</span>
+												<span>★</span>
+												<span>★</span>
+											</div>
+										</div>
 									</li>
 								</ul>
 							</div>
@@ -120,7 +135,7 @@
 										<img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png">
 										
 									</li>
-									<li><a href="#"> 들었던 클래스 이름asdasdasdasdasdasdasdasdasdasd</a></li>
+									<!-- <li><a href="#"> 들었던 클래스 이름asdasdasdasdasdasdasdasdasdasd</a></li> -->
 									<li>
 										<img v-for="(i) in 5" :key="i" id="pay-star" src="@/assets/images/icon/ss/star.png">
 									</li>
@@ -202,28 +217,39 @@ export default {
 	},
 	data() {
 		return {
-			isClass : true,
-
+			isClass : true, // 정규클래스, 원데이클래스 변환에 사용
+			starScore : 0.1,
 		};
 	},
 	methods: {
-		goModify(){
+		// 수정폼이동
+		goModify(){ 
 			this.$router.push('/mypage/modify');
 		},
-		goReviewForm(){
+
+		// 리뷰폼이동 
+		goReviewForm(){ 
 			this.$router.push('/mypage/review/form');
 		},
+
+		// 정규클래스 원데이 클래스 선택
 		selectClass(no){
-			if(no == 1){
+			if(no == 1){ // true면 원데이클래스
 				this.isClass = true;
-			} else {
+			} else { // false면 정규클래스
 				this.isClass = false;
 			}
 		},
+		// 하트이미지 클릭 -> 위시리스트에 담기기 
 		wish(){
 			console.log('wish');
-		}
+		},
 
+		// 별점 퍼센트 보여주기
+		ratingToPercent(){
+			const score = +this.starScore ;
+			return score + 1.5;
+		},
 	},
 	created(){}
 };
