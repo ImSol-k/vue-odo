@@ -102,7 +102,7 @@
                     <input type="search" name="" id="" placeholder="지금 생각나는 취미를 검색하세요.">
                 </div>
                 <ul>
-                    <li><router-link to="/mypage/wishlistclass" class="like">찜</router-link></li>
+                    <li><router-link to="/wishlistclass" class="like">찜</router-link></li>
                     <li><router-link to="/mypage/pay" class="my">마이</router-link></li>
                 </ul>
             </div>
