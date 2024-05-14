@@ -1,3 +1,7 @@
+.detail-inner {
+    width: 1000px;
+    margin: 0 auto;
+}
 /* head section */
 .headSection {
     padding: 40px 0;
@@ -8,7 +12,7 @@
     width: 450px;
     height: 450px;
     border-radius: 20px;
-    margin: 0 100px;
+    margin-right: 100px;
 }
 /* class title */
 .headInfoBox {
@@ -29,11 +33,44 @@
     font-weight: normal;
     font-size: 17px;
 }
+/* 날짜 선택 결제 박스 */
+.orderSelectBox {
+    padding-top: 30px;
+    border-top: 1px solid #ddd;
+    text-align: right;
+}
+.orderSelectBox select {
+    width: 440px;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #8521FF;
+    display: block;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 15px;
+    padding-left: 10px;
+}
+.orderSelectBox .orderDate {
+    text-align-last: left;
+    padding: 10px 0;
+}
+.orderSelectBox button {
+    width: 440px;
+    height: 45px;
+    display: block;
+    background: #8521FF;
+    border: 1px solid #999;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 5px;
+}
 /* compnany section */
 .companySection {
     display: flex;
     position: relative;
-    padding: 20px 0;
+    padding: 5px 0;
     border-top: 1px solid #ddd;
 }
 /* 회사로고 */
@@ -136,7 +173,27 @@ h2 {
 .moreInfoBtn:hover {
     background: #ddd;
 }
-
+/* ------------------map--------------- */
+.mapWraper {
+    width: 1002px;
+    height: 350px;
+    /* margin: 0 auto; */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+.mapWraper b {
+    font-size: 16px;
+    display: block;
+    color: #222;
+    margin: 20px 15px;
+}
+.mapWraper p {
+    font-size: 15px;
+    font-weight: bold;
+    color: #999;
+    margin: 10px 15px;
+}
 /* badges */
 .badge {
     display: inline-block;
@@ -157,41 +214,17 @@ h2 {
     color: #666;
     border: 1px solid #ddd;
 }
-/* 하단 고정바 (찜, 참여하기 버튼) */
-.floatingActionBar {
-    width: 100%;
-    height: 100px;
-    padding: 20px 0 25px;
-    background: #fff;
-    position: fixed;
-    left: 0;
-    bottom: 0;
+/* b-link */
+.b-link {
+    padding: 30px 0;
+    border-top: 1px solid #ddd;
 }
-.floatingActionBar .action-box {
-    width: 768px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-}
-.floatingActionBar .like-actBtn {
-    width: 33px;
-    display: block;
-    text-align: center;
-    font-size: 13px;
-    cursor: pointer;
-}
-.floatingActionBar .like-actBtn img {
-    width: 100%;
-    margin-bottom: -4px;
-}
-.floatingActionBar button {
-    width: 90%;
-    height: 56px;
-    border: none;
-    border-radius: 10px;
-    background: #8521FF;
-    color: #fff;
+.b-link p {
     font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
+    font-size: 17px;
+    padding: 20px 0;
+    color: #222;
+}
+.b-link p:not(:last-child) {
+    border-bottom: 1px solid #eee;
 }
