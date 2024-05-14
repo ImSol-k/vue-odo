@@ -82,10 +82,10 @@
             <div class="inner">
                 <a href="#">호스트 지원</a>
                 <ul>
-                    <li><a href="#">회원가입</a></li>
-                    <li><a href="#">로그인</a></li>
+                    <li><router-link to="/join">회원가입</router-link></li>
+                    <li><router-link to="/login">로그인</router-link></li>
                     <li><a href="#">자주 묻는 질문</a></li>
-                    <li><a href="#">공지사항</a></li>
+                    <li><router-link to="/mypage/notice">공지사항</router-link></li>
                 </ul>
             </div>
         </div>
@@ -102,8 +102,8 @@
                     <input type="search" name="" id="" placeholder="지금 생각나는 취미를 검색하세요.">
                 </div>
                 <ul>
-                    <li><a href="#" class="like">찜</a></li>
-                    <li><a href="#" class="my">마이</a></li>
+                    <li><router-link to="/mypage/wishlistclass" class="like">찜</router-link></li>
+                    <li><router-link to="/mypage/pay" class="my">마이</router-link></li>
                 </ul>
             </div>
         </div>

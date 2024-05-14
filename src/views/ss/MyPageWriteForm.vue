@@ -112,9 +112,9 @@
 						<div class="filebox">
 							<!-- https://velog.io/@sklove96/inputtypefile-%EC%BB%A4%EC%8A%A4%ED%85%80%ED%95%98%EA%B8%B0 -->
 							<span>사진첨부하기</span><br>
-							<input class="upload-name" value="첨부파일" placeholder="첨부파일">
+							<input class="upload-name" v-model="fileName" placeholder="첨부파일">
 							<label for="file">파일찾기</label>
-							<input id="file" type="file">
+							<input id="file" type="file" v-on:change="getfile">
 							
 						</div>
 						<!-- rf-7 / 사진첨부 -->
@@ -148,6 +148,9 @@ import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
 import MyPageSide from '@/components/MyPageSide.vue';
 
+// let file = document.querySelector('#file');
+
+
 export default {
 	name: "MyPageWriteForm",
 	components: {
@@ -157,7 +160,8 @@ export default {
 	},
 	data() {
 		return {
-			
+			file : document.querySelector('#file'),
+			fileName : ''
 		};
 	},
 	methods: {
@@ -165,7 +169,12 @@ export default {
 		getfile(event){
 			console.log('getfile');
 			let file = event.target.files[0];
-			console.log(file);
+			let output = document.querySelector('.upload-name');
+			// console.log(file);
+			// console.log(file.name);
+			console.log(output.textContent = Array.from(file).map(file => file.name).join('\n'));
+
+			this.fileName = file.name;
 		},
 
 		// 뒤로가기 - 결제내역 페이지로 이동
