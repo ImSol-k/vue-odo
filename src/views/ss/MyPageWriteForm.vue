@@ -35,7 +35,7 @@
 						
 						<div class="rf-1 clearfix">
 							<div class="rf-1-1">
-								<img src="@/assets/images/icon/ss/default-profile.png">
+								<img :src="getClassImg">
 								<span>누구나 쉽게 배우는 디자인 연습 </span>
 								<p>
 									누구나 쉽게 배울수 있는 수업이에요<br>
@@ -48,7 +48,22 @@
 												
 						<div class="rf-2 clearfix">
 							<span>클래스는 사용해 보셨나요?</span><br>
-							<img v-on:click="star" v-for="i in 5" :key="i" src="@/assets/images/icon/ss/star.png">
+							<!-- https://melthleeth.tistory.com/entry/HTML-CSS%EB%A1%9C-%EB%B3%84%EC%B0%8D%EA%B8%B0-Star-Rating -->
+							<div class="star-rating">
+								<input type="radio" id="5-stars" name="rating" value="5" />
+								<label for="5-stars" class="star">&#9733;</label>
+								<input type="radio" id="4-stars" name="rating" value="4" />
+								<label for="4-stars" class="star">&#9733;</label>
+								<input type="radio" id="3-stars" name="rating" value="3" />
+								<label for="3-stars" class="star">&#9733;</label>
+								<input type="radio" id="2-stars" name="rating" value="2" />
+								<label for="2-stars" class="star">&#9733;</label>
+								<input type="radio" id="1-star" name="rating" value="1" />
+								<label for="1-star" class="star">&#9733;</label>
+							</div>
+
+
+							<!-- <img v-on:click="star" v-for="i in 5" :key="i" src="@/assets/images/icon/ss/star.png"> -->
 						</div>
 						<!-- rf-2 / 별점 부분 -->
 
@@ -105,23 +120,25 @@
 
 						<div class="rf-6">
 							<span>리뷰를 작성해 주세요</span><br>
-							<textarea value=""></textarea>
+							<textarea spellcheck="false" value=""></textarea>
 						</div>
 						<!-- rf-6 / 리뷰작성란 -->
 						
 						<div class="filebox">
 							<!-- https://velog.io/@sklove96/inputtypefile-%EC%BB%A4%EC%8A%A4%ED%85%80%ED%95%98%EA%B8%B0 -->
 							<span>사진첨부하기</span><br>
-							<input class="upload-name" v-model="fileName" placeholder="첨부파일">
-							<label for="file">파일찾기</label>
-							<input id="file" type="file" v-on:change="getfile">
-							
+							<img :src="prevImg">
+							<div class="filebox-1">
+								<input class="upload-name" v-model="fileName" placeholder="선택된 파일이 없습니다" readonly>
+								<label for="file">파일찾기</label>
+								<input id="file" type="file" name="file" @change="getfile">
+							</div>							
 						</div>
-						<!-- rf-7 / 사진첨부 -->
+						<!-- filebox / 사진첨부 -->
 
 						<div class="rf-8">
-							<button type="button" v-on:click="insertReview">후기 등록</button>
-							<button type="button" v-on:click="back">뒤로 가기</button>
+							<button class="back-btn" type="button" v-on:click="back">뒤로 가기</button>
+							<button class="insert-btn" type="button" v-on:click="insertReview">후기 등록</button>				
 						</div>
 						<!-- rf-8 / 버튼 -->
 					</div>
@@ -161,20 +178,27 @@ export default {
 	data() {
 		return {
 			file : document.querySelector('#file'),
-			fileName : ''
+			fileName : '',
+			prevImg : require('@/assets/images/icon/ss/default-photo.png'),
+			getClassImg : require('@/assets/images/icon/ss/default-profile.png'),
 		};
 	},
 	methods: {
 		// 파일 가져오기
 		getfile(event){
 			console.log('getfile');
-			let file = event.target.files[0];
-			let output = document.querySelector('.upload-name');
-			// console.log(file);
-			// console.log(file.name);
-			console.log(output.textContent = Array.from(file).map(file => file.name).join('\n'));
+			this.file = event.target.files[0];
+			const READER = new FileReader();
 
-			this.fileName = file.name;
+			READER.onload = (e) =>{
+				this.prevImg = e.target.result;
+			}
+			if(this.file){
+				READER.readAsDataURL(this.file);
+			}
+			this.fileName = this.file.name;
+			
+			
 		},
 
 		// 뒤로가기 - 결제내역 페이지로 이동
@@ -212,4 +236,5 @@ export default {
 
 
 <style>
+
 </style>

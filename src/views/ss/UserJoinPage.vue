@@ -11,11 +11,11 @@
 				<div class="join-box">
 					<div class="join1-1">
 						<input id="join-id" type="text" v-model="joinVo.id" :placeholder="`아이디&nbsp;(이메일)`"><br>
-						<!-- <span class="join-id-msg">올바른 이메일 형식이 아닙니다</span> -->
+						<span class="join-id-msg">올바른 이메일 형식이 아닙니다</span>
 						<input id="join-pw" type="password" v-model="joinVo.password" placeholder="비밀번호">
 						<span class="join1-txt">대/소문자, 숫자, 특수문자 중 2가지 이상의 조합으로 10자이상</span>
 						<input id="join-pw2" type="password" v-model="checkPw" placeholder="비밀번호 한 번 더"><br>
-						<!-- <span class="join-pw-msg">비밀번호를 확인하세요</span> -->
+						<span class="join-pw-msg">비밀번호를 확인하세요</span>
 					</div>
 				</div>
 				<button class="login-btn" type="button" v-on:click="showJoin2">다음</button>

@@ -70,7 +70,7 @@
 								<div class="paycon1 ">
 									<span class="paycon1-txt1">사용한 날짜 : 2024.07.07 </span>
 									<p>
-										&nbsp;클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
+										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
 										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
 										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
 										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
@@ -105,6 +105,7 @@
 						<div class="pay clearfix" v-for="i in 3" :key="i">
 							
 							<div class="mymy-pay">
+								<!-- https://melthleeth.tistory.com/entry/HTML-CSS%EB%A1%9C-%EB%B3%84%EC%B0%8D%EA%B8%B0-Star-Rating -->
 								<ul>
 									<li>
 										<img id="pay-heart" src="@/assets/images/icon/ss/heart.png">
@@ -188,7 +189,8 @@ export default {
 	},
 	data() {
 		return {
-			isClass : true
+			isClass : true,
+
 		};
 	},
 	methods: {
