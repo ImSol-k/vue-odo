@@ -212,6 +212,7 @@
 
 .rf-6 textarea {
     border-color: rgba(133, 33, 255, 0.6);
+    text-indent: 8px;
     min-width: 700px;
     max-width: 700px;
     max-height: 200px;
@@ -308,7 +309,24 @@
     margin-top: 25px;
 }
 
-.rf-8 button {
+/* 뒤로가기 버튼 */
+.rf-8 .back-btn {
+    width: 80px;
+    height: 40px;
+    margin: 0 20px;
+    border: none;
+    border-radius: 8px;
+    padding: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #000;
+    font-weight: 400;
+    background-color: #d6d6d6;
+}
+
+
+/* 후기 등록버튼 */
+.rf-8 .insert-btn {
     width: 80px;
     height: 40px;
     margin: 0 20px;

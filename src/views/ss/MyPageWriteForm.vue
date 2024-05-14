@@ -137,8 +137,8 @@
 						<!-- filebox / 사진첨부 -->
 
 						<div class="rf-8">
-							<button type="button" v-on:click="back">뒤로 가기</button>
-							<button type="button" v-on:click="insertReview">후기 등록</button>				
+							<button class="back-btn" type="button" v-on:click="back">뒤로 가기</button>
+							<button class="insert-btn" type="button" v-on:click="insertReview">후기 등록</button>				
 						</div>
 						<!-- rf-8 / 버튼 -->
 					</div>
