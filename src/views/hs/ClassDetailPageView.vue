@@ -46,6 +46,26 @@
 			<div class="classIntroImgBox"></div>
 			<button class="moreInfoBtn">상세정보 더보기</button>
 		</div>
+		<!-- //classIntroduce -->
+		
+		<h2>진행하는 장소</h2>
+		<div class="map" style="width: 1200px;height: 300px;border: 1px solid #ddd;"></div>
+
+		<h2>포함 사항</h2>
+		<div class="badge-box"></div>
+
+		<h2>불포함 사항</h2>
+		<div class="badge-box"></div>
+		
+		<h2>준비물</h2>
+		<div class="badge-box"></div>
+
+		<h4>1:1 문의</h4>
+		<h4>유의 사항</h4>
+		<h4>환불 정책</h4>
+
+		<h2>이런 클래스 어때요?</h2>
+
 	</div>
 	<!-- //inner -->
 
