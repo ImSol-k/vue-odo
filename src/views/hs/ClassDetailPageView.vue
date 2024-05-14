@@ -52,17 +52,23 @@
 		<div class="map" style="width: 1200px;height: 300px;border: 1px solid #ddd;"></div>
 
 		<h2>포함 사항</h2>
-		<div class="badge-box"></div>
+		<div class="badge-box">
+			<span class="green badge">상세 페이지 확인</span>
+		</div>
 
 		<h2>불포함 사항</h2>
-		<div class="badge-box"></div>
+		<div class="badge-box">
+			<span class="red badge">상세 페이지 확인</span>
+		</div>
 		
 		<h2>준비물</h2>
-		<div class="badge-box"></div>
+		<div class="badge-box">
+			<span class="grey badge">상세 페이지 확인</span>
+		</div>
 
-		<h4>1:1 문의</h4>
-		<h4>유의 사항</h4>
-		<h4>환불 정책</h4>
+		<p>1:1 문의</p>
+		<p>유의 사항</p>
+		<p>환불 정책</p>
 
 		<h2>이런 클래스 어때요?</h2>
 
