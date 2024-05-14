@@ -69,7 +69,7 @@
 							<label class="group">성별</label>
 						</div>
 						<div>
-							<span id="fixid"> **</span>
+							<label id="fixid"> **</label>
 						</div>
 					</div>
 				</div>
