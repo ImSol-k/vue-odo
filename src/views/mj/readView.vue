@@ -50,7 +50,7 @@
                     </table>
                     <div>
                         <tr>
-                            <td colspan="3" id="readfile">
+                            <td colspan="3">
                                 <input type="file">
                             </td>
                         </tr>

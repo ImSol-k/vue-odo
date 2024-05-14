@@ -7,6 +7,18 @@
     background-color: #d6d6d6;
     border: 1px solid #d6d6d6;
 }
-.readfile{
-    
+.button:hober{
+    background-color: #a8a8a8;
+}
+.button:focus {
+
+    box-shadow: 0 0 0 1px #a8a8a8;
+    background-color: #a8a8a8;
+
+}
+
+.button:active {
+
+    background-color: #a8a8a8;
+
 }
