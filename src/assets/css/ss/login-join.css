@@ -1,7 +1,7 @@
 /* 로그인 , 회원가입 전체 */
 .login-join {
     box-sizing: border-box;
-    width: 100%;
+    width: 1200px;
     height: 700px;
     background-color: #fff;
     padding: 80px 0;
@@ -22,10 +22,11 @@
 .lj-form {
     box-sizing: border-box;
     width: 500px;
-    height: 300px;
+    height: 500px;
     margin: 0 auto;
     text-align: center;
     padding-top: 20px;
+    /* border: 3px solid #8521FF; */
 }
 /* 로그인, 회원가입 인풋창 */
 .lj-form input{

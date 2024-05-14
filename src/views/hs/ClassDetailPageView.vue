@@ -17,7 +17,7 @@
 						<img src="../../assets/images/hs/rainbow_apple_icon.png" alt="">
 					</router-link>
 					<router-link to="" class="nameBox">
-						<p>골든블루마리나</p>
+						<p>애플</p>
 						<p>
 							<span>클래스 0</span>
 							<span>후기 0</span>
@@ -34,7 +34,17 @@
 
 		<div class="classInfoSection">
 			<h2>클래스 정보</h2>
-			<div></div>
+			<div>
+				<span>사용기간</span>
+				<span>구매일로부터 90일</span>
+			</div>
+		</div>
+		<!-- //classInfoSection -->
+
+		<div class="classIntroduceSection">
+			<h2>클래스 소개</h2>
+			<div class="classIntroImgBox"></div>
+			<button class="moreInfoBtn">상세정보 더보기</button>
 		</div>
 	</div>
 	<!-- //inner -->

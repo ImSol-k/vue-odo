@@ -26,7 +26,7 @@
 		<!--클래스별 통계-->
 		<div class="clearfix cover6" v-for="(chartData, index) in chartDataArray" :key="index">
 			<div class="cover1">
-				<img class="img2" src="../../assets/images/회사이미지.png" alt="">
+				<img class="img2" src="../../assets/images/회사이미지.png" alt="">	
 				<p class="classpro p31">클래스 소개글 샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라</p>
 			</div>
 

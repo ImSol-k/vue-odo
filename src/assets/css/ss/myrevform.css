@@ -2,7 +2,7 @@
 .review-form {
     box-sizing: border-box;
     width: 950px;
-    height: 1500px;
+    height: 1250px;
     /* background-color: #d6d6d6; */
     padding: 10px 30px;
 }
@@ -26,9 +26,9 @@
 }
 
 .review-form input[type='radio']:checked{
-    background-color: #8521FF;
+    background-color: rgba(133, 33, 255, 0.6);
     border: 3px solid #fff;
-    box-shadow: 0 0 0 1.6px #8521FF;
+    box-shadow: 0 0 0 1.6px rgba(133, 33, 255, 0.6);
 }
 
 .review-form label {
@@ -40,34 +40,43 @@
 /* 클래스 설명 들어있는 부분*/
 .rf-1 {
     box-sizing: border-box;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid rgba(133, 33, 255, 0.6);
     height: 150px;
-    padding: 0 auto;
     margin-bottom: 10px;
 }
-.rf-1 img {
+
+.rf-1 .rf-1-1 {
+    box-sizing: border-box;
+    /* margin: 0 0 0 100px; */
+}
+
+.rf-1-1 img {
     display: block;
+    /* border: 1px solid #000; */
     width: 150px;
     float: left;
 }
 
-.rf-1 span {
+.rf-1-1 span {
     /* border: 1px solid #000; */
     display: block;
     font-size: 24px;
     margin: 15px 0;
     float: left;
+    padding-left: 10px;
 }
-.rf-1 p {
+.rf-1-1 p {
     display: -webkit-box;
-    width: 600px;
+    min-width: 600px;
     min-height: 70px;
-    font-size: 18px;
+    margin-left: 10px;
+    font-size: 15px;
+    text-align: left;
     float: left;
     /* border: 1px solid #000; */
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: no-wrap;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
@@ -75,7 +84,7 @@
 /* 별점 부분 */
 .rf-2 {
     box-sizing: border-box;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid rgba(133, 33, 255, 0.6);
     height: 120px;
     margin-bottom: 10px;
     padding: 0 auto;
@@ -97,7 +106,7 @@
 /* 질문1 */
 .rf-3 {
     box-sizing: border-box;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid rgba(133, 33, 255, 0.6);
     height: 120px;
     margin-bottom: 10px;
     padding: 0 auto;
@@ -114,7 +123,7 @@
 
 .rf-4 {
     box-sizing: border-box;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid rgba(133, 33, 255, 0.6);
     height: 120px;
     margin-bottom: 10px;
     padding: 0 auto;
@@ -131,7 +140,7 @@
 
 .rf-5 {
     box-sizing: border-box;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid rgba(133, 33, 255, 0.6);
     height: 120px;
     margin-bottom: 10px;
     padding: 0 auto;
@@ -148,7 +157,7 @@
 
 .rf-6 {
     box-sizing: border-box;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid rgba(133, 33, 255, 0.6);
     height: 300px;
     margin-bottom: 10px;
     padding: 0 auto;
@@ -171,28 +180,59 @@
 
 /* 사진 첨부 */
 
-.rf-7 {
+.filebox {
     box-sizing: border-box;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid rgba(133, 33, 255, 0.6);
     height: 100px;
     margin-bottom: 10px;
     padding: 0 auto;
     text-align: center;
 }
 
-.rf-7 span {
+.filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid rgba(133, 33, 255, 0.6);
+    width: 58%;
+    color: #999999;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+}
+.filebox input[type='file']{
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+
+
+.filebox span {
     display: inline-block;
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-
-.rf-7 input[type='file'] {
+/* 
+.filebox input[type='file'] {
     margin-left: 20px;
     cursor: pointer;
-}
+} */
 
-/* 버튼 쪽 */
+/* 링크,버튼 쪽 */
 .rf-8 {
     box-sizing: border-box;
     height: 50px;
