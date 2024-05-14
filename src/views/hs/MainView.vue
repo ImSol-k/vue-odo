@@ -58,7 +58,7 @@
 				<router-link to="#">전체보기</router-link>
 			</div>
 			<ul class="classList">
-				<li><router-link to="">
+				<li><router-link to="/classdetailpage">
 					<div class="img-box">
 						<img src="../../assets/images/hs/main_slide_2.jpg" alt="">
 						<img src="" alt="">
@@ -71,7 +71,7 @@
 					</div>
 					<p class="class-price">무료</p>
 				</router-link></li>
-				<li><router-link to="">
+				<li><router-link to="/classdetailpage">
 					<div class="img-box">
 						<img src="../../assets/images/hs/main_slide_3.jpg" alt="">
 						<img src="" alt="">
@@ -84,7 +84,7 @@
 					</div>
 					<p class="class-price">무료</p>
 				</router-link></li>
-				<li><router-link to="">
+				<li><router-link to="/classdetailpage">
 					<div class="img-box">
 						<img src="../../assets/images/hs/main_slide_4.jpg" alt="">
 						<img src="" alt="">
@@ -97,7 +97,7 @@
 					</div>
 					<p class="class-price">무료</p>
 				</router-link></li>
-				<li><router-link to="">
+				<li><router-link to="/classdetailpage">
 					<div class="img-box">
 						<img src="../../assets/images/hs/main_slide_5.jpg" alt="">
 						<img src="" alt="">
@@ -121,7 +121,7 @@
 				<router-link to="#">전체보기</router-link>
 			</div>
 			<ul class="classList">
-				<li><router-link to="">
+				<li><router-link to="/classdetailpage">
 					<div class="img-box">
 						<img src="../../assets/images/hs/main_slide_1.jpg" alt="">
 						<img src="" alt="">
@@ -134,7 +134,7 @@
 					</div>
 					<p class="class-price">40,000원</p>
 				</router-link></li>
-				<li><router-link to="">
+				<li><router-link to="/classdetailpage">
 					<div class="img-box">
 						<img src="../../assets/images/hs/main_slide_1.jpg" alt="">
 						<img src="" alt="">
@@ -147,7 +147,7 @@
 					</div>
 					<p class="class-price">40,000원</p>
 				</router-link></li>
-				<li><router-link to="">
+				<li><router-link to="/classdetailpage">
 					<div class="img-box">
 						<img src="../../assets/images/hs/main_slide_1.jpg" alt="">
 						<img src="" alt="">
@@ -160,7 +160,7 @@
 					</div>
 					<p class="class-price">40,000원</p>
 				</router-link></li>
-				<li><router-link to="">
+				<li><router-link to="/classdetailpage">
 					<div class="img-box">
 						<img src="../../assets/images/hs/main_slide_1.jpg" alt="">
 						<img src="" alt="">
@@ -184,7 +184,7 @@
 				<router-link to="#">전체보기</router-link>
 			</div>
 			<ul class="classList">
-				<li><router-link to="">
+				<li><router-link to="/classdetailpage">
 					<div class="img-box">
 						<img src="../../assets/images/hs/coffee.jpg" alt="">
 						<img src="" alt="">
@@ -197,7 +197,7 @@
 					</div>
 					<p class="class-price">40,000원</p>
 				</router-link></li>
-				<li><router-link to="">
+				<li><router-link to="/classdetailpage">
 					<div class="img-box">
 						<img src="../../assets/images/hs/coffee.jpg" alt="">
 						<img src="" alt="">
@@ -210,7 +210,7 @@
 					</div>
 					<p class="class-price">40,000원</p>
 				</router-link></li>
-				<li><router-link to="">
+				<li><router-link to="/classdetailpage">
 					<div class="img-box">
 						<img src="../../assets/images/hs/coffee.jpg" alt="">
 						<img src="" alt="">
@@ -223,7 +223,7 @@
 					</div>
 					<p class="class-price">40,000원</p>
 				</router-link></li>
-				<li><router-link to="">
+				<li><router-link to="/classdetailpage">
 					<div class="img-box">
 						<img src="../../assets/images/hs/coffee.jpg" alt="">
 						<img src="" alt="">
