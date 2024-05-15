@@ -61,6 +61,9 @@
             <button>취소</button>
             <button>수정</button>
         </div>
+        <div id="map">
+
+        </div>
 
     </div>
     <AppFooter />
@@ -71,8 +74,6 @@ import AppFooter from "@/components/AppFooter.vue"
 import '@/assets/css/jh/jh.css'
 import '@/assets/css/Initialization.css'
 
-
-
 export default {
     components: {
         AppHeader,
@@ -80,7 +81,10 @@ export default {
     },
     data() {
         return {
-            previewImage: require('@/assets/images/logo.png')
+            previewImage: require('@/assets/images/logo.png'),
+            result: '',
+            items: ''
+
         }
     },
 
@@ -102,8 +106,40 @@ export default {
             if (this.profile) {
                 reader.readAsDataURL(this.profile);
             }
+        },
+
+    },
+    mounted() {
+        // 네이버 지도 API 로드
+        const script = document.createElement("script");
+        script.src =
+            "https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=z8bkhu391h";
+
+        script.async = true;
+
+        script.defer = true;
+        document.head.appendChild(script);
+
+        script.onload = () => {
+            // 네이버 지도 생성
+            new window.naver.maps.Map("map", {
+                center: new window.naver.maps.LatLng(37.5112, 127.0981),
+                zoom: 13,
+                mapTypeControl: true,
+            });
+            new window.naver.maps.Marker({
+                // 생성될 마커의 위치
+                position: new window.naver.maps.LatLng(37.5112, 127.0981),
+                map: new window.naver.maps.Map("map", {
+                    center: new window.naver.maps.LatLng(37.5112, 127.0981),
+                    zoom: 13,
+                    mapTypeControl: true,
+                })
+            });
+
         }
     },
+
     created() {
 
     }
