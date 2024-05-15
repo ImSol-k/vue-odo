@@ -57,14 +57,15 @@
 									<li>
 										<!-- https://codingbroker.tistory.com/55 하트그리기 -->
 										<!-- <img id="pay-heart" src="@/assets/images/icon/ss/heart.png"> -->
-										<img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png">
-										<div class="heart" v-on:click.prevent="wish"></div>
+										<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
+										<img id="pay-pro" src="@/assets/images/hs/cake.jpg">
+										<div class="heart" v-on:click.prevent="wish" :class="{ red : isRed}"></div>
 									</li>
 									<li>
 										<!-- <img v-for="(i) in 5" :key="i" id="pay-star" src="@/assets/images/icon/ss/star.png"> -->
 										<!-- https://melthleeth.tistory.com/entry/HTML-CSS%EB%A1%9C-%EB%B3%84%EC%B0%8D%EA%B8%B0-Star-Rating -->
-										<div class="star-ratings">
-											<div class="star-ratings-fill" :style="{ width: ratingToPercent + '%' }">
+										<div class="star-ratings ">
+											<div class="star-ratings-fill" :style="{ width: ratingToPercent(starScore) + '%' }">
 												<span>★</span>
 												<span>★</span>
 												<span>★</span>
@@ -79,26 +80,24 @@
 												<span>★</span>
 											</div>
 										</div>
+										<span class="star-avg">({{ starScore }})</span>
 									</li>
 								</ul>
 							</div>
 							<!-- mymy-pay -->
 							<div class="mymy-payCon clearfix">
-								<div class="paycon1 ">
-									<span class="paycon1-txt1">사용한 날짜 : 2024.07.07 </span>
-									<p>
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-									</p>
-									<span class="paycon1-txt2">출석 : 10 / 10</span><br>
+								<div class="paycon1">
+									<span class="paycon1-txt1"> 결제일 : 2024.05.05</span>
+									<span class="paycon1-txt2">[원데이]누구나 손쉽게 배우는 뜨개질 공방</span>
+									<span class="paycon1-txt3">뜨개질 수업에 참여해보세요. 무료입니다.</span>
+									<span class="paycon1-txt4">결제 금액 : {{ payPrice }}원</span>
+									<button>출석 : 1/1</button>
+									<!-- <div class="paycon1-btn1">
+										<button type="button">문의</button>
+										<div>
+											<button type="button" v-on:click.prevent="goReviewForm">후기 작성</button>
+										</div>
+									</div> -->
 								</div>
 								<!-- paycon1 -->
 
@@ -113,11 +112,7 @@
 									</div> -->
 								</div>
 								<!-- paycon2 -->
-								<div class="paycon3 clearfix">
-									<a href="">문의</a>
-									<a href="" v-on:click="goReviewForm">후기작성</a>
-								</div>
-								<!-- paycon3 -->
+								
 							</div>
 							<!-- mymy-payCon -->	
 						</div>
@@ -218,7 +213,11 @@ export default {
 	data() {
 		return {
 			isClass : true, // 정규클래스, 원데이클래스 변환에 사용
-			starScore : 0.1,
+			starScore : 3.5, // 별점 통계넣기
+			isRed : true, // 하트 클릭하면 색바뀌고 데이터 보내기
+			isEnd : false, // false면 안보임 , true면 종료표시
+			payPrice : 5000,
+
 		};
 	},
 	methods: {
@@ -242,13 +241,13 @@ export default {
 		},
 		// 하트이미지 클릭 -> 위시리스트에 담기기 
 		wish(){
-			console.log('wish');
+			this.isRed = !this.isRed
 		},
 
 		// 별점 퍼센트 보여주기
-		ratingToPercent(){
-			const score = +this.starScore ;
-			return score + 1.5;
+		ratingToPercent(starScore){
+			starScore = (this.starScore / 5 ) * 100;
+			return starScore + 1.5;
 		},
 	},
 	created(){}
@@ -256,7 +255,24 @@ export default {
 </script>
 
 <style>
+/* 원데이 정규 클릭했을때 */
 .pickClass {
 	border-bottom: 2px solid #8521FF;
 }
+
+/* 하트 클릭했을때  */
+.red {
+	background-color: #ea2027;
+}
+.red::before {
+	background-color: #ea2027;
+}
+.red::after{
+	background-color: #ea2027;
+}
+
+.endClass {
+	display: block;
+}
+
 </style>

@@ -13,7 +13,7 @@
 			</form>
 			<!-- form -->
 			<span class="other-login">다른 방식으로 로그인</span><br>
-			<img src="@/assets/images/icon/ss/kakao.png" v-on:click="kakao">
+			<img src="@/assets/images/icon/ss/kakao.png" >
 			<img src="@/assets/images/icon/ss/na.png" v-on:click="naver">
 		</div>
 		<!-- lj-form -->
@@ -53,11 +53,6 @@ export default {
 		login(){
 			console.log('로그인');
 			console.log(this.userVo);
-		},
-
-		// 카카오로 로그인
-		kakao(){
-			console.log('카카오로그인');
 		},
 		// 네이버로 로그인
 		naver(){
