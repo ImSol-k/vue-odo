@@ -8,6 +8,7 @@ import CompanyPageView from '../views/sr/CompanyPageView.vue'
 import MemberManagerView from '../views/sr/MemberManagerView.vue'
 import ClassCalendarView from '../views/sr/ClassCalendarView.vue'
 import ClassAddView from '../views/sr/ClassAddView.vue'
+import ClassListView from '../views/sr/ClassListView.vue'
 //재현
 import CompanyInfoView from '../views/jh/CompanyInfoView.vue'
 import CompanyInfoModify from '../views/jh/CompanyInfoModify.vue'
@@ -66,6 +67,11 @@ const routes = [
     path: '/classadd',
     name: 'classadd',
     component: ClassAddView
+  },
+  {
+    path: '/classlist',
+    name: 'classlist',
+    component: ClassListView
   },
   //=== 재현 =================================
   {

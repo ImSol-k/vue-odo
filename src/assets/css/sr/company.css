@@ -1,8 +1,19 @@
+
+
+/* {
+display: flex;
+flex-direction: row;  가로정렬
+flex-direction: column; 세로정렬
+justify-content: center; 가로정렬
+align-items: center; 세로정렬
+}   */
+  
+
 /************************
  * 사업자 가입 
  ************************/
 .companyJoinTitle {
-  margin: 0px auto;
+  margin-bottom: 70px;
 }
 .companyJoinTitle > h1 {
   text-align: center;
@@ -48,6 +59,20 @@
     text-align: center;
     font-size: 20px;
 } */
+#companyDescription{
+  resize: none;
+  width: 400px;
+  height: 90px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 17px;
+  font-family: "맑은고딕";
+}
+#companyDescription:focus{
+  border: 2px solid #8521ff;
+  outline: none;
+}
 .companyJoinInfo > div > input {
   height: 40px;
   width: 300px;
@@ -55,6 +80,10 @@
   border: 1px solid #d9d9d9;
   border-radius: 5px;
   font-size: 17px;
+}
+.companyJoinInfo > div > input:focus{
+  border: 2px solid #8521ff;
+  outline: none;
 }
 .companyJoinInfo > div > input[type="button"] {
   width: 90px;
@@ -70,6 +99,10 @@
 }
 .companyAddress > input {
   margin: 5px 0px 5px 0px;
+  width: 400px;
+}
+.companyAddress>input:first-child{
+  width: 200px;
 }
 #sample6_postcode {
   width: 200px;
@@ -121,9 +154,9 @@
 }
 
 .companyInfoMenu {
-  width: 280px;
+  width: 250px;
   float: left;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 .companyInfoMenu > ul {
   /* margin: 10px 0px 0px 30px; */
@@ -154,12 +187,12 @@
 .whatClass > span:first-child {
   /* border-right: 1px solid #000; */
 }
-.companyInfoClassList {
+.memberListTitle>p {
   float: left;
-  margin: 23px 20px 80px 20px;
+  margin: 10px 20px 10px 20px;
   width: 870px;
 }
-.companyInfoClassList > p {
+.memberListTitle > p {
   border-bottom: 1px solid #d9d9d9;
   padding: 5px 10px;
   margin: 5px 10px;
@@ -204,8 +237,20 @@
   font-size: 13px;
 }
 
+
+ /* 날짜선택 */
+.memberListTitle{
+  display: flex;
+  /* width: 500px; */
+}
 /******************* 
  * 회원리스트 */
+.memberListTitle>p>.memberVueDatePicker{
+  /* display: inline; */
+  margin: 3px;
+  width: 250px;
+  float: right;
+}
 .memberListTable {
   float: left;
   display: flex;
@@ -225,6 +270,7 @@
 .memberListTable > table > tbody > td {
   margin: 15px 0px;
 }
+
 
 /***********************
  * 클래스 등록
@@ -386,3 +432,14 @@
   background-color: #8521ff;
   color: #fff;
 }
+
+/********************************
+ * 일정표
+ ********************************/
+.demo-app>.fullCalendar{
+  width: 800px;
+  margin: 10px auto;
+  font-size: 15px;
+}
+
+

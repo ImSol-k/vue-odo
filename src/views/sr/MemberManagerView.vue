@@ -3,8 +3,25 @@
   <div class="wrap">
     <div class="clearfix">
       <AppMenu />
-      <div class="companyInfoClassList" v-if="isClass">
-        <p>예약리스트 <span>(원데이클래스)</span></p>
+      <button v-on:click.prevent="asdf('원데이')">원데이</button>
+      <button v-on:click.prevent="asdf('정규')">정규</button>
+      <button v-on:click.prevent="asdf('상시')">상시</button>
+
+      <!-- 원데이회원 -->
+      <div class="companyInfoClassList" v-if="isClass == '원데이'">
+        <div class="memberListTitle">
+          <p>
+            <span>예약리스트</span>
+            <span>(원데이클래스)</span>
+            <VueDatePicker
+              class="memberVueDatePicker"
+              locale="ko"
+              v-model="datepick"
+              :enable-time-picker="false"
+            />
+          </p>
+        </div>
+
         <div class="memberListTable">
           <table>
             <thead style="height: 40px">
@@ -32,8 +49,21 @@
         <!--memberListTable-->
       </div>
       <!--companyInfoClassList-->
-      <div class="companyInfoClassList" v-else>
-        <p>회원관리 <span>(정규클래스)</span></p>
+
+      <!-- 정규회원 -->
+      <div class="companyInfoClassList" v-else-if="isClass == '정규'">
+        <div class="memberListTitle">
+          <p>
+            <span>회원관리</span>
+            <span>(정규클래스)</span>
+            <VueDatePicker
+              class="memberVueDatePicker"
+              locale="ko"
+              v-model="datepick"
+              :enable-time-picker="false"
+            />
+          </p>
+        </div>
         <div class="memberListTable">
           <table>
             <thead style="height: 40px">
@@ -59,6 +89,46 @@
         <!--memberListTable-->
       </div>
       <!--companyInfoClassList-->
+
+      <!-- 상시회원 -->
+      <div class="companyInfoClassList" v-else-if="isClass == '상시'">
+        <div class="memberListTitle">
+          <p>
+            <span>회원관리</span>
+            <span>(상시클래스)</span>
+            <VueDatePicker
+              class="memberVueDatePicker"
+              locale="ko"
+              v-model="datepick"
+              :enable-time-picker="false"
+            />
+          </p>
+        </div>
+        <div class="memberListTable">
+          <table>
+            <thead style="height: 40px">
+              <th style="width: 40px">번호</th>
+              <th style="width: 130px">이름</th>
+              <th style="width: 80px">나이</th>
+              <th style="width: 80px">성별</th>
+              <th style="width: 190px">전화번호</th>
+              <th style="width: 130px">수강기간</th>
+              <th style="width: 100px">상태</th>
+            </thead>
+            <tbody v-for="i in 16" :key="i" style="height: 30px">
+              <td>{{ i }}</td>
+              <td>김소리</td>
+              <td>25</td>
+              <td>여</td>
+              <td>010-3433-4324</td>
+              <td>2024-05-15~<br>2024-06-14</td>
+              <td>입실</td>
+            </tbody>
+          </table>
+        </div>
+        <!--memberListTable-->
+      </div>
+      <!--companyInfoClassList-->
     </div>
   </div>
   <AppFooter />
@@ -73,10 +143,21 @@ export default {
   components: { AppHeader, AppFooter, AppMenu },
   data() {
     return {
-      isClass: false,
+      isClass: "원데이",
+      datepick: new Date(),
     };
   },
-  methods: {},
+  methods: {
+    asdf(c) {
+      if (c === "원데이") {
+        this.isClass = "원데이"
+      } else if (c === "정규") {
+        this.isClass = "정규"
+      } else if (c === "상시") {
+        this.isClass = "상시"
+      }
+      }
+    },
   created() {},
 };
 </script>

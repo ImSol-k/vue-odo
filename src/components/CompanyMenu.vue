@@ -5,6 +5,7 @@
     <ul>
       <li>업체관리</li>
       <li><router-link to="/">소개</router-link></li>
+      <li><router-link to="/">정보확인/수정</router-link></li>
     </ul>
     <ul>
       <li>클래스관리</li>

@@ -6,7 +6,7 @@
       <div class="companyInfoClassList">
         <p>일정표</p>
         <div class="demo-app">
-          <FullCalendar :options='calendarOptions' />
+          <FullCalendar class="fullCalendar" :options='calendarOptions' />
         </div>
       </div>
     </div>
@@ -44,9 +44,10 @@ export default {
         weekend: true,
         locale: 'ko',
         events: [
-          { title: 'Meeting', start: new Date() },
-          { title: 'Meeting', start: '2024-05-10 08:00:00', end: '2024-05-12 01:00:00' },
-          { title: 'Meeting', start: '2024-05-22 18:00:00' },
+          { title: '오늘', start: new Date().getDate },
+          { title: '컴포즈클래스', start: '2024-05-10 08:00:00', end: '2024-05-22 01:00:00' },
+          { title: '메가클래스', start: '2024-05-11 08:00:00', end: '2024-05-18 01:00:00' },
+          { title: '일일클래스', start: '2024-05-22 18:00:00' },
         ],
         eventClick: function (info) {
           Swal.fire({
@@ -65,4 +66,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.fc-event-main{
+  border: none;
+  background-color: #8521FF;
+}
+</style>
