@@ -23,38 +23,52 @@
         </div>
         <!--소개글-->
 
-        <div class="cover21">
+        <div class="companyJoinInfo">
             <div>
                 <!-- <label for="companyNo">사업자번호</label> -->
-                <input type="text" name="" id="ip20" value="사업자번호" readonly>
+                <input type="text" name="" id="businesNumber" placeholder="사업자번호" />
             </div>
             <div>
                 <!-- <label for="companyName">업체명</label> -->
-                <input type="text" name="" id="ip20" value="업체명" readonly>
+                <input type="text" name="" id="companyName" placeholder="업체명" />
             </div>
             <div>
-
+                <!-- <label for="companyName">업체명</label> -->
+                <textarea type="text" id="companyDescription" placeholder="업체소개"></textarea>
+            </div>
+            <div>
                 <!-- <label for="companyId">아이디</label> -->
-                <input type="text" name="" id="ip20" value="아이디" readonly>
+                <input type="text" name="" id="companyId" placeholder="아이디" />
+                <input type="button" value="중복확인" />
             </div>
             <div>
                 <!-- <label for="companyPass">비밀번호</label> -->
-                <input type="text" name="" id="ip20" placeholder="비밀번호">
-            </div>
-
-            <div class="companyAddress">
-                <input type="text" id="ip24" placeholder="우편번호">
-                <input type="button" onclick="sample6_execDaumPostcode()" value="주소검색">
-                <input type="text" id="ip20" placeholder="주소">
-                <input type="text" id="ip20" placeholder="상세주소">
+                <input type="text" name="" id="companyPass" placeholder="비밀번호" />
             </div>
             <div>
                 <!-- <label for="companyPassChack">비밀번호확인</label> -->
-                <input type="text" name="" id="ip20" placeholder="대표 핸드폰번호">
+                <input type="text" name="" id="companyPassChack" placeholder="비밀번호확인" v-model="companyVo.companyPass" />
+                <p>✅비밀번호 일치</p>
+                <p>❌비밀번호가 일치하지 않습니다.</p>
+            </div>
+            <div class="companyAddress">
+                <input type="text" id="postcode" placeholder="우편번호" v-model="companyVo.zonecode" readonly />
+                <input type="button" v-on:click.prevent="DaumPostcode()" value="우편번호 찾기" /><br />
+                <input type="text" id="roadAddress" placeholder="도로명주소" v-model="companyVo.roadAddress" readonly />
+                <input type="text" id="jibunAddress" placeholder="지번주소" v-model="companyVo.jibunAddress" readonly />
+                <span id="guide" style="color: #999; display: none"></span>
+                <input type="text" id="sample4_detailAddress" placeholder="상세주소" v-model="companyVo.detailAddress" />
             </div>
             <div>
-                <textarea name="" id="texta" cols="30" rows="10"
-                    placeholder="소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글"></textarea>
+                <!-- <label for="companyPassChack">비밀번호확인</label> -->
+                <input type="text" name="" id="companyPassChack" placeholder="대표 핸드폰번호" v-model="companyVo.companyHp" />
+                <input type="button" value="번호인증" />
+                <div class="companyHpChack">
+                    <input type="text" name="" id="companyPassChack" placeholder="인증번호" />
+                    <input type="button" value="확인" />
+                    <p>✅인증이 완료되었습니다.</p>
+                    <p>❌인증번호가 일치하지 않습니다.</p>
+                </div>
             </div>
         </div>
         <div class="companyJoinButton">
@@ -82,13 +96,34 @@ export default {
     data() {
         return {
             previewImage: require('@/assets/images/logo.png'),
-            result: '',
-            items: ''
+            companyVo: {
+                businesNumber: "",
+                companyName: "",
+                companyDescription: "",
+                companyId: "",
+                companyPass: "",
+                companyAddress: "",
+                companyHp: "",
+                //주소
+                zonecode: "",
+                roadAddress: "",
+                jibunAddress: "",
+                detailAddress: "",
+            },
 
         }
     },
 
     methods: {
+        DaumPostcode() {
+            new window.daum.Postcode({
+                oncomplete: (data) => {
+                    this.companyVo.zonecode = data.zonecode;
+                    this.companyVo.roadAddress = data.roadAddress;
+                    this.companyVo.jibunAddress = data.jibunAddress;
+                },
+            }).open();
+        },
         handleImageChange(event) {
             // 선택한 파일
             this.profile = event.target.files[0];
