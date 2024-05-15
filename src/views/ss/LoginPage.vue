@@ -14,7 +14,7 @@
 			<!-- form -->
 			<span class="other-login">다른 방식으로 로그인</span><br>
 			<img src="@/assets/images/icon/ss/kakao.png" >
-			<img src="@/assets/images/icon/ss/na.png" v-on:click="naver">
+			<img src="@/assets/images/icon/ss/na.png">
 		</div>
 		<!-- lj-form -->
 	</div>
@@ -53,11 +53,8 @@ export default {
 		login(){
 			console.log('로그인');
 			console.log(this.userVo);
-		},
-		// 네이버로 로그인
-		naver(){
-			console.log('네이버로그인');
 		}
+		
 	},
 	created(){}
 };

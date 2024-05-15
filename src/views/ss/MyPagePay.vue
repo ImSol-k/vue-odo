@@ -7,7 +7,7 @@
 	
 	<div class="mymy-header clearfix">
 		
-		<img src="@/assets/images/icon/ss/default-profile.png" 
+		<img src="@/assets/images/hs/camera.jpg" 
 			alt="회원 프로필"
 			v-on:click.prevent="goModify">
 		<ul>
@@ -41,154 +41,272 @@
 
 				<div class="mymy-paybox">
 					<!-- 결제내역이 없으면 -->
-					<div class="mymy-nopay" >
+					<div v-if="!isPay" class="mymy-nopay" >
 						<img id="nopayImg" src="@/assets/images/icon/ss/nopay.png">
 						<span>결제한 내역이 없어요</span>
 						<router-link to="/">홈으로 가기</router-link>
 					</div>
 					<!-- mymy-nopay -->
-					
-					
-					<!-- 결제내역이 있으면 -->
-					<div v-if="isClass">
-						<div class="pay clearfix" v-for="i in 1" :key="i">
-							<div class="mymy-pay">
-								<ul>
-									<li>
-										<!-- https://codingbroker.tistory.com/55 하트그리기 -->
-										<!-- <img id="pay-heart" src="@/assets/images/icon/ss/heart.png"> -->
-										<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
-										<img id="pay-pro" src="@/assets/images/hs/cake.jpg">
-										<div class="heart" v-on:click.prevent="wish" :class="{ red : isRed}"></div>
-									</li>
-									<li>
-										<!-- <img v-for="(i) in 5" :key="i" id="pay-star" src="@/assets/images/icon/ss/star.png"> -->
-										<!-- https://melthleeth.tistory.com/entry/HTML-CSS%EB%A1%9C-%EB%B3%84%EC%B0%8D%EA%B8%B0-Star-Rating -->
-										<div class="star-ratings ">
-											<div class="star-ratings-fill" :style="{ width: ratingToPercent(starScore) + '%' }">
-												<span>★</span>
-												<span>★</span>
-												<span>★</span>
-												<span>★</span>
-												<span>★</span>
-											</div>
-											<div class="star-ratings-base">
-												<span>★</span>
-												<span>★</span>
-												<span>★</span>
-												<span>★</span>
-												<span>★</span>
-											</div>
-										</div>
-										<span class="star-avg">({{ starScore }})</span>
-									</li>
-								</ul>
-							</div>
-							<!-- mymy-pay -->
-							<div class="mymy-payCon clearfix">
-								<div class="paycon1">
-									<span class="paycon1-txt1"> 결제일 : 2024.05.05</span>
-									<span class="paycon1-txt2">[원데이]누구나 손쉽게 배우는 뜨개질 공방</span>
-									<span class="paycon1-txt3">뜨개질 수업에 참여해보세요. 무료입니다.</span>
-									<span class="paycon1-txt4">결제 금액 : {{ payPrice }}원</span>
-									<button>출석 : 1/1</button>
-									<!-- <div class="paycon1-btn1">
-										<button type="button">문의</button>
-										<div>
-											<button type="button" v-on:click.prevent="goReviewForm">후기 작성</button>
-										</div>
-									</div> -->
-								</div>
-								<!-- paycon1 -->
 
-								<div class="paycon2 clearfix" >
-									<div  class="paycon2-1">
-										<img src="@/assets/images/icon/ss/default-profile.png">
-										<span class="paycon2-txt">추천클래스 이름</span>
-									</div>
-									<!-- <div class="paycon2-2">
-										
-										<span>운영중인 정규클래스가 없어요</span>
-									</div> -->
-								</div>
-								<!-- paycon2 -->
-								
-							</div>
-							<!-- mymy-payCon -->	
-						</div>
-						<!-- pay -->
-					</div>
+					<!-- 결제내역이 있고 원데이클래스 정규클래스 나오게 -->
 					<div v-else>
-						<!-- 결제내역이 있으면 -->
-						<div class="pay clearfix" v-for="i in 3" :key="i">
-							
-							<div class="mymy-pay">
-								<!-- https://melthleeth.tistory.com/entry/HTML-CSS%EB%A1%9C-%EB%B3%84%EC%B0%8D%EA%B8%B0-Star-Rating -->
-								<ul>
-									<li>
-										<img id="pay-heart" src="@/assets/images/icon/ss/heart.png">
-										<img id="pay-pro" src="@/assets/images/icon/ss/default-profile.png">
-										
-									</li>
-									<!-- <li><a href="#"> 들었던 클래스 이름asdasdasdasdasdasdasdasdasdasd</a></li> -->
-									<li>
-										<img v-for="(i) in 5" :key="i" id="pay-star" src="@/assets/images/icon/ss/star.png">
-									</li>
-								</ul>
-							</div>
-							<!-- mymy-pay -->
-							<div class="mymy-payCon clearfix">
-								<div class="paycon1 ">
-									<span class="paycon1-txt1">사용한 날짜 : 2024.10.12 </span>
-									<p>
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-										클래스를 들을때 입력한 설명 내용이 계속 나오고 있겠지
-									</p>
-									<span class="paycon1-txt2">출석 : 10 / 10</span><br>
+						<!-- 원데이 클래스-->
+						<div v-if="isClass">
+							<div class="pay clearfix" v-for="i in 1" :key="i">
+								<div class="mymy-pay">
+									<ul>
+										<li>
+											<!-- https://codingbroker.tistory.com/55 하트그리기 -->
+											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
+											<img id="pay-pro" src="@/assets/images/hs/cake.jpg">
+											<div class="heart" v-on:click.prevent="wish" :class="{ red : isRed}"></div>
+										</li>
+										<li>
+											<div class="star-ratings ">
+												<div class="star-ratings-fill" :style="{ width: ratingToPercent(starScore) + '%' }">
+													<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+												</div>
+												<div class="star-ratings-base">
+													<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+												</div>
+											</div>
+											<span class="star-avg">({{ starScore }})</span>
+										</li>
+									</ul>
 								</div>
-								<!-- paycon1 -->
+								<!-- mymy-pay -->
+								<div class="mymy-payCon clearfix">
+									<div class="paycon1">
+										<span class="paycon1-txt1"> 결제일 : 2024.05.05</span>
+										<span class="paycon1-txt2">[원데이]누구나 손쉽게 배우는 뜨개질 공방</span>
+										<span class="paycon1-txt3">뜨개질 수업에 참여해보세요. 무료입니다.</span>
+										<span class="paycon1-txt4">결제 금액 : {{ payPrice }}원</span>
+										<div class="paycon1-btnbox">
+											<button type="button" id="paybtn1" v-on:click.prevent="getAttendance">출석 : 15 / 20</button>
+											<button type="button" id="paybtn2" v-on:click.prevent="goReviewForm">후기 작성</button>
+											<button type="button" id="paybtn3" v-on:click.prevent="inquiry">문의</button>										
+										</div>
+									</div>
+									<!-- paycon1 -->
 
-								<div class="paycon2 clearfix">
-									<div>
-										<img src="@/assets/images/icon/ss/default-profile.png">
-										<span class="paycon2-txt">추천클래스 이름</span>
+									<div class="paycon2 clearfix" >
+										<div v-if="recClass" class="paycon2-1">
+											<span class="paycon2-txt1">추천!</span>
+											<img src="@/assets/images/hs/coffee.jpg">
+											<span class="paycon2-txt2">[정규]뜨개질이 일상이 되어버린사람들을 위한 클래스</span>
+										</div>
+										<div v-else class="paycon2-noClass">
+											<span>운영중인<br>정규클래스가<br>없어요</span>
+										</div>
 									</div>
-									<div>
-										<!-- <span>등록된 추천클래스가 없어요</span> -->
-									</div>
+									<!-- paycon2 -->
+									
 								</div>
-								<!-- paycon2 -->
-								<div class="paycon3 clearfix">
-									<a href="">문의</a>
-									<a href="" v-on:click="goReviewForm">후기작성</a>
-								</div>
-								<!-- paycon3 -->
+								<!-- mymy-payCon -->	
 							</div>
-							<!-- mymy-payCon -->
+							<!-- pay -->
 						</div>
-						<!-- pay -->
+						<!-- 원데이클래스 -->
+						
+						<div v-else>
+							<!-- 정규클래스 -->
+							<div class="pay clearfix" v-for="i in 3" :key="i">
+								<div class="mymy-pay">
+									<ul>
+										<li>
+											<!-- https://codingbroker.tistory.com/55 하트그리기 -->
+											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
+											<img id="pay-pro" src="@/assets/images/hs/cake.jpg">
+											<div class="heart" v-on:click.prevent="wish" :class="{ red : isRed}"></div>
+										</li>
+										<li>
+											<!-- <img v-for="(i) in 5" :key="i" id="pay-star" src="@/assets/images/icon/ss/star.png"> -->
+											<!-- https://melthleeth.tistory.com/entry/HTML-CSS%EB%A1%9C-%EB%B3%84%EC%B0%8D%EA%B8%B0-Star-Rating -->
+											<div class="star-ratings ">
+												<div class="star-ratings-fill" :style="{ width: ratingToPercent(starScore) + '%' }">
+													<span>★</span>
+													<span>★</span>
+													<span>★</span>
+													<span>★</span>
+													<span>★</span>
+												</div>
+												<div class="star-ratings-base">
+													<span>★</span>
+													<span>★</span>
+													<span>★</span>
+													<span>★</span>
+													<span>★</span>
+												</div>
+											</div>
+											<span class="star-avg">({{ starScore }})</span>
+										</li>
+									</ul>
+								</div>
+								<!-- mymy-pay -->
+								<div class="mymy-payCon clearfix">
+									<div class="paycon1">
+										<span class="paycon1-txt1"> 결제일 : 2024.03.10</span>
+										<span class="paycon1-txt2">[정규]누구나 손쉽게 배우는 뜨개질 공방</span>
+										<span class="paycon1-txt3">뜨개질 수업에 참여해보세요. 무료입니다.</span>
+										<span class="paycon1-txt4">결제 금액 : {{ payPrice }}원</span>
+										<div class="paycon1-btnbox">
+											<button type="button" id="paybtn1" v-on:click.prevent="getAttendance">출석 : 15 / 20</button>
+											<button type="button" id="paybtn2" v-on:click.prevent="goReviewForm">후기 작성</button>
+											<button type="button" id="paybtn3" v-on:click.prevent="inquiry">문의</button>										
+										</div>
+									</div>
+									<!-- paycon1 -->
+
+									<div class="paycon2 clearfix" >
+										<div v-if="recClass" class="paycon2-1">
+											<span class="paycon2-txt1">추천!</span>
+											<img src="@/assets/images/hs/coffee.jpg">
+											<span class="paycon2-txt2">[정규]뜨개질이 일상이 되어버린사람들을 위한 클래스</span>
+										</div>
+										<div v-else class="paycon2-noClass">
+											<span>운영중인<br>정규클래스가<br>없어요</span>
+										</div>
+									</div>
+									<!-- paycon2 -->
+									
+								</div>
+								<!-- mymy-payCon -->	
+							</div>
+							<!-- pay -->
+						</div>
+						<!-- //정규클래스 -->
 					</div>
 				</div>
-				<!-- mymy-paybox  -->
+				<!--// mymy-paybox  -->
 			</div>
-			<!-- mymy-main -->
+			<!-- //mymy-main -->
+
+			<!-- 등록모달 -->
+			<div class="rev-modal">
+				<div class="revform">
+					<div class="revform1-header">후기작성</div>
+					<div class="revform1-closeBtn">x</div>
+					<form action="#" method="#" enctype="multipart/form-data">
+						<div class="review-form">
+							<div class="rf-1 clearfix">
+								<div class="rf-1-1">
+									<img :src="getClassImg">
+									<span>누구나 쉽게 배우는 디자인 연습 </span>
+									<p>
+										누구나 쉽게 배울수 있는 수업이에요<br>
+										디자인은 정말 하기 싫어요<br>
+										내가 지금 이걸 왜 하고 있는걸까 생각해볼까요
+									</p>
+								</div>
+							</div>
+							<!-- rf-1 / 클래스사진 + 클래스 설명 -->
+													
+							<div class="rf-2 clearfix">
+								<span>클래스는 사용해 보셨나요?</span><br>
+								<div class="star-rating">
+									<input type="radio" id="5-stars" name="rating" value="5" />
+									<label for="5-stars" class="star">&#9733;</label>
+									<input type="radio" id="4-stars" name="rating" value="4" />
+									<label for="4-stars" class="star">&#9733;</label>
+									<input type="radio" id="3-stars" name="rating" value="3" />
+									<label for="3-stars" class="star">&#9733;</label>
+									<input type="radio" id="2-stars" name="rating" value="2" />
+									<label for="2-stars" class="star">&#9733;</label>
+									<input type="radio" id="1-star" name="rating" value="1" />
+									<label for="1-star" class="star">&#9733;</label>
+								</div>
+								<!-- star-rating -->
+							</div>
+							<!-- rf-2 / 별점 부분 -->
+
+							<div class="rf-3 clearfix">
+								<span>수업의 내용은 좋았나요?</span><br>
+								<div class="revbox">
+									<input id="rev1-bad" type="radio" name="rev1" value="1"><br>
+									<label for="rev1-bad">별로에요</label>
+								</div>
+								<div class="revbox">
+									<input id="rev1-mid" type="radio" name="rev1" value="2"><br>
+									<label for="rev1-mid">만족해요</label>
+								</div>
+								<div class="revbox">
+									<input id="rev1-good" type="radio" name="rev1" value="3"><br>
+									<label for="rev1-good">아주 만족해요</label>
+								</div>
+							</div>
+							<!-- rf-3 / 질문1 -->
+
+							<div class="rf-4 clearfix">
+								<span>시설에 만족하셨나요?</span><br>
+								<div class="revbox">
+									<input id="rev2-bad" type="radio" name="rev2" value="1"><br>
+									<label for="rev2-bad">별로에요</label>
+								</div>
+								<div class="revbox">
+									<input id="rev2-mid" type="radio" name="rev2" value="2"><br>
+									<label for="rev2-mid">만족해요</label>
+								</div>
+								<div class="revbox">
+									<input id="rev2-good" type="radio" name="rev2" value="3"><br>
+									<label for="rev2-good">아주 만족해요</label>
+								</div>
+							</div>
+							<!-- rf-4 / 질문2 -->
+
+							<div class="rf-5 clearfix">
+								<span>강의비용은 적당했나요?</span><br>
+								<div class="revbox">
+									<input id="rev3-bad" type="radio" name="rev3" value="1"><br>
+									<label for="rev3-bad">별로에요</label>
+								</div>
+								<div class="revbox">
+									<input id="rev3-mid" type="radio" name="rev3" value="2"><br>
+									<label for="rev3-mid">만족해요</label>
+								</div>
+								<div class="revbox">
+									<input id="rev3-good" type="radio" name="rev3" value="3"><br>
+									<label for="rev3-good">아주 만족해요</label>
+								</div>
+							</div>
+							<!-- rf-5 / 질문3 -->
+
+							<div class="rf-6">
+								<span>리뷰를 작성해 주세요</span><br>
+								<textarea spellcheck="false" value=""></textarea>
+							</div>
+							<!-- rf-6 / 리뷰작성란 -->
+							
+							<div class="filebox">
+								<span>사진첨부하기</span><br>
+								<img :src="prevImg">
+								<div class="filebox-1">
+									<input class="upload-name" v-model="fileName" placeholder="선택된 파일이 없습니다" readonly>
+									<label for="file">파일찾기</label>
+									<input id="file" type="file" name="file" @change="getfile">
+								</div>							
+							</div>
+							<!-- filebox / 사진첨부 -->
+
+							<div class="rf-8">
+								<button class="back-btn" type="button" v-on:click="back">뒤로 가기</button>
+								<button class="insert-btn" type="button" v-on:click="insertReview">후기 등록</button>				
+							</div>
+							<!-- rf-8 / 버튼 -->
+						</div>
+						<!-- review-form -->
+					</form>
+				</div>
+			</div>
+			<!-- //등록모달 -->
 		</div>
-		<!-- mypage-content -->
+		<!-- //mypage-content -->
 	</div>
-	<!-- mymy -->
+	<!-- //mymy -->
 </div>
-<!-- wrap -->
+<!-- //wrap -->
 
 <AppFooter/>
-<!-- footer -->
+<!-- //footer -->
 </template>
 
 
@@ -213,11 +331,13 @@ export default {
 	data() {
 		return {
 			isClass : true, // 정규클래스, 원데이클래스 변환에 사용
-			starScore : 3.5, // 별점 통계넣기
+			starScore : 3.8, // 별점 통계넣기
 			isRed : true, // 하트 클릭하면 색바뀌고 데이터 보내기
 			isEnd : false, // false면 안보임 , true면 종료표시
 			payPrice : 5000,
-
+			recClass : true, // 추천클래스 - 있으면 true 없으면 false
+			isPay : false, // 결제여부확인
+			paymentData : [], // 결제정보가져와서 저장될 곳 
 		};
 	},
 	methods: {
@@ -228,7 +348,9 @@ export default {
 
 		// 리뷰폼이동 
 		goReviewForm(){ 
-			this.$router.push('/mypage/review/form');
+			console.log('리뷰작성');
+			let modal = document.querySelector('.rev-modal');
+			modal.style.display = 'block';
 		},
 
 		// 정규클래스 원데이 클래스 선택
@@ -249,8 +371,34 @@ export default {
 			starScore = (this.starScore / 5 ) * 100;
 			return starScore + 1.5;
 		},
+		// 문의요청
+		inquiry(){
+			console.log('문의');
+		},
+		// 출석부 모달
+		getAttendance(){
+			console.log('출석부');
+		},
+		// 결제정보 가져오기
+		getList(){
+			// console.log('결제정보가져오기');
+			this.paymentData = [
+				{ classType: "원데이", paymentAmount: 5000 },
+			]
+
+			this.isPay = this.paymentData.length > 0;
+			this.isClass = this.paymentData.some((item) => item.classType ==="원데이");
+
+			if(!this.isPay && this.isClass){
+				this.isClass =false;
+			}
+		}
+
 	},
-	created(){}
+	created(){
+		// 데이터가져오는 메소드 실행
+		this.getList();
+	}
 };
 </script>
 
@@ -261,13 +409,13 @@ export default {
 }
 
 /* 하트 클릭했을때  */
-.red {
+.mymy-pay .red {
 	background-color: #ea2027;
 }
-.red::before {
+.mymy-pay .red::before {
 	background-color: #ea2027;
 }
-.red::after{
+.mymy-pay .red::after{
 	background-color: #ea2027;
 }
 

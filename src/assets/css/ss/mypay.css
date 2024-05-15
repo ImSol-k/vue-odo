@@ -5,7 +5,7 @@
     width: 950px;
     display: block;
     padding : 0 0 10px 0 ; 
-    border-bottom: 1px solid rgba(133, 33, 255, 0.6);
+    border-bottom: 1px solid #8521FF;
 }
 
 .mymy-nav span {
@@ -27,10 +27,11 @@
 /* 결제한 내역이 없을때 */
 .mymy-nopay {
     box-sizing: border-box;
-    display: none;
+    /* border: 1px solid #000; */
+    display: block;
     text-align: center;
     margin: 0 auto;
-    min-height: 500px;
+    min-height: 400px;
 }
 
 .mymy-nopay #nopayImg {
@@ -69,7 +70,7 @@
     /* border: 1px solid #000; */
     box-sizing: border-box;
     border-bottom: 1px solid #8521FF;
-    height: 280px;
+    height: 215px;
     margin-top: 10px;
 }
 
@@ -122,19 +123,10 @@
     z-index: 1;
 }
 
-/* .mymy-pay #pay-heart {
-    width: 30px;
-    position: absolute;
-    z-index: 2;
-    margin-left: 150px;
-    margin-top: 150px;
-    cursor: pointer;
-    filter: opacity(0.5) drop-shadow(0 0 0 red);
-    -webkit-filter: brightness(3);
-} */
+
 
 /* 하트 표시 */
-.heart {
+.mymy-pay .heart {
     z-index: 3;
     width: 15px;
     height: 15px;
@@ -146,7 +138,7 @@
     cursor: pointer;
 }
 
-.heart::before{
+.mymy-pay .heart::before{
     content: "";
     width: 15px;
     height: 15px;
@@ -156,7 +148,7 @@
     background: #fff;
 }
 
-.heart::after{
+.mymy-pay .heart::after{
     content: "";
     width: 15px;
     height: 15px;
@@ -228,19 +220,21 @@
     box-sizing: border-box;
     width: 730px;
     height: 200px;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     float: left;
     padding: 10px;
 }
 
 /* paycon1 */
 .paycon1 {
-    width: 450px;
-    border: 1px solid #000;
+    box-sizing: border-box;
+    width: 500px;
+    /* border: 1px solid #000; */
     height: 180px;
     padding-top: 2px;
     padding-left: 3px;
     float: left;
+
 }
 
 /* 결제일 */
@@ -248,9 +242,10 @@
     box-sizing: border-box;
     display: block;
     /* border: 1px solid #000; */
+    padding-left: 5px;
     width: 200px;
     height: 20px;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 /* 클래스제목 */
@@ -263,7 +258,7 @@
     line-height: 35px;
     font-size: 20px;
     margin-bottom: 5px;
-    padding-left: 1.5px;
+    padding-left: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -286,77 +281,166 @@
 .paycon1-txt4 {
     box-sizing: border-box;
     display: block;
-    border: 1px solid #000;
     font-size: 13px;
     max-width: 180px;
+    padding-left: 5px;
+    margin-bottom: 5px;
 }
 
+/* 버튼들 */
+.paycon1-btnbox {
+    box-sizing: border-box;
+    /* border: 1px solid #000; */
+    width: 440px;
+    height: 60px;
+    line-height: 60px;
+    text-align: left;
+    padding: 0 5px;
+}
 
-
+.paycon1-btnbox button {
+    border: none;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: 300;
+    background-color: #8521FF;
+    color: #fff;
+}
+/* 출석보기 버튼 */
+#paybtn1 {
+    box-sizing: border-box;
+    width: 150px;
+    max-width: 150px;
+    margin-right: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 0.1px solid #d6d6d6;
+    padding-left: 2px;
+    text-align: left;
+    background-color: #d6d6d6;
+    color: #000;
+}
+/* 후기 작성/보기 버튼 */
+#paybtn2 {
+    box-sizing: border-box;
+    width: 100px;
+    margin-right: 20px;
+    padding: 2px;
+}
+/* 문의 버튼 */
+#paybtn3 {
+    width: 50px;
+}
 
 /* paycon2 */
 
 .paycon2 {
     box-sizing: border-box;
     width: 200px;
-    height: 175px;
+    height: 180px;
     /* border: 1px solid #000; */
     text-align: center;
     float: left;
-    margin: 10px auto 30px auto;
-    cursor: pointer; 
+    margin: 0;
+    
 }
 
-.paycon2 img {
+/* 추천 문구 */
+.paycon2-txt1 {
     box-sizing: border-box;
     display: block;
-    width: 130px;
-    margin: 0 auto; 
+    /* border: 1px solid #000; */
+    position: absolute;
+    color: #fff;
+    width: 40px;
+    height: 23px;
+    line-height: 20px;
+    font-size: 13px;
+    padding: 1px;
+    background-color: #8521FF;
+    margin-left: 124px;
 }
 
-.paycon2 .paycon2-txt {
+/* 추천클래스 이미지 */
+.paycon2 img {
     box-sizing: border-box;
+    /* border: 1px solid #000; */
+    display: block;
+    width: 130px;
+    height: 130px;
+    max-height: 130px;
+    margin: 10px auto;
+    cursor: pointer; 
+}
+/* 추천클래스 이름 */
+.paycon2 .paycon2-txt2 {
+    box-sizing: border-box;
+    /* border: 1px solid #000; */
+    width: 130px;
+    padding: 1px 2px;
     display: -webkit-box;
     margin: 10px auto 0 auto;
-    font-size: 14px;
+    font-size: 10px;
     text-overflow: ellipsis;
-    text-align: center;
+    text-align: left;
     overflow: hidden;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     white-space: no-wrap;
+    cursor: pointer; 
 }
 
-
-/* paycon3 */
-
-.mymy-payCon .paycon3 {
+/* 추천클래스 없을 때 */
+.paycon2-noClass {
     box-sizing: border-box;
-    display: block;
-    width: 200px;
     /* border: 1px solid #000; */
-    float: right;
-    text-align: center;
+    width: 100px;
+    height: 180px;
+    margin: 0 auto;
+    font-size: 15px;    
 }
 
-.paycon3 a {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 70px;
-    height: 30px;
-    line-height: 26px;
-    margin: 0 10px;
-    padding: 2px;
-    border: none;
-    border-radius: 3px;
-    letter-spacing: -1.0px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #fff;
-    background-color: rgba(133, 33, 255, 0.6);
+.paycon2-noClass span {
+    display: block;
+    /* border: 1px solid #000; */
+    height: 60px;
+    margin: 60px 0;
 }
 
+/***********************************************/
+/* 모달 */
 
+.rev-modal {
+    /* border: 1px solid #000; */
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.3);     
+}
 
+.revform1 {
+    background-color: #fff;
+    width: 950px;
+    height: 1350px;
+    margin: 100px auto;
+}
 
+.revform1-header {
+    border: 1px solid #000;
+    width: 200px;
+    margin: 0 auto;
+    float: left;
+}
 
+.revform1-closeBtn {
+    border: 1px solid #000;
+    float: left;
+}
