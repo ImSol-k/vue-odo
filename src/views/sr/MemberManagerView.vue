@@ -82,7 +82,7 @@
               <td>여</td>
               <td>010-3433-4324</td>
               <td>17/20 <span>(90%)</span></td>
-              <td>입실</td>
+              <td>결석</td>
             </tbody>
           </table>
         </div>
@@ -122,7 +122,7 @@
               <td>여</td>
               <td>010-3433-4324</td>
               <td>2024-05-15~<br>2024-06-14</td>
-              <td>입실</td>
+              <td>출석</td>
             </tbody>
           </table>
         </div>
