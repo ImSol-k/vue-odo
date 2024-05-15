@@ -31,7 +31,7 @@
               <th style="width: 80px">성별</th>
               <th style="width: 190px">전화번호</th>
               <th style="width: 100px">참여여부</th>
-              <th style="width: 100px">작성후기</th>
+              <th style="width: 100px">후기</th>
               <th style="width: 90px">쿠폰지급</th>
             </thead>
             <tbody v-for="i in 16" :key="i" style="height: 30px">
@@ -41,7 +41,8 @@
               <td>여</td>
               <td>010-3433-4324</td>
               <td>완료</td>
-              <td>[링크]</td>
+              <td v-if="i == 1 || i == 2 || i == 10  || i == 14 ">작성</td>
+              <td v-else>-</td>
               <td><button>지급</button></td>
             </tbody>
           </table>

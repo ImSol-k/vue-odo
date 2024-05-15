@@ -206,7 +206,6 @@ export default {
               this.companyVo.y = result[0].y; // 위도
               this.companyVo.x = result[0].x; // 경도
               console.log("위도:", this.companyVo.y, "경도:", this.companyVo.x);
-              // 여기서 위도와 경도를 사용하여 원하는 작업을 수행할 수 있습니다.
             } else {
               // 주소 검색 실패
               console.error("주소 검색 실패");

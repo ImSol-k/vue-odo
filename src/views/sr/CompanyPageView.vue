@@ -91,4 +91,7 @@ export default {
 </script>
 
 <style>
+.classChack {
+  border-bottom: 2px solid #8521ff;
+}
 </style>

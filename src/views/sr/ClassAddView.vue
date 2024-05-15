@@ -269,6 +269,9 @@
                 <input type="text" placeholder="인원수" />
               </div>
               <div class="addInfoImg">
+                <div id="editor">
+                  <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+                </div>
                 <label for="">상세이미지</label>
                 <div class="addSelectImg">
                   <div>
@@ -302,6 +305,7 @@
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import AppMenu from "@/components/CompanyMenu.vue";
+// import Editor from '@toast-ui/editor'
 
 export default {
   name: "ClassAddView",
@@ -312,6 +316,7 @@ export default {
       startDate: null,
       endDate: null,
       onedayDate: [null],
+      // Editor: require('@toast-ui/editor')
     };
   },
   methods: {
