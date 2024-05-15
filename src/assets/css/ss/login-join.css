@@ -46,6 +46,17 @@
     outline: none;
 }
 
+/* 이미지 */
+.lj-passImg{
+    display: inline-block;
+    position: absolute;
+    border: 1px solid #000;
+    z-index: 2;
+    width: 100px;
+    /* height: 20px; */
+}
+
+
 /* 로그인버튼 */
 .lj-form .login-btn {
     width: 360px;
@@ -63,6 +74,7 @@
 
 /* 다른로그인방식 문구*/
 .lj-form .other-login {
+    display: block;
     font-size: 15px;
     color: #d6d6d6;
     letter-spacing: -2.1px;
