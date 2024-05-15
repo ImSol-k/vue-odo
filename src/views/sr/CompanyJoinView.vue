@@ -112,6 +112,18 @@
               placeholder="상세주소"
               v-model="companyVo.detailAddress"
             />
+            <input
+              type="text"
+              name=""
+              v-model="companyVo.y"
+              placeholder="위도"
+            />
+            <input
+              type="text"
+              name=""
+              v-model="companyVo.x"
+              placeholder="경도"
+            />
           </div>
           <div>
             <!-- <label for="companyPassChack">비밀번호확인</label> -->
@@ -154,7 +166,6 @@ import "@/assets/css/sr/company.css";
 import "@/assets/css/hs/main.css";
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
-
 export default {
   name: "CompanyJoinView",
   components: { AppHeader, AppFooter },
@@ -174,6 +185,8 @@ export default {
         roadAddress: "",
         jibunAddress: "",
         detailAddress: "",
+        y: "", //위도
+        x: "", //경도
       },
     };
   },
@@ -181,9 +194,24 @@ export default {
     DaumPostcode() {
       new window.daum.Postcode({
         oncomplete: (data) => {
+          //주소 저장
           this.companyVo.zonecode = data.zonecode;
           this.companyVo.roadAddress = data.roadAddress;
           this.companyVo.jibunAddress = data.jibunAddress;
+          // //검색된주소 위도, 경도로 저장
+          var geocoder = new window.kakao.maps.services.Geocoder();
+          geocoder.addressSearch(this.companyVo.roadAddress, (result, status) => {
+            if (status === window.kakao.maps.services.Status.OK) {
+              // 주소 검색 결과가 성공일 경우
+              this.companyVo.y = result[0].y; // 위도
+              this.companyVo.x = result[0].x; // 경도
+              console.log("위도:", this.companyVo.y, "경도:", this.companyVo.x);
+              // 여기서 위도와 경도를 사용하여 원하는 작업을 수행할 수 있습니다.
+            } else {
+              // 주소 검색 실패
+              console.error("주소 검색 실패");
+            }
+          });
         },
       }).open();
     },
