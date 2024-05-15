@@ -24,43 +24,43 @@
         <!--소개글-->
 
         <div class="cover21">
-				<div>
-					<!-- <label for="companyNo">사업자번호</label> -->
-					<input type="text" name="" id="ip20" value="사업자번호" readonly>
-				</div>
-				<div>
-					<!-- <label for="companyName">업체명</label> -->
-					<input type="text" name="" id="ip20" value="업체명" readonly>
-				</div>
-				<div>
-					
-					<!-- <label for="companyId">아이디</label> -->
-					<input type="text" name="" id="ip20" value="아이디" readonly>
-				</div>
-				<div>
-					<!-- <label for="companyPass">비밀번호</label> -->
-					<input type="text" name="" id="ip20" placeholder="비밀번호">
-				</div>
-				
-				<div class="companyAddress">
-					<input type="text" id="ip24" placeholder="우편번호">
-					<input type="button" onclick="sample6_execDaumPostcode()" value="주소검색">
-					<input type="text" id="ip20" placeholder="주소">
-					<input type="text" id="ip20" placeholder="상세주소">
-				</div>
-				<div>
-					<!-- <label for="companyPassChack">비밀번호확인</label> -->
-					<input type="text" name="" id="ip20" placeholder="대표 핸드폰번호">
-				</div>
-                <div>
-                    <textarea name="" id="texta" cols="30" rows="10" placeholder="소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글"></textarea>
-                </div>
-			</div>
-			<div class="companyJoinButton">
-				<button>취소</button>
-				<button>수정</button>
-			</div>
+            <div>
+                <!-- <label for="companyNo">사업자번호</label> -->
+                <input type="text" name="" id="ip20" value="사업자번호" readonly>
+            </div>
+            <div>
+                <!-- <label for="companyName">업체명</label> -->
+                <input type="text" name="" id="ip20" value="업체명" readonly>
+            </div>
+            <div>
 
+                <!-- <label for="companyId">아이디</label> -->
+                <input type="text" name="" id="ip20" value="아이디" readonly>
+            </div>
+            <div>
+                <!-- <label for="companyPass">비밀번호</label> -->
+                <input type="text" name="" id="ip20" placeholder="비밀번호">
+            </div>
+
+            <div class="companyAddress">
+                <input type="text" id="ip24" placeholder="우편번호">
+                <input type="button" onclick="sample6_execDaumPostcode()" value="주소검색">
+                <input type="text" id="ip20" placeholder="주소">
+                <input type="text" id="ip20" placeholder="상세주소">
+            </div>
+            <div>
+                <!-- <label for="companyPassChack">비밀번호확인</label> -->
+                <input type="text" name="" id="ip20" placeholder="대표 핸드폰번호">
+            </div>
+            <div>
+                <textarea name="" id="texta" cols="30" rows="10"
+                    placeholder="소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글"></textarea>
+            </div>
+        </div>
+        <div class="companyJoinButton">
+            <button>취소</button>
+            <button>수정</button>
+        </div>
 
     </div>
     <AppFooter />
