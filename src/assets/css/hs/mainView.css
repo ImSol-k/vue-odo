@@ -19,6 +19,7 @@ ul.category-icons div {
     background: #eee;
     border-radius: 20px;
     margin-bottom: 2px;
+    /* border: 1px solid #8521FF; */
 }
 ul.category-icons img {
     width: 40px;
