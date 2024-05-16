@@ -195,6 +195,9 @@ h2 {
     background: url('../../images/hs/macbookintro.jpg') no-repeat center / cover;
     border: 1px solid #ddd;
 }
+.classIntroduceSection .classIntroImgBox.show {
+    height: 1500px;
+}
 /* 상세정보 더보기 버튼 */
 .moreInfoBtn {
     width: 350px;
@@ -207,7 +210,7 @@ h2 {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 4%;
+    bottom: 30px;
 }
 .moreInfoBtn::after {
     content: '∨';

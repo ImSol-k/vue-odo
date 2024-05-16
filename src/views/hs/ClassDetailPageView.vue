@@ -99,7 +99,7 @@
 	
 			<div class="classIntroduceSection">
 				<h2>클래스 소개</h2>
-				<div class="classIntroImgBox"></div>
+				<div class="classIntroImgBox" :class="{ 'show': isMoreInfo }"></div>
 				<button class="moreInfoBtn" @click="moreInfo">상세정보 더보기</button>
 			</div>
 			<!-- //classIntroduce -->
@@ -155,7 +155,9 @@ export default {
 		AppFooter,
 	},
 	data() {
-		return {};
+		return {
+			isMoreInfo: false,
+		};
 	},
 	mounted() {
 		if (window.kakao && window.kakao.maps) {
@@ -193,8 +195,7 @@ export default {
 
 		},
 		moreInfo() {
-			let classIntroImgBox = document.querySelector('.classIntroImgBox');
-			classIntroImgBox.style.height = "1500px"
+			this.isMoreInfo = !this.isMoreInfo;
 		},
 
 	},
