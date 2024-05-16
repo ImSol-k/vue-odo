@@ -56,7 +56,6 @@
 								<div class="mymy-pay">
 									<ul>
 										<li>
-											<!-- https://codingbroker.tistory.com/55 하트그리기 -->
 											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
 											<img id="pay-pro" src="@/assets/images/hs/cake.jpg">
 											<div class="heart" v-on:click.prevent="wish" :class="{ red : isRed}"></div>
@@ -83,7 +82,7 @@
 										<span class="paycon1-txt4">결제 금액 : {{ payPrice }}원</span>
 										<div class="paycon1-btnbox">
 											<button type="button" id="paybtn1" v-on:click.prevent="getAttendance">출석 : 15 / 20</button>
-											<button type="button" id="paybtn2" v-on:click.prevent="goReviewForm">후기 작성</button>
+											<button type="button" id="paybtn2" v-on:click.prevent="revForm">후기 작성</button>
 											<button type="button" id="paybtn3" v-on:click.prevent="inquiry">문의</button>										
 										</div>
 									</div>
@@ -183,9 +182,13 @@
 
 			<!-- 등록모달 -->
 			<div class="rev-modal">
-				<div class="revform">
-					<div class="revform1-header">후기작성</div>
-					<div class="revform1-closeBtn">x</div>
+				<div class="revform1">
+
+					<div class="revform1-header clearfix">
+						<div class="revform-closeBtn" v-on:click.prevent="closeRevForm">x</div>
+					</div>
+					<!-- revform1-header -->
+
 					<form action="#" method="#" enctype="multipart/form-data">
 						<div class="review-form">
 							<div class="rf-1 clearfix">
@@ -200,7 +203,6 @@
 								</div>
 							</div>
 							<!-- rf-1 / 클래스사진 + 클래스 설명 -->
-													
 							<div class="rf-2 clearfix">
 								<span>클래스는 사용해 보셨나요?</span><br>
 								<div class="star-rating">
@@ -217,7 +219,7 @@
 								</div>
 								<!-- star-rating -->
 							</div>
-							<!-- rf-2 / 별점 부분 -->
+							<!-- rf-2 / 별점 부분 -->	
 
 							<div class="rf-3 clearfix">
 								<span>수업의 내용은 좋았나요?</span><br>
@@ -275,7 +277,7 @@
 								<textarea spellcheck="false" value=""></textarea>
 							</div>
 							<!-- rf-6 / 리뷰작성란 -->
-							
+
 							<div class="filebox">
 								<span>사진첨부하기</span><br>
 								<img :src="prevImg">
@@ -286,16 +288,20 @@
 								</div>							
 							</div>
 							<!-- filebox / 사진첨부 -->
-
+							
 							<div class="rf-8">
-								<button class="back-btn" type="button" v-on:click="back">뒤로 가기</button>
-								<button class="insert-btn" type="button" v-on:click="insertReview">후기 등록</button>				
+								<button class="back-btn" type="button" v-on:click.prevent="closeRevForm">뒤로 가기</button>
+								<button class="insert-btn" type="button" v-on:click.prevent="insertReview">후기 등록</button>				
 							</div>
 							<!-- rf-8 / 버튼 -->
+							<div class="rf-9"></div>
+							<!-- rf-9 / 높이 여백용 -->
 						</div>
 						<!-- review-form -->
 					</form>
+					
 				</div>
+				<!-- revform1 -->
 			</div>
 			<!-- //등록모달 -->
 		</div>
@@ -316,6 +322,7 @@
 import '@/assets/css/Initialization.css';
 import '@/assets/css/ss/ss.css';
 import '@/assets/css/ss/mypay.css';
+import '@/assets/css/ss/myrevform.css';
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
 import MyPageSide from '@/components/MyPageSide.vue';
@@ -337,7 +344,11 @@ export default {
 			payPrice : 5000,
 			recClass : true, // 추천클래스 - 있으면 true 없으면 false
 			isPay : false, // 결제여부확인
-			paymentData : [], // 결제정보가져와서 저장될 곳 
+			paymentData : [], // 결제정보가져와서 저장될 곳
+			getClassImg : require('@/assets/images/hs/cake.jpg'), // 클래스이미지 
+			file : document.querySelector('#file'),
+			fileName : '',
+			prevImg : require('@/assets/images/icon/ss/default-photo.png'),
 		};
 	},
 	methods: {
@@ -347,10 +358,15 @@ export default {
 		},
 
 		// 리뷰폼이동 
-		goReviewForm(){ 
-			console.log('리뷰작성');
+		revForm(){ 
 			let modal = document.querySelector('.rev-modal');
 			modal.style.display = 'block';
+		},
+		// 리뷰폼 끄기
+		closeRevForm(){
+			let modal = document.querySelector('.rev-modal');
+			modal.style.display = 'none';
+			
 		},
 
 		// 정규클래스 원데이 클래스 선택
@@ -392,6 +408,31 @@ export default {
 			if(!this.isPay && this.isClass){
 				this.isClass =false;
 			}
+		},
+		// 파일 가져오기
+		getfile(event){
+			console.log('getfile');
+			this.file = event.target.files[0];
+			const READER = new FileReader();
+
+			READER.onload = (e) =>{
+				this.prevImg = e.target.result;
+			}
+			if(this.file){
+				READER.readAsDataURL(this.file);
+			}
+			this.fileName = this.file.name;
+			
+			
+		},
+		// 등록버튼 클릭시 
+		insertReview(){
+			console.log('후기등록');
+		},
+
+		// 별점
+		star(){
+			console.log('star');
 		}
 
 	},

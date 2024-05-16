@@ -48,7 +48,6 @@
 												
 						<div class="rf-2 clearfix">
 							<span>클래스는 사용해 보셨나요?</span><br>
-							<!-- https://melthleeth.tistory.com/entry/HTML-CSS%EB%A1%9C-%EB%B3%84%EC%B0%8D%EA%B8%B0-Star-Rating -->
 							<div class="star-rating">
 								<input type="radio" id="5-stars" name="rating" value="5" />
 								<label for="5-stars" class="star">&#9733;</label>

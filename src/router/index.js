@@ -29,6 +29,7 @@ import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
 import AnnouncementView from '../views/mj/AnnouncementView.vue'
 import ReadView from '../views/mj/readView.vue'
+import WriteView from '../views/mj/WriteView.vue'
 
 const routes = [
   //=== 하석 =================================
@@ -160,6 +161,11 @@ const routes = [
     path: '/mypage/read',
     name: 'mypageread',
     component: ReadView
+  },
+  {
+    path: '/mypage/write',
+    name: 'mypagewrite',
+    component: WriteView
   },
 ]
 

@@ -5,7 +5,7 @@
     width: 950px;
     display: block;
     padding : 0 0 10px 0 ; 
-    border-bottom: 1px solid #8521FF;
+    border-bottom: 1px solid #d9d9d9;
 }
 
 .mymy-nav span {
@@ -69,7 +69,7 @@
     width: 950px;
     /* border: 1px solid #000; */
     box-sizing: border-box;
-    border-bottom: 1px solid #8521FF;
+    border-bottom: 1px solid #d9d9d9;
     height: 215px;
     margin-top: 10px;
 }
@@ -114,6 +114,7 @@
 .mymy-pay #pay-pro {
     box-sizing: border-box;
     /* border: 1px solid #000; */
+    border-radius: 5px;
     display: block;
     width: 150px;
     height: 150px;
@@ -351,6 +352,7 @@
 /* 추천 문구 */
 .paycon2-txt1 {
     box-sizing: border-box;
+    border-radius: 5px;
     display: block;
     /* border: 1px solid #000; */
     position: absolute;
@@ -367,6 +369,7 @@
 /* 추천클래스 이미지 */
 .paycon2 img {
     box-sizing: border-box;
+    border-radius: 5px;
     /* border: 1px solid #000; */
     display: block;
     width: 130px;
@@ -415,7 +418,7 @@
 
 .rev-modal {
     /* border: 1px solid #000; */
-    display: block;
+    display: none;
     width: 100%;
     height: 100%;
     position: fixed;
@@ -423,24 +426,61 @@
     left: 0;
     z-index: 999;
     overflow: auto;
-    background-color: rgba(0,0,0,0.3);     
+    background-color: rgba(0,0,0,0.3);   
+     
 }
 
 .revform1 {
+    border: 0.5px solid #8521FF;
     background-color: #fff;
-    width: 950px;
-    height: 1350px;
-    margin: 100px auto;
+    width: 530px;
+    height: 800px;
+    margin: 80px auto 0 auto;
+    overflow: auto;
+    border-radius: 20px; 
 }
 
-.revform1-header {
-    border: 1px solid #000;
-    width: 200px;
-    margin: 0 auto;
-    float: left;
+.revform1::-webkit-scrollbar{
+    width: 15px;
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+    /* background-color: #8521FF; */
 }
 
-.revform1-closeBtn {
-    border: 1px solid #000;
-    float: left;
+.revform1::-webkit-scrollbar-thumb{
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+    background-color: #8521FF;
+    border: 2px solid transparent;
+}
+
+.revform1::-webkit-scrollbar-track {
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+    /* background-color: #d6d6d6; */
+    box-shadow: inset 0px 0px 5px #fff;
+  }
+
+
+.revform1-header{
+    box-sizing: border-box;
+    text-align: center;
+    width: 500px;
+    /* border: 1px solid #000; */
+    margin-bottom: 10px;
+}
+
+.revform-closeBtn {
+    box-sizing: border-box;
+    display: inline-block;
+    /* border: 1px solid #000; */
+    /* float: right; */
+    margin-left: 473px;
+    padding: 2px;
+    font-size: 30px;
+    font-weight: bold;
+    width: 40px;
+    line-height: 26px;
+    height: 40px;
+    cursor: pointer;
 }
