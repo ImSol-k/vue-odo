@@ -67,8 +67,8 @@ export default {
 </script>
 
 <style>
-.fc-event-main{
-  border: none;
-  background-color: #8521FF;
+:root{
+  --fc-event-bg-color: #8521ff;
+  --fc-event-border-color: #8521ff;
 }
 </style>
