@@ -31,7 +31,7 @@
                         <tbody>
                           <tr>
                             <td width="70">1111</td>
-                            <td width="500"><a href="#">제제제목모곰곰고모목</a></td>
+                            <td width="500"><a href="#">공지 전달드립니다</a></td>
                             <td width="120">이미지</td>
                             <td width="100">2024-05-11</td>
                             <td width="100">222</td>
