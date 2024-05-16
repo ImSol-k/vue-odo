@@ -77,12 +77,13 @@
 								<div class="mymy-payCon clearfix">
 									<div class="paycon1">
 										<span class="paycon1-txt1"> 결제일 : 2024.05.05</span>
-										<span class="paycon1-txt2">[원데이]누구나 손쉽게 배우는 뜨개질 공방</span>
-										<span class="paycon1-txt3">뜨개질 수업에 참여해보세요. 무료입니다.</span>
+										<span class="paycon1-txt2">[원데이]누구나 손쉽게 배우는 커피 타임</span>
+										<span class="paycon1-txt3">바리스타 기초 교육 수업에 참여해보세요. 무료입니다.</span>
 										<span class="paycon1-txt4">결제 금액 : {{ payPrice }}원</span>
 										<div class="paycon1-btnbox">
 											<button type="button" id="paybtn1" v-on:click.prevent="getAttendance">출석 : 15 / 20</button>
-											<button type="button" id="paybtn2" v-on:click.prevent="revForm">후기 작성</button>
+											<button v-if="hasRev" type="button" id="paybtn2" v-on:click.prevent="revForm">후기 작성</button>
+											<button v-else type="button" id="paybtn2" v-on:click.prevent="revShow">후기 보기</button>
 											<button type="button" id="paybtn3" v-on:click.prevent="inquiry">문의</button>										
 										</div>
 									</div>
@@ -194,11 +195,12 @@
 							<div class="rf-1 clearfix">
 								<div class="rf-1-1">
 									<img :src="getClassImg">
-									<span>누구나 쉽게 배우는 디자인 연습 </span>
+									<span class="rf-1-1-title">누구나 쉽게 배우는 디자인 연습 </span>
 									<p>
 										누구나 쉽게 배울수 있는 수업이에요<br>
 										디자인은 정말 하기 싫어요<br>
-										내가 지금 이걸 왜 하고 있는걸까 생각해볼까요
+										내가 지금 이걸 왜 하고 있는걸까 생각해볼까요<br>
+										
 									</p>
 								</div>
 							</div>
@@ -304,6 +306,46 @@
 				<!-- revform1 -->
 			</div>
 			<!-- //등록모달 -->
+
+
+			<!-- 리뷰보기 모달 -->
+			<div class="showRev-modal">
+				<div class="revform1">
+					<div class="revform1-header clearfix">
+						<div class="revform-closeBtn" v-on:click.prevent="closeRevForm2">x</div>
+					</div>
+					<!-- revform1-header -->
+					<div class="review-form">
+						<div class="rf-1 clearfix">
+							<div class="rf-1-1">
+								<img src="@/assets/images/hs/coffee.jpg">
+								<span class="rf-1-1-title">[원데이]누구나 손쉽게 배우는 커피 타임</span>
+								<span class="rf-1-1-classDate">운영 기간 : 2024.01.05 ~ 2024.02.05</span>
+								<span class="rf-1-1-revDate">리뷰 작성일 : 2024.02.06 11:30:50 </span>
+							</div>
+						</div>
+						<div class="rf-2-1">
+							<span class="rf-2-1-title" >클래스는 사용해 보셨나요?</span>
+							<div class="star-ratings2">
+								<div class="star-ratings-fill2" :style="{ width: ratingToPercent2(starScore2)  + '%' }">
+									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+								</div>
+								<div class="star-ratings-base2">
+									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- review-form -->
+				</div>
+				<!-- revform1 -->
+			</div>
+			<!-- 리뷰보기 모달 -->
+
+
+
+
 		</div>
 		<!-- //mypage-content -->
 	</div>
@@ -339,16 +381,18 @@ export default {
 		return {
 			isClass : true, // 정규클래스, 원데이클래스 변환에 사용
 			starScore : 3.8, // 별점 통계넣기
+			starScore2 : 3, // 리뷰모달에서 별점 표시할때
 			isRed : true, // 하트 클릭하면 색바뀌고 데이터 보내기
 			isEnd : false, // false면 안보임 , true면 종료표시
 			payPrice : 5000,
 			recClass : true, // 추천클래스 - 있으면 true 없으면 false
 			isPay : false, // 결제여부확인
+			hasRev : true, // 작성한 리뷰 있는지 확인
 			paymentData : [], // 결제정보가져와서 저장될 곳
 			getClassImg : require('@/assets/images/hs/cake.jpg'), // 클래스이미지 
-			file : document.querySelector('#file'),
-			fileName : '',
-			prevImg : require('@/assets/images/icon/ss/default-photo.png'),
+			file : document.querySelector('#file'), // 첨부파일
+			fileName : '', // 파일이름
+			prevImg : require('@/assets/images/icon/ss/default-photo.png'), // 파일에 기본나타낼 이미지 
 		};
 	},
 	methods: {
@@ -357,12 +401,24 @@ export default {
 			this.$router.push('/mypage/modify');
 		},
 
-		// 리뷰폼이동 
+		// 작성한 리뷰 보기 열기
+		revShow(){
+			let modal = document.querySelector('.showRev-modal');
+			modal.style.display = 'block';
+		},
+		// 리뷰 보기 모달 닫기
+		closeRevForm2(){
+			let modal = document.querySelector('.showRev-modal');
+			modal.style.display = 'none';
+		},
+		
+		// 리뷰 작성 모달 열기 
 		revForm(){ 
 			let modal = document.querySelector('.rev-modal');
 			modal.style.display = 'block';
 		},
-		// 리뷰폼 끄기
+		
+		// 리뷰 작성 모달 닫기
 		closeRevForm(){
 			let modal = document.querySelector('.rev-modal');
 			modal.style.display = 'none';
@@ -377,6 +433,7 @@ export default {
 				this.isClass = false;
 			}
 		},
+		
 		// 하트이미지 클릭 -> 위시리스트에 담기기 
 		wish(){
 			this.isRed = !this.isRed
@@ -387,14 +444,22 @@ export default {
 			starScore = (this.starScore / 5 ) * 100;
 			return starScore + 1.5;
 		},
+		// 리뷰 모달창 안에 별점퍼센트 
+		ratingToPercent2(starScore2){
+			starScore2 = (this.starScore2 / 5 ) * 100;
+			return starScore2 + 1.5;
+		},
+
 		// 문의요청
 		inquiry(){
 			console.log('문의');
 		},
+		
 		// 출석부 모달
 		getAttendance(){
 			console.log('출석부');
 		},
+		
 		// 결제정보 가져오기
 		getList(){
 			// console.log('결제정보가져오기');
@@ -409,6 +474,7 @@ export default {
 				this.isClass =false;
 			}
 		},
+		
 		// 파일 가져오기
 		getfile(event){
 			console.log('getfile');
@@ -425,6 +491,7 @@ export default {
 			
 			
 		},
+		
 		// 등록버튼 클릭시 
 		insertReview(){
 			console.log('후기등록');
@@ -433,7 +500,7 @@ export default {
 		// 별점
 		star(){
 			console.log('star');
-		}
+		},
 
 	},
 	created(){
