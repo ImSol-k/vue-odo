@@ -17,9 +17,9 @@
 					<div class="orderSelectBox">
 						<select name="" id="" class="">
 							<option value="">일정/시간</option>
-							<option value="">ㅗ</option>
-							<option value="">ㅗ</option>
-							<option value="">ㅗ</option>
+							<option value="">0000.00.00 / 00:00</option>
+							<option value="">0000.00.00 / 00:00</option>
+							<option value="">0000.00.00 / 00:00</option>
 						</select>
 						<div class="orderDate">0000.00.00 00:00(선택하면 추가됨)</div>
 						<div><span>주문금액 <b>0원</b></span></div>
@@ -100,7 +100,7 @@
 			<div class="classIntroduceSection">
 				<h2>클래스 소개</h2>
 				<div class="classIntroImgBox"></div>
-				<button class="moreInfoBtn">상세정보 더보기</button>
+				<button class="moreInfoBtn" @click="moreInfo">상세정보 더보기</button>
 			</div>
 			<!-- //classIntroduce -->
 	
@@ -191,6 +191,10 @@ export default {
 				marker.setMap(map);
 			});
 
+		},
+		moreInfo() {
+			let classIntroImgBox = document.querySelector('.classIntroImgBox');
+			classIntroImgBox.style.height = "1500px"
 		},
 
 	},
