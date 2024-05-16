@@ -366,6 +366,7 @@ export default {
 		closeRevForm(){
 			let modal = document.querySelector('.rev-modal');
 			modal.style.display = 'none';
+			
 		},
 
 		// 정규클래스 원데이 클래스 선택
