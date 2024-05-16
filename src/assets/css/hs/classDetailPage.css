@@ -50,6 +50,9 @@
     font-size: 15px;
     padding-left: 10px;
 }
+.orderSelectBox select:focus {
+    outline: none;
+}
 .orderSelectBox .orderDate {
     text-align-last: left;
     padding: 10px 0;

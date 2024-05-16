@@ -20,6 +20,7 @@
 							<option value="">0000.00.00 / 00:00</option>
 							<option value="">0000.00.00 / 00:00</option>
 							<option value="">0000.00.00 / 00:00</option>
+							<option value="">0000.00.00 / 00:00</option>
 						</select>
 						<div class="orderDate">0000.00.00 00:00(선택하면 추가됨)</div>
 						<div><span>주문금액 <b>0원</b></span></div>
@@ -111,7 +112,7 @@
 				<p>서울 강남구 강남대로 396</p>
 			</div>
 	
-			<!-- <h2>포함 사항</h2>
+			<h2>포함 사항</h2>
 			<div class="badge-box">
 				<span class="green badge">상세 페이지 확인</span>
 			</div>
@@ -124,7 +125,7 @@
 			<h2>준비물</h2>
 			<div class="badge-box">
 				<span class="grey badge">상세 페이지 확인</span>
-			</div> -->
+			</div>
 	
 			<div class="b-link">
 				<p>1:1 문의</p>
