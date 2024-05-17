@@ -423,7 +423,7 @@
 }
 
 
-
+/*모달 1111*/
 #addModal {
     width: 100%;
     /* 가로전체 */
@@ -456,6 +456,67 @@
 
 #addModal .modal-content .closeBtn {
     margin-left: 750px;
+    text-align: right;
+    width: 15px;
+    color: #000000;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+
+
+/*모달 222*/
+#newModal {
+    width: 100%;
+    /* 가로전체 */
+    height: 100%;
+    /* 세로전체 */
+    display: none;
+    /* 시작할때 숨김처리 */
+    position: fixed;
+    /* 화면에 고정 */
+    left: 0;
+    /* 왼쪽에서 0에서 시작 */
+    top: 0;
+    /* 위쪽에서 0에서 시작 */
+    z-index: 999;
+    /* 제일위에 */
+    overflow: auto;
+    /* 내용이 많으면 스크롤 생김 */
+    background-color: rgba(0, 0, 0, 0);
+    /* 배경이 검정색에 반투명 */
+}
+
+
+#newModal .modal-content2 {
+    width: 500px;
+    margin: 300px auto;
+    padding: 0px 20px 20px 20px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    font-size: 24px;
+}
+
+#newModal .modal-p{
+    text-align: center;
+}
+
+#newModal .modal-b{
+    text-align: right;
+    margin-top: 20px;
+}
+
+#newModal .modal-b button{
+    width: 60px;
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+#newModal .modal-content2 .closeBtn {
+    margin-left: 450px;
     text-align: right;
     width: 15px;
     color: #000000;

@@ -5,19 +5,7 @@
 
 <div class="wrap">
 	
-	<div class="mymy-header clearfix">
-			
-			<img src="@/assets/images/icon/ss/default-profile.png" 
-				alt="회원 프로필"
-				v-on:click.prevent="goModify">
-			<ul>
-				<li>mypage@naver.com(닉네임나올자리)</li>
-				<li>일반회원</li>
-				<li>
-					<router-link class="goLogin" to="/mypage/modify" >정보 수정</router-link>
-				</li>
-			</ul>
-		</div>
+	<MyPageHeader />
 	<!-- mypage-main -->
 	
 	<div class="mymy clearfix">
@@ -54,7 +42,7 @@
 						<span>보유한 쿠폰이 없어요</span>
 					</div>
 					<!-- //no-coupon -->
-					</div>
+				</div>
 				
 			</div>
 			<!-- mymy-main -->
@@ -78,6 +66,7 @@ import '@/assets/css/ss/ss.css';
 import '@/assets/css/ss/mycoupon.css';
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
+import MyPageHeader from '@/components/MyPageHeader.vue';
 import MyPageSide from '@/components/MyPageSide.vue';
 
 export default {
@@ -85,6 +74,7 @@ export default {
 	components: {
 		AppHeader,
 		AppFooter,
+		MyPageHeader,
 		MyPageSide
 	},
 	data() {

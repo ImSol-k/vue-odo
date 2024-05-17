@@ -98,7 +98,7 @@
     </div>
 
     <!--모달창-->
-    <div id="addModal" class="modal">
+    <div id="addModal">
         <div class="modal-content">
             <form action="">
                 <p class="closeBtn" v-on:click="close">x</p>
