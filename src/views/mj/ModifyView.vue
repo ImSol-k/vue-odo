@@ -19,10 +19,12 @@
 						<button>저장</button>
 					</div>
 					
-					<div class="box" style="background: #BDBDBD;">
+					<div class="box">
 						<img class="profile" src="@/assets/images/하트.png">
 					</div>
-					<br>
+					<div id="p-box">
+						<input type="file" name="" id="picture">
+					</div>
 					<div class="area">
 						<div class="form-blank">
 							<label class="group">닉네임</label>
