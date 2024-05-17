@@ -19,10 +19,9 @@
 						<button>저장</button>
 					</div>
 					
-					<div class="contents_body">
-						<div class="box">
-							<img :src="images[imageIndex]" @click="changeImage" />
-						</div>
+					<div class="box" style="background: #BDBDBD;">
+						<img class="profile" src="@/assets/images/하트.png">
+					</div>
 					<br>
 					<div class="area">
 						<div class="form-blank">
@@ -76,7 +75,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 		<!-- 푸터 -->
 		<AppFooter/>
 </template>
@@ -95,13 +93,7 @@ import MyPageSide from '@/components/MyPageSide.vue';
 			MyPageSide
 		},
 		data() {
-			return {
-				images:[
-					"https://i.picsum.photos/id/1/200/300.jpg?hmac=jH5bDkLr6Tgy3oAg5khKCHeunZMHq0ehBZr6vGifPLY",
-					"https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
-				],
-				imageIndex:0
-			};
+			return {};
 	},
 	methods: {},
 	created(){}
