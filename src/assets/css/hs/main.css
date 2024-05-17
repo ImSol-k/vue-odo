@@ -7,7 +7,7 @@
 }
 
 .inner {
-    width: 1200px;
+    width: 1000px;
     margin: 0 auto;
     background: #fff;
 }
@@ -57,7 +57,7 @@ header .bottom {
 }
 
 header .bottom .hamberger {
-    width: 50px;
+    width: 55px;
     text-align: center;
     cursor: pointer;
 }
@@ -84,13 +84,13 @@ header .logo {
 }
 
 header .serch-box {
-    width: 620px;
+    width: 600px;
     height: 45px;
     display: flex;
     align-items: center;
     border-radius: 30px;
     background: #eee;
-    margin-right: 200px;
+    margin-right: 50px;
 }
 
 .serch-box img {
@@ -101,7 +101,7 @@ header .serch-box {
 }
 
 .serch-box input {
-    width: 550px;
+    width: 520px;
     height: 30px;
     background: #eee;
     border: none;
