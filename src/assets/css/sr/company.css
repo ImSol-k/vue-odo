@@ -388,7 +388,7 @@ flex-direction: row;
 .classAddpostcode>input:first-child{
   width: 182px;
 }
-.classAddress input{
+.classAddress>input{
   margin: 5px 0px 5px 0px;
 }
 .classCategorySelectBox > select {
