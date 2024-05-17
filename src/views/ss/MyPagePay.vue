@@ -5,19 +5,7 @@
 	
 <div class="wrap">
 	
-	<div class="mymy-header clearfix">
-		
-		<img src="@/assets/images/hs/camera.jpg" 
-			alt="회원 프로필"
-			v-on:click.prevent="goModify">
-		<ul>
-			<li>mypage@naver.com(닉네임나올자리)</li>
-			<li>일반회원</li>
-			<li>
-				<router-link class="goLogin" to="/mypage/modify" >정보 수정</router-link>
-			</li>
-		</ul>
-	</div>
+	<MyPageHeader />
 	<!-- mymy-header -->
 	
 	<div class="mymy clearfix">
@@ -203,6 +191,7 @@
 								</div>
 							</div>
 							<!-- rf-1 / 클래스사진 + 클래스 설명 -->
+
 							<div class="rf-2 clearfix">
 								<span>클래스는 사용해 보셨나요?</span><br>
 								<div class="star-rating">
@@ -529,6 +518,7 @@ import '@/assets/css/ss/mypay.css';
 import '@/assets/css/ss/myrevform.css';
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
+import MyPageHeader from '@/components/MyPageHeader.vue';
 import MyPageSide from '@/components/MyPageSide.vue';
 
 
@@ -537,6 +527,7 @@ export default {
 	components: {
 		AppHeader,
 		AppFooter,
+		MyPageHeader,
 		MyPageSide
 	},
 	data() {
@@ -558,11 +549,6 @@ export default {
 		};
 	},
 	methods: {
-		// 개인정보 수정폼이동
-		goModify(){ 
-			this.$router.push('/mypage/modify');
-		},
-
 		///////////////////////////////////////////////////////////////////////////////////
 		
 		// 작성한 리뷰 보기 열기

@@ -1,36 +1,35 @@
 <template>
-  <div class="mymy-side">
-				<ul>
-					<li>내 활동</li>
-					<li><router-link to="/mypage/pay" class="sideLink" title="결제 내역">결제 내역</router-link></li>
-					<li><router-link to="/wishlistclass" class="sideLink" title="위시리스트">위시리스트</router-link></li>
-					<li><router-link to="/mypage/coupon" class="sideLink" title="쿠폰">쿠폰</router-link></li>
-					<li><router-link to="/mypage/review" class="sideLink" title="후기">후기</router-link></li>
-				</ul>
-				<ul>
-					<li>고객센터</li>
-					<li><router-link to="/mypage/notice" class="sideLink" title="공지사항">공지사항</router-link></li>
-					<li><router-link to="/mypage/condition" class="sideLink" title="약관 및 정책">약관 및 정책</router-link></li>
-				</ul>
+<div class="mymy-side">
+	<ul>
+		<li>내 활동</li>
+		<li><router-link to="/mypage/pay" class="sideLink" title="결제 내역">결제 내역</router-link></li>
+		<li><router-link to="/wishlistclass" class="sideLink" title="위시리스트">위시리스트</router-link></li>
+		<li><router-link to="/mypage/coupon" class="sideLink" title="쿠폰">쿠폰</router-link></li>
+	</ul>
+	<ul>
+		<li>고객센터</li>
+		<li><router-link to="/mypage/notice" class="sideLink" title="공지사항">공지사항</router-link></li>
+		<li><router-link to="/mypage/condition" class="sideLink" title="약관 및 정책">약관 및 정책</router-link></li>
+	</ul>
 
-				<div class="cli-image">
-					<div class="cli-1">
-						<img src="@/assets/images/icon/ss/kakao.png"><br>
-						<span>ODO 채널</span>
-					</div>
-					<div class="cli-2 clearfix">
-						<img src="@/assets/images/icon/ss/kakao.png"><br>
-						<span>ODO 호스트</span>
-					</div>
-					<div class="cli-3">
-						<span>운영시간</span><br>
-						<span>
-							&nbsp;&nbsp;평일 10:00 ~ 17:00<br>
-							&nbsp;&nbsp;(점심 12:00 ~ 13:00)
-						</span>
-					</div>
-				</div>
-			</div>
+	<div class="cli-image">
+		<div class="cli-1">
+			<img src="@/assets/images/icon/ss/kakao.png"><br>
+			<span>ODO 채널</span>
+		</div>
+		<div class="cli-2 clearfix">
+			<img src="@/assets/images/icon/ss/kakao.png"><br>
+			<span>ODO 호스트</span>
+		</div>
+		<div class="cli-3">
+			<span>운영시간</span><br>
+			<span>
+				&nbsp;&nbsp;평일 10:00 ~ 17:00<br>
+				&nbsp;&nbsp;(점심 12:00 ~ 13:00)
+			</span>
+		</div>
+	</div>
+</div>
 </template>
 <script>
 export default {
