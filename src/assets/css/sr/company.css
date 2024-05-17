@@ -328,7 +328,7 @@ align-items: center; 세로정렬
   margin-right: 10px;
   border-color: #d9d9d9;
 }
-div > input[type="text"] {
+.classAddInfoBox> div > input[type="text"] {
   height: 35px;
   width: 300px;
   padding-left: 7px;
