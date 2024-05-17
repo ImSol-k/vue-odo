@@ -10,14 +10,14 @@
     border: 1px solid gray;
     border-radius: 30px;
     text-align: center;
-    transition: 1s;
+    /* transition: 1s; */
 }
 .button:hober{
     background-color: #a8a8a8;
 }
 
 .button:hover {
-    width:120px; 
+    /* width:120px;  */
     box-shadow: 0 0 0 1px #a8a8a8;
     background-color: #9560d6;
     color:white;
