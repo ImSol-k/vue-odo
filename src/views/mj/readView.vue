@@ -18,14 +18,13 @@
                         <tr>
                             <td id="title">작성일</td>
                             <td>2024.05.14</td>
-                            <td>조회수</td>
-                            <td>000</td>
+                            <td id="title">작성자</td>
+                            <td>이미지</td>
                         </tr>
                         <tr>
                             <td id="title">제목</td>
-                            <td>공지드립니다</td>
-                            <td id="title">작성자</td>
-                            <td>이미지</td>
+                            <td colspan="3">공지드립니다</td>
+                            
                         </tr>
                         <tr>
                             <td colspan="4">
