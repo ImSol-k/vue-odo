@@ -85,7 +85,7 @@
         <div>
             <h1>Post to Facebook Page</h1>
             <input v-model="message" placeholder="Write your post here" />
-            <button @click="postToFacebook">Post</button>
+            <button @click="test">Post</button>
         </div>
 
     </div>
@@ -98,6 +98,7 @@ import '@/assets/css/jh/jh.css'
 import '@/assets/css/Initialization.css'
 
 import axios from 'axios';
+import Swal from "sweetalert2";
 
 export default {
     components: {
@@ -128,6 +129,12 @@ export default {
     },
 
     methods: {
+        test() {
+            Swal.fire({
+                title : 'sdf'
+                
+            });
+        },
         postToFacebook() {
             const url = `https://graph.facebook.com/${this.pageId}/feed`;
             const params = {
