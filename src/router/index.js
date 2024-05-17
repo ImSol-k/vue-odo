@@ -18,12 +18,10 @@ import PaymentView from '../views/jh/PaymentView.vue'
 import PaymentEndView from '../views/jh/PaymentEndView.vue'
 //승수
 import MyPagePay from '../views/ss/MyPagePay.vue'
-// import MyPageReview from '../views/ss/MyPageReview.vue'
 import MyPageCoupon from '../views/ss/MyPageCoupon.vue'
-// import MyPageWriteForm from '../views/ss/MyPageWriteForm.vue'
 import LoginPage from '@/views/ss/LoginPage.vue'
 import JoinPage from '@/views/ss/JoinPage.vue'
-// import JoinSelect from '@/views/ss/JoinSelect.vue'
+import ReviewPage from '@/views/ss/ReviewPage.vue'
 //미지
 import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
@@ -126,6 +124,11 @@ const routes = [
     path: '/login',
     name : 'login',
     component : LoginPage
+  },
+  {
+    path: '/reviewpage',
+    name : 'reviewpage',
+    component : ReviewPage
   },
   //=== 미지 =================================
   {
