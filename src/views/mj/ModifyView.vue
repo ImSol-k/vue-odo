@@ -20,8 +20,8 @@
 					</div>
 					
 					<div class="contents_body">
-						<div class="box" style=" background: bdbdbd;">
-							<img class="profile" src="@/assets/images/icon/man_icon.png" alt="">
+						<div class="box">
+							<img :src="images[imageIndex]" @click="changeImage" />
 						</div>
 					<br>
 					<div class="area">
@@ -95,7 +95,13 @@ import MyPageSide from '@/components/MyPageSide.vue';
 			MyPageSide
 		},
 		data() {
-			return {};
+			return {
+				images:[
+					"https://i.picsum.photos/id/1/200/300.jpg?hmac=jH5bDkLr6Tgy3oAg5khKCHeunZMHq0ehBZr6vGifPLY",
+					"https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+				],
+				imageIndex:0
+			};
 	},
 	methods: {},
 	created(){}
