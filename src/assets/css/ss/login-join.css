@@ -47,10 +47,7 @@
     outline: none;
 }
 
-/* 일반, 기업회원 선택 */
-.select-join {
-    display: block;
-}
+
 
 .user-join {
     display: none;
@@ -119,19 +116,17 @@
 
 /* 회원가입 선택 링크 */
 .lj-form .join-select{
-    display: inline-block;
-    border: 1px solid #d6d6d6;
-    border-radius: 3px;
-    margin: 0 20px;
-    padding: 3px;
-    width: 120px;
+    width: 360px;
     height: 56px;
-    line-height: 50px;
-    font-size: 15px;
-    background-color: #f3f3f3;
-    font-weight: 500;
     cursor: pointer;
-    letter-spacing: -1.5px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 0;
+    background-color: #B5C5D6;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: -2.1px;
 }
 
 /* 로그인 페이지 이동 링크 */
@@ -154,6 +149,9 @@
 }
 
 /* join1 */
+.join1 {
+    display: block;
+}
 
 .join1-1 .join-id-msg{
     margin-right: 215px;
@@ -218,7 +216,6 @@
     width: 20px;
     height: 13px;
     margin: 0 20px;
-    /* border-radius: 30%; */
     outline: none;
     cursor: pointer;
 }

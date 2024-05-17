@@ -62,7 +62,7 @@
 									</ul>
 								</div>
 								<!-- mymy-pay -->
-								<div class="mymy-payCon clearfix">
+								<div class="mymy-payCon ">
 									<div class="paycon1">
 										<span class="paycon1-txt1"> 결제일 : 2024.05.05</span>
 										<span class="paycon1-txt2">[원데이]누구나 손쉽게 배우는 커피 타임</span>
@@ -77,7 +77,7 @@
 									</div>
 									<!-- paycon1 -->
 
-									<div class="paycon2 clearfix" >
+									<div class="paycon2" >
 										<div v-if="recClass" class="paycon2-1">
 											<span class="paycon2-txt1">추천!</span>
 											<img src="@/assets/images/hs/coffee.jpg">
@@ -523,7 +523,7 @@ export default {
 	data() {
 		return {
 			isClass : true, // 정규클래스, 원데이클래스 변환에 사용
-			starScore : 3.8, // 별점 통계넣기
+			starScore : 2.5, // 별점 통계넣기
 			starScore2 : 3, // 리뷰모달에서 별점 표시할때
 			isRed : true, // 하트 클릭하면 색바뀌고 데이터 보내기
 			isEnd : false, // false면 안보임 , true면 종료표시

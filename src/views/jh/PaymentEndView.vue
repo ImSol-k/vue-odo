@@ -47,12 +47,16 @@
 			</div>
 			<div class="clearfix">
 				<div class="cover64" v-for="(v, i) in a" :key="i">
-					<div>
-						<img class="img60" src="../../assets/images/회사이미지.png" alt="">
+					<div class="box-img">
+						<img src="../../assets/images/hs/main_slide_2.jpg" alt="">
 					</div>
-					<p>지역이름</p>
-					<p class="p30">설명~설명~설명~설명~설명~설명~설명~설명~설명~설설명~설명~설명~설명~설명~설명~설명~설명~설명~설</p>
-					<p>무료</p>
+					<p class="pp1">지역</p>
+					<p class="pp2">설명설명설명설명설명설명설명설명설명설명설명설설명설명설명설설명설명설명설명</p>
+					<div class="rb">
+						<span class="sp">★★★★★</span>
+						<span>후기 123</span>
+					</div>
+					<p class="cp">무료</p>
 				</div>
 			</div>
 		</div>
