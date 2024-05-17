@@ -1,5 +1,5 @@
 <template>
-	<AppHeader />
+	<HostAppHeader />
 	<!-- //header -->
 	<div class="inner">
 		<section class="main-slide">
@@ -262,12 +262,12 @@ import main_slide_4 from "@/assets/images/hs/main_slide_4.jpg"
 import main_slide_5 from "@/assets/images/hs/main_slide_5.jpg"
 
 import AppFooter from "@/components/AppFooter.vue"
-import AppHeader from "@/components/AppHeader.vue"
+import HostAppHeader from "@/components/HostAppHeader.vue"
 
 export default defineComponent({
 	name: "MainView",
 	components: {
-		AppHeader,
+		HostAppHeader,
 		AppFooter,
 		Carousel,
 		Slide,

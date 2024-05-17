@@ -401,3 +401,38 @@ footer .icon-box img {
     width: 13px;
     height: 13px;
 }
+
+/* -----------------host Header------------------ */
+.hostheaderbottom {
+    height: 89px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hostheaderbottom .logo {
+    width: 130px;
+    height: 42px;
+    display: block;
+    text-indent: -9999px;
+    background: url('../../images/icon/header_icons/host_logo.png') no-repeat center / contain;
+}
+.brandLogoBox {
+    height: 89px;
+    /* border: 1px solid #8521FF; */
+    font-size: 14px;
+}
+.brandLogoBox a {
+    height: 89px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.brandLogoBox img {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin-right: 10px;
+}
+.brandLogoBox a p {
+    width: auto;
+}
