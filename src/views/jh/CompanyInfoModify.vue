@@ -77,13 +77,15 @@
             <button>취소</button>
             <button>수정</button>
         </div>
+        <!--
         <div id="map">
-
+        
         </div>
-
+        -->
         <div>
-            <input type="file" @change="handleFileChange">
-            <button @click="uploadImage">Upload Image</button>
+            <h1>Post to Facebook Page</h1>
+            <input v-model="message" placeholder="Write your post here" />
+            <button @click="postToFacebook">Post</button>
         </div>
 
     </div>
@@ -119,29 +121,29 @@ export default {
                 jibunAddress: "",
                 detailAddress: "",
             },
-            selectedFile: null
+            message: '',
+            accessToken: 'EAAN3krJLRh4BOygZACSanLiJZBMg51rLvXr7z0qYo0vJoUAHh090BzGVB02229haKuaqulu9MiG64ERZCFojgoFJ4OHe5QXOszYXRrqsZB7Al4yY7HKV7An7PC3R3rLjEXb0QQg1CTCXZA5uN9SZAtB3sLBRoTa4VT7pU74KBZBEP4lEkZAMl6hK0IsjYfwKufg7', // 페이지 액세스 토큰
+            pageId: '320016071194453' // 페이스북 페이지 ID
         }
     },
 
     methods: {
-        handleFileChange(event) {
-            this.selectedFile = event.target.files[0];
-        },
-        async uploadImage() {
-            try {
-                const formData = new FormData();
-                formData.append('image', this.selectedFile);
+        postToFacebook() {
+            const url = `https://graph.facebook.com/${this.pageId}/feed`;
+            const params = {
+                message: this.message,
+                access_token: this.accessToken
+            };
 
-                // Replace 'YOUR_ACCESS_TOKEN' with your Instagram API access token
-                const response = await axios.post('https://api.instagram.com/v1/media/upload?access_token=IGQWRNV05LVU1RZAUotb1BVMktUalM2VlNRNmtMeWZAQVVVTZAGZAxWFM0UUtMWlFPLVBaR3RabkVBSnpmSDZAuQkI5Mk5YSWREd1pvbDBaTjVnd2pqTTJhZA1J4bzBWVU44cGE4VFRKaEI4NTNNMVBYRGlsQXk0Q2JHZAWMZD', formData);
-
-                console.log(response.data);
-                alert('Image uploaded successfully!');
-            } catch (error) {
-                console.error(error);
-                alert('Error uploading image');
-            }
+            axios.post(url, null, { params })
+                .then(response => {
+                    console.log('Post successful:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error posting to Facebook:', error);
+                });
         },
+        /*
         DaumPostcode() {
             new window.daum.Postcode({
                 oncomplete: (data) => {
@@ -166,6 +168,7 @@ export default {
                 },
             }).open();
         },
+        */
         handleImageChange(event) {
             // 선택한 파일
             this.profile = event.target.files[0];
@@ -214,7 +217,6 @@ export default {
 
             }
         }
-
     },
     mounted() {
         // 네이버 지도 API 로드
@@ -222,7 +224,7 @@ export default {
     },
 
     created() {
-        this.map();
+        //this.map();
     }
 }
 </script>
