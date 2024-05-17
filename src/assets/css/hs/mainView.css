@@ -5,7 +5,7 @@ ul.category-icons {
     justify-content: space-between;
     text-align: center;
     margin-top: 40px;
-    padding: 0 180px;
+    padding: 0 150px;
 }
 ul.category-icons li {
     transition: transform 0.1s linear;
@@ -54,7 +54,7 @@ ul.classList {
     justify-content: space-between;
 }
 ul.classList li {
-    width: 285px;
+    width: 235px;
     height: 450px;
     transition: transform 0.1s linear;
 }
