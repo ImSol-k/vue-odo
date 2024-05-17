@@ -316,7 +316,7 @@
 						<div class="rf-3 clearfix">
 							<span>수업의 내용은 좋았나요?</span><br>
 							<div class="revbox">
-								<input id="rev1-bad" type="radio" name="rev1" value="1" checked="checked"><br>
+								<!-- <input id="rev1-bad" type="radio" name="rev1" value="1" checked="checked"><br> -->
 								<label for="rev1-bad">별로에요</label>
 							</div>
 						</div>
@@ -353,8 +353,8 @@
 						<!-- filebox / 사진첨부 -->
 
 						<div class="rf-8">
-							<button class="back-btn" type="button" v-on:click.prevent="closeRevForm2">뒤로 가기</button>
-							<button class="insert-btn" type="button" v-on:click.prevent="modifyRev">후기 수정</button>				
+							<button class="back-btn" type="button" v-on:click.prevent="backRev">뒤로 가기</button>
+							<button class="insert-btn" type="button" v-on:click.prevent="modifyRev">수정 하기</button>				
 						</div>
 						<!-- rf-8 / 버튼 -->
 
@@ -466,8 +466,8 @@
 							<!-- filebox / 사진첨부 -->
 							
 							<div class="rf-8">
-								<button class="back-btn" type="button" v-on:click.prevent="closeRevForm">뒤로 가기</button>
-								<button class="insert-btn" type="button" v-on:click.prevent="insertReview">수정</button>				
+								<button class="back-btn" type="button" v-on:click.prevent="backRev">뒤로 가기</button>
+								<button class="insert-btn" type="button" v-on:click.prevent="modifyReview">수정</button>				
 							</div>
 							<!-- rf-8 / 버튼 -->
 							<div class="rf-9"></div>
@@ -563,15 +563,27 @@ export default {
 			return starScore2 + 1.5;
 		},
 
-		// 리뷰 수정 버튼 눌렀을때 
+		// 리뷰 수정하기 버튼 눌렀을때 
 		modifyRev(){
-			console.log('수정');
 			let revForm1 = document.querySelector('.review-form1');
 			let revForm2 = document.querySelector('.review-form2');
 			revForm1.style.display = 'none';
 			revForm2.style.display = 'block';
 		},
 
+		// 리뷰 수정하기
+		modifyReview(){
+			console.log('리뷰 수정하기');
+		},
+
+		// 뒤로가기 눌렀을 때
+		backRev(){
+			console.log('뒤로가기');
+			let revForm1 = document.querySelector('.review-form1');
+			let revForm2 = document.querySelector('.review-form2');
+			revForm1.style.display = 'block';
+			revForm2.style.display = 'none';
+		},
 		
 		///////////////////////////////////////////////////////////////////////////////////
 

@@ -30,7 +30,9 @@
     display: inline-block;
 }
 
-.review-form input[type='radio']{
+.review-form input[type='radio'], 
+.review-form1 input[type='radio'],
+.review-form2 input[type='radio']{
     -webkit-appearance: none;
     appearance: none;
     -moz-appearance: none;
@@ -43,13 +45,17 @@
     cursor: pointer;
 }
 
-.review-form input[type='radio']:checked{
+.review-form input[type='radio']:checked, 
+.review-form input[type='radio']:checked,
+.review-form input[type='radio']{
     background-color: #8521FF;
     border: 2px solid #fff;
     box-shadow: 0 0 0 1.2px #8521FF;
 }
 
-.review-form label {
+.review-form label, 
+.review-form1 label,
+.review-form2 label{
     font-size: 14px;
     cursor: pointer;
 }
