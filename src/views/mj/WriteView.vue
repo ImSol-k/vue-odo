@@ -19,7 +19,7 @@
 							<textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100"></textarea>
 						</div>
 						<div id="in_name">
-							<textarea name="name" id="uname" rows="1" cols="55" placeholder="글쓴이" maxlength="100"></textarea>
+							<textarea name="name" id="uname" rows="1" cols="55" disabled placeholder="글쓴이" maxlength="100"></textarea>
 						</div>
 						<!-- <div class="wi_line"></div> -->
 						<div id="in_content">
@@ -33,9 +33,9 @@
 						</div>
 					</form>
 				</div>
+			</div>
 		</div>
 	</div>
-</div>
 		<!-- 푸터 -->
 		<AppFooter/>
 </template>

@@ -46,7 +46,7 @@ import AppHeader from '@/components/AppHeader.vue';
 import MyPageSide from '@/components/MyPageSide.vue';
 
 	export default {
-		name: "ModifyView",
+		name: "NoticemodifyView",
 		components: {
 			AppHeader,
 			AppFooter,
