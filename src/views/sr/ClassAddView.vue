@@ -573,9 +573,13 @@ export default {
   position: relative;
 }
 .ql-editor {
+  width: 700px;
   height: 500px;
   overflow: scroll;
   overflow-x: hidden;
+}
+.ql-editor>p>img{
+  width: 600px;
 }
 .ql-formats > button {
   margin: 0px;
