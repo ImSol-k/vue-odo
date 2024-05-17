@@ -182,7 +182,7 @@ align-items: center; 세로정렬
   padding: 5px 10px;
   margin: 5px 10px;
   font-size: 26px;
-  /* width: 900px; */
+  width: 700px;
   
 }
 .companyInfoClassBox{
@@ -198,6 +198,7 @@ align-items: center; 세로정렬
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 650px;
 }
 .companyInfoClassfor > li{
   display: flex;
@@ -208,9 +209,9 @@ align-items: center; 세로정렬
 .companyInfoClassfor > li > img {
   float: left;
   width: 90px;
-  margin-right: 10px;
+  margin: 10px;
 }
-.companyInfoClassfor > li > img:hover{
+.companyInfoClassfor > li:hover{
   transition: transform 0.1s linear;
   transform: scale(1.07);
 }
@@ -227,8 +228,6 @@ align-items: center; 세로정렬
 }
 .classListObj {
   cursor: pointer;
-  width: 300px;
-  
 }
 .classListObj>p:nth-child(2){
     /* height: 40px; */
@@ -236,27 +235,34 @@ align-items: center; 세로정렬
     font-size: 12px;
 }
 .classListObj>p:nth-child(3){
-    height: 40px;
+    /* height: 40px; */
     display: flex;
     font-size: 12px;
+}
+.classListOptionBox{
+  display: flex;
+  width: 540px;
+  align-items: center;
 }
 .classListOption {
   display: flex;
   flex-direction: row;
-  /* margin: 5px; */
+  margin: 5px 0px;
+  width: 440px;
+}
+.classListOptionBox>span{
+  /* display: block; */
+  float: right;
+  color: #a0a0a0;
+  font-size: 14px;
+
 }
 .classListOption > .classRouterLink {
   display: flex;
-  margin: 2px px;
+  /* margin: 2px; */
   height: 24px;
   width: 70px;
   font-size: 13px;
-}
-/* 클래스리스트 캘린더 */
-.classTypeCalendar{
-  width: 450px;
-  margin-left: 10px;
-  /* background-color: red; */
 }
 /* 날짜선택 */
 .memberListTitle {
@@ -297,6 +303,7 @@ align-items: center; 세로정렬
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  width: 650px;
 }
 .classAddBox select {
   border-radius: 5px;
@@ -354,7 +361,7 @@ align-items: center; 세로정렬
   font-size: 17px;
   text-align: center;
 }
-/* 클래스 일정 */
+/* 클래스 일정 캘린더 */
 .classSchedule {
   display: flex;
   /* flex-direction: row; */

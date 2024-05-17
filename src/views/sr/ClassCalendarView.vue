@@ -67,6 +67,9 @@ export default {
 </script>
 
 <style>
+.demo-app > .fullCalendar{
+  width: 700px;
+}
 :root{
   --fc-event-bg-color: #8521ff;
   --fc-event-border-color: #8521ff;

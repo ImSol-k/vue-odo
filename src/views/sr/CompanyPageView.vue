@@ -20,13 +20,16 @@
                 <img src="@/assets/images/hs/main_slide_1.jpg" alt="" />
                 <div class="classListObj">
                   <p><router-link class="classRouterLink" to="/classdetailpage">(원데이)주류클래스</router-link></p>
-                  <p>2024/06/01</p>
+                  <p>2024/06/01 </p>
                   <p>
                     레모나 클레스 개강 종강일정 상세페이지 확인 설명글 설명글 공간
                   </p>
-                  <div class="classListOption">
-                    <router-link class="classRouterLink" to="/membermanager">예약확인</router-link>
-                    <router-link class="classRouterLink" to="/classadd">수정</router-link>
+                  <div class="classListOptionBox">
+                    <div class="classListOption">
+                      <router-link class="classRouterLink" to="/membermanager">예약확인</router-link>
+                      <router-link class="classRouterLink" to="/classadd">수정</router-link>
+                    </div>
+                    <span>인원수: 20/17</span>
                   </div>
                 </div>
               </li>
@@ -60,9 +63,6 @@
                 </div>
               </li>
             </ul>
-          </div>
-          <div class="classTypeCalendar">
-            <p>원데이일정</p>
           </div>
         </div>
       </div>

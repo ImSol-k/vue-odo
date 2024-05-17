@@ -1,9 +1,65 @@
-.classListBox>img{
+.findClassListBox {
+    /* width: 980px; */
+    margin: 0px auto;
+}
+.findClassBox{
+    padding: 20px 0px;
+}
+.findClassBox>div:first-child{
+    display: flex;
+    align-items: center;
+}
+.findClassBox>div>p {
+  padding: 20px 10px;
+  width: 680px;
+  font-size: 23px;
+  font-weight: bold;
+}
+.findClassBox>div>button{
     width: 130px;
+    height: 40px;
+    margin-right: 10px;
+    background-color: #8521ff;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
 }
-.listRouterLink>p{
-    font-size: 15px;
+.classTypeSelect{
+    display: flex;
 }
-.listRreviewBox>span{
-    font-size: 13px;
+.classTypeSelect>select{
+    width: 170px;
+    height: 40px;
+    border-radius: 5px;
+}
+.classListOne {
+  /* border: 1px solid #000; */
+  margin: 10px;
+  float: left;
+}
+.classListOne>.listRreviewBox{
+    margin: 0px;
+    padding: 0px;
+}
+.listRouterLink > .location {
+  font-size: 12px;
+  color: #a0a0a0;
+}
+.classListBox > img {
+  width: 180px;
+}
+.listRouterLink > p {
+  font-size: 15px;
+}
+.listRreviewBox > span {
+  font-size: 13px;
+}
+.listRreviewBox > span:last-child{
+    margin-left: 5px;
+}
+.listRreviewBox > .starPoint {
+  color: #8521ff;
+  font-weight: bold;
+  font-size: 15px;
 }
