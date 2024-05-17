@@ -18,12 +18,12 @@ import PaymentView from '../views/jh/PaymentView.vue'
 import PaymentEndView from '../views/jh/PaymentEndView.vue'
 //승수
 import MyPagePay from '../views/ss/MyPagePay.vue'
-import MyPageReview from '../views/ss/MyPageReview.vue'
+// import MyPageReview from '../views/ss/MyPageReview.vue'
 import MyPageCoupon from '../views/ss/MyPageCoupon.vue'
-import MyPageWriteForm from '../views/ss/MyPageWriteForm.vue'
+// import MyPageWriteForm from '../views/ss/MyPageWriteForm.vue'
 import LoginPage from '@/views/ss/LoginPage.vue'
-import UserJoinPage from '@/views/ss/UserJoinPage.vue'
-import JoinSelect from '@/views/ss/JoinSelect.vue'
+import JoinPage from '@/views/ss/JoinPage.vue'
+// import JoinSelect from '@/views/ss/JoinSelect.vue'
 //미지
 import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
@@ -113,29 +113,14 @@ const routes = [
     component: MyPagePay
   },
   {
-    path: '/mypage/review',
-    name: 'mypagereview',
-    component: MyPageReview
-  },
-  {
     path: '/mypage/coupon',
     name: 'mypagecoupon',
     component: MyPageCoupon
   },
   {
-    path: '/mypage/review/form',
-    name: 'mypagereviewform',
-    component: MyPageWriteForm
-  },
-  {
     path: '/join',
     name: 'join',
-    component: JoinSelect
-  },
-  {
-    path: '/userjoin',
-    name: 'userjoin',
-    component: UserJoinPage
+    component: JoinPage
   },
   {
     path: '/login',
