@@ -9,12 +9,10 @@
 
 			<div class="select-join">
 				<div class="join-box">
-					<span class="other-login">선택</span><br>
-					<button type="button" v-on:click.prevent="userJoin" class="join-select">일반 회원</button>
-					<button type="button" v-on:click.prevent="companyJoin" class="join-select">기업 회원</button>
+					<button type="button" v-on:click.prevent="userJoin" class="join-select">일반 회원가입</button>
+					<button type="button" v-on:click.prevent="kakaoJoin" class="join-select">카카오로 회원가입</button>
 				</div>
-				<!-- join-box -->
-				<router-link to="/login" class="go-login">로그인하러가기</router-link>
+
 			</div>
 
 			<div class="user-join">
@@ -106,11 +104,6 @@ export default {
 
 	},
 	methods: {
-		// 기업회원 선택했을 때 
-		companyJoin(){
-			this.$router.push('/companyjoin');
-			
-		},
 
 		// 일반회원 선택했을 때 
 		userJoin(){
@@ -119,6 +112,11 @@ export default {
 			select.style.display = 'none';
 			user.style.display = 'block';
 			this.loginTitle = '회원가입';
+		},
+
+		// 카카오로 회원가입
+		kakaoJoin(){
+			console.log('카카오회원가입');
 		},
 
 		// 회원가입에서 뒤로가기 눌렀을 때 

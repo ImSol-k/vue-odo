@@ -1,0 +1,81 @@
+.revMain {
+    box-sizing: border-box;
+    border: 1px solid #000;
+    width: 1200px;
+    height: 900px;
+}
+
+.rev-header {
+    box-sizing: border-box;
+    /* border: 1px solid #000; */
+    width: 1000px;
+    height: 200px;
+    margin: 0 auto;
+    padding: 20px 0 ;
+}
+
+.rev-header1 {
+    box-sizing: border-box;
+    border: 1px solid #000;
+    width: 800px;
+    height: 160px;
+    float: left;
+}
+
+.rev-header2 {
+    box-sizing: border-box;
+    border: 1px solid #000;
+    width: 200px;
+    height: 160px;
+    text-align: right;
+    float: left;
+}
+
+
+.review-select1 {
+    box-sizing: border-box;
+    height: 30px;
+    margin: 5px;
+}
+
+.review-select1>button {
+    margin-right: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    border: none;
+    background-color: #fff;
+    margin-top: 3px;
+    width: 100px;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+}
+
+
+
+
+.review-select2 {
+    box-sizing: border-box;
+    border: 0.1px solid #000;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 100px;
+    height: 120px;
+    padding: 5px;
+    position: absolute;
+    top: 170px;
+    left: 1090px;
+}
+.review-select2 button{
+    box-sizing: border-box;
+    display: block;
+    background-color: #fff;
+    border: none;
+    margin: 10px auto;
+    font-size: 12px;
+    font-weight: bold;
+    width: 60px;
+    height: 20px;
+    cursor: pointer;
+}

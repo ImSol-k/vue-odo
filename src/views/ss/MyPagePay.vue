@@ -523,7 +523,7 @@ export default {
 	data() {
 		return {
 			isClass : true, // 정규클래스, 원데이클래스 변환에 사용
-			starScore : 3.8, // 별점 통계넣기
+			starScore : 2.5, // 별점 통계넣기
 			starScore2 : 3, // 리뷰모달에서 별점 표시할때
 			isRed : true, // 하트 클릭하면 색바뀌고 데이터 보내기
 			isEnd : false, // false면 안보임 , true면 종료표시

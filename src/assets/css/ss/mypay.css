@@ -7,34 +7,32 @@
 /* 결제한 내역이 없을때 */
 .mymy-nopay {
     box-sizing: border-box;
-    /* border: 1px solid #000; */
     display: block;
     text-align: center;
-    margin: 0 auto;
+    width: 750px;
     min-height: 400px;
 }
 
 .mymy-nopay #nopayImg {
-    margin: 150px auto 10px auto;
+    margin: 100px auto 10px auto;
     display: block;
     width: 200px;
 }
 .mymy-nopay span {
     display: block;
-    font-size: 15px;
+    font-size: 13px;
 }
 .mymy-nopay a {
     box-sizing: border-box;
     display: inline-block;
-    /* border: 1px solid #000; */
     border-radius: 3px;
-    width: 120px;
+    width: 100px;
     height: 40px;
     line-height: 40px;
     margin: 10px auto;
     cursor: pointer;
     color: #fff;
-    font-size: 19px;
+    font-size: 15px;
     font-weight: 500;
     background-color: #8521FF;
 }
@@ -46,11 +44,11 @@
 /* 결제한 내역이 있을때 */
 .pay {
     display: block;
-    width: 950px;
+    width: 750px;
     /* border: 1px solid #000; */
     box-sizing: border-box;
     border-bottom: 1px solid #d9d9d9;
-    height: 215px;
+    height: 200px;
     margin-top: 10px;
 }
 
@@ -58,30 +56,27 @@
     display: block;
     /* border: 1px solid #000; */
     box-sizing: border-box;
-    width: 180px;
-    max-width: 180px;
-    height: 200px;
-    max-height: 200px;
+    width: 160px;
+    height: 180px;
     float: left;
-    margin-bottom: 10px;
 }
 .mymy-pay ul {
     display: block;
     box-sizing: border-box;
-    width: 180px;
-    max-height: 220px;
-    height: 220px;
+    /* border: 1px solid #000; */
+    width: 160px;
+    height: 175px;
 }
 
 
 /* 종료 메세지 */
 .end-msg{
     box-sizing: border-box;
-    /* border: 1px solid #000; */
+    border-radius: 3px;
     z-index: 3;
     display: none;
     position: absolute;
-    margin-left: 130px;
+    margin-left: 110px;
     background-color: #d6d6d6;
     font-size: 12px;
     width: 35px;
@@ -96,8 +91,8 @@
     /* border: 1px solid #000; */
     border-radius: 5px;
     display: block;
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     cursor: pointer;
     margin: 10px auto;
     position: relative;
@@ -108,20 +103,20 @@
 /* 하트 표시 */
 .mymy-pay .heart {
     z-index: 3;
-    width: 15px;
-    height: 15px;
+    width: 13px;
+    height: 13px;
     background: #fff;
     position: relative;
-    margin-top: -30px;
-    margin-left: 140px;
+    margin-top: -28px;
+    margin-left: 125px;
     transform: rotate(45deg);
     cursor: pointer;
 }
 
 .mymy-pay .heart::before{
     content: "";
-    width: 15px;
-    height: 15px;
+    width: 13px;
+    height: 13px;
     position: absolute;
     left: -50%;
     border-radius: 50%;
@@ -130,8 +125,8 @@
 
 .mymy-pay .heart::after{
     content: "";
-    width: 15px;
-    height: 15px;
+    width: 13px;
+    height: 13px;
     position: absolute;
     top: -50%;
     border-radius: 50%;
@@ -144,13 +139,13 @@
 .star-ratings {
     color: #aaa9a9;
     position: relative;
-    margin: 10px auto 0 20px;
+    margin: 5px auto 0 20px;
     unicode-bidi: bidi-override;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 1.1px;
     -webkit-text-stroke-color: #2b2a29;
     width: max-content;
-    font-size: 25px;
+    font-size: 20px;
     height: 30px;
     line-height: 22px;
     float: left;
@@ -175,40 +170,34 @@
 
 .star-avg {
     box-sizing: border-box;
+    /* border: 1px solid #000; */
     display: block;
-    margin-top: 10px;
+    margin-top: 3px;
     font-size: 13px;
     float: left;
     width: 30px;
     height: 30px;
-    line-height: 35px;
+    line-height: 33px;
     text-align: center;
 }
 
-
-.mymy-pay #pay-star {
-    display: inline-block;
-    width: 30px;
-    padding: 2px;
-    /* filter: opacity(0.6) drop-shadow(0 0 0 #ff0000); */
-}
 
 /**********************/
 
 /* 설명 + 출석 부분*/
 .mymy-payCon {
     box-sizing: border-box;
-    width: 730px;
-    height: 200px;
-    /* border: 1px solid #000; */
+    width: 400px;
+    height: 180px;
+    border: 1px solid #000;
     float: left;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 /* paycon1 */
 .paycon1 {
     box-sizing: border-box;
-    width: 500px;
+    width: 350px;
     /* border: 1px solid #000; */
     height: 180px;
     padding-top: 2px;
@@ -223,7 +212,7 @@
     display: block;
     /* border: 1px solid #000; */
     padding-left: 5px;
-    width: 200px;
+    width: 130px;
     height: 20px;
     font-size: 12px;
 }
@@ -236,7 +225,7 @@
     max-width: 400px;
     height: 35px;
     line-height: 35px;
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 5px;
     padding-left: 5px;
     overflow: hidden;
@@ -246,8 +235,9 @@
 /* 클래스 간단 설명 */
 .paycon1-txt3{
     box-sizing: border-box;
+    /* border: 1px solid #000; */
     display: block;
-    width: 350px;
+    width: 370px;
     margin-left: 20px;
     font-size: 15px;
     overflow: hidden;
@@ -260,6 +250,7 @@
 
 .paycon1-txt4 {
     box-sizing: border-box;
+    /* border: 1px solid #000; */
     display: block;
     font-size: 13px;
     max-width: 180px;
@@ -271,7 +262,7 @@
 .paycon1-btnbox {
     box-sizing: border-box;
     /* border: 1px solid #000; */
-    width: 440px;
+    width: 390px;
     height: 60px;
     line-height: 60px;
     text-align: left;
@@ -280,10 +271,11 @@
 
 .paycon1-btnbox button {
     border: none;
-    height: 40px;
+    height: 30px;
+    line-height: 30px;
     cursor: pointer;
     border-radius: 3px;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 300;
     background-color: #8521FF;
     color: #fff;
@@ -291,14 +283,14 @@
 /* 출석보기 버튼 */
 #paybtn1 {
     box-sizing: border-box;
-    width: 150px;
-    max-width: 150px;
-    margin-right: 100px;
+    width: 130px;
+    max-width: 130px;
+    margin-right: 105px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     border: 0.1px solid #d6d6d6;
-    padding-left: 2px;
+    padding-left: 5px;
     text-align: left;
     background-color: #d6d6d6;
     color: #000;
@@ -306,26 +298,25 @@
 /* 후기 작성/보기 버튼 */
 #paybtn2 {
     box-sizing: border-box;
-    width: 100px;
-    margin-right: 20px;
+    width: 80px;
+    margin-right: 10px;
     padding: 2px;
 }
 /* 문의 버튼 */
 #paybtn3 {
     width: 50px;
+    padding: 2px;
 }
 
 /* paycon2 */
 
 .paycon2 {
     box-sizing: border-box;
-    width: 200px;
+    width: 100px;
     height: 180px;
-    /* border: 1px solid #000; */
+    border: 1px solid #000;
     text-align: center;
-    float: left;
-    margin: 0;
-    
+    float: left;    
 }
 
 /* 추천 문구 */
@@ -342,26 +333,25 @@
     font-size: 13px;
     padding: 1px;
     background-color: #8521FF;
-    margin-left: 124px;
+    margin-left: 55px;
 }
 
 /* 추천클래스 이미지 */
 .paycon2 img {
     box-sizing: border-box;
     border-radius: 5px;
-    /* border: 1px solid #000; */
+    border: 1px solid #000;
     display: block;
-    width: 130px;
-    height: 130px;
-    max-height: 130px;
-    margin: 10px auto;
+    width: 50px;
+    height: 50px;
+    /* margin: 10px auto; */
     cursor: pointer; 
 }
 /* 추천클래스 이름 */
 .paycon2 .paycon2-txt2 {
     box-sizing: border-box;
     /* border: 1px solid #000; */
-    width: 130px;
+    width: 80px;
     padding: 1px 2px;
     display: -webkit-box;
     margin: 10px auto 0 auto;
