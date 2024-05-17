@@ -316,7 +316,7 @@
 						<div class="rf-3 clearfix">
 							<span>수업의 내용은 좋았나요?</span><br>
 							<div class="revbox">
-								<!-- <input id="rev1-bad" type="radio" name="rev1" value="1" checked="checked"><br> -->
+								<input id="rev1-bad" type="radio" name="rev1" value="1" checked="checked"><br>
 								<label for="rev1-bad">별로에요</label>
 							</div>
 						</div>
@@ -400,7 +400,7 @@
 							<div class="rf-3 clearfix">
 								<span>수업의 내용은 좋았나요?</span><br>
 								<div class="revbox">
-									<input id="rev1-bad" type="radio" name="rev1" value="1"><br>
+									<input id="rev1-bad" type="radio" name="rev1" value="1" checked="checked"><br>
 									<label for="rev1-bad">별로에요</label>
 								</div>
 								<div class="revbox">
@@ -417,7 +417,7 @@
 							<div class="rf-4 clearfix">
 								<span>시설에 만족하셨나요?</span><br>
 								<div class="revbox">
-									<input id="rev2-bad" type="radio" name="rev2" value="1"><br>
+									<input id="rev2-bad" type="radio" name="rev2" value="1" checked="checked"><br>
 									<label for="rev2-bad">별로에요</label>
 								</div>
 								<div class="revbox">
@@ -434,7 +434,7 @@
 							<div class="rf-5 clearfix">
 								<span>강의비용은 적당했나요?</span><br>
 								<div class="revbox">
-									<input id="rev3-bad" type="radio" name="rev3" value="1"><br>
+									<input id="rev3-bad" type="radio" name="rev3" value="1" checked="checked"><br>
 									<label for="rev3-bad">별로에요</label>
 								</div>
 								<div class="revbox">
@@ -450,7 +450,7 @@
 							
 							<div class="rf-6">
 								<span>리뷰를 작성해 주세요</span><br>
-								<textarea spellcheck="false" value=""></textarea>
+								<textarea spellcheck="false" value="">aaaaa</textarea>
 							</div>
 							<!-- rf-6 / 리뷰작성란 -->
 
