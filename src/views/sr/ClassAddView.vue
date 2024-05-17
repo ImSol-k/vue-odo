@@ -22,7 +22,7 @@
           <div class="classAddImg">
             <img src="@/assets/images/icon/ss/kakao.png" alt="" />
             <div class="classAddImgTitle">
-              <p>대표이미지</p>
+              <p>클래스 대표이미지</p>
               <input type="file" name="" id="" />
               <select name="" id="" class="addPageSelectClassMemory">
                 <option value="" disabled selected>기존클래스 불러오기</option>
@@ -46,8 +46,12 @@
                 <input type="text" id="className" placeholder="클래스명" />
               </div>
               <div>
-                <label for="classinfo">클래스설명</label>
-                <input type="text" id="classinfo" placeholder="클래스 설명" />
+                <label for="classinfo">클래스소개</label>
+                <input
+                  type="text"
+                  id="classinfo"
+                  placeholder="간단한 소개글 작성"
+                />
               </div>
               <div class="classSchedule">
                 <label for="">일정</label>
@@ -74,40 +78,66 @@
                     </button>
                   </div>
                 </div>
-                <!-- <div class="classScheduleSelectBox">
-                  <select name="" id="">
-                    <option value="" disabled selected>월</option>
-                    <option value="" v-for="i in 12" :key="i">{{ i }}월</option>
-                  </select>
-                  <select name="" id="">
-                    <option value="" disabled selected>일</option>
-                    <option value="" v-for="i in 31" :key="i">{{ i }}일</option>
-                  </select>
-                  <select name="" id="">
-                    <option value="" disabled selected>시간</option>
-                    <option value="">AM</option>
-                    <option value="">PM</option>
-                  </select>
-                  <select name="" id="">
-                    <option value="" disabled selected>시</option>
-                    <option value="" v-for="i in 12" :key="i">{{ i }}</option>
-                  </select>
-                  <select name="" id="">
-                    <option value="" disabled selected>분</option>
-                    <option value="" v-for="i in 6" :key="i">
-                      {{ i * 10 }}
-                    </option>
-                  </select>
-                  <button>+</button>
-                  <button>-</button>
-                </div> -->
+
                 <!--classScheduleSelectBox-->
               </div>
               <!--classSchedule-->
-              <div>
+              <div class="classAddress">
+                <label for="">주소</label>
+                <div>
+                  <div class="classAddpostcode">
+                    <input
+                      type="text"
+                      id="postcode"
+                      placeholder="우편번호"
+                      v-model="classVo.zonecode"
+                      readonly
+                    />
+                    <input
+                      type="button"
+                      v-on:click.prevent="DaumPostcode()"
+                      value="우편번호 찾기"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    id="roadAddress"
+                    placeholder="도로명주소"
+                    v-model="classVo.roadAddress"
+                    readonly
+                  />
+                  <input
+                    type="text"
+                    id="jibunAddress"
+                    placeholder="지번주소"
+                    v-model="classVo.jibunAddress"
+                    readonly
+                  />
+                  <span id="guide" style="color: #999; display: none"></span>
+                  <input
+                    type="text"
+                    id="sample4_detailAddress"
+                    placeholder="상세주소"
+                    v-model="classVo.detailAddress"
+                  />
+                  <input
+                    type="text"
+                    name=""
+                    v-model="classVo.y"
+                    placeholder="위도"
+                  />
+                  <input
+                    type="text"
+                    name=""
+                    v-model="classVo.x"
+                    placeholder="경도"
+                  />
+                </div>
+              </div>
+              <!-- <div>
                 <label for="">장소</label>
                 <input type="text" id="classinfo" placeholder="주소입력" />
-              </div>
+              </div> -->
               <div class="classCategory">
                 <label for="">카테고리</label>
                 <div class="classCategorySelectBox">
@@ -141,22 +171,29 @@
                 <label for="">모집인원</label>
                 <input type="text" placeholder="인원수" />
               </div>
-              <div class="addInfoImg">
-                <label for="">상세이미지</label>
-                <div class="addSelectImg">
-                  <div>
-                    <input type="file" name="" id="" />
-                    <button>+</button>
-                    <button>-</button>
-                  </div>
-                  <div>
-                    <input type="file" name="" id="" />
-                    <button>+</button>
-                    <button>-</button>
-                  </div>
-                </div>
-                <!--addSelectImg-->
-              </div>
+              <div class="quillEditorBox">
+            <label for="">상세설명</label><br />
+            <quill-editor
+              class="quillEditor"
+              v-model:value="state.content"
+              :options="state.editorOption"
+              @change="onEditorChange($event)"
+            ></quill-editor>
+            <button
+              style="
+                border: none;
+                border-radius: 5px;
+                width: 100px;
+                height: 35px;
+                font-size: 18px;
+                margin: 10px 0px;
+                background-color: rgb(209, 209, 209);
+              "
+              @click="submit(state)"
+            >
+              저장
+            </button>
+          </div>
             </div>
           </div>
           <!--classAddInfo-->
@@ -172,7 +209,7 @@
           <div class="classAddImg">
             <img src="@/assets/images/icon/ss/kakao.png" alt="" />
             <div class="classAddImgTitle">
-              <p>대표이미지</p>
+              <p>클래스 대표이미지</p>
               <input type="file" name="" id="" />
               <select name="" id="" class="addPageSelectClassMemory">
                 <option value="" disabled selected>기존클래스 불러오기</option>
@@ -190,8 +227,12 @@
                 <input type="text" id="className" placeholder="클래스명" />
               </div>
               <div>
-                <label for="classinfo">클래스설명</label>
-                <input type="text" id="classinfo" placeholder="클래스 설명" />
+                <label for="classinfo">클래스소개</label>
+                <input
+                  type="text"
+                  id="classinfo"
+                  placeholder="간단한 소개글 작성"
+                />
               </div>
               <div class="classParticipation">
                 <label for="">중도참여</label>
@@ -231,9 +272,57 @@
                 <!--classScheduleSelectBox-->
               </div>
               <!--classSchedule-->
-              <div>
-                <label for="">장소</label>
-                <input type="text" id="classinfo" placeholder="주소입력" />
+              <div class="classAddress">
+                <label for="">주소</label>
+                <div>
+                  <div class="classAddpostcode">
+                    <input
+                      type="text"
+                      id="postcode"
+                      placeholder="우편번호"
+                      v-model="classVo.zonecode"
+                      readonly
+                    />
+                    <input
+                      type="button"
+                      v-on:click.prevent="DaumPostcode()"
+                      value="우편번호 찾기"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    id="roadAddress"
+                    placeholder="도로명주소"
+                    v-model="classVo.roadAddress"
+                    readonly
+                  />
+                  <input
+                    type="text"
+                    id="jibunAddress"
+                    placeholder="지번주소"
+                    v-model="classVo.jibunAddress"
+                    readonly
+                  />
+                  <span id="guide" style="color: #999; display: none"></span>
+                  <input
+                    type="text"
+                    id="sample4_detailAddress"
+                    placeholder="상세주소"
+                    v-model="classVo.detailAddress"
+                  />
+                  <input
+                    type="text"
+                    name=""
+                    v-model="classVo.y"
+                    placeholder="위도"
+                  />
+                  <input
+                    type="text"
+                    name=""
+                    v-model="classVo.x"
+                    placeholder="경도"
+                  />
+                </div>
               </div>
               <div class="classCategory">
                 <label for="">카테고리</label>
@@ -268,9 +357,7 @@
                 <label for="">모집인원</label>
                 <input type="text" placeholder="인원수" />
               </div>
-              <div>
-              </div>
-              <div class="addInfoImg">
+              <!-- <div class="addInfoImg">
                 <label for="">상세이미지</label>
                 <div class="addSelectImg">
                   <div>
@@ -284,9 +371,31 @@
                     <button>-</button>
                   </div>
                 </div>
-                <!--addSelectImg-->
-              </div>
+              </div> -->
             </div>
+          </div>
+          <div class="quillEditorBox">
+            <label for="">상세설명</label><br />
+            <quill-editor
+              class="quillEditor"
+              v-model:value="state.content"
+              :options="state.editorOption"
+              @change="onEditorChange($event)"
+            ></quill-editor>
+            <button
+              style="
+                border: none;
+                border-radius: 5px;
+                width: 100px;
+                height: 35px;
+                font-size: 18px;
+                margin: 10px 0px;
+                background-color: rgb(209, 209, 209);
+              "
+              @click="submit(state)"
+            >
+              저장
+            </button>
           </div>
           <!--classAddInfo-->
           <div class="isAddBtn">
@@ -304,22 +413,119 @@
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import AppMenu from "@/components/CompanyMenu.vue";
-
+import { reactive } from "vue";
 
 export default {
   name: "ClassAddView",
   components: { AppHeader, AppFooter, AppMenu },
+  setup() {
+    const state = reactive({
+      content: "",
+      _content: "",
+      editorOption: {
+        placeholder: "내용을 입력해주세요...", // placeholder 설정
+        modules: {
+          toolbar: [
+            ["bold", "italic", "underline", "strike"],
+            ["blockquote", "code-block"],
+            [{ header: 1 }, { header: 2 }],
+            [{ list: "ordered" }, { list: "bullet" }],
+            [{ script: "sub" }, { script: "super" }],
+            [{ indent: "-1" }, { indent: "+1" }],
+            [{ direction: "rtl" }],
+            [{ size: ["small", false, "large", "huge"] }],
+            [{ header: [1, 2, 3, 4, 5, 6, false] }],
+            [{ color: [] }, { background: [] }],
+            [{ font: [] }],
+            [{ align: [] }],
+            ["clean"],
+            ["link", "image", "video"],
+          ],
+        },
+        // more options
+      },
+      disabled: false,
+    });
+
+    const onEditorBlur = (quill) => {
+      console.log("editor blur!", quill);
+    };
+    const onEditorFocus = (quill) => {
+      console.log("editor focus!", quill);
+    };
+    const onEditorReady = (quill) => {
+      console.log("editor ready!", quill);
+    };
+    const onEditorChange = ({ quill, html, text }) => {
+      console.log("editor change!", quill, html, text);
+      state._content = html;
+    };
+
+    setTimeout(() => {
+      state.disabled = true;
+    }, 2000);
+
+    return {
+      state,
+      onEditorBlur,
+      onEditorFocus,
+      onEditorReady,
+      onEditorChange,
+    };
+  },
+  props: { title: String },
   data() {
     return {
-      isClass: true,
+      isClass: false,
       startDate: null,
       endDate: null,
       onedayDate: [null],
       // ============================
-      
+      classVo: {
+        zonecode: "",
+        roadAddress: "",
+        jibunAddress: "",
+        detailAddress: "",
+        y: "", //위도
+        x: "", //경도
+      },
     };
   },
   methods: {
+    DaumPostcode() {
+      new window.daum.Postcode({
+        oncomplete: (data) => {
+          //주소 저장
+          this.companyVo.zonecode = data.zonecode;
+          this.companyVo.roadAddress = data.roadAddress;
+          this.companyVo.jibunAddress = data.jibunAddress;
+          // //검색된주소 위도, 경도로 저장
+          var geocoder = new window.kakao.maps.services.Geocoder();
+          geocoder.addressSearch(
+            this.companyVo.roadAddress,
+            (result, status) => {
+              if (status === window.kakao.maps.services.Status.OK) {
+                // 주소 검색 결과가 성공일 경우
+                this.companyVo.y = result[0].y; // 위도
+                this.companyVo.x = result[0].x; // 경도
+                console.log(
+                  "위도:",
+                  this.companyVo.y,
+                  "경도:",
+                  this.companyVo.x
+                );
+              } else {
+                // 주소 검색 실패
+                console.error("주소 검색 실패");
+              }
+            }
+          );
+        },
+      }).open();
+    },
+    submit(state) {
+      console.log(state._content);
+    },
     selectClass(num) {
       if (num == 1) {
         this.isClass = true;
@@ -353,5 +559,31 @@ export default {
 }
 .dp__time_display_inline {
   padding: 2px;
+}
+.ql-toolbar {
+  width: 700px !important;
+}
+.ql-container {
+  width: 700px !important;
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  height: 400px !important;
+  margin: 0px;
+  position: relative;
+}
+.ql-editor {
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.ql-formats > button {
+  margin: 0px;
+}
+.ql-formats > span {
+  font-size: 15px;
+}
+.ql-formats > button > svg {
+  width: 15px !important;
 }
 </style>
