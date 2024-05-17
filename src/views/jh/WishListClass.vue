@@ -121,10 +121,17 @@
     </div>
     -->
     <!--모달창-->
-    <div id="addModal" class="modal">
-        <div class="modal-content">
+    <div id="newModal">
+        <div class="modal-content2">
             <p class="closeBtn" v-on:click="close">x</p>
-            <p>위시리스트에서 제거하시겠습니까?</p>
+            <div class="modal-p">
+                <p>위시리스트에서 삭제됩니다</p>
+                <p>삭제 하시겠습니까?</p>
+            </div>
+            <div class="modal-b">
+                <button>취소</button>
+                <button>삭제</button>
+            </div>
         </div>
     </div>
 
@@ -155,12 +162,12 @@ export default {
     methods: {
         modalUp() {
             console.log("업");
-            let viewModal = document.querySelector("#addModal");
+            let viewModal = document.querySelector("#newModal");
 
             viewModal.style.display = "block";
         },
         close() {
-            let viewModal = document.querySelector("#addModal");
+            let viewModal = document.querySelector("#newModal");
 
             viewModal.style.display = "none";
         }
