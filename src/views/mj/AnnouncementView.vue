@@ -25,7 +25,6 @@
                                 <th width="560">제목</th>
                                 <th width="140">글쓴이</th>
                                 <th width="125">작성일</th>
-                                <!-- <th width="100">조회수</th> -->
                             </tr>
                         </thead>
                         <tbody>
