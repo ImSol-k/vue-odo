@@ -19,10 +19,9 @@
 						<button>저장</button>
 					</div>
 					
-					<div class="contents_body">
-						<div class="box" style=" background: bdbdbd;">
-							<img class="profile" src="@/assets/images/icon/man_icon.png" alt="">
-						</div>
+					<div class="box" style="background: #BDBDBD;">
+						<img class="profile" src="@/assets/images/하트.png">
+					</div>
 					<br>
 					<div class="area">
 						<div class="form-blank">
@@ -76,7 +75,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 		<!-- 푸터 -->
 		<AppFooter/>
 </template>
