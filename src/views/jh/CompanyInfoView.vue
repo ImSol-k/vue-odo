@@ -1,6 +1,6 @@
 <template><!--업체 소개페이지-->
 
-	<AppHeader/>
+	<AppHeader />
 	<!--헤더-->
 	<div class="wrap">
 
@@ -9,14 +9,13 @@
 		<div class="cover5">
 			<div class="clearfix">
 				<div class="a">
-					<img class="img" src="../../assets/images/회사이미지.png" alt="" >
+					<img class="img" src="../../assets/images/회사이미지.png" alt="">
 				</div>
 				<div class="cover8">
 					<div class="cover7">
 						<p class="companyname">업체명</p>
-						<button class="companybutton">업체 소개글 수정하기</button>
 					</div>
-					<p>클래스 00	|	찜 00</p>
+					<p>클래스 00 | 찜 00</p>
 				</div>
 			</div>
 			<div>
@@ -26,29 +25,30 @@
 		<!--클래스별 통계-->
 		<div class="clearfix cover6" v-for="(chartData, index) in chartDataArray" :key="index">
 			<div class="cover1">
-				<img class="img2" src="../../assets/images/회사이미지.png" alt="">	
-				<p class="classpro p31">클래스 소개글 샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라</p>
+				<img class="img2" src="../../assets/images/회사이미지.png" alt="">
+				<p class="classpro p39">클래스명</p>
+				<p class="classpro2 p31">클래스 소개글 샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라</p>
 			</div>
 
 			<div class="cover2">
 				<div class="cover4">
 					<div>
 						<p class="cover4 text1">이런점이 좋았어요</p><br>
+						<p class="text3">99개의 평점</p>
 						<img class="img3" src="../../assets/images/회사이미지.png" alt="">
-						<p>3.88</p>
-						<p>99개의 평점</p>
+						<p class="text2">3.88</p>
 
 					</div>
 
 				</div>
-				<div>
-					<canvas :id="'chart-' + index" ref="charts" />
+				<div class="char2">
+					<canvas :id="'chart-' + index" ref="charts" width="300px" height="220px"/>
 				</div>
 			</div>
 		</div>
 
 	</div>
-	<AppFooter/>
+	<AppFooter />
 </template>
 <script>
 import AppHeader from "@/components/AppHeader.vue"
@@ -62,7 +62,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 Chart.register(ChartDataLabels);
 
 export default {
-	components:{
+	components: {
 		AppHeader,
 		AppFooter
 	},
@@ -153,8 +153,8 @@ export default {
 			});
 		}
 	},
-	created(){
-		
+	created() {
+
 	}
 };
 </script>
