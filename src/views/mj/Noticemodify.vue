@@ -19,7 +19,7 @@
 							<textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100"></textarea>
 						</div>
 						<div id="in_name">
-							<textarea name="name" id="uname" rows="1" cols="55" disabled placeholder="글쓴이" maxlength="100"></textarea>
+							<textarea name="name" id="uname" rows="1" cols="55" placeholder="글쓴이" maxlength="100"></textarea>
 						</div>
 						<!-- <div class="wi_line"></div> -->
 						<div id="in_content">
@@ -33,21 +33,20 @@
 						</div>
 					</form>
 				</div>
-			</div>
 		</div>
 	</div>
+</div>
 		<!-- 푸터 -->
 		<AppFooter/>
 </template>
 <script>
 import '@/assets/css/Initialization.css'
-import "@/assets/css/mj/write.css"
 import AppFooter from '@/components/AppFooter.vue';
 import AppHeader from '@/components/AppHeader.vue';
 import MyPageSide from '@/components/MyPageSide.vue';
 
 	export default {
-		name: "ModifyView",
+		name: "NoticemodifyView",
 		components: {
 			AppHeader,
 			AppFooter,
