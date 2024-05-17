@@ -50,7 +50,12 @@
 					<p>IT</p>
 				</router-link></li>
 			<li><router-link to="">
-				내 주변 클래스 찾기
+				<div class="findAroundClass">
+					<img src="../../assets/images/icon/hs/location_icon.png" alt="">
+					<p><b>내 주변 클래스</b>
+						내 주변에 있는 클래스 찾기
+					</p>
+				</div>
 				</router-link></li>
 		</ul>
 		<section class="free-best">
