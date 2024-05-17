@@ -560,34 +560,5 @@ export default {
 .dp__time_display_inline {
   padding: 2px;
 }
-.ql-toolbar {
-  width: 700px !important;
-}
-.ql-container {
-  width: 700px !important;
-  box-sizing: border-box;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  height: 400px !important;
-  margin: 0px;
-  position: relative;
-}
-.ql-editor {
-  width: 700px;
-  height: 500px;
-  overflow: scroll;
-  overflow-x: hidden;
-}
-.ql-editor>p>img{
-  width: 600px;
-}
-.ql-formats > button {
-  margin: 0px;
-}
-.ql-formats > span {
-  font-size: 15px;
-}
-.ql-formats > button > svg {
-  width: 15px !important;
-}
+
 </style>
