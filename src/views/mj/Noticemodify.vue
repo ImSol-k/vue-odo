@@ -41,7 +41,6 @@
 </template>
 <script>
 import '@/assets/css/Initialization.css'
-import "@/assets/css/mj/write.css"
 import AppFooter from '@/components/AppFooter.vue';
 import AppHeader from '@/components/AppHeader.vue';
 import MyPageSide from '@/components/MyPageSide.vue';

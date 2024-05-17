@@ -22,133 +22,26 @@
                       <thead>
                           <tr>
                               <th width="70">번호</th>
-                                <th width="500">제목</th>
-                                <th width="120">글쓴이</th>
-                                <th width="100">작성일</th>
-                                <th width="100">조회수</th>
+                                <th width="560">제목</th>
+                                <th width="140">글쓴이</th>
+                                <th width="125">작성일</th>
+                                <!-- <th width="100">조회수</th> -->
                             </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지 전달드립니다</a></td>
-                            <td width="120">이미지</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
+                            <td>1111</td>
+                            <td><a href="#">공지 전달드립니다</a></td>
+                            <td>이미지</td>
+                            <td>2024-05-11</td>
                           </tr>
                           <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
+                            <td>1111</td>
+                            <td><a href="#"></a></td>
+                            <td>이미지</td>
+                            <td>2024-05-11</td>
                           </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
-                          <tr>
-                            <td width="70">1111</td>
-                            <td width="500"><a href="#">공지드립니다</a></td>
-                            <td width="120">김효진</td>
-                            <td width="100">2024-05-11</td>
-                            <td width="100">222</td>
-                          </tr>
+                          
                         </tbody>
                       </table>
                     </div>
