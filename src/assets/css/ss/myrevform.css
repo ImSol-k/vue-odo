@@ -6,8 +6,6 @@
     padding: 10px 30px;
 }
 
-
-
 .revbox {
     box-sizing: border-box;
     display: inline-block;
@@ -43,12 +41,16 @@
     box-sizing: border-box;
     border-bottom: 1px solid #d6d6d6;
     /* border: 1px solid #000; */
+    width: 440px;
     height: 130px;
     padding: 2px;
 }
 
 .rf-1 .rf-1-1 {
     box-sizing: border-box;
+    /* border: 1px solid #000; */
+    width: 436px;
+    height: 126px;
 }
 
 .rf-1-1 img {
@@ -61,20 +63,23 @@
     float: left;
 }
 
-.rf-1-1 span {
+.rf-1-1 .rf-1-1-title {
     /* border: 1px solid #000; */
     display: block;
     font-size: 20px;
+    width: 310px;
     margin: 5px 0;
     float: left;
     padding-left: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    float: left;
 }
 .rf-1-1 p {
     display: -webkit-box;
     min-width: 200px;
+    max-width: 300px;
     min-height: 70px;
     margin-left: 10px;
     font-size: 13px;
@@ -84,9 +89,35 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: no-wrap;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 }
+
+.rf-1-1-classDate {
+    box-sizing: border-box;
+    display: block;
+    /* border: 1px solid #000; */
+    font-size: 14px;
+    text-align: left;
+    width: 310px;
+    margin: 5px auto;
+    padding-left: 10px;
+    float: left;
+}
+
+.rf-1-1-revDate {
+    box-sizing: border-box;
+    display: block;
+    /* border: 1px solid #000; */
+    width: 310px;
+    float: left;
+    font-size: 14px;
+    text-align: left;
+    margin: 5px 0;
+    padding-left: 10px;
+}
+
+
 
 /* 별점 부분 */
 .rf-2 {
@@ -344,3 +375,5 @@
     box-sizing: border-box;
     height: 100px;
 }
+
+/*********************************************************************/

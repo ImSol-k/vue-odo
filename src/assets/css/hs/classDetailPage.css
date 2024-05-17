@@ -50,6 +50,9 @@
     font-size: 15px;
     padding-left: 10px;
 }
+.orderSelectBox select:focus {
+    outline: none;
+}
 .orderSelectBox .orderDate {
     text-align-last: left;
     padding: 10px 0;
@@ -72,6 +75,11 @@
     font-weight: bold;
     font-size: 18px;
     margin-top: 10px;
+    cursor: pointer;
+}
+.orderSelectBox button:hover {
+    background: #999;
+    border: 1px solid #8521FF;
 }
 /* compnany section */
 .companySection {

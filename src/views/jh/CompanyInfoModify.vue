@@ -81,6 +81,11 @@
 
         </div>
 
+        <div>
+            <input type="file" @change="handleFileChange">
+            <button @click="uploadImage">Upload Image</button>
+        </div>
+
     </div>
     <AppFooter />
 </template>
@@ -89,6 +94,8 @@ import AppHeader from "@/components/AppHeader.vue"
 import AppFooter from "@/components/AppFooter.vue"
 import '@/assets/css/jh/jh.css'
 import '@/assets/css/Initialization.css'
+
+import axios from 'axios';
 
 export default {
     components: {
@@ -112,11 +119,29 @@ export default {
                 jibunAddress: "",
                 detailAddress: "",
             },
-
+            selectedFile: null
         }
     },
 
     methods: {
+        handleFileChange(event) {
+            this.selectedFile = event.target.files[0];
+        },
+        async uploadImage() {
+            try {
+                const formData = new FormData();
+                formData.append('image', this.selectedFile);
+
+                // Replace 'YOUR_ACCESS_TOKEN' with your Instagram API access token
+                const response = await axios.post('https://api.instagram.com/v1/media/upload?access_token=IGQWRNV05LVU1RZAUotb1BVMktUalM2VlNRNmtMeWZAQVVVTZAGZAxWFM0UUtMWlFPLVBaR3RabkVBSnpmSDZAuQkI5Mk5YSWREd1pvbDBaTjVnd2pqTTJhZA1J4bzBWVU44cGE4VFRKaEI4NTNNMVBYRGlsQXk0Q2JHZAWMZD', formData);
+
+                console.log(response.data);
+                alert('Image uploaded successfully!');
+            } catch (error) {
+                console.error(error);
+                alert('Error uploading image');
+            }
+        },
         DaumPostcode() {
             new window.daum.Postcode({
                 oncomplete: (data) => {
