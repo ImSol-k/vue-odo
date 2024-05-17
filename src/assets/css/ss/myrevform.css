@@ -4,7 +4,26 @@
     width: 500px;
     height: 500px;
     padding: 10px 30px;
+    display: none;
 }
+
+.review-form1 {
+    box-sizing: border-box;
+    width: 500px;
+    height: 500px;
+    padding: 10px 30px;
+    display: none;
+}
+
+.review-form2 {
+    box-sizing: border-box;
+    width: 500px;
+    height: 500px;
+    padding: 10px 30px;
+    display: block;
+}
+
+
 
 .revbox {
     box-sizing: border-box;
@@ -244,17 +263,32 @@
 .rf-6 textarea {
     border-color: #8521FF;
     text-indent: 8px;
-    min-width: 430px;
-    /* max-width: 430px; */
-    min-height: 150px;
-    /* max-height: 150px; */
+    width: 430px;
+    height: 150px;
     font-size: 15px;
     padding: 5px;
-    letter-spacing: -2.5px;
+    letter-spacing: -1.5px;
     outline-color: #8521FF;
     border-radius: 3px;
     resize: none;
 }
+
+.rf-6-txt {
+    box-sizing: border-box;
+    text-indent: 8px;
+    width: 430px;
+    height: 150px;
+    border: 0.1px solid #8521FF;
+    border-radius: 5px;
+    overflow-y: scroll;
+    margin: 0 auto;
+    font-size: 15px;
+    text-align: left;
+    padding: 5px;
+    letter-spacing: -1.5px;
+    text-overflow: ellipsis;
+}
+
 
 /* 사진 첨부 */
 
@@ -373,7 +407,7 @@
 /* 여백용 */
 .rf-9 {
     box-sizing: border-box;
-    height: 100px;
+    height: 80px;
 }
 
 /*********************************************************************/

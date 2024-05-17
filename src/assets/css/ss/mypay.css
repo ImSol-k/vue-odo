@@ -548,3 +548,16 @@
     z-index: 0;
     padding: 0;
 }
+
+.showRev-modal>.revform1>.review-form>.filebox {
+    height: 200px;
+}
+
+/* 리뷰 수정 */
+
+.review-form2 {
+    box-sizing: border-box;
+    width: 500px;
+    height: 500px;
+    padding: 10px 30px;
+}

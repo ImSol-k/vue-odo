@@ -184,7 +184,6 @@
 			<!-- 등록모달 -->
 			<div class="rev-modal">
 				<div class="revform1">
-
 					<div class="revform1-header clearfix">
 						<div class="revform-closeBtn" v-on:click.prevent="closeRevForm">x</div>
 					</div>
@@ -200,7 +199,6 @@
 										누구나 쉽게 배울수 있는 수업이에요<br>
 										디자인은 정말 하기 싫어요<br>
 										내가 지금 이걸 왜 하고 있는걸까 생각해볼까요<br>
-										
 									</p>
 								</div>
 							</div>
@@ -315,7 +313,7 @@
 						<div class="revform-closeBtn" v-on:click.prevent="closeRevForm2">x</div>
 					</div>
 					<!-- revform1-header -->
-					<div class="review-form">
+					<div class="review-form1">
 						<div class="rf-1 clearfix">
 							<div class="rf-1-1">
 								<img src="@/assets/images/hs/coffee.jpg">
@@ -336,8 +334,172 @@
 							</div>
 						</div>
 
+						<div class="rf-3 clearfix">
+							<span>수업의 내용은 좋았나요?</span><br>
+							<div class="revbox">
+								<input id="rev1-bad" type="radio" name="rev1" value="1" checked="checked"><br>
+								<label for="rev1-bad">별로에요</label>
+							</div>
+						</div>
+						<!-- rf-3 / 질문1 -->
+
+						<div class="rf-4 clearfix">
+							<span>시설에 만족하셨나요?</span><br>
+							<div class="revbox">
+								<input id="rev2-bad" type="radio" name="rev2" value="1" checked="checked"><br>
+								<label for="rev2-bad">별로에요</label>
+							</div>
+						</div>
+						<!-- rf-4 / 질문2 -->
+
+						<div class="rf-5 clearfix">
+							<span>강의비용은 적당했나요?</span><br>
+							<div class="revbox">
+								<input id="rev3-bad" type="radio" name="rev3" value="1" checked="checked"><br>
+								<label for="rev3-bad">별로에요</label>
+							</div>
+						</div>
+						<!-- rf-5 / 질문3 -->
+
+						<div class="rf-6">
+							<span>리뷰를 작성해 주세요</span><br>
+							<div class="rf-6-txt">aaaaa</div>
+						</div>
+						<!-- rf-6 / 리뷰작성란 -->
+
+						<div class="filebox">
+							<span>등록한 사진</span>
+							<img :src="prevImg">													
+						</div>
+						<!-- filebox / 사진첨부 -->
+
+						<div class="rf-8">
+							<button class="back-btn" type="button" v-on:click.prevent="closeRevForm2">뒤로 가기</button>
+							<button class="insert-btn" type="button" v-on:click.prevent="modifyRev">후기 수정</button>				
+						</div>
+						<!-- rf-8 / 버튼 -->
+
+						<div class="rf-9"></div>
+						<!-- rf-9 / 높이 여백용 -->
+
 					</div>
-					<!-- review-form -->
+					<!-- review-form1 -->
+					<form action="#" method="#" enctype="multipart/form-data">
+						<div class="review-form2">
+							<div class="rf-1 clearfix">
+								<div class="rf-1-1">
+									<img :src="getClassImg">
+									<span class="rf-1-1-title">누구나 쉽게 배우는 디자인 연습 </span>
+									<p>
+										누구나 쉽게 배울수 있는 수업이에요<br>
+										디자인은 정말 하기 싫어요<br>
+										내가 지금 이걸 왜 하고 있는걸까 생각해볼까요<br>
+										
+									</p>
+								</div>
+							</div>
+							<!-- rf-1 / 클래스사진 + 클래스 설명 -->
+
+							<div class="rf-2 clearfix">
+								<span>클래스는 사용해 보셨나요?</span><br>
+								<div class="star-rating">
+									<input type="radio" id="5-stars" name="rating" value="5" />
+									<label for="5-stars" class="star">&#9733;</label>
+									<input type="radio" id="4-stars" name="rating" value="4" />
+									<label for="4-stars" class="star">&#9733;</label>
+									<input type="radio" id="3-stars" name="rating" value="3" />
+									<label for="3-stars" class="star">&#9733;</label>
+									<input type="radio" id="2-stars" name="rating" value="2" />
+									<label for="2-stars" class="star">&#9733;</label>
+									<input type="radio" id="1-star" name="rating" value="1" />
+									<label for="1-star" class="star">&#9733;</label>
+								</div>
+								<!-- star-rating -->
+							</div>
+							<!-- rf-2 / 별점 부분 -->	
+
+							<div class="rf-3 clearfix">
+								<span>수업의 내용은 좋았나요?</span><br>
+								<div class="revbox">
+									<input id="rev1-bad" type="radio" name="rev1" value="1"><br>
+									<label for="rev1-bad">별로에요</label>
+								</div>
+								<div class="revbox">
+									<input id="rev1-mid" type="radio" name="rev1" value="2"><br>
+									<label for="rev1-mid">만족해요</label>
+								</div>
+								<div class="revbox">
+									<input id="rev1-good" type="radio" name="rev1" value="3"><br>
+									<label for="rev1-good">아주 만족해요</label>
+								</div>
+							</div>
+							<!-- rf-3 / 질문1 -->
+
+							<div class="rf-4 clearfix">
+								<span>시설에 만족하셨나요?</span><br>
+								<div class="revbox">
+									<input id="rev2-bad" type="radio" name="rev2" value="1"><br>
+									<label for="rev2-bad">별로에요</label>
+								</div>
+								<div class="revbox">
+									<input id="rev2-mid" type="radio" name="rev2" value="2"><br>
+									<label for="rev2-mid">만족해요</label>
+								</div>
+								<div class="revbox">
+									<input id="rev2-good" type="radio" name="rev2" value="3"><br>
+									<label for="rev2-good">아주 만족해요</label>
+								</div>
+							</div>
+							<!-- rf-4 / 질문2 -->
+
+							<div class="rf-5 clearfix">
+								<span>강의비용은 적당했나요?</span><br>
+								<div class="revbox">
+									<input id="rev3-bad" type="radio" name="rev3" value="1"><br>
+									<label for="rev3-bad">별로에요</label>
+								</div>
+								<div class="revbox">
+									<input id="rev3-mid" type="radio" name="rev3" value="2"><br>
+									<label for="rev3-mid">만족해요</label>
+								</div>
+								<div class="revbox">
+									<input id="rev3-good" type="radio" name="rev3" value="3"><br>
+									<label for="rev3-good">아주 만족해요</label>
+								</div>
+							</div>
+							<!-- rf-5 / 질문3 -->
+							
+							<div class="rf-6">
+								<span>리뷰를 작성해 주세요</span><br>
+								<textarea spellcheck="false" value=""></textarea>
+							</div>
+							<!-- rf-6 / 리뷰작성란 -->
+
+							<div class="filebox">
+								<span>사진첨부하기</span><br>
+								<img :src="prevImg">
+								<div class="filebox-1">
+									<input class="upload-name" v-model="fileName" placeholder="선택된 파일이 없습니다" readonly>
+									<label for="file">파일찾기</label>
+									<input id="file" type="file" name="file" @change="getfile">
+								</div>							
+							</div>
+							<!-- filebox / 사진첨부 -->
+							
+							<div class="rf-8">
+								<button class="back-btn" type="button" v-on:click.prevent="closeRevForm">뒤로 가기</button>
+								<button class="insert-btn" type="button" v-on:click.prevent="insertReview">수정</button>				
+							</div>
+							<!-- rf-8 / 버튼 -->
+							<div class="rf-9"></div>
+							<!-- rf-9 / 높이 여백용 -->
+
+							
+
+						</div>
+						<!-- review-form2 -->
+					</form>
+					<!-- 리뷰보기에서 수정폼들어왔을때 보낼 폼 -->
 				</div>
 				<!-- revform1 -->
 			</div>
@@ -387,7 +549,7 @@ export default {
 			payPrice : 5000,
 			recClass : true, // 추천클래스 - 있으면 true 없으면 false
 			isPay : false, // 결제여부확인
-			hasRev : true, // 작성한 리뷰 있는지 확인
+			hasRev : false, // 작성한 리뷰 있는지 확인
 			paymentData : [], // 결제정보가져와서 저장될 곳
 			getClassImg : require('@/assets/images/hs/cake.jpg'), // 클래스이미지 
 			file : document.querySelector('#file'), // 첨부파일
@@ -396,34 +558,84 @@ export default {
 		};
 	},
 	methods: {
-		// 수정폼이동
+		// 개인정보 수정폼이동
 		goModify(){ 
 			this.$router.push('/mypage/modify');
 		},
 
+		///////////////////////////////////////////////////////////////////////////////////
+		
 		// 작성한 리뷰 보기 열기
 		revShow(){
 			let modal = document.querySelector('.showRev-modal');
+			// let revForm1 = document.querySelector('.review-form1');
+			// let revForm2 = document.querySelector('.review-form2');
+
 			modal.style.display = 'block';
+			// revForm1.style.display = 'block';
+			// revForm2.style.display = 'none';
 		},
 		// 리뷰 보기 모달 닫기
 		closeRevForm2(){
 			let modal = document.querySelector('.showRev-modal');
 			modal.style.display = 'none';
 		},
+
+		// 리뷰 모달창 안에 별점퍼센트 
+		ratingToPercent2(starScore2){
+			starScore2 = (this.starScore2 / 5 ) * 100;
+			return starScore2 + 1.5;
+		},
+
+		// 리뷰 수정 버튼 눌렀을때 
+		modifyRev(){
+			console.log('수정');
+			let revForm1 = document.querySelector('.review-form1');
+			let revForm2 = document.querySelector('.review-form2');
+			revForm1.style.display = 'none';
+			revForm2.style.display = 'block';
+		},
+
 		
+		///////////////////////////////////////////////////////////////////////////////////
+
+		///////////////////////////////////////////////////////////////////////////////////
+
+		// 등록버튼 클릭시 
+		insertReview(){
+			console.log('후기등록');
+		},
+
 		// 리뷰 작성 모달 열기 
 		revForm(){ 
 			let modal = document.querySelector('.rev-modal');
+			let revForm = document.querySelector('.review-form');
 			modal.style.display = 'block';
+			revForm.style.display = 'block';
 		},
 		
 		// 리뷰 작성 모달 닫기
 		closeRevForm(){
 			let modal = document.querySelector('.rev-modal');
 			modal.style.display = 'none';
-			
 		},
+
+		// 파일 가져오기
+		getfile(event){
+			console.log('getfile');
+			this.file = event.target.files[0];
+			const READER = new FileReader();
+
+			READER.onload = (e) =>{
+				this.prevImg = e.target.result;
+			}
+			if(this.file){
+				READER.readAsDataURL(this.file);
+			}
+			this.fileName = this.file.name;			
+		},
+
+		///////////////////////////////////////////////////////////////////////////////////
 
 		// 정규클래스 원데이 클래스 선택
 		selectClass(no){
@@ -444,11 +656,7 @@ export default {
 			starScore = (this.starScore / 5 ) * 100;
 			return starScore + 1.5;
 		},
-		// 리뷰 모달창 안에 별점퍼센트 
-		ratingToPercent2(starScore2){
-			starScore2 = (this.starScore2 / 5 ) * 100;
-			return starScore2 + 1.5;
-		},
+		
 
 		// 문의요청
 		inquiry(){
@@ -475,32 +683,6 @@ export default {
 			}
 		},
 		
-		// 파일 가져오기
-		getfile(event){
-			console.log('getfile');
-			this.file = event.target.files[0];
-			const READER = new FileReader();
-
-			READER.onload = (e) =>{
-				this.prevImg = e.target.result;
-			}
-			if(this.file){
-				READER.readAsDataURL(this.file);
-			}
-			this.fileName = this.file.name;
-			
-			
-		},
-		
-		// 등록버튼 클릭시 
-		insertReview(){
-			console.log('후기등록');
-		},
-
-		// 별점
-		star(){
-			console.log('star');
-		},
 
 	},
 	created(){
