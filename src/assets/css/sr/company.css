@@ -134,7 +134,7 @@ align-items: center; 세로정렬
   color: #fff;
 }
 
-/** 업체페이지 ************************/
+/** 업체페이지 클래스 리스트 ************************/
 
 .companyInfoMenu > h1 {
   padding: 20px 0px 10px 0px;
@@ -175,27 +175,44 @@ align-items: center; 세로정렬
 .memberListTitle > p {
   float: left;
   margin: 10px 20px 10px 20px;
-  width: 870px;
+  /* width: 870px; */
 }
 .companyInfoClassList > p {
   border-bottom: 1px solid #d9d9d9;
   padding: 5px 10px;
   margin: 5px 10px;
   font-size: 26px;
+  /* width: 900px; */
+  
+}
+.companyInfoClassBox{
+  display: flex;
 }
 .companyInfoClassList {
   float: left;
-  width: 900px;
+  /* width: 500px; */
+  /* display: flex; */
 }
 .companyInfoClassfor {
   margin: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+.companyInfoClassfor > li{
+  display: flex;
+  align-items: center;
+  /* border-bottom: 1px solid #a0a0a0; */
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
 }
 .companyInfoClassfor > li > img {
   float: left;
-  width: 60px;
+  width: 90px;
   margin-right: 10px;
+}
+.companyInfoClassfor > li > img:hover{
+  transition: transform 0.1s linear;
+  transform: scale(1.07);
 }
 .companyInfoClassfor > li > div {
   float: left;
@@ -205,29 +222,42 @@ align-items: center; 세로정렬
 }
 .companyInfoClassfor > li > div > p:nth-child(2) {
   font-size: 13px;
-  height: 40px;
+  color: #a0a0a0;
+  /* height: 40px; */
 }
 .classListObj {
   cursor: pointer;
   width: 300px;
+  
 }
-/* .classListObj>p:nth-child(2){
+.classListObj>p:nth-child(2){
+    /* height: 40px; */
+    display: flex;
+    font-size: 12px;
+}
+.classListObj>p:nth-child(3){
     height: 40px;
     display: flex;
     font-size: 12px;
-} */
+}
 .classListOption {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   /* margin: 5px; */
 }
 .classListOption > .classRouterLink {
-  margin: 2px 5px;
+  display: flex;
+  margin: 2px px;
   height: 24px;
   width: 70px;
   font-size: 13px;
 }
-
+/* 클래스리스트 캘린더 */
+.classTypeCalendar{
+  width: 450px;
+  margin-left: 10px;
+  /* background-color: red; */
+}
 /* 날짜선택 */
 .memberListTitle {
   display: flex;

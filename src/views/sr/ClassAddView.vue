@@ -4,8 +4,8 @@
     <div class="clearfix">
       <AppMenu />
       <div class="companyInfoClassList">
-        <p>클래스 등록</p>
-        <div class="whatClass">
+        <p>클래스 <span v-if="isAdd">등록</span><span v-else>수정</span></p>
+        <div class="whatClass" v-if="isAdd">
           <span
             v-on:click.prevent="selectClass(1)"
             :class="{ classChack: isClass }"
@@ -199,7 +199,8 @@
           <!--classAddInfo-->
           <div class="isAddBtn">
             <button>취소</button>
-            <button>등록</button>
+            <button v-if="isAdd">등록</button>
+            <button v-else>수정</button>
           </div>
         </div>
         <!--classAddBox-->
@@ -400,7 +401,8 @@
           <!--classAddInfo-->
           <div class="isAddBtn">
             <button>취소</button>
-            <button>등록</button>
+            <button v-if="isAdd">등록</button>
+            <button v-else>수정</button>
           </div>
         </div>
         <!--classAddBox---->
@@ -471,12 +473,14 @@ export default {
       onEditorFocus,
       onEditorReady,
       onEditorChange,
+      
     };
   },
   props: { title: String },
   data() {
     return {
-      isClass: false,
+      isAdd: true,
+      isClass: true,
       startDate: null,
       endDate: null,
       onedayDate: [null],
