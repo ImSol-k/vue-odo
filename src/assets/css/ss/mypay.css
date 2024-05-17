@@ -1,24 +1,4 @@
 /* 결제내역 페이지 css */
-/* mymy-nav*/
-.mymy-nav {
-    box-sizing: border-box;
-    width: 950px;
-    display: block;
-    padding : 0 0 10px 0 ; 
-    border-bottom: 1px solid #d9d9d9;
-}
-
-.mymy-nav span {
-    width: 70px;
-    height: 30px;
-    margin: 0 5px;
-    font-size: 15px;
-    cursor: pointer;
-    background-color: #fff;
-}
-
-/***************************/
-
 /* 페이 컨텐츠 전체 */
 .mymy-paybox {
     margin-top: 10px;
@@ -123,7 +103,6 @@
     position: relative;
     z-index: 1;
 }
-
 
 
 /* 하트 표시 */

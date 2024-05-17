@@ -362,7 +362,8 @@
 						<!-- rf-9 / 높이 여백용 -->
 
 					</div>
-					<!-- review-form1 -->
+					<!-- //review-form1 -->
+
 					<form action="#" method="#" enctype="multipart/form-data">
 						<div class="review-form2">
 							<div class="rf-1 clearfix">
@@ -373,7 +374,6 @@
 										누구나 쉽게 배울수 있는 수업이에요<br>
 										디자인은 정말 하기 싫어요<br>
 										내가 지금 이걸 왜 하고 있는걸까 생각해볼까요<br>
-										
 									</p>
 								</div>
 							</div>
@@ -476,11 +476,11 @@
 							
 
 						</div>
-						<!-- review-form2 -->
+						<!-- //review-form2 -->
 					</form>
-					<!-- 리뷰보기에서 수정폼들어왔을때 보낼 폼 -->
+					<!-- //리뷰보기에서 수정폼들어왔을때 보낼 폼 -->
 				</div>
-				<!-- revform1 -->
+				<!-- //revform1 -->
 			</div>
 			<!-- 리뷰보기 모달 -->
 

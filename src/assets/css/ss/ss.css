@@ -1,5 +1,5 @@
 /***************************/
-/* 전체 틀 */
+/* 마이페이지 헤더 */
 .mymy-header {
     width: 1200px;
     height: 140px;
@@ -8,24 +8,6 @@
     letter-spacing: -0.9px;
 }
 
-.mymy {
-    width: 1200px;
-    height: auto;
-    background-color: #ffffff;
-    letter-spacing: -1.5px;
-}
-
-.mymy-side {
-    width: 200px;
-    height: 600px;
-    padding: 0 15px;
-    float: left;
-    box-sizing: border-box;
-}
-
-
-/***************************/
-/* 마이페이지 헤더 */
 .mymy-header img {
     /* border: 1px solid #000; */
     float: left;
@@ -65,10 +47,25 @@
     font-weight: bold;
 }
 
+/***************************/
 
+.mymy {
+    width: 1200px;
+    height: auto;
+    background-color: #ffffff;
+    letter-spacing: -1.5px;
+}
 
 /***************************/
 /* 마이페이지 사이드 */
+.mymy-side {
+    width: 200px;
+    height: 600px;
+    padding: 0 15px;
+    float: left;
+    box-sizing: border-box;
+}
+
 .mymy-side ul {
     font-size: 15px;
     margin: 0 0 10px 0;
@@ -180,10 +177,31 @@
     margin-bottom: 5px;
 }
 
+/**********************/
+/* 메인컨텐츠 */
 .mymy-content .mymy-main{
     min-height: 400px;
     box-sizing: border-box;
     /* border: 1px solid #000; */
     padding: 5px;
 }
-/**********************/
+
+/* mymy-nav*/
+.mymy-nav {
+    box-sizing: border-box;
+    width: 950px;
+    display: block;
+    padding : 0 0 10px 0 ; 
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.mymy-nav span {
+    width: 70px;
+    height: 30px;
+    margin: 0 5px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+/***************************/

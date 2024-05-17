@@ -7,10 +7,10 @@
 		<span class="lj-txt">로그인</span>
 		<div class="lj-form">
 			<form v-on:submit.prevent="login">
-				<input type="text" name="id" v-model="userVo.id" placeholder="아이디(이메일)">
-				<!-- <img class="lj-passImg" :src="pass" v-on:click.prevent="changeInputImg"> -->
-				<input type="password" name="password" v-model="userVo.password" placeholder="비밀번호">
-
+				<input type="text" name="id" v-model="loginVo.id" placeholder="아이디(이메일)">
+				<!-- <img v-if="isPass" class="lj-passImg" :src="pass1" v-on:click.prevent="changeInputImg">
+				<img v-else class="lj-passImg" :src="pass2" v-on:click.prevent="changeInputImg"> -->
+				<input type="password" name="password" v-model="loginVo.password" placeholder="비밀번호">
 				<button class="login-btn" type="submit">로그인</button>
 			</form>
 			<!-- form -->
@@ -24,6 +24,7 @@
 
 	<AppFooter/>
 	<!-- footer -->
+	
 </template>
 
 
@@ -44,23 +45,25 @@ export default {
 	},
 	data() {
 		return {
-			userVo :{
+			loginVo :{
 				id: '',
 				password: '',
 			},
-			pass : require('@/assets/images/icon/ss/pass1.png')
+			pass1 : require('@/assets/images/icon/ss/pass1.png'),
+			pass2 : require('@/assets/images/icon/ss/pass2.png'),
+			isPass : true
 		};
 	},
 	methods: {
 		// 로그인
 		login(){
 			console.log('로그인');
-			console.log(this.userVo);
+			console.log(this.loginVo);
 		},
 
 		// 비밀번호인풋창 바꾸기
 		changeInputImg(){
-			console.log('바꾸기');
+			this.isPass = !this.isPass;
 		}
 		
 	},
