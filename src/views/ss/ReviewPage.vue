@@ -11,12 +11,18 @@
 			</div>
 			<div class="rev-header2">
 				<div class="review-select1">
-					<button type="button" v-on:click.prevent="showType">
-						{{ type[0] }}<span>{{ updown }}</span>
+					<button type="button" @click="showType">
+						{{ whatType }}<span>{{ updown }}</span>
 					</button>
 				</div>
-				<div class="review-select2" v-for="(i) in type" :key="i">
-					<button type="button" v-on:click.prevent="type(i)">{{ type[i] }}</button>
+				<div class="review-select2" v-show="isList">
+					<button type="button" 
+					v-for="(item , index) in type"
+					:key="index"
+					@click="getType(index)">
+						{{ item }}
+					</button>
+					
 				</div>
 			</div>
 			
@@ -51,6 +57,8 @@ export default {
 			starScore : 5, // 별점 표시 
 			updown : '△',
 			isUp : true,
+			isList : false,
+			whatType : '',
 		};
 	},
 	methods: {
@@ -58,20 +66,20 @@ export default {
 		// 정렬순서 버튼 눌렀을 때 
 		showType(){
 			this.isUp = !this.isUp;
-			let list = document.querySelector('.review-select2');
-			if(this.isUp){
-				this.updown = '△';
-				list.style.display = 'none';
-			} else {
-				this.updown = '▽';
-				list.style.display = 'block';
-			}
+			this.isList = !this.isList;
+			this.updown = this.isUp ? '△' : '▽';
 		},
 
-		
+		getType(index){
+			this.whatType = this.type[index];
+			this.isList = false;
+			this.updown = '▽';
+		}
 
 	},
-	created(){}
+	created(){
+		this.whatType = this.type[0];
+	}
 };
 </script>
 

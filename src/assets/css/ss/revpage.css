@@ -1,14 +1,12 @@
 .revMain {
     box-sizing: border-box;
-    border: 1px solid #000;
-    width: 1200px;
-    height: 900px;
+    width: 1000px;
+    min-height: 850px;
 }
 
 .rev-header {
     box-sizing: border-box;
-    /* border: 1px solid #000; */
-    width: 1000px;
+    width: 800px;
     height: 200px;
     margin: 0 auto;
     padding: 20px 0 ;
@@ -17,8 +15,9 @@
 .rev-header1 {
     box-sizing: border-box;
     border: 1px solid #000;
-    width: 800px;
+    width: 600px;
     height: 160px;
+    padding: 10px;
     float: left;
 }
 
@@ -29,6 +28,7 @@
     height: 160px;
     text-align: right;
     float: left;
+    position: relative;
 }
 
 
@@ -36,11 +36,13 @@
     box-sizing: border-box;
     height: 30px;
     margin: 5px;
+    position: relative;
 }
 
 .review-select1>button {
     margin-right: 10px;
     box-sizing: border-box;
+    border: 1px solid #000;
     text-align: center;
     border: none;
     background-color: #fff;
@@ -53,19 +55,19 @@
 
 
 
-
 .review-select2 {
     box-sizing: border-box;
+    display: none;
     border: 0.1px solid #000;
     background-color: #fff;
     border-radius: 5px;
-    margin: 0 auto;
+    margin-top: 3px;
     width: 100px;
     height: 120px;
     padding: 5px;
     position: absolute;
-    top: 170px;
-    left: 1090px;
+    top: 100%;
+    left: 0;
 }
 .review-select2 button{
     box-sizing: border-box;
