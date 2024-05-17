@@ -29,6 +29,7 @@
 							<!-- <span class="join-pw-msg">비밀번호를 확인하세요</span> -->
 						</div>
 					</div>
+					<button class="login-btn" type="button" v-on:click="showSelectJoin">뒤로 가기</button>
 					<button class="login-btn" type="button" v-on:click="showJoin2">다음</button>
 				</div>
 				<!-- join1 -->
@@ -52,7 +53,7 @@
 				<!-- join2 -->
 				<div class="join3">
 					<div class="join-box">
-						<span>ㅁㅁㅁ님 반가워요</span><br>
+						<span>{{ joinVo.nickName }}님 반가워요</span><br>
 						<span>회원가입이 완료되었어요</span><br>
 						<router-link to="/" class="login-btn">홈으로 가기</router-link>
 						<router-link to="/login" class="login-btn">로그인하러가기</router-link>
@@ -113,11 +114,29 @@ export default {
 
 		// 일반회원 선택했을 때 
 		userJoin(){
-			console.log('userJoin');
 			let select = document.querySelector('.select-join');
 			let user = document.querySelector('.user-join');
 			select.style.display = 'none';
 			user.style.display = 'block';
+			this.loginTitle = '회원가입';
+		},
+
+		// 회원가입에서 뒤로가기 눌렀을 때 
+		showSelectJoin(){
+			console.log('asdasd');
+			this.joinVo = {
+				id: '',
+				password: '',
+				nickName: '',
+				hp: '',
+				birth: '',
+				gender: ''
+			}
+			this.loginTitle = '반가워요!';
+			let select = document.querySelector('.select-join');
+			let user = document.querySelector('.user-join');
+			select.style.display = 'block';
+			user.style.display = 'none';
 		},
 
 		// 다음 버튼 클릭했을 때
@@ -126,10 +145,9 @@ export default {
 			let join2 = document.querySelector('.join2');
 
 			// 공백 등 조건 고려해서 if 문 추가
-			// if(this.joinVo.password === this.checkPw) {
-				join1.style.display = 'none';
-				join2.style.display = 'block';
-			// }
+			join1.style.display = 'none';
+			join2.style.display = 'block';
+
 		},
 		// 뒤로가기 버튼 클릭했을때 
 		showJoin1(){
@@ -142,6 +160,7 @@ export default {
 		// 회원가입 버튼 클릭했을 때
 		join (){
 			console.log(this.joinVo);
+			this.loginTitle = '안녕하세요!'
 			let join3 = document.querySelector('.join3');
 			let join2 = document.querySelector('.join2');
 			join2.style.display = 'none';

@@ -29,7 +29,7 @@
     padding-top: 20px;
 }
 /* 로그인, 회원가입 인풋창 */
-.lj-form input{
+.lj-form input {
     margin-top: 10px;
     width: 360px;
     height: 50px;
@@ -37,7 +37,9 @@
     border-radius: 3px;
     background-color: #f3f3f3;
     padding-left: 10px;
-    letter-spacing: -0.1px;
+    letter-spacing: -0.5px;
+    font-size: 15px;
+    font-weight: 100;
 }
 
 .lj-form input:focus{
@@ -137,10 +139,10 @@
     display: inline-block;
     border: 1px solid #d6d6d6;
     border-radius: 3px;
-    width: 100px;
-    height: 30px;
+    width: 280px;
+    height: 40px;
     padding: 3px;
-    line-height: 24px;
+    line-height: 34px;
     background-color: #f3f3f3;
     font-size: 12px;
 }
@@ -152,11 +154,6 @@
 }
 
 /* join1 */
-.join-box .join1 input {
-    font-weight: 100;
-    letter-spacing: -0.5px;
-    font-size: 15px;
-}
 
 .join1-1 .join-id-msg{
     margin-right: 215px;
@@ -178,6 +175,21 @@
     margin: 5px auto 0 auto;
     color: #a19e9e;
 }
+
+.join1 .login-btn {
+    width: 170px;
+    height: 56px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    margin: 25px 10px;
+    background-color: #B5C5D6;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: -2.1px;
+}
+
 /**************/
 /* join2 */
 .lj-form .join2 {
