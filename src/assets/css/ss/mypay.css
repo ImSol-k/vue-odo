@@ -187,23 +187,23 @@
 /* 설명 + 출석 부분*/
 .mymy-payCon {
     box-sizing: border-box;
-    width: 400px;
-    height: 180px;
-    border: 1px solid #000;
+    width: 590px;
+    height: 200px;
+    /* border: 1px solid #000; */
     float: left;
-    /* padding: 10px; */
+    padding: 10px;
+    display: flex;
 }
 
 /* paycon1 */
 .paycon1 {
     box-sizing: border-box;
-    width: 350px;
+    width: 400px;
     /* border: 1px solid #000; */
     height: 180px;
     padding-top: 2px;
     padding-left: 3px;
     float: left;
-
 }
 
 /* 결제일 */
@@ -263,8 +263,8 @@
     box-sizing: border-box;
     /* border: 1px solid #000; */
     width: 390px;
-    height: 60px;
-    line-height: 60px;
+    height: 50px;
+    line-height: 40px;
     text-align: left;
     padding: 0 5px;
 }
@@ -283,9 +283,9 @@
 /* 출석보기 버튼 */
 #paybtn1 {
     box-sizing: border-box;
-    width: 130px;
-    max-width: 130px;
-    margin-right: 105px;
+    width: 110px;
+    max-width: 110px;
+    margin-right: 120px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -312,9 +312,9 @@
 
 .paycon2 {
     box-sizing: border-box;
-    width: 100px;
+    width: 190px;
     height: 180px;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     text-align: center;
     float: left;    
 }
@@ -333,25 +333,25 @@
     font-size: 13px;
     padding: 1px;
     background-color: #8521FF;
-    margin-left: 55px;
+    margin-left: 103px;
 }
 
 /* 추천클래스 이미지 */
 .paycon2 img {
     box-sizing: border-box;
     border-radius: 5px;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     display: block;
-    width: 50px;
-    height: 50px;
-    /* margin: 10px auto; */
+    width: 110px;
+    height: 110px;
+    margin: 20px auto 0 auto;
     cursor: pointer; 
 }
 /* 추천클래스 이름 */
 .paycon2 .paycon2-txt2 {
     box-sizing: border-box;
     /* border: 1px solid #000; */
-    width: 80px;
+    width: 110px;
     padding: 1px 2px;
     display: -webkit-box;
     margin: 10px auto 0 auto;
@@ -369,14 +369,13 @@
 .paycon2-noClass {
     box-sizing: border-box;
     /* border: 1px solid #000; */
-    width: 100px;
+    width: 190px;
     height: 180px;
-    margin: 0 auto;
     font-size: 15px;    
 }
 
 .paycon2-noClass span {
-    display: block;
+    display: inline-block;
     /* border: 1px solid #000; */
     height: 60px;
     margin: 60px 0;
