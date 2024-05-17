@@ -49,7 +49,7 @@
 											<div class="heart" v-on:click.prevent="wish" :class="{ red : isRed}"></div>
 										</li>
 										<li>
-											<div class="star-ratings ">
+											<div class="star-ratings">
 												<div class="star-ratings-fill" :style="{ width: ratingToPercent(starScore) + '%' }">
 													<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 												</div>
@@ -88,7 +88,7 @@
 										</div>
 									</div>
 									<!-- paycon2 -->
-									
+
 								</div>
 								<!-- mymy-payCon -->	
 							</div>
@@ -102,28 +102,17 @@
 								<div class="mymy-pay">
 									<ul>
 										<li>
-											<!-- https://codingbroker.tistory.com/55 하트그리기 -->
 											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
 											<img id="pay-pro" src="@/assets/images/hs/cake.jpg">
 											<div class="heart" v-on:click.prevent="wish" :class="{ red : isRed}"></div>
 										</li>
 										<li>
-											<!-- <img v-for="(i) in 5" :key="i" id="pay-star" src="@/assets/images/icon/ss/star.png"> -->
-											<!-- https://melthleeth.tistory.com/entry/HTML-CSS%EB%A1%9C-%EB%B3%84%EC%B0%8D%EA%B8%B0-Star-Rating -->
-											<div class="star-ratings ">
+											<div class="star-ratings">
 												<div class="star-ratings-fill" :style="{ width: ratingToPercent(starScore) + '%' }">
-													<span>★</span>
-													<span>★</span>
-													<span>★</span>
-													<span>★</span>
-													<span>★</span>
+													<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 												</div>
 												<div class="star-ratings-base">
-													<span>★</span>
-													<span>★</span>
-													<span>★</span>
-													<span>★</span>
-													<span>★</span>
+													<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 												</div>
 											</div>
 											<span class="star-avg">({{ starScore }})</span>
@@ -133,13 +122,14 @@
 								<!-- mymy-pay -->
 								<div class="mymy-payCon clearfix">
 									<div class="paycon1">
-										<span class="paycon1-txt1"> 결제일 : 2024.03.10</span>
-										<span class="paycon1-txt2">[정규]누구나 손쉽게 배우는 뜨개질 공방</span>
-										<span class="paycon1-txt3">뜨개질 수업에 참여해보세요. 무료입니다.</span>
+										<span class="paycon1-txt1"> 결제일 : 2024.05.05</span>
+										<span class="paycon1-txt2">[정규]누구나 손쉽게 배우는 커피 타임</span>
+										<span class="paycon1-txt3">바리스타 기초 교육 수업에 참여해보세요. 무료입니다.</span>
 										<span class="paycon1-txt4">결제 금액 : {{ payPrice }}원</span>
 										<div class="paycon1-btnbox">
 											<button type="button" id="paybtn1" v-on:click.prevent="getAttendance">출석 : 15 / 20</button>
-											<button type="button" id="paybtn2" v-on:click.prevent="goReviewForm">후기 작성</button>
+											<button v-if="hasRev" type="button" id="paybtn2" v-on:click.prevent="revForm">후기 작성</button>
+											<button v-else type="button" id="paybtn2" v-on:click.prevent="revShow">후기 보기</button>
 											<button type="button" id="paybtn3" v-on:click.prevent="inquiry">문의</button>										
 										</div>
 									</div>

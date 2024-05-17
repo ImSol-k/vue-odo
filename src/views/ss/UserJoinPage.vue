@@ -4,8 +4,19 @@
 	<!-- header -->
 	
 	<div class="login-join">
-		<span class="lj-txt">회원가입</span>
+		<span class="lj-txt">{{ loginTitle }}</span>
 		<div class="lj-form">
+
+			<div class="select-join">
+				<div class="join-box">
+					<span class="other-login">선택</span><br>
+					<button type="button" v-on:click.prevent="userJoin" class="join-select">일반 회원</button>
+					<button type="button" v-on:click.prevent="companyJoin" class="join-select">기업 회원</button>
+				</div>
+				<!-- join-box -->
+				<router-link to="/login" class="go-login">로그인하러가기</router-link>
+			</div>
+
 			<div class="user-join">
 				<div class="join1">
 					<div class="join-box">
@@ -84,13 +95,31 @@ export default {
 				hp : '',
 				birth : '',
 				gender : ''
-			}
+			},
+			loginTitle : '반가워요!',
+
+
 		};
 	},
 	mounted(){
-		document.querySelector('.join2').style.display = 'none';
+
 	},
 	methods: {
+		// 기업회원 선택했을 때 
+		companyJoin(){
+			this.$router.push('/companyjoin');
+			
+		},
+
+		// 일반회원 선택했을 때 
+		userJoin(){
+			console.log('userJoin');
+			let select = document.querySelector('.select-join');
+			let user = document.querySelector('.user-join');
+			select.style.display = 'none';
+			user.style.display = 'block';
+		},
+
 		// 다음 버튼 클릭했을 때
 		showJoin2(){
 			let join1 = document.querySelector('.join1');
@@ -117,7 +146,6 @@ export default {
 			let join2 = document.querySelector('.join2');
 			join2.style.display = 'none';
 			join3.style.display = 'block';
-			
 		}
 	},
 	created(){

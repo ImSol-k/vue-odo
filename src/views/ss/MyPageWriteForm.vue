@@ -122,7 +122,6 @@
 						<!-- rf-6 / 리뷰작성란 -->
 						
 						<div class="filebox">
-							<!-- https://velog.io/@sklove96/inputtypefile-%EC%BB%A4%EC%8A%A4%ED%85%80%ED%95%98%EA%B8%B0 -->
 							<span>사진첨부하기</span><br>
 							<img :src="prevImg">
 							<div class="filebox-1">
@@ -161,8 +160,6 @@ import '@/assets/css/ss/myrevform.css';
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
 import MyPageSide from '@/components/MyPageSide.vue';
-
-// let file = document.querySelector('#file');
 
 
 export default {

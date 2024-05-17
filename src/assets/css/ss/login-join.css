@@ -27,7 +27,6 @@
     margin: 0 auto;
     text-align: center;
     padding-top: 20px;
-    /* border: 3px solid #8521FF; */
 }
 /* 로그인, 회원가입 인풋창 */
 .lj-form input{
@@ -44,6 +43,15 @@
 .lj-form input:focus{
     border-color: #8521FF;
     outline: none;
+}
+
+/* 일반, 기업회원 선택 */
+.select-join {
+    display: block;
+}
+
+.user-join {
+    display: none;
 }
 
 /* 이미지 */
@@ -112,13 +120,16 @@
     display: inline-block;
     border: 1px solid #d6d6d6;
     border-radius: 3px;
-    margin: 20px 20px;
+    margin: 0 20px;
     padding: 3px;
     width: 120px;
     height: 56px;
     line-height: 50px;
+    font-size: 15px;
     background-color: #f3f3f3;
     font-weight: 500;
+    cursor: pointer;
+    letter-spacing: -1.5px;
 }
 
 /* 로그인 페이지 이동 링크 */
