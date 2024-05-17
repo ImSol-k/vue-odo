@@ -62,7 +62,7 @@
 									</ul>
 								</div>
 								<!-- mymy-pay -->
-								<div class="mymy-payCon clearfix">
+								<div class="mymy-payCon ">
 									<div class="paycon1">
 										<span class="paycon1-txt1"> 결제일 : 2024.05.05</span>
 										<span class="paycon1-txt2">[원데이]누구나 손쉽게 배우는 커피 타임</span>
@@ -77,7 +77,7 @@
 									</div>
 									<!-- paycon1 -->
 
-									<div class="paycon2 clearfix" >
+									<div class="paycon2" >
 										<div v-if="recClass" class="paycon2-1">
 											<span class="paycon2-txt1">추천!</span>
 											<img src="@/assets/images/hs/coffee.jpg">
