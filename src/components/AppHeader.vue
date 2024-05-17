@@ -92,7 +92,7 @@
         <div class="inner">
             <div class="bottom">
                 <div class="hamberger" @click="toggleMenu">
-                    <img src="../assets/images/icon/header_icons/category.png" alt="">
+                    <img @mouseover="cateMouseover" @mouseleave="cateMouseleave" :src="cateSrc" alt="">
                     <p>카테고리</p>
                 </div>
                 <div class="bar"></div>
@@ -102,7 +102,7 @@
                     <input type="search" name="" id="" placeholder="지금 생각나는 취미를 검색하세요.">
                 </div>
                 <ul>
-                    <li><router-link to="/wishlistclass" class="like">찜</router-link></li>
+                    <li><router-link to="/wishlistclass" class="like">위시리스트</router-link></li>
                     <li><router-link to="/mypage/pay" class="my">마이</router-link></li>
                 </ul>
             </div>
@@ -128,6 +128,7 @@ export default {
                 6: false,
                 7: false,
             },
+            cateSrc: require("@/assets/images/icon/header_icons/category.png"),
         };
     },
     methods: {
@@ -159,16 +160,11 @@ export default {
         toggleSubMenu7() {
             this.isSubMenuOpen[7] = !this.isSubMenuOpen[7];
         },
-        // closeDropdownMenu(e){
-        //     let dropdown = document.querySelector('.dropdown-menu');
-
-        //     if(e.target != dropdown) {
-        //         this.isMenuOpen = false;
-        //     }
-        // },
-        searchActive() {
-            // let searchBox = document.querySelector('.serch-box');
-            // searchBox.
+        cateMouseover() {
+            this.cateSrc = require("@/assets/images/icon/header_icons/active_category.png");
+        },
+        cateMouseleave() {
+            this.cateSrc = require("@/assets/images/icon/header_icons/category.png");
         },
     },
     created() {
