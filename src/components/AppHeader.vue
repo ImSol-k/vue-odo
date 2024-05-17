@@ -91,8 +91,8 @@
         </div>
         <div class="inner">
             <div class="bottom">
-                <div class="hamberger" @click="toggleMenu">
-                    <img @mouseover="cateMouseover" @mouseleave="cateMouseleave" :src="cateSrc" alt="">
+                <div class="hamberger" @mouseover="cateMouseover" @mouseleave="cateMouseleave" @click="toggleMenu">
+                    <img :src="cateSrc" alt="">
                     <p>카테고리</p>
                 </div>
                 <div class="bar"></div>

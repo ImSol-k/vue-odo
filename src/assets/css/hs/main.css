@@ -61,7 +61,9 @@ header .bottom .hamberger {
     text-align: center;
     cursor: pointer;
 }
-
+header .bottom .hamberger:hover {
+    color: #8521FF;
+}
 header .bottom .bar {
     width: 1px;
     height: 56px;
@@ -136,6 +138,7 @@ header .bottom .like {
 }
 header .bottom .like:hover {
     background: url('../../images/icon/header_icons/active_like.png') no-repeat center / 28px 25px;
+    color: #8521FF;
 }
 header .bottom .my {
     width: 25px;
@@ -147,6 +150,7 @@ header .bottom .my {
 }
 header .bottom .my:hover {
     background: url('../../images/icon/header_icons/active_my.png') no-repeat center / contain;
+    color: #8521FF;
 }
 /* ----------- footer ----------------- */
 footer {

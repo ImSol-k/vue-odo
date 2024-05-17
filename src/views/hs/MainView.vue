@@ -49,6 +49,9 @@
 					<div><img src="@/assets/images/icon/hs/main_category_icon/it.png" alt=""></div>
 					<p>IT</p>
 				</router-link></li>
+			<li><router-link to="">
+				내 주변 클래스 찾기
+				</router-link></li>
 		</ul>
 		<section class="free-best">
 			<div class="title-box">

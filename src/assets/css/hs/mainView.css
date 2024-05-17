@@ -5,13 +5,25 @@ ul.category-icons {
     justify-content: space-between;
     text-align: center;
     margin-top: 40px;
-    padding: 0 150px;
+    /* padding: 0 100px; */
 }
 ul.category-icons li {
     transition: transform 0.1s linear;
 }
+ul.category-icons li:last-child {
+    width: 200px;
+    height: 90px;
+    border: 1px solid #000;
+    border-radius: 15px;
+}
 ul.category-icons li:hover {
     transform: scale(1.07);
+}
+ul.category-icons li:hover p {
+    color: #8521FF;
+}
+ul.category-icons li:hover div {
+    border: 1px solid #8521FF;
 }
 ul.category-icons div {
     width: 70px;
@@ -20,6 +32,7 @@ ul.category-icons div {
     border-radius: 20px;
     margin-bottom: 2px;
     /* border: 1px solid #8521FF; */
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, .2);
 }
 ul.category-icons img {
     width: 40px;
