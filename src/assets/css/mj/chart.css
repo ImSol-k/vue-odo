@@ -1,0 +1,15 @@
+.chartArea {
+    width:300px;
+    margin-left:300px;
+    padding-bottom:50px;
+}
+.chartArea div {
+    width:500px;
+    margin-left:100px;
+}
+.chartArea h2{
+    padding-top: 25px;
+}
+.LineChart{
+     margin-left:40px;
+}
