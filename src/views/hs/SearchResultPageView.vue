@@ -3,7 +3,7 @@
     <!-- //header -->
 
     <div class="inner">
-        <h2>소개팅 검색 결과 123</h2>
+        <h2 class="searchResult">소개팅 검색 결과 123</h2>
         
         <div class="btnBox">
             <button class="onedayBtn">원데이</button>
@@ -73,6 +73,8 @@
 <script>
 import AppFooter from "@/components/AppFooter.vue"
 import AppHeader from "@/components/AppHeader.vue"
+
+import "@/assets/css/hs/searchview.css"
 
 export default {
     name: "SearchResultPageView",

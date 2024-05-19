@@ -1,0 +1,23 @@
+h2.searchResult {
+    margin: 20px 0;
+}
+
+.btnBox {
+    margin: 20px 0;
+    display: flex;
+}
+.btnBox button {
+    width: 80px;
+    height: 45px;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 15px;
+}
+.btnBox button:hover {
+    border: 1px solid #8521ff;
+}
+.btnBox button:first-child {
+    margin-right: 20px;
+}
