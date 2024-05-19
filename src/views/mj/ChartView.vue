@@ -23,7 +23,7 @@
 						<img class="profile" src="@/assets/images/하트.png">
 					</div>
 					<div id="p-box">
-						<input type="file" name="" id="pic">
+						<input type="file" name="" id="picture">
 					</div>
 					<div class="area">
 						<div class="form-blank">
@@ -82,13 +82,13 @@
 </template>
 <script>
 import '@/assets/css/Initialization.css'
-import "@/assets/css/mj/modify.css"
+// import "@/assets/css/mj/modify.css"
 import AppFooter from '@/components/AppFooter.vue';
 import AppHeader from '@/components/AppHeader.vue';
 import MyPageSide from '@/components/MyPageSide.vue';
 
 	export default {
-		name: "ModifyView",
+		name: "ChartView",
 		components: {
 			AppHeader,
 			AppFooter,

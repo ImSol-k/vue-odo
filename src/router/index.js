@@ -27,8 +27,9 @@ import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
 import AnnouncementView from '../views/mj/AnnouncementView.vue'
 import ReadView from '../views/mj/readView.vue'
-import WriteView from '../views/mj/WriteView.vue'
-import Noticemodify from '../views/mj/Noticemodify.vue'
+// import WriteView from '../views/mj/WriteView.vue'
+// import Noticemodify from '../views/mj/Noticemodify.vue'
+import ChartView from '../views/mj/ChartView.vue'
 
 const routes = [
   //=== 하석 =================================
@@ -151,15 +152,20 @@ const routes = [
     name: 'mypageread',
     component: ReadView
   },
+  // {
+  //   path: '/mypage/write',
+  //   name: 'mypagewrite',
+  //   component: WriteView
+  // },
+  // {
+  //   path: '/mypage/noticemodify',
+  //   name: 'mypagenoticemodify',
+  //   component: Noticemodify
+  // },
   {
-    path: '/mypage/write',
-    name: 'mypagewrite',
-    component: WriteView
-  },
-  {
-    path: '/mypage/noticemodify',
-    name: 'mypagenoticemodify',
-    component: Noticemodify
+    path: '/chart',
+    name: 'chart',
+    component: ChartView
   },
 ]
 

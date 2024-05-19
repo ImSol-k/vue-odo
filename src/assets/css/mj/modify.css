@@ -45,9 +45,9 @@
     height: 100%;
     object-fit: cover;
 }
-.picture{
-    margin-left: 180px;
+#pic{
     margin-top: 25px;
+    margin-left: 150px;
     margin-bottom: 25px;
 }
 
