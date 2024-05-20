@@ -12,20 +12,31 @@
           </div>
         </div>
         <div class="list clearfix">
+          <button>원데이</button>
           <div class="right">
               <img src="@/assets/images/icon/header_icons/like.png">
-              <span>글자 들어가는 자리</span>
+              <span>인기가 많은 클래스</span>
           </div>
           <div class="right">
               <img src="@/assets/images/icon/header_icons/like.png">
-              <span>글자 들어가는 자리</span>
-          </div><div class="right">
-              <img src="@/assets/images/icon/header_icons/like.png">
-              <span>글자 들어가는 자리</span>
+              <span>인기가 많은 클래스</span>
           </div>
           <div class="right">
               <img src="@/assets/images/icon/header_icons/like.png">
-              <span>글자 들어가는 자리</span>
+              <span>인기가 많은 클래스</span>
+          </div>
+          <button>정규/상시</button>
+          <div class="right">
+              <img src="@/assets/images/icon/header_icons/like.png">
+              <span>인기가 많은 클래스</span>
+          </div>
+          <div class="right">
+              <img src="@/assets/images/icon/header_icons/like.png">
+              <span>인기가 많은 클래스</span>
+          </div>
+          <div class="right">
+              <img src="@/assets/images/icon/header_icons/like.png">
+              <span>인기가 많은 클래스</span>
           </div>
           
         </div>
@@ -67,14 +78,14 @@ export default {
       labels: labels,
       datasets: [{
         label: '원데이',
-        data: [40, 55, 65, 70, 65, 80],
+        data: [20, 35, 45, 50, 60, 75],
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.2
       },
       {
         label: '정규/상시',
-        data:[45, 55, 60, 65, 62, 85],
+        data:[30, 45, 50, 65, 70, 80],
         fill:false,
         borderColor: 'rgb(30, 200, 120)',
         tension: 0.2
