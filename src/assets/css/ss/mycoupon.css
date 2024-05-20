@@ -11,9 +11,10 @@
 /* 쿠폰 박스 */
 .coupon-box {
     border-bottom: 1px solid #aaa9a9;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     min-height: 500px;
     margin-bottom: 20px;
+    padding: 5px;
 }
 
 /* 쿠폰 없을때 */
@@ -92,7 +93,65 @@
 
 
 .coupon1 {
-    border: 1px solid #000;
-    width: 400px;
-    height: 300px;
+    box-sizing: border-box;
+    /* border: 1px solid #000; */
+    /* display: flex; */
+    /* justify-content: space-between; */
+    width: 280px;
+    height: 140px;
+    padding: 20px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: none;
+    float: left;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+
+.coupon1-1{
+    box-sizing: border-box;
+    /* border: 1px solid #000; */
+    /* width: 250px; */
+    height: 60px;
+    padding: 0 10px;
+    margin-bottom: 30px;
+    
+}
+.coupon1-1-txt1 {
+    color: #8521FF;
+    font-size: 22px;
+    font-weight: bold;
+    /* float: left; */
+}
+.coupon1-1-txt2{
+    font-size: 10px;
+    margin-top: 10px;
+    margin-left: 50px;
+    /* float: left; */
+}
+
+.coupon1-1-txt3{
+    font-size: 12px;
+}
+.coupon1-2 {
+    box-sizing: border-box;
+    /* border: 1px solid #000; */
+    font-size: 10px;
+    padding: 0 10px;
+}
+.coupon2 {
+    box-sizing: border-box;
+    /* display: flex;? */
+    /* justify-content: space-between; */
+    /* border: 1px solid #000; */
+    width: 80px;
+    float: left;
+    height: 140px;
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: solid solid solid dashed;
+    border-color: #000;
+    margin: 10px 0;
 }
