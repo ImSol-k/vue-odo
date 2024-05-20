@@ -18,39 +18,39 @@
 			</Carousel>
 		</section>
 		<ul class="category-icons">
-			<li><router-link to="">
+			<li><router-link to="/searchresultpage/1">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/cooking.png" alt=""></div>
 					<p>쿠킹</p>
 				</router-link></li>
-			<li><router-link to="">
+			<li><router-link to="/searchresultpage/2">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/baking.png" alt=""></div>
 					<p>베이킹</p>
 				</router-link></li>
-			<li><router-link to="">
+			<li><router-link to="/searchresultpage/3">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/drink.png" alt=""></div>
 					<p>음료</p>
 				</router-link></li>
-			<li><router-link to="">
+			<li><router-link to="/searchresultpage/4">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/beauty.png" alt=""></div>
 					<p>뷰티</p>
 				</router-link></li>
-			<li><router-link to="">
+			<li><router-link to="/searchresultpage/5">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/craft.png" alt=""></div>
 					<p>공예</p>
 				</router-link></li>
-			<li><router-link to="">
+			<li><router-link to="/searchresultpage/6">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/sports.png" alt=""></div>
 					<p>스포츠</p>
 				</router-link></li>
-			<li><router-link to="">
+			<li><router-link to="/searchresultpage/7">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/councelling.png" alt=""></div>
 					<p>심리/상담</p>
 				</router-link></li>
-			<li><router-link to="">
+			<li><router-link to="/searchresultpage/8">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/it.png" alt=""></div>
 					<p>IT</p>
 				</router-link></li>
-			<li><router-link to="">
+			<li><router-link to="/classlist">
 				<div class="findAroundClass">
 					<img src="../../assets/images/icon/hs/location_icon.png" alt="">
 					<p><b>내 주변 클래스</b>
@@ -64,7 +64,7 @@
 				<h3>무료 베스트 클래스
 					<img src="../../assets/images/하트2.png" alt="">
 				</h3>
-				<router-link to="#">전체보기</router-link>
+				<router-link to="/searchresultpage/1">전체보기</router-link>
 			</div>
 			<ul class="classList">
 				<li><router-link to="/classdetailpage">
@@ -121,7 +121,7 @@
 				</router-link></li>
 			</ul>
 		</section>
-		<div class="banner"></div>
+		<div class="banner" @click="goHost"></div>
 		<section class="pay-best">
 			<div class="title-box">
 				<h3>유료 베스트 클래스
@@ -184,7 +184,7 @@
 				</router-link></li>
 			</ul>
 		</section>
-		<div class="banner"></div>
+		<div class="banner" @click="goHost"></div>
 		<section class="pay-best">
 			<div class="title-box">
 				<h3>신규 클래스
@@ -247,7 +247,7 @@
 				</router-link></li>
 			</ul>
 		</section>
-		<div class="banner"></div>
+		<div class="banner" @click="goHost"></div>
 	</div> <!-- //inner -->
 	
 	<AppFooter />
@@ -285,7 +285,14 @@ export default defineComponent({
 			slides: [main_slide_1, main_slide_2, main_slide_3, main_slide_4, main_slide_5],
 		};
 	},
-	methods: {},
+	methods: {
+
+		//////////////////  배너클릭하면 호스트가입페이지로 이동  //////////////////////////////
+		goHost(){
+			this.$router.push('/companyselect');
+		},
+		//////////////////////////////////////////////////////////////////////////////////////
+	},
 	created() { }
 });
 </script>

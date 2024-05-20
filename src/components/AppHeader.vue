@@ -9,70 +9,70 @@
         <!-- Menu Items -->
         <ul>
             <li @click="toggleSubMenu1">
-                <router-link to="#">쿠킹</router-link>
+                <router-link to="">쿠킹</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[1] }">
-                    <li><a href="#">한식</a></li>
-                    <li><a href="#">일식</a></li>
-                    <li><a href="#">중식</a></li>
-                    <li><a href="#">양식</a></li>
+                    <li><router-link to="/searchresultpage/1">한식</router-link></li>
+                    <li><router-link to="/searchresultpage/2">일식</router-link></li>
+                    <li><router-link to="/searchresultpage/3">중식</router-link></li>
+                    <li><router-link to="/searchresultpage/4">양식</router-link></li>
                 </ul>
             </li>
             <li @click="toggleSubMenu2">
-                <router-link to="#">베이킹</router-link>
+                <router-link to="">베이킹</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[2] }">
-                    <li><a href="#">제과</a></li>
-                    <li><a href="#">제빵</a></li>
-                    <li><a href="#">쇼콜라</a></li>
-                    <li><a href="#">디저트</a></li>
+                    <li><router-link to="/searchresultpage/5">제과</router-link></li>
+                    <li><router-link to="/searchresultpage/6">제빵</router-link></li>
+                    <li><router-link to="/searchresultpage/7">쇼콜라</router-link></li>
+                    <li><router-link to="/searchresultpage/8">디저트</router-link></li>
                 </ul>
             </li>
             <li>
-                <a href="#" @click="toggleSubMenu3">음료</a>
+                <router-link to="" @click="toggleSubMenu3">음료</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[3] }">
-                    <li><a href="#">주류</a></li>
-                    <li><a href="#">바리스타</a></li>
+                    <li><router-link to="/searchresultpage/9">주류</router-link></li>
+                    <li><router-link to="/searchresultpage/10">바리스타</router-link></li>
                 </ul>
             </li>
             <li>
-                <a href="#" @click="toggleSubMenu4">뷰티</a>
+                <router-link to="" @click="toggleSubMenu4">뷰티</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[4] }">
-                    <li><a href="#">네일</a></li>
-                    <li><a href="#">미용</a></li>
-                    <li><a href="#">메이크업</a></li>
-                    <li><a href="#">패션</a></li>
+                    <li><router-link to="/searchresultpage/11">네일</router-link></li>
+                    <li><router-link to="/searchresultpage/12">미용</router-link></li>
+                    <li><router-link to="/searchresultpage/13">메이크업</router-link></li>
+                    <li><router-link to="/searchresultpage/14">패션</router-link></li>
                 </ul>
             </li>
             <li>
-                <a href="#" @click="toggleSubMenu5">공예</a>
+                <router-link to="" @click="toggleSubMenu5">공예</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[5] }">
-                    <li><a href="#">비즈</a></li>
-                    <li><a href="#">뜨게질</a></li>
-                    <li><a href="#">자수</a></li>
-                    <li><a href="#">도자기</a></li>
-                    <li><a href="#">터프팅</a></li>
+                    <li><router-link to="/searchresultpage/15">비즈</router-link></li>
+                    <li><router-link to="/searchresultpage/16">뜨게질</router-link></li>
+                    <li><router-link to="/searchresultpage/17">자수</router-link></li>
+                    <li><router-link to="/searchresultpage/18">도자기</router-link></li>
+                    <li><router-link to="/searchresultpage/19">터프팅</router-link></li>
                 </ul>
             </li>
             <li>
-                <a href="#" @click="toggleSubMenu6">스포츠</a>
+                <router-link to="" @click="toggleSubMenu6">스포츠</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[6] }">
-                    <li><a href="#">수영</a></li>
-                    <li><a href="#">축구</a></li>
-                    <li><a href="#">야구</a></li>
-                    <li><a href="#">배구</a></li>
-                    <li><a href="#">골프</a></li>
-                    <li><a href="#">볼링</a></li>
+                    <li><router-link to="/searchresultpage/20">수영</router-link></li>
+                    <li><router-link to="/searchresultpage/21">축구</router-link></li>
+                    <li><router-link to="/searchresultpage/22">야구</router-link></li>
+                    <li><router-link to="/searchresultpage/23">배구</router-link></li>
+                    <li><router-link to="/searchresultpage/24">골프</router-link></li>
+                    <li><router-link to="/searchresultpage/25">볼링</router-link></li>
                 </ul>
             </li>
             <li>
-                <a href="#" @click="toggleSubMenu7">심리/상담</a>
+                <router-link to="" @click="toggleSubMenu7">심리/상담</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[7] }">
-                    <li><a href="#">부부상담</a></li>
-                    <li><a href="#">가정상담</a></li>
-                    <li><a href="#">심리상담</a></li>
+                    <li><router-link to="/searchresultpage/26">부부상담</router-link></li>
+                    <li><router-link to="/searchresultpage/27">가정상담</router-link></li>
+                    <li><router-link to="/searchresultpage/28">심리상담</router-link></li>
                 </ul>
             </li>
             <li>
-                <a href="#">IT</a>
+                <router-link to="/searchresultpage/29">IT</router-link>
             </li>
         </ul>
     </div>
@@ -84,7 +84,7 @@
                 <ul>
                     <li><router-link to="/join">회원가입</router-link></li>
                     <li><router-link to="/login/user">로그인</router-link></li>
-                    <li><a href="#">자주 묻는 질문</a></li>
+                    <li><router-link to="">자주 묻는 질문</router-link></li>
                     <li><router-link to="/mypage/notice">공지사항</router-link></li>
                 </ul>
             </div>

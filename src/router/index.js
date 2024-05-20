@@ -46,7 +46,7 @@ const routes = [
     component: ClassDetailPageView
   },
   {
-    path: '/searchresultpage',
+    path: '/searchresultpage/:no',
     name: 'searchresultpage',
     component: SearchResultPageView
   },

@@ -2,7 +2,7 @@
     <footer>
         <div class="inner">
             <ul class="f-t-ul">
-                <li><a href="#">호스트 지원</a></li>
+                <li><router-link to="/companyselect">호스트 지원</router-link></li>
                 <li><a href="#">인재채용</a></li>
                 <li><a href="#">제휴문의</a></li>
             </ul>
