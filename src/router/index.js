@@ -134,7 +134,7 @@ const routes = [
     component: JoinPage
   },
   {
-    path: '/login',
+    path: '/login/:type',
     name : 'login',
     component : LoginPage
   },
