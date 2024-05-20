@@ -5,10 +5,18 @@
   justify-content: center;
   align-items: center;
 }
+.paymentBoxAll > p {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
 .paymentBox {
-  width: 700px;
+  width: 600px;
   /* border: 1px solid #a0a0a0; */
-  margin: 20px auto;
+  /* margin: 20px auto; */
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px 20px;
 }
 
 .paymentBox > p {
@@ -39,12 +47,19 @@
 
 /* 결제수단 */
 .paymentContentBox {
-  width: 700px;
-  border: 1px solid #8521ff;
+  width: 600px;
+  margin: 40px;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 30px 40px;
+  /* border: 1px solid #8521ff; */
 }
 .paymentContentBox > p {
   font-size: 20px;
   font-weight: bold;
+}
+.paymentType {
+  border-bottom: 1px solid #a0a0a0;
 }
 .paymentType > li {
   margin: 20px auto;
@@ -57,13 +72,111 @@
 .paymentType {
   margin-left: 10px;
 }
+.paymentCoupon {
+  margin: 20px 0px;
+}
+.paymentCoupon > div {
+  display: flex;
+  justify-content: space-between;
+}
+.couponSelect {
+  display: flex;
+  align-items: center;
+}
+.couponSelect > p {
+  width: 60px;
+}
+.couponSelect > button {
+  width: 80px;
+  height: 30px;
+  border: none;
+  background-color: #bc85ff;
+  border-radius: 5px;
+  color: #fff;
+}
 .paymentPay {
+  width: 600px;
+  /* margin: 40px; */
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  /* align-items: center; */
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+}
+.paymentPay > div > p {
+  font-size: 18px;
+  margin: 10px;
+}
+.paymentContent {
+  float: left;
+  width: 270px;
+}
+.paymentContent > p {
+  font-weight: bold;
+}
+.paymentResult {
+  text-align: right;
+  width: 270px;
+}
+.paymentBoxAll > div > button {
+  margin: 30px;
+  border: none;
+  border-radius: 5px;
+  width: 270px;
+  height: 60px;
+  font-size: 18px;
+}
+.paymentBoxAll > div > button:nth-child(2) {
+  background-color: #8521ff;
+  color: #fff;
+}
+
+.pamentButtonBox {
   margin: 40px;
+}
+
+/* 결제완료 */
+.paymentEndBox {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 50px;
 }
-.paymentPay>div>p{
-    font-size: 18px;
+.paymentEndBox > h1 {
+  color: #8521ff;
+  font-size: 25px;
+  margin: 30px 0px 20px 0px;
+}
+.pamentTable {
+  margin: 30px;
+}
+.pamentTable > tbody > tr > td > img {
+  width: 200px;
+  margin: 30px;
+}
+.pamentTable > tbody > tr > th {
+  padding: 3px 30px;
+}
+.pamentTable > tbody > tr > td {
+  font-size: 18px;
+}
+.pamentTable > tbody > tr:last-child>td{
+    color: #8521ff;
+    font-size: 23px;
+    font-weight: bold;
+}
+.payendButtonBox > button {
+  width: 300px;
+  height: 50px;
+  margin: 50px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+}
+.payendButtonBox > button:nth-child(2){
+background-color: #8521ff;
+  color: #fff;
 }
