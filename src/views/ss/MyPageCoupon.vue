@@ -23,7 +23,7 @@
 				</div>
 				<div class="coupon-box clearfix">
 					<!-- 보유한 쿠폰 있을때 -->
-					<div v-for="(i) in 1" :key="i">
+					<div v-for="(i) in 5" :key="i" class="clearfix">
 						<!-- <div v-if="coupon" class="on-coupon">
 							<div class="coupon-set">
 								<img src="@/assets/images/icon/ss/cou.png">
@@ -33,12 +33,24 @@
 								</div>
 							</div>
 						</div> -->
-						<div class="coupon1">
-							aaa
-						</div>
-
-					</div>
 						<!-- on-coupon -->
+						<div class="coupon1">
+							<div class="coupon1-1">
+								<div class="">
+									<span class="coupon1-1-txt1">7,000원</span>
+									<span class="coupon1-1-txt2">사용 기한 : ~2024.05.20</span>
+								</div>
+								<span class="coupon1-1-txt3">[정규]초보탈출 바리스타 강의</span>
+							</div>
+							<div class="coupon1-2">
+								<span>해당 학원에서만 사용 가능</span>
+							</div>
+						</div>
+						<div class="coupon2">
+
+						</div>
+					</div>
+						
 
 					<!-- 보유한 쿠폰 없을때 -->
 					<div class="no-coupon" v-if="!coupon">
