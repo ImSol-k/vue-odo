@@ -14,7 +14,7 @@
     margin-left: 50px;
 }
 .list{
-    margin-top: 60px;
+    margin-top: 70px;
     float: left;
 }
 .right{
@@ -22,9 +22,12 @@
     margin-left: auto;
     margin-right: auto;
     border: 1px solid #bababa;
+    border-radius: 15px;
     text-align: center;
     padding-bottom: 10px;
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    box-shadow: 0px 3px 5px 0px rgba(84, 83, 83, 0.1);
 }
 .list .right img{
     width: 30px;
@@ -37,4 +40,8 @@
 }
 .LineChart{
      margin-left:40px;
+}
+button{
+    font-weight: bold;
+    padding: 5px 5px 5px 5px;
 }
