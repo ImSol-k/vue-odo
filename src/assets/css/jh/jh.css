@@ -1,6 +1,6 @@
 .img {
-    width: 140px;
-    height: 140px;
+    width: 180px;
+    height: 180px;
     border-radius: 15px;
 }
 
@@ -8,13 +8,27 @@
     float: left;
     margin-left: 20px;
     border-radius: 15px;
+}
 
+.img5{
+    position: absolute;
+    top: 28%;
+    left: 80%;
+    cursor: pointer;
+}
+
+.img6{
+    position: absolute;
+    top: 60%;
+    left: 36%;
+    cursor: pointer;
 }
 
 .companyname {
     font-size: 36px;
     height: 40px;
     width: 200px;
+    font-weight: bold;
 }
 
 .companypro {
@@ -34,16 +48,15 @@
 .cover1 {
     width: 300px;
     height: 220px;
-    background-color: #d9d9d9;
     float: left;
     border-radius: 15px;
+    position: relative;
 }
 
 .cover2 {
     margin-left: 320px;
     width: 480px;
     height: 220px;
-    background-color: #d9d9d9;
     border-radius: 15px;
 }
 
@@ -131,23 +144,25 @@
     margin-left: 100px;
     margin-right: 100px;
     width: 800px;
+    position: relative;
 }
 
 .cover6 {
     margin-top: 30px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
     min-height: 200px;
     margin-left: 100px;
     margin-right: 100px;
+    border-bottom: 10px solid #d9d9d9;
 }
 
 .cover7 {
     padding-top: 20px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 
 .cover8 {
-    padding-left: 200px;
+    padding-left: 260px;
 }
 
 .preview-image {
@@ -245,19 +260,19 @@
 }
 
 .cover32 {
-    width: 210px;
-    height: 210px;
+    width: 180px;
+    height: 180px;
     position: relative;
     border-radius: 15px;
     margin-bottom: 15px;
 }
 
 .img31 {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 75%;
+    left: 75%;
 }
 
 .img33 {
@@ -292,6 +307,7 @@
     margin-bottom: 30px;
     width: 300px;
     float: left;
+    position: relative;
 }
 
 
@@ -300,18 +316,18 @@
     width: 125px;
     height: 125px;
     float: left;
+    border-radius: 15px;
 }
 
 .cover42 {
     width: 180px;
     margin-left: 130px;
-    margin-top: 15px;
 }
 
 .p40 {
     font-size: 30px;
     font-weight: bold;
-    width: 130px;
+    width: 180px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -321,16 +337,30 @@
 
 .p41 {
     font-size: 16px;
+    font-weight: bold;
+    float: left;
+    width: 70px;
+}
+
+.p42{
+    font-size: 16px;
 }
 
 .img41 {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     border-radius: 15px;
+    position: absolute;
+    top: 74%;
+    left: 30%;
 }
 
 .cover43 {
     float: left;
+}
+
+.cover44{
+    margin-left: 15px;
 }
 
 .box-img {
@@ -366,11 +396,22 @@
 }
 
 .p30 {
+    font-size: 18px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+}
+
+.p35{
+    color: #666;
+    font-weight: bold;
+    text-align: right;
+}
+
+.p36{
+    font-weight: bold;
 }
 
 .rb {

@@ -9,13 +9,16 @@
 		<div class="cover5">
 			<div class="clearfix">
 				<div class="a">
-					<img class="img" src="../../assets/images/회사이미지.png" alt="">
+					<img class="img" src="../../assets/images/hs/main_slide_2.jpg" alt="">
 				</div>
 				<div class="cover8">
 					<div class="cover7">
 						<p class="companyname">업체명</p>
+						<img class="img5" src="data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cg clip-path='url(%23clip0_2517_457)'%3E %3Cpath d='M15.4448 27.0641L15.4368 27.0593L15.4064 27.0433C14.775 26.6998 14.1549 26.3359 13.5472 25.9521C12.0981 25.0404 10.7174 24.0243 9.41595 22.9121C6.47195 20.3729 3.19995 16.5633 3.19995 12.0001C3.20009 10.5112 3.66179 9.05903 4.52147 7.84344C5.38115 6.62785 6.59654 5.70866 8.00027 5.21244C9.40401 4.71622 10.9271 4.66737 12.3597 5.07263C13.7924 5.47788 15.0641 6.31729 16 7.4753C16.9358 6.31729 18.2075 5.47788 19.6402 5.07263C21.0728 4.66737 22.5959 4.71622 23.9996 5.21244C25.4034 5.70866 26.6187 6.62785 27.4784 7.84344C28.3381 9.05903 28.7998 10.5112 28.8 12.0001C28.8 16.5633 25.5296 20.3729 22.584 22.9121C20.7349 24.492 18.7274 25.8764 16.5936 27.0433L16.5632 27.0593L16.5552 27.0641H16.552C16.3819 27.1542 16.1925 27.2014 16.0001 27.2017C15.8078 27.2019 15.6182 27.1553 15.448 27.0657L15.4448 27.0641Z' fill='%23FD2748'/%3E %3C/g%3E %3Cdefs%3E %3CclipPath id='clip0_2517_457'%3E %3Crect width='32' height='32' fill='white'/%3E %3C/clipPath%3E %3C/defs%3E %3C/svg%3E" alt="">
 					</div>
-					<p>클래스 00 | 찜 00</p>
+					<p><strong>클래스</strong> 00 | <strong>찜</strong> 00</p>
+					<p><strong>연락처</strong> 010-9999-9999</p>
+					<p><strong>주소</strong> 서울특별시 강남구 하이미디어</p>
 				</div>
 			</div>
 			<div>
@@ -25,7 +28,8 @@
 		<!--클래스별 통계-->
 		<div class="clearfix cover6" v-for="(chartData, index) in chartDataArray" :key="index">
 			<div class="cover1">
-				<img class="img2" src="../../assets/images/회사이미지.png" alt="">
+				<img class="img2" src="../../assets/images/hs/main_slide_2.jpg" alt="">
+				<img class="img6" src="data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cg clip-path='url(%23clip0_2517_457)'%3E %3Cpath d='M15.4448 27.0641L15.4368 27.0593L15.4064 27.0433C14.775 26.6998 14.1549 26.3359 13.5472 25.9521C12.0981 25.0404 10.7174 24.0243 9.41595 22.9121C6.47195 20.3729 3.19995 16.5633 3.19995 12.0001C3.20009 10.5112 3.66179 9.05903 4.52147 7.84344C5.38115 6.62785 6.59654 5.70866 8.00027 5.21244C9.40401 4.71622 10.9271 4.66737 12.3597 5.07263C13.7924 5.47788 15.0641 6.31729 16 7.4753C16.9358 6.31729 18.2075 5.47788 19.6402 5.07263C21.0728 4.66737 22.5959 4.71622 23.9996 5.21244C25.4034 5.70866 26.6187 6.62785 27.4784 7.84344C28.3381 9.05903 28.7998 10.5112 28.8 12.0001C28.8 16.5633 25.5296 20.3729 22.584 22.9121C20.7349 24.492 18.7274 25.8764 16.5936 27.0433L16.5632 27.0593L16.5552 27.0641H16.552C16.3819 27.1542 16.1925 27.2014 16.0001 27.2017C15.8078 27.2019 15.6182 27.1553 15.448 27.0657L15.4448 27.0641Z' fill='%23FD2748'/%3E %3C/g%3E %3Cdefs%3E %3CclipPath id='clip0_2517_457'%3E %3Crect width='32' height='32' fill='white'/%3E %3C/clipPath%3E %3C/defs%3E %3C/svg%3E" alt="">
 				<p class="classpro p39">클래스명</p>
 				<p class="classpro2 p31">클래스 소개글 샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라샬라</p>
 			</div>
@@ -97,7 +101,7 @@ export default {
 						plugins: {
 							datalabels: {
 								display: true,
-								color: 'white'
+								color: 'black'
 							}
 						}
 					}
@@ -129,7 +133,7 @@ export default {
 						plugins: {
 							datalabels: {
 								display: true,
-								color: 'white'
+								color: 'black'
 							}
 						}
 					}
