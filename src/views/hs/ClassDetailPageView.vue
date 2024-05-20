@@ -33,10 +33,10 @@
 					</div>
 	
 					<div class="companySection">
-						<router-link to="" class="companyLogo">
+						<router-link to="/companyinfo" class="companyLogo">
 							<img src="../../assets/images/hs/rainbow_apple_icon.png" alt="">
 						</router-link>
-						<router-link to="" class="nameBox">
+						<router-link to="/companyinfo" class="nameBox">
 							<p>애플</p>
 							<p>
 								<span>클래스 0</span>
@@ -55,7 +55,7 @@
 			<div class="reviewSection">
 				<ul>
 					<li>
-						<router-link to="">
+						<router-link to="/reviewpage">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
 								<img src="../../assets/images/icon/footer_icons_modify/f_naver.png" alt=""> <span>김민규</span>
@@ -64,7 +64,7 @@
 						</router-link>
 					</li>
 					<li>
-						<router-link to="">
+						<router-link to="/reviewpage">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
 								<img src="../../assets/images/hs/cake.jpg" alt=""> <span>김민규</span>
@@ -73,7 +73,7 @@
 						</router-link>
 					</li>
 					<li>
-						<router-link to="">
+						<router-link to="/reviewpage">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
 								<img src="../../assets/images/hs/coffee.jpg" alt=""> <span>김민규</span>
@@ -82,7 +82,7 @@
 						</router-link>
 					</li>
 					<li>
-						<router-link to="">
+						<router-link to="/reviewpage">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
 								<img src="../../assets/images/icon/header_icons/KakaoTalk_20240509_102443065.png" alt=""> <span>김민규</span>
@@ -91,7 +91,7 @@
 						</router-link>
 					</li>
 				</ul>
-				<router-link class="moreReviewBtn" to="">00개 후기 더보기 ></router-link>
+				<router-link class="moreReviewBtn" to="/reviewpage">00개 후기 더보기 ></router-link>
 			</div>
 			<!-- //reviewSection -->
 

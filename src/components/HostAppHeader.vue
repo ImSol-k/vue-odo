@@ -6,7 +6,7 @@
         </div>
         <div class="inner">
             <div class="hostheaderbottom">
-                <h1><router-link to="#" class="logo">logo</router-link></h1>
+                <h1><router-link to="/" class="logo">logo</router-link></h1>
                 <ul>
                     <li class="brandLogoBox"><router-link to="#">
                         <img src="../assets/images/hs/rainbow_apple_icon.png" alt="">
