@@ -53,34 +53,34 @@
 						<router-link to="">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
-								<img src="" alt=""> <span>김민규</span>
+								<img src="../../assets/images/icon/footer_icons_modify/f_naver.png" alt=""> <span>김민규</span>
 							</div>
-							<p>후기어쩌고</p>
+							<p>후기어쩌고후기어쩌고후기어쩌고</p>
 						</router-link>
 					</li>
 					<li>
 						<router-link to="">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
-								<img src="" alt=""> <span>김민규</span>
+								<img src="../../assets/images/hs/cake.jpg" alt=""> <span>김민규</span>
 							</div>
-							<p>후기어쩌고</p>
+							<p>후기어쩌고후기어쩌고후기어쩌고</p>
 						</router-link>
 					</li>
 					<li>
 						<router-link to="">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
-								<img src="" alt=""> <span>김민규</span>
+								<img src="../../assets/images/hs/coffee.jpg" alt=""> <span>김민규</span>
 							</div>
-							<p>후기어쩌고</p>
+							<p>후기어쩌고후기어쩌고후기어쩌고</p>
 						</router-link>
 					</li>
 					<li>
 						<router-link to="">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
-								<img src="" alt=""> <span>김민규</span>
+								<img src="../../assets/images/icon/header_icons/KakaoTalk_20240509_102443065.png" alt=""> <span>김민규</span>
 							</div>
 							<p>후기어쩌고</p>
 						</router-link>
