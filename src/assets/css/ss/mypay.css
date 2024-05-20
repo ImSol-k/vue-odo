@@ -142,8 +142,7 @@
     margin: 5px auto 0 20px;
     unicode-bidi: bidi-override;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1.1px;
-    -webkit-text-stroke-color: #2b2a29;
+    -webkit-text-stroke: 0.7px;
     width: max-content;
     font-size: 20px;
     height: 30px;
@@ -485,8 +484,8 @@
     margin: 0 auto;
     unicode-bidi: bidi-override;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 0.8px;
-    -webkit-text-stroke-color: #2b2a29;
+    -webkit-text-stroke: 0.5px;
+    -webkit-text-stroke-color: none;
     width: max-content;
     font-size: 25px;
     text-align: center;

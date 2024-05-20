@@ -45,7 +45,7 @@
 				<div class="rev-left">
 					<div class="rev-box1">
 						<img src="@/assets/images/icon/ss/default-profile.png">
-						<span class="rev-box1-txt1">nickname</span>
+						<span class="rev-box1-txt1">너에게로가는길</span>
 						<div class="star-ratings">
 							<div class="star-ratings-fill" :style="{ width: ratingToPercent2(starScore2) + '%' }">
 								<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
@@ -59,9 +59,16 @@
 					<!-- revbox1 -->
 
 					<div class="rev-box2">
-						<div>후기내용이 나오는 자리</div>
-						<div>클래스 이름이 나오는 자리</div>
-						<div>클래스 설명이 나오는 자리</div>
+						<div class="rev-box2-1">
+							수업 듣는 내내 즐거웠어요 
+							수업 듣는 내내 즐거웠어요
+							수업 듣는 내내 즐거웠어요
+							수업 듣는 내내 즐거웠어요
+							수업 듣는 내내 즐거웠어요
+							수업 듣는 내내 즐거웠어요
+						</div>
+						<div class="rev-box2-2" v-on:click.prevent="goPage">누구나 쉽게 배울수 있는 수업이에요</div>
+						<div class="rev-box2-3">[원데이]누구나 쉽게 배우는 커피내리기 연습(초보반)</div>
 					</div>
 					<!-- revbox2 -->
 				</div>
@@ -133,6 +140,11 @@ export default {
 		ratingToPercent2(starScore2){
 			starScore2 = (this.starScore2 / 5 ) * 100;
 			return starScore2 + 1.5;
+		},
+
+		// 페이지 이동
+		goPage(){
+			this.$router.push('/classdetailpage');
 		},
 
 

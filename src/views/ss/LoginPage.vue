@@ -1,5 +1,6 @@
 <template>
-  <AppHeader />
+  <AppHeader v-if="isUser" />
+  <HostAppHeader v-else/>
   <!-- header -->
 
   <div class="login-join" v-if="isUser">
@@ -64,12 +65,14 @@ import "@/assets/css/Initialization.css";
 import "@/assets/css/ss/login-join.css";
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
+import HostAppHeader from "@/components/HostAppHeader.vue";
 
 export default {
   name: "LoginPage",
   components: {
     AppHeader,
     AppFooter,
+	HostAppHeader
   },
   data() {
     return {
@@ -80,7 +83,7 @@ export default {
       pass1: require("@/assets/images/icon/ss/pass1.png"),
       pass2: require("@/assets/images/icon/ss/pass2.png"),
       isPass: true,
-      isUser: false,
+      isUser: true,
     };
   },
   methods: {
