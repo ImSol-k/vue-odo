@@ -23,8 +23,8 @@
 				</div>
 				<div class="coupon-box clearfix">
 					<!-- 보유한 쿠폰 있을때 -->
-					<div  v-for="(i) in 1" :key="i">
-						<div v-if="coupon" class="on-coupon">
+					<div v-for="(i) in 1" :key="i">
+						<!-- <div v-if="coupon" class="on-coupon">
 							<div class="coupon-set">
 								<img src="@/assets/images/icon/ss/cou.png">
 								<div class="coupon-set2">
@@ -32,7 +32,11 @@
 									<span class="cou-name">클래스이름asdasdasdasdasdasds</span>
 								</div>
 							</div>
+						</div> -->
+						<div class="coupon1">
+							aaa
 						</div>
+
 					</div>
 						<!-- on-coupon -->
 

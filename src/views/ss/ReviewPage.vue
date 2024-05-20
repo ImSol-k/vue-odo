@@ -41,10 +41,10 @@
 		<!-- rev-header -->
 
 		<div class="rev-body clearfix">
-			<div class="rev-box " v-for="(index) in 5" :key="index">
-				<div class="rev-left">
+			<div class="rev-box" v-for="(index) in 5" :key="index">
+				<div class="rev-left clearfix">
 					<div class="rev-box1">
-						<img src="@/assets/images/icon/ss/default-profile.png">
+						<img src="@/assets/images/hs/cake.jpg">
 						<span class="rev-box1-txt1">너에게로가는길</span>
 						<div class="star-ratings">
 							<div class="star-ratings-fill" :style="{ width: ratingToPercent2(starScore2) + '%' }">
@@ -58,7 +58,7 @@
 					</div>
 					<!-- revbox1 -->
 
-					<div class="rev-box2">
+					<div class="rev-box2 ">
 						<div class="rev-box2-1">
 							수업 듣는 내내 즐거웠어요 
 							수업 듣는 내내 즐거웠어요
@@ -72,11 +72,17 @@
 					</div>
 					<!-- revbox2 -->
 				</div>
+				<!-- rev-left -->
 				<div class="rev-box3">
-					<img src="@/assets/images/hs/coffee.jpg">
+					<ul>
+						<li v-for="(index) in 1" :key="index"><img src="@/assets/images/hs/coffee.jpg"></li>
+					</ul>
+									
 				</div>
 				<!-- rev-box3 -->
+				
 
+				
 			</div>
 			<!-- revbox -->
 		</div>
@@ -85,6 +91,10 @@
 	<!-- revMain -->
 </div>
 <!-- wrap -->
+
+<!-- 옵저버 -->
+<!-- https://velog.io/@kbpark9898/Vue-intersection-observer%EB%A1%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%ED%83%90%EC%A7%80%ED%95%98%EA%B8%B0 -->
+<!-- https://powerku.tistory.com/243 -->
 
 <AppFooter/>
 <!-- footer -->

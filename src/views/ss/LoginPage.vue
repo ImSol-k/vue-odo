@@ -1,5 +1,5 @@
 <template>
-  <AppHeader v-if="isUser" />
+  <AppHeader v-if="isUser == 'user'" />
   <HostAppHeader v-else/>
   <!-- header -->
 

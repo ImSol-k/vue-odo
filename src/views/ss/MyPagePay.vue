@@ -492,7 +492,7 @@
 					<!-- revform1-header -->
 					<div class="show-atten">
 						<div class="atten1">누구나 쉽게 배우는 디자인 연습</div>
-						<div class="atten2">2024.04.20 ~ 2024.05.20</div>
+						<div class="atten2">수강 기간 : 2024.04.20 ~ 2024.05.20</div>
 						<div class="atten3">
 							<ul class="clearfix">
 								<li>출석 : 5</li>
@@ -508,6 +508,10 @@
 									<col width="60%">
 									<col width="40%">
 								</colgroup>
+								<thead>
+									<th>날짜</th>
+									<th>출결</th>
+								</thead>
 								<tbody v-for="(index) in 5" :key="index">
 									<td>2024.05.03</td>
 									<td>출석</td>

@@ -11,6 +11,7 @@
 /* 쿠폰 박스 */
 .coupon-box {
     border-bottom: 1px solid #aaa9a9;
+    border: 1px solid #000;
     min-height: 500px;
     margin-bottom: 20px;
 }
@@ -89,3 +90,9 @@
 
 
 
+
+.coupon1 {
+    border: 1px solid #000;
+    width: 400px;
+    height: 300px;
+}

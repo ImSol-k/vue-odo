@@ -54,7 +54,7 @@
 						<span>{{ joinVo.nickName }}님 반가워요</span><br>
 						<span>회원가입이 완료되었어요</span><br>
 						<router-link to="/" class="login-btn">홈으로 가기</router-link>
-						<router-link to="/login" class="login-btn">로그인하러가기</router-link>
+						<router-link to="/login/user" class="login-btn">로그인하러가기</router-link>
 					</div>
 				</div>
 				<!-- join3 -->
