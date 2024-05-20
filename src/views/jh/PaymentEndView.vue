@@ -40,7 +40,7 @@
 			</table>
 
 			<div class="cover62">
-				<button class="bu60">결제내역 보러가기</button>
+				<button class="bu60" @click="goPay">결제내역 보러가기</button>
 			</div>
 
 			<div class="cover63">
@@ -49,7 +49,7 @@
 			<div class="clearfix">
 				<div class="cover64" v-for="(v, i) in a" :key="i">
 					<div class="box-img">
-						<img src="../../assets/images/hs/main_slide_2.jpg" alt="">
+						<img src="../../assets/images/hs/main_slide_2.jpg" @click="goDetailPage" alt="">
 					</div>
 					<p class="pp1">지역</p>
 					<p class="pp2">설명설명설명설명설명설명설명설명설명설명설명설설명설명설명설설명설명설명설명</p>
@@ -83,7 +83,19 @@ export default {
 			a: 4,
 		};
 	},
-	methods: {},
+	methods: {
+		///////////////////////////// 마이페이지 가기 ////////////////////////////////////
+		goPay(){
+			this.$router.push('/mypage/pay');
+		},
+		/////////////////////////////////////////////////////////////////////////////////
+		
+		///////////////////////////// 상세페이지 가기 /////////////////////////////////////
+		goDetailPage(){
+			this.$router.push('/classdetailpage');
+		},
+		//////////////////////////////////////////////////////////////////////////////////
+	},
 	created() { }
 };
 </script>
