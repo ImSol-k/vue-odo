@@ -115,7 +115,7 @@ export default {
       labels: labels,
       datasets: [{
         label: '원데이',
-        data: [20, 35, 45, 50, 60, 75],
+        data: [30, 35, 45, 50, 60, 75],
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.2
