@@ -3,14 +3,44 @@
   <div class="wrap">
     <div class="clearfix">
       <AppMenu />
-      <div class="chartArea">
+      <div class="chartArea ">
         <!-- line chart -->
-        <h2>매출</h2>
-        <div>
-          <canvas id="LineChart" width="400" height="400"></canvas>
+        <div class="chart">
+          <h2>매출</h2>
+          <div class="left">
+            <canvas id="LineChart" width="100" height="100"></canvas>
+          </div>
+        </div>
+        <div class="list clearfix">
+          <button>원데이</button>
+          <div class="right">
+              <img src="@/assets/images/icon/header_icons/like.png">
+              <span>인기가 많은 클래스</span>
+          </div>
+          <div class="right">
+              <img src="@/assets/images/icon/header_icons/like.png">
+              <span>인기가 많은 클래스</span>
+          </div>
+          <div class="right">
+              <img src="@/assets/images/icon/header_icons/like.png">
+              <span>인기가 많은 클래스</span>
+          </div>
+          <button>정규/상시</button>
+          <div class="right">
+              <img src="@/assets/images/icon/header_icons/like.png">
+              <span>인기가 많은 클래스</span>
+          </div>
+          <div class="right">
+              <img src="@/assets/images/icon/header_icons/like.png">
+              <span>인기가 많은 클래스</span>
+          </div>
+          <div class="right">
+              <img src="@/assets/images/icon/header_icons/like.png">
+              <span>인기가 많은 클래스</span>
+          </div>
+          
         </div>
       </div>
-
     </div>
   </div>
   <AppFooter />
@@ -48,14 +78,14 @@ export default {
       labels: labels,
       datasets: [{
         label: '원데이',
-        data: [65, 59, 80, 81, 56, 55, 40],
+        data: [20, 35, 45, 50, 60, 75],
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.2
       },
       {
-        label: '정규',
-        data:[60, 65, 70, 65, 75, 80],
+        label: '정규/상시',
+        data:[30, 45, 50, 65, 70, 80],
         fill:false,
         borderColor: 'rgb(30, 200, 120)',
         tension: 0.2

@@ -3,7 +3,7 @@
   <HostAppHeader v-else/>
   <!-- header -->
 
-  <div class="login-join" v-if="isUser">
+  <div class="login-join" v-if="isUser == 'user'">
     <span class="lj-txt">로그인</span>
     <div class="lj-form">
       <form v-on:submit.prevent="login">
@@ -83,7 +83,7 @@ export default {
       pass1: require("@/assets/images/icon/ss/pass1.png"),
       pass2: require("@/assets/images/icon/ss/pass2.png"),
       isPass: true,
-      isUser: true,
+      isUser: this.$route.params.type,
     };
   },
   methods: {
@@ -91,6 +91,7 @@ export default {
     login() {
       console.log("로그인");
       console.log(this.loginVo);
+      
     },
 
     // 비밀번호인풋창 바꾸기
@@ -98,7 +99,9 @@ export default {
       this.isPass = !this.isPass;
     },
   },
-  created() {},
+	created() {
+	console.log(this.isUser);
+  },
 };
 </script>
 
