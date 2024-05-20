@@ -1,6 +1,7 @@
 <template>
 	<AppHeader />
 	<!-- //header -->
+	
 	<div class="inner">
 		<section class="main-slide">
 			<Carousel :autoplay="2500" :wrap-around="true">
