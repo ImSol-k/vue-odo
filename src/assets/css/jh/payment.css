@@ -6,14 +6,14 @@
   align-items: center;
 }
 .paymentBox {
-    width: 700px;
-    /* border: 1px solid #a0a0a0; */
-    margin: 20px auto;
+  width: 700px;
+  /* border: 1px solid #a0a0a0; */
+  margin: 20px auto;
 }
 
 .paymentBox > p {
-    font-weight: bold;
-    margin: 5px;
+  font-weight: bold;
+  margin: 5px;
 }
 .paymentClassBox {
   /* border: 1px solid #8521ff; */
@@ -38,22 +38,32 @@
 }
 
 /* 결제수단 */
-.paymentContentBox{
-    width: 700px;
-    border: 1px solid #8521FF;
+.paymentContentBox {
+  width: 700px;
+  border: 1px solid #8521ff;
 }
-.paymentContentBox>p{
-    font-size: 20px;
-    font-weight: bold;
+.paymentContentBox > p {
+  font-size: 20px;
+  font-weight: bold;
 }
-.paymentType>li{
-    margin: 20px auto;
+.paymentType > li {
+  margin: 20px auto;
 }
-.paymentType>li>select{
-    width: 150px;
-    height: 25px;
-    border-radius: 5px;
+.paymentType > li > select {
+  width: 150px;
+  height: 25px;
+  border-radius: 5px;
 }
-.paymentType{
-    margin-left: 10px;
+.paymentType {
+  margin-left: 10px;
+}
+.paymentPay {
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.paymentPay>div>p{
+    font-size: 18px;
 }

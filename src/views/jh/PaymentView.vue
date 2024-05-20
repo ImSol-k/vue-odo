@@ -87,26 +87,22 @@
       </div>
     </div>
 
-    <div class="cover590">
-      <div class="clearfix">
-        <div>
-          <p class="p53">결제금액</p>
-          <p class="p54">{{ Number(1000000).toLocaleString("ko-KR") }}원</p>
-        </div>
-        <div>
-          <p class="p53">쿠폰사용금액</p>
-          <p class="p54" v-if="a > 0">
+    <div class="paymentPay clearfix">
+      <div>
+        <p class="p53">결제금액</p>
+        <p class="p53">쿠폰사용금액</p>
+        <p class="p55">총결제금액</p>
+    </div>
+    <div>
+        <p class="p54">{{ Number(1000000).toLocaleString("ko-KR") }}원</p>
+        <p class="p54" v-if="a > 0">
             {{ Number(this.a).toLocaleString("ko-KR") }}
-          </p>
-          <p class="p54" v-if="a == '사용안함'">{{ this.a }}</p>
-        </div>
-        <div>
-          <p class="p55">총결제금액</p>
-          <p class="p56">{{ Number(500000).toLocaleString("ko-KR") }}</p>
-        </div>
-        <div>
-          <button class="bu52">결제하기</button>
-        </div>
+        </p>
+        <p class="p54" v-if="a == '사용안함'">{{ this.a }}</p>
+        <p class="p56">{{ Number(500000).toLocaleString("ko-KR") }}</p>
+      </div>
+      <div>
+        <button class="bu52">결제하기</button>
       </div>
     </div>
   </div>
@@ -124,7 +120,7 @@
           value="사용안함"
           v-model="a"
           checked="checked"
-        /><br />
+        />
         <label for="3000">3000원 할인</label>
         <input
           id="3000"
