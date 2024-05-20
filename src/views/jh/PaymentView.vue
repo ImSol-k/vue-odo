@@ -23,16 +23,16 @@
         <form action="">
           <ul class="paymentType">
             <li>
-                <div>
-                    <input
-                      type="radio"
-                      style="width: 15px; border: 1px"
-                      name="pay"
-                      value="10"
-                      checked="checked"
-                    />
-                  <label>신용카드</label>
-                </div>
+              <div>
+                <input
+                  type="radio"
+                  style="width: 15px; border: 1px"
+                  name="pay"
+                  v-bind:value="'card'"
+                  checked="checked"
+                />
+                <label>신용카드</label>
+              </div>
               <select name="" id="">
                 <option value="" disabled selected>카드사 선택</option>
                 <option value="">신한</option>
@@ -43,36 +43,36 @@
               </select>
             </li>
             <li>
-                <input
-                  type="radio"
-                  style="width: 15px; border: 1px"
-                  name="pay"
-                  value="10"
-                  checked="checked"
-                />
+              <input
+                type="radio"
+                style="width: 15px; border: 1px"
+                name="pay"
+                v-bind:value="'naver'"
+                checked="checked"
+              />
               <label>네이버페이</label>
             </li>
             <li>
-                <input
-                  type="radio"
-                  style="width: 15px; border: 1px"
-                  name="pay"
-                  value="10"
-                  checked="checked"
-                />
+              <input
+                type="radio"
+                style="width: 15px; border: 1px"
+                name="pay"
+                v-bind:value="'toss'"
+                checked="checked"
+              />
               <label>토스페이</label>
             </li>
             <li>
-                <input
-                  type="radio"
-                  style="width: 15px; border: 1px"
-                  name="pay"
-                  value="10"
-                  checked="checked"
-                />
+              <input
+                type="radio"
+                style="width: 15px; border: 1px"
+                name="pay"
+                v-bind:value="'hp'"
+                checked="checked"
+              />
               <label>휴대폰결제</label>
             </li>
-        </ul>
+          </ul>
           <div>
             <p>쿠폰</p>
             <div class="claerfix cover59">
@@ -161,6 +161,7 @@ export default {
   data() {
     return {
       a: "사용안함",
+      paymenType: "card",
     };
   },
   mounted() {},
@@ -181,6 +182,18 @@ export default {
       let viewModal = document.querySelector("#addModal");
 
       viewModal.style.display = "none";
+    },
+    payType(type) {
+      console.log(type);
+      if (type == "card") {
+        this.paymenType = "card";
+      } else if (type == "naver") {
+        this.paymenType = "naver";
+      } else if (type == "toss") {
+        this.paymenType = "toss";
+      } else if (type == "hp") {
+        this.paymenType = "toss";
+      }
     },
   },
   created() {},
