@@ -6,7 +6,7 @@
 
 .rev-header {
     box-sizing: border-box;
-    width: 800px;
+    width: 1000px;
     height: 200px;
     margin: 0 auto;
     padding: 20px 0 ;
@@ -15,11 +15,48 @@
 .rev-header1 {
     box-sizing: border-box;
     border: 1px solid #000;
-    width: 600px;
+    width: 800px;
     height: 160px;
     padding: 10px;
     float: left;
 }
+/*****************************************************************/
+.rev-header1>.star-ratings {
+    color: #aaa9a9;
+    position: relative;
+    margin: 5px auto 0 20px;
+    unicode-bidi: bidi-override;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1.1px;
+    -webkit-text-stroke-color: #2b2a29;
+    width: max-content;
+    font-size: 20px;
+    height: 30px;
+    line-height: 22px;
+    float: left;
+    border: 1px solid #000;
+}
+
+.rev-header1>.star-ratings>.star-ratings-fill {
+    color: #fff58c;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    -webkit-text-fill-color: #8521FF;
+}
+.rev-header1>.star-ratings>.star-ratings-base {
+    z-index: 0;
+    padding: 0;
+}
+
+
+
+
+/****************************************************************/
 
 .rev-header2 {
     box-sizing: border-box;
@@ -57,7 +94,7 @@
 
 .review-select2 {
     box-sizing: border-box;
-    display: none;
+    display: block;
     border: 0.1px solid #000;
     background-color: #fff;
     border-radius: 5px;
@@ -80,4 +117,44 @@
     width: 60px;
     height: 20px;
     cursor: pointer;
+}
+
+/********************************************************/
+/* rev-body 후기나오는 곳 */
+.rev-body {
+    box-sizing: border-box;
+    border: 1px solid #000;
+    width: 1000px;
+    min-height: 500px;
+}
+
+.rev-box {
+    box-sizing: border-box;
+    border: 1px solid #000;
+    width: 1000px;
+    height: 200px;
+    margin: 10px 0px;
+    padding: 5px;
+}
+
+.rev-box1 {
+    box-sizing: border-box;
+    border: 1px solid #000;
+    width: 990px;
+    height: 100px;
+}
+
+.rev-box1 img{
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    float: left;
+    margin: 0 20px 0 10px;
+}
+
+.rev-box2 {
+    box-sizing: border-box;
+    border: 1px solid #000;
+    width: 990px;
+    height: 90px;
 }
