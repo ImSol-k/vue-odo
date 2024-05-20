@@ -347,7 +347,6 @@ footer .icon-box img {
     display: block;
     padding: 10px 0;
 }
-
 /* 서브메뉴 리스트 */
 .dropdown-menu ul > li > ul.subMenuList {
     max-height: 0;

@@ -5,7 +5,35 @@ flex-direction: column; 세로정렬
 justify-content: center; 가로정렬
 align-items: center; 세로정렬
 }   */
-
+/* 로그인 회원가입 선택 */
+.companySelectBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 80px 0px;
+  box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 30px 0px;
+}
+.companySelectBox>p{
+  margin-top: 30px;
+  font-weight: bold;
+  /* color: #8521FF; */
+}
+.companySelectBox>ul{
+  text-align: center;
+}
+.companySelectBox>ul>li{
+  margin: 40px;
+  padding: 15px 80px;
+  background-color: #8521FF;
+  border-radius: 5px;
+}
+.companySelectBox>ul>li>a{
+  color: #fff;
+  font-size: 17px;
+}
 /************************
  * 사업자 가입 
  ************************/
@@ -91,7 +119,7 @@ align-items: center; 세로정렬
   margin: 5px 0px 5px 0px;
   width: 400px;
 }
-.classAddress>div>div>input[type="text"]:first-child {
+.classAddress > div > div > input[type="text"]:first-child {
   width: 185px;
 }
 #sample6_postcode {
@@ -139,11 +167,14 @@ align-items: center; 세로정렬
 .companyInfoMenu > h1 {
   padding: 20px 0px 10px 0px;
   font-size: 28px;
+  /* border-bottom: 2px solid #a0a0a0; */
 }
 
 .companyInfoMenu {
-  width: 250px;
+  width: 200px;
   float: left;
+  position: sticky;
+  top: 0;
   /* margin-left: 10px; */
 }
 .companyInfoMenu > ul {
@@ -153,9 +184,8 @@ align-items: center; 세로정렬
 
 .companyInfoMenu > ul > li:first-child {
   font-size: 18px;
-  background-color: #f4f4f4;
-  /* border-top: 2px solid #d9d9d9;
-    border-bottom: 2px solid #d9d9d9; */
+  border-top: 2px solid #d9d9d9;
+  color: #a0a0a0;
   padding: 5px;
 }
 
@@ -164,33 +194,37 @@ align-items: center; 세로정렬
   padding-left: 8px;
   cursor: pointer;
 }
+.companyInfoMenu > ul > li > a:hover {
+    color: #8521FF;
+    border-bottom: 2px solid #8521FF;
+}
 .whatClass {
-  margin: 0px 8px;
+  margin: 0px 0px 20px 8px;
 }
 .whatClass > span {
   cursor: pointer;
-  padding: 3px 10px;
+  padding: 6px 10px;
   font-size: 15px;
 }
-.memberListTitle > p {
-  float: left;
+.memberListTitle {
+  /* float: left; */
+  display: block;
   margin: 10px 20px 10px 20px;
-  /* width: 870px; */
+  width: 780px;
 }
 .companyInfoClassList > p {
   border-bottom: 1px solid #d9d9d9;
   padding: 5px 10px;
-  margin: 5px 10px;
+  margin: 28px 10px 10px 10px;
   font-size: 26px;
-  width: 700px;
-  
+  width: 800px;
 }
-.companyInfoClassBox{
+.companyInfoClassBox {
   display: flex;
 }
 .companyInfoClassList {
   float: left;
-  /* width: 500px; */
+  width: 800px;
   /* display: flex; */
 }
 .companyInfoClassfor {
@@ -200,7 +234,7 @@ align-items: center; 세로정렬
   justify-content: center;
   width: 650px;
 }
-.companyInfoClassfor > li{
+.companyInfoClassfor > li {
   display: flex;
   align-items: center;
   /* border-bottom: 1px solid #a0a0a0; */
@@ -211,7 +245,7 @@ align-items: center; 세로정렬
   width: 90px;
   margin: 10px;
 }
-.companyInfoClassfor > li:hover{
+.companyInfoClassfor > li:hover {
   transition: transform 0.1s linear;
   transform: scale(1.07);
 }
@@ -229,17 +263,17 @@ align-items: center; 세로정렬
 .classListObj {
   cursor: pointer;
 }
-.classListObj>p:nth-child(2){
-    /* height: 40px; */
-    display: flex;
-    font-size: 12px;
+.classListObj > p:nth-child(2) {
+  /* height: 40px; */
+  display: flex;
+  font-size: 12px;
 }
-.classListObj>p:nth-child(3){
-    /* height: 40px; */
-    display: flex;
-    font-size: 12px;
+.classListObj > p:nth-child(3) {
+  /* height: 40px; */
+  display: flex;
+  font-size: 12px;
 }
-.classListOptionBox{
+.classListOptionBox {
   display: flex;
   width: 540px;
   align-items: center;
@@ -250,12 +284,11 @@ align-items: center; 세로정렬
   margin: 5px 0px;
   width: 440px;
 }
-.classListOptionBox>span{
+.classListOptionBox > span {
   /* display: block; */
   float: right;
   color: #a0a0a0;
   font-size: 14px;
-
 }
 .classListOption > .classRouterLink {
   display: flex;
@@ -267,10 +300,10 @@ align-items: center; 세로정렬
 /* 날짜선택 */
 .memberListTitle {
   display: flex;
-  /* width: 500px; */
+  justify-content: space-between;
 }
 /** 회원리스트 ******************************/
-.memberListTitle > p > .memberVueDatePicker {
+.memberListTitle > .memberVueDatePicker {
   /* display: inline; */
   margin: 3px;
   width: 250px;
@@ -299,11 +332,14 @@ align-items: center; 세로정렬
 /** 클래스 등록 ***********************/
 .classAddBox {
   margin: 10px;
+  padding: 30px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 650px;
+  width: 800px;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 .classAddBox select {
   border-radius: 5px;
@@ -341,16 +377,15 @@ align-items: center; 세로정렬
   width: 360px;
   margin: 5% 10%;
 }
-.classAddress>div>input[type="text"],
-.classAddress>div>div>input[type="text"]
-{
+.classAddress > div > input[type="text"],
+.classAddress > div > div > input[type="text"] {
   height: 35px;
   width: 300px;
   padding-left: 7px;
   border: 1px solid #d9d9d9;
   border-radius: 5px;
 }
-.classAddInfoBox>div > input[type="text"]:focus {
+.classAddInfoBox > div > input[type="text"]:focus {
   border: 2px solid #8521ff;
   outline: none;
 }
@@ -372,7 +407,7 @@ align-items: center; 세로정렬
   margin-right: 10px;
   border-color: #d9d9d9;
 }
-.classAddInfoBox>div > input[type="text"] {
+.classAddInfoBox > div > input[type="text"] {
   height: 35px;
   width: 300px;
   padding-left: 7px;
@@ -404,26 +439,26 @@ align-items: center; 세로정렬
   width: 250px;
 }
 /* 클래스 주소 */
-.classAddress>div {
+.classAddress > div {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
 }
-.classAddress>div>div>input[type="button"]{
+.classAddress > div > div > input[type="button"] {
   width: 108px;
   height: 34px;
   margin-left: 8px;
   border: none;
   border-radius: 5px;
 }
-.classAddpostcode{
+.classAddpostcode {
   display: flex;
-flex-direction: row;
+  flex-direction: row;
 }
-.classAddpostcode>input:first-child{
+.classAddpostcode > input:first-child {
   width: 182px;
 }
-.classAddress input{
+.classAddress input {
   margin: 5px 0px 5px 0px;
 }
 .classCategorySelectBox > select {
@@ -434,7 +469,7 @@ flex-direction: row;
   color: #a0a0a0;
 }
 /* 에디터 */
-.quillEditorBox{
+.quillEditorBox {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -457,9 +492,8 @@ flex-direction: row;
   height: 400px;
   overflow: scroll;
   overflow-x: hidden;
-  
 }
-.ql-editor>p>img{
+.ql-editor > p > img {
   width: 600px;
 }
 .ql-formats > span {
@@ -468,10 +502,10 @@ flex-direction: row;
 .ql-formats > button > svg {
   width: 15px !important;
 }
-.ql-formats > span{
+.ql-formats > span {
   width: 20px;
 }
-.ql-toolbar button{
+.ql-toolbar button {
   width: 25px !important;
 }
 .addSelectImg {
@@ -510,6 +544,8 @@ flex-direction: row;
  ********************************/
 .demo-app > .fullCalendar {
   width: 800px;
-  margin: 10px auto;
+  margin: 10px;
+  padding: 5px;
   font-size: 15px;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
 }

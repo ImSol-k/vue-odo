@@ -97,6 +97,7 @@
 }
 .listRouterLinkMap {
   display: flex;
+  padding: 5px;
 }
 .listRouterLinkMap > img {
   width: 150px;

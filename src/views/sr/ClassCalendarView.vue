@@ -89,10 +89,6 @@ export default {
                   .replace("/g", ""),
             });
           }
-
-          //alert('스케줄: ' + info.event.title + '\n' + '일시: ' + (info.event.start));
-
-          // change the border color just for fun
         },
       },
     };
@@ -103,9 +99,6 @@ export default {
 </script>
 
 <style>
-.demo-app > .fullCalendar {
-  width: 700px;
-}
 :root {
   --fc-event-bg-color: #8521ff;
   --fc-event-border-color: #8521ff;

@@ -10,6 +10,7 @@ import MemberManagerView from '../views/sr/MemberManagerView.vue'
 import ClassCalendarView from '../views/sr/ClassCalendarView.vue'
 import ClassAddView from '../views/sr/ClassAddView.vue'
 import ClassListView from '../views/sr/ClassListView.vue'
+import CompanySelectView from '../views/sr/CompanySelectView.vue'
 //재현
 import CompanyInfoView from '../views/jh/CompanyInfoView.vue'
 import CompanyInfoModify from '../views/jh/CompanyInfoModify.vue'
@@ -80,6 +81,11 @@ const routes = [
     name: 'classlist',
     component: ClassListView
   },
+  {
+    path: '/companyselect',
+    name: 'companyselect',
+    component: CompanySelectView
+  },
   //=== 재현 =================================
   {
     path: '/companyinfo',
@@ -128,7 +134,7 @@ const routes = [
     component: JoinPage
   },
   {
-    path: '/login',
+    path: '/login/:type',
     name : 'login',
     component : LoginPage
   },
