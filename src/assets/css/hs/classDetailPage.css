@@ -25,6 +25,11 @@
     font-size: 22px;
     margin-bottom: 10px;
 }
+.headInfoBox div div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .headInfoBox p {
     font-size: 25px;
     font-weight: bold;
@@ -33,11 +38,16 @@
     font-weight: normal;
     font-size: 17px;
 }
+.headInfoBox .class-like-btn {
+    width: 35px;
+}
+.headInfoBox .class-like-btn img {
+    width: 35px;
+}
 /* 날짜 선택 결제 박스 */
 .orderSelectBox {
     padding-top: 30px;
     border-top: 1px solid #ddd;
-    text-align: right;
 }
 .orderSelectBox select {
     width: 440px;
@@ -64,6 +74,9 @@
     padding: 10px;
     margin-bottom: 10px;
 }
+.orderSelectBox .howMuch span{
+    margin-left: 310px;
+}
 .orderSelectBox button {
     width: 440px;
     height: 45px;
@@ -85,6 +98,7 @@
 .companySection {
     display: flex;
     position: relative;
+    margin-top: 10px;
     padding: 5px 0;
     border-top: 1px solid #ddd;
 }
@@ -266,26 +280,6 @@ h2 {
     font-weight: bold;
     color: #999;
     margin: 10px 15px;
-}
-/* badges */
-.badge {
-    display: inline-block;
-    padding: 10px 15px;
-    font-size: 15px;
-    font-weight: bold;
-    border-radius: 20px;
-}
-.badge.green {
-    color: #004518;
-    border: 1px solid #9bd491;
-}
-.badge.red {
-    color: #4e0000;
-    border: 1px solid #d49991;
-}
-.badge.grey {
-    color: #666;
-    border: 1px solid #ddd;
 }
 /* b-link */
 .b-link {
