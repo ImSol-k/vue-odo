@@ -2,11 +2,11 @@
     <AppHeader/>
 	<div class="wrap">
         <div class="companySelectBox">
-            
+
             <p>환영합니다</p>
             <ul>
-                <li><router-link to="/">로그인</router-link></li>
-                <li><router-link to="/">회원가입</router-link></li>
+                <li><router-link to="/login/company">로그인</router-link></li>
+                <li><router-link to="/companyjoin">회원가입</router-link></li>
             </ul>
         </div>
         
