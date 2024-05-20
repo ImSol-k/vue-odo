@@ -156,11 +156,28 @@
     height: 230px;
     overflow: hidden;
 }
+.reviewSection li > a div {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
 .reviewSection li > a div img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 1px solid #000;
+    display: block;
+    margin-right: 10px;
+}
+.reviewSection li > a div span {
+    display: block;
+    font-size: 17px;
+    font-weight: bold;
+    color: #2c2c2c;
+}
+.reviewSection li p {
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
 }
 .reviewSection .moreReviewBtn {
     width: fit-content;
