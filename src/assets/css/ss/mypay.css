@@ -152,7 +152,7 @@
 }
 
 .star-ratings-fill {
-    color: #fff58c;
+    color: #8521FF;
     padding: 0;
     position: absolute;
     z-index: 1;
@@ -160,7 +160,7 @@
     top: 0;
     left: 0;
     overflow: hidden;
-    -webkit-text-fill-color: gold;
+    -webkit-text-fill-color: #8521FF;
 }
 .star-ratings-base {
     z-index: 0;
@@ -394,7 +394,6 @@
     z-index: 999;
     overflow: auto;
     background-color: rgba(0,0,0,0.3);   
-     
 }
 
 .revform1 {
@@ -402,7 +401,7 @@
     background-color: #fff;
     width: 530px;
     height: 800px;
-    margin: 80px auto 0 auto;
+    margin: 100px auto 0 auto;
     overflow-y: auto;
     border-radius: 20px; 
 }
@@ -448,7 +447,7 @@
 /* 리뷰보기 모달 */
 .showRev-modal {
     /* border: 1px solid #000; */
-    display: block;
+    display: none;
     width: 100%;
     height: 100%;
     position: fixed;
@@ -532,4 +531,74 @@
     width: 500px;
     height: 500px;
     padding: 10px 30px;
+}
+
+
+/*****************************/
+/* 출석부 모달 */
+
+.showAttendance{
+    /* border: 1px solid #000; */
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.3);  
+}
+
+.showAttendance>.revform1 {
+    height: 600px;
+}
+
+
+.show-atten {
+    border: 1px solid #8521FF;
+    width: 500px;
+    min-height: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.atten1 {
+    font-size: 23px;
+    margin: 5px 0 ;
+}
+
+.atten2 {
+    font-size: 15px;
+
+}
+
+.atten3 ul{
+    /* border: 1px solid #000; */
+    text-align: center;
+    margin: 10px auto;
+    display: table;
+}
+
+.atten3 ul>li {
+    font-size: 13px;
+    margin: 0 15px;
+    float: left;
+}
+
+.atten4 {
+    box-sizing: border-box;
+    /* border: 1px solid #000; */
+    min-height: 300px;
+}
+
+.atten4 table {
+    width: 350px;
+    margin: 0 auto;
+}
+
+.atten4 table tbody td {
+    margin: 5px 0;
 }

@@ -11,7 +11,12 @@
 				<div class="headInfoBox">
 					<div>
 						<h1>소풍을 즐기는 새로운 방법, 루하루 티크닉 세트 [SQNC 055]</h1>
-						<p>30,000<span>원</span></p>
+						<div>
+							<p>30,000<span>원</span></p>
+							<router-link to="" class="class-like-btn">
+								<img src="../../assets/images/하트.png" alt="">
+							</router-link>
+						</div>
 					</div>
 
 					<div class="orderSelectBox">
@@ -23,7 +28,7 @@
 							<option value="">0000.00.00 / 00:00</option>
 						</select>
 						<div class="orderDate">0000.00.00 00:00(선택하면 추가됨)</div>
-						<div><span>주문금액 <b>0원</b></span></div>
+						<div class="howMuch"><span>주문금액 <b>0원</b></span></div>
 						<button>결제하기</button>
 					</div>
 	
@@ -53,34 +58,34 @@
 						<router-link to="">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
-								<img src="" alt=""> <span>김민규</span>
+								<img src="../../assets/images/icon/footer_icons_modify/f_naver.png" alt=""> <span>김민규</span>
 							</div>
-							<p>후기어쩌고</p>
+							<p>후기어쩌고후기어쩌고후기어쩌고</p>
 						</router-link>
 					</li>
 					<li>
 						<router-link to="">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
-								<img src="" alt=""> <span>김민규</span>
+								<img src="../../assets/images/hs/cake.jpg" alt=""> <span>김민규</span>
 							</div>
-							<p>후기어쩌고</p>
+							<p>후기어쩌고후기어쩌고후기어쩌고</p>
 						</router-link>
 					</li>
 					<li>
 						<router-link to="">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
-								<img src="" alt=""> <span>김민규</span>
+								<img src="../../assets/images/hs/coffee.jpg" alt=""> <span>김민규</span>
 							</div>
-							<p>후기어쩌고</p>
+							<p>후기어쩌고후기어쩌고후기어쩌고</p>
 						</router-link>
 					</li>
 					<li>
 						<router-link to="">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
-								<img src="" alt=""> <span>김민규</span>
+								<img src="../../assets/images/icon/header_icons/KakaoTalk_20240509_102443065.png" alt=""> <span>김민규</span>
 							</div>
 							<p>후기어쩌고</p>
 						</router-link>

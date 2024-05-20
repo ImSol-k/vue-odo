@@ -5,17 +5,18 @@
 
 <div class="wrap">
 	<div class="revMain">
-		<div class="rev-header">
+		<div class="rev-header clearfix">
 			<div class="rev-header1">
 				<span>후기 {{ reviewCount }}개</span>
 				<div class="star-ratings">
-					<div class="star-ratings-fill" :style="{ width: ratingToPercent(starScore) + '%' }">
+					<div class="star-ratings-fill" :style="{ width: ratingToPercent(starAvg) + '%' }">
 						<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 					</div>
 					<div class="star-ratings-base">
 						<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 					</div>
 				</div>
+				<span class="star-avg">{{ starScore }}</span>
 			</div>
 			<!-- rev-header1 -->
 			<div class="rev-header2">
@@ -39,34 +40,44 @@
 		</div>
 		<!-- rev-header -->
 
-		<div class="rev-body">
-			<div class="rev-box">
-				<div class="rev-box1">
-					<img src="@/assets/images/hs/coffee.jpg">
-					<span>nickname</span>
-					<div class="star-ratings">
-						<div class="star-ratings-fill" :style="{ width: ratingToPercent(starScore) + '%' }">
-							<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+		<div class="rev-body clearfix">
+			<div class="rev-box " v-for="(index) in 5" :key="index">
+				<div class="rev-left">
+					<div class="rev-box1">
+						<img src="@/assets/images/icon/ss/default-profile.png">
+						<span class="rev-box1-txt1">nickname</span>
+						<div class="star-ratings">
+							<div class="star-ratings-fill" :style="{ width: ratingToPercent2(starScore2) + '%' }">
+								<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+							</div>
+							<div class="star-ratings-base">
+								<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+							</div>
 						</div>
-						<div class="star-ratings-base">
-							<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-						</div>
+						<span class="rev-box1-txt2">2024년 5월 16일 21:02 </span>
 					</div>
-					<span>2024년 5월 16일 21:02 작성</span>
+					<!-- revbox1 -->
+
+					<div class="rev-box2">
+						<div>후기내용이 나오는 자리</div>
+						<div>클래스 이름이 나오는 자리</div>
+						<div>클래스 설명이 나오는 자리</div>
+					</div>
+					<!-- revbox2 -->
 				</div>
-				<!-- revbox1 -->
-				<div class="rev-box2">
-					<div>후기내용이 나오는 자리</div>
-					<div>클래스 이름이 나오는 자리</div>
-					<div>클래스 설명이 나오는 자리</div>
+				<div class="rev-box3">
+					<img src="@/assets/images/hs/coffee.jpg">
 				</div>
-				<!-- revbox2 -->
+				<!-- rev-box3 -->
+
 			</div>
 			<!-- revbox -->
 		</div>
 		<!-- rev-body -->
 	</div>
+	<!-- revMain -->
 </div>
+<!-- wrap -->
 
 <AppFooter/>
 <!-- footer -->
@@ -91,8 +102,9 @@ export default {
 		return {
 			type : ['평점높은순','평점낮은순','최신순'], // 리뷰 정렬 할 때 쓸 값들
 			reviewCount : 1245, // 리뷰갯수 
-			starAvg : 3.5, // 별점 총점
-			starScore : 5, // 별점 표시 
+			// starAvg : 3.5, // 클래스 별점 평균
+			starScore : 4.7, // 클래스 별점 표시
+			starScore2 : 4, // 개인 별점표시 
 			isUp : true,
 			isList : false,
 			whatType : '',
@@ -111,9 +123,16 @@ export default {
 			this.isList = false;
 		},
 
-		// 별점표시 
-		ratingToPercent(){
+		// 클래스 별점표시 
+		ratingToPercent(starScore){
+			starScore = (this.starScore / 5 ) * 100;
+			return starScore + 1.5;
+		},
 
+		// 개인 리뷰 별점 
+		ratingToPercent2(starScore2){
+			starScore2 = (this.starScore2 / 5 ) * 100;
+			return starScore2 + 1.5;
 		},
 
 
