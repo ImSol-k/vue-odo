@@ -10,16 +10,16 @@
       <!-- 원데이회원 -->
       <div class="companyInfoClassList" v-if="isClass == '원데이'">
         <div class="memberListTitle">
-          <p>
+          <div>
             <span>예약리스트</span>
             <span>(원데이클래스)</span>
+          </div>
             <VueDatePicker
               class="memberVueDatePicker"
               locale="ko"
               v-model="datepick"
               :enable-time-picker="false"
             />
-          </p>
         </div>
 
         <div class="memberListTable">
