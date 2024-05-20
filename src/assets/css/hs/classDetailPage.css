@@ -197,8 +197,10 @@
     width: fit-content;
     display: block;
     margin: 70px auto 0;
-    color: #8521FF;
+    color: #0075ef;
+    letter-spacing: -0.5px;
     font-weight: bold;
+    font-size: 18px;
 }
 /* 클래스 설명 */
 .classInfoSection {
@@ -250,12 +252,6 @@ h2 {
     left: 50%;
     transform: translateX(-50%);
     bottom: 30px;
-}
-.moreInfoBtn::after {
-    content: '∨';
-}
-.moreInfoBtn:hover {
-    background: #ddd;
 }
 /* ------------------map--------------- */
 .mapWraper {

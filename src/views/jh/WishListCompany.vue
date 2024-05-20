@@ -64,7 +64,7 @@
                             </div>
 
                             <div class="cover42">
-                                <div style="height: 60px;">
+                                <div style="height: 50px;">
                                     <div class="cover43">
                                         <p class="p40">업체명업체명업체명업체명</p>
                                     </div>

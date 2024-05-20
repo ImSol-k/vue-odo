@@ -12,37 +12,74 @@
           </div>
         </div>
         <div class="list clearfix">
-          <button>원데이</button>
-          <div class="right">
-              <img src="@/assets/images/icon/header_icons/like.png">
-              <span>인기가 많은 클래스</span>
-          </div>
-          <div class="right">
-              <img src="@/assets/images/icon/header_icons/like.png">
-              <span>인기가 많은 클래스</span>
-          </div>
-          <div class="right">
-              <img src="@/assets/images/icon/header_icons/like.png">
-              <span>인기가 많은 클래스</span>
-          </div>
-          <button>정규/상시</button>
-          <div class="right">
-              <img src="@/assets/images/icon/header_icons/like.png">
-              <span>인기가 많은 클래스</span>
-          </div>
-          <div class="right">
-              <img src="@/assets/images/icon/header_icons/like.png">
-              <span>인기가 많은 클래스</span>
-          </div>
-          <div class="right">
-              <img src="@/assets/images/icon/header_icons/like.png">
-              <span>인기가 많은 클래스</span>
+          <div class="whatClass"> 
+            <span
+              v-on:click.prevent="selectClass(1)"
+              :class="{ classChack: isClass }"
+              >원데이</span>
+            <span
+              v-on:click.prevent="selectClass(2)"
+              :class="{ classChack: !isClass }"
+              >정규/상시</span>
           </div>
           
+          <div v-if="isClass">
+            <div class="right">
+                <img src="@/assets/images/icon/header_icons/like.png">
+                <span>인기가 많은 클래스</span>
+            </div>
+            <div class="right">
+                <img src="@/assets/images/icon/header_icons/like.png">
+                <span>인기가 많은 클래스</span>
+            </div>
+            <div class="right">
+                <img src="@/assets/images/icon/header_icons/like.png">
+                <span>인기가 많은 클래스</span>
+            </div>
+            <div class="right">
+                <img src="@/assets/images/icon/header_icons/like.png">
+                <span>인기가 많은 클래스</span>
+            </div>
+            <div class="right">
+                <img src="@/assets/images/icon/header_icons/like.png">
+                <span>인기가 많은 클래스</span>
+            </div>
+            <div class="right">
+                <img src="@/assets/images/icon/header_icons/like.png">
+                <span>인기가 많은 클래스</span>
+            </div>
+          </div>
+
+          <div v-else>
+              <div class="right" >
+                <img src="@/assets/images/icon/header_icons/like.png">
+                <span>정규 인기가 많은 클래스</span>
+            </div>
+            <div class="right">
+                <img src="@/assets/images/icon/header_icons/like.png">
+                <span>정규 인기가 많은 클래스</span>
+            </div>
+            <div class="right">
+                <img src="@/assets/images/icon/header_icons/like.png">
+                <span>정규 인기가 많은 클래스</span>
+            </div>
+            <div class="right">
+                <img src="@/assets/images/icon/header_icons/like.png">
+                <span>정규 인기가 많은 클래스</span>
+            </div>
+            <div class="right">
+                <img src="@/assets/images/icon/header_icons/like.png">
+                <span>정규 인기가 많은 클래스</span>
+            </div>
+            <div class="right">
+                <img src="@/assets/images/icon/header_icons/like.png">
+                <span>정규 인기가 많은 클래스</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
   <AppFooter />
 </template>
 <script>
@@ -78,7 +115,7 @@ export default {
       labels: labels,
       datasets: [{
         label: '원데이',
-        data: [20, 35, 45, 50, 60, 75],
+        data: [30, 35, 45, 50, 60, 75],
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.2
@@ -105,4 +142,6 @@ export default {
 	};
 </script>
 
-<style></style>
+<style>
+
+</style>
