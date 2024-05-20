@@ -16,6 +16,7 @@
 						<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 					</div>
 				</div>
+				<span class="star-avg">({{ starScore }})</span>
 			</div>
 			<!-- rev-header1 -->
 			<div class="rev-header2">
@@ -92,7 +93,7 @@ export default {
 			type : ['평점높은순','평점낮은순','최신순'], // 리뷰 정렬 할 때 쓸 값들
 			reviewCount : 1245, // 리뷰갯수 
 			starAvg : 3.5, // 별점 총점
-			starScore : 5, // 별점 표시 
+			starScore : 4.7, // 별점 표시 
 			isUp : true,
 			isList : false,
 			whatType : '',

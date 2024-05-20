@@ -45,7 +45,7 @@
 									<ul>
 										<li>
 											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
-											<img id="pay-pro" src="@/assets/images/hs/cake.jpg">
+											<img id="pay-pro" src="@/assets/images/hs/cake.jpg" v-on:click.prevent="goPage(1)">
 											<div class="heart" v-on:click.prevent="wish" :class="{ red : isRed}"></div>
 										</li>
 										<li>
@@ -80,7 +80,7 @@
 									<div class="paycon2" >
 										<div v-if="recClass" class="paycon2-1">
 											<span class="paycon2-txt1">추천!</span>
-											<img src="@/assets/images/hs/coffee.jpg">
+											<img src="@/assets/images/hs/coffee.jpg" v-on:click.prevent="goPage(1)">
 											<span class="paycon2-txt2">[정규]뜨개질이 일상이 되어버린사람들을 위한 클래스</span>
 										</div>
 										<div v-else class="paycon2-noClass">
@@ -484,7 +484,43 @@
 			</div>
 			<!-- 리뷰보기 모달 -->
 
-
+			<div class="showAttendance">
+				<div class="revform1">
+					<div class="revform1-header clearfix">
+						<div class="revform-closeBtn" v-on:click.prevent="closeRevForm3">x</div>
+					</div>
+					<!-- revform1-header -->
+					<div class="show-atten">
+						<div class="atten1">누구나 쉽게 배우는 디자인 연습</div>
+						<div class="atten2">2024.04.20 ~ 2024.05.20</div>
+						<div class="atten3">
+							<ul class="clearfix">
+								<li>출석 : 5</li>
+								<li>결석 : 0</li>
+								<li>지각 : 3</li>
+								<li>조퇴 : 2</li>
+							</ul>
+						</div>
+						<!-- atten3 -->
+						<div class="atten4">
+							<table>
+								<colgroup>
+									<col width="60%">
+									<col width="40%">
+								</colgroup>
+								<tbody v-for="(index) in 5" :key="index">
+									<td>2024.05.03</td>
+									<td>출석</td>
+								</tbody>
+							</table>
+						</div>
+						<!-- atten4 -->
+					</div>
+					<!-- show-atten -->
+				</div>
+				<!-- revform1 -->
+			</div>
+			<!-- showAttendance -->
 
 
 		</div>
@@ -530,7 +566,7 @@ export default {
 			payPrice : 5000,
 			recClass : true, // 추천클래스 - 있으면 true 없으면 false
 			isPay : false, // 결제여부확인
-			hasRev : false, // 작성한 리뷰 있는지 확인
+			hasRev : true, // 작성한 리뷰 있는지 확인
 			paymentData : [], // 결제정보가져와서 저장될 곳
 			getClassImg : require('@/assets/images/hs/cake.jpg'), // 클래스이미지 
 			file : document.querySelector('#file'), // 첨부파일
@@ -539,6 +575,20 @@ export default {
 		};
 	},
 	methods: {
+		/////////////////////////////////////////////////////////////////////////
+		// 출석부 보기
+		closeRevForm3(){
+			let modal = document.querySelector('.showAttendance');
+			modal.style.display = 'none';
+		},
+
+		// 출석부 모달
+		getAttendance(){
+			let modal = document.querySelector('.showAttendance');
+			modal.style.display = 'block';
+		},
+
+
 		///////////////////////////////////////////////////////////////////////////////////
 		
 		// 작성한 리뷰 보기 열기
@@ -650,11 +700,14 @@ export default {
 		inquiry(){
 			console.log('문의');
 		},
-		
-		// 출석부 모달
-		getAttendance(){
-			console.log('출석부');
+
+		// 선택한 페이지 이동
+		goPage(){
+			console.log('클래스페이지이동');
+			this.$router.push('/classdetailpage');
 		},
+		
+		
 		
 		// 결제정보 가져오기
 		getList(){

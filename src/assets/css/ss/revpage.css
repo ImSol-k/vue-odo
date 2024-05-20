@@ -20,6 +20,15 @@
     padding: 10px;
     float: left;
 }
+
+.rev-header1>span {
+    box-sizing: border-box;
+    display: block;
+    padding-left: 20px;
+    font-size: 25px;
+}
+
+
 /*****************************************************************/
 .rev-header1>.star-ratings {
     color: #aaa9a9;
@@ -30,7 +39,7 @@
     -webkit-text-stroke: 1.1px;
     -webkit-text-stroke-color: #2b2a29;
     width: max-content;
-    font-size: 20px;
+    font-size: 25px;
     height: 30px;
     line-height: 22px;
     float: left;
@@ -53,6 +62,10 @@
     padding: 0;
 }
 
+.rev-header1 .star-avg {
+    border: 1px solid #000;
+    font-size: 18px;
+}
 
 
 
