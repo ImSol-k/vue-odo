@@ -248,6 +248,7 @@
 			</ul>
 		</section>
 		<div class="banner" @click="goHost"></div>
+		
 	</div> <!-- //inner -->
 	
 	<AppFooter />
