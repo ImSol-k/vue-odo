@@ -1,10 +1,21 @@
-.mypageLine{
-    margin-bottom: 5px;
+.modifyContent {
+  display: block;
+  padding: 10px;
+}
+.modify-head {
+  display: inline-block;
+  font-size: 20px;
+  margin-bottom: 5px;
+  border-bottom: 2px solid #d6d6d6;
+}
+.modify-head > span {
+  display: block;
+  margin-bottom: 5px;
 }
 .MporderContainer {
   width: 1200px;
   /* background-color: antiquewhite; */
-  display: flex;
+  /* display: flex; */
   padding: 25px 0;
 }
 
@@ -16,11 +27,25 @@
 }
 
 /* 오른쪽내용영역 */
+.area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0px;
+}
+.area > label {
+  width: 130px;
+  font-size: 18px;
+  text-align: right;
+}
 .area > div > input {
   border-radius: 10px;
   padding: 5px;
   font-size: 15px;
-  width: 400px;
+  width: 280px;
+  height: 40px;
+  border: 1px solid #d9d9d9;
 }
 .area > div > input:focus {
   border: 2px solid #8521ff;
@@ -31,9 +56,10 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin: 50px 0px;
 }
-.MpRight>img{
-    width: 200px;
+.MpRight > img {
+  width: 200px;
 }
 .MporderContainer .MpRight h2 {
   font-size: 32px;
@@ -84,7 +110,7 @@
   height: 35px;
 }
 
-.area>label {
+.area > label {
   text-align: left;
 }
 
@@ -97,4 +123,18 @@
   font-size: 20px;
   border: 2.5px solid #d6d6d6;
   margin-top: 8px;
+}
+.userModifyBtn {
+  display: flex;
+}
+.userModifyBtn > button {
+  width: 200px;
+  height: 50px;
+  margin: 50px 10px;
+  border: none;
+  border-radius: 10px;
+}
+.userModifyBtn > button:last-child {
+  background-color: #8521ff;
+  color: #fff;
 }

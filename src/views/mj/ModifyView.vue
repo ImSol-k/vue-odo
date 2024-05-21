@@ -5,17 +5,17 @@
     <div class="wrap">
       <MyPageHeader />
       <!-- container 부분 -->
-      <div class="">
+      <div class="modifyContent">
         <div class="MpLeft">
           <!-- nav -->
           <MyPageSide />
         </div>
         <!-- 오른쪽내용영역 -->
-        <div class="mymy-head">
-          <span>위시리스트</span>
+        <div class="modify-head">
+          <span>정보수정</span>
         </div>
         <div class="MpRight" style="overflow: hidden">
-          <img class="profile" src="@/assets/images/하트.png" />
+          <img class="profile" src="@/assets/images/icon/header_icons/my.png" />
           <div id="p-box">
             <input type="file" name="" id="pic" />
           </div>
@@ -25,9 +25,7 @@
               <input
                 type="text"
                 id="nickname"
-                class="form_w100"
-                placeholder="이미지"
-                v-model="required"
+                v-model="userVo.name"
               />
             </div>
           </div>
@@ -37,9 +35,7 @@
               <input
                 type="text"
                 id="hp"
-                class="form_w100"
-                placeholder="010-3333-3333"
-                v-model="required"
+                v-model="userVo.hp"
               />
             </div>
           </div>
@@ -49,9 +45,7 @@
               <input
                 type="text"
                 id="e-mail"
-                class="form_w100"
-                placeholder="admin@admin.com"
-                v-model="required"
+                v-model="userVo.email"
               />
             </div>
           </div>
@@ -61,8 +55,6 @@
               <input
                 type="password"
                 id="password"
-                class="form_w100"
-                placeholder="****"
                 v-model="required"
               />
             </div>
@@ -73,9 +65,7 @@
               <input
                 type="text"
                 id="birth"
-                class="form_w100"
-                placeholder="981217"
-                v-model="required"
+                v-model="userVo.birth"
               />
             </div>
           </div>
@@ -85,15 +75,17 @@
               <input
                 type="text"
                 id="gender"
-                class="form_w100"
                 disabled
-                placeholder="**"
+                placeholder="여자"
                 v-model="required"
               />
             </div>
           </div>
+          <div class="userModifyBtn">
+            <button>취소</button>
+            <button>저장</button>
+          </div>
         </div>
-        <button>저장</button>
       </div>
     </div>
   </div>
@@ -117,7 +109,14 @@ export default {
     MyPageHeader,
   },
   data() {
-    return {};
+    return {
+      userVo: {
+        name: "김소리",
+        hp: "010-5443-5432",
+        email: "sss@fds.fds",
+        birth: "990523"
+      }
+    };
   },
   methods: {},
   created() {},
