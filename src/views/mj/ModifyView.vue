@@ -70,7 +70,7 @@
                 v-model="required"
               />
             </div>
-          </div>
+          </div>  
           <div class="area">
             <label class="group">생년월일</label>
             <div>
