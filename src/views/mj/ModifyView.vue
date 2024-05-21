@@ -5,18 +5,17 @@
     <div class="wrap">
       <MyPageHeader />
       <!-- container 부분 -->
-      <div class="MporderContainer">
+      <div class="">
         <div class="MpLeft">
           <!-- nav -->
           <MyPageSide />
         </div>
         <!-- 오른쪽내용영역 -->
+        <div class="mymy-head">
+          <span>위시리스트</span>
+        </div>
         <div class="MpRight" style="overflow: hidden">
-          <p>내 정보</p>
-
-          <div class="box">
-            <img class="profile" src="@/assets/images/하트.png" />
-          </div>
+          <img class="profile" src="@/assets/images/하트.png" />
           <div id="p-box">
             <input type="file" name="" id="pic" />
           </div>
@@ -39,53 +38,49 @@
                 type="text"
                 id="hp"
                 class="form_w100"
-                disabled
                 placeholder="010-3333-3333"
                 v-model="required"
               />
             </div>
           </div>
           <div class="area">
-            <label class="group">이메일</label>
+            <label>이메일</label>
             <div>
               <input
                 type="text"
                 id="e-mail"
                 class="form_w100"
-                disabled
                 placeholder="admin@admin.com"
                 v-model="required"
               />
             </div>
           </div>
           <div class="area">
-            <label class="group">비밀번호</label>
+            <label>비밀번호</label>
             <div>
               <input
                 type="password"
                 id="password"
                 class="form_w100"
-                disabled
                 placeholder="****"
                 v-model="required"
               />
             </div>
-          </div>  
+          </div>
           <div class="area">
-            <label class="group">생년월일</label>
+            <label>생년월일</label>
             <div>
               <input
                 type="text"
                 id="birth"
                 class="form_w100"
-                disabled
                 placeholder="981217"
                 v-model="required"
               />
             </div>
           </div>
           <div class="area">
-            <label class="group">성별</label>
+            <label>성별</label>
             <div>
               <input
                 type="text"

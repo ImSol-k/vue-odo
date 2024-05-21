@@ -14,7 +14,7 @@
   <AppFooter />
 </template>
 <script>
-import AppHeader from "@/components/AppHeader.vue";
+import AppHeader from "@/components/HostAppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import AppMenu from "@/components/CompanyMenu.vue";
 import FullCalendar from "@fullcalendar/vue3";

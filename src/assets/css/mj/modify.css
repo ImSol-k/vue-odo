@@ -1,88 +1,100 @@
-.MporderContainer{
-    width: 1200px;
-    /* background-color: antiquewhite; */
-    display: flex;
-    padding: 25px 0;
+.mypageLine{
+    margin-bottom: 5px;
+}
+.MporderContainer {
+  width: 1200px;
+  /* background-color: antiquewhite; */
+  display: flex;
+  padding: 25px 0;
 }
 
 /* nav */
-.MporderContainer .MpLeft{
-    /* background-color: aquamarine; */
-    width: 250px;
-    margin-left: 10px;
+.MporderContainer .MpLeft {
+  /* background-color: aquamarine; */
+  width: 250px;
+  margin-left: 10px;
 }
 
 /* 오른쪽내용영역 */
-.area>div>input{
-    border-radius: 10px;
+.area > div > input {
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 15px;
+  width: 400px;
 }
-.MporderContainer .MpRight{
-    margin-left: 10px;
-    /* background-color: beige; */
-    width: 915px;
-    height: 950px;
-    /* overflow-y:scroll; */
+.area > div > input:focus {
+  border: 2px solid #8521ff;
+  outline: none;
 }
-.MporderContainer .MpRight h2{
-    font-size: 32px;
-    display: flex;
+.MpRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
-.MporderContainer .MpRight .container .Right{
-    width: 60px;
-    height: 30px;
+.MpRight>img{
+    width: 200px;
 }
-
-.MporderContainer .MpRight li{
-    font-size: 24px;
+.MporderContainer .MpRight h2 {
+  font-size: 32px;
+  display: flex;
 }
-
-.box{
-    width: 180px;
-    height: 180px;
-    border-radius: 70%;
-    overflow: hidden;
-    margin-left: 150px;
-}
-.profile{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-#pic{
-    margin-top: 25px;
-    margin-left: 150px;
-    margin-bottom: 25px;
+.MporderContainer .MpRight .container .Right {
+  width: 60px;
+  height: 30px;
 }
 
-.MporderContainer .MpRight .ModifyImg img{
-    width: 80px;
-    margin-top: 20px;
-    margin-left: 35px;
+.MporderContainer .MpRight li {
+  font-size: 24px;
 }
-.MporderContainer .MpRight .group{
-    font-weight: bold;
+
+.box {
+  width: 180px;
+  height: 180px;
+  border-radius: 70%;
+  overflow: hidden;
+  margin-left: 150px;
+}
+.profile {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#pic {
+  margin-top: 25px;
+  margin-left: 150px;
+  margin-bottom: 25px;
+}
+
+.MporderContainer .MpRight .ModifyImg img {
+  width: 80px;
+  margin-top: 20px;
+  margin-left: 35px;
+}
+.MporderContainer .MpRight .group {
+  font-weight: bold;
 }
 .MporderContainer .Right {
-    float:right;
-    margin-top: -35px;
-    margin-right:300px;
+  float: right;
+  margin-top: -35px;
+  margin-right: 300px;
 }
 .MporderContainer .Right button {
-    width:55px;
-    height:35px;
+  width: 55px;
+  height: 35px;
 }
 
-.MporderContainer .MpRight .area{
-    margin-bottom: 15px;
+.area>label {
+  text-align: left;
 }
 
 .contents_body {
-    margin-top:30px;
+  margin-top: 30px;
 }
 .form_w100 {
-    width:500px;
-    height:45px;
-    font-size:20px;
-    border: 2.5px solid #d6d6d6;
-    margin-top: 8px;
+  width: 500px;
+  height: 45px;
+  font-size: 20px;
+  border: 2.5px solid #d6d6d6;
+  margin-top: 8px;
 }

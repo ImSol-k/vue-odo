@@ -164,7 +164,7 @@
 import "@/assets/css/Initialization.css";
 import "@/assets/css/sr/company.css";
 import "@/assets/css/hs/main.css";
-import AppHeader from "@/components/AppHeader.vue";
+import AppHeader from "@/components/HostAppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 export default {
   name: "CompanyJoinView",
