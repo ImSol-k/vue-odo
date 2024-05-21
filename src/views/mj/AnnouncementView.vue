@@ -18,9 +18,10 @@
                       <thead>
                           <tr>
                               <th width="70">번호</th>
-                                <th width="560">제목</th>
-                                <th width="140">글쓴이</th>
-                                <th width="125">작성일</th>
+                                <th width="400">제목</th>
+                                <th width="100">글쓴이</th>
+                                <th width="100">작성일</th>
+                                <th width="100">조회수</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,30 +30,35 @@
                             <td><a href="#">공지 전달드립니다</a></td>
                             <td>이미지</td>
                             <td>2024-05-11</td>
+                            <td>111</td>
                           </tr>
                           <tr>
                             <td>1111</td>
                             <td><a href="#">공지 전달드립니다</a></td>
                             <td>이미지</td>
                             <td>2024-05-11</td>
+                            <td>111</td>
                           </tr>
                           <tr>
                             <td>1111</td>
                             <td><a href="#">공지 전달드립니다</a></td>
                             <td>이미지</td>
                             <td>2024-05-11</td>
+                            <td>111</td>
                           </tr>
                           <tr>
                             <td>1111</td>
                             <td><a href="#">공지 전달드립니다</a></td>
                             <td>이미지</td>
                             <td>2024-05-11</td>
+                            <td>111</td>
                           </tr>
                           <tr>
                             <td>1111</td>
                             <td><a href="#">공지 전달드립니다</a></td>
                             <td>이미지</td>
                             <td>2024-05-11</td>
+                            <td>111</td>
                           </tr>
                         </tbody>
                       </table>
