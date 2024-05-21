@@ -10,9 +10,10 @@
                 <MyPageSide/>
 
                 </div>
+                <h2>공지사항</h2>
                 <div class="MpRight" style="overflow: hidden;">
 
-                    <h2>공지사항</h2>
+                    
                 
                     <table class="list-table">
                       <thead>
