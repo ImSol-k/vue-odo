@@ -13,6 +13,9 @@
 }
 
 /* 오른쪽내용영역 */
+.area>div>input{
+    border-radius: 10px;
+}
 .MporderContainer .MpRight{
     margin-left: 10px;
     /* background-color: beige; */

@@ -26,7 +26,7 @@
       <div class="companyJoinImg">
         <img src="@/assets/images/icon/man_icon.png" alt="" />
         <div>
-          <p>프로필사진</p>
+          <p>업체사진변경</p>
           <input type="file" name="" id="" />
         </div>
       </div>
@@ -54,8 +54,7 @@
         </div>
         <div>
           <!-- <label for="companyId">아이디</label> -->
-          <input type="text" name="" id="companyId" placeholder="아이디" />
-          <input type="button" value="중복확인" />
+          <input type="text" name="" id="companyId" placeholder="아이디" value="asfd3" disabled/>
         </div>
         <div>
           <!-- <label for="companyPass">비밀번호</label> -->
@@ -107,8 +106,7 @@
             placeholder="상세주소"
             v-model="companyVo.detailAddress"
           />
-          <input type="text" name="" v-model="companyVo.y" placeholder="위도" />
-          <input type="text" name="" v-model="companyVo.x" placeholder="경도" />
+
         </div>
         <div>
           <!-- <label for="companyPassChack">비밀번호확인</label> -->
