@@ -2,7 +2,7 @@
   <!--업체 소개페이지-->
   <!--헤더-->
 
-  <AppHeader />
+  <HostHeader />
   <div class="wrap">
     <!-- <div>
             <div class="clearfix cover20">
@@ -150,7 +150,7 @@
   <AppFooter />
 </template>
 <script>
-import AppHeader from "@/components/AppHeader.vue";
+import HostHeader from "@/components/HostAppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import "@/assets/css/jh/jh.css";
 import "@/assets/css/Initialization.css";
@@ -160,7 +160,7 @@ import Swal from "sweetalert2";
 
 export default {
   components: {
-    AppHeader,
+    HostHeader,
     AppFooter,
   },
   data() {
