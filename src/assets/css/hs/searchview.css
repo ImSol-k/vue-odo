@@ -1,3 +1,38 @@
+/* select category */
+.categorySelectBox {
+    height: 460px;
+    padding: 30px 0;
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+.category-1st {
+    padding: 7px 0;
+} 
+.category-1st h1 {
+    font-size: 21px;
+    margin-bottom: 24.2px;
+    cursor: pointer;
+}
+.catgory-2nd {
+    margin-left: 30px;
+}
+.catgory-2nd ul {
+    display: flex;
+    font-size: 15px;
+    margin-bottom: 17px;
+}
+.catgory-2nd ul li {
+    margin-right: 15px;
+    padding: 7px 15px;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+}
+.BtnActive {
+    background: #8521ff;
+    color: #fff;
+}
+/* searchResult */
 h2.searchResult {
     margin: 20px 0;
 }
