@@ -113,13 +113,13 @@ ul.classList li .img-box img:first-child {
     height: 100%;
     border-radius: 7px;
 }
-ul.classList p.location {
+p.location {
     font-size: 12px;
     font-weight: bold;
     color: #666;
     margin: 10px;
 }
-ul.classList p.classTitle {
+p.classTitle {
     margin: 10px;
     font-size: 15px;
     font-weight: bold;
@@ -137,7 +137,7 @@ ul.classList .review-box span:last-child {
     margin-left: 5px;
     color: #333;
 }
-ul.classList .class-price {
+.class-price {
     margin: 10px;
     padding: 10px 0;
     font-weight: bold;

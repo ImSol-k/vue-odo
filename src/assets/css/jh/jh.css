@@ -298,7 +298,7 @@
     position: relative;
     width: 180px;
     height: 180px;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .cover33 {
@@ -332,10 +332,10 @@
 
 
 .img40 {
-    width: 125px;
-    height: 125px;
+    width: 90px;
+    height: 90px;
     float: left;
-    border-radius: 15px;
+    border-radius: 50%;
 }
 
 .cover42 {
@@ -380,9 +380,13 @@
 }
 
 .cover44{
+    display: flex;
     margin-left: 15px;
 }
-
+.cover44 p {
+    font-size: 12px;
+    color: #999;
+}
 .box-img {
     width: 230px;
     height: 235px;
