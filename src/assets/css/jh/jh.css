@@ -324,7 +324,7 @@
     margin-top: 30px;
     margin-right: 20px;
     margin-bottom: 30px;
-    width: 300px;
+    width: 340px;
     float: left;
     position: relative;
 }
@@ -340,7 +340,7 @@
 
 .cover42 {
     width: 180px;
-    margin-left: 130px;
+    margin-left: 145px;
 }
 
 .p40 {
@@ -371,8 +371,9 @@
     height: 35px;
     border-radius: 15px;
     position: absolute;
-    top: 74%;
-    left: 30%;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
 }
 
 .cover43 {
@@ -381,7 +382,7 @@
 
 .cover44{
     display: flex;
-    margin-left: 15px;
+    /* margin-left: 15px; */
 }
 .cover44 p {
     font-size: 12px;

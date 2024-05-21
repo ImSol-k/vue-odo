@@ -73,12 +73,18 @@
                                     </div>
                                 </div>
                                 <div class="cover44">
-                                    <p class="p41">클래스</p>
-                                    <p class="p42">00</p>
-                                    <p class="p41">리뷰</p>
-                                    <p class="p42">00</p>
-                                    <p class="p41">찜</p>
-                                    <p class="p42">00</p>
+                                    <div>
+                                        <p class="p41">클래스</p>
+                                        <p class="p42">00</p>
+                                    </div>
+                                    <div>
+                                        <p class="p41">리뷰</p>
+                                        <p class="p42">00</p>
+                                    </div>
+                                    <div>
+                                        <p class="p41">찜</p>
+                                        <p class="p42">00</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
