@@ -11,6 +11,7 @@
 				<div class="join-box">
 					<button type="button" v-on:click.prevent="userJoin" class="join-select">일반 회원가입</button>
 					<button type="button" v-on:click.prevent="kakaoJoin" class="join-select">카카오로 회원가입</button>
+					<button type="button" v-on:click.prevent="naverJoin" class="join-select">네이버로 회원가입</button>
 				</div>
 
 			</div>
@@ -117,6 +118,11 @@ export default {
 		// 카카오로 회원가입
 		kakaoJoin(){
 			console.log('카카오회원가입');
+		},
+		
+		// 네이버로 회원가입
+		naverJoin(){
+			console.log('네이버회원가입');
 		},
 
 		// 회원가입에서 뒤로가기 눌렀을 때 

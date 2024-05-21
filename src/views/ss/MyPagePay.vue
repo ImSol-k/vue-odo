@@ -103,7 +103,7 @@
 									<ul>
 										<li>
 											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
-											<img id="pay-pro" src="@/assets/images/hs/cake.jpg">
+											<img id="pay-pro" src="@/assets/images/hs/cake.jpg" v-on:click.prevent="goPage(1)">
 											<div class="heart" v-on:click.prevent="wish" :class="{ red : isRed}"></div>
 										</li>
 										<li>
@@ -120,7 +120,7 @@
 									</ul>
 								</div>
 								<!-- mymy-pay -->
-								<div class="mymy-payCon clearfix">
+								<div class="mymy-payCon ">
 									<div class="paycon1">
 										<span class="paycon1-txt1"> 결제일 : 2024.05.05</span>
 										<span class="paycon1-txt2">[정규]누구나 손쉽게 배우는 커피 타임</span>
@@ -135,10 +135,10 @@
 									</div>
 									<!-- paycon1 -->
 
-									<div class="paycon2 clearfix" >
+									<div class="paycon2" >
 										<div v-if="recClass" class="paycon2-1">
 											<span class="paycon2-txt1">추천!</span>
-											<img src="@/assets/images/hs/coffee.jpg">
+											<img src="@/assets/images/hs/coffee.jpg" v-on:click.prevent="goPage(1)">
 											<span class="paycon2-txt2">[정규]뜨개질이 일상이 되어버린사람들을 위한 클래스</span>
 										</div>
 										<div v-else class="paycon2-noClass">
@@ -146,7 +146,7 @@
 										</div>
 									</div>
 									<!-- paycon2 -->
-									
+
 								</div>
 								<!-- mymy-payCon -->	
 							</div>
