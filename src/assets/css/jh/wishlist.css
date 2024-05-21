@@ -15,12 +15,13 @@
 }
 .whsilistImg > img {
   width: 175px;
+  height: 150px;
   border-radius: 5px;
 }
 .whsilistImg > img:last-child {
   position: absolute; /* 이미지들을 겹치게 배치 */
-  bottom: 0;
-  right: 0;
+  bottom: -30%;
+  right: 3%;
   width: 35px; /* 두 번째 이미지의 너비 */
   z-index: 1; /* 두 번째 이미지가 위로 올라오도록 설정 */
 }
@@ -29,10 +30,11 @@
 }
 .wishClassContent > p:first-child {
   color: #a0a0a0;
-  font-size: 13px;
+  font-size: 12px;
 }
 .wishClassContent > p:nth-child(2) {
   font-weight: bold;
+  margin: 5px 0;
 }
 .wishClassContent > p:nth-child(3) {
   font-size: 13px;
@@ -60,13 +62,19 @@
   display: flex;
 }
 .wishTitleContent {
-  margin-top: 17px;
   width: 180px;
+  margin-top: 20px;
+  margin-left: 10px;
 }
 .wishlistCompanyImg > img {
   width: 150px;
+  height: 100px;
   border-radius: 10px;
   margin: 5px;
+}
+.wishlistCompanyImg > img:last-child {
+  bottom: -22%;
+  right: 0;
 }
 .wihshCompanyContent {
   display: flex;

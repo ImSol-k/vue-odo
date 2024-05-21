@@ -1,5 +1,5 @@
 <template>
-  <AppHeader />
+  <HostAppHeader />
   <div class="wrap">
     <div class="clearfix">
       <AppMenu />
@@ -83,7 +83,7 @@
   <AppFooter />
 </template>
 <script>
-import AppHeader from "@/components/HostAppHeader.vue";
+import HostAppHeader from "@/components/HostAppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import AppMenu from "@/components/CompanyMenu.vue";
 import "@/assets/css/mj/chart.css";
@@ -93,7 +93,7 @@ Chart.register(...registerables);
 export default {
 		name: "ModifyView",
 		components: {
-			AppHeader,
+			HostAppHeader,
 			AppFooter,
 			AppMenu
 		},
