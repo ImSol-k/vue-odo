@@ -26,7 +26,6 @@
 .paymentClassBox {
   /* border: 1px solid #8521ff; */
   display: flex;
-  align-items: center;
 }
 .paymentClassBox > img {
   width: 130px;
@@ -150,6 +149,10 @@
   font-size: 25px;
   margin: 30px 0px 20px 0px;
 }
+.paymentEndBox > h2 {
+  color: #a0a0a0;
+  margin: 20px 0px 0px 0px;
+}
 .pamentTable {
   margin: 30px;
 }
@@ -163,10 +166,10 @@
 .pamentTable > tbody > tr > td {
   font-size: 18px;
 }
-.pamentTable > tbody > tr:last-child>td{
-    color: #8521ff;
-    font-size: 23px;
-    font-weight: bold;
+.pamentTable > tbody > tr:last-child > td {
+  color: #8521ff;
+  font-size: 23px;
+  font-weight: bold;
 }
 .payendButtonBox > button {
   width: 300px;
@@ -176,7 +179,43 @@
   border-radius: 10px;
   font-size: 17px;
 }
-.payendButtonBox > button:nth-child(2){
-background-color: #8521ff;
+.payendButtonBox > button:nth-child(2) {
+  background-color: #8521ff;
   color: #fff;
+}
+
+/* 결제완료 클래스리스트 */
+.paymentClassList > h3 {
+  margin: 30px 0px;
+  padding-top: 20px;
+  border-top: 1px solid #a0a0a0;
+  width: 400px;
+  text-align: center;
+}
+.paymentClass {
+  width: 190px;
+  margin: 3px;
+}
+.paymentClass > img {
+  width: 180px;
+  border-radius: 8px;
+}
+.paymentClass > p {
+  font-size: 15px;
+}
+.paymentClass > p:nth-child(2) {
+  color: #a0a0a0;
+  font-size: 13px;
+}
+.paymentClass > p:nth-child(4) {
+  /* color: #a0a0a0; */
+  font-size: 13px;
+}
+.paymentClassStar > .paymentStar {
+  color: #8521ff;
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+.paymentClassStar>span:last-child{
+  font-size: 14px;
 }

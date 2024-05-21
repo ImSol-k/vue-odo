@@ -3,6 +3,7 @@
   <div class="wrap">
     <div class="paymentEndBox">
       <h1>결제가 완료되었습니다</h1>
+      <h2>예약자: <span>김소리</span></h2>
       <table class="pamentTable">
         <tbody>
           <tr>
@@ -19,10 +20,6 @@
           <tr>
             <th>일시</th>
             <td>2024-05-13 10:00</td>
-          </tr>
-          <tr>
-            <th>예약자</th>
-            <td>김소리</td>
           </tr>
           <tr>
             <th>결제방법</th>
@@ -48,19 +45,18 @@
         <h3>이런 클래스도 있어요</h3>
       </div>
       <div class="paymentClassBox">
-        <div class="cover64" v-for="(v, i) in a" :key="i">
-          <div class="box-img">
-            <img src="../../assets/images/hs/main_slide_2.jpg" alt="" />
-          </div>
-          <p class="pp1">지역</p>
-          <p class="pp2">
-            설명설명설명설명설명설명설명설명설명설명설명설설명설명설명설설명설명설명설명
+        <div class="paymentClass" v-for="i in 5" :key="i">
+          <img src="../../assets/images/hs/main_slide_2.jpg" alt="" />
+          <p>지역</p>
+          <p>일일 자전거 클래스</p>
+          <p>
+            설명설명설명설명설명설명..
           </p>
-          <div class="rb">
-            <span class="sp">★★★★★</span>
+          <div class="paymentClassStar">
+            <span class="paymentStar" v-for="(i) in 5" :key="i">★</span>
             <span>후기 123</span>
           </div>
-          <p class="cp">무료</p>
+          <p>무료</p>
         </div>
       </div>
     </div>
