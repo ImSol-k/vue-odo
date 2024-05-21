@@ -36,9 +36,11 @@
 }
 
 .ta3334{
+    border: 1px solid #000000;
+    border-collapse: collapse;
 }
 
-.ta3334 td, th{
+.ta3334 td, .ta3334 th{
     text-align: center;
-    border-collapse: collapse;
+    border: 1px solid #000000;
 }
