@@ -5,13 +5,13 @@
     
 }
 .chartArea .chart{
-    width: 500px;
+    /* width: 500px; */
     float: left;
     margin-bottom: 80px;
 }
 .chartArea .left {
     width: 425px;
-    margin-left: 50px;
+    margin-left: 40px;
 }
 .list{
     margin-top: 70px;
