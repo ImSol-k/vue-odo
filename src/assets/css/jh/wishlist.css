@@ -67,8 +67,13 @@
 }
 .wishlistCompanyImg > img {
   width: 150px;
+  height: 100px;
   border-radius: 10px;
   margin: 5px;
+}
+.wishlistCompanyImg > img:last-child {
+  bottom: -22%;
+  right: 0;
 }
 .wihshCompanyContent {
   display: flex;
