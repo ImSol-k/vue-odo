@@ -3,7 +3,7 @@
   <div class="wrap">
     <div class="findClassBox">
       <div>
-        <p>검색결과</p>
+        <p><span>"서울"</span>검색결과(<span>233건</span>)</p>
         <button v-on:click="MapOnOff">
           <span v-if="!isMap">지도로보기</span>
           <span v-else>리스트로보기</span>
