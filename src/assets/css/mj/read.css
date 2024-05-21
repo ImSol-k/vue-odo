@@ -34,3 +34,12 @@
     text-align: center;
     margin-left:10px;
 }
+
+.ta3334{
+}
+
+.ta3334 td, th{
+    text-align: center;
+    border: 1px solid #000000;
+    border-collapse: collapse;
+}
