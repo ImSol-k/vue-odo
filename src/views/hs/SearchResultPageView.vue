@@ -3,6 +3,57 @@
     <!-- //header -->
 
     <div class="inner">
+
+		<div class="categorySelectBox">
+			<div class="category-1st">
+				<h1 v-for=" cate in category1st " :key="cate">{{ cate }}</h1>
+			</div>
+			<div class="catgory-2nd">
+				<ul>
+					<li class="BtnActive">한식</li>
+					<li>일식</li>
+					<li>중식</li>
+					<li>양식</li>
+				</ul>
+				<ul>
+					<li>제과</li>
+					<li>제빵</li>
+					<li>쇼콜라</li>
+					<li>디저트</li>
+				</ul>
+				<ul>
+					<li>주류</li>
+					<li>바리스타</li>
+				</ul>
+				<ul>
+					<li>네일</li>
+					<li>미용</li>
+					<li>메이크업</li>
+					<li>패션</li>
+				</ul>
+				<ul>
+					<li>비즈</li>
+					<li>뜨게질</li>
+					<li>자수</li>
+					<li>도자기</li>
+					<li>터프팅</li>
+				</ul>
+				<ul>
+					<li>수영</li>
+					<li>축구</li>
+					<li>야구</li>
+					<li>배구</li>
+					<li>골프</li>
+					<li>볼링</li>
+				</ul>
+				<ul>
+					<li>부부상담</li>
+					<li>가정상담</li>
+					<li>심리상담</li>
+				</ul>
+			</div>
+		</div>
+
         <h2 class="searchResult">소개팅 검색 결과 123</h2>
         
         <div class="btnBox">
@@ -83,7 +134,9 @@ export default {
 		AppFooter,
     },
     data() {
-        return {};
+        return {
+			category1st: ["쿠킹", "베이킹", "음료", "뷰티", "공예", "스포츠", "심리/상담", "IT"],
+		};
     },
     methods: {},
 };
