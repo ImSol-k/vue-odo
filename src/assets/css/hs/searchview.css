@@ -12,6 +12,7 @@
 .category-1st h1 {
     font-size: 21px;
     margin-bottom: 24.2px;
+    cursor: pointer;
 }
 .catgory-2nd {
     margin-left: 30px;
