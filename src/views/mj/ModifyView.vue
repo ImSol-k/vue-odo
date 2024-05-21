@@ -3,7 +3,7 @@
 		<!-- AppHeader -->
 		<AppHeader />
 		<div class="wrap">
-			
+			<MyPageHeader/>
 			<!-- container 부분 -->
 			<div class="MporderContainer">
 				<div class="MpLeft">
@@ -86,13 +86,15 @@ import "@/assets/css/mj/modify.css"
 import AppFooter from '@/components/AppFooter.vue';
 import AppHeader from '@/components/AppHeader.vue';
 import MyPageSide from '@/components/MyPageSide.vue';
+import MyPageHeader from '@/components/MyPageHeader.vue';
 
 	export default {
 		name: "ModifyView",
 		components: {
 			AppHeader,
 			AppFooter,
-			MyPageSide
+			MyPageSide,
+			MyPageHeader
 		},
 		data() {
 			return {};
