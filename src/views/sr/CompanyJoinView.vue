@@ -196,7 +196,7 @@ export default {
     creatCompany() {
       axios({
         method: "",
-        url: `${this.$store.apiBaseUrl}/odo/join`, //SpringBoot주소
+        url: `${this.$store.apiBaseUrl}/odo/company/join`, //SpringBoot주소
         headers: { "Content-Type": "application/json; charset=utf-8" },
         data: "",
         responseType: "json",
