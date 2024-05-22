@@ -10,7 +10,7 @@
 			<div class="select-join">
 				<div class="join-box">
 					<button type="button" @click="userJoin" class="join-select">일반 회원가입</button>
-					<img @click=kakaoJoin class="kakao-login" src="@/assets/images/icon/ss/kakao_login_medium_narrow.png">
+					<img class="kakao-login" @click=kakaoJoin src="@/assets/images/icon/ss/kakao_login_medium_narrow.png">
 					<button type="button" @click.="naverJoin" class="join-select">네이버로 회원가입</button>
 				</div>
 			</div>
@@ -178,11 +178,10 @@ export default {
 				Swal.fire({text : '비밀번호가 달라요', icon : 'error',});
 			} else {
 				axios({
-					method: 'post',
+					method: 'get',
 					url: `${this.$store.state.apiBaseUrl}/odo/ss/checkid`,
 					headers: { 'Content-Type': 'application/json; charset=utf-8' },
-					data: this.joinVo,
-					// params : id,
+					params : {id : this.joinVo.userId},
 					responseType: 'json'
 				}).then(response => {
 					if(response.data.apiData == 1){

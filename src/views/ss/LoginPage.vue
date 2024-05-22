@@ -8,10 +8,10 @@
     <span class="lj-txt">로그인</span>
     <div class="lj-form">
       <form v-on:submit.prevent="login">
-        <input type="text" name="id" v-model="loginVo.id" placeholder="아이디(이메일)" />
+        <input type="text" name="id" v-model="loginVo.userId" placeholder="아이디(이메일)" />
         <!-- <img v-if="isPass" class="lj-passImg" :src="pass1" v-on:click.prevent="changeInputImg">
 				<img v-else class="lj-passImg" :src="pass2" v-on:click.prevent="changeInputImg"> -->
-        <input ntype="password" name="password" v-model="loginVo.password" placeholder="비밀번호" />
+        <input type="password" name="password" v-model="loginVo.userPw" placeholder="비밀번호" />
         <button class="login-btn" type="submit">로그인</button>
       </form>
       <!-- form -->
@@ -59,6 +59,8 @@ import "@/assets/css/ss/login-join.css";
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import HostAppHeader from "@/components/HostAppHeader.vue";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 export default {
   name: "LoginPage",
@@ -70,8 +72,8 @@ export default {
   data() {
     return {
       loginVo: {
-        id: "",
-        password: "",
+        userId: '',
+        userPw: '',
       },
       pass1: require("@/assets/images/icon/ss/pass1.png"),
       pass2: require("@/assets/images/icon/ss/pass2.png"),
@@ -80,11 +82,44 @@ export default {
     };
   },
   methods: {
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 로그인
     login() {
       console.log("로그인");
       console.log(this.loginVo);
-      
+      let id = this.loginVo.userId;
+      let pw = this.loginVo.userPw;
+
+      if(id === null || id === ''){
+        Swal.fire({text: '아이디를 확인하세요', icon: 'error'});
+      } else if(id.search(/\s/) != -1) {
+				Swal.fire({ text : '아이디에 공백이 포함되어있습니다', icon : 'error', });
+			} else if(pw === null || pw === '') {
+				Swal.fire({ text : '비밀번호를 확인하세요', icon : 'error', });
+			} else if(pw.search(/\s/) != -1) {
+				Swal.fire({ text : '비밀번호에 공백이 포함되어있습니다', icon : 'error', });
+			} else {
+        axios({
+					method: 'post',
+					url: `${this.$store.state.apiBaseUrl}/odo/ss/userlogin`,
+					headers: { 'Content-Type': 'application/json; charset=utf-8' },
+					data: this.loginVo,
+					responseType: 'json'
+				}).then(response => {
+					if(response.data.result === 'success'){
+            console.log(response.headers);
+            console.log(response.data.apiData);
+          } else {
+            console.log(response.data.message);
+          }
+				}).catch(error => {
+					console.log(error);
+				});
+      }
+
     },
 
     // 비밀번호인풋창 바꾸기
@@ -125,7 +160,11 @@ export default {
         },
       });
     },
-
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   },
 	created() {
     
