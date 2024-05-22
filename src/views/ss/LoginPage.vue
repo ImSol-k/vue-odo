@@ -16,7 +16,7 @@
       </form>
       <!-- form -->
       <span class="other-login">다른 방식으로 로그인</span>
-      <img @click="loginKakao" class="kakao-login" src="@/assets/images/icon/ss/kakao_login_medium.png" />
+      <img @click="kakaoLogin" class="kakao-login" src="@/assets/images/icon/ss/kakao_login_medium.png" />
       <!-- <img src="@/assets/images/icon/ss/na.png" /> -->
     </div>
     <!-- lj-form -->
@@ -95,6 +95,35 @@ export default {
     // 카카오 로그인
     loginKakao(){
       console.log('카카오');
+    },
+
+
+    // https://velog.io/@aocl333/Vue-%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1-%EB%A1%9C%EA%B7%B8%EC%9D%B8
+    kakaoLogin() {
+      window.Kakao.Auth.login({
+        scope: "profile_image, account_email",
+        success: this.getKakaoAccount,
+      });
+    },
+    getKakaoAccount() {
+      window.Kakao.API.request({
+        url: "/v2/user/me",
+        success: (res) => {
+          const kakao_account = res.kakao_account;
+          const ninkname = kakao_account.profile.ninkname;
+          const email = kakao_account.email;
+          console.log(kakao_account);
+          console.log("ninkname", ninkname);
+          console.log("email", email);
+
+          //로그인처리구현
+
+          alert("로그인 성공!");
+        },
+        fail: (error) => {
+          console.log(error);
+        },
+      });
     },
 
   },

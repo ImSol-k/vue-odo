@@ -122,16 +122,26 @@
 }
 
 /* 회원가입 선택 링크 */
-.lj-form .join-select{
-    width: 360px;
-    height: 56px;
+.lj-form .select-join {
+    background-color: #fff;
+}
+
+.lj-form .select-join .join-select{
+    display: flex;
+    width: 183px;
+    text-align: center;
+    line-height: 35px;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 45px;
     cursor: pointer;
     border: none;
-    border-radius: 10px;
-    margin: 10px 0;
+    border-radius: 5px;
+    margin: 10px auto;
     background-color: #B5C5D6;
     color: #fff;
-    font-size: 15px;
+    font-size: 15px;  
+    cursor: pointer;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
     font-weight: bold;
     letter-spacing: -2.1px;
 }

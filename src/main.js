@@ -14,3 +14,5 @@ app.use(store).use(router).use(quillEditor);
 app.component('VueDatePicker', VueDatePicker);
 // app.use(quillEditor)
 app.mount('#app');
+
+window.Kakao.init('78707b677a0d5b7e94a82c2a18059218');

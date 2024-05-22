@@ -9,50 +9,53 @@
 
 			<div class="select-join">
 				<div class="join-box">
-					<button type="button" v-on:click.prevent="userJoin" class="join-select">일반 회원가입</button>
-					<button type="button" v-on:click.prevent="kakaoJoin" class="join-select">카카오로 회원가입</button>
-					<button type="button" v-on:click.prevent="naverJoin" class="join-select">네이버로 회원가입</button>
+					<button type="button" @click="userJoin" class="join-select">일반 회원가입</button>
+					<img @click=kakaoJoin class="kakao-login" src="@/assets/images/icon/ss/kakao_login_medium_narrow.png">
+					<button type="button" @click.="naverJoin" class="join-select">네이버로 회원가입</button>
 				</div>
-				<img src="@/assets/images/icon/ss/kakao_login_medium_narrow.png">
 			</div>
+			
+
+			<!-- https://sorto.me/docs/Web/HTML/Element/input/email#term-multiple -->
 
 			<div class="user-join">
 				<div class="join1">
 					<div class="join-box">
 						<div class="join1-1">
-							<input id="join-id" type="text" v-model="joinVo.id" :placeholder="`아이디&nbsp;(이메일)`"><br>
-							<!-- <span class="join-id-msg">올바른 이메일 형식이 아닙니다</span> -->
-							<input id="join-pw" type="password" v-model="joinVo.password" placeholder="비밀번호">
-							<span class="join1-txt">대/소문자, 숫자, 특수문자 중 2가지 이상의 조합으로 10자이상</span>
+							<input id="join-id" type="email"  v-model="joinVo.userId" :placeholder="`아이디&nbsp;(이메일)`"><br>
+							<span v-if="joinVo.userId !== null && joinVo.userId !== '' && !isJoinIdValid" class="join-id-msg">올바른 이메일 형식이 아닙니다</span>
+							<input id="join-pw" type="password" v-model="joinVo.userPw" placeholder="비밀번호">
+							<!-- <span class="join1-txt">대/소문자, 숫자, 특수문자 중 2가지 이상의 조합으로 10자이상</span> -->
 							<input id="join-pw2" type="password" v-model="checkPw" placeholder="비밀번호 한 번 더"><br>
-							<!-- <span class="join-pw-msg">비밀번호를 확인하세요</span> -->
 						</div>
+
+
 					</div>
-					<button class="login-btn" type="button" v-on:click="showSelectJoin">뒤로 가기</button>
-					<button class="login-btn" type="button" v-on:click="showJoin2">다음</button>
+					<button class="login-btn" type="button" @click="showSelectJoin">뒤로 가기</button>
+					<button class="login-btn" type="button" @click="showJoin2" :disabled="!isJoinIdValid">다음</button>
 				</div>
 				<!-- join1 -->
 				<div class="join2">
 					<div class="join-box">
 						<div class="join2-1">
-							<input id="join-nickname" type="text" v-model="joinVo.nickName" placeholder="닉네임">
-							<input id="join-hp" type="text" v-model="joinVo.hp" :placeholder="`핸드폰 번호를 '-' 없이 입력하세요`">
-							<input id="join-birth" type="text" v-model="joinVo.birth" :placeholder="`생년월일을 '-' 없이 입력하세요`"><br>
+							<input id="join-nickname" type="text" v-model="joinVo.userNickname" placeholder="닉네임">
+							<input id="join-hp" type="text" v-model="joinVo.userHp" :placeholder="`핸드폰 번호를 '-' 없이 입력하세요`">
+							<input id="join-birth" type="text" v-model="joinVo.userBirth" :placeholder="`생년월일을 '-' 없이 입력하세요 ex)980303`"><br>
 							<div class="join2-2">
 								<label for="joinVoMale">남자</label>
-								<input id="joinVoMale" type="radio" name="gender" v-model="joinVo.gender" value="male">
+								<input id="joinVoMale" type="radio" name="gender" v-model="joinVo.userGender" value="male">
 								<label for="joinVoFemale">여자</label>
-								<input id="joinVoFemale" type="radio" name="gender" v-model="joinVo.gender" value="female">
+								<input id="joinVoFemale" type="radio" name="gender" v-model="joinVo.userGender" value="female">
 							</div>
 						</div>
 						<button class="login-btn" v-on:click="showJoin1">뒤로가기</button>
-						<button class="login-btn" type="submit" v-on:click.prevent="join">회원가입하기</button>
+						<button class="login-btn" type="submit" v-on:click.prevent="joinFinish">회원가입하기</button>
 					</div>
 				</div>
 				<!-- join2 -->
 				<div class="join3">
 					<div class="join-box">
-						<span>{{ joinVo.nickName }}님 반가워요</span><br>
+						<span>{{ joinVo.userNickname }}님 반가워요</span><br>
 						<span>회원가입이 완료되었어요</span><br>
 						<router-link to="/" class="login-btn">홈으로 가기</router-link>
 						<router-link to="/login/user" class="login-btn">로그인하러가기</router-link>
@@ -78,29 +81,41 @@ import '@/assets/css/Initialization.css';
 import '@/assets/css/ss/login-join.css';
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+
 
 export default {
-	name: "UserJoinPage",
+	name: "JoinPage",
 	components: {
 		AppHeader,
 		AppFooter
 	},
 	data() {
 		return {
+			check : false,
 			checkPw : '',
 			joinVo : {
-				id : '',
-				password : '',
-				nickName : '',
-				hp : '',
-				birth : '',
-				gender : ''
+				userId : '',
+				userPw : '',
+				userNickname : '',
+				userHp : '',
+				userBirth : '',
+				userGender : ''
 			},
 			loginTitle : '반가워요!',
 
 
 		};
 	},
+	computed :{
+		// 이메일 유효성 검증확인되면 다음버튼 활성화
+		isJoinIdValid(){
+			return this.validateEmail(this.joinVo.userId);
+		},
+		
+	},
+
 	mounted(){
 
 	},
@@ -127,15 +142,16 @@ export default {
 
 		// 회원가입에서 뒤로가기 눌렀을 때 
 		showSelectJoin(){
-			console.log('asdasd');
 			this.joinVo = {
-				id: '',
-				password: '',
-				nickName: '',
-				hp: '',
-				birth: '',
-				gender: ''
+				userId: '',
+				userPw: '',
+				userNickname: '',
+				userHp: '',
+				userBirth: '',
+				userGender: ''
 			}
+			this.checkPw = '';
+
 			this.loginTitle = '반가워요!';
 			let select = document.querySelector('.select-join');
 			let user = document.querySelector('.user-join');
@@ -143,16 +159,46 @@ export default {
 			user.style.display = 'none';
 		},
 
-		// 다음 버튼 클릭했을 때
-		showJoin2(){
-			let join1 = document.querySelector('.join1');
-			let join2 = document.querySelector('.join2');
-
-			// 공백 등 조건 고려해서 if 문 추가
-			join1.style.display = 'none';
-			join2.style.display = 'block';
-
+		// 이메일 유효성 검증
+		validateEmail(inputEmail) {
+			const regex = /\S+@\S+\.\S+/;
+			return regex.test(inputEmail);
 		},
+
+		// 다음 버튼 클릭했을 때 - 아이디 비밀번호 체크 + 비밀번호 확인
+		/* eslint-disable */
+		showJoin2(){
+			// let id = this.joinVo.userId;
+			let pw = this.joinVo.userPw;
+			if(pw === null || pw === ''){
+				Swal.fire({ text : '비밀번호를 확인하세요', icon : 'error', });
+			} else if(pw.search(/\s/) != -1) {
+				Swal.fire({ text : '비밀번호에 공백이 포함되어있습니다', icon : 'error', });
+			} else if (pw != this.checkPw){
+				Swal.fire({text : '비밀번호가 달라요', icon : 'error',});
+			} else {
+				axios({
+					method: 'post',
+					url: `${this.$store.state.apiBaseUrl}/odo/ss/checkid`,
+					headers: { 'Content-Type': 'application/json; charset=utf-8' },
+					data: this.joinVo,
+					// params : id,
+					responseType: 'json'
+				}).then(response => {
+					if(response.data.apiData == 1){
+						let join1 = document.querySelector('.join1');
+						let join2 = document.querySelector('.join2');
+						join1.style.display = 'none';
+						join2.style.display = 'block';
+					} else if(response.data.apiData == -1) {
+						Swal.fire({text : '이미 등록된 이메일입니다', icon : 'error',});
+					}
+				}).catch(error => {
+					console.log(error);
+				});
+			}
+		},
+
 		// 뒤로가기 버튼 클릭했을때 
 		showJoin1(){
 			let join1 = document.querySelector('.join1');
@@ -162,17 +208,56 @@ export default {
 		},
 
 		// 회원가입 버튼 클릭했을 때
-		join (){
-			console.log(this.joinVo);
-			this.loginTitle = '안녕하세요!'
-			let join3 = document.querySelector('.join3');
-			let join2 = document.querySelector('.join2');
-			join2.style.display = 'none';
-			join3.style.display = 'block';
+		joinFinish (){
+			let nickname = this.joinVo.userNickname;
+			let hp = this.joinVo.userHp;
+			let birth = this.joinVo.userBirth;
+			let gender = this.joinVo.userGender;
+
+			if(nickname === null || nickname === ''){
+				Swal.fire({text : '닉네임을 확인하세요', icon : 'error',});
+			} else if(nickname.search(/\s/) != -1){
+				Swal.fire({ text : '닉네임에 공백이 포함되어있습니다', icon : 'error', });
+			} else if(hp === null || hp === ''){
+				Swal.fire({text : '핸드폰번호를 확인하세요', icon : 'error',});
+			} else if(hp.search(/\s/) != -1){
+				Swal.fire({ text : '핸드폰번호에 공백이 포함되어있습니다', icon : 'error', });
+			} else if(birth === null || birth === ''){
+				Swal.fire({text : '생년월일을 확인하세요', icon : 'error',});
+			} else if(birth.search(/\s/) != -1){
+				Swal.fire({ text : '생년월일에 공백이 포함되어있습니다', icon : 'error', });
+			} else if(gender === null || gender === ''){
+				Swal.fire({text : '성별을 확인하세요', icon : 'error',});
+			} else {
+				axios({
+					method: 'post',
+					url: `${this.$store.state.apiBaseUrl}/odo/ss/userjoin`,
+					headers: { 'Content-Type': 'application/json; charset=utf-8' },
+					data: this.joinVo,
+					// params : id,
+					responseType: 'json'
+				}).then(response => {
+					if(response.data.result === 'success'){
+						this.loginTitle = '안녕하세요!'
+						let join3 = document.querySelector('.join3');
+						let join2 = document.querySelector('.join2');
+						join2.style.display = 'none';
+						join3.style.display = 'block';
+					} else {
+						Swal.fire({text: '회원가입에 실패했습니다.', icon: 'error'});
+					}
+				}).catch(error => {
+					console.log(error);
+				});
+			}
+
+
+
+			
 		}
 	},
 	created(){
-		this.joinVo = {};
+		// console.log(this.joinVo);
 	}
 };
 </script>
@@ -182,4 +267,8 @@ export default {
 
 
 <style>
+.swal-wide{
+	width : 100px;
+}
+
 </style>

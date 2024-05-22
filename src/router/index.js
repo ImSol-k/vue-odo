@@ -24,6 +24,7 @@ import MyPageCoupon from '../views/ss/MyPageCoupon.vue'
 import LoginPage from '@/views/ss/LoginPage.vue'
 import JoinPage from '@/views/ss/JoinPage.vue'
 import ReviewPage from '@/views/ss/ReviewPage.vue'
+import KakaoLogin from '@/views/ss/KakaoLogin.vue'
 //미지
 import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
@@ -142,6 +143,11 @@ const routes = [
     path: '/reviewpage',
     name : 'reviewpage',
     component : ReviewPage
+  },
+  {
+    path : '/login/user/oauth2',
+    name : 'kakaologin',
+    component : KakaoLogin
   },
   //=== 미지 =================================
   {
