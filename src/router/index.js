@@ -41,7 +41,7 @@ const routes = [
     component: MainView
   },
   {
-    path: '/classdetailpage',
+    path: '/classdetailpage/:classNo',
     name: 'classdetailpage',
     component: ClassDetailPageView
   },
