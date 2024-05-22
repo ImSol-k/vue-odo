@@ -67,7 +67,8 @@
 				<router-link to="/searchresultpage/1">전체보기</router-link>
 			</div>
 			<ul class="classList">
-				<li v-for=" fbList in listOfLists[0] " :key="fbList"><router-link to="/classdetailpage">
+				<li v-for=" fbList in listOfLists[0] " :key="fbList">
+					<router-link :to="`/classdetailpage/${fbList.classNo}`">
 						<div class="img-box">
 							<img src="../../assets/images/hs/main_slide_2.jpg" alt="">
 							<img src="" alt="">
@@ -79,7 +80,8 @@
 							<span>후기 123</span>
 						</div>
 						<p class="class-price">{{fbList.classPrice}}</p>
-					</router-link></li>
+					</router-link>
+				</li>
 			</ul>
 		</section>
 		<div class="banner" @click="goHost"></div>
@@ -91,7 +93,8 @@
 				<router-link to="#">전체보기</router-link>
 			</div>
 			<ul class="classList">
-				<li v-for=" pbList in listOfLists[1] " :key="pbList"><router-link to="/classdetailpage">
+				<li v-for=" pbList in listOfLists[1] " :key="pbList">
+					<router-link :to="`/classdetailpage/${pbList.classNo}`">
 						<div class="img-box">
 							<img src="../../assets/images/hs/main_slide_1.jpg" alt="">
 							<img src="" alt="">
@@ -103,7 +106,8 @@
 							<span>후기 123</span>
 						</div>
 						<p class="class-price">{{ pbList.classPrice }}원</p>
-					</router-link></li>
+					</router-link>
+				</li>
 			</ul>
 		</section>
 		<div class="banner" @click="goHost"></div>
@@ -115,7 +119,8 @@
 				<router-link to="#">전체보기</router-link>
 			</div>
 			<ul class="classList">
-				<li v-for=" nList in listOfLists[2] " :key="nList"><router-link to="/classdetailpage">
+				<li v-for=" nList in listOfLists[2] " :key="nList">
+					<router-link :to="`/classdetailpage/${nList.classNo}`">
 						<div class="img-box">
 							<img src="../../assets/images/hs/coffee.jpg" alt="">
 							<img src="" alt="">
@@ -127,7 +132,8 @@
 							<span>후기 123</span>
 						</div>
 						<p class="class-price">{{ nList.classPrice }}원</p>
-					</router-link></li>
+					</router-link>
+				</li>
 			</ul>
 		</section>
 		<div class="banner" @click="goHost"></div>
