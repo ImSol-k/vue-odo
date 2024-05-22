@@ -5,7 +5,7 @@
     <ul>
       <li>업체관리</li>
       <li><router-link to="/companyinfo">소개</router-link></li>
-      <li><router-link to="/classadd">정보확인/수정</router-link></li>
+      <li><router-link to="/companyjoin">정보확인/수정</router-link></li>
       <li><router-link to="/chart">매출통계</router-link></li>
     </ul>
     <ul>

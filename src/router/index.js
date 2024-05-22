@@ -164,16 +164,6 @@ const routes = [
     name: 'mypageread',
     component: ReadView
   },
-  // {
-  //   path: '/mypage/write',
-  //   name: 'mypagewrite',
-  //   component: WriteView
-  // },
-  // {
-  //   path: '/mypage/noticemodify',
-  //   name: 'mypagenoticemodify',
-  //   component: Noticemodify
-  // },
   {
     path: '/chart',
     name: 'chart',

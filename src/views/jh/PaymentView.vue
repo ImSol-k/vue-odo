@@ -34,14 +34,14 @@
                 />
                 <label>신용카드</label>
               </div>
-              <select name="" id="">
+              <!-- <select name="" id="">
                 <option value="" disabled selected>카드사 선택</option>
                 <option value="">신한</option>
                 <option value="">삼성</option>
                 <option value="">하나</option>
                 <option value="">비씨</option>
                 <option value="">카카오</option>
-              </select>
+              </select> -->
             </li>
             <li>
               <input
