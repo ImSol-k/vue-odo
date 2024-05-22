@@ -166,6 +166,8 @@ import "@/assets/css/sr/company.css";
 import "@/assets/css/hs/main.css";
 import AppHeader from "@/components/HostAppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
+import axios from "axios";
+
 export default {
   name: "CompanyJoinView",
   components: { AppHeader, AppFooter },
@@ -191,6 +193,21 @@ export default {
     };
   },
   methods: {
+    creatCompany() {
+      axios({
+        method: "",
+        url: `${this.$store.apiBaseUrl}/odo/join`, //SpringBoot주소
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+        data: "",
+        responseType: "json",
+      })
+        .then((response) => {
+          console.log(response); //수신데이터
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     DaumPostcode() {
       new window.daum.Postcode({
         oncomplete: (data) => {
@@ -200,17 +217,25 @@ export default {
           this.companyVo.jibunAddress = data.jibunAddress;
           // //검색된주소 위도, 경도로 저장
           var geocoder = new window.kakao.maps.services.Geocoder();
-          geocoder.addressSearch(this.companyVo.roadAddress, (result, status) => {
-            if (status === window.kakao.maps.services.Status.OK) {
-              // 주소 검색 결과가 성공일 경우
-              this.companyVo.y = result[0].y; // 위도
-              this.companyVo.x = result[0].x; // 경도
-              console.log("위도:", this.companyVo.y, "경도:", this.companyVo.x);
-            } else {
-              // 주소 검색 실패
-              console.error("주소 검색 실패");
+          geocoder.addressSearch(
+            this.companyVo.roadAddress,
+            (result, status) => {
+              if (status === window.kakao.maps.services.Status.OK) {
+                // 주소 검색 결과가 성공일 경우
+                this.companyVo.y = result[0].y; // 위도
+                this.companyVo.x = result[0].x; // 경도
+                console.log(
+                  "위도:",
+                  this.companyVo.y,
+                  "경도:",
+                  this.companyVo.x
+                );
+              } else {
+                // 주소 검색 실패
+                console.error("주소 검색 실패");
+              }
             }
-          });
+          );
         },
       }).open();
     },
