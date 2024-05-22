@@ -13,7 +13,7 @@
 					<button type="button" v-on:click.prevent="kakaoJoin" class="join-select">카카오로 회원가입</button>
 					<button type="button" v-on:click.prevent="naverJoin" class="join-select">네이버로 회원가입</button>
 				</div>
-				<img src="@/assets/images/icon/ss/kakao_login_large_wide.png">
+				<img src="@/assets/images/icon/ss/kakao_login_medium_narrow.png">
 			</div>
 
 			<div class="user-join">
