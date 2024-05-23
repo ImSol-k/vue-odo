@@ -13,8 +13,6 @@
                 <h2>공지사항</h2>
                 <div class="MpRight" style="overflow: hidden;">
 
-                    
-                
                     <table class="list-table">
                       <thead>
                           <tr>
@@ -29,35 +27,49 @@
                           <tr>
                             <td>1111</td>
                             <td><a href="#">공지 전달드립니다</a></td>
-                            <td>이미지</td>
+                            <td>관리자</td>
                             <td>2024-05-11</td>
                             <td>111</td>
                           </tr>
                           <tr>
                             <td>1111</td>
                             <td><a href="#">공지 전달드립니다</a></td>
-                            <td>이미지</td>
+                            <td>관리자</td>
                             <td>2024-05-11</td>
                             <td>111</td>
                           </tr>
                           <tr>
                             <td>1111</td>
                             <td><a href="#">공지 전달드립니다</a></td>
-                            <td>이미지</td>
+                            <td>관리자</td>
                             <td>2024-05-11</td>
                             <td>111</td>
                           </tr>
                           <tr>
                             <td>1111</td>
                             <td><a href="#">공지 전달드립니다</a></td>
-                            <td>이미지</td>
+                            <td>관리자</td>
                             <td>2024-05-11</td>
                             <td>111</td>
                           </tr>
                           <tr>
                             <td>1111</td>
                             <td><a href="#">공지 전달드립니다</a></td>
-                            <td>이미지</td>
+                            <td>관리자</td>
+                            <td>2024-05-11</td>
+                            <td>111</td>
+                          </tr>
+                          <tr>
+                            <td>1111</td>
+                            <td><a href="#">공지 전달드립니다</a></td>
+                            <td>관리자</td>
+                            <td>2024-05-11</td>
+                            <td>111</td>
+                          </tr>
+                          <tr>
+                            <td>1111</td>
+                            <td><a href="#">공지 전달드립니다</a></td>
+                            <td>관리자</td>
                             <td>2024-05-11</td>
                             <td>111</td>
                           </tr>
