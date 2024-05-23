@@ -58,3 +58,7 @@ h2.searchResult {
 .btnBox button:first-child {
     margin-right: 20px;
 }
+
+.classList.resultPageClassList {
+    width: 100%;
+}

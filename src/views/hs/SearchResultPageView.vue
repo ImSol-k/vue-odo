@@ -26,7 +26,7 @@
 			<button class="officialBtn">정규</button>
 		</div>
 
-		<ul class="classList">
+		<ul class="classList resultPageClassList">
 			<li v-for=" cate1Class in cate1List " :key="cate1Class">
 				<router-link :to="`/classdetailpage/${cate1Class.classNo}`">
 					<div class="img-box">
