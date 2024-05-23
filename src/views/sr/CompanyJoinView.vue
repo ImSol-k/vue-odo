@@ -11,7 +11,7 @@
         </div>
       </div>
       <!--companyJoinImg-->
-      <form action="">
+      <form action="" v-on:submit.prevent="companyJoin">
         <div class="companyJoinInfo">
           <div>
             <!-- <label for="companyNo">사업자번호</label> -->
@@ -54,8 +54,9 @@
               placeholder="아이디"
             />
             <input type="button" value="중복확인" />
-            <p>✅사용 가능한 아이디입니다.</p>
-            <p>❌사용중인 아이디입니다.</p>
+            <p v-if="isId">✅사용 가능한 아이디입니다.</p>
+            <p v-else-if="isId == null">아이디를 입력해주세요.</p>
+            <p v-else>❌사용중인 아이디입니다.</p>
           </div>
           <div>
             <!-- <label for="companyPass">비밀번호</label> -->
@@ -75,8 +76,9 @@
               placeholder="비밀번호확인"
               v-model="companyVo.companyPass"
             />
-            <p>✅비밀번호 일치</p>
-            <p>❌비밀번호가 일치하지 않습니다.</p>
+            <p v-if="isPass">✅비밀번호 일치</p>
+            <p v-else-if="isPass == null">비밀번호를 입력해주세요,</p>
+            <p v-else>❌비밀번호가 일치하지 않습니다.</p>
           </div>
           <div class="companyAddress">
             <input
@@ -112,18 +114,6 @@
               placeholder="상세주소"
               v-model="companyVo.detailAddress"
             />
-            <input
-              type="text"
-              name=""
-              v-model="companyVo.y"
-              placeholder="위도"
-            />
-            <input
-              type="text"
-              name=""
-              v-model="companyVo.x"
-              placeholder="경도"
-            />
           </div>
           <div>
             <!-- <label for="companyPassChack">비밀번호확인</label> -->
@@ -143,8 +133,9 @@
                 placeholder="인증번호"
               />
               <input type="button" value="확인" />
-              <p>✅인증이 완료되었습니다.</p>
-              <p>❌인증번호가 일치하지 않습니다.</p>
+              <p v-if="isHp">✅인증이 완료되었습니다.</p>
+              <p v-else-if="isHp == null">인증번호를 입력해주세요.</p>
+              <p v-else>❌인증번호가 일치하지 않습니다.</p>
             </div>
           </div>
         </div>
@@ -173,6 +164,9 @@ export default {
   components: { AppHeader, AppFooter },
   data() {
     return {
+      isId: null,
+      isPass: null,
+      isHp: null,
       //업체정보
       companyVo: {
         businesNumber: "",
@@ -193,12 +187,13 @@ export default {
     };
   },
   methods: {
-    creatCompany() {
+    companyJoin() {
+      console.log("companyJoin");
       axios({
-        method: "",
-        url: `${this.$store.apiBaseUrl}/odo/company/join`, //SpringBoot주소
+        method: "post",
+        url: `${this.$store.state.apiBaseUrl}/odo/company/join`, //SpringBoot주소
         headers: { "Content-Type": "application/json; charset=utf-8" },
-        data: "",
+        data: this.companyVo,
         responseType: "json",
       })
         .then((response) => {

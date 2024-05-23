@@ -6,13 +6,16 @@ export default createStore({
         return {
             apiBaseUrl: "http://localhost:9090",
             //apiBaseUrl: "http://54.180.79.237:9090",
+            token: "",
+            authUser: "",
+            authCompany: ""
         };
     },
     mutations: {
     },
     plugins: [
         createPersistedState({
-            paths: []
+            paths: ['token','authUser', 'authCompany']
         })
     ]
 });
