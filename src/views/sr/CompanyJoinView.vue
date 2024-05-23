@@ -19,10 +19,17 @@
               type="text"
               name=""
               id="businesNumber"
-              v-model="companyVo.businesNumber"
+              v-model="companyVo.companyBn"
               placeholder="사업자번호"
             />
-            <input type="button" value="사업자 인증" />
+            <input
+              type="button"
+              value="사업자 인증"
+              v-on:click="businessNumber"
+            />
+            <p v-if="isBn">✅인증되었습니다</p>
+            <p v-else-if="isBn == null">사업자번호를 입력해주세요.</p>
+            <p v-else>❌다시 인증해주세요</p>
           </div>
           <div>
             <!-- <label for="companyName">업체명</label> -->
@@ -39,7 +46,7 @@
             <textarea
               type="text"
               id="companyDescription"
-              v-model="companyVo.companyDescription"
+              v-model="companyVo.companyIntro"
               placeholder="업체소개"
             >
             </textarea>
@@ -53,31 +60,34 @@
               v-model="companyVo.companyId"
               placeholder="아이디"
             />
-            <input type="button" value="중복확인" />
+            <input type="button" value="중복확인" @click="companyIdChack" />
             <p v-if="isId">✅사용 가능한 아이디입니다.</p>
-            <p v-else-if="isId == null">아이디를 입력해주세요.</p>
+            <p v-else-if="isId == null">아이디를 입력해주세요.(5~12글자)</p>
             <p v-else>❌사용중인 아이디입니다.</p>
           </div>
           <div>
             <!-- <label for="companyPass">비밀번호</label> -->
             <input
-              type="text"
+              type="password"
               name=""
               id="companyPass"
               placeholder="비밀번호"
+              v-model="companyPassChack"
+              minlength="8"
+              maxlength="16"
             />
+            <p>비밀번호를 입력해주세요.(8~16글자)</p>
           </div>
           <div>
             <!-- <label for="companyPassChack">비밀번호확인</label> -->
             <input
-              type="text"
+              type="password"
               name=""
               id="companyPassChack"
               placeholder="비밀번호확인"
               v-model="companyVo.companyPass"
             />
-            <p v-if="isPass">✅비밀번호 일치</p>
-            <p v-else-if="isPass == null">비밀번호를 입력해주세요,</p>
+            <p v-if="companyPassChack != '' && companyPassChack == companyVo.companyPass">✅비밀번호 일치</p>
             <p v-else>❌비밀번호가 일치하지 않습니다.</p>
           </div>
           <div class="companyAddress">
@@ -164,17 +174,18 @@ export default {
   components: { AppHeader, AppFooter },
   data() {
     return {
+      isBn: null,
       isId: null,
       isPass: null,
       isHp: null,
       //업체정보
+      companyPassChack: "",
       companyVo: {
-        businesNumber: "",
+        companyBn: "",
         companyName: "",
-        companyDescription: "",
+        companyIntro: "",
         companyId: "",
         companyPass: "",
-        companyAddress: "",
         companyHp: "",
         //주소
         zonecode: "",
@@ -189,6 +200,23 @@ export default {
   methods: {
     companyJoin() {
       console.log("companyJoin");
+      // if (this.companyVo.companyBn == "") {
+      //   alert("사업자번호를 입력해 주세요");
+      // } else if (this.companyVo.companyName == "") {
+      //   alert("업체명을 입력해 주세요");
+      // } else if (this.companyVo.companyIntro == "") {
+      //   alert("업체소개를 입력해 주세요");
+      // } else if (this.companyVo.companyId == "") {
+      //   alert("아이디를 입력해 주세요");
+      // } else if (this.companyVo.companyPass == "") {
+      //   alert("비밀번호를 입력해 주세요");
+      // } else if (this.companyVo.zonecode == "") {
+      //   alert("주소를 입력해 주세요");
+      // } else if (this.companyVo.detailAddress == "") {
+      //   alert("상세주소를 입력해 주세요");
+      // } else if (this.companyVo.companyHp == "") {
+      //   alert("핸드폰번호를 입력해 주세요");
+      // } else {
       axios({
         method: "post",
         url: `${this.$store.state.apiBaseUrl}/odo/company/join`, //SpringBoot주소
@@ -202,6 +230,76 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+      // }
+    },
+    businessNumber() {
+      console.log("businessNumber");
+      const data = { b_no: [this.companyVo.companyBn] };
+      axios
+        .post(
+          "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=kLwu8It5iiIWVEWui%2FFpNx7qI2XcPU6H6lfgnHJ1RGVI0nNAR9yfRk7eWA8m9ncjMV%2FSeJ2g36xCarutBsixGw%3D%3D",
+          data,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer GBoS9ElaWUq6vtcfzi1g5xvqS0tBleTdBxI7d6Sal2YAjx+TVLTIID3c+ul1j0bzkUn/AqoXjbXoKI0YZbe7wg==",
+            },
+          }
+        )
+        .then((response) => {
+          console.log("Response:", response.data);
+          if (
+            response.data &&
+            response.data.data &&
+            response.data.data.length > 0
+          ) {
+            const valid = response.data.data[0].b_stt_cd;
+            if (valid === "01") {
+              this.isBn = true;
+            } else {
+              this.isBn = false;
+            }
+          } else {
+            this.isBn = false;
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          this.isBn = false;
+        });
+    },
+    companyIdChack() {
+      console.log("아이디 중복체크: " + this.companyVo.companyId);
+      if (
+        this.companyVo.companyId.length >= 5 &&
+        this.companyVo.companyId.length <= 12
+      ) {
+        axios({
+          method: "get",
+          url: `${this.$store.state.apiBaseUrl}/odo/company/id`, //SpringBoot주소
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          params: {
+            companyId: this.companyVo.companyId,
+          },
+          responseType: "json",
+        })
+          .then((response) => {
+            console.log(response); //수신데이터
+            if (response.data.result == "success") {
+              this.isId = true;
+            } else {
+              this.isId = false;
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        alert("길이가 너무 길거나 짧습니다.");
+      }
+    },
+    passwordChack() {
     },
     DaumPostcode() {
       new window.daum.Postcode({
@@ -235,7 +333,8 @@ export default {
       }).open();
     },
   },
-  created() {},
+  created() {
+  },
 };
 </script>
 
