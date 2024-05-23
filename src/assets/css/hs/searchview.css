@@ -12,6 +12,7 @@
 .category-1st h1 {
     font-size: 18px;
     margin-bottom: 28.5px;
+    cursor: pointer;
 }
 .catgory-2nd {
     margin-left: 30px;
@@ -26,6 +27,7 @@
     padding: 7px 15px;
     border-radius: 5px;
     border: 1px solid #bbb;
+    cursor: pointer;
 }
 .BtnActive {
     background: #8521ff;

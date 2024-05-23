@@ -192,7 +192,7 @@ export default defineComponent({
 				url: 'http://localhost:9090/odo/mains',
 				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
 				//params: guestbookVo, //get방식 파라미터로 값이 전달
-				data: this.listOfLists, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+				//data: this.listOfLists, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
 			}).then(response => {
 				console.log(response.data.apiData); //수신데이타
