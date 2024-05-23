@@ -16,6 +16,7 @@
       </form>
       <!-- form -->
       <span class="other-login">다른 방식으로 로그인</span>
+      <!-- https://henniee.tistory.com/219 -->
       <img @click="kakaoLogin" class="kakao-login" src="@/assets/images/icon/ss/kakao_login_medium.png" />
       <!-- <img src="@/assets/images/icon/ss/na.png" /> -->
     </div>
@@ -142,7 +143,8 @@ export default {
     kakaoLogin() {
       window.Kakao.Auth.login({
         scope: "profile_image, account_email",
-        success: this.getKakaoAccount,
+        success: this.$route,
+        
       });
     },
     getKakaoAccount() {
