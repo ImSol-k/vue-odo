@@ -6,7 +6,7 @@
 
 		<div class="categorySelectBox">
 			<div class="category-1st">
-				<h1 @click="goCate1ListPage(i)" v-for=" (cate, i) in category1st " :key="i">{{ cate }}</h1>
+				<h1 @click="goCate1ListPage(i)" :class="{ 'cate1-active': clickIndex === i }" v-for=" (cate, i) in category1st " :key="i">{{ cate }}</h1>
 			</div>
 			<div class="catgory-2nd">
 				<ul v-for="(category, catIndex) in categories" :key="catIndex">
@@ -19,7 +19,7 @@
 			</div>
 		</div>
 
-		<h2 class="searchResult">어쩌고 검색 결과 123</h2>
+		<!-- <h2 class="searchResult">어쩌고 검색 결과 123</h2> -->
 
 		<div class="btnBox">
 			<!-- <button class="onedayBtn">원데이</button>
@@ -73,6 +73,7 @@ export default {
 	},
 	data() {
 		return {
+			clickIndex: null,
 			category1st: ["쿠킹", "베이킹", "음료", "뷰티", "공예", "스포츠", "심리/상담", "IT"],
 			activeIndex: { categoryIndex: null, itemIndex: null },
 			categories: [
@@ -95,6 +96,7 @@ export default {
 		//2차 카테고리 버튼 눌렀을때 버튼 색상변경 + 리스트가져오기
 		activateItem(categoryIndex, itemIndex, cate2No) {
 			this.$router.push(`/searchresultpage/${categoryIndex + 1}`);
+			this.clickIndex = null;
 			this.activeIndex = { categoryIndex, itemIndex };
 
 			//2차카테고리 리스트 가져오기
@@ -129,6 +131,10 @@ export default {
 		},
 		goCate1ListPage(i) {
 			this.$router.push(`/searchresultpage/${i + 1}`);
+			this.clickIndex = i;
+
+			this.activeIndex = { categoryIndex: null, itemIndex: null };
+
 			axios({
 				method: 'get', // put, post, delete
 				url: 'http://localhost:9090/odo/categories',
@@ -148,3 +154,8 @@ export default {
 	},
 };
 </script>
+<style>
+	.cate1-active {
+		color: #8521ff;
+	}
+</style>
