@@ -16,6 +16,7 @@
       </form>
       <!-- form -->
       <span class="other-login">다른 방식으로 로그인</span>
+      <!-- https://henniee.tistory.com/219 -->
       <img @click="kakaoLogin" class="kakao-login" src="@/assets/images/icon/ss/kakao_login_medium.png" />
       <!-- <img src="@/assets/images/icon/ss/na.png" /> -->
     </div>
@@ -140,10 +141,10 @@ export default {
 
     // https://velog.io/@aocl333/Vue-%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1-%EB%A1%9C%EA%B7%B8%EC%9D%B8
     kakaoLogin() {
-      window.Kakao.Auth.login({
-        scope: "profile_image, account_email",
-        success: this.getKakaoAccount,
-      });
+      const redirect_uri = 'http://localhost:8080/login/user';
+      const clientId = 'f30d00965f7c79e1c4bd880684310a86';
+      const Auth_url = `http://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${clientId}&uri=${redirect_uri}`;
+      window.location.href = Auth_url;
     },
     getKakaoAccount() {
       window.Kakao.API.request({
