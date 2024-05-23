@@ -145,7 +145,7 @@ const routes = [
     component : ReviewPage
   },
   {
-    path : '/user/oauth',
+    path : '/odo/user/oauth',
     name : 'kakaologin',
     component : KakaoLogin
   },
