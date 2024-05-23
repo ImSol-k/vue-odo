@@ -12,37 +12,44 @@
 				<ul v-for="(category, catIndex) in categories" :key="catIndex">
 					<li v-for="(item, itemIndex) in category" :key="itemIndex"
 						:class="{ BtnActive: isActive(catIndex, itemIndex) }"
-						@click="activateItem(catIndex, itemIndex)">
-						{{ item }}
+						@click="activateItem(catIndex, itemIndex, item[0])">
+						{{ item[1] }}
 					</li>
 				</ul>
 			</div>
 		</div>
 
-		<h2 class="searchResult">소개팅 검색 결과 123</h2>
+		<h2 class="searchResult">어쩌고 검색 결과 123</h2>
 
 		<div class="btnBox">
-			<button class="onedayBtn">원데이</button>
-			<button class="officialBtn">정규</button>
+			<!-- <button class="onedayBtn">원데이</button>
+			<button class="officialBtn">정규</button> -->
 		</div>
 
-		<ul class="classList resultPageClassList">
-			<li v-for=" cate1Class in cate1List " :key="cate1Class">
-				<router-link :to="`/classdetailpage/${cate1Class.classNo}`">
+		<ul v-if="cateList.length != 0" class="classList resultPageClassList">
+			<li v-for=" cateClass in cateList " :key="cateClass">
+				<router-link :to="`/classdetailpage/${cateClass.classNo}`">
 					<div class="img-box">
 						<img src="../../assets/images/hs/main_slide_2.jpg" alt="">
 						<img src="" alt="">
 					</div>
-					<p class="location">{{ cate1Class.classNameAdd }}</p>
-					<p class="classTitle">{{ cate1Class.className }}</p>
+					<p class="location">{{ cateClass.classNameAdd }}</p>
+					<p class="classTitle">{{ cateClass.className }}</p>
 					<div class="review-box">
 						<span class="starPoint">★★★★★</span>
 						<span>후기 123</span>
 					</div>
-					<p class="class-price" v-if="cate1Class.classPrice == 0">무료</p>
-					<p class="class-price" v-else>{{ cate1Class.classPrice }}</p>
+					<p class="class-price" v-if="cateClass.classPrice == 0">무료</p>
+					<p class="class-price" v-else>{{ cateClass.classPrice }}</p>
 				</router-link>
 			</li>
+		</ul>
+		<ul v-else>
+			<div class="searchResultNone">
+				<h4>해당하는 검색 결과가 없어요.</h4>
+				<p>다른 검색어로 검색해 주세요!</p>
+			</div>
+
 		</ul>
 	</div>
 
@@ -69,25 +76,41 @@ export default {
 			category1st: ["쿠킹", "베이킹", "음료", "뷰티", "공예", "스포츠", "심리/상담", "IT"],
 			activeIndex: { categoryIndex: null, itemIndex: null },
 			categories: [
-				["한식", "일식", "중식", "양식"],
-				["제과", "제빵", "쇼콜라", "디저트"],
-				["주류", "바리스타"],
-				["네일", "미용", "메이크업", "패션"],
-				["비즈", "뜨게질", "자수", "도자기", "터프팅"],
-				["수영", "축구", "야구", "배구", "골프", "볼링"],
-				["부부상담", "가정상담", "심리상담"],
-				["IT"]
+				[[1, "한식"], [2, "일식"], [3, "중식"], [4, "양식"]],
+				[[5, "제과"], [6, "제빵"], [7, "쇼콜라"], [8, "디저트"]],
+				[[9, "주류"], [10, "바리스타"]],
+				[[11, "네일"], [12, "미용"], [13, "메이크업"], [14, "패션"]],
+				[[15, "비즈"], [16, "뜨게질"], [17, "자수"], [18, "도자기"], [19, "터프팅"]],
+				[[20, "수영"], [21, "축구"], [22, "야구"], [23, "배구"], [24, "골프"], [25, "볼링"]],
+				[[26, "부부상담"], [27, "가정상담"], [28, "심리상담"]],
+				[[29, "IT"]]
 			],
-			cate1List: [],
+			cateList: [],
 		};
 	},
 	methods: {
 		isActive(categoryIndex, itemIndex) {
 			return this.activeIndex.categoryIndex === categoryIndex && this.activeIndex.itemIndex === itemIndex;
 		},
-		activateItem(categoryIndex, itemIndex) {
-			console.log(itemIndex);
+		//2차 카테고리 버튼 눌렀을때 버튼 색상변경 + 리스트가져오기
+		activateItem(categoryIndex, itemIndex, cate2No) {
+			this.$router.push(`/searchresultpage/${categoryIndex + 1}`);
 			this.activeIndex = { categoryIndex, itemIndex };
+
+			//2차카테고리 리스트 가져오기
+			axios({
+				method: 'get', // put, post, delete
+				url: 'http://localhost:9090/odo/subcategories',
+				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+				params: { cate2No: cate2No }, //get방식 파라미터로 값이 전달
+				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+				responseType: 'json' //수신타입
+			}).then(response => {
+				console.log(response.data.apiData);
+				this.cateList = response.data.apiData;
+			}).catch(error => {
+				console.log(error);
+			});
 		},
 		getcateList() {
 
@@ -99,23 +122,22 @@ export default {
 				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
 			}).then(response => {
-				this.cate1List = response.data.apiData;
+				this.cateList = response.data.apiData;
 			}).catch(error => {
 				console.log(error);
 			});
 		},
 		goCate1ListPage(i) {
-			this.$router.push(`/searchresultpage/${i+1}`); //i는 0부터, cate1No는 1부터 시작하기때문에 +1
-
+			this.$router.push(`/searchresultpage/${i + 1}`);
 			axios({
 				method: 'get', // put, post, delete
 				url: 'http://localhost:9090/odo/categories',
 				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
-				params: { cate1No: i+1 }, //get방식 파라미터로 값이 전달
+				params: { cate1No: i + 1 }, //get방식 파라미터로 값이 전달
 				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
 			}).then(response => {
-				this.cate1List = response.data.apiData;
+				this.cateList = response.data.apiData;
 			}).catch(error => {
 				console.log(error);
 			});
