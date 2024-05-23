@@ -146,9 +146,9 @@ export default {
 
         // 로그인 체크
         checkAuth(){
-            if((this.$store.state.authUser == '' || this.$store.state.token == '')){
+            if((this.$store.state.authUser == '' && this.$store.state.token == '')){
                 this.$router.push('/login/user');
-            } 
+            }
         },
 
         goMypage(){

@@ -8,7 +8,7 @@
 		<li v-if="(this.$store.state.authUser.userKakao == false && this.$store.state.authUser.userNaver == false)">일반회원</li>
 		<li v-if="(this.$store.state.authUser.userKakao == true && this.$store.state.authUser.userNaver == false)">카카오 계정</li>
 		<li v-if="(this.$store.state.authUser.userKakao == false && this.$store.state.authUser.userNaver == true)">네이버 계정</li>
-		<li><router-link class="goLogin" to="/mypage/modify" >정보 수정</router-link></li>
+		<li><router-link class="goLogin" to="/mypage/modify">정보 수정</router-link></li>
 	</ul>
 </div>
 </template>
