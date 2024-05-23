@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import MainView from '../views/hs/MainView.vue'
 import ClassDetailPageView from '../views/hs/ClassDetailPageView.vue'
 import SearchResultPageView from '../views/hs/SearchResultPageView.vue'
+import SearchResultPageView2 from '../views/hs/SearchResultPageView2.vue'
 //소리
 import CompanyJoinView from '../views/sr/CompanyJoinView.vue'
 import CompanyPageView from '../views/sr/CompanyPageView.vue'
@@ -50,6 +51,11 @@ const routes = [
     path: '/searchresultpage/:no',
     name: 'searchresultpage',
     component: SearchResultPageView
+  },
+  {
+    path: '/searchresultpage2/:no',
+    name: 'searchresultpage2',
+    component: SearchResultPageView2
   },
   //=== 소리 =================================
   {
