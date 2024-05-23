@@ -86,6 +86,7 @@ export default {
 			return this.activeIndex.categoryIndex === categoryIndex && this.activeIndex.itemIndex === itemIndex;
 		},
 		activateItem(categoryIndex, itemIndex) {
+			console.log(itemIndex);
 			this.activeIndex = { categoryIndex, itemIndex };
 		},
 		getcateList() {
