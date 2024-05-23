@@ -113,6 +113,7 @@ export default {
               userNo : response.data.apiData.userNo,
               userNickname : response.data.apiData.userNickname,
               userId : response.data.apiData.userId,
+              userImage : response.data.apiData.userImage,
               userKakao : response.data.apiData.userKakao,
               userNaver : response.data.apiData.userNaver,
             }
