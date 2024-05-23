@@ -87,6 +87,7 @@ export default {
         userId: "",
         userPw: "",
       },
+      redirect_uri : '',
       pass1: require("@/assets/images/icon/ss/pass1.png"),
       pass2: require("@/assets/images/icon/ss/pass2.png"),
       isPass: true,
@@ -101,6 +102,30 @@ export default {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // https://velog.io/@aocl333/Vue-%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1-%EB%A1%9C%EA%B7%B8%EC%9D%B8
+    kakaoLogin() {
+      const redirect_uri = 'http://localhost:8080/kakaologin';
+      const clientId = '10a7f3623894713c0b64f29c1e5c6854';
+      const Auth_url = `http://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirect_uri}&response_type=code`;
+      window.location.href = Auth_url;
+
+      // axios({
+      //   method: 'get',
+      //   url: `${this.$store.state.apiBaseUrl}/odo/user/oauth`,
+      //   headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      //   // data: this.loginVo,
+      //   responseType: 'json'
+      // }).then(response => {
+      //   console.log(response);
+      //   window.location.href = response.data;
+      // }).catch(error => {
+      //   console.log(error);
+      // });
+    },
+
+
+
+
     // 로그인
     login() {
       let id = this.loginVo.userId;
@@ -154,33 +179,6 @@ export default {
       this.isPass = !this.isPass;
     },
 
-    // https://velog.io/@aocl333/Vue-%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1-%EB%A1%9C%EA%B7%B8%EC%9D%B8
-    kakaoLogin() {
-      const redirect_uri = 'http://localhost:8080/login/user';
-      const clientId = 'f30d00965f7c79e1c4bd880684310a86';
-      const Auth_url = `http://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${clientId}&uri=${redirect_uri}`;
-      window.location.href = Auth_url;
-    },
-    getKakaoAccount() {
-      window.Kakao.API.request({
-        url: "/v2/user/me",
-        success: (res) => {
-          const kakao_account = res.kakao_account;
-          const ninkname = kakao_account.profile.ninkname;
-          const email = kakao_account.email;
-          console.log(kakao_account);
-          console.log("ninkname", ninkname);
-          console.log("email", email);
-
-          //로그인처리구현
-
-          alert("로그인 성공!");
-        },
-        fail: (error) => {
-          console.log(error);
-        },
-      });
-    },
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -214,7 +212,9 @@ export default {
           });
     }
   },
-  created() {},
+  created() {
+    
+  },
 };
 </script>
 
