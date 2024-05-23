@@ -4,10 +4,10 @@
     <div class="companyJoinTitle">
       <h1>사업자 가입</h1>
       <div class="companyJoinImg">
-        <img src="@/assets/images/icon/man_icon.png" alt="" />
+        <img :src="img" alt="" />
         <div>
           <p>프로필사진</p>
-          <input type="file" name="" id="" />
+          <input type="file" name="" id="" v-on:change="imgFile" />
         </div>
       </div>
       <!--companyJoinImg-->
@@ -87,15 +87,22 @@
               placeholder="비밀번호확인"
               v-model="companyVo.companyPass"
             />
-            <p v-if="companyPassChack != '' && companyPassChack == companyVo.companyPass">✅비밀번호 일치</p>
+            <p
+              v-if="
+                companyPassChack != '' &&
+                companyPassChack == companyVo.companyPass
+              "
+            >
+              ✅비밀번호 일치
+            </p>
             <p v-else>❌비밀번호가 일치하지 않습니다.</p>
           </div>
           <div class="companyAddress">
             <input
               type="text"
-              id="postcode"
+              id="companyZipCode"
               placeholder="우편번호"
-              v-model="companyVo.zonecode"
+              v-model="companyVo.companyZipCode"
               readonly
             />
             <input
@@ -105,24 +112,24 @@
             /><br />
             <input
               type="text"
-              id="roadAddress"
+              id="companyNameAddress"
               placeholder="도로명주소"
-              v-model="companyVo.roadAddress"
+              v-model="companyVo.companyNameAddress"
               readonly
             />
             <input
               type="text"
-              id="jibunAddress"
+              id="companyNumAddress"
               placeholder="지번주소"
-              v-model="companyVo.jibunAddress"
+              v-model="companyVo.companyNumAddress"
               readonly
             />
             <span id="guide" style="color: #999; display: none"></span>
             <input
               type="text"
-              id="sample4_detailAddress"
+              id="companyDetailAddress"
               placeholder="상세주소"
-              v-model="companyVo.detailAddress"
+              v-model="companyVo.companyDetailAddress"
             />
           </div>
           <div>
@@ -160,7 +167,6 @@
   </div>
   <AppFooter />
 </template>
-
 <script>
 import "@/assets/css/Initialization.css";
 import "@/assets/css/sr/company.css";
@@ -174,9 +180,9 @@ export default {
   components: { AppHeader, AppFooter },
   data() {
     return {
+      img: "",
       isBn: null,
       isId: null,
-      isPass: null,
       isHp: null,
       //업체정보
       companyPassChack: "",
@@ -187,50 +193,79 @@ export default {
         companyId: "",
         companyPass: "",
         companyHp: "",
+        companyImage: "",
         //주소
-        zonecode: "",
-        roadAddress: "",
-        jibunAddress: "",
-        detailAddress: "",
-        y: "", //위도
-        x: "", //경도
+        companyZipCode: "",
+        companyNameAddress: "",
+        companyNumAddress: "",
+        companyDetailAddress: "",
+        companyLatitude: "", //위도
+        companyLongitude: "", //경도
       },
     };
   },
   methods: {
     companyJoin() {
       console.log("companyJoin");
-      // if (this.companyVo.companyBn == "") {
-      //   alert("사업자번호를 입력해 주세요");
-      // } else if (this.companyVo.companyName == "") {
-      //   alert("업체명을 입력해 주세요");
-      // } else if (this.companyVo.companyIntro == "") {
-      //   alert("업체소개를 입력해 주세요");
-      // } else if (this.companyVo.companyId == "") {
-      //   alert("아이디를 입력해 주세요");
-      // } else if (this.companyVo.companyPass == "") {
-      //   alert("비밀번호를 입력해 주세요");
-      // } else if (this.companyVo.zonecode == "") {
-      //   alert("주소를 입력해 주세요");
-      // } else if (this.companyVo.detailAddress == "") {
-      //   alert("상세주소를 입력해 주세요");
-      // } else if (this.companyVo.companyHp == "") {
-      //   alert("핸드폰번호를 입력해 주세요");
-      // } else {
-      axios({
-        method: "post",
-        url: `${this.$store.state.apiBaseUrl}/odo/company/join`, //SpringBoot주소
-        headers: { "Content-Type": "application/json; charset=utf-8" },
-        data: this.companyVo,
-        responseType: "json",
-      })
-        .then((response) => {
-          console.log(response); //수신데이터
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      // }
+
+      // console.log(typeof(this.companyVo.companyLatitude) );
+      const formData = new FormData();
+      formData.append("companyBn", this.companyVo.companyBn);
+      formData.append("companyName", this.companyVo.companyName);
+      formData.append("companyIntro", this.companyVo.companyIntro);
+      formData.append("companyId", this.companyVo.companyId);
+      formData.append("companyPass", this.companyVo.companyPass);
+      formData.append("companyHp", this.companyVo.companyHp);
+      formData.append("companyFile", this.companyVo.companyImage); //파일
+      formData.append("companyZipCode", this.companyVo.companyZipCode);
+      formData.append("companyNameAddress", this.companyVo.companyNameAddress);
+      formData.append("companyNumAddress", this.companyVo.companyNumAddress);
+      formData.append(
+        "companyDetailAddress",
+        this.companyVo.companyDetailAddress
+      );
+      formData.append("companyLatitude", this.companyVo.companyLatitude);
+      formData.append("companyLongitude", this.companyVo.companyLongitude);
+
+      if (this.companyVo.companyBn == "") {
+        alert("사업자번호를 입력해 주세요");
+      } else if (this.companyVo.companyName == "") {
+        alert("업체명을 입력해 주세요");
+      } else if (this.companyVo.companyIntro == "") {
+        alert("업체소개를 입력해 주세요");
+      } else if (this.companyVo.companyId == "") {
+        alert("아이디를 입력해 주세요");
+      } else if (this.companyVo.companyPass == "") {
+        alert("비밀번호를 입력해 주세요");
+      } else if (this.companyVo.zonecode == "") {
+        alert("주소를 입력해 주세요");
+      } else if (this.companyVo.detailAddress == "") {
+        alert("상세주소를 입력해 주세요");
+      } else if (this.companyVo.companyHp == "") {
+        alert("핸드폰번호를 입력해 주세요");
+      } else {
+        if (!this.isBn) {
+          alert("사업자번호인증 해주세요.");
+        } else if (!this.isId) {
+          alert("아이디 중복확인을 해주세요");
+        } else {
+          axios({
+            method: "post",
+            url: `${this.$store.state.apiBaseUrl}/odo/company/join`, //SpringBoot주소
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            data: formData,
+            responseType: "json",
+          })
+            .then((response) => {
+              console.log(response); //수신데이터
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+      }
     },
     businessNumber() {
       console.log("businessNumber");
@@ -299,29 +334,42 @@ export default {
         alert("길이가 너무 길거나 짧습니다.");
       }
     },
-    passwordChack() {
+    imgFile(event) {
+      console.log("이미지업로드");
+      this.companyVo.companyImage = event.target.files[0];
+
+      console.log(this.companyVo.companyImage);
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.img = e.target.result;
+      };
+
+      if (this.companyVo.companyImage) {
+        reader.readAsDataURL(this.companyVo.companyImage);
+      }
     },
     DaumPostcode() {
       new window.daum.Postcode({
         oncomplete: (data) => {
           //주소 저장
-          this.companyVo.zonecode = data.zonecode;
-          this.companyVo.roadAddress = data.roadAddress;
-          this.companyVo.jibunAddress = data.jibunAddress;
+          this.companyVo.companyZipCode = data.zonecode;
+          this.companyVo.companyNameAddress = data.roadAddress;
+          this.companyVo.companyNumAddress = data.jibunAddress;
           // //검색된주소 위도, 경도로 저장
           var geocoder = new window.kakao.maps.services.Geocoder();
           geocoder.addressSearch(
-            this.companyVo.roadAddress,
+            this.companyVo.companyNameAddress,
             (result, status) => {
               if (status === window.kakao.maps.services.Status.OK) {
                 // 주소 검색 결과가 성공일 경우
-                this.companyVo.y = result[0].y; // 위도
-                this.companyVo.x = result[0].x; // 경도
+                this.companyVo.companyLatitude = result[0].y; // 위도
+                this.companyVo.companyLongitude = result[0].x; // 경도
                 console.log(
                   "위도:",
-                  this.companyVo.y,
+                  this.companyVo.companyLatitude,
                   "경도:",
-                  this.companyVo.x
+                  this.companyVo.companyLongitude
                 );
               } else {
                 // 주소 검색 실패
@@ -333,8 +381,7 @@ export default {
       }).open();
     },
   },
-  created() {
-  },
+  created() {},
 };
 </script>
 
