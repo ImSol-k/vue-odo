@@ -174,6 +174,7 @@ import "@/assets/css/hs/main.css";
 import AppHeader from "@/components/HostAppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import axios from "axios";
+// import Swal from 'sweetalert2';
 
 export default {
   name: "CompanyJoinView",
@@ -260,6 +261,12 @@ export default {
           })
             .then((response) => {
               console.log(response); //수신데이터
+              if (response.data.result == "success") {
+                alert("회원가입에 성공했습니다.");
+                this.$router.push("/login/company");
+              } else {
+                alert("회원가입에 실패했습니다.\n정보를 다시 입력해주세요.");
+              }
             })
             .catch((error) => {
               console.log(error);
