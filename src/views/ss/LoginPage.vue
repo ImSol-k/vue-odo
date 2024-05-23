@@ -141,10 +141,24 @@ export default {
 
     // https://velog.io/@aocl333/Vue-%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1-%EB%A1%9C%EA%B7%B8%EC%9D%B8
     kakaoLogin() {
-      const redirect_uri = 'http://localhost:8080/login/user';
-      const clientId = 'f30d00965f7c79e1c4bd880684310a86';
-      const Auth_url = `http://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${clientId}&uri=${redirect_uri}`;
-      window.location.href = Auth_url;
+      // const redirect_uri = 'http://localhost:8080/odo/user/oauth';
+      // const clientId = '78707b677a0d5b7e94a82c2a18059218';
+      // const Auth_url = `http://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${clientId}&uri=http://localhost:8080/odo/user/oauth`;
+      
+      
+      axios({
+					method: 'get',
+					url: `${this.$store.state.apiBaseUrl}/odo/user/oauth`,
+					headers: { 'Content-Type': 'application/json; charset=utf-8' },
+					// data: this.loginVo,
+					responseType: 'json'
+				}).then(response => {
+          console.log(response);
+          window.location.href = response.data;
+				}).catch(error => {
+					console.log(error);
+				});
+
     },
     getKakaoAccount() {
       window.Kakao.API.request({
