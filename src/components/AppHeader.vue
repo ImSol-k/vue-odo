@@ -82,8 +82,10 @@
             <div class="inner">
                 <router-link to="/companyselect">호스트 지원</router-link>
                 <ul>
-                    <li><router-link to="/join">회원가입</router-link></li>
-                    <li><router-link to="/login/user">로그인</router-link></li>
+                    <li v-if="(this.$store.state.authUser == '' || this.$store.state.token == '')"><router-link to="/join">회원가입</router-link></li>
+                    <li v-else><router-link to="/mypage/pay" @click="goMypage">{{ this.$store.state.authUser.userNickname }}님</router-link></li>
+                    <li v-if="(this.$store.state.authUser == '' || this.$store.state.token == '')"><router-link to="/login/user">로그인</router-link></li>
+                    <li v-else><router-link to="/" @click="logout">로그아웃</router-link></li>
                     <li><router-link to="">자주 묻는 질문</router-link></li>
                     <li><router-link to="/mypage/notice">공지사항</router-link></li>
                 </ul>
@@ -102,8 +104,8 @@
                     <input type="search" name="" id="" placeholder="지금 생각나는 취미를 검색하세요.">
                 </div>
                 <ul>
-                    <li><router-link to="/wishlistclass" class="like">위시리스트</router-link></li>
-                    <li><router-link to="/mypage/pay" class="my">마이</router-link></li>
+                    <li><router-link to="/wishlistclass" @click="checkAuth" class="like">위시리스트</router-link></li>
+                    <li><router-link to="/mypage/pay" @click="checkAuth" class="my">마이</router-link></li>
                 </ul>
             </div>
         </div>
@@ -133,6 +135,37 @@ export default {
     },
     methods: {
 
+
+        /////////////////////////////// ss /////////////////////////////////////
+        // 로그아웃
+        logout(){
+            this.$store.commit('setAuthUser', '');
+            this.$store.commit('setToken', '');
+            this.$router.push('/');
+        },
+
+        // 로그인 체크
+        checkAuth(){
+            if((this.$store.state.authUser == '' && this.$store.state.token == '')){
+                this.$router.push('/login/user');
+            }
+        },
+
+        goMypage(){
+            this.$router.push('/mypage/pay');
+        },
+
+
+        /////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+        
+
+
+        ///////////////////////////////////// 사이드 바 ///////////////////////////////
         toggleMenu() {
             this.isMenuOpen = !this.isMenuOpen;
             for(let i=1; i<8; i++) {
@@ -166,8 +199,10 @@ export default {
         cateMouseleave() {
             this.cateSrc = require("@/assets/images/icon/header_icons/category.png");
         },
+        ///////////////////////////////////////////////////////////////////////////////////////////////
     },
     created() {
+    
     }
 };
 </script>

@@ -79,7 +79,8 @@
 							<span class="starPoint">★★★★★</span>
 							<span>후기 123</span>
 						</div>
-						<p class="class-price">{{fbList.classPrice}}</p>
+						<p class="class-price" v-if="fbList.classPrice == 0">무료</p>
+						<p class="class-price" v-else>{{fbList.classPrice}}</p>
 					</router-link>
 				</li>
 			</ul>
@@ -131,7 +132,8 @@
 							<span class="starPoint">★★★★★</span>
 							<span>후기 123</span>
 						</div>
-						<p class="class-price">{{ nList.classPrice }}원</p>
+						<p class="class-price" v-if="nList.classPrice == 0">무료</p>
+						<p class="class-price" v-else>{{ nList.classPrice }}원</p>
 					</router-link>
 				</li>
 			</ul>
@@ -190,7 +192,7 @@ export default defineComponent({
 				url: 'http://localhost:9090/odo/mains',
 				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
 				//params: guestbookVo, //get방식 파라미터로 값이 전달
-				data: this.listOfLists, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+				//data: this.listOfLists, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
 			}).then(response => {
 				console.log(response.data.apiData); //수신데이타

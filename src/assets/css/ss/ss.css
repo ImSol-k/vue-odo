@@ -18,15 +18,22 @@
     border-radius: 50%;
 }
 
+
+.mymy-header .mp-small {
+    font-size: 13px;
+}
+
 .mymy-header ul {
+    /* border: 1px solid #000; */
+    width: 100px;
     display: block;
-    margin: 20px 0;
+    margin: 20px 0 0 0;
     float: left;
 }
 
 .mymy-header ul>li {
     margin : 5px 0 5px 0;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 26px;
 }
 .mymy-header ul>li:nth-child(2){

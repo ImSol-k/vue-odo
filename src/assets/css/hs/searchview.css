@@ -27,6 +27,7 @@
     padding: 7px 15px;
     border-radius: 5px;
     border: 1px solid #bbb;
+    cursor: pointer;
 }
 .BtnActive {
     background: #8521ff;
@@ -35,6 +36,7 @@
 /* searchResult */
 h2.searchResult {
     margin: 20px 0;
+    font-size: 20px;
 }
 
 .btnBox {
@@ -55,4 +57,9 @@ h2.searchResult {
 }
 .btnBox button:first-child {
     margin-right: 20px;
+}
+
+.classList.resultPageClassList {
+    width: 100%;
+    flex-wrap: wrap;
 }
