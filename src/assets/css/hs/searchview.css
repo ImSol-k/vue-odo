@@ -65,8 +65,12 @@ h2.searchResult {
 .classList.resultPageClassList {
     width: 100%;
     flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
 }
-
+.classList.resultPageClassList li {
+    min-width: 235px;
+}
 .searchResultNone {
     width: 320px;
     color: #777;
