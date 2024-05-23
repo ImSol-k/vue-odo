@@ -161,5 +161,6 @@ export default {
 <style>
 .cate1-active {
 	color: #8521ff;
+	border-bottom: 2px solid #8521ff;
 }
 </style>
