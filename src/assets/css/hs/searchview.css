@@ -61,4 +61,5 @@ h2.searchResult {
 
 .classList.resultPageClassList {
     width: 100%;
+    flex-wrap: wrap;
 }
