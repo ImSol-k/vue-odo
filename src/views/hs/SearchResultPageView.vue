@@ -89,7 +89,6 @@ export default {
 			this.activeIndex = { categoryIndex, itemIndex };
 		},
 		getcateList() {
-			console.log("1차 카테고리 리스트 가져오기");
 
 			axios({
 				method: 'get', // put, post, delete
@@ -99,8 +98,6 @@ export default {
 				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
 			}).then(response => {
-				console.log("=================="); //수신데이타
-				console.log(response.data.apiData); //수신데이타
 				this.cate1List = response.data.apiData;
 			}).catch(error => {
 				console.log(error);
@@ -117,8 +114,6 @@ export default {
 				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
 			}).then(response => {
-				console.log("=================="); //수신데이타
-				console.log(response.data.apiData); //수신데이타
 				this.cate1List = response.data.apiData;
 			}).catch(error => {
 				console.log(error);
