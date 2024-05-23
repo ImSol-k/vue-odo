@@ -18,9 +18,16 @@
     border-radius: 50%;
 }
 
+
+.mymy-header .mp-small {
+    font-size: 13px;
+}
+
 .mymy-header ul {
+    /* border: 1px solid #000; */
+    width: 100px;
     display: block;
-    margin: 20px 0;
+    margin: 20px 0 0 0;
     float: left;
 }
 

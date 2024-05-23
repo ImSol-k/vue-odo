@@ -108,8 +108,17 @@ export default {
 					responseType: 'json'
 				}).then(response => {
 					if(response.data.result === 'success'){
-            console.log(response.headers);
-            console.log(response.data.apiData);
+            const token = response.headers.authorization.split(" ")[1];
+            let authUser ={
+              userNo : response.data.apiData.userNo,
+              userNickname : response.data.apiData.userNickname,
+              userId : response.data.apiData.userId,
+              userKakao : response.data.apiData.userKakao,
+              userNaver : response.data.apiData.userNaver,
+            }
+            this.$store.commit('setAuthUser', authUser);
+            this.$store.commit('setToken', token);
+            this.$router.push('/');
           } else {
             Swal.fire({text: response.data.message, icon: 'error'});
           }

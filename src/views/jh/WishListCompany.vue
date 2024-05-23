@@ -2,7 +2,9 @@
   <!--업체 소개페이지-->
   <AppHeader />
   <div class="wrap">
-    <div class="mymy-header clearfix">
+
+    <MyPageHeader/>
+    <!-- <div class="mymy-header clearfix">
       <img
         src="@/assets/images/icon/ss/default-profile.png"
         alt="회원 프로필"
@@ -17,7 +19,7 @@
           >
         </li>
       </ul>
-    </div>
+    </div> -->
 
     <div class="mymy clearfix">
       <mymyside />
@@ -118,6 +120,7 @@
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import mymyside from "@/components/MyPageSide.vue";
+import MyPageHeader from '@/components/MyPageHeader.vue';
 import "@/assets/css/jh/jh.css";
 import "@/assets/css/ss/ss.css";
 import "@/assets/css/Initialization.css";
@@ -127,6 +130,7 @@ export default {
     AppHeader,
     AppFooter,
     mymyside,
+    MyPageHeader
   },
   data() {
     return {

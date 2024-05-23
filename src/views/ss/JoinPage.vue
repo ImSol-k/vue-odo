@@ -168,7 +168,6 @@ export default {
 		// 다음 버튼 클릭했을 때 - 아이디 비밀번호 체크 + 비밀번호 확인
 		/* eslint-disable */
 		showJoin2(){
-			// let id = this.joinVo.userId;
 			let pw = this.joinVo.userPw;
 			if(pw === null || pw === ''){
 				Swal.fire({ text : '비밀번호를 확인하세요', icon : 'error', });
