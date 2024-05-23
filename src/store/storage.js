@@ -12,6 +12,15 @@ export default createStore({
         };
     },
     mutations: {
+        setToken(state, payload){
+            state.token = payload;
+        },
+        setAuthUser(state, payload){
+            state.authUser = payload;
+        },
+        setAuthCompany(state, payload){
+            state.authCompany = payload;
+        }
     },
     plugins: [
         createPersistedState({

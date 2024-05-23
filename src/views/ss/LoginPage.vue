@@ -88,8 +88,6 @@ export default {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 로그인
     login() {
-      console.log("로그인");
-      console.log(this.loginVo);
       let id = this.loginVo.userId;
       let pw = this.loginVo.userPw;
 
@@ -113,7 +111,7 @@ export default {
             console.log(response.headers);
             console.log(response.data.apiData);
           } else {
-            console.log(response.data.message);
+            Swal.fire({text: response.data.message, icon: 'error'});
           }
 				}).catch(error => {
 					console.log(error);
@@ -127,10 +125,7 @@ export default {
       this.isPass = !this.isPass;
     },
 
-    // 카카오 로그인
-    loginKakao(){
-      console.log('카카오');
-    },
+    
 
 
     // https://velog.io/@aocl333/Vue-%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1-%EB%A1%9C%EA%B7%B8%EC%9D%B8
