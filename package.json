@@ -8,9 +8,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@fullcalendar/core": "^6.1.11",
-    "@fullcalendar/daygrid": "^6.1.11",
-    "@fullcalendar/vue3": "^6.1.11",
+    "@fullcalendar/core": "^6.1.13",
+    "@fullcalendar/daygrid": "^6.1.13",
+    "@fullcalendar/vue3": "^6.1.13",
     "@vuepic/vue-datepicker": "^8.6.0",
     "axios": "^1.7.2",
     "chart.js": "^4.4.3",
@@ -18,13 +18,14 @@
     "core-js": "^3.8.3",
     "dayjs": "^1.11.11",
     "raw-loader": "^4.0.2",
+    "solapi": "^5.3.1",
     "sweetalert2": "^11.11.0",
     "vue": "^3.2.13",
     "vue-chartjs": "^5.3.1",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^4.1.0",
     "vue3-carousel": "^0.3.3",
-    "vue3-kakao-maps": "^2.3.6",
+    "vue3-kakao-maps": "^2.3.9",
     "vue3-quill": "^0.3.1",
     "vuex": "^4.1.0",
     "vuex-persistedstate": "^4.1.0"

@@ -11,68 +11,68 @@
             <li @click="toggleSubMenu1">
                 <router-link to="">쿠킹</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[1] }">
-                    <li><router-link to="/searchresultpage/1">한식</router-link></li>
-                    <li><router-link to="/searchresultpage/2">일식</router-link></li>
-                    <li><router-link to="/searchresultpage/3">중식</router-link></li>
-                    <li><router-link to="/searchresultpage/4">양식</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[0]}`">한식</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[1]}`">일식</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[2]}`">중식</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[3]}`">양식</router-link></li>
                 </ul>
             </li>
             <li @click="toggleSubMenu2">
                 <router-link to="">베이킹</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[2] }">
-                    <li><router-link to="/searchresultpage/5">제과</router-link></li>
-                    <li><router-link to="/searchresultpage/6">제빵</router-link></li>
-                    <li><router-link to="/searchresultpage/7">쇼콜라</router-link></li>
-                    <li><router-link to="/searchresultpage/8">디저트</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[4]}`">제과</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[5]}`">제빵</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[6]}`">쇼콜라</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[7]}`">디저트</router-link></li>
                 </ul>
             </li>
             <li>
                 <router-link to="" @click="toggleSubMenu3">음료</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[3] }">
-                    <li><router-link to="/searchresultpage/9">주류</router-link></li>
-                    <li><router-link to="/searchresultpage/10">바리스타</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[8]}`">주류</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[9]}`">바리스타</router-link></li>
                 </ul>
             </li>
             <li>
                 <router-link to="" @click="toggleSubMenu4">뷰티</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[4] }">
-                    <li><router-link to="/searchresultpage/11">네일</router-link></li>
-                    <li><router-link to="/searchresultpage/12">미용</router-link></li>
-                    <li><router-link to="/searchresultpage/13">메이크업</router-link></li>
-                    <li><router-link to="/searchresultpage/14">패션</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[10]}`">네일</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[11]}`">미용</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[12]}`">메이크업</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[13]}`">패션</router-link></li>
                 </ul>
             </li>
             <li>
                 <router-link to="" @click="toggleSubMenu5">공예</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[5] }">
-                    <li><router-link to="/searchresultpage/15">비즈</router-link></li>
-                    <li><router-link to="/searchresultpage/16">뜨게질</router-link></li>
-                    <li><router-link to="/searchresultpage/17">자수</router-link></li>
-                    <li><router-link to="/searchresultpage/18">도자기</router-link></li>
-                    <li><router-link to="/searchresultpage/19">터프팅</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[14]}`">비즈</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[15]}`">뜨게질</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[16]}`">자수</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[17]}`">도자기</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[18]}`">터프팅</router-link></li>
                 </ul>
             </li>
             <li>
                 <router-link to="" @click="toggleSubMenu6">스포츠</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[6] }">
-                    <li><router-link to="/searchresultpage/20">수영</router-link></li>
-                    <li><router-link to="/searchresultpage/21">축구</router-link></li>
-                    <li><router-link to="/searchresultpage/22">야구</router-link></li>
-                    <li><router-link to="/searchresultpage/23">배구</router-link></li>
-                    <li><router-link to="/searchresultpage/24">골프</router-link></li>
-                    <li><router-link to="/searchresultpage/25">볼링</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[19]}`">수영</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[20]}`">축구</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[21]}`">야구</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[22]}`">배구</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[23]}`">골프</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[24]}`">볼링</router-link></li>
                 </ul>
             </li>
             <li>
                 <router-link to="" @click="toggleSubMenu7">심리/상담</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[7] }">
-                    <li><router-link to="/searchresultpage/26">부부상담</router-link></li>
-                    <li><router-link to="/searchresultpage/27">가정상담</router-link></li>
-                    <li><router-link to="/searchresultpage/28">심리상담</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[25]}`">부부상담</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[26]}`">가정상담</router-link></li>
+                    <li><router-link :to="`/searchresultpage2/${this.subCateNo[27]}`">심리상담</router-link></li>
                 </ul>
             </li>
             <li>
-                <router-link to="/searchresultpage/29">IT</router-link>
+                <router-link :to="`/searchresultpage2/${this.subCateNo[28]}`">IT</router-link>
             </li>
         </ul>
     </div>
@@ -120,6 +120,7 @@ export default {
     },
     data() {
         return {
+            subCateNo: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29],
             isMenuOpen: false,
             isSubMenuOpen:  {
                 1: false,

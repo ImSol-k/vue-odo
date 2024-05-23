@@ -159,6 +159,7 @@ export default {
       window.Kakao.Auth.login({
         scope: "profile_image, account_email",
         success: this.$route,
+        
       });
     },
     getKakaoAccount() {

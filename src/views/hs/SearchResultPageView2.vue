@@ -115,13 +115,13 @@ export default {
 				console.log(error);
 			});
 		},
-		getcateList() {
+		getcate2List() {
 
 			axios({
 				method: 'get', // put, post, delete
-				url: 'http://localhost:9090/odo/categories',
+				url: 'http://localhost:9090/odo/subcategories',
 				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
-				params: { cate1No: this.$route.params.no }, //get방식 파라미터로 값이 전달
+				params: { cate2No: this.$route.params.no }, //get방식 파라미터로 값이 전달
 				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
 			}).then(response => {
@@ -151,10 +151,10 @@ export default {
 		},
 	},
 	created() {
-		this.getcateList();
+		this.getcate2List();
 	},
 	watch: {
-		'$route.params.no': 'getcateList'
+		'$route.params.no': 'getcate2List'
 	},
 };
 </script>
