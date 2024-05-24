@@ -30,11 +30,15 @@
     cursor: pointer;
 }
 .catgory-2nd ul li:hover {
-    border: 1px solid #8521ff;
+    border: 1px solid #3397ff;
 }
 .BtnActive {
-    background: #8521ff;
+    background: #3397ff;
     color: #fff;
+}
+.cate1-active {
+	color: #3397ff;
+	border-bottom: 2px solid #3397ff;
 }
 /* searchResult */
 h2.searchResult {

@@ -155,8 +155,3 @@ export default {
 	},
 };
 </script>
-<style>
-.cate1-active {
-	color: #8521ff;
-}
-</style>
