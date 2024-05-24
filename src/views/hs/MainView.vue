@@ -80,7 +80,7 @@
 							<span>후기 123</span>
 						</div>
 						<p class="class-price" v-if="fbList.classPrice == 0">무료</p>
-						<p class="class-price" v-else>{{fbList.classPrice}}</p>
+						<p class="class-price" v-else>{{fbList.classPrice.toLocaleString('ko-KR')}}</p>
 					</router-link>
 				</li>
 			</ul>
@@ -106,7 +106,7 @@
 							<span class="starPoint">★★★★★</span>
 							<span>후기 123</span>
 						</div>
-						<p class="class-price">{{ pbList.classPrice }}원</p>
+						<p class="class-price">{{ pbList.classPrice.toLocaleString('ko-KR') }}원</p>
 					</router-link>
 				</li>
 			</ul>
@@ -133,7 +133,7 @@
 							<span>후기 123</span>
 						</div>
 						<p class="class-price" v-if="nList.classPrice == 0">무료</p>
-						<p class="class-price" v-else>{{ nList.classPrice }}원</p>
+						<p class="class-price" v-else>{{ nList.classPrice.toLocaleString('ko-KR') }}원</p>
 					</router-link>
 				</li>
 			</ul>

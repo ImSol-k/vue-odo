@@ -41,7 +41,7 @@
 						<span>후기 123</span>
 					</div>
 					<p class="class-price" v-if="cateClass.classPrice == 0">무료</p>
-					<p class="class-price" v-else>{{ cateClass.classPrice }}</p>
+					<p class="class-price" v-else>{{ cateClass.classPrice.toLocaleString('ko-KR') }}원</p>
 				</router-link>
 			</li>
 		</ul>
