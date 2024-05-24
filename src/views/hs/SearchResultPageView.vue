@@ -97,10 +97,8 @@ export default {
 		//2차 카테고리 버튼 눌렀을때 버튼 색상변경 + 리스트가져오기
 		activateItem(categoryIndex, itemIndex, cate2No) {
 			this.$router.push(`/searchresultpage2/${cate2No}`);
-			this.clickIndex = null;
-			this.activeIndex = { categoryIndex, itemIndex };
-
 		},
+		//MainView에서 처음 넘어올 때 리스트 불러오는 함수
 		getcateList() {
 
 			axios({
@@ -116,25 +114,17 @@ export default {
 				console.log(error);
 			});
 		},
+		// 현재페이지에서 cate1 눌렀을때 리스트 불러오는 함수
 		goCate1ListPage(i) {
 			this.$router.push(`/searchresultpage/${i + 1}`);
 			this.clickIndex = i;
 
 			this.activeIndex = { categoryIndex: null, itemIndex: null };
 
-			axios({
-				method: 'get', // put, post, delete
-				url: 'http://localhost:9090/odo/categories',
-				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
-				params: { cate1No: i + 1 }, //get방식 파라미터로 값이 전달
-				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
-				responseType: 'json' //수신타입
-			}).then(response => {
-				this.cateList = response.data.apiData;
-			}).catch(error => {
-				console.log(error);
-			});
+			this.getcateList();
+			
 		},
+		//cate1 버튼 색상 표시
 		btnSelected() {
 			for (let i = 0; i < 8; i++) {
 				if (this.$route.params.no == (i+1)) {
@@ -148,6 +138,7 @@ export default {
 		this.btnSelected();
 	},
 	watch: {
+		// 실시간 변경 감시
 		'$route.params.no': function () {
 			this.getcateList();
 			this.btnSelected();
