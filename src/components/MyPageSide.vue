@@ -1,5 +1,5 @@
 <template>
-<div class="mymy-side">
+<div class="mymy-side clearfix">
 	<ul>
 		<li>내 활동</li>
 		<li><router-link to="/mypage/pay" class="sideLink" title="결제 내역">결제 내역</router-link></li>

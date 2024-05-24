@@ -82,7 +82,7 @@
             <div class="inner">
                 <router-link to="/companyselect">호스트 지원</router-link>
                 <ul>
-                    <li v-if="(this.$store.state.authUser == '' || this.$store.state.token == '')"><router-link to="/join">회원가입</router-link></li>
+                    <li v-if="(this.$store.state.authUser == '' && this.$store.state.token == '')"><router-link to="/join">회원가입</router-link></li>
                     <li v-else><router-link to="/mypage/pay" @click="goMypage">{{ this.$store.state.authUser.userNickname }}님</router-link></li>
                     <li v-if="(this.$store.state.authUser == '' || this.$store.state.token == '')"><router-link to="/login/user">로그인</router-link></li>
                     <li v-else><router-link to="/" @click="logout">로그아웃</router-link></li>
@@ -142,7 +142,7 @@ export default {
         logout(){
             this.$store.commit('setAuthUser', '');
             this.$store.commit('setToken', '');
-            this.$router.push('/');
+            this.$router.push('/login/user');
         },
 
         // 로그인 체크

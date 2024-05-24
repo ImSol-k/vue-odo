@@ -13,7 +13,7 @@
 		<MyPageSide />
 		<!-- mypage-side -->
 
-		<div class="mymy-content">
+		<div class="mymy-content clearfix">
 			<div class="mymy-head">
 				<span>결제내역</span>
 			</div>
@@ -550,6 +550,7 @@ import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
 import MyPageHeader from '@/components/MyPageHeader.vue';
 import MyPageSide from '@/components/MyPageSide.vue';
+import axios from 'axios';
 
 
 export default {
@@ -714,8 +715,20 @@ export default {
 		
 		
 		// 결제정보 가져오기
-		getList(){
-			// console.log('결제정보가져오기');
+		getList(paymentType){
+			paymentType = 1;
+			axios({
+				method: 'get',
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/getpaylist`,
+				headers: { 'Content-Type': 'application/json; charset=utf-8' },
+				params : {no: paymentType, userNo : this.$store.state.authUser.userNo},
+				responseType: 'json'
+			}).then(response => {
+				console.log(response);
+			}).catch(error => {
+				console.log(error);
+			});
+
 			this.paymentData = [
 				{ classType: "원데이", paymentAmount: 5000 },
 			]

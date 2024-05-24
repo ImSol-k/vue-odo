@@ -95,7 +95,7 @@ export default {
 	data() {
 		return {
 			coupon : '', // true면 쿠폰보유 false면 쿠폰미보유
-			couponList : [],
+			couponList : '',
 		};
 	},
 	methods: {
@@ -107,7 +107,6 @@ export default {
 				headers: { "Content-Type": "application/json; charset=utf-8" },
 				responseType: "json",
 			}).then((response) => {
-				console.log(response.data.apiData);
 				if(response.data.apiData != null){
 					this.coupon = true;
 					this.couponList = response.data.apiData;

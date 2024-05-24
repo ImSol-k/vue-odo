@@ -68,18 +68,15 @@
     color: #8521FF;
     font-size: 25px;
     font-weight: bold;
-    /* display: block; */
 }
 
 .coupon1-1-txt1-1 {
     font-size: 15px;
     color: #000;
-    /* font-weight: bold; */
 }
 
 .coupon1-1-txt2{
     font-size: 11px;
-    /* margin-top: 10px; */
     margin-left: 20px;
 }
 
@@ -91,7 +88,6 @@
     box-sizing: border-box;
     font-size: 11px;
     padding: 0 10px;
-    /* display: none */
 }
 .coupon2 {
     box-sizing: border-box;
