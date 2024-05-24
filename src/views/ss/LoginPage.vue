@@ -7,30 +7,16 @@
     <span class="lj-txt">로그인</span>
     <div class="lj-form">
       <form v-on:submit.prevent="login">
-        <input
-          type="text"
-          name="id"
-          v-model="loginVo.userId"
-          placeholder="아이디(이메일)"
-        />
+        <input type="text" name="id" v-model="loginVo.userId" placeholder="아이디(이메일)" />
         <!-- <img v-if="isPass" class="lj-passImg" :src="pass1" v-on:click.prevent="changeInputImg">
 				<img v-else class="lj-passImg" :src="pass2" v-on:click.prevent="changeInputImg"> -->
-        <input
-          type="password"
-          name="password"
-          v-model="loginVo.userPw"
-          placeholder="비밀번호"
-        />
+        <input type="password" name="password" v-model="loginVo.userPw" placeholder="비밀번호" />
         <button class="login-btn" type="submit">로그인</button>
       </form>
       <!-- form -->
       <span class="other-login">다른 방식으로 로그인</span>
       <!-- https://henniee.tistory.com/219 -->
-      <img
-        @click="kakaoLogin"
-        class="kakao-login"
-        src="@/assets/images/icon/ss/kakao_login_medium.png"
-      />
+      <img @click="kakaoLogin" class="kakao-login" src="@/assets/images/icon/ss/kakao_login_medium.png" />
       <!-- <img src="@/assets/images/icon/ss/na.png" /> -->
     </div>
     <!-- lj-form -->
@@ -109,18 +95,7 @@ export default {
       const Auth_url = `http://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirect_uri}&response_type=code`;
       window.location.href = Auth_url;
 
-      // axios({
-      //   method: 'get',
-      //   url: `${this.$store.state.apiBaseUrl}/odo/user/oauth`,
-      //   headers: { 'Content-Type': 'application/json; charset=utf-8' },
-      //   // data: this.loginVo,
-      //   responseType: 'json'
-      // }).then(response => {
-      //   console.log(response);
-      //   window.location.href = response.data;
-      // }).catch(error => {
-      //   console.log(error);
-      // });
+
     },
 
 

@@ -38,65 +38,13 @@
 
 .on-coupon {
     box-sizing: border-box;
-    padding: 5px;
+    width: 400px;
+    padding-left: 5px;
     float: left;
-    margin: 10px 40px;
 }
-
-.coupon-set {
-    box-sizing: border-box;
-    display: inline-block;
-    margin: 30px 30px 50px 30px;
-    cursor: pointer;
-}
-
-.coupon-set img {
-    display: flex;
-    position: relative;
-    width: 330px;
-    float: left;
-    z-index: 1;
-}
-
-.coupon-set2 {
-    box-sizing: border-box;
-    position: absolute;
-    z-index: 2;
-    width: 190px;
-    margin-top: 20px;
-    margin-left: 110px;
-}
-
-.coupon-set2 .cou-price {
-    display: block;
-    width: 150px;
-    height: 40px;
-    line-height: 34px;
-    font-size: 30px;
-    margin-bottom: 5px;
-    padding: 3px;
-    color: #8521FF;
-}
-
-.coupon-set2 .cou-name {
-    display: block;
-    width: 180px;
-    height: 30px;
-    line-height: 30px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    font-size: 15px;
-}
-
-
-
 
 .coupon1 {
     box-sizing: border-box;
-    /* border: 1px solid #000; */
-    /* display: flex; */
-    /* justify-content: space-between; */
     width: 280px;
     height: 140px;
     padding: 20px;
@@ -112,40 +60,41 @@
 
 .coupon1-1{
     box-sizing: border-box;
-    /* border: 1px solid #000; */
-    /* width: 250px; */
     height: 60px;
     padding: 0 10px;
     margin-bottom: 30px;
-    
 }
 .coupon1-1-txt1 {
     color: #8521FF;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: bold;
-    /* float: left; */
+    /* display: block; */
 }
+
+.coupon1-1-txt1-1 {
+    font-size: 15px;
+    color: #000;
+    /* font-weight: bold; */
+}
+
 .coupon1-1-txt2{
-    font-size: 10px;
-    margin-top: 10px;
-    margin-left: 50px;
-    /* float: left; */
+    font-size: 11px;
+    /* margin-top: 10px; */
+    margin-left: 20px;
 }
 
 .coupon1-1-txt3{
-    font-size: 12px;
+    font-size: 16px;
+    
 }
 .coupon1-2 {
     box-sizing: border-box;
-    /* border: 1px solid #000; */
-    font-size: 10px;
+    font-size: 11px;
     padding: 0 10px;
+    /* display: none */
 }
 .coupon2 {
     box-sizing: border-box;
-    /* display: flex;? */
-    /* justify-content: space-between; */
-    /* border: 1px solid #000; */
     width: 80px;
     float: left;
     height: 140px;

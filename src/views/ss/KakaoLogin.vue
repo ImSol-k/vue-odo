@@ -27,18 +27,26 @@ export default {
 	},
 	methods : {
 		getToken(){
-			// const self = this;
-			axios.get(`${this.$store.state.apiBaseUrl}/odo/ss/token/` + this.code)
-			.then((res)=>{
-				console.log(res);
-				this.form.email = res.data.email;
-				this.form.pwd = res.data.id;
-				this.form.nickname = res.data.nickname;
-				this.form.kakaotoken = res.data.accessToken;
-			})
 
-			
-		}
+
+			axios({
+				method: 'get',
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/token/`+ this.code,
+				headers: { 'Content-Type': 'application/json; charset=utf-8' },
+				// data: this.loginVo,
+				responseType: 'json'
+			}).then(response => {
+				console.log(response);
+				// window.location.href = response.data;
+			}).catch(error => {
+				console.log(error);
+			});
+
+		},
+
+		
+
+
     },
 
 
