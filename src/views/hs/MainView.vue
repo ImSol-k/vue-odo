@@ -185,7 +185,6 @@ export default defineComponent({
 
 		//메인 리스트 가져오기
 		getLists() {
-			console.log("메인 리스트 가져오기");
 
 			axios({
 				method: 'get', // put, post, delete

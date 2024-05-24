@@ -94,9 +94,53 @@ export default {
 		isActive(categoryIndex, itemIndex) {
 			return this.activeIndex.categoryIndex === categoryIndex && this.activeIndex.itemIndex === itemIndex;
 		},
+		//카테고리 사이드바에서 선택해서 넘어올때 버튼 선택되어있게하는 함수
+		btnSelected() {
+			for( let i=1; i<5; i++ ) {
+				if ( this.$route.params.no <5 && this.$route.params.no == i ) {
+					this.activeIndex = { categoryIndex: 0, itemIndex: (i-1) };
+				}
+			}
+			for( let i=5; i<9; i++ ) {
+				if ( 5 <= this.$route.params.no < 9 && this.$route.params.no == i ) {
+					this.activeIndex = { categoryIndex: 1, itemIndex: (i-5) };
+				}
+			}
+			for( let i=9; i<11; i++ ) {
+				if ( 9 <= this.$route.params.no < 11 && this.$route.params.no == i ) {
+					this.activeIndex = { categoryIndex: 2, itemIndex: (i-9) };
+				}
+			}
+			for( let i=11; i<15; i++ ) {
+				if ( 11 <= this.$route.params.no < 15 && this.$route.params.no == i ) {
+					this.activeIndex = { categoryIndex: 3, itemIndex: (i-11) };
+				}
+			}
+			for( let i=15; i<20; i++ ) {
+				if ( 15 <= this.$route.params.no < 20 && this.$route.params.no == i ) {
+					this.activeIndex = { categoryIndex: 4, itemIndex: (i-15) };
+				}
+			}
+			for( let i=20; i<26; i++ ) {
+				if ( 20 <= this.$route.params.no < 26 && this.$route.params.no == i ) {
+					this.activeIndex = { categoryIndex: 5, itemIndex: (i-20) };
+				}
+			}
+			for( let i=26; i<29; i++ ) {
+				if ( 26 <= this.$route.params.no < 29 && this.$route.params.no == i ) {
+					this.activeIndex = { categoryIndex: 6, itemIndex: (i-26) };
+				}
+			}
+			for( let i=29; i<30; i++ ) {
+				if ( 29 <= this.$route.params.no < 30 && this.$route.params.no == i ) {
+					this.activeIndex = { categoryIndex: 7, itemIndex: (i-29) };
+				}
+			}
+				
+		},
 		//2차 카테고리 버튼 눌렀을때 버튼 색상변경 + 리스트가져오기
 		activateItem(categoryIndex, itemIndex, cate2No) {
-			this.$router.push(`/searchresultpage/${categoryIndex + 1}`);
+			this.$router.push(`/searchresultpage2/${cate2No}`);
 			this.clickIndex = null;
 			this.activeIndex = { categoryIndex, itemIndex };
 
@@ -109,7 +153,6 @@ export default {
 				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
 			}).then(response => {
-				console.log(response.data.apiData);
 				this.cateList = response.data.apiData;
 			}).catch(error => {
 				console.log(error);
@@ -132,29 +175,17 @@ export default {
 		},
 		goCate1ListPage(i) {
 			this.$router.push(`/searchresultpage/${i + 1}`);
-			this.clickIndex = i;
-
-			this.activeIndex = { categoryIndex: null, itemIndex: null };
-
-			axios({
-				method: 'get', // put, post, delete
-				url: 'http://localhost:9090/odo/categories',
-				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
-				params: { cate1No: i + 1 }, //get방식 파라미터로 값이 전달
-				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
-				responseType: 'json' //수신타입
-			}).then(response => {
-				this.cateList = response.data.apiData;
-			}).catch(error => {
-				console.log(error);
-			});
 		},
 	},
 	created() {
 		this.getcate2List();
+		this.btnSelected();
 	},
 	watch: {
-		'$route.params.no': 'getcate2List'
+		'$route.params.no': function() {
+			this.getcate2List();
+			this.btnSelected();
+		}
 	},
 };
 </script>

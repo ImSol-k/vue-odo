@@ -96,24 +96,10 @@ export default {
 		},
 		//2차 카테고리 버튼 눌렀을때 버튼 색상변경 + 리스트가져오기
 		activateItem(categoryIndex, itemIndex, cate2No) {
-			this.$router.push(`/searchresultpage/${categoryIndex + 1}`);
+			this.$router.push(`/searchresultpage2/${cate2No}`);
 			this.clickIndex = null;
 			this.activeIndex = { categoryIndex, itemIndex };
 
-			//2차카테고리 리스트 가져오기
-			axios({
-				method: 'get', // put, post, delete
-				url: 'http://localhost:9090/odo/subcategories',
-				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
-				params: { cate2No: cate2No }, //get방식 파라미터로 값이 전달
-				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
-				responseType: 'json' //수신타입
-			}).then(response => {
-				console.log(response.data.apiData);
-				this.cateList = response.data.apiData;
-			}).catch(error => {
-				console.log(error);
-			});
 		},
 		getcateList() {
 
@@ -149,12 +135,23 @@ export default {
 				console.log(error);
 			});
 		},
+		btnSelected() {
+			for (let i = 0; i < 8; i++) {
+				if (this.$route.params.no == (i+1)) {
+					this.clickIndex = i;
+				}
+			}
+		},
 	},
 	created() {
 		this.getcateList();
+		this.btnSelected();
 	},
 	watch: {
-		'$route.params.no': 'getcateList'
+		'$route.params.no': function () {
+			this.getcateList();
+			this.btnSelected();
+		}
 	},
 };
 </script>
