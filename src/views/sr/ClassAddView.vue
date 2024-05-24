@@ -43,7 +43,7 @@
             <div class="classAddInfoBox">
               <div>
                 <label for="className">클래스명</label>
-                <input type="text" id="className" placeholder="클래스명" />
+                <input type="text" id="className" placeholder="클래스명" v-model="classVo.className"/>
               </div>
               <div>
                 <label for="classinfo">클래스소개</label>
@@ -51,6 +51,7 @@
                   type="text"
                   id="classinfo"
                   placeholder="간단한 소개글 작성"
+                  v-model="classVo.classIntro"
                 />
               </div>
               <div class="classParticipation" v-if="!isClass">
@@ -123,7 +124,7 @@
                       type="text"
                       id="postcode"
                       placeholder="우편번호"
-                      v-model="classVo.zonecode"
+                      v-model="classVo.classZipcode"
                       readonly
                     />
                     <input
@@ -136,14 +137,14 @@
                     type="text"
                     id="roadAddress"
                     placeholder="도로명주소"
-                    v-model="classVo.roadAddress"
+                    v-model="classVo.classNameAddress"
                     readonly
                   />
                   <input
                     type="text"
                     id="jibunAddress"
                     placeholder="지번주소"
-                    v-model="classVo.jibunAddress"
+                    v-model="classVo.classNumAddress"
                     readonly
                   />
                   <span id="guide" style="color: #999; display: none"></span>
@@ -151,7 +152,7 @@
                     type="text"
                     id="sample4_detailAddress"
                     placeholder="상세주소"
-                    v-model="classVo.detailAddress"
+                    v-model="classVo.classDetailAddress"
                   />
                 </div>
               </div>
@@ -162,22 +163,16 @@
               <div class="classCategory">
                 <label for="">카테고리</label>
                 <div class="classCategorySelectBox">
-                  <select name="" id="">
+                  <select name="" id="" v-model="classVo.cate1No">
                     <option value="" disabled selected>1차 카테고리</option>
                     <option value="" v-for="i in 12" :key="i">
                       1차카테고리{{ i }}
                     </option>
                   </select>
-                  <select name="" id="">
+                  <select name="" id="" v-model="classVo.cate2No">
                     <option value="" disabled selected>2차 카테고리</option>
                     <option value="" v-for="i in 6" :key="i">
                       2차카테고리{{ i }}
-                    </option>
-                  </select>
-                  <select name="" id="">
-                    <option value="" disabled selected>3차 카테고리</option>
-                    <option value="" v-for="i in 4" :key="i">
-                      3차카테고리{{ i }}
                     </option>
                   </select>
                 </div>
@@ -186,11 +181,15 @@
               <!--classCategory-->
               <div>
                 <label for="">가격</label>
-                <input type="text" placeholder="추가금액 입력" />
+                <input type="text" placeholder="추가금액 입력"  v-model="classVo.classPrice"/>
               </div>
               <div>
                 <label for="">모집인원</label>
-                <input type="text" placeholder="인원수" />
+                <input type="text" placeholder="인원수"  v-model="classVo.classMax"/>
+              </div>
+              <div>
+                <label for="">클래스오픈<br>최소인원</label>
+                <input type="text" placeholder="인원수"  v-model="classVo.classMax"/>
               </div>
               <div class="quillEditorBox">
                 <label for="">상세설명</label><br />
@@ -312,10 +311,13 @@ export default {
       companyNo: 2,
       cList: [],
       selectClassNo: "",
+      cate1: [],
+      cate2: [],
       // companyNo: this.$store.state.authCompany.companyNo,
       classVo: {
         classNo: "",
         companyNo: "",
+        cate1No: "",
         cate2No: "",
         className: "",
         classType: 1,
@@ -403,7 +405,11 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          console.log(response.data);
+          console.log(response.data.apiData);
+          if (response.data.result == "success") {
+            this.classVo = response.data.apiData;
+            this.state.content = response.data.apiData.classInfo;
+          }
         })
         .catch((error) => {
           console.log(error);
