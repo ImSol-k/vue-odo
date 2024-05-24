@@ -29,7 +29,7 @@
 
 				<div class="mymy-paybox">
 					<!-- 결제내역이 없으면 -->
-					<div v-if="!isPay" class="mymy-nopay" >
+					<div v-if="!isPay" class="mymy-nopay">
 						<img id="nopayImg" src="@/assets/images/icon/ss/nopay.png">
 						<span>결제한 내역이 없어요</span>
 						<router-link to="/">홈으로 가기</router-link>
@@ -64,7 +64,7 @@
 								<!-- mymy-pay -->
 								<div class="mymy-payCon ">
 									<div class="paycon1">
-										<span class="paycon1-txt1"> 결제일 : 2024.05.05</span>
+										<span class="paycon1-txt1">결제일 : 2024.05.05</span>
 										<span class="paycon1-txt2">[원데이]누구나 손쉽게 배우는 커피 타임</span>
 										<span class="paycon1-txt3">바리스타 기초 교육 수업에 참여해보세요. 무료입니다.</span>
 										<span class="paycon1-txt4">결제 금액 : {{ payPrice }}원</span>
