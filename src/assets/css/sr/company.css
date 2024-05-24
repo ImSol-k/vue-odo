@@ -477,7 +477,7 @@ align-items: center; 세로가운데정렬
 .ql-toolbar {
   width: 650px !important;
   border-radius: 10px 10px 0px 0px;
-  padding-left: 30px !important;
+  padding-left: 20px !important;
 }
 .ql-container {
   width: 650px !important;
@@ -487,23 +487,11 @@ align-items: center; 세로가운데정렬
   position: relative;
   border-radius: 0px 0px 10px 10px;
 }
-.ql-editor {
-  width: 650px;
-  height: 400px;
-  overflow: scroll;
-  overflow-x: hidden;
-}
 .ql-editor > p > img {
   width: 600px;
 }
-.ql-formats > span {
-  font-size: 15px;
-}
 .ql-formats > button > svg {
   width: 15px !important;
-}
-.ql-formats > span {
-  width: 20px;
 }
 .ql-toolbar button {
   width: 25px !important;
