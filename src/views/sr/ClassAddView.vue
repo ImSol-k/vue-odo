@@ -24,10 +24,16 @@
             <div class="classAddImgTitle">
               <p>클래스 대표이미지</p>
               <input type="file" name="" id="" />
-              <select name="" id="" class="addPageSelectClassMemory" v-model="selectClassNo" @change="classShow">
+              <select
+                name=""
+                id=""
+                class="addPageSelectClassMemory"
+                v-model="selectClassNo"
+                @change="classShow"
+              >
                 <option value="" disabled selected>기존클래스 불러오기</option>
                 <option v-for="(cl, i) in cList" :key="i" :value="cl.classNo">
-                 {{ cl.className }}
+                  {{ cl.className }}
                 </option>
               </select>
             </div>
@@ -43,7 +49,12 @@
             <div class="classAddInfoBox">
               <div>
                 <label for="className">클래스명</label>
-                <input type="text" id="className" placeholder="클래스명" v-model="classVo.className"/>
+                <input
+                  type="text"
+                  id="className"
+                  placeholder="클래스명"
+                  v-model="classVo.className"
+                />
               </div>
               <div>
                 <label for="classinfo">클래스소개</label>
@@ -163,16 +174,18 @@
               <div class="classCategory">
                 <label for="">카테고리</label>
                 <div class="classCategorySelectBox">
-                  <select name="" id="" v-model="classVo.cate1No">
+                  <select name="" id="" v-model="classVo.cate1No" @change="cateSelect">
                     <option value="" disabled selected>1차 카테고리</option>
-                    <option value="" v-for="i in 12" :key="i">
-                      1차카테고리{{ i }}
+                    <option v-for="(c, i) in cate1" :key="i" :value="c.cate1No">
+                      {{ c.cate1Name }}
                     </option>
                   </select>
                   <select name="" id="" v-model="classVo.cate2No">
-                    <option value="" disabled selected>2차 카테고리</option>
-                    <option value="" v-for="i in 6" :key="i">
-                      2차카테고리{{ i }}
+                    <option value="" disabled selected>
+                      <span v-if="classVo.cate1No != null">2차 카테고리</span>
+                    </option>
+                    <option value="" v-for="(cate, i) in cateList" :key="i">
+                      {{ cate.cate2Name }}
                     </option>
                   </select>
                 </div>
@@ -181,15 +194,27 @@
               <!--classCategory-->
               <div>
                 <label for="">가격</label>
-                <input type="text" placeholder="추가금액 입력"  v-model="classVo.classPrice"/>
+                <input
+                  type="text"
+                  placeholder="추가금액 입력"
+                  v-model="classVo.classPrice"
+                />
               </div>
               <div>
                 <label for="">모집인원</label>
-                <input type="text" placeholder="인원수"  v-model="classVo.classMax"/>
+                <input
+                  type="text"
+                  placeholder="인원수"
+                  v-model="classVo.classMax"
+                />
               </div>
               <div>
-                <label for="">클래스오픈<br>최소인원</label>
-                <input type="text" placeholder="인원수"  v-model="classVo.classMax"/>
+                <label for="">클래스오픈<br />최소인원</label>
+                <input
+                  type="text"
+                  placeholder="인원수"
+                  v-model="classVo.classMax"
+                />
               </div>
               <div class="quillEditorBox">
                 <label for="">상세설명</label><br />
@@ -312,7 +337,6 @@ export default {
       cList: [],
       selectClassNo: "",
       cate1: [],
-      cate2: [],
       // companyNo: this.$store.state.authCompany.companyNo,
       classVo: {
         classNo: "",
@@ -339,6 +363,7 @@ export default {
     };
   },
   methods: {
+    //클래스 추가
     classInsert() {
       axios({
         method: "post",
@@ -365,8 +390,8 @@ export default {
 
       let tempVo = {
         type: type,
-        no: this.companyNo
-      }
+        no: this.companyNo,
+      };
 
       axios({
         method: "post",
@@ -379,7 +404,7 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          console.log(response.data.apiData);
+          // console.log(response.data.apiData);
           this.cList = response.data.apiData;
         })
         .catch((error) => {
@@ -389,10 +414,10 @@ export default {
 
     //클래스 불러오기
     classShow() {
-      console.log("클래스 불러오기: " + this.selectClassNo);
+      // console.log("클래스 불러오기: " + this.selectClassNo);
       let tempVo = {
         companyNo: this.companyNo,
-        classNo: this.selectClassNo
+        classNo: this.selectClassNo,
       };
       axios({
         method: "post",
@@ -416,6 +441,54 @@ export default {
         });
     },
 
+    //카테고리 불러오기
+    cate() {
+      console.log("카테고리 불러오기");
+      axios({
+        method: "post",
+        url: `${this.$store.state.apiBaseUrl}/odo/company/getcate`,
+        headers: {
+          //전송타입 + 토큰
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        responseType: "json",
+      })
+        .then((response) => {
+          console.log(response.data.apiData.cate1No);
+          if (response.data.result == "success") {
+            this.cate1 = response.data.apiData;
+          } else {
+            console.log("불러오기 실패");
+          }
+          // console.log(this.cateList);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    cateSelect() {
+      axios({
+        method: "get",
+        url: `${this.$store.state.apiBaseUrl}/odo/company/getcate2/${this.classVo.cate1No}`,
+        headers: {
+          //전송타입 + 토큰
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        responseType: "json",
+      })
+        .then((response) => {
+          console.log(response.data.apiData.cate1No);
+          if (response.data.result == "success") {
+            this.cate1 = response.data.apiData;
+          } else {
+            console.log("불러오기 실패");
+          }
+          // console.log(this.cateList);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
 
     //주소
     DaumPostcode() {
@@ -492,6 +565,7 @@ export default {
   },
   created() {
     this.classList(this.classVo.classType);
+    this.cate();
   },
 };
 </script>
