@@ -50,7 +50,6 @@
 				<h4>해당하는 검색 결과가 없어요.</h4>
 				<p>다른 검색어로 검색해 주세요!</p>
 			</div>
-
 		</ul>
 	</div>
 
@@ -88,6 +87,7 @@ export default {
 				[[29, "IT"]]
 			],
 			cateList: [],
+			pMap: {},
 		};
 	},
 	methods: {
@@ -109,7 +109,13 @@ export default {
 				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
 			}).then(response => {
-				this.cateList = response.data.apiData;
+				this.pMap = response.data.apiData;
+				this.cateList = this.pMap.cate1List;
+				console.log("cate1List : " + this.pMap.cate1List);
+				console.log(this.pMap.startPageBtnNo);
+				console.log(this.pMap.endPageBtnNo);
+				console.log(this.pMap.prev);
+				console.log(this.pMap.next);
 			}).catch(error => {
 				console.log(error);
 			});
@@ -122,7 +128,7 @@ export default {
 			this.activeIndex = { categoryIndex: null, itemIndex: null };
 
 			this.getcateList();
-			
+
 		},
 		//cate1 버튼 색상 표시
 		btnSelected() {
