@@ -15,15 +15,15 @@
           <div class="whatClass"> 
             <span
               v-on:click.prevent="selectClass(1)"
-              :class="{ classChack: isClass }"
+              :class="{ classChack: isClass == 1 }"
               >원데이</span>
             <span
               v-on:click.prevent="selectClass(2)"
-              :class="{ classChack: !isClass }"
+              :class="{ classChack: isClass == 2 }"
               >정규/상시</span>
           </div>
           
-          <div v-if="isClass">
+          <div v-if="isClass == 1">
             <div class="right">
                 <img src="@/assets/images/icon/header_icons/like.png">
                 <span>인기가 많은 클래스</span>
@@ -50,8 +50,8 @@
             </div>
           </div>
 
-          <div v-else>
-              <div class="right" >
+          <div v-else-if="isClass == 2">
+              <div class="right">
                 <img src="@/assets/images/icon/header_icons/like.png">
                 <span>정규 인기가 많은 클래스</span>
             </div>
@@ -74,7 +74,7 @@
             <div class="right">
                 <img src="@/assets/images/icon/header_icons/like.png">
                 <span>정규 인기가 많은 클래스</span>
-          </div>
+            </div>
         </div>
       </div>
     </div>
@@ -82,6 +82,7 @@
 </div>
   <AppFooter />
 </template>
+
 <script>
 import HostAppHeader from "@/components/HostAppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
@@ -91,16 +92,26 @@ import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 export default {
-		name: "ModifyView",
-		components: {
-			HostAppHeader,
-			AppFooter,
-			AppMenu
-		},
-		data() {
-			return {};
-	},
-	methods: {},
+  name: "ModifyView",
+  components: {
+    HostAppHeader,
+    AppFooter,
+    AppMenu
+  },
+  data() {
+    return {
+      isClass: 1,
+    };
+  },
+  methods: {
+    selectClass(num) {
+      if (num == 1) {
+        this.isClass = 1;
+      } else if (num == 2) {
+        this.isClass = 2;
+      }
+    }
+  },
 	created(){},
   mounted() {
     const labels = [

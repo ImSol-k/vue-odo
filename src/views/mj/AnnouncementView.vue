@@ -33,42 +33,42 @@
                           </tr>
                           <tr>
                             <td>1111</td>
-                            <td><a href="#">공지 전달드립니다</a></td>
+                            <td><a href="#" @click="goRead">공지 전달드립니다</a></td>
                             <td>관리자</td>
                             <td>2024-05-11</td>
                             <td>111</td>
                           </tr>
                           <tr>
                             <td>1111</td>
-                            <td><a href="#">공지 전달드립니다</a></td>
+                            <td><a href="#" @click="goRead">공지 전달드립니다</a></td>
                             <td>관리자</td>
                             <td>2024-05-11</td>
                             <td>111</td>
                           </tr>
                           <tr>
                             <td>1111</td>
-                            <td><a href="#">공지 전달드립니다</a></td>
+                            <td><a href="#" @click="goRead">공지 전달드립니다</a></td>
                             <td>관리자</td>
                             <td>2024-05-11</td>
                             <td>111</td>
                           </tr>
                           <tr>
                             <td>1111</td>
-                            <td><a href="#">공지 전달드립니다</a></td>
+                            <td><a href="#" @click="goRead">공지 전달드립니다</a></td>
                             <td>관리자</td>
                             <td>2024-05-11</td>
                             <td>111</td>
                           </tr>
                           <tr>
                             <td>1111</td>
-                            <td><a href="#">공지 전달드립니다</a></td>
+                            <td><a href="#" @click="goRead">공지 전달드립니다</a></td>
                             <td>관리자</td>
                             <td>2024-05-11</td>
                             <td>111</td>
                           </tr>
                           <tr>
                             <td>1111</td>
-                            <td><a href="#">공지 전달드립니다</a></td>
+                            <td><a href="#" @click="goRead">공지 전달드립니다</a></td>
                             <td>관리자</td>
                             <td>2024-05-11</td>
                             <td>111</td>
@@ -82,6 +82,7 @@
     <!-- 푸터 -->
 		<AppFooter/>
 </template>
+
 <script>
 import '@/assets/css/Initialization.css'
 import '@/assets/css/mj/notice.css'
