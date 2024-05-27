@@ -115,7 +115,7 @@ const routes = [
     component: WishListCompany
   },
   {
-    path: '/payment',
+    path: '/payment/:no',
     name: 'payment',
     component: PaymentView
   },

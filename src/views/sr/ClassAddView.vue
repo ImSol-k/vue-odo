@@ -181,11 +181,9 @@
                     </option>
                   </select>
                   <select name="" id="" v-model="classVo.cate2No">
-                    <option value="" disabled selected>
-                      <span v-if="classVo.cate1No != null">2차 카테고리</span>
-                    </option>
-                    <option value="" v-for="(cate, i) in cateList" :key="i">
-                      {{ cate.cate2Name }}
+                    <option value="" disabled selected>2차 카테고리 </option>
+                    <option v-for="(c, i) in cate2" :key="i" :value="c.cate2No">
+                      {{ c.cate2Name }}
                     </option>
                   </select>
                 </div>
@@ -466,8 +464,13 @@ export default {
           console.log(error);
         });
     },
+    //2차 카테고리 불러오기
     cateSelect() {
-      axios({
+      console.log("2차 카테고리: " + this.classVo.cate1No);
+      if (this.cate1 == null) {
+        alert("1차 카테고리를 선택해 주세요.");
+      } else {
+        axios({
         method: "get",
         url: `${this.$store.state.apiBaseUrl}/odo/company/getcate2/${this.classVo.cate1No}`,
         headers: {
@@ -477,9 +480,9 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          console.log(response.data.apiData.cate1No);
+          console.log(response.data);
           if (response.data.result == "success") {
-            this.cate1 = response.data.apiData;
+            this.cate2 = response.data.apiData;
           } else {
             console.log("불러오기 실패");
           }
@@ -488,6 +491,8 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+      }
+      
     },
 
     //주소
