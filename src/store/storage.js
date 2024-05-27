@@ -8,7 +8,8 @@ export default createStore({
             //apiBaseUrl: "http://54.180.79.237:9090",
             token: "",
             authUser: "",
-            authCompany: ""
+            authCompany: "",
+            couponNo: ""
         };
     },
     mutations: {
@@ -20,6 +21,9 @@ export default createStore({
         },
         setAuthCompany(state, payload){
             state.authCompany = payload;
+        },
+        setCouponNo(state, payload){
+            state.couponNo = payload;
         }
     },
     plugins: [

@@ -7,7 +7,7 @@
 
 			<div class="headSection">
 				<img class="representImg" src="../../assets/images/hs/cake.jpg" alt="">
-	
+
 				<div class="headInfoBox">
 					<div>
 						<h1>소풍을 즐기는 새로운 방법, 루하루 티크닉 세트 [SQNC 055]</h1>
@@ -22,16 +22,16 @@
 					<div class="orderSelectBox">
 						<select name="" id="" class="">
 							<option value="">일정/시간</option>
-							<option value="">0000.00.00 / 00:00</option>
-							<option value="">0000.00.00 / 00:00</option>
-							<option value="">0000.00.00 / 00:00</option>
-							<option value="">0000.00.00 / 00:00</option>
+							<option value="">0000.00.00 / 00:00 ~ 0000.00.00 / 00:00</option>
+							<option value="">0000.00.00 / 00:00 ~ 0000.00.00 / 00:00</option>
+							<option value="">0000.00.00 / 00:00 ~</option>
+							<option value="">0000.00.00 / 00:00 ~</option>
 						</select>
 						<div class="orderDate">0000.00.00 00:00(선택하면 추가됨)</div>
 						<div class="howMuch"><span>주문금액 <b>0원</b></span></div>
 						<button>결제하기</button>
 					</div>
-	
+
 					<div class="companySection">
 						<router-link to="/companyinfo" class="companyLogo">
 							<img src="../../assets/images/hs/rainbow_apple_icon.png" alt="">
@@ -58,7 +58,8 @@
 						<router-link to="/reviewpage">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
-								<img src="../../assets/images/icon/footer_icons_modify/f_naver.png" alt=""> <span>김민규</span>
+								<img src="../../assets/images/icon/footer_icons_modify/f_naver.png" alt="">
+								<span>김민규</span>
 							</div>
 							<p>후기어쩌고후기어쩌고후기어쩌고</p>
 						</router-link>
@@ -85,7 +86,8 @@
 						<router-link to="/reviewpage">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
-								<img src="../../assets/images/icon/header_icons/KakaoTalk_20240509_102443065.png" alt=""> <span>김민규</span>
+								<img src="../../assets/images/icon/header_icons/KakaoTalk_20240509_102443065.png"
+									alt=""> <span>김민규</span>
 							</div>
 							<p>후기어쩌고</p>
 						</router-link>
@@ -98,32 +100,34 @@
 			<div class="classInfoSection">
 				<h2>클래스 설명</h2>
 				<div>
-					<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam vel qui ut cupiditate labore dicta facere voluptatibus tenetur necessitatibus explicabo quod laudantium repellendus quae assumenda magnam, officia voluptate maiores et!</span>
+					<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam vel qui ut cupiditate labore
+						dicta facere voluptatibus tenetur necessitatibus explicabo quod laudantium repellendus quae
+						assumenda magnam, officia voluptate maiores et!</span>
 				</div>
 			</div>
 			<!-- //classInfoSection -->
-	
+
 			<div class="classIntroduceSection">
 				<h2>클래스 소개</h2>
 				<div class="classIntroImgBox" :class="{ 'show': isMoreInfo }"></div>
 				<button class="moreInfoBtn" @click="moreInfo">상세정보 더보기</button>
 			</div>
 			<!-- //classIntroduce -->
-	
+
 			<h2>진행하는 장소</h2>
 			<div class="mapWraper">
 				<div id="map" style="width:1000px;height:250px;border-radius: 10px;"></div>
 				<b>강남역</b>
 				<p>서울 강남구 강남대로 396</p>
 			</div>
-	
+
 			<div class="b-link">
 				<p>1:1 문의</p>
 				<p>유의 사항</p>
 				<p>환불 정책</p>
 			</div>
-	
-	
+
+
 		</div>
 		<!-- //detail-inner -->
 
@@ -138,6 +142,8 @@ import "@/assets/css/hs/classDetailPage.css"
 
 import AppFooter from "@/components/AppFooter.vue"
 import AppHeader from "@/components/AppHeader.vue"
+
+import axios from 'axios';
 
 export default {
 	name: "ClassDetailPageView",
@@ -155,7 +161,7 @@ export default {
 			this.initMap();
 		} else {
 			const script = document.createElement('script');
-			
+
 			script.onload = () => kakao.maps.load(this.initMap);
 			script.src =
 				'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=dcd5445d7a7dc0572e91ed1fd7ad2d2b';
@@ -163,6 +169,23 @@ export default {
 		}
 	},
 	methods: {
+		getClassDetail() {
+
+			axios({
+				method: 'get', // put, post, delete
+				url: 'http://localhost:9090/odo/classdetails',
+				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+				params: { classNo: this.$route.params.classNo }, //get방식 파라미터로 값이 전달
+				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+				responseType: 'json' //수신타입
+			}).then(response => {
+				console.log(response.data.apiData);
+
+			}).catch(error => {
+				console.log(error);
+			});
+
+		},
 		initMap() {
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 				mapOption = {
@@ -170,18 +193,31 @@ export default {
 					level: 3, // 지도의 확대 레벨
 				};
 
+			// 지도를 생성합니다    
 			var map = new kakao.maps.Map(mapContainer, mapOption);
-			var positions = [
-					{
-						latlng: new kakao.maps.LatLng(37.498287, 127.027064),
-					},
-				];
 
-			positions.forEach(function (pos) {
-				var marker = new kakao.maps.Marker({
-					position: pos.latlng,
-				});
-				marker.setMap(map);
+			// 주소-좌표 변환 객체를 생성합니다
+			var geocoder = new kakao.maps.services.Geocoder();
+
+			// 주소로 좌표를 검색합니다
+			geocoder.addressSearch('서울 강남구 강남대로 396', function (result, status) {
+
+				// 정상적으로 검색이 완료됐으면 
+				if (status === kakao.maps.services.Status.OK) {
+
+					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+					// 결과값으로 받은 위치를 마커로 표시합니다
+					var marker = new kakao.maps.Marker({
+						map: map,
+						position: coords
+					});
+					
+					marker.setMap(map);
+
+					// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+					map.setCenter(coords);
+				}
 			});
 
 		},
@@ -190,6 +226,8 @@ export default {
 		},
 
 	},
-	created() { },
+	created() {
+		this.getClassDetail();
+	},
 };
 </script>

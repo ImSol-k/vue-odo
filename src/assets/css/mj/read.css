@@ -1,5 +1,7 @@
-.title{
-    width: 50px;
+.ta3334{
+    width: 960px;
+    margin-top: 30px;
+    margin-left: 15px;
 }
 .ta3334 .button{
     width:80px;
@@ -28,12 +30,13 @@
 #notice_btn{
     width:50px;
     margin:0 auto;
+    
  
 }
 #notice_btn{
     text-align: center;
     margin-top: 25px;
-    margin-left:300px;
+    margin-left: 455px;
     margin-bottom: 25px;
 }
 

@@ -114,7 +114,7 @@ export default {
   },
 	created(){},
   mounted() {
-    const labels = [
+      const labels = [
       '24년 1월',
       '2월',
       '3월',
@@ -147,9 +147,10 @@ export default {
     new Chart(
       document.getElementById('LineChart'),
       config
-    );
-  },
-	};
+    )
+  }
+  
+};
 </script>
 
 <style>

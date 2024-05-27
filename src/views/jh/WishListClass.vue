@@ -77,7 +77,7 @@
                 <p class="">
                   {{ a.classIntro }}
                 </p>
-                <p class="">{{ a.classPrice }}</p>
+                <p class="">{{ Number(a.classPrice).toLocaleString("ko-KR") }}원</p>
               </div>
             </div>
           </div>
