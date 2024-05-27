@@ -216,8 +216,8 @@
     color: #999;
     margin-right: 30px;
 }
-h2 {
-    font-size: 20px;
+.detail-inner h2 {
+    font-size: 26px;
     color: #2c2c2c;
     margin-bottom: 20px;
 }
