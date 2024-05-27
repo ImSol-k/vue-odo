@@ -90,10 +90,6 @@ h2.searchResult {
 }
 
 /* -----paging------------- */
-#paging {
-    width: 100%;
-    height: 60px;
-}
 #paging ul {
     display: flex;
     justify-content: center;
