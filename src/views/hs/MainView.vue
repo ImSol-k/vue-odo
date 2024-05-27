@@ -18,35 +18,35 @@
 			</Carousel>
 		</section>
 		<ul class="category-icons">
-			<li><router-link to="/searchresultpage/1">
+			<li><router-link to="/searchresultpage/1?crtPage=1">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/cooking.png" alt=""></div>
 					<p>쿠킹</p>
 				</router-link></li>
-			<li><router-link to="/searchresultpage/2">
+			<li><router-link to="/searchresultpage/2?crtPage=1">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/baking.png" alt=""></div>
 					<p>베이킹</p>
 				</router-link></li>
-			<li><router-link to="/searchresultpage/3">
+			<li><router-link to="/searchresultpage/3?crtPage=1">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/drink.png" alt=""></div>
 					<p>음료</p>
 				</router-link></li>
-			<li><router-link to="/searchresultpage/4">
+			<li><router-link to="/searchresultpage/4?crtPage=1">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/beauty.png" alt=""></div>
 					<p>뷰티</p>
 				</router-link></li>
-			<li><router-link to="/searchresultpage/5">
+			<li><router-link to="/searchresultpage/5?crtPage=1">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/craft.png" alt=""></div>
 					<p>공예</p>
 				</router-link></li>
-			<li><router-link to="/searchresultpage/6">
+			<li><router-link to="/searchresultpage/6?crtPage=1">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/sports.png" alt=""></div>
 					<p>스포츠</p>
 				</router-link></li>
-			<li><router-link to="/searchresultpage/7">
+			<li><router-link to="/searchresultpage/7?crtPage=1">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/councelling.png" alt=""></div>
 					<p>심리/상담</p>
 				</router-link></li>
-			<li><router-link to="/searchresultpage/8">
+			<li><router-link to="/searchresultpage/8?crtPage=1">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/it.png" alt=""></div>
 					<p>IT</p>
 				</router-link></li>

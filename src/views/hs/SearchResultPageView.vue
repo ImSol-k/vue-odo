@@ -51,6 +51,24 @@
 				<p>다른 검색어로 검색해 주세요!</p>
 			</div>
 		</ul>
+
+		<div id="paging">
+			<ul>
+				<li v-if="pMap.prev">
+					<a @click="changePage(pMap.startPageBtnNo - 1)">◀</a>
+				</li>
+
+				<li v-for="page in pages" :key="page" :class="{ pageBtnActive: this.$route.query.crtPage === String(page) }">
+					<a @click="changePage(page)">{{ page }}</a>
+				</li>
+
+				<li v-if="pMap.next">
+					<a @click="changePage(pMap.endPageBtnNo + 1)">▶</a>
+				</li>
+			</ul>
+		</div>
+		<!-- paging -->
+
 	</div>
 
 	<AppFooter />
@@ -90,13 +108,22 @@ export default {
 			pMap: {},
 		};
 	},
+	computed: {
+		pages() {
+			let pages = [];
+			for (let i = this.pMap.startPageBtnNo; i <= this.pMap.endPageBtnNo; i++) {
+				pages.push(i);
+			}
+			return pages;
+		}
+	},
 	methods: {
 		isActive(categoryIndex, itemIndex) {
 			return this.activeIndex.categoryIndex === categoryIndex && this.activeIndex.itemIndex === itemIndex;
 		},
 		//2차 카테고리 버튼 눌렀을때 버튼 색상변경 + 리스트가져오기
 		activateItem(categoryIndex, itemIndex, cate2No) {
-			this.$router.push(`/searchresultpage2/${cate2No}`);
+			this.$router.push(`/searchresultpage2/${cate2No}?crtPage=1`);
 		},
 		//MainView에서 처음 넘어올 때 리스트 불러오는 함수
 		getcateList() {
@@ -105,24 +132,23 @@ export default {
 				method: 'get', // put, post, delete
 				url: 'http://localhost:9090/odo/categories',
 				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
-				params: { cate1No: this.$route.params.no }, //get방식 파라미터로 값이 전달
+				params: {
+					cate1No: this.$route.params.no, // cate1No 파라미터
+					crtPage: this.$route.query.crtPage || 1 // crtPage 파라미터, 기본값 1
+				}, //get방식 파라미터로 값이 전달
 				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
 			}).then(response => {
 				this.pMap = response.data.apiData;
 				this.cateList = this.pMap.cate1List;
-				console.log("cate1List : " + this.pMap.cate1List);
-				console.log(this.pMap.startPageBtnNo);
-				console.log(this.pMap.endPageBtnNo);
-				console.log(this.pMap.prev);
-				console.log(this.pMap.next);
+
 			}).catch(error => {
 				console.log(error);
 			});
 		},
 		// 현재페이지에서 cate1 눌렀을때 리스트 불러오는 함수
 		goCate1ListPage(i) {
-			this.$router.push(`/searchresultpage/${i + 1}`);
+			this.$router.push(`/searchresultpage/${i + 1}?crtPage=1`);
 			this.clickIndex = i;
 
 			this.activeIndex = { categoryIndex: null, itemIndex: null };
@@ -133,10 +159,16 @@ export default {
 		//cate1 버튼 색상 표시
 		btnSelected() {
 			for (let i = 0; i < 8; i++) {
-				if (this.$route.params.no == (i+1)) {
+				if (this.$route.params.no == (i + 1)) {
 					this.clickIndex = i;
 				}
 			}
+		},
+		changePage(page) {
+			this.$router.push({
+				path: `/searchresultpage/${this.$route.params.no}`,
+				query: { crtPage: page }
+			});
 		},
 	},
 	created() {
@@ -144,10 +176,12 @@ export default {
 		this.btnSelected();
 	},
 	watch: {
-		// 실시간 변경 감시
-		'$route.params.no': function () {
-			this.getcateList();
-			this.btnSelected();
+		'$route': {
+			immediate: true,
+			handler() {
+				this.getcateList(); // 라우트가 변경될 때마다 getcateList 호출
+				this.btnSelected(); // 라우트가 변경될 때마다 btnSelected 호출
+			}
 		}
 	},
 };
