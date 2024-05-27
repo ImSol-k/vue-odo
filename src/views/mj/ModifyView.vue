@@ -58,7 +58,7 @@
           </div>
           <div class="userModifyBtn">
             <button type="reset">취소</button>
-            <button>저장</button>
+            <button  @click="goModify">저장</button>
           </div>
         </div>
 </form>
@@ -75,7 +75,8 @@ import AppFooter from "@/components/AppFooter.vue";
 import AppHeader from "@/components/AppHeader.vue";
 import MyPageSide from "@/components/MyPageSide.vue";
 import MyPageHeader from "@/components/MyPageHeader.vue";
- import axios from 'axios';
+import axios from 'axios';
+
 
 export default {
   name: "ModifyView",
@@ -111,7 +112,10 @@ export default {
        }).catch(error => {
          console.log(error);
        });
-      }
+      },
+        goModify(){ 
+      this.$router.push('/mypage/pay');
+    },
   },
     created() {
 

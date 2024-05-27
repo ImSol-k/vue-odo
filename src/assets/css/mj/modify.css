@@ -133,6 +133,7 @@
   margin: 50px 10px;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
 }
 .userModifyBtn > button:last-child {
   background-color: #8521ff;

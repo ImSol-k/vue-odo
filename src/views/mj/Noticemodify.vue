@@ -29,7 +29,7 @@
 							<input type="file" name="b_file" />
 						</div>
 						<div class="bt_se">
-							<button type="submit">글 작성</button>
+							<button type="submit" @click="goRead">글 작성</button>
 						</div>
 					</form>
 				</div>
@@ -55,7 +55,11 @@ import MyPageSide from '@/components/MyPageSide.vue';
 		data() {
 			return {};
 	},
-	methods: {},
+	methods: {
+		goRead(){
+			this.$router.push('/mypage/read');
+		}
+	},
 	created(){}
 	};
 </script>
