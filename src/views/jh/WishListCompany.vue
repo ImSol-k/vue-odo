@@ -42,21 +42,7 @@
           <!-- mymy-nav -->
           <!--위시 리스트 없을때-->
           <!---->
-          <div v-if="this.b <= 0" class="cover31">
-
-            <div>
-              <img class="img30" src="../../assets/images/하트.png" alt="">
-            </div>
-            <div class="cover30">
-              <p>아직 찜한 업체가 없어요</p>
-              <p>관심있는 업체를 선택해보세요</p>
-            </div>
-
-
-
-          </div>
-
-          <div v-else class="wishlistCompany">
+          <div v-if="this.b != 0" class="wishlistCompany">
             <div class="wishlistCompanyBox" v-for="(a, i) in b" :key="i">
               <div>
                 <div class="whsilistImg wishlistCompanyImg">
@@ -87,6 +73,22 @@
               <div class="goCompanyInfo">></div>
             </div>
           </div>
+
+          <div v-else class="cover31">
+
+            <div>
+              <img class="img30" src="../../assets/images/하트.png" alt="">
+            </div>
+            <div class="cover30">
+              <p>아직 찜한 업체가 없어요</p>
+              <p>관심있는 업체를 선택해보세요</p>
+            </div>
+
+
+
+          </div>
+
+          
         </div>
         <!-- mymy-main -->
       </div>
