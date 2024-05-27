@@ -20,10 +20,10 @@
         <!-- 원데이클래스 등록 -->
         <div class="classAddBox">
           <div class="classAddImg">
-            <img src="@/assets/images/icon/ss/kakao.png" alt="" />
+            <img :src="img" alt="" />
             <div class="classAddImgTitle">
               <p>클래스 대표이미지</p>
-              <input type="file" name="" id="" />
+              <input type="file" name="" id="" v-on:change="imgFile" />
               <select
                 name=""
                 id=""
@@ -74,7 +74,12 @@
                   >가능</label
                 >
                 <input type="radio" name="possibility" id="possibility" />
-                <label class="classRadioText" for="impossibility">불가능</label>
+                <label
+                  class="classRadioText"
+                  for="impossibility"
+                  v-on:click.prevent="selectClass(2)"
+                  >불가능</label
+                >
                 <input type="radio" name="possibility" id="impossibility" />
               </div>
               <!-- 원데이일정 -->
@@ -83,21 +88,21 @@
                 <div class="classScheduleFor">
                   <div
                     class="classScheduleBox"
-                    v-for="i in onedayDate.length"
+                    v-for="i in classVo.onedayDate.length"
                     :key="i"
                   >
                     <VueDatePicker
                       class="VueDatePickerOne"
                       locale="ko"
                       time-picker-inline
-                      v-model="onedayDate[i]"
+                      v-model="classVo.onedayDate[i]"
                     />
                     <button v-on:click.prevent="schedulClick(2, i)">
                       삭제
                     </button>
                     <button
                       v-on:click.prevent="schedulClick(1, 0)"
-                      v-show="onedayDate.length == i"
+                      v-show="classVo.onedayDate.length == i"
                     >
                       추가
                     </button>
@@ -113,7 +118,7 @@
                   <VueDatePicker
                     class="VueDatePicker"
                     locale="ko"
-                    v-model="startDate"
+                    v-model="classVo.startDate"
                     :enable-time-picker="false"
                   />
                 </div>
@@ -121,7 +126,7 @@
                   <VueDatePicker
                     class="VueDatePicker"
                     locale="ko"
-                    v-model="endDate"
+                    v-model="classVo.endDate"
                     :enable-time-picker="false"
                   />
                 </div>
@@ -168,20 +173,25 @@
                 </div>
               </div>
               <!-- <div>
-                <label for="">장소</label>
-                <input type="text" id="classinfo" placeholder="주소입력" />
-              </div> -->
+                  <label for="">장소</label>
+                  <input type="text" id="classinfo" placeholder="주소입력" />
+                </div> -->
               <div class="classCategory">
                 <label for="">카테고리</label>
                 <div class="classCategorySelectBox">
-                  <select name="" id="" v-model="classVo.cate1No" @change="cateSelect">
+                  <select
+                    name=""
+                    id=""
+                    v-model="classVo.cate1No"
+                    @change="cateSelect"
+                  >
                     <option value="" disabled selected>1차 카테고리</option>
                     <option v-for="(c, i) in cate1" :key="i" :value="c.cate1No">
                       {{ c.cate1Name }}
                     </option>
                   </select>
                   <select name="" id="" v-model="classVo.cate2No">
-                    <option value="" disabled selected>2차 카테고리 </option>
+                    <option value="" disabled selected>2차 카테고리</option>
                     <option v-for="(c, i) in cate2" :key="i" :value="c.cate2No">
                       {{ c.cate2Name }}
                     </option>
@@ -194,6 +204,7 @@
                 <label for="">가격</label>
                 <input
                   type="text"
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                   placeholder="추가금액 입력"
                   v-model="classVo.classPrice"
                 />
@@ -202,6 +213,7 @@
                 <label for="">모집인원</label>
                 <input
                   type="text"
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                   placeholder="인원수"
                   v-model="classVo.classMax"
                 />
@@ -210,46 +222,49 @@
                 <label for="">클래스오픈<br />최소인원</label>
                 <input
                   type="text"
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                   placeholder="인원수"
-                  v-model="classVo.classMax"
+                  v-model="classVo.classMix"
                 />
               </div>
               <div class="quillEditorBox">
                 <label for="">상세설명</label><br />
-                <quill-editor
-                  class="quillEditor"
-                  v-model:value="state.content"
-                  :options="state.editorOption"
-                  @change="onEditorChange($event)"
-                ></quill-editor>
-                <button
-                  style="
-                    border: none;
-                    border-radius: 5px;
-                    width: 100px;
-                    height: 35px;
-                    font-size: 18px;
-                    margin: 10px 0px;
-                    background-color: rgb(209, 209, 209);
-                  "
-                  @click="classInfo(state)"
-                >
-                  저장
-                </button>
+                <QuillEditor
+                  ref="quillEditor"
+                  theme="snow"
+                  toolbar="full"
+                  v-model="classVo.classInfo"
+                  @ready="onEditorReady"
+                />
+                <!-- <button
+                    style="
+                      border: none;
+                      border-radius: 5px;
+                      width: 100px;
+                      height: 35px;
+                      font-size: 18px;
+                      margin: 10px 0px;
+                      background-color: rgb(209, 209, 209);
+                    "
+                    @click="classInfo(state)"
+                  >
+                    저장
+                  </button> -->
               </div>
             </div>
           </div>
           <!--classAddInfo-->
           <div class="isAddBtn">
             <button>취소</button>
-            <button v-if="isAdd">등록</button>
-            <button v-else>수정</button>
+            <button v-if="isAdd" type="button" v-on:click="classHandle">
+              등록
+            </button>
+            <button v-else type="button" v-on:click="classHandle">수정</button>
           </div>
         </div>
-        <!--classAddBox-->
-
         <!--classAddBox---->
       </div>
+      <!--classAddBox-->
     </div>
   </div>
   <AppFooter />
@@ -258,87 +273,28 @@
 import AppHeader from "@/components/HostAppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import AppMenu from "@/components/CompanyMenu.vue";
-import { reactive } from "vue";
+import { QuillEditor } from "@vueup/vue-quill";
 import axios from "axios";
 
 export default {
   name: "ClassAddView",
-  components: { AppHeader, AppFooter, AppMenu },
-  setup() {
-    const state = reactive({
-      content: "",
-      _content: "",
-      editorOption: {
-        placeholder: "", // placeholder 설정
-        modules: {
-          toolbar: [
-            ["bold", "italic", "underline", "strike"],
-            // ["blockquote",],
-            // [{ header: 1 }, { header: 2 }],
-            [{ list: "ordered" }, { list: "bullet" }],
-            // [{ script: "sub" }, { script: "super" }],
-            [{ indent: "-1" }, { indent: "+1" }],
-            // [{ direction: "rtl" }],
-            [{ size: ["small", false, "large", "huge"] }],
-            // [{ header: [1, 2, 3, 4, 5, 6, false] }],
-            [{ color: [] }, { background: [] }],
-            [{ font: [] }],
-            [{ align: [] }],
-            // ["clean"],
-            ["link", "image"],
-          ],
-          // handlers: {
-          //   // 이미지 처리는 우리가 직접 imageHandler라는 함수로 처리할 것이다.
-          //   image: this.imageHandler(),
-          // },
-        },
-      },
-      disabled: false,
-    });
-
-    const onEditorBlur = (quill) => {
-      console.log("editor blur!", quill);
-    };
-    const onEditorFocus = (quill) => {
-      console.log("editor focus!", quill);
-    };
-    const onEditorReady = (quill) => {
-      console.log("editor ready!", quill);
-    };
-    const onEditorChange = ({ quill, html, text }) => {
-      console.log("editor change!", quill, html, text);
-      state._content = html;
-    };
-
-    setTimeout(() => {
-      state.disabled = true;
-    }, 2000);
-
-    return {
-      state,
-      onEditorBlur,
-      onEditorFocus,
-      onEditorReady,
-      onEditorChange,
-    };
-  },
-  props: { title: String },
+  components: { AppHeader, AppFooter, AppMenu, QuillEditor },
   data() {
     return {
       isAdd: true,
       isClass: true,
-      startDate: null,
-      endDate: null,
-      onedayDate: [null],
+
       // ============================
+      img: "",
       companyNo: 2,
       cList: [],
       selectClassNo: "",
       cate1: [],
+      cate2: [],
+      classImage: "",
       // companyNo: this.$store.state.authCompany.companyNo,
       classVo: {
-        classNo: "",
-        companyNo: "",
+        companyNo: this.companyNo,
         cate1No: "",
         cate2No: "",
         className: "",
@@ -350,36 +306,109 @@ export default {
         classDetailAddress: "",
         classLatitude: "",
         classLongitutde: "",
-        classImage: "",
         classPrice: "",
         classMin: "",
         classMax: "",
         classInfo: "",
         classUrl: "",
         recClassNo: "",
+        startDate: null,
+        endDate: null,
+        onedayDate: [null],
       },
     };
   },
   methods: {
-    //클래스 추가
-    classInsert() {
-      axios({
-        method: "post",
-        url: "",
-        headers: {
-          //전송타입 + 토큰
-          "Content-Type": "application/json; charset=utf-8",
-          Authorization: "Bearer " + this.$store.state.token,
-        },
-        data: this.classVo,
-        responseType: "json",
-      })
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    classHandle() {
+      //클래스 추가
+      const formData = new FormData();
+      formData.append("classImageFile", this.classImage);
+      formData.append("classVo", JSON.stringify(this.classVo));
+      // formData.append("companyNo", this.classVo.companyNo);
+      // formData.append("cate1No", this.classVo.cate1No);
+      // formData.append("cate2No", this.classVo.cate2No);
+      // formData.append("className", this.classVo.className);
+      // formData.append("classIntro", this.classVo.classIntro);
+      // formData.append("classZipcode", this.classVo.classZipcode);
+      // formData.append("classNameAddress", this.classVo.classNameAddress);
+      // formData.append("classNumAddress", this.classVo.classNumAddress);
+      // formData.append("classDetailAddress", this.classVo.classDetailAddress);
+      // formData.append("classLatitude", this.classVo.classLatitude);
+      // formData.append("classLongitutde", this.classVo.classLongitutde);
+      // formData.append("classPrice", this.classVo.classPrice);
+      // formData.append("classMin", this.classVo.classMin);
+      // formData.append("classMax", this.classVo.classMax);
+      // formData.append("classUrl", this.classVo.classUrl);
+      
+      if (this.classVo.className == "") {
+        alert("클래스명을 작성해주세요.");
+        // } else if (this.classVo.classIntro == "") {
+        //   alert("클래스 소개를 작성해주세요.");
+        // } else if (this.isClass && this.classVo.onedayDate == "") {
+        //   alert("일정을 입력해 주세요");
+        // } else if (
+        //   !this.isClass &&
+        //   this.classVo.startDate == "" &&
+        //   this.classVo.endDate == ""
+        // ) {
+        //   alert("시작일과 종료일을 확인 해 주세요");
+        // } else if (
+        //   this.classVo.classZipcode == "" &&
+        //   this.classVo.classDetailAddress == ""
+        // ) {
+        //   alert("주소(상세주소)를 입력해 주세요");
+        // } else if (this.classVo.cate2No == "") {
+        //   alert("카테고리를 선택해 주세요");
+        // } else if (this.classVo.classMax == "" && this.classVo.classMin == "") {
+        //   alert("인원수를 입력해주세요.")
+        // } else if (this.classVo.classInfo == null) {
+        //   alert("상세설명을 입력해주세요.")
+      // } else if (
+      //   Number(this.classVo.classMax) <= Number(this.classVo.classMin)
+      // ) {
+      //   alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
+      } else {
+        //클래스 추가
+        if (this.isClass) {
+          console.log("클래스 추가");
+          console.log(this.classVo);
+          // formData.append("recClassNo", this.classVo.recClassNo);
+          // formData.append("onedayDate", this.classVo.onedayDate);
+          axios({
+            method: "post",
+            url: `${this.$store.state.apiBaseUrl}/odo/company/iclass`,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            data: formData,
+            responseType: "json",
+          })
+            .then((response) => {
+              console.log(response.data);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          //클래스 수정
+
+        }
+      }
+    },
+    imgFile(event) {
+      console.log("이미지업로드");
+      //이미지 저장
+      this.classImage = event.target.files[0];
+      // console.log(this.classImage);
+      //이미지 미리보기
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.img = e.target.result;
+      };
+
+      if (this.classImage) {
+        reader.readAsDataURL(this.classImage);
+      }
     },
 
     //기존클래스
@@ -452,7 +481,7 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          console.log(response.data.apiData.cate1No);
+          // console.log(response.data.apiData);
           if (response.data.result == "success") {
             this.cate1 = response.data.apiData;
           } else {
@@ -471,28 +500,27 @@ export default {
         alert("1차 카테고리를 선택해 주세요.");
       } else {
         axios({
-        method: "get",
-        url: `${this.$store.state.apiBaseUrl}/odo/company/getcate2/${this.classVo.cate1No}`,
-        headers: {
-          //전송타입 + 토큰
-          "Content-Type": "application/json; charset=utf-8",
-        },
-        responseType: "json",
-      })
-        .then((response) => {
-          console.log(response.data);
-          if (response.data.result == "success") {
-            this.cate2 = response.data.apiData;
-          } else {
-            console.log("불러오기 실패");
-          }
-          // console.log(this.cateList);
+          method: "get",
+          url: `${this.$store.state.apiBaseUrl}/odo/company/getcate2/${this.classVo.cate1No}`,
+          headers: {
+            //전송타입 + 토큰
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          responseType: "json",
         })
-        .catch((error) => {
-          console.log(error);
-        });
+          .then((response) => {
+            console.log(response.data);
+            if (response.data.result == "success") {
+              this.cate2 = response.data.apiData;
+            } else {
+              console.log("불러오기 실패");
+            }
+            // console.log(this.cateList);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
-      
     },
 
     //주소
@@ -500,24 +528,18 @@ export default {
       new window.daum.Postcode({
         oncomplete: (data) => {
           //주소 저장
-          this.companyVo.zonecode = data.zonecode;
-          this.companyVo.roadAddress = data.roadAddress;
-          this.companyVo.jibunAddress = data.jibunAddress;
+          this.classVo.classZipcode = data.zonecode;
+          this.classVo.classNameAddress = data.roadAddress;
+          this.classVo.classNumAddress = data.jibunAddress;
           // //검색된주소 위도, 경도로 저장
           var geocoder = new window.kakao.maps.services.Geocoder();
           geocoder.addressSearch(
-            this.companyVo.roadAddress,
+            this.classVo.classNameAddress,
             (result, status) => {
               if (status === window.kakao.maps.services.Status.OK) {
                 // 주소 검색 결과가 성공일 경우
-                this.companyVo.y = result[0].y; // 위도
-                this.companyVo.x = result[0].x; // 경도
-                console.log(
-                  "위도:",
-                  this.companyVo.y,
-                  "경도:",
-                  this.companyVo.x
-                );
+                this.classVo.classLatitude = result[0].y; // 위도
+                this.classVo.classLongitutde = result[0].x; // 경도
               } else {
                 // 주소 검색 실패
                 console.error("주소 검색 실패");
@@ -528,13 +550,6 @@ export default {
       }).open();
     },
 
-    //클래스 정보
-    classInfo(state) {
-      this.classVo.classInfo = state._content;
-      console.log("info: " + this.classVo.classInfo);
-    },
-    //클래스정보 이미지핸들링
-    // imageHandler() {},
     //클래스 타입
     selectClass(num) {
       if (num == 1) {
@@ -566,6 +581,68 @@ export default {
           this.onedayDate.splice(i, 1);
         }
       }
+    },
+    //에디터 저장
+    onEditorReady() {
+      this.$nextTick(() => {
+        // Quill 인스턴스를 가져옵니다.
+        const editorInstance = this.$refs.quillEditor.getQuill();
+        // 툴바 모듈을 가져옵니다.
+        let toolbar = editorInstance.getModule("toolbar");
+        toolbar.addHandler("image", this.selectLocalImage);
+      });
+    },
+    selectLocalImage() {
+      const input = document.createElement("input");
+      input.setAttribute("type", "file");
+      input.setAttribute("accept", "image/*");
+      input.click();
+
+      // 파일 선택 시 실행될 이벤트 리스너를 정의합니다.
+      input.onchange = () => {
+        const file = input.files[0];
+
+        // 파일을 서버로 업로드하는 함수를 호출합니다.
+        if (file) {
+          this.uploadImageToServer(file);
+        }
+      };
+    },
+    uploadImageToServer(file) {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      axios({
+        method: "post", //put,post,delete
+        url: `${this.$store.state.apiBaseUrl}/odo/company/file`,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        //params: { crtPage: this.crtPage, keyword: this.keyword }, //get방식 파라미터로 값이 전달
+        data: formData, //이경우는 json이 아님
+
+        responseType: "json", //수신타입
+      })
+        .then((response) => {
+          console.log(response.data.apiData); //수신데이타
+
+          // 서버로부터 응답받은 데이터에서 이미지 saveName을 추출합니다.
+          const saveName = response.data.apiData; // 예를 들어, 응답 데이터에 이미지 URL이 result 키에 위치한다고 가정합니다.
+          // saveName 으로 imageUrl 을 만듭니다.
+          const imageUrl = "http://localhost:9090/upload/" + saveName;
+
+          // Quill 에디터 인스턴스를 가져옵니다.
+          const editorInstance = this.$refs.quillEditor.getQuill();
+          // 현재 에디터의 커서 위치를 가져옵니다.
+          const range = editorInstance.getSelection(true);
+          // 에디터의 현재 커서 위치에 이미지를 삽입합니다. imageUrl은 서버로부터 받은 이미지의 URL입니다.
+          editorInstance.insertEmbed(range.index, "image", imageUrl);
+          // 이미지 삽입 후 커서 위치를 이미지 뒤로 이동시킵니다.
+          editorInstance.setSelection(range.index + 1);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
   created() {

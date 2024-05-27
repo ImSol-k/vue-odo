@@ -12,6 +12,7 @@ import ClassCalendarView from '../views/sr/ClassCalendarView.vue'
 import ClassAddView from '../views/sr/ClassAddView.vue'
 import ClassListView from '../views/sr/ClassListView.vue'
 import CompanySelectView from '../views/sr/CompanySelectView.vue'
+import TestView from '../views/sr/TestView.vue'
 //재현
 import CompanyInfoView from '../views/jh/CompanyInfoView.vue'
 import CompanyInfoModify from '../views/jh/CompanyInfoModify.vue'
@@ -92,6 +93,11 @@ const routes = [
     path: '/companyselect',
     name: 'companyselect',
     component: CompanySelectView
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: TestView
   },
   //=== 재현 =================================
   {
