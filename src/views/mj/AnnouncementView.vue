@@ -7,7 +7,7 @@
                 <div class="MpLeft">
                 
                 <!-- nav -->
-                <MyPageSide/>
+                <!-- <MyPageSide/> -->
 
                 </div>
                 <h2>공지사항</h2>
@@ -88,14 +88,14 @@ import '@/assets/css/Initialization.css'
 import '@/assets/css/mj/notice.css'
 import AppFooter from '@/components/AppFooter.vue';
 import AppHeader from '@/components/AppHeader.vue';
-import MyPageSide from '@/components/MyPageSide.vue';
+// import MyPageSide from '@/components/MyPageSide.vue';
 
 	export default {
 		name: "ConditionView",
 		components: {
 			AppHeader,
 			AppFooter,
-      MyPageSide
+      // MyPageSide
 		},
 		data() {
 			return {};
