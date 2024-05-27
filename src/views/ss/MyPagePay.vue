@@ -21,9 +21,9 @@
 
 			<div class="mymy-main">
 				<div class="mymy-nav">
-					<span type="button" v-on:click.prevent="selectClass(1)" :class="{ pickClass : isClass}">원데이</span>
+					<span type="button" @click="selectClass(1)" :class="{ pickClass : isClass}">원데이</span>
 					<span>ㅣ</span>
-					<span type="button" v-on:click.prevent="selectClass(2)" :class="{ pickClass : !isClass}">정규</span>
+					<span type="button" @click="selectClass(2)" :class="{ pickClass : !isClass}">정규</span>
 				</div>
 				<!-- mymy-nav -->
 
@@ -40,57 +40,56 @@
 					<div v-else>
 						<!-- 원데이 클래스-->
 						<div v-if="isClass">
-							<div class="pay clearfix" v-for="i in 1" :key="i">
+							<div class="pay clearfix" v-for="(list, index) in paymentData" :key="index">
 								<div class="mymy-pay">
 									<ul>
 										<li>
 											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
-											<img id="pay-pro" src="@/assets/images/hs/cake.jpg" v-on:click.prevent="goPage(1)">
-											<div class="heart" v-on:click.prevent="wish" :class="{ red : isRed}"></div>
+											<img id="pay-pro" :src="classImages(list.classImage)" alt="이미지를 준비중입니다." @click="goPage(list.classNo)">
+											<div class="heart" v-if="list.wishClassNo != 0" @click="wish()" :class="{ red : isRed}"></div>
 										</li>
 										<li>
 											<div class="star-ratings">
-												<div class="star-ratings-fill" :style="{ width: ratingToPercent(starScore) + '%' }">
+												<div class="star-ratings-fill" :style="{ width: ratingToPercent(list.starScore) + '%' }">
 													<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 												</div>
 												<div class="star-ratings-base">
 													<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 												</div>
 											</div>
-											<span class="star-avg">({{ starScore }})</span>
+											<span class="star-avg">({{ list.starScore }})</span>
 										</li>
 									</ul>
 								</div>
 								<!-- mymy-pay -->
-								<div class="mymy-payCon ">
+								<div class="mymy-payCon">
 									<div class="paycon1">
-										<span class="paycon1-txt1">결제일 : 2024.05.05</span>
-										<span class="paycon1-txt2">[원데이]누구나 손쉽게 배우는 커피 타임</span>
-										<span class="paycon1-txt3">바리스타 기초 교육 수업에 참여해보세요. 무료입니다.</span>
-										<span class="paycon1-txt4">결제 금액 : {{ payPrice }}원</span>
+										<span class="paycon1-txt1">결제일 : {{ list.payDate}}</span>
+										<span class="paycon1-txt2">[원데이] {{ list.className }}</span>
+										<span class="paycon1-txt3">{{ list.classIntro }}</span>
+										<span class="paycon1-txt4">결제 금액 : {{ list.payPrice }}원</span>
 										<div class="paycon1-btnbox">
-											<button type="button" id="paybtn1" v-on:click.prevent="getAttendance">출석 : 15 / 20</button>
-											<button v-if="hasRev" type="button" id="paybtn2" v-on:click.prevent="revForm">후기 작성</button>
-											<button v-else type="button" id="paybtn2" v-on:click.prevent="revShow">후기 보기</button>
-											<button type="button" id="paybtn3" v-on:click.prevent="inquiry">문의</button>										
+											<button type="button" id="paybtn1" @click="getAttendance">출석 : {{ list.attenCount }}회</button>
+											<button v-if="list.reviewNo == 0" type="button" id="paybtn2" @click="revForm(list.scheduleNo)">후기 작성</button>
+											<button v-else type="button" id="paybtn2" @click="revShow(list.reviewNo)">후기 보기</button>
+											<button type="button" id="paybtn3" @click="inquiry(list.classUrl)">문의</button>
 										</div>
 									</div>
 									<!-- paycon1 -->
 
-									<div class="paycon2" >
-										<div v-if="recClass" class="paycon2-1">
+									<div class="paycon2">
+										<div v-if="list.recClassNo != 0" class="paycon2-1">
 											<span class="paycon2-txt1">추천!</span>
-											<img src="@/assets/images/hs/coffee.jpg" v-on:click.prevent="goPage(1)">
-											<span class="paycon2-txt2">[정규]뜨개질이 일상이 되어버린사람들을 위한 클래스</span>
+											<img :src="classImages(list.recClassImage)" alt="이미지를 준비중입니다" @click="goPage(list.recClassNo)">
+											<span class="paycon2-txt2">{{ list.recClassName }}</span>
 										</div>
 										<div v-else class="paycon2-noClass">
 											<span>운영중인<br>정규클래스가<br>없어요</span>
 										</div>
 									</div>
 									<!-- paycon2 -->
-
 								</div>
-								<!-- mymy-payCon -->	
+								<!-- mymy-payCon -->
 							</div>
 							<!-- pay -->
 						</div>
@@ -98,57 +97,56 @@
 						
 						<div v-else>
 							<!-- 정규클래스 -->
-							<div class="pay clearfix" v-for="i in 3" :key="i">
+							<div class="pay clearfix" v-for="(list, index) in paymentData" :key="index">
 								<div class="mymy-pay">
 									<ul>
 										<li>
 											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
-											<img id="pay-pro" src="@/assets/images/hs/cake.jpg" v-on:click.prevent="goPage(1)">
-											<div class="heart" v-on:click.prevent="wish" :class="{ red : isRed}"></div>
+											<img id="pay-pro" :src="classImages(list.classImage)" alt="이미지를 준비중입니다." @click="goPage(list.classNo)">
+											<div class="heart" v-if="list.wishClassNo != 0" @click="wish()" :class="{ red : isRed}"></div>
 										</li>
 										<li>
 											<div class="star-ratings">
-												<div class="star-ratings-fill" :style="{ width: ratingToPercent(starScore) + '%' }">
+												<div class="star-ratings-fill" :style="{ width: ratingToPercent(list.starScore) + '%' }">
 													<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 												</div>
 												<div class="star-ratings-base">
 													<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 												</div>
 											</div>
-											<span class="star-avg">({{ starScore }})</span>
+											<span class="star-avg">({{ list.starScore }})</span>
 										</li>
 									</ul>
 								</div>
 								<!-- mymy-pay -->
-								<div class="mymy-payCon ">
+								<div class="mymy-payCon">
 									<div class="paycon1">
-										<span class="paycon1-txt1"> 결제일 : 2024.05.05</span>
-										<span class="paycon1-txt2">[정규]누구나 손쉽게 배우는 커피 타임</span>
-										<span class="paycon1-txt3">바리스타 기초 교육 수업에 참여해보세요. 무료입니다.</span>
-										<span class="paycon1-txt4">결제 금액 : {{ payPrice }}원</span>
+										<span class="paycon1-txt1">결제일 : {{ list.payDate}}</span>
+										<span class="paycon1-txt2">[정규]{{ list.className }}</span>
+										<span class="paycon1-txt3">{{ list.classIntro }}</span>
+										<span class="paycon1-txt4">결제 금액 : {{ list.payPrice }}원</span>
 										<div class="paycon1-btnbox">
-											<button type="button" id="paybtn1" v-on:click.prevent="getAttendance">출석 : 15 / 20</button>
-											<button v-if="hasRev" type="button" id="paybtn2" v-on:click.prevent="revForm">후기 작성</button>
-											<button v-else type="button" id="paybtn2" v-on:click.prevent="revShow">후기 보기</button>
-											<button type="button" id="paybtn3" v-on:click.prevent="inquiry">문의</button>										
+											<button type="button" id="paybtn1" @click="getAttendance">출석 : {{ list.attenCount }}회</button>
+											<button v-if="list.reviewNo == 0" type="button" id="paybtn2" @click="revForm(list.scheduleNo)">후기 작성</button>
+											<button v-else type="button" id="paybtn2" @click="revShow">후기 보기</button>
+											<button type="button" id="paybtn3" @click="inquiry(list.classUrl)">문의</button>										
 										</div>
 									</div>
 									<!-- paycon1 -->
 
-									<div class="paycon2" >
-										<div v-if="recClass" class="paycon2-1">
+									<div class="paycon2">
+										<div v-if="list.recClassNo != 0" class="paycon2-1">
 											<span class="paycon2-txt1">추천!</span>
-											<img src="@/assets/images/hs/coffee.jpg" v-on:click.prevent="goPage(1)">
-											<span class="paycon2-txt2">[정규]뜨개질이 일상이 되어버린사람들을 위한 클래스</span>
+											<img :src="classImages(list.recClassImage)" alt="이미지를 준비중입니다" @click="goPage(list.recClassNo)">
+											<span class="paycon2-txt2">{{ list.recClassName }}</span>
 										</div>
 										<div v-else class="paycon2-noClass">
 											<span>운영중인<br>정규클래스가<br>없어요</span>
 										</div>
 									</div>
 									<!-- paycon2 -->
-
 								</div>
-								<!-- mymy-payCon -->	
+								<!-- mymy-payCon -->
 							</div>
 							<!-- pay -->
 						</div>
@@ -163,11 +161,11 @@
 			<div class="rev-modal">
 				<div class="revform1">
 					<div class="revform1-header clearfix">
-						<div class="revform-closeBtn" v-on:click.prevent="closeRevForm">x</div>
+						<div class="revform-closeBtn" @click="closeRevForm">x</div>
 					</div>
 					<!-- revform1-header -->
 
-					<form action="#" method="#" enctype="multipart/form-data">
+					<form @sumbit="insertReview" enctype="multipart/form-data">
 						<div class="review-form">
 							<div class="rf-1 clearfix">
 								<div class="rf-1-1">
@@ -269,8 +267,8 @@
 							<!-- filebox / 사진첨부 -->
 							
 							<div class="rf-8">
-								<button class="back-btn" type="button" v-on:click.prevent="closeRevForm">뒤로 가기</button>
-								<button class="insert-btn" type="button" v-on:click.prevent="insertReview">후기 등록</button>				
+								<button class="back-btn" type="button" @click="closeRevForm">뒤로 가기</button>
+								<button class="insert-btn" type="button" @click="insertReview">후기 등록</button>				
 							</div>
 							<!-- rf-8 / 버튼 -->
 							<div class="rf-9"></div>
@@ -289,7 +287,7 @@
 			<div class="showRev-modal">
 				<div class="revform1">
 					<div class="revform1-header clearfix">
-						<div class="revform-closeBtn" v-on:click.prevent="closeRevForm2">x</div>
+						<div class="revform-closeBtn" @click="closeRevForm2">x</div>
 					</div>
 					<!-- revform1-header -->
 					<div class="review-form1">
@@ -353,8 +351,8 @@
 						<!-- filebox / 사진첨부 -->
 
 						<div class="rf-8">
-							<button class="back-btn" type="button" v-on:click.prevent="backRev">뒤로 가기</button>
-							<button class="insert-btn" type="button" v-on:click.prevent="modifyRev">수정 하기</button>				
+							<button class="back-btn" type="button" @click="closeRevForm2">뒤로 가기</button>
+							<button class="insert-btn" type="button" @click="modifyRev">수정 하기</button>				
 						</div>
 						<!-- rf-8 / 버튼 -->
 
@@ -466,8 +464,8 @@
 							<!-- filebox / 사진첨부 -->
 							
 							<div class="rf-8">
-								<button class="back-btn" type="button" v-on:click.prevent="backRev">뒤로 가기</button>
-								<button class="insert-btn" type="button" v-on:click.prevent="modifyReview">수정</button>				
+								<button class="back-btn" type="button" @click="backRev">뒤로 가기</button>
+								<button class="insert-btn" type="button" @click="modifyReview">수정</button>				
 							</div>
 							<!-- rf-8 / 버튼 -->
 							<div class="rf-9"></div>
@@ -487,7 +485,7 @@
 			<div class="showAttendance">
 				<div class="revform1">
 					<div class="revform1-header clearfix">
-						<div class="revform-closeBtn" v-on:click.prevent="closeRevForm3">x</div>
+						<div class="revform-closeBtn" @click="closeRevForm3">x</div>
 					</div>
 					<!-- revform1-header -->
 					<div class="show-atten">
@@ -564,16 +562,16 @@ export default {
 	data() {
 		return {
 			isClass : true, // 정규클래스, 원데이클래스 변환에 사용
-			starScore : 2.5, // 별점 통계넣기
+			classType : 1, // 원데이클래스면 1, 정규클래스면 2
 			starScore2 : 3, // 리뷰모달에서 별점 표시할때
 			isRed : true, // 하트 클릭하면 색바뀌고 데이터 보내기
 			isEnd : false, // false면 안보임 , true면 종료표시
-			payPrice : 5000,
 			recClass : true, // 추천클래스 - 있으면 true 없으면 false
 			isPay : false, // 결제여부확인
 			hasRev : true, // 작성한 리뷰 있는지 확인
 			paymentData : [], // 결제정보가져와서 저장될 곳
 			getClassImg : require('@/assets/images/hs/cake.jpg'), // 클래스이미지 
+			insertReviewNo : '',
 			file : document.querySelector('#file'), // 첨부파일
 			fileName : '', // 파일이름
 			prevImg : require('@/assets/images/icon/ss/default-photo.png'), // 파일에 기본나타낼 이미지 
@@ -599,12 +597,12 @@ export default {
 		// 작성한 리뷰 보기 열기
 		revShow(){
 			let modal = document.querySelector('.showRev-modal');
-			// let revForm1 = document.querySelector('.review-form1');
-			// let revForm2 = document.querySelector('.review-form2');
+			let revForm1 = document.querySelector('.review-form1');
+			let revForm2 = document.querySelector('.review-form2');
 
 			modal.style.display = 'block';
-			// revForm1.style.display = 'block';
-			// revForm2.style.display = 'none';
+			revForm1.style.display = 'block';
+			revForm2.style.display = 'none';
 		},
 		// 리뷰 보기 모달 닫기
 		closeRevForm2(){
@@ -650,11 +648,26 @@ export default {
 		},
 
 		// 리뷰 작성 모달 열기 
-		revForm(){ 
+		revForm(no){ 
 			let modal = document.querySelector('.rev-modal');
 			let revForm = document.querySelector('.review-form');
 			modal.style.display = 'block';
 			revForm.style.display = 'block';
+			console.log(no);
+
+			axios({
+				method: 'get',
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/getclassone`,
+				headers: { 'Content-Type': 'application/json; charset=utf-8',},
+				params : {scheduleNo: no},
+				responseType: 'json'
+			}).then(response => {
+				console.log(response.data);
+			}).catch(error => {
+				console.log(error);
+			});
+
+
 		},
 		
 		// 리뷰 작성 모달 닫기
@@ -677,14 +690,21 @@ export default {
 			}
 			this.fileName = this.file.name;			
 		},
+		//
+
+
 
 		///////////////////////////////////////////////////////////////////////////////////
 
 		// 정규클래스 원데이 클래스 선택
 		selectClass(no){
 			if(no == 1){ // true면 원데이클래스
+				this.classType = 1;
+				this.getList(this.classType);
 				this.isClass = true;
 			} else { // false면 정규클래스
+				this.classType = 2;
+				this.getList(this.classType);
 				this.isClass = false;
 			}
 		},
@@ -694,58 +714,63 @@ export default {
 			this.isRed = !this.isRed
 		},
 
-		// 별점 퍼센트 보여주기
-		ratingToPercent(starScore){
-			starScore = (this.starScore / 5 ) * 100;
+		// 별점 퍼센트 보여주기(결제내역 - 결제한 클래스)
+		ratingToPercent(no){
+			let starScore = (no / 5 ) * 100;
 			return starScore + 1.5;
+		},
+
+		// 이미지
+		classImages(saveName){
+			return require(`@/assets/images/class/${saveName}.jpg`);
 		},
 		
 
 		// 문의요청
-		inquiry(){
+		inquiry(url){
 			console.log('문의');
+			console.log(url);
 		},
 
 		// 선택한 페이지 이동
-		goPage(){
-			console.log('클래스페이지이동');
-			this.$router.push('/classdetailpage');
+		goPage(no){
+			this.$router.push('/classdetailpage/'+ no);
 		},
-		
+
 		
 		
 		// 결제정보 가져오기
 		getList(paymentType){
-			paymentType = 1;
+			paymentType = this.classType;
 			axios({
 				method: 'get',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/getpaylist`,
-				headers: { 'Content-Type': 'application/json; charset=utf-8' },
-				params : {no: paymentType, userNo : this.$store.state.authUser.userNo},
+				headers: { 'Content-Type': 'application/json; charset=utf-8', 
+							'Authorization' : 'Bearer ' + this.$store.state.token},
+				params : {classType : paymentType},
 				responseType: 'json'
 			}).then(response => {
-				console.log(response);
+				console.log(response.data.apiData);
+				// 연결 성공이면
+				if(response.data.result === 'success'){
+					this.paymentData = response.data.apiData;
+					this.isPay = this.paymentData.length > 0;
+					this.isClass = this.paymentData.some((item) => item.classType === 1);
+					if(!this.isPay && this.isClass){
+						this.isClass =false;
+					}
+				}
 			}).catch(error => {
 				console.log(error);
 			});
-
-			this.paymentData = [
-				{ classType: "원데이", paymentAmount: 5000 },
-			]
-
-			this.isPay = this.paymentData.length > 0;
-			this.isClass = this.paymentData.some((item) => item.classType ==="원데이");
-
-			if(!this.isPay && this.isClass){
-				this.isClass =false;
-			}
+			
 		},
 		
 
 	},
 	created(){
 		// 데이터가져오는 메소드 실행
-		this.getList();
+		this.getList(this.classType);
 	}
 };
 </script>
