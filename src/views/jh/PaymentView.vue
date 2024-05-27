@@ -9,12 +9,17 @@
       <p>결제/예약 하기</p>
       <div class="paymentBox">
         <div class="paymentClassBox clearfix">
-          <img src="../../assets/images/hs/main_slide_1.jpg" alt="" />
+          <img v-bind:src="require(`@/assets/images/class/${this.pv.classImage}.jpg`)" alt="" />
           <div class="paymentTitle">
-            <p>클래스 정보</p>
-            <p>와인 숙성시키기 클래스</p>
-            <p>(주)OneDayOne</p>
-            <p>날짜: <span>2024-05-10 20:00:00</span></p>
+            <p>{{ this.pv.className }}</p>
+            <p>{{ this.pv.classIntro }}</p>
+            <p>{{ this.pv.companyName }}</p>
+            <div v-if="this.pv.endDate == null" class="paymentTitle">
+              <p>날짜: <span>{{ this.pv.startDate }}</span></p>
+            </div>
+            <div v-else class="paymentTitle">
+              <p>날짜: <span>{{ this.pv.startDate }}</span> ~ <span>{{ this.pv.endDate }}</span></p>
+            </div>
           </div>
         </div>
       </div>
@@ -25,13 +30,8 @@
           <ul class="paymentType">
             <li>
               <div>
-                <input
-                  type="radio"
-                  style="width: 15px; border: 1px"
-                  name="pay"
-                  v-bind:value="'card'"
-                  checked="checked"
-                />
+                <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'card'" v-model="paymenType"
+                  checked="checked" />
                 <label>신용카드</label>
               </div>
               <!-- <select name="" id="">
@@ -44,33 +44,16 @@
               </select> -->
             </li>
             <li>
-              <input
-                type="radio"
-                style="width: 15px; border: 1px"
-                name="pay"
-                v-bind:value="'naver'"
-                checked="checked"
-              />
+              <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'naver'" v-model="paymenType"
+                checked="checked" />
               <label>네이버페이</label>
             </li>
             <li>
-              <input
-                type="radio"
-                style="width: 15px; border: 1px"
-                name="pay"
-                v-bind:value="'toss'"
-                checked="checked"
-              />
+              <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'toss'" v-model="paymenType" checked="checked" />
               <label>토스페이</label>
             </li>
             <li>
-              <input
-                type="radio"
-                style="width: 15px; border: 1px"
-                name="pay"
-                v-bind:value="'hp'"
-                checked="checked"
-              />
+              <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'hp'" v-model="paymenType" checked="checked" />
               <label>휴대폰결제</label>
             </li>
           </ul>
@@ -92,17 +75,18 @@
           <p>총결제금액</p>
         </div>
         <div class="paymentResult">
-          <p>{{ Number(1000000).toLocaleString("ko-KR") }}원</p>
+          <p>{{ Number(this.pv.classPrice).toLocaleString("ko-KR") }}원</p>
           <p v-if="a > 0">
-            {{ Number(this.a).toLocaleString("ko-KR") }}
+            {{ this.a }}%({{ Number(this.pv.classPrice * this.a/100).toLocaleString("ko-KR") }}원)
           </p>
           <p v-if="a == '사용안함'">{{ this.a }}</p>
-          <p>{{ Number(500000).toLocaleString("ko-KR") }}</p>
+          <p v-if="a != '사용안함'">{{ Number(this.pv.classPrice-this.pv.classPrice * this.a/100).toLocaleString("ko-KR") }} <span>원</span></p>
+          <p v-else>{{ Number(this.pv.classPrice).toLocaleString("ko-KR") }}원</p>
         </div>
       </div>
       <div class="pamentButtonBox">
         <button>취소</button>
-        <button>결제하기</button>
+        <button v-on:click="pay">결제하기</button>
       </div>
     </div>
   </div>
@@ -113,30 +97,11 @@
       <form action="">
         <p class="closeBtn" v-on:click="close">x</p>
         <label for="none">사용안함</label>
-        <input
-          id="none"
-          type="radio"
-          name="coupon"
-          value="사용안함"
-          v-model="a"
-          checked="checked"
-        />
-        <label for="3000">3000원 할인</label>
-        <input
-          id="3000"
-          type="radio"
-          name="coupon"
-          value="3000"
-          v-model="a"
-        /><br />
-        <label for="5000">5000원 할인</label>
-        <input
-          id="5000"
-          type="radio"
-          name="coupon"
-          value="5000"
-          v-model="a"
-        /><br />
+        <input id="none" type="radio" name="coupon" value="사용안함" v-model="a" checked="checked" /><br>
+        <div v-for="(coupon, i) in couponList" v-bind:key="i">
+          <label>{{ coupon.coupon_price }}% 할인</label>
+          <input type="radio" name="coupon" :value="coupon.coupon_price" v-model="a" v-on:click="couponNo(coupon.coupon_no)"/><br />
+        </div>
         <button v-on:click.prevent="close2">적용하기</button>
       </form>
     </div>
@@ -144,6 +109,8 @@
   <AppFooter />
 </template>
 <script>
+import axios from 'axios';
+
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import "@/assets/css/jh/payment.css";
@@ -158,12 +125,29 @@ export default {
     return {
       a: "사용안함",
       paymenType: "card",
+      pv: {
+        classIntro: '',
+        className: '',
+        classPrice: '',
+        companyName: '',
+        companyNo: '',
+        endDate: '',
+        startDate: '',
+        classImage: ''
+      },
+      couponList: [],
+      total: '',
+      payVo:{
+        scheduleNo: '',
+        payType: '',
+        total: '',
+        couponNo: ''
+      }
     };
   },
-  mounted() {},
+  mounted() { },
   methods: {
     listup() {
-      console.log("업");
 
       let viewModal = document.querySelector("#addModal");
 
@@ -188,11 +172,53 @@ export default {
       } else if (type == "toss") {
         this.paymenType = "toss";
       } else if (type == "hp") {
-        this.paymenType = "toss";
+        this.paymenType = "hp";
       }
     },
+    list() {
+      console.log("시작");
+      axios({
+        method: 'get', // put, post, delete 
+        url: `${this.$store.state.apiBaseUrl}/odo/payment/${this.$route.params.no}`,
+        headers: { "Content-Type": "application/json; charset=utf-8", "Authorization": "Bearer " + this.$store.state.token }, //전송타입
+        //params: guestbookVo, //get방식 파라미터로 값이 전달
+        //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+        responseType: 'json' //수신타입
+      }).then(response => {
+        console.log(response); //수신데이타
+        this.pv = response.data.apiData.pv;
+        this.couponList = response.data.apiData.couponList;
+        console.log(this.pv);
+        console.log(this.couponList);
+      }).catch(error => {
+        console.log(error);
+      });
+    },
+    pay(){
+      //console.log(`${this.$route.params.no}`);
+      //console.log(this.paymenType);
+      if(this.a == "사용안함"){
+        this.total = this.pv.classPrice
+      }else {
+        this.total = this.pv.classPrice-this.pv.classPrice * this.a/100
+      }
+      //.log(this.total);
+      //.log(this.$store.state.couponNo);
+      this.payVo.scheduleNo = `${this.$route.params.no}`;
+      this.payVo.payType = this.paymenType;
+      this.payVo.total = this.total;
+      this.payVo.couponNo = this.$store.state.couponNo;
+      console.log(this.payVo);
+      
+
+    },
+    couponNo(a){
+      this.$store.commit("setCouponNo", a);
+    }
   },
-  created() {},
+  created() {
+    this.list();
+  },
 };
 </script>
 
