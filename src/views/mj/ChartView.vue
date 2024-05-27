@@ -107,7 +107,7 @@ export default {
     selectClass(num) {
       if (num == 1) {
         this.isClass = 1;
-      } else if (num == 2) {
+      } else if(num == 2) {
         this.isClass = 2;
       }
     }
