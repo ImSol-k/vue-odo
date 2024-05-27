@@ -17,11 +17,11 @@
                         <table class="ta3334">
                             <thead>
                                 <tr>
-                                    <th style="width: 100px;">번호</th>
+                                    <th style="width: 80px;">번호</th>
                                     <th style="width: 300px;">제목</th>
-                                    <th>글쓴이</th>
+                                    <th style="width: 80px;">글쓴이</th>
                                     <th style="width: 150px;">작성일</th>
-                                    <th>조회수</th>
+                                    <th style="width: 70px;">조회수</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -87,9 +87,12 @@
                                         쏘냐도르 & 스파르타<br>
                                         죽지 않아 나는 죽지 않아<br>
                                         나는 키 작은 꼬맹이니깐</td>
-                                </tr>
+                                </tr>      
                             </tbody>
                         </table>
+                        <tr>
+                            <button id="notice_btn" @click="goList">목록</button>
+                        </tr>
                     </div>
 
                 </div>
@@ -122,7 +125,11 @@ export default {
     data() {
         return {};
     },
-    methods: {},
+    methods: {
+        goList(){
+            this.$router.push('/mypage/notice');
+        }
+    },
     created() { }
 };
 </script>

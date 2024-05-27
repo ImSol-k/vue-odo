@@ -1,7 +1,7 @@
 .title{
     width: 50px;
 }
-.button{
+.ta3334 .button{
     width:80px;
     padding: 10px 20px 10px 20px;
     margin-top: 5px;
@@ -12,11 +12,11 @@
     text-align: center;
     /* transition: 1s; */
 }
-.button:hober{
+.ta3334 .button:hober{
     background-color: #a8a8a8;
 }
 
-.button:hover {
+.ta3334 .button:hover {
     /* width:120px;  */
     box-shadow: 0 0 0 1px #a8a8a8;
     background-color: #9560d6;
@@ -25,14 +25,16 @@
 }
 
 
-#notice_btn div{
-    width:310px;
+#notice_btn{
+    width:50px;
     margin:0 auto;
  
 }
-#notice_btn input{
+#notice_btn{
     text-align: center;
-    margin-left:10px;
+    margin-top: 25px;
+    margin-left:300px;
+    margin-bottom: 25px;
 }
 
 .ta3334{
