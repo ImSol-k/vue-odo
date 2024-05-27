@@ -40,9 +40,9 @@
           </div>
           <!--classAddImg-->
           <div class="classAddInfo">
-            <select name="" id="" class="addPageSelectClass" v-if="isClass">
+            <select name="" id="" class="addPageSelectClass" v-if="isClass" v-model="classVo.recClassNo">
               <option value="" disabled selected>관련 정규클래스 선택</option>
-              <option value="" v-for="i in 5" :key="i">
+              <option v-for="i in 5" :key="i" v-bind:value="i">
                 정규클래스 {{ i }}번
               </option>
             </select>
@@ -224,7 +224,7 @@
                   type="text"
                   oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                   placeholder="인원수"
-                  v-model="classVo.classMix"
+                  v-model="classVo.classMin"
                 />
               </div>
               <div class="quillEditorBox">
@@ -286,7 +286,7 @@ export default {
 
       // ============================
       img: "",
-      companyNo: 2,
+      companyNum: 2,
       cList: [],
       selectClassNo: "",
       cate1: [],
@@ -294,7 +294,7 @@ export default {
       classImage: "",
       // companyNo: this.$store.state.authCompany.companyNo,
       classVo: {
-        companyNo: this.companyNo,
+        // companyNo: Number(this.companyNum),
         cate1No: "",
         cate2No: "",
         className: "",
@@ -322,9 +322,9 @@ export default {
     classHandle() {
       //클래스 추가
       const formData = new FormData();
+      // formData.append("classVo", JSON.stringify(this.classVo));
       formData.append("classImageFile", this.classImage);
-      formData.append("classVo", JSON.stringify(this.classVo));
-      // formData.append("companyNo", this.classVo.companyNo);
+      // formData.append("companyNo", this.companyNum);
       // formData.append("cate1No", this.classVo.cate1No);
       // formData.append("cate2No", this.classVo.cate2No);
       // formData.append("className", this.classVo.className);
@@ -339,41 +339,46 @@ export default {
       // formData.append("classMin", this.classVo.classMin);
       // formData.append("classMax", this.classVo.classMax);
       // formData.append("classUrl", this.classVo.classUrl);
-      
-      if (this.classVo.className == "") {
-        alert("클래스명을 작성해주세요.");
-        // } else if (this.classVo.classIntro == "") {
-        //   alert("클래스 소개를 작성해주세요.");
-        // } else if (this.isClass && this.classVo.onedayDate == "") {
-        //   alert("일정을 입력해 주세요");
-        // } else if (
-        //   !this.isClass &&
-        //   this.classVo.startDate == "" &&
-        //   this.classVo.endDate == ""
-        // ) {
-        //   alert("시작일과 종료일을 확인 해 주세요");
-        // } else if (
-        //   this.classVo.classZipcode == "" &&
-        //   this.classVo.classDetailAddress == ""
-        // ) {
-        //   alert("주소(상세주소)를 입력해 주세요");
-        // } else if (this.classVo.cate2No == "") {
-        //   alert("카테고리를 선택해 주세요");
-        // } else if (this.classVo.classMax == "" && this.classVo.classMin == "") {
-        //   alert("인원수를 입력해주세요.")
-        // } else if (this.classVo.classInfo == null) {
-        //   alert("상세설명을 입력해주세요.")
-      // } else if (
-      //   Number(this.classVo.classMax) <= Number(this.classVo.classMin)
-      // ) {
-      //   alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
-      } else {
+      // formData.append("startDate", this.classVo.startDate);
+      // formData.append("endDate", this.classVo.endDate);
+      // formData.append("onedayDate", this.classVo.onedayDate);
+      formData.append("classInfo", this.classVo.classInfo.content);
+
+      // if (this.classVo.className == "") {
+      //   alert("클래스명을 작성해주세요.");
+      //   } else if (this.classVo.classIntro == "") {
+      //     alert("클래스 소개를 작성해주세요.");
+      //   } else if (this.isClass && this.classVo.onedayDate == "") {
+      //     alert("일정을 입력해 주세요");
+      //   } else if (
+      //     !this.isClass &&
+      //     this.classVo.startDate == "" &&
+      //     this.classVo.endDate == ""
+      //   ) {
+      //     alert("시작일과 종료일을 확인 해 주세요");
+      //   } else if (
+      //     this.classVo.classZipcode == "" &&
+      //     this.classVo.classDetailAddress == ""
+      //   ) {
+      //     alert("주소(상세주소)를 입력해 주세요");
+      //   } else if (this.classVo.cate2No == "") {
+      //     alert("카테고리를 선택해 주세요");
+      //   } else if (this.classVo.classMax == "" && this.classVo.classMin == "") {
+      //     alert("인원수를 입력해주세요.")
+      //   } else if (this.classVo.classInfo == null) {
+      //     alert("상세설명을 입력해주세요.")
+      //   } else if (
+      //     Number(this.classVo.classMax) <= Number(this.classVo.classMin)
+      //   ) {
+      //     alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
+      // } else {
         //클래스 추가
         if (this.isClass) {
           console.log("클래스 추가");
-          console.log(this.classVo);
+          console.log(this.companyNum);
+          console.log(this.classVo.classInfo);
           // formData.append("recClassNo", this.classVo.recClassNo);
-          // formData.append("onedayDate", this.classVo.onedayDate);
+          // formData.append("startDate", this.classVo.onedayDate);
           axios({
             method: "post",
             url: `${this.$store.state.apiBaseUrl}/odo/company/iclass`,
@@ -391,9 +396,8 @@ export default {
             });
         } else {
           //클래스 수정
-
         }
-      }
+      // }
     },
     imgFile(event) {
       console.log("이미지업로드");
@@ -569,9 +573,9 @@ export default {
     //캘린더
     schedulClick(num, i) {
       if (this.onedayDate.length >= 10) {
-        console.log("최대10개까지 등록가능");
+        alert("최대10개까지 등록가능");
       } else if (this.onedayDate.length < 0) {
-        console.log("1개이상 등록필수");
+        alert("1개이상 등록필수");
       } else {
         if (num == 1) {
           console.log("일정추가");
