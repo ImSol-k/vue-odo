@@ -52,6 +52,25 @@
 			</div>
 
 		</ul>
+
+		<div id="paging">
+			<ul>
+				<li v-if="pMap.prev">
+					<a @click="changePage(pMap.startPageBtnNo - 1)">◀</a>
+				</li>
+
+				<li v-for="page in pages" :key="page"
+					:class="{ pageBtnActive: this.$route.query.crtPage === String(page) }">
+					<a @click="changePage(page)">{{ page }}</a>
+				</li>
+
+				<li v-if="pMap.next">
+					<a @click="changePage(pMap.endPageBtnNo + 1)">▶</a>
+				</li>
+			</ul>
+		</div>
+		<!-- paging -->
+
 	</div>
 
 	<AppFooter />
@@ -88,7 +107,17 @@ export default {
 				[[29, "IT"]]
 			],
 			cateList: [],
+			pMap: {},
 		};
+	},
+	computed: {
+		pages() {
+			let pages = [];
+			for (let i = this.pMap.startPageBtnNo; i <= this.pMap.endPageBtnNo; i++) {
+				pages.push(i);
+			}
+			return pages;
+		}
 	},
 	methods: {
 		isActive(categoryIndex, itemIndex) {
@@ -96,51 +125,51 @@ export default {
 		},
 		//카테고리 사이드바에서 선택해서 넘어올때 버튼 선택되어있게하는 함수
 		btnSelected() {
-			for( let i=1; i<5; i++ ) {
-				if ( this.$route.params.no <5 && this.$route.params.no == i ) {
-					this.activeIndex = { categoryIndex: 0, itemIndex: (i-1) };
+			for (let i = 1; i < 5; i++) {
+				if (this.$route.params.no < 5 && this.$route.params.no == i) {
+					this.activeIndex = { categoryIndex: 0, itemIndex: (i - 1) };
 				}
 			}
-			for( let i=5; i<9; i++ ) {
-				if ( 5 <= this.$route.params.no < 9 && this.$route.params.no == i ) {
-					this.activeIndex = { categoryIndex: 1, itemIndex: (i-5) };
+			for (let i = 5; i < 9; i++) {
+				if (5 <= this.$route.params.no < 9 && this.$route.params.no == i) {
+					this.activeIndex = { categoryIndex: 1, itemIndex: (i - 5) };
 				}
 			}
-			for( let i=9; i<11; i++ ) {
-				if ( 9 <= this.$route.params.no < 11 && this.$route.params.no == i ) {
-					this.activeIndex = { categoryIndex: 2, itemIndex: (i-9) };
+			for (let i = 9; i < 11; i++) {
+				if (9 <= this.$route.params.no < 11 && this.$route.params.no == i) {
+					this.activeIndex = { categoryIndex: 2, itemIndex: (i - 9) };
 				}
 			}
-			for( let i=11; i<15; i++ ) {
-				if ( 11 <= this.$route.params.no < 15 && this.$route.params.no == i ) {
-					this.activeIndex = { categoryIndex: 3, itemIndex: (i-11) };
+			for (let i = 11; i < 15; i++) {
+				if (11 <= this.$route.params.no < 15 && this.$route.params.no == i) {
+					this.activeIndex = { categoryIndex: 3, itemIndex: (i - 11) };
 				}
 			}
-			for( let i=15; i<20; i++ ) {
-				if ( 15 <= this.$route.params.no < 20 && this.$route.params.no == i ) {
-					this.activeIndex = { categoryIndex: 4, itemIndex: (i-15) };
+			for (let i = 15; i < 20; i++) {
+				if (15 <= this.$route.params.no < 20 && this.$route.params.no == i) {
+					this.activeIndex = { categoryIndex: 4, itemIndex: (i - 15) };
 				}
 			}
-			for( let i=20; i<26; i++ ) {
-				if ( 20 <= this.$route.params.no < 26 && this.$route.params.no == i ) {
-					this.activeIndex = { categoryIndex: 5, itemIndex: (i-20) };
+			for (let i = 20; i < 26; i++) {
+				if (20 <= this.$route.params.no < 26 && this.$route.params.no == i) {
+					this.activeIndex = { categoryIndex: 5, itemIndex: (i - 20) };
 				}
 			}
-			for( let i=26; i<29; i++ ) {
-				if ( 26 <= this.$route.params.no < 29 && this.$route.params.no == i ) {
-					this.activeIndex = { categoryIndex: 6, itemIndex: (i-26) };
+			for (let i = 26; i < 29; i++) {
+				if (26 <= this.$route.params.no < 29 && this.$route.params.no == i) {
+					this.activeIndex = { categoryIndex: 6, itemIndex: (i - 26) };
 				}
 			}
-			for( let i=29; i<30; i++ ) {
-				if ( 29 <= this.$route.params.no < 30 && this.$route.params.no == i ) {
-					this.activeIndex = { categoryIndex: 7, itemIndex: (i-29) };
+			for (let i = 29; i < 30; i++) {
+				if (29 <= this.$route.params.no < 30 && this.$route.params.no == i) {
+					this.activeIndex = { categoryIndex: 7, itemIndex: (i - 29) };
 				}
 			}
-				
+
 		},
 		//2차 카테고리 버튼 눌렀을때 버튼 색상변경 + 리스트가져오기
 		activateItem(categoryIndex, itemIndex, cate2No) {
-			this.$router.push(`/searchresultpage2/${cate2No}`);
+			this.$router.push(`/searchresultpage2/${cate2No}?crtPage=1`);
 			this.clickIndex = null;
 			this.activeIndex = { categoryIndex, itemIndex };
 
@@ -153,17 +182,28 @@ export default {
 				method: 'get', // put, post, delete
 				url: 'http://localhost:9090/odo/subcategories',
 				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
-				params: { cate2No: this.$route.params.no }, //get방식 파라미터로 값이 전달
+				params: {
+					cate2No: this.$route.params.no,
+					crtPage: this.$route.query.crtPage || 1 // crtPage 파라미터, 기본값 1
+				}, //get방식 파라미터로 값이 전달
 				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
 			}).then(response => {
-				this.cateList = response.data.apiData;
+				this.pMap = response.data.apiData;
+				this.cateList = this.pMap.cate2List;
+
 			}).catch(error => {
 				console.log(error);
 			});
 		},
 		goCate1ListPage(i) {
-			this.$router.push(`/searchresultpage/${i + 1}`);
+			this.$router.push(`/searchresultpage/${i + 1}?crtPage=1`);
+		},
+		changePage(page) {
+			this.$router.push({
+				path: `/searchresultpage2/${this.$route.params.no}`,
+				query: { crtPage: page }
+			});
 		},
 	},
 	created() {
@@ -171,9 +211,12 @@ export default {
 		this.btnSelected();
 	},
 	watch: {
-		'$route.params.no': function() {
-			this.getcate2List();
-			this.btnSelected();
+		'$route': {
+			immediate: true,
+			handler() {
+				this.getcate2List(); // 라우트가 변경될 때마다 getcateList 호출
+				this.btnSelected(); // 라우트가 변경될 때마다 btnSelected 호출
+			}
 		}
 	},
 };
