@@ -30,7 +30,7 @@
           <ul class="paymentType">
             <li>
               <div>
-                <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'card'" v-model="paymenType"
+                <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'신용카드'" v-model="paymenType"
                   checked="checked" />
                 <label>신용카드</label>
               </div>
@@ -45,15 +45,15 @@
             </li>
             <li>
               <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'naver'" v-model="paymenType"
-                checked="checked" />
+                 />
               <label>네이버페이</label>
             </li>
             <li>
-              <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'toss'" v-model="paymenType" checked="checked" />
+              <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'toss'" v-model="paymenType" />
               <label>토스페이</label>
             </li>
             <li>
-              <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'hp'" v-model="paymenType" checked="checked" />
+              <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'휴대폰'" v-model="paymenType"  />
               <label>휴대폰결제</label>
             </li>
           </ul>
@@ -124,7 +124,7 @@ export default {
   data() {
     return {
       a: "사용안함",
-      paymenType: "card",
+      paymenType: "신용카드",
       pv: {
         classIntro: '',
         className: '',
@@ -165,14 +165,14 @@ export default {
     },
     payType(type) {
       console.log(type);
-      if (type == "card") {
-        this.paymenType = "card";
+      if (type == "신용카드") {
+        this.paymenType = "신용카드";
       } else if (type == "naver") {
         this.paymenType = "naver";
       } else if (type == "toss") {
         this.paymenType = "toss";
-      } else if (type == "hp") {
-        this.paymenType = "hp";
+      } else if (type == "휴대폰") {
+        this.paymenType = "휴대폰";
       }
     },
     list() {
@@ -209,7 +209,22 @@ export default {
       this.payVo.total = this.total;
       this.payVo.couponNo = this.$store.state.couponNo;
       console.log(this.payVo);
-      
+      axios({
+        method: 'put', // put, post, delete 
+        url: `${this.$store.state.apiBaseUrl}/odo/pay`,
+        headers: { "Content-Type": "application/json; charset=utf-8", "Authorization": "Bearer " + this.$store.state.token }, //전송타입
+        //params: guestbookVo, //get방식 파라미터로 값이 전달
+        data: this.payVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+        responseType: 'json' //수신타입
+      }).then(response => {
+        console.log(response); //수신데이타
+        this.pv = response.data.apiData.pv;
+        this.couponList = response.data.apiData.couponList;
+        console.log(this.pv);
+        console.log(this.couponList);
+      }).catch(error => {
+        console.log(error);
+      });
 
     },
     couponNo(a){
