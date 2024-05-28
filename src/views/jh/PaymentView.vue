@@ -30,8 +30,8 @@
           <ul class="paymentType">
             <li>
               <div>
-                <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'신용카드'" v-model="paymenType"
-                  checked="checked" />
+                <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'신용카드'"
+                  v-model="paymenType" checked="checked" />
                 <label>신용카드</label>
               </div>
               <!-- <select name="" id="">
@@ -44,16 +44,18 @@
               </select> -->
             </li>
             <li>
-              <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'naver'" v-model="paymenType"
-                 />
+              <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'naver'"
+                v-model="paymenType" />
               <label>네이버페이</label>
             </li>
             <li>
-              <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'toss'" v-model="paymenType" />
+              <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'toss'"
+                v-model="paymenType" />
               <label>토스페이</label>
             </li>
             <li>
-              <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'휴대폰'" v-model="paymenType"  />
+              <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'휴대폰'"
+                v-model="paymenType" />
               <label>휴대폰결제</label>
             </li>
           </ul>
@@ -77,10 +79,13 @@
         <div class="paymentResult">
           <p>{{ Number(this.pv.classPrice).toLocaleString("ko-KR") }}원</p>
           <p v-if="a > 0">
-            {{ this.a }}%({{ Number(this.pv.classPrice * this.a/100).toLocaleString("ko-KR") }}원)
+            {{ this.a }}%({{ Number(this.pv.classPrice * this.a / 100).toLocaleString("ko-KR") }}원)
           </p>
           <p v-if="a == '사용안함'">{{ this.a }}</p>
-          <p v-if="a != '사용안함'">{{ Number(this.pv.classPrice-this.pv.classPrice * this.a/100).toLocaleString("ko-KR") }} <span>원</span></p>
+          <p v-if="a != '사용안함'">{{ Number(this.pv.classPrice - this.pv.classPrice * this.a /
+            100).toLocaleString("ko-KR") }}
+            <span>원</span>
+          </p>
           <p v-else>{{ Number(this.pv.classPrice).toLocaleString("ko-KR") }}원</p>
         </div>
       </div>
@@ -97,10 +102,12 @@
       <form action="">
         <p class="closeBtn" v-on:click="close">x</p>
         <label for="none">사용안함</label>
-        <input id="none" type="radio" name="coupon" value="사용안함" v-model="a" checked="checked" /><br>
+        <input id="none" type="radio" name="coupon" value="사용안함" v-model="a" checked="checked"
+          v-on:click="couponNo0" /><br>
         <div v-for="(coupon, i) in couponList" v-bind:key="i">
           <label>{{ coupon.coupon_price }}% 할인</label>
-          <input type="radio" name="coupon" :value="coupon.coupon_price" v-model="a" v-on:click="couponNo(coupon.coupon_no)"/><br />
+          <input type="radio" name="coupon" :value="coupon.coupon_price" v-model="a"
+            v-on:click="couponNo(coupon.coupon_no)" /><br />
         </div>
         <button v-on:click.prevent="close2">적용하기</button>
       </form>
@@ -115,6 +122,7 @@ import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import "@/assets/css/jh/payment.css";
 import "@/assets/css/Initialization.css";
+import Swal from 'sweetalert2';
 
 export default {
   components: {
@@ -137,7 +145,7 @@ export default {
       },
       couponList: [],
       total: '',
-      payVo:{
+      payVo: {
         scheduleNo: '',
         payType: '',
         total: '',
@@ -185,22 +193,34 @@ export default {
         //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: 'json' //수신타입
       }).then(response => {
-        console.log(response); //수신데이타
-        this.pv = response.data.apiData.pv;
-        this.couponList = response.data.apiData.couponList;
-        console.log(this.pv);
-        console.log(this.couponList);
+        if (response.data.message == "fail") {
+          Swal.fire({
+            title: "불러오기에 실패했습니다",
+            html:
+              "다시 시도해주세요"
+          });
+          this.$store.commit('setAuthUser', '');
+          this.$store.commit('setToken', '');
+          this.$router.push('/');
+          
+        } else {
+          //console.log(response); //수신데이타
+          this.pv = response.data.apiData.pv;
+          this.couponList = response.data.apiData.couponList;
+          //console.log(this.pv);
+          //console.log(this.couponList);
+        }
       }).catch(error => {
         console.log(error);
       });
     },
-    pay(){
+    pay() {
       //console.log(`${this.$route.params.no}`);
       //console.log(this.paymenType);
-      if(this.a == "사용안함"){
+      if (this.a == "사용안함") {
         this.total = this.pv.classPrice
-      }else {
-        this.total = this.pv.classPrice-this.pv.classPrice * this.a/100
+      } else {
+        this.total = this.pv.classPrice - this.pv.classPrice * this.a / 100
       }
       //.log(this.total);
       //.log(this.$store.state.couponNo);
@@ -208,7 +228,7 @@ export default {
       this.payVo.payType = this.paymenType;
       this.payVo.total = this.total;
       this.payVo.couponNo = this.$store.state.couponNo;
-      console.log(this.payVo);
+      //console.log(this.payVo);
       axios({
         method: 'put', // put, post, delete 
         url: `${this.$store.state.apiBaseUrl}/odo/pay`,
@@ -217,18 +237,33 @@ export default {
         data: this.payVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: 'json' //수신타입
       }).then(response => {
-        console.log(response); //수신데이타
-        this.pv = response.data.apiData.pv;
-        this.couponList = response.data.apiData.couponList;
-        console.log(this.pv);
-        console.log(this.couponList);
+        console.log(response.data.apiData.message); //수신데이타
+        if (response.data.apiData.message == "실패") {
+          Swal.fire({
+            title: "결제에 실패하였습니다",
+            html:
+              "다시 시도해주세요"
+          });
+          this.$store.commit('setAuthUser', '');
+          this.$store.commit('setToken', '');
+          this.$router.push('/login/user');
+          window.location.reload(true);
+        } else {
+          console.log(response.data.apiData.apiData);
+
+          this.$router.push('/paymentend/'+ response.data.apiData.apiData);
+        }
+
       }).catch(error => {
         console.log(error);
       });
 
     },
-    couponNo(a){
+    couponNo(a) {
       this.$store.commit("setCouponNo", a);
+    },
+    couponNo0() {
+      this.$store.commit("setCouponNo", 0);
     }
   },
   created() {

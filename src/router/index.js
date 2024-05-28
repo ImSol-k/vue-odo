@@ -126,7 +126,7 @@ const routes = [
     component: PaymentView
   },
   {
-    path: '/paymentend',
+    path: '/paymentend/:no',
     name: 'paymentend',
     component: PaymentEndView
   },
