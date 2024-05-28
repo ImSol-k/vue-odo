@@ -39,13 +39,13 @@
 					<!-- 결제내역이 있고 원데이클래스 정규클래스 나오게 -->
 					<div v-else>
 						<!-- 원데이 클래스-->
-						<div v-if="isClass">
+						<div class="div-180" v-if="isClass">
 							<div class="pay clearfix" v-for="(list, index) in paymentData" :key="index">
 								<div class="mymy-pay">
 									<ul>
 										<li>
 											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
-											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/uploadImages/${list.classImage}`" alt="이미지를 준비중입니다." @click="goPage(list.classNo)">
+											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" alt="이미지를 준비중입니다." @click="goPage(list.classNo)">
 											<div class="heart" v-if="list.wishClassNo != 0" @click="wish()" :class="{ red : isRed}"></div>
 										</li>
 										<li>
@@ -80,7 +80,7 @@
 									<div class="paycon2">
 										<div v-if="list.recClassNo != 0" class="paycon2-1">
 											<span class="paycon2-txt1">추천!</span>
-											<img :src="`${this.$store.state.apiBaseUrl}/uploadImages/${list.recClassImage}`" alt="이미지를 준비중입니다" @click="goPage(list.recClassNo)">
+											<img :src="`${this.$store.state.apiBaseUrl}/upload/${list.recClassImage}`" alt="이미지를 준비중입니다" @click="goPage(list.recClassNo)">
 											<span class="paycon2-txt2">{{ list.recClassName }}</span>
 										</div>
 										<div v-else class="paycon2-noClass">
@@ -102,7 +102,7 @@
 									<ul>
 										<li>
 											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
-											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/uploadImages/${list.classImage}`" alt="이미지를 준비중입니다." @click="goPage(list.classNo)">
+											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" alt="이미지를 준비중입니다." @click="goPage(list.classNo)">
 											<div class="heart" v-if="list.wishClassNo != 0" @click="wish()" :class="{ red : isRed}"></div>
 										</li>
 										<li>
@@ -137,7 +137,7 @@
 									<div class="paycon2">
 										<div v-if="list.recClassNo != 0" class="paycon2-1">
 											<span class="paycon2-txt1">추천!</span>
-											<img :src="`${this.$store.state.apiBaseUrl}/uploadImages/${list.recClassImage}`" alt="이미지를 준비중입니다" @click="goPage(list.recClassNo)">
+											<img :src="`${this.$store.state.apiBaseUrl}/upload/${list.recClassImage}`" alt="이미지를 준비중입니다" @click="goPage(list.recClassNo)">
 											<span class="paycon2-txt2">{{ list.recClassName }}</span>
 										</div>
 										<div v-else class="paycon2-noClass">
@@ -169,7 +169,7 @@
 						<div class="review-form">
 							<div class="rf-1 clearfix">
 								<div class="rf-1-1">
-									<img :src="`${this.$store.state.apiBaseUrl}/uploadImages/${oneClassVo.classImage}`">
+									<img :src="`${this.$store.state.apiBaseUrl}/upload/${oneClassVo.classImage}`">
 									<span class="rf-1-1-title">
 										<span v-if="oneClassVo.classType == 1">[원데이]</span><span v-else>[정규]</span>
 										{{ oneClassVo.className }} 
@@ -179,7 +179,7 @@
 								</div>
 							</div>
 							<!-- rf-1 / 클래스사진 + 클래스 설명 -->
-
+							<input type="hidden" name="classNo" :value="oneClassVo.scheduleNo">
 							<div class="rf-2 clearfix">
 								<span>클래스는 사용해 보셨나요?</span><br>
 								<div class="star-rating">
@@ -268,7 +268,7 @@
 							
 							<div class="rf-8">
 								<button class="back-btn" type="button" @click="closeRevForm">뒤로 가기</button>
-								<button class="insert-btn" type="button" @click="insertReview">후기 등록</button>				
+								<button class="insert-btn" type="submit">후기 등록</button>				
 							</div>
 							<!-- rf-8 / 버튼 -->
 							<div class="rf-9"></div>

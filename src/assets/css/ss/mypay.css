@@ -42,13 +42,18 @@
 }
 
 /* 결제한 내역이 있을때 */
+
+.div-180 {
+    height: 180px;
+}
+
 .pay {
     display: block;
     width: 750px;
     /* border: 1px solid #000; */
     box-sizing: border-box;
     border-bottom: 1px solid #d9d9d9;
-    height: 200px;
+    height: 180px;
     margin-top: 10px;
 }
 
@@ -187,7 +192,7 @@
 .mymy-payCon {
     box-sizing: border-box;
     width: 590px;
-    height: 200px;
+    height: 180px;
     /* border: 1px solid #000; */
     float: left;
     padding: 10px;
@@ -344,7 +349,7 @@
     display: block;
     width: 110px;
     height: 110px;
-    margin: 20px auto 0 auto;
+    margin: 10px auto 0 auto;
     cursor: pointer; 
 }
 /* 추천클래스 이름 */
@@ -354,7 +359,7 @@
     width: 110px;
     padding: 1px 2px;
     display: -webkit-box;
-    margin: 10px auto 0 auto;
+    margin: 5px auto 0 auto;
     font-size: 10px;
     text-overflow: ellipsis;
     text-align: left;
@@ -370,7 +375,7 @@
     box-sizing: border-box;
     /* border: 1px solid #000; */
     width: 190px;
-    height: 180px;
+    height: 150px;
     font-size: 15px;    
 }
 
@@ -378,7 +383,7 @@
     display: inline-block;
     /* border: 1px solid #000; */
     height: 60px;
-    margin: 60px 0;
+    margin: 40px 0;
 }
 
 /***********************************************/
