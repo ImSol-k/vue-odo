@@ -194,7 +194,6 @@ export default defineComponent({
 				//data: this.listOfLists, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
 			}).then(response => {
-				console.log(response.data.apiData); //수신데이타
 				this.listOfLists = response.data.apiData;
 			}).catch(error => {
 				console.log(error);

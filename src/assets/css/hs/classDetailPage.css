@@ -160,10 +160,11 @@
 }
 .reviewSection ul {
     display: flex;
-    justify-content: space-between;
+    gap: 26px;
+    justify-content: flex-start;
 }
 .reviewSection ul li {
-    width: 230px;
+    min-width: 230px;
 }
 .reviewSection li > a > img {
     width: 100%;

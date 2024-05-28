@@ -10,9 +10,10 @@
 
 				<div class="headInfoBox">
 					<div>
-						<h1>소풍을 즐기는 새로운 방법, 루하루 티크닉 세트 [SQNC 055]</h1>
+						<h1>{{this.classDetailVo.className}}</h1>
 						<div>
-							<p>30,000<span>원</span></p>
+							<p v-if="this.classDetailVo.classPrice != 0">{{ Number(this.classDetailVo.classPrice).toLocaleString('ko-KR') }}<span>원</span></p>
+							<p v-else>무료</p>
 							<router-link to="" class="class-like-btn">
 								<img src="../../assets/images/하트.png" alt="">
 							</router-link>
@@ -22,10 +23,7 @@
 					<div class="orderSelectBox">
 						<select name="" id="" class="">
 							<option value="">일정/시간</option>
-							<option value="">0000.00.00 / 00:00 ~ 0000.00.00 / 00:00</option>
-							<option value="">0000.00.00 / 00:00 ~ 0000.00.00 / 00:00</option>
-							<option value="">0000.00.00 / 00:00 ~</option>
-							<option value="">0000.00.00 / 00:00 ~</option>
+							<option v-for=" schedule in schList" :key="schedule" value="">{{schedule.startDate}} ~ {{schedule.endDate}}</option>
 						</select>
 						<div class="orderDate">0000.00.00 00:00(선택하면 추가됨)</div>
 						<div class="howMuch"><span>주문금액 <b>0원</b></span></div>
@@ -37,11 +35,11 @@
 							<img src="../../assets/images/hs/rainbow_apple_icon.png" alt="">
 						</router-link>
 						<router-link to="/companyinfo" class="nameBox">
-							<p>애플</p>
+							<p>{{this.companyInfo.companyName}}</p>
 							<p>
-								<span>클래스 0</span>
-								<span>후기 0</span>
-								<span>찜 0</span>
+								<span>클래스 {{this.cMap.comClassCnt}}</span>
+								<span>후기 {{this.cMap.comReviewCnt}}</span>
+								<span>찜 {{this.cMap.comWishCnt}}</span>
 							</p>
 						</router-link>
 						<router-link to="" class="company-like-btn">
@@ -54,55 +52,25 @@
 
 			<div class="reviewSection">
 				<ul>
-					<li>
+					<li v-for=" review in classReviewList " :key="review">
 						<router-link to="/reviewpage">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
 								<img src="../../assets/images/icon/footer_icons_modify/f_naver.png" alt="">
-								<span>김민규</span>
+								<span>{{review.userNickname}}</span>
 							</div>
-							<p>후기어쩌고후기어쩌고후기어쩌고</p>
-						</router-link>
-					</li>
-					<li>
-						<router-link to="/reviewpage">
-							<img src="../../assets/images/hs/camera.jpg" alt="">
-							<div>
-								<img src="../../assets/images/hs/cake.jpg" alt=""> <span>김민규</span>
-							</div>
-							<p>후기어쩌고후기어쩌고후기어쩌고</p>
-						</router-link>
-					</li>
-					<li>
-						<router-link to="/reviewpage">
-							<img src="../../assets/images/hs/camera.jpg" alt="">
-							<div>
-								<img src="../../assets/images/hs/coffee.jpg" alt=""> <span>김민규</span>
-							</div>
-							<p>후기어쩌고후기어쩌고후기어쩌고</p>
-						</router-link>
-					</li>
-					<li>
-						<router-link to="/reviewpage">
-							<img src="../../assets/images/hs/camera.jpg" alt="">
-							<div>
-								<img src="../../assets/images/icon/header_icons/KakaoTalk_20240509_102443065.png"
-									alt=""> <span>김민규</span>
-							</div>
-							<p>후기어쩌고</p>
+							<p>{{review.reviewContent}}</p>
 						</router-link>
 					</li>
 				</ul>
-				<router-link class="moreReviewBtn" to="/reviewpage">00개 후기 더보기 ></router-link>
+				<router-link class="moreReviewBtn" to="/reviewpage">{{this.cMap.classReviewCnt}}개 후기 더보기 ></router-link>
 			</div>
 			<!-- //reviewSection -->
 
 			<div class="classInfoSection">
 				<h2>클래스 설명</h2>
 				<div>
-					<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam vel qui ut cupiditate labore
-						dicta facere voluptatibus tenetur necessitatibus explicabo quod laudantium repellendus quae
-						assumenda magnam, officia voluptate maiores et!</span>
+					<span>{{this.classDetailVo.classIntro}}</span>
 				</div>
 			</div>
 			<!-- //classInfoSection -->
@@ -120,8 +88,8 @@
 			<h2>진행하는 장소</h2>
 			<div class="mapWraper">
 				<div id="map" style="width:1000px;height:250px;border-radius: 10px;"></div>
-				<b>강남역</b>
-				<p>서울 강남구 강남대로 396</p>
+				<b>{{this.classDetailVo.classDetailAdd}}</b>
+				<p>{{this.classDetailVo.classNameAdd}}</p>
 			</div>
 
 			<div class="b-link">
@@ -157,6 +125,12 @@ export default {
 	data() {
 		return {
 			isMoreInfo: false,
+			cMap: {},
+			classDetailVo: {},
+			companyInfo: {},
+			nameAdd: "",
+			schList: [],
+			classReviewList: [],
 		};
 	},
 	mounted() {
@@ -182,7 +156,11 @@ export default {
 				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
 			}).then(response => {
-				console.log(response.data.apiData);
+				this.cMap = response.data.apiData;
+				this.classDetailVo = this.cMap.classDetailVo;
+				this.companyInfo = this.cMap.companyInfo;
+				this.classReviewList = this.cMap.classReviewList;
+				this.schList = this.cMap.schList;
 
 			}).catch(error => {
 				console.log(error);
@@ -202,26 +180,42 @@ export default {
 			// 주소-좌표 변환 객체를 생성합니다
 			var geocoder = new kakao.maps.services.Geocoder();
 
-			// 주소로 좌표를 검색합니다
-			geocoder.addressSearch('서울 강남구 강남대로 396', function (result, status) {
 
-				// 정상적으로 검색이 완료됐으면 
-				if (status === kakao.maps.services.Status.OK) {
+			axios({
+				method: 'get', // put, post, delete
+				url: 'http://localhost:9090/odo/classdetails/nameadd',
+				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+				params: { classNo: this.$route.params.classNo }, //get방식 파라미터로 값이 전달
+				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+				responseType: 'json' //수신타입
+			}).then(response => {
+				this.nameAdd = response.data.apiData;
 
-					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				// 주소로 좌표를 검색합니다
+				geocoder.addressSearch(this.nameAdd, function (result, status) {
 
-					// 결과값으로 받은 위치를 마커로 표시합니다
-					var marker = new kakao.maps.Marker({
-						map: map,
-						position: coords
-					});
-					
-					marker.setMap(map);
+					// 정상적으로 검색이 완료됐으면 
+					if (status === kakao.maps.services.Status.OK) {
 
-					// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-					map.setCenter(coords);
-				}
+						var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+						// 결과값으로 받은 위치를 마커로 표시합니다
+						var marker = new kakao.maps.Marker({
+							map: map,
+							position: coords
+						});
+
+						marker.setMap(map);
+
+						// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+						map.setCenter(coords);
+					}
+				});
+
+			}).catch(error => {
+				console.log(error);
 			});
+
 
 		},
 		moreInfo() {
