@@ -85,10 +85,10 @@
     /* border: 1px solid #000; */
     display: block;
     font-size: 20px;
-    width: 310px;
-    margin: 5px 0;
+    width: 300px;
+    margin: 5px 0 5px 10px;
     float: left;
-    padding-left: 10px;
+    /* padding-left: 10px; */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -98,8 +98,10 @@
     display: -webkit-box;
     min-width: 200px;
     max-width: 300px;
-    min-height: 70px;
+    min-height: 50px;
+    /* max-height: 50px; */
     margin-left: 10px;
+    margin-bottom: 15px;
     font-size: 13px;
     text-align: left;
     float: left;
@@ -110,6 +112,16 @@
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 }
+
+.rf-1-1-txt{
+    display: block;
+    /* border: 1px solid #000; */
+    /* padding-left: 10px; */
+    margin-left: 10px;
+    font-size: 11px;
+    float: left;
+}
+
 
 .rf-1-1-classDate {
     box-sizing: border-box;

@@ -170,12 +170,12 @@
 							<div class="rf-1 clearfix">
 								<div class="rf-1-1">
 									<img :src="getClassImg">
-									<span class="rf-1-1-title">누구나 쉽게 배우는 디자인 연습 </span>
-									<p>
-										누구나 쉽게 배울수 있는 수업이에요<br>
-										디자인은 정말 하기 싫어요<br>
-										내가 지금 이걸 왜 하고 있는걸까 생각해볼까요<br>
-									</p>
+									<span class="rf-1-1-title">
+										<span v-if="oneClassVo.classType == 1">[원데이]</span> {{ oneClassVo.className }} 
+										<span v-if="oneClassVo.classType != 1">[정규]</span> {{ oneClassVo.className }} 
+									</span>
+									<p>{{ oneClassVo.classIntro }}</p>
+									<span class="rf-1-1-txt">운영 기간 : {{ oneClassVo.startDate }} ~ {{ oneClassVo.endDate }}</span>
 								</div>
 							</div>
 							<!-- rf-1 / 클래스사진 + 클래스 설명 -->
@@ -549,6 +549,7 @@ import AppFooter from '@/components/AppFooter.vue';
 import MyPageHeader from '@/components/MyPageHeader.vue';
 import MyPageSide from '@/components/MyPageSide.vue';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 export default {
@@ -571,10 +572,24 @@ export default {
 			hasRev : true, // 작성한 리뷰 있는지 확인
 			paymentData : [], // 결제정보가져와서 저장될 곳
 			getClassImg : require('@/assets/images/hs/cake.jpg'), // 클래스이미지 
+			oneClassVo : {
+				classNo : '',
+				classImage : '',
+				className : '',
+				classIntro : '',
+				classType : '',
+				scheduleNo : '',
+				startDate : '',
+				endDate : '',
+			},
+			reviewVo : {
+				no : '',
+
+			},
 			insertReviewNo : '',
 			file : document.querySelector('#file'), // 첨부파일
 			fileName : '', // 파일이름
-			prevImg : require('@/assets/images/icon/ss/default-photo.png'), // 파일에 기본나타낼 이미지 
+			prevImg : require('@/assets/images/icon/ss/default-photo.png'), // 리뷰 작성 파일에 기본나타낼 이미지 
 		};
 	},
 	methods: {
@@ -653,6 +668,8 @@ export default {
 			let revForm = document.querySelector('.review-form');
 			modal.style.display = 'block';
 			revForm.style.display = 'block';
+			this.fileName = '';
+			this.prevImg = require('@/assets/images/icon/ss/default-photo.png');
 			console.log(no);
 
 			axios({
@@ -662,7 +679,12 @@ export default {
 				params : {scheduleNo: no},
 				responseType: 'json'
 			}).then(response => {
-				console.log(response.data);
+				// console.log(response.data.result);
+				if(response.data.result === 'success'){
+					this.oneClassVo = response.data.apiData;
+				} else {
+					Swal.fire({text : '데이터를 불러오는데 실패했습니다.', icon : 'error'});
+				}
 			}).catch(error => {
 				console.log(error);
 			});
@@ -674,6 +696,8 @@ export default {
 		closeRevForm(){
 			let modal = document.querySelector('.rev-modal');
 			modal.style.display = 'none';
+			
+			
 		},
 
 		// 파일 가져오기
@@ -750,7 +774,7 @@ export default {
 				params : {classType : paymentType},
 				responseType: 'json'
 			}).then(response => {
-				console.log(response.data.apiData);
+				// console.log(response.data.apiData);
 				// 연결 성공이면
 				if(response.data.result === 'success'){
 					this.paymentData = response.data.apiData;
