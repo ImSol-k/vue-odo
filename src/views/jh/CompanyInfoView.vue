@@ -74,6 +74,8 @@
   <AppFooter />
 </template>
 <script>
+import axios from 'axios';
+
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import "@/assets/css/jh/companyinfo.css";
@@ -170,7 +172,6 @@ export default {
   },
   methods: {
     createCharts() {
-      console.log("차트반복문");
       // 각 차트를 생성
       this.chartDataArray.forEach((chartData, i) => {
         new Chart(this.$refs.charts[i], {
@@ -180,8 +181,26 @@ export default {
         });
       });
     },
+    list(){
+      axios({
+        method: 'get', // put, post, delete 
+        url: `${this.$store.state.apiBaseUrl}/odo/companyinfo/${this.$route.params.no}`,
+        headers: { "Content-Type": "application/json; charset=utf-8", "Authorization": "Bearer " + this.$store.state.token }, //전송타입
+        //params: guestbookVo, //get방식 파라미터로 값이 전달
+        //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+        responseType: 'json' //수신타입
+      }).then(response => {
+        console.log(response); //수신데이타
+        console.log(response.data.result);
+        this.b = response.data.apiData
+      }).catch(error => {
+        console.log(error);
+      });
+    }
   },
-  created() {},
+  created() {
+
+  },
 };
 </script>
 

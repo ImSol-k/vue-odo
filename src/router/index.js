@@ -101,7 +101,7 @@ const routes = [
   },
   //=== 재현 =================================
   {
-    path: '/companyinfo',
+    path: '/companyinfo/:no',
     name: 'companyinfo',
     component: CompanyInfoView
   },
