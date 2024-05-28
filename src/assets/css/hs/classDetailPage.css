@@ -233,11 +233,25 @@
 .classIntroduceSection .classIntroImgBox {
     width: 100%;
     height: 700px;
-    background: url('../../images/hs/macbookintro.jpg') no-repeat center / contain;
     border: 1px solid #ddd;
+    overflow: hidden;
+    position: relative;
 }
 .classIntroduceSection .classIntroImgBox.show {
     height: 1500px;
+}
+.shadowBox {
+    width: 100%;
+    height: 350px;
+    background: linear-gradient(to top,
+    rgba(177, 177, 177, 0.7),
+    rgba(0, 0, 0, 0));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.shadowBox.show {
+    background: none;
 }
 /* 상세정보 더보기 버튼 */
 .moreInfoBtn {

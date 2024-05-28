@@ -109,7 +109,10 @@
 
 			<div class="classIntroduceSection">
 				<h2>클래스 소개</h2>
-				<div class="classIntroImgBox" :class="{ 'show': isMoreInfo }"></div>
+				<div class="classIntroImgBox" :class="{ 'show': isMoreInfo }">
+					<img src="../../assets/images/hs/macbookintro.jpg" alt="">
+					<div class="shadowBox" :class="{ 'show': isMoreInfo }"></div>
+				</div>
 				<button class="moreInfoBtn" @click="moreInfo">상세정보 더보기</button>
 			</div>
 			<!-- //classIntroduce -->
