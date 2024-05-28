@@ -45,8 +45,8 @@
 									<ul>
 										<li>
 											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
-											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`"  @click="goPage(list.classNo)">
-											<div class="heart" v-if="list.wishClassNo != 0" @click="wish()" :class="{ red : isRed}"></div>
+											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
+											<div class="heart" @click="wish(list.wishClassNo)" :class="{ red : isRed}"></div>
 										</li>
 										<li>
 											<div class="star-ratings">
@@ -69,7 +69,7 @@
 										<span class="paycon1-txt3">{{ list.classIntro }}</span>
 										<span class="paycon1-txt4">결제 금액 : {{ list.payPrice }}원</span>
 										<div class="paycon1-btnbox">
-											<button type="button" id="paybtn1" @click="getAttendance">출석 : {{ list.attenCount }}회</button>
+											<button type="button" id="paybtn1" @click="getAttendance(list.scheduleNo)">출석 : {{ list.attenCount }}회</button>
 											<button v-if="list.reviewNo == 0" type="button" id="paybtn2" @click="revForm(list.scheduleNo)">후기 작성</button>
 											<button v-else type="button" id="paybtn2" @click="revShow(list.reviewNo)">후기 보기</button>
 											<button type="button" id="paybtn3" @click="inquiry(list.classUrl)">문의</button>
@@ -102,8 +102,8 @@
 									<ul>
 										<li>
 											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
-											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" alt="이미지를 준비중입니다." @click="goPage(list.classNo)">
-											<div class="heart" v-if="list.wishClassNo != 0" @click="wish()" :class="{ red : isRed}"></div>
+											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
+											<div class="heart" @click="wish(list.wishClassNo)" :class="{ red : isRed}"></div>
 										</li>
 										<li>
 											<div class="star-ratings">
@@ -126,7 +126,7 @@
 										<span class="paycon1-txt3">{{ list.classIntro }}</span>
 										<span class="paycon1-txt4">결제 금액 : {{ list.payPrice }}원</span>
 										<div class="paycon1-btnbox">
-											<button type="button" id="paybtn1" @click="getAttendance">출석 : {{ list.attenCount }}회</button>
+											<button type="button" id="paybtn1" @click="getAttendance(list.scheduleNo)">출석 : {{ list.attenCount }}회</button>
 											<button v-if="list.reviewNo == 0" type="button" id="paybtn2" @click="revForm(list.scheduleNo)">후기 작성</button>
 											<button v-else type="button" id="paybtn2" @click="revShow">후기 보기</button>
 											<button type="button" id="paybtn3" @click="inquiry(list.classUrl)">문의</button>										
@@ -137,7 +137,7 @@
 									<div class="paycon2">
 										<div v-if="list.recClassNo != 0" class="paycon2-1">
 											<span class="paycon2-txt1">추천!</span>
-											<img :src="`${this.$store.state.apiBaseUrl}/upload/${list.recClassImage}`" alt="이미지를 준비중입니다" @click="goPage(list.recClassNo)">
+											<img :src="`${this.$store.state.apiBaseUrl}/upload/${list.recClassImage}`" @click="goPage(list.recClassNo)">
 											<span class="paycon2-txt2">{{ list.recClassName }}</span>
 										</div>
 										<div v-else class="paycon2-noClass">
@@ -165,7 +165,7 @@
 					</div>
 					<!-- revform1-header -->
 
-					<form @click="insertReview" enctype="multipart/form-data">
+					<form @submit="insertReview" enctype="multipart/form-data">
 						<div class="review-form">
 							<div class="rf-1 clearfix">
 								<div class="rf-1-1">
@@ -180,19 +180,18 @@
 								</div>
 							</div>
 							<!-- rf-1 / 클래스사진 + 클래스 설명 -->
-							<input type="hidden" name="classNo" :value="oneClassVo.scheduleNo">
 							<div class="rf-2 clearfix">
 								<span>클래스는 사용해 보셨나요?</span><br>
 								<div class="star-rating">
-									<input type="radio" id="5-stars" name="rating" value="5" />
+									<input type="radio" id="5-stars" name="reviewPoint" v-model="insertReviewVo.reviewPoint" value="5" />
 									<label for="5-stars" class="star">&#9733;</label>
-									<input type="radio" id="4-stars" name="rating" value="4" />
+									<input type="radio" id="4-stars" name="reviewPoint" v-model="insertReviewVo.reviewPoint" value="4" />
 									<label for="4-stars" class="star">&#9733;</label>
-									<input type="radio" id="3-stars" name="rating" value="3" />
+									<input type="radio" id="3-stars" name="reviewPoint" v-model="insertReviewVo.reviewPoint" value="3" />
 									<label for="3-stars" class="star">&#9733;</label>
-									<input type="radio" id="2-stars" name="rating" value="2" />
+									<input type="radio" id="2-stars" name="reviewPoint" v-model="insertReviewVo.reviewPoint" value="2" />
 									<label for="2-stars" class="star">&#9733;</label>
-									<input type="radio" id="1-star" name="rating" value="1" />
+									<input type="radio" id="1-star" name="reviewPoint" v-model="insertReviewVo.reviewPoint" value="1" />
 									<label for="1-star" class="star">&#9733;</label>
 								</div>
 								<!-- star-rating -->
@@ -202,15 +201,15 @@
 							<div class="rf-3 clearfix">
 								<span>수업의 내용은 좋았나요?</span><br>
 								<div class="revbox">
-									<input id="rev1-bad" type="radio" name="rev1" value="1"><br>
+									<input id="rev1-bad" type="radio" name="reviewQ1" @change="insertReviewVo.reviewQ1" value="1"><br>
 									<label for="rev1-bad">별로에요</label>
 								</div>
 								<div class="revbox">
-									<input id="rev1-mid" type="radio" name="rev1" value="2"><br>
+									<input id="rev1-mid" type="radio" name="reviewQ1" v-model="insertReviewVo.reviewQ1" value="3"><br>
 									<label for="rev1-mid">만족해요</label>
 								</div>
 								<div class="revbox">
-									<input id="rev1-good" type="radio" name="rev1" value="3"><br>
+									<input id="rev1-good" type="radio" name="reviewQ1" v-model="insertReviewVo.reviewQ1" value="5"><br>
 									<label for="rev1-good">아주 만족해요</label>
 								</div>
 							</div>
@@ -219,15 +218,15 @@
 							<div class="rf-4 clearfix">
 								<span>시설에 만족하셨나요?</span><br>
 								<div class="revbox">
-									<input id="rev2-bad" type="radio" name="rev2" value="1"><br>
+									<input id="rev2-bad" type="radio" name="reviewQ2" v-model="insertReviewVo.reviewQ2" value="1"><br>
 									<label for="rev2-bad">별로에요</label>
 								</div>
 								<div class="revbox">
-									<input id="rev2-mid" type="radio" name="rev2" value="2"><br>
+									<input id="rev2-mid" type="radio" name="reviewQ2" v-model="insertReviewVo.reviewQ2" value="3"><br>
 									<label for="rev2-mid">만족해요</label>
 								</div>
 								<div class="revbox">
-									<input id="rev2-good" type="radio" name="rev2" value="3"><br>
+									<input id="rev2-good" type="radio" name="reviewQ2" v-model="insertReviewVo.reviewQ2" value="5"><br>
 									<label for="rev2-good">아주 만족해요</label>
 								</div>
 							</div>
@@ -236,15 +235,15 @@
 							<div class="rf-5 clearfix">
 								<span>강의비용은 적당했나요?</span><br>
 								<div class="revbox">
-									<input id="rev3-bad" type="radio" name="rev3" value="1"><br>
+									<input id="rev3-bad" type="radio" name="reviewQ3" v-model="insertReviewVo.reviewQ3" value="1"><br>
 									<label for="rev3-bad">별로에요</label>
 								</div>
 								<div class="revbox">
-									<input id="rev3-mid" type="radio" name="rev3" value="2"><br>
+									<input id="rev3-mid" type="radio" name="reviewQ3" v-model="insertReviewVo.reviewQ3" value="3"><br>
 									<label for="rev3-mid">만족해요</label>
 								</div>
 								<div class="revbox">
-									<input id="rev3-good" type="radio" name="rev3" value="3"><br>
+									<input id="rev3-good" type="radio" name="reviewQ3" v-model="insertReviewVo.reviewQ3" value="5"><br>
 									<label for="rev3-good">아주 만족해요</label>
 								</div>
 							</div>
@@ -252,7 +251,7 @@
 
 							<div class="rf-6">
 								<span>리뷰를 작성해 주세요</span><br>
-								<textarea spellcheck="false" value=""></textarea>
+								<textarea spellcheck="false" name="reviewContent" v-model="insertReviewVo.reviewContent"></textarea>
 							</div>
 							<!-- rf-6 / 리뷰작성란 -->
 
@@ -490,18 +489,18 @@
 					</div>
 					<!-- revform1-header -->
 					<div class="show-atten">
-						<div class="atten1">누구나 쉽게 배우는 디자인 연습</div>
-						<div class="atten2">수강 기간 : 2024.04.20 ~ 2024.05.20</div>
+						<div class="atten1">{{ attenClassVo.attenClassName }}</div>
+						<div class="atten2">수강 기간 : {{ formatDate(attenClassVo.attenClassStartDate) }} ~ {{ formatDate(attenClassVo.attenClassEndDate) }}</div>
 						<div class="atten3">
 							<ul class="clearfix">
 								<li>출석 : 5</li>
-								<li>결석 : 0</li>
+								<!-- <li>결석 : 0</li>
 								<li>지각 : 3</li>
-								<li>조퇴 : 2</li>
+								<li>조퇴 : 2</li> -->
 							</ul>
 						</div>
 						<!-- atten3 -->
-						<div class="atten4">
+						<div v-if="attenList.length > 0" class="atten4">
 							<table>
 								<colgroup>
 									<col width="60%">
@@ -511,13 +510,20 @@
 									<th>날짜</th>
 									<th>출결</th>
 								</thead>
-								<tbody v-for="(index) in 5" :key="index">
-									<td>2024.05.03</td>
-									<td>출석</td>
+								<tbody v-for="(list,index) in attenList" :key="index">
+									<td>{{ formatDate(list.attenDate) }}</td>
+									<td>{{ list.attenType }}</td>
 								</tbody>
 							</table>
 						</div>
 						<!-- atten4 -->
+
+						<div v-else>
+							<div class="atten4">
+								<span class="atten4-noTxt">출결내용이 없어요</span>
+							</div>
+						</div>
+
 					</div>
 					<!-- show-atten -->
 				</div>
@@ -551,6 +557,7 @@ import MyPageHeader from '@/components/MyPageHeader.vue';
 import MyPageSide from '@/components/MyPageSide.vue';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import moment from 'moment';
 
 
 export default {
@@ -572,8 +579,14 @@ export default {
 			isPay : false, // 결제여부확인
 			hasRev : true, // 작성한 리뷰 있는지 확인
 			paymentData : [], // 결제정보가져와서 저장될 곳
+			attenClassVo:{
+				attenClassName : '',
+				attenClassStartDate : '',
+				attenClassEndDate : '',
+			},
+			attenList : [],
 			getClassImg : require('@/assets/images/hs/cake.jpg'), // 클래스이미지 
-			oneClassVo : {
+			oneClassVo : { // 리뷰등록모달 켜졌을때 가져올 데이터 
 				classNo : '',
 				classImage : '',
 				className : '',
@@ -583,11 +596,14 @@ export default {
 				startDate : '',
 				endDate : '',
 			},
-			reviewVo : {
-				no : '',
-
+			insertReviewVo : { // 리뷰등록할때 필요함 - 폼에서 입력받음
+				scheduleNo : '',
+				reviewPoint : '',
+				reviewQ1 : '',
+				reviewQ2 : '',
+				reviewQ3 : '',
+				reviewContent : ''
 			},
-			insertReviewNo : '',
 			file : document.querySelector('#file'), // 첨부파일
 			fileName : '', // 파일이름
 			prevImg : require('@/assets/images/icon/ss/default-photo.png'), // 리뷰 작성 파일에 기본나타낼 이미지 
@@ -595,16 +611,41 @@ export default {
 	},
 	methods: {
 		/////////////////////////////////////////////////////////////////////////
-		// 출석부 보기
+		// 출석부 닫기
 		closeRevForm3(){
 			let modal = document.querySelector('.showAttendance');
 			modal.style.display = 'none';
 		},
 
 		// 출석부 모달
-		getAttendance(){
+		getAttendance(scheduleNo){
 			let modal = document.querySelector('.showAttendance');
 			modal.style.display = 'block';
+
+			axios({
+				method: 'get',
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/attenlist`,
+				headers: { 'Content-Type': 'application/json; charset=utf-8', 
+							'Authorization' : 'Bearer ' + this.$store.state.token
+				},
+				params : {scheduleNo : scheduleNo},
+				responseType: 'json'
+			}).then(response => {
+				if(response.data.result === 'success'){
+					this.attenClassVo.attenClassName = response.data.apiData.className;
+					this.attenClassVo.attenClassStartDate = response.data.apiData.startDate;
+					this.attenClassVo.attenClassEndDate = response.data.apiData.endDate;
+					this.attenList = response.data.apiData.list;
+				} else {
+					Swal.fire({text: '통신오류'});
+				}
+			}).catch(error => {
+				console.log(error);
+			});
+		},
+		// 날짜 변환
+		formatDate(date){
+			return moment(date).format(`YYYY년 MM월 DD일 hh:mm a`);
 		},
 
 
@@ -660,17 +701,53 @@ export default {
 
 		// 등록버튼 클릭시 
 		insertReview(){
-			console.log('후기등록');
+			const formData = new FormData();
+			formData.append('file', this.file);
+			formData.append('scheduleNo',this.insertReviewVo.scheduleNo);
+			formData.append('reviewPoint',this.insertReviewVo.reviewPoint);
+			formData.append('reviewContent',this.insertReviewVo.reviewContent);
+			formData.append('reviewQ1',this.insertReviewVo.reviewQ1);
+			formData.append('reviewQ2',this.insertReviewVo.reviewQ2);
+			formData.append('reviewQ3',this.insertReviewVo.reviewQ3);
+			
+			axios({
+				method: 'post',
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/writereview`,
+				headers: { 'Content-Type': 'multipart/form-data',
+						'Authorization' : 'Bearer ' + this.$store.state.token
+				},
+				data: formData,
+				responseType: 'json'
+			}).then(response => {
+				console.log(response.data);
+				if(response.data.result === 'success'){
+					this.$router.push('/mypage/pay');
+				} else {
+					Swal.fire({text: response.data.message});
+				}
+			}).catch(error => {
+				console.log(error);
+			});
+			
 		},
-
 		// 리뷰 작성 모달 열기 
 		revForm(no){ 
+			this.insertReviewVo = {
+				scheduleNo : no,
+				reviewPoint : '',
+				reviewQ1 : '',
+				reviewQ2 : '',
+				reviewQ3 : '',
+				reviewContent : ''
+			}
+			this.fileName = '';
+			this.prevImg = require('@/assets/images/icon/ss/default-photo.png');
+
 			let modal = document.querySelector('.rev-modal');
 			let revForm = document.querySelector('.review-form');
 			modal.style.display = 'block';
 			revForm.style.display = 'block';
-			this.fileName = '';
-			this.prevImg = require('@/assets/images/icon/ss/default-photo.png');
+
 			axios({
 				method: 'get',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/getclassone`,
@@ -729,8 +806,10 @@ export default {
 		},
 		
 		// 하트이미지 클릭 -> 위시리스트에 담기기 
-		wish(){
-			this.isRed = !this.isRed
+		wish(no){
+			console.log(no);
+			this.isRed = !this.isRed;
+			
 		},
 
 		// 별점 퍼센트 보여주기(결제내역 - 결제한 클래스)

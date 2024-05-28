@@ -607,6 +607,11 @@
     min-height: 300px;
 }
 
+.atten4 .atten4-noTxt {
+    line-height: 300px;
+    font-size: 20px;
+}
+
 .atten4 table {
     width: 350px;
     margin: 0 auto;
