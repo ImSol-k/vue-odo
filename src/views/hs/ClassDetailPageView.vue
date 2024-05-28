@@ -24,11 +24,19 @@
 					<div class="orderSelectBox">
 						<select name="" id="" class="" v-model="selectedSchedule" @change="updateOrderDate">
 							<option :value="null">일정/시간</option>
-							<option v-for=" schedule in schList" :key="schedule.id" :value="schedule">{{ schedule.startDate }} ~
+							<option v-for=" schedule in schList" :key="schedule.id" :value="schedule">{{
+							schedule.startDate }} ~
 								{{ schedule.endDate }}</option>
 						</select>
-						<div class="orderDate" v-if="selectedSchedule">{{ selectedSchedule.startDate }} ~ {{ selectedSchedule.endDate }}</div>
-						<div class="howMuch"><span>주문금액 <b>0원</b></span></div>
+						<div class="orderDate" v-if="selectedSchedule">{{ selectedSchedule.startDate }} ~ {{
+							selectedSchedule.endDate }}</div>
+						<div class="howMuch">
+							<span>
+								<b v-if="selectedSchedule && classDetailVo.classPrice != 0">주문금액 {{ Number(classDetailVo.classPrice).toLocaleString('ko-KR') }}원</b>
+								<b v-else-if="selectedSchedule">무료</b>
+								<b v-else></b>
+							</span>
+						</div>
 						<button>결제하기</button>
 					</div>
 
@@ -65,7 +73,8 @@
 						</router-link>
 					</li>
 				</ul>
-				<router-link v-if="this.cMap.classReviewCnt > 4" class="moreReviewBtn" to="/reviewpage">{{ this.cMap.classReviewCnt }}개 후기 더보기 ></router-link>
+				<router-link v-if="this.cMap.classReviewCnt > 4" class="moreReviewBtn" to="/reviewpage">{{
+							this.cMap.classReviewCnt }}개 후기 더보기 ></router-link>
 			</div>
 			<!-- //reviewSection -->
 

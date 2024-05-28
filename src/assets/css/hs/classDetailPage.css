@@ -74,8 +74,10 @@
     padding: 10px;
     margin-bottom: 10px;
 }
-.orderSelectBox .howMuch span{
-    margin-left: 310px;
+.orderSelectBox .howMuch{
+    padding: 10px 10px;
+    display: flex;
+    justify-content: end;
 }
 .orderSelectBox button {
     width: 440px;
