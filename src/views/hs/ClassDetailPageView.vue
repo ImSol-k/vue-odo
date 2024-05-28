@@ -33,10 +33,10 @@
 					</div>
 
 					<div class="companySection">
-						<router-link :to="`/companyinfo/${this.companyInfo.companyNo}`" class="companyLogo">
+						<router-link :to="`/companyinfo/${this.classDetailVo.companyNo}`" class="companyLogo">
 							<img src="../../assets/images/hs/rainbow_apple_icon.png" alt="">
 						</router-link>
-						<router-link :to="`/companyinfo/${this.companyInfo.companyNo}`" class="nameBox">
+						<router-link :to="`/companyinfo/${this.classDetailVo.companyNo}`" class="nameBox">
 							<p>{{ this.companyInfo.companyName }}</p>
 							<p>
 								<span>클래스 {{ this.cMap.comClassCnt }}</span>
