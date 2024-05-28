@@ -135,8 +135,6 @@ export default {
         };
     },
     methods: {
-
-
         /////////////////////////////// ss /////////////////////////////////////
         // 로그아웃
         logout(){
@@ -144,27 +142,16 @@ export default {
             this.$store.commit('setToken', '');
             this.$router.push('/login/user');
         },
-
         // 로그인 체크
         checkAuth(){
             if((this.$store.state.authUser == '' && this.$store.state.token == '')){
                 this.$router.push('/login/user');
             }
         },
-
         goMypage(){
             this.$router.push('/mypage/pay');
         },
-
-
         /////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-        
-
 
         ///////////////////////////////////// 사이드 바 ///////////////////////////////
         toggleMenu() {

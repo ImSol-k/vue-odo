@@ -45,7 +45,7 @@
 									<ul>
 										<li>
 											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
-											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" alt="이미지를 준비중입니다." @click="goPage(list.classNo)">
+											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`"  @click="goPage(list.classNo)">
 											<div class="heart" v-if="list.wishClassNo != 0" @click="wish()" :class="{ red : isRed}"></div>
 										</li>
 										<li>
@@ -80,7 +80,7 @@
 									<div class="paycon2">
 										<div v-if="list.recClassNo != 0" class="paycon2-1">
 											<span class="paycon2-txt1">추천!</span>
-											<img :src="`${this.$store.state.apiBaseUrl}/upload/${list.recClassImage}`" alt="이미지를 준비중입니다" @click="goPage(list.recClassNo)">
+											<img :src="`${this.$store.state.apiBaseUrl}/upload/${list.recClassImage}`" @click="goPage(list.recClassNo)">
 											<span class="paycon2-txt2">{{ list.recClassName }}</span>
 										</div>
 										<div v-else class="paycon2-noClass">
@@ -165,11 +165,12 @@
 					</div>
 					<!-- revform1-header -->
 
-					<form @sumbit="insertReview" enctype="multipart/form-data">
+					<form @click="insertReview" enctype="multipart/form-data">
 						<div class="review-form">
 							<div class="rf-1 clearfix">
 								<div class="rf-1-1">
-									<img :src="`${this.$store.state.apiBaseUrl}/upload/${oneClassVo.classImage}`">
+									<img v-if="oneClassVo.classImage !== ''" :src="`${this.$store.state.apiBaseUrl}/upload/${oneClassVo.classImage}`">
+									<!-- <img src="@/assets/images/icon/ss/default-profile.png"> -->
 									<span class="rf-1-1-title">
 										<span v-if="oneClassVo.classType == 1">[원데이]</span><span v-else>[정규]</span>
 										{{ oneClassVo.className }} 
@@ -670,8 +671,6 @@ export default {
 			revForm.style.display = 'block';
 			this.fileName = '';
 			this.prevImg = require('@/assets/images/icon/ss/default-photo.png');
-			console.log(no);
-
 			axios({
 				method: 'get',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/getclassone`,
@@ -688,16 +687,12 @@ export default {
 			}).catch(error => {
 				console.log(error);
 			});
-
-
 		},
 		
 		// 리뷰 작성 모달 닫기
 		closeRevForm(){
 			let modal = document.querySelector('.rev-modal');
 			modal.style.display = 'none';
-			
-			
 		},
 
 		// 파일 가져오기
@@ -744,10 +739,6 @@ export default {
 			return starScore + 1.5;
 		},
 
-		// 이미지
-		classImages(saveName){
-			return require(`@/assets/images/class/${saveName}.jpg`);
-		},
 		
 
 		// 문의요청
@@ -787,10 +778,7 @@ export default {
 			}).catch(error => {
 				console.log(error);
 			});
-			
 		},
-		
-
 	},
 	created(){
 		// 데이터가져오는 메소드 실행
