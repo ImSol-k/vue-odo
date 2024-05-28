@@ -10,9 +10,10 @@
 
 				<div class="headInfoBox">
 					<div>
-						<h1>{{this.classDetailVo.className}}</h1>
+						<h1>{{ this.classDetailVo.className }}</h1>
 						<div>
-							<p v-if="this.classDetailVo.classPrice != 0">{{ Number(this.classDetailVo.classPrice).toLocaleString('ko-KR') }}<span>원</span></p>
+							<p v-if="this.classDetailVo.classPrice != 0">{{
+							Number(this.classDetailVo.classPrice).toLocaleString('ko-KR') }}<span>원</span></p>
 							<p v-else>무료</p>
 							<router-link to="" class="class-like-btn">
 								<img src="../../assets/images/하트.png" alt="">
@@ -21,11 +22,12 @@
 					</div>
 
 					<div class="orderSelectBox">
-						<select name="" id="" class="">
-							<option value="">일정/시간</option>
-							<option v-for=" schedule in schList" :key="schedule" value="">{{schedule.startDate}} ~ {{schedule.endDate}}</option>
+						<select name="" id="" class="" v-model="selectedSchedule" @change="updateOrderDate">
+							<option value="null">일정/시간</option>
+							<option v-for=" schedule in schList" :key="schedule" value="">{{ schedule.startDate }} ~
+								{{ schedule.endDate }}</option>
 						</select>
-						<div class="orderDate">0000.00.00 00:00(선택하면 추가됨)</div>
+						<div class="orderDate" v-if="selectedSchedule !== null">0000.00.00 00:00</div>
 						<div class="howMuch"><span>주문금액 <b>0원</b></span></div>
 						<button>결제하기</button>
 					</div>
@@ -35,11 +37,11 @@
 							<img src="../../assets/images/hs/rainbow_apple_icon.png" alt="">
 						</router-link>
 						<router-link to="/companyinfo" class="nameBox">
-							<p>{{this.companyInfo.companyName}}</p>
+							<p>{{ this.companyInfo.companyName }}</p>
 							<p>
-								<span>클래스 {{this.cMap.comClassCnt}}</span>
-								<span>후기 {{this.cMap.comReviewCnt}}</span>
-								<span>찜 {{this.cMap.comWishCnt}}</span>
+								<span>클래스 {{ this.cMap.comClassCnt }}</span>
+								<span>후기 {{ this.cMap.comReviewCnt }}</span>
+								<span>찜 {{ this.cMap.comWishCnt }}</span>
 							</p>
 						</router-link>
 						<router-link to="" class="company-like-btn">
@@ -57,20 +59,20 @@
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
 								<img src="../../assets/images/icon/footer_icons_modify/f_naver.png" alt="">
-								<span>{{review.userNickname}}</span>
+								<span>{{ review.userNickname }}</span>
 							</div>
-							<p>{{review.reviewContent}}</p>
+							<p>{{ review.reviewContent }}</p>
 						</router-link>
 					</li>
 				</ul>
-				<router-link class="moreReviewBtn" to="/reviewpage">{{this.cMap.classReviewCnt}}개 후기 더보기 ></router-link>
+				<router-link v-if="this.cMap.classReviewCnt > 4" class="moreReviewBtn" to="/reviewpage">{{ this.cMap.classReviewCnt }}개 후기 더보기 ></router-link>
 			</div>
 			<!-- //reviewSection -->
 
 			<div class="classInfoSection">
 				<h2>클래스 설명</h2>
 				<div>
-					<span>{{this.classDetailVo.classIntro}}</span>
+					<span>{{ this.classDetailVo.classIntro }}</span>
 				</div>
 			</div>
 			<!-- //classInfoSection -->
@@ -81,15 +83,15 @@
 					<img src="../../assets/images/hs/macbookintro.jpg" alt="">
 					<div class="shadowBox" :class="{ 'show': isMoreInfo }"></div>
 				</div>
-				<button class="moreInfoBtn" @click="moreInfo">상세정보 더보기</button>
+				<button class="moreInfoBtn" :class="{ 'show': isMoreInfo }" @click="moreInfo">상세정보 더보기</button>
 			</div>
 			<!-- //classIntroduce -->
 
 			<h2>진행하는 장소</h2>
 			<div class="mapWraper">
 				<div id="map" style="width:1000px;height:250px;border-radius: 10px;"></div>
-				<b>{{this.classDetailVo.classDetailAdd}}</b>
-				<p>{{this.classDetailVo.classNameAdd}}</p>
+				<b>{{ this.classDetailVo.classDetailAdd }}</b>
+				<p>{{ this.classDetailVo.classNameAdd}}</p>
 			</div>
 
 			<div class="b-link">
@@ -124,6 +126,7 @@ export default {
 	},
 	data() {
 		return {
+			selectedSchedule: null,
 			isMoreInfo: false,
 			cMap: {},
 			classDetailVo: {},
@@ -146,6 +149,9 @@ export default {
 		}
 	},
 	methods: {
+		updateOrderDate() {
+			// selectedSchedule 데이터 변경으로 인해 div의 내용과 스타일이 자동으로 업데이트 됩니다.
+		},
 		getClassDetail() {
 
 			axios({
