@@ -23,20 +23,20 @@
 
 					<div class="orderSelectBox">
 						<select name="" id="" class="" v-model="selectedSchedule" @change="updateOrderDate">
-							<option value="null">일정/시간</option>
-							<option v-for=" schedule in schList" :key="schedule" value="">{{ schedule.startDate }} ~
+							<option :value="null">일정/시간</option>
+							<option v-for=" schedule in schList" :key="schedule.id" :value="schedule">{{ schedule.startDate }} ~
 								{{ schedule.endDate }}</option>
 						</select>
-						<div class="orderDate" v-if="selectedSchedule !== null">0000.00.00 00:00</div>
+						<div class="orderDate" v-if="selectedSchedule">{{ selectedSchedule.startDate }} ~ {{ selectedSchedule.endDate }}</div>
 						<div class="howMuch"><span>주문금액 <b>0원</b></span></div>
 						<button>결제하기</button>
 					</div>
 
 					<div class="companySection">
-						<router-link to="/companyinfo" class="companyLogo">
+						<router-link :to="`/companyinfo/${this.companyInfo.companyNo}`" class="companyLogo">
 							<img src="../../assets/images/hs/rainbow_apple_icon.png" alt="">
 						</router-link>
-						<router-link to="/companyinfo" class="nameBox">
+						<router-link :to="`/companyinfo/${this.companyInfo.companyNo}`" class="nameBox">
 							<p>{{ this.companyInfo.companyName }}</p>
 							<p>
 								<span>클래스 {{ this.cMap.comClassCnt }}</span>
@@ -89,7 +89,7 @@
 
 			<h2>진행하는 장소</h2>
 			<div class="mapWraper">
-				<div id="map" style="width:1000px;height:250px;border-radius: 10px;"></div>
+				<div id="map" style="width:1000px;height:300px;border-radius: 10px;"></div>
 				<b>{{ this.classDetailVo.classDetailAdd }}</b>
 				<p>{{ this.classDetailVo.classNameAdd}}</p>
 			</div>
