@@ -38,7 +38,7 @@
 								<b v-else></b>
 							</span>
 						</div>
-						<button>결제하기</button>
+						<button @click="goToPay">결제하기</button>
 					</div>
 
 					<div class="companySection">
@@ -75,7 +75,7 @@
 					</li>
 				</ul>
 				<router-link v-if="this.cMap.classReviewCnt != 0" class="moreReviewBtn" :to="`/reviewpage/${this.$route.params.classNo}`">{{
-							this.cMap.classReviewCnt }} 개 후기 더보기 ></router-link>
+							this.cMap.classReviewCnt }}개 후기 더보기 ></router-link>
 			</div>
 			<!-- //reviewSection -->
 
@@ -160,7 +160,7 @@ export default {
 	},
 	methods: {
 		goToPay() {
-			if( this.selectedSchedule.scheduleNo != null && (this.$store.state.authUser != '' && this.$store.state.token != '') ) {
+			if( this.selectedSchedule != null && (this.$store.state.authUser != '' && this.$store.state.token != '') ) {
 				this.$router.push(`/payment/${this.selectedSchedule.scheduleNo}`);
 
 			} else if ( (this.$store.state.authUser == '' && this.$store.state.token == '') ) {
