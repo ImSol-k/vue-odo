@@ -6,7 +6,7 @@
 		<div class="detail-inner">
 
 			<div class="headSection">
-				<img class="representImg" src="../../assets/images/hs/cake.jpg" alt="">
+				<img class="representImg" :src="`${this.$store.state.apiBaseUrl}/upload/${this.classDetailVo.classImg}`" alt="">
 
 				<div class="headInfoBox">
 					<div>
@@ -43,7 +43,7 @@
 
 					<div class="companySection">
 						<router-link :to="`/companyinfo/${this.classDetailVo.companyNo}`" class="companyLogo">
-							<img src="../../assets/images/hs/rainbow_apple_icon.png" alt="">
+							<img :src="`${this.$store.state.apiBaseUrl}/upload/${this.classDetailVo.companyImg}`" alt="">
 						</router-link>
 						<router-link :to="`/companyinfo/${this.classDetailVo.companyNo}`" class="nameBox">
 							<p>{{ this.companyInfo.companyName }}</p>
@@ -65,16 +65,16 @@
 				<ul>
 					<li v-for=" review in classReviewList " :key="review">
 						<router-link :to="`/reviewpage/${this.$route.params.classNo}`">
-							<img src="../../assets/images/hs/camera.jpg" alt="">
+							<img :src="`${this.$store.state.apiBaseUrl}/upload/${review.reviewImg}`" alt="">
 							<div>
-								<img src="../../assets/images/icon/footer_icons_modify/f_naver.png" alt="">
+								<img :src="`${this.$store.state.apiBaseUrl}/upload/${review.userImg}`" alt="">
 								<span>{{ review.userNickname }}</span>
 							</div>
 							<p>{{ review.reviewContent }}</p>
 						</router-link>
 					</li>
 				</ul>
-				<router-link class="moreReviewBtn" :to="`/reviewpage/${this.$route.params.classNo}`">{{
+				<router-link v-if="this.cMap.classReviewCnt != 0" class="moreReviewBtn" :to="`/reviewpage/${this.$route.params.classNo}`">{{
 							this.cMap.classReviewCnt }} 개 후기 더보기 ></router-link>
 			</div>
 			<!-- //reviewSection -->

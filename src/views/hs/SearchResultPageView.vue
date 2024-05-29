@@ -31,13 +31,13 @@
 			<li v-for=" cateClass in cateList " :key="cateClass">
 				<router-link :to="`/classdetailpage/${cateClass.classNo}`">
 					<div class="img-box">
-						<img src="../../assets/images/hs/main_slide_2.jpg" alt="">
+						<img :src="`${this.$store.state.apiBaseUrl}/upload/${cateClass.classImg}`" alt="">
 						<img src="" alt="">
 					</div>
 					<p class="location">{{ cateClass.classNameAdd }}</p>
 					<p class="classTitle">{{ cateClass.className }}</p>
 					<div class="review-box">
-						<span class="starPoint">★★★★★</span>
+						<span class="starPoint">★</span>
 						<span>후기 123</span>
 					</div>
 					<p class="class-price" v-if="cateClass.classPrice == 0">무료</p>

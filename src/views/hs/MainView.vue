@@ -70,13 +70,15 @@
 				<li v-for=" fbList in listOfLists[0] " :key="fbList">
 					<router-link :to="`/classdetailpage/${fbList.classNo}`">
 						<div class="img-box">
-							<img src="../../assets/images/hs/main_slide_2.jpg" alt="">
+							<img :src="`${this.$store.state.apiBaseUrl}/upload/${fbList.classImg}`" alt="">
 							<img src="" alt="">
 						</div>
 						<p class="location">{{fbList.classNameAdd}}</p>
 						<p class="classTitle">{{fbList.className}}</p>
 						<div class="review-box">
-							<span class="starPoint">★★★★★</span>
+							<span class="starPoint">★</span>
+							<span class="starPoint">★</span>
+							<span class="starPoint">★</span>
 							<span>후기 123</span>
 						</div>
 						<p class="class-price" v-if="fbList.classPrice == 0">무료</p>
@@ -97,13 +99,14 @@
 				<li v-for=" pbList in listOfLists[1] " :key="pbList">
 					<router-link :to="`/classdetailpage/${pbList.classNo}`">
 						<div class="img-box">
-							<img src="../../assets/images/hs/main_slide_1.jpg" alt="">
+							<img :src="`${this.$store.state.apiBaseUrl}/upload/${pbList.classImg}`" alt="">
 							<img src="" alt="">
 						</div>
 						<p class="location">{{ pbList.classNameAdd }}</p>
 						<p class="classTitle">{{ pbList.className }}</p>
 						<div class="review-box">
-							<span class="starPoint">★★★★★</span>
+							<span class="starPoint">★</span>
+							<span class="starPoint">★</span>
 							<span>후기 123</span>
 						</div>
 						<p class="class-price">{{ pbList.classPrice.toLocaleString('ko-KR') }}원</p>
@@ -123,13 +126,13 @@
 				<li v-for=" nList in listOfLists[2] " :key="nList">
 					<router-link :to="`/classdetailpage/${nList.classNo}`">
 						<div class="img-box">
-							<img src="../../assets/images/hs/coffee.jpg" alt="">
+							<img :src="`${this.$store.state.apiBaseUrl}/upload/${nList.classImg}`" alt="">
 							<img src="" alt="">
 						</div>
 						<p class="location">{{ nList.classNameAdd }}</p>
 						<p class="classTitle">{{ nList.className }}</p>
 						<div class="review-box">
-							<span class="starPoint">★★★★★</span>
+							<span class="starPoint">★</span>
 							<span>후기 123</span>
 						</div>
 						<p class="class-price" v-if="nList.classPrice == 0">무료</p>
@@ -198,6 +201,7 @@ export default defineComponent({
 			}).catch(error => {
 				console.log(error);
 			});
+
 		},
 		//
 		///  배너클릭하면 호스트가입페이지로 이동  ////
@@ -231,9 +235,9 @@ export default defineComponent({
 }
 
 .carousel__pagination-button::after {
-	width: 7px;
-	height: 7px;
-	border-radius: 50%;
+	width: 25px;
+	height: 4px;
+	border-radius: 20px;
 }
 
 .carousel__pagination-button--active::after {

@@ -1,3 +1,4 @@
+
 /* category-icons */
 ul.category-icons {
     height: 120px;
@@ -130,7 +131,7 @@ ul.classList .review-box {
     font-size: 12px;
     font-weight: bold;
 }
-ul.classList .review-box span:first-child {
+ul.classList .review-box span.starPoint {
     color: #8521FF;
     font-size: 17px;
 }
