@@ -29,3 +29,13 @@ h2{
 .list-table tbody tr:hover {
 	background-color: rgb(240, 240, 240);
   }
+#noticePageing{
+	cursor: pointer;
+	font-weight: bold;
+}
+
+#noticePageing:active{
+	color: #0075ef;
+
+}
+
