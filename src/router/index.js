@@ -152,7 +152,7 @@ const routes = [
     component : LoginPage
   },
   {
-    path: '/reviewpage',
+    path: '/reviewpage/:no',
     name : 'reviewpage',
     component : ReviewPage
   },

@@ -268,7 +268,7 @@
 							
 							<div class="rf-8">
 								<button class="back-btn" type="button" @click="closeRevForm">뒤로 가기</button>
-								<button class="insert-btn" type="submit">후기 등록</button>				
+								<button id="insert-button" class="insert-btn" type="button" disabled >후기 등록</button>				
 							</div>
 							<!-- rf-8 / 버튼 -->
 							<div class="rf-9"></div>
@@ -470,9 +470,6 @@
 							<!-- rf-8 / 버튼 -->
 							<div class="rf-9"></div>
 							<!-- rf-9 / 높이 여백용 -->
-
-							
-
 						</div>
 						<!-- //review-form2 -->
 					</form>
@@ -490,13 +487,10 @@
 					<!-- revform1-header -->
 					<div class="show-atten">
 						<div class="atten1">{{ attenClassVo.attenClassName }}</div>
-						<div class="atten2">수강 기간 : {{ formatDate(attenClassVo.attenClassStartDate) }} ~ {{ formatDate(attenClassVo.attenClassEndDate) }}</div>
+						<div class="atten2">수강 기간 : {{ formatDate(attenClassVo.attenClassStartDate) }} ~ <span v-if="attenClassVo.attenClassEndDate != null"> {{ formatDate(attenClassVo.attenClassEndDate) }}</span></div>
 						<div class="atten3">
 							<ul class="clearfix">
-								<li>출석 : 5</li>
-								<!-- <li>결석 : 0</li>
-								<li>지각 : 3</li>
-								<li>조퇴 : 2</li> -->
+								<li>출석 : {{ attenClassVo.attenCount }}</li>
 							</ul>
 						</div>
 						<!-- atten3 -->
@@ -523,13 +517,13 @@
 								<span class="atten4-noTxt">출결내용이 없어요</span>
 							</div>
 						</div>
-
+						<!-- atten4 -->
 					</div>
 					<!-- show-atten -->
 				</div>
 				<!-- revform1 -->
 			</div>
-			<!-- showAttendance -->
+			<!-- //showAttendance -->
 
 
 		</div>
@@ -583,6 +577,7 @@ export default {
 				attenClassName : '',
 				attenClassStartDate : '',
 				attenClassEndDate : '',
+				attenCount : 0,
 			},
 			attenList : [],
 			getClassImg : require('@/assets/images/hs/cake.jpg'), // 클래스이미지 
@@ -604,6 +599,7 @@ export default {
 				reviewQ3 : '',
 				reviewContent : ''
 			},
+			
 			file : document.querySelector('#file'), // 첨부파일
 			fileName : '', // 파일이름
 			prevImg : require('@/assets/images/icon/ss/default-photo.png'), // 리뷰 작성 파일에 기본나타낼 이미지 
@@ -635,6 +631,7 @@ export default {
 					this.attenClassVo.attenClassName = response.data.apiData.className;
 					this.attenClassVo.attenClassStartDate = response.data.apiData.startDate;
 					this.attenClassVo.attenClassEndDate = response.data.apiData.endDate;
+					this.attenClassVo.attenCount = response.data.apiData.attenCount;
 					this.attenList = response.data.apiData.list;
 				} else {
 					Swal.fire({text: '통신오류'});
@@ -645,7 +642,7 @@ export default {
 		},
 		// 날짜 변환
 		formatDate(date){
-			return moment(date).format(`YYYY년 MM월 DD일 hh:mm a`);
+			return moment(date).format(`YYYY년 MM월 DD일 HH:MM `);
 		},
 
 
@@ -699,6 +696,8 @@ export default {
 
 		///////////////////////////////////////////////////////////////////////////////////
 
+		
+
 		// 등록버튼 클릭시 
 		insertReview(){
 			const formData = new FormData();
@@ -709,7 +708,7 @@ export default {
 			formData.append('reviewQ1',this.insertReviewVo.reviewQ1);
 			formData.append('reviewQ2',this.insertReviewVo.reviewQ2);
 			formData.append('reviewQ3',this.insertReviewVo.reviewQ3);
-			
+				
 			axios({
 				method: 'post',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/writereview`,
@@ -731,7 +730,7 @@ export default {
 			
 		},
 		// 리뷰 작성 모달 열기 
-		revForm(no){ 
+		revForm(no){
 			this.insertReviewVo = {
 				scheduleNo : no,
 				reviewPoint : '',
@@ -859,6 +858,7 @@ export default {
 			});
 		},
 	},
+	
 	created(){
 		// 데이터가져오는 메소드 실행
 		this.getList(this.classType);
