@@ -380,7 +380,8 @@ footer .icon-box img {
     height: 30px;
 }
 .dropdown-menu ul > li > ul.subMenuList a:hover {
-    color: #2c2c2c;
+    color: #8521FF;
+    font-weight: bold;
     text-decoration: underline;
 }
 
