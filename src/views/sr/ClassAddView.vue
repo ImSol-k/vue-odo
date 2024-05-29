@@ -42,8 +42,8 @@
           <div class="classAddInfo">
             <select name="" id="" class="addPageSelectClass" v-if="isClass" v-model="classVo.recClassNo">
               <option value="" disabled selected>관련 정규클래스 선택</option>
-              <option v-for="i in 5" :key="i" v-bind:value="i">
-                정규클래스 {{ i }}번
+              <option v-for="(c, i) in rClassList" :key="i" :value="c.classNo">
+                {{ c.className }}
               </option>
             </select>
             <div class="classAddInfoBox">
@@ -286,9 +286,11 @@ export default {
 
       // ============================
       img: "",
-      companyNum: 2,
+      companyNum: 1,
       cList: [],
+      rClassList: [],
       selectClassNo: "",
+      selecRtClassNo: "",
       cate1: [],
       cate2: [],
       classImage: "",
@@ -322,58 +324,57 @@ export default {
     classHandle() {
       //클래스 추가
       const formData = new FormData();
-      // formData.append("classVo", JSON.stringify(this.classVo));
       formData.append("classImageFile", this.classImage);
-      // formData.append("companyNo", this.companyNum);
-      // formData.append("cate1No", this.classVo.cate1No);
-      // formData.append("cate2No", this.classVo.cate2No);
-      // formData.append("className", this.classVo.className);
-      // formData.append("classIntro", this.classVo.classIntro);
-      // formData.append("classZipcode", this.classVo.classZipcode);
-      // formData.append("classNameAddress", this.classVo.classNameAddress);
-      // formData.append("classNumAddress", this.classVo.classNumAddress);
-      // formData.append("classDetailAddress", this.classVo.classDetailAddress);
-      // formData.append("classLatitude", this.classVo.classLatitude);
-      // formData.append("classLongitutde", this.classVo.classLongitutde);
-      // formData.append("classPrice", this.classVo.classPrice);
-      // formData.append("classMin", this.classVo.classMin);
-      // formData.append("classMax", this.classVo.classMax);
-      // formData.append("classUrl", this.classVo.classUrl);
-      // formData.append("startDate", this.classVo.startDate);
-      // formData.append("endDate", this.classVo.endDate);
-      // formData.append("onedayDate", this.classVo.onedayDate);
+      formData.append("companyNo", this.companyNum);
+      formData.append("cate1No", this.classVo.cate1No);
+      formData.append("cate2No", this.classVo.cate2No);
+      formData.append("className", this.classVo.className);
+      formData.append("classIntro", this.classVo.classIntro);
+      formData.append("classZipcode", this.classVo.classZipcode);
+      formData.append("classNameAddress", this.classVo.classNameAddress);
+      formData.append("classNumAddress", this.classVo.classNumAddress);
+      formData.append("classDetailAddress", this.classVo.classDetailAddress);
+      formData.append("classLatitude", this.classVo.classLatitude);
+      formData.append("classLongitutde", this.classVo.classLongitutde);
+      formData.append("classPrice", this.classVo.classPrice);
+      formData.append("classMin", this.classVo.classMin);
+      formData.append("classMax", this.classVo.classMax);
+      formData.append("classUrl", this.classVo.classUrl);
+      formData.append("startDate", this.classVo.startDate);
+      formData.append("endDate", this.classVo.endDate);
+      formData.append("onedayDate", this.classVo.onedayDate);
       formData.append("classInfo", this.classVo.classInfo.content);
 
-      // if (this.classVo.className == "") {
-      //   alert("클래스명을 작성해주세요.");
-      //   } else if (this.classVo.classIntro == "") {
-      //     alert("클래스 소개를 작성해주세요.");
-      //   } else if (this.isClass && this.classVo.onedayDate == "") {
-      //     alert("일정을 입력해 주세요");
-      //   } else if (
-      //     !this.isClass &&
-      //     this.classVo.startDate == "" &&
-      //     this.classVo.endDate == ""
-      //   ) {
-      //     alert("시작일과 종료일을 확인 해 주세요");
-      //   } else if (
-      //     this.classVo.classZipcode == "" &&
-      //     this.classVo.classDetailAddress == ""
-      //   ) {
-      //     alert("주소(상세주소)를 입력해 주세요");
-      //   } else if (this.classVo.cate2No == "") {
-      //     alert("카테고리를 선택해 주세요");
-      //   } else if (this.classVo.classMax == "" && this.classVo.classMin == "") {
-      //     alert("인원수를 입력해주세요.")
-      //   } else if (this.classVo.classInfo == null) {
-      //     alert("상세설명을 입력해주세요.")
-      //   } else if (
-      //     Number(this.classVo.classMax) <= Number(this.classVo.classMin)
-      //   ) {
-      //     alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
-      // } else {
-        //클래스 추가
+      if (this.classVo.className == "") {
+        alert("클래스명을 작성해주세요.");
+        } else if (this.classVo.classIntro == "") {
+          alert("클래스 소개를 작성해주세요.");
+        } else if (this.isClass && this.classVo.onedayDate == "") {
+          alert("일정을 입력해 주세요");
+        } else if (
+          !this.isClass &&
+          this.classVo.startDate == "" &&
+          this.classVo.endDate == ""
+        ) {
+          alert("시작일과 종료일을 확인 해 주세요");
+        } else if (
+          this.classVo.classZipcode == "" &&
+          this.classVo.classDetailAddress == ""
+        ) {
+          alert("주소(상세주소)를 입력해 주세요");
+        } else if (this.classVo.cate2No == "") {
+          alert("카테고리를 선택해 주세요");
+        } else if (this.classVo.classMax == "" && this.classVo.classMin == "") {
+          alert("인원수를 입력해주세요.")
+        } else if (this.classVo.classInfo == null) {
+          alert("상세설명을 입력해주세요.")
+        } else if (
+          Number(this.classVo.classMax) <= Number(this.classVo.classMin)
+        ) {
+          alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
+      } else {
         if (this.isClass) {
+          //클래스 추가
           console.log("클래스 추가");
           console.log(this.companyNum);
           console.log(this.classVo.classInfo);
@@ -396,8 +397,9 @@ export default {
             });
         } else {
           //클래스 수정
+          console.log("클래스 수정");
         }
-      // }
+      }
     },
     imgFile(event) {
       console.log("이미지업로드");
@@ -421,7 +423,7 @@ export default {
 
       let tempVo = {
         type: type,
-        no: this.companyNo,
+        no: this.companyNum,
       };
 
       axios({
@@ -435,8 +437,11 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          // console.log(response.data.apiData);
-          this.cList = response.data.apiData;
+          if (response.data.result == "success") {
+            this.cList = response.data.apiData;
+            console.log("기존클래스 ====================")
+            console.log(this.cList);
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -445,11 +450,14 @@ export default {
 
     //클래스 불러오기
     classShow() {
+      console.log("******************************************");
       // console.log("클래스 불러오기: " + this.selectClassNo);
       let tempVo = {
-        companyNo: this.companyNo,
+        companyNum: this.companyNum,
         classNo: this.selectClassNo,
       };
+
+      console.log(tempVo);
       axios({
         method: "post",
         url: `${this.$store.state.apiBaseUrl}/odo/company/getclass`,
@@ -461,10 +469,38 @@ export default {
         responseType: "json",
       })
         .then((response) => {
+          
           console.log(response.data.apiData);
           if (response.data.result == "success") {
             this.classVo = response.data.apiData;
-            this.state.content = response.data.apiData.classInfo;
+            //this.state.content = response.data.apiData.classInfo;
+            console.log(this.classVo);
+            console.log("+++++++++++++++++++++++++++++++++++++++++++++");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+    //정규클래스 불러오기
+    regularClass() {
+      console.log("정규클래스");
+      axios({
+        method: "post",
+        url: `${this.$store.state.apiBaseUrl}/odo/company/getrclass/${this.companyNum}`,
+        headers: {
+          //전송타입 + 토큰
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        responseType: "json",
+      })
+        .then((response) => {
+          console.log(response.data);
+          if (response.data.result == "success") {
+            this.rClassList = response.data.apiData;
+            console.log("정규클래스 ==================");
+            console.log(this.rClassList);
           }
         })
         .catch((error) => {
@@ -487,6 +523,7 @@ export default {
         .then((response) => {
           // console.log(response.data.apiData);
           if (response.data.result == "success") {
+
             this.cate1 = response.data.apiData;
           } else {
             console.log("불러오기 실패");
@@ -650,6 +687,7 @@ export default {
     },
   },
   created() {
+    // this.regularClass();
     this.classList(this.classVo.classType);
     this.cate();
   },
