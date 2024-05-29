@@ -6,14 +6,15 @@
 		<div class="detail-inner">
 
 			<div class="headSection">
-				<img class="representImg" :src="`${this.$store.state.apiBaseUrl}/upload/${this.classDetailVo.classImg}`" alt="">
+				<img class="representImg" :src="`${this.$store.state.apiBaseUrl}/upload/${this.classDetailVo.classImg}`"
+					alt="">
 
 				<div class="headInfoBox">
 					<div>
 						<h1>{{ this.classDetailVo.className }}</h1>
 						<div>
 							<p v-if="this.classDetailVo.classPrice != 0">{{
-							Number(this.classDetailVo.classPrice).toLocaleString('ko-KR') }}<span>원</span></p>
+					Number(this.classDetailVo.classPrice).toLocaleString('ko-KR') }}<span>원</span></p>
 							<p v-else>무료</p>
 							<router-link to="" class="class-like-btn">
 								<img src="../../assets/images/하트.png" alt="">
@@ -33,7 +34,8 @@
 						</div>
 						<div class="howMuch">
 							<span>
-								<b v-if="selectedSchedule && classDetailVo.classPrice != 0">주문금액 {{ Number(classDetailVo.classPrice).toLocaleString('ko-KR') }}원</b>
+								<b v-if="selectedSchedule && classDetailVo.classPrice != 0">주문금액 {{
+					Number(classDetailVo.classPrice).toLocaleString('ko-KR') }}원</b>
 								<b v-else-if="selectedSchedule">무료</b>
 								<b v-else></b>
 							</span>
@@ -43,7 +45,8 @@
 
 					<div class="companySection">
 						<router-link :to="`/companyinfo/${this.classDetailVo.companyNo}`" class="companyLogo">
-							<img :src="`${this.$store.state.apiBaseUrl}/upload/${this.classDetailVo.companyImg}`" alt="">
+							<img :src="`${this.$store.state.apiBaseUrl}/upload/${this.classDetailVo.companyImg}`"
+								alt="">
 						</router-link>
 						<router-link :to="`/companyinfo/${this.classDetailVo.companyNo}`" class="nameBox">
 							<p>{{ this.companyInfo.companyName }}</p>
@@ -74,8 +77,9 @@
 						</router-link>
 					</li>
 				</ul>
-				<router-link v-if="this.cMap.classReviewCnt != 0" class="moreReviewBtn" :to="`/reviewpage/${this.$route.params.classNo}`">{{
-							this.cMap.classReviewCnt }}개 후기 더보기 ></router-link>
+				<router-link v-if="this.cMap.classReviewCnt != 0" class="moreReviewBtn"
+					:to="`/reviewpage/${this.$route.params.classNo}`">{{
+					this.cMap.classReviewCnt }}개 후기 더보기 ></router-link>
 			</div>
 			<!-- //reviewSection -->
 
@@ -101,7 +105,7 @@
 			<div class="mapWraper">
 				<div id="map" style="width:1000px;height:300px;border-radius: 10px;"></div>
 				<b>{{ this.classDetailVo.classDetailAdd }}</b>
-				<p>{{ this.classDetailVo.classNameAdd}}</p>
+				<p>{{ this.classDetailVo.classNameAdd }}</p>
 			</div>
 
 			<div class="b-link">
@@ -127,6 +131,7 @@ import AppFooter from "@/components/AppFooter.vue"
 import AppHeader from "@/components/AppHeader.vue"
 
 import axios from 'axios';
+import Swal from "sweetalert2";
 
 export default {
 	name: "ClassDetailPageView",
@@ -160,15 +165,38 @@ export default {
 	},
 	methods: {
 		goToPay() {
-			if( this.selectedSchedule != null && (this.$store.state.authUser != '' && this.$store.state.token != '') ) {
+			if (this.selectedSchedule != null && (this.$store.state.authUser != '' && this.$store.state.token != '')) {
 				this.$router.push(`/payment/${this.selectedSchedule.scheduleNo}`);
 
-			} else if ( (this.$store.state.authUser == '' && this.$store.state.token == '') ) {
-				alert("로그인 후 결제해주세요");
-                this.$router.push('/login/user');
+			} else if ((this.$store.state.authUser == '' && this.$store.state.token == '')) {
+				Swal.fire({
+					title: "로그인 후 이용 가능합니다.",
+					text: "로그인 하시겠습니까?",
+					icon: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "예",
+					cancelButtonText: "아니오"
+				}).then(result => {
+					if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+						// ...실행
+						this.$router.push('/login/user');
+
+					} else if (result.isDismissed) { // 만약 모달창에서 cancel 버튼을 눌렀다면
+						// ...실행
+					}
+				});
+				// alert("로그인 후 결제해주세요");
 			} else {
-				alert("일정/시간을 선택해주세요");
-            }
+				Swal.fire({ 
+					text: "일정/시간을 선택해주세요", 
+					icon: "warning", 
+					confirmButtonColor: "#3085d6",
+					confirmButtonText: "확인" 
+				});
+				// alert("일정/시간을 선택해주세요");
+			}
 		},
 		updateOrderDate() {
 			// selectedSchedule 데이터 변경으로 인해 div의 내용과 스타일이 자동으로 업데이트 됩니다.
