@@ -74,8 +74,8 @@
 						</router-link>
 					</li>
 				</ul>
-				<router-link v-if="this.cMap.classReviewCnt > 4" class="moreReviewBtn" :to="`/reviewpage/${this.$route.params.classNo}`">{{
-							this.cMap.classReviewCnt }}개 후기 더보기 ></router-link>
+				<router-link class="moreReviewBtn" :to="`/reviewpage/${this.$route.params.classNo}`">{{
+							this.cMap.classReviewCnt }} 개 후기 더보기 ></router-link>
 			</div>
 			<!-- //reviewSection -->
 
