@@ -64,7 +64,7 @@
 			<div class="reviewSection">
 				<ul>
 					<li v-for=" review in classReviewList " :key="review">
-						<router-link :to="`/reviewpage/${review.reviewNo}`">
+						<router-link :to="`/reviewpage/${this.$route.params.classNo}`">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
 								<img src="../../assets/images/icon/footer_icons_modify/f_naver.png" alt="">
@@ -74,7 +74,7 @@
 						</router-link>
 					</li>
 				</ul>
-				<router-link v-if="this.cMap.classReviewCnt > 4" class="moreReviewBtn" to="/reviewpage">{{
+				<router-link v-if="this.cMap.classReviewCnt > 4" class="moreReviewBtn" :to="`/reviewpage/${this.$route.params.classNo}`">{{
 							this.cMap.classReviewCnt }}개 후기 더보기 ></router-link>
 			</div>
 			<!-- //reviewSection -->
