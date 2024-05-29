@@ -135,7 +135,7 @@ ul.classList .review-box span.starPoint {
     color: #8521FF;
     font-size: 17px;
 }
-ul.classList .review-box span:last-child {
+ul.classList span.reviewCount {
     margin-left: 5px;
     color: #333;
 }

@@ -36,9 +36,18 @@
 					</div>
 					<p class="location">{{ cateClass.classNameAdd }}</p>
 					<p class="classTitle">{{ cateClass.className }}</p>
-					<div class="review-box">
-						<span class="starPoint">★</span>
-						<span>후기 123</span>
+					<div v-if="cateClass.reviewCount != 0" class="review-box">
+						<b v-if="cateClass.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
+						<b v-else-if="cateClass.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
+						<b v-else-if="cateClass.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
+						<b v-else-if="cateClass.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
+						<b v-else-if="cateClass.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
+						<b v-else-if="cateClass.reviewPointAvg == 0"><span class="starPoint">☆☆☆☆☆</span></b>
+						<span class="reviewCount">후기 {{ cateClass.reviewCount }}</span>
+					</div>
+					<div v-else class="review-box">
+						<b><span class="starPoint"></span></b>
+						<span class="reviewCount"></span>
 					</div>
 					<p class="class-price" v-if="cateClass.classPrice == 0">무료</p>
 					<p class="class-price" v-else>{{ cateClass.classPrice.toLocaleString('ko-KR') }}원</p>
@@ -58,7 +67,8 @@
 					<a @click="changePage(pMap.startPageBtnNo - 1)">◀</a>
 				</li>
 
-				<li v-for="page in pages" :key="page" :class="{ pageBtnActive: this.$route.query.crtPage === String(page) }">
+				<li v-for="page in pages" :key="page"
+					:class="{ pageBtnActive: this.$route.query.crtPage === String(page) }">
 					<a @click="changePage(page)">{{ page }}</a>
 				</li>
 

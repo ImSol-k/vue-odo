@@ -170,7 +170,6 @@ export default {
 		updateOrderDate() {
 			// selectedSchedule 데이터 변경으로 인해 div의 내용과 스타일이 자동으로 업데이트 됩니다.
 
-			console.log(this.selectedSchedule.scheduleNo);
 		},
 		getClassDetail() {
 

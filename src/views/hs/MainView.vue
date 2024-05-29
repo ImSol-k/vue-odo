@@ -75,11 +75,18 @@
 						</div>
 						<p class="location">{{fbList.classNameAdd}}</p>
 						<p class="classTitle">{{fbList.className}}</p>
-						<div class="review-box">
-							<span class="starPoint">★</span>
-							<span class="starPoint">★</span>
-							<span class="starPoint">★</span>
-							<span>후기 123</span>
+						<div v-if="fbList.reviewCount != 0" class="review-box">
+							<b v-if="fbList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
+							<b v-else-if="fbList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
+							<b v-else-if="fbList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
+							<b v-else-if="fbList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
+							<b v-else-if="fbList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
+							<b v-else-if="fbList.reviewPointAvg == 0"><span class="starPoint">☆☆☆☆☆</span></b>
+							<span class="reviewCount">후기 {{ fbList.reviewCount }}</span>
+						</div>
+						<div v-else class="review-box">
+							<b><span class="starPoint"></span></b>
+							<span class="reviewCount"></span>
 						</div>
 						<p class="class-price" v-if="fbList.classPrice == 0">무료</p>
 						<p class="class-price" v-else>{{fbList.classPrice.toLocaleString('ko-KR')}}</p>
@@ -104,10 +111,18 @@
 						</div>
 						<p class="location">{{ pbList.classNameAdd }}</p>
 						<p class="classTitle">{{ pbList.className }}</p>
-						<div class="review-box">
-							<span class="starPoint">★</span>
-							<span class="starPoint">★</span>
-							<span>후기 123</span>
+						<div v-if="pbList.reviewCount != 0" class="review-box">
+							<b v-if="pbList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
+							<b v-else-if="pbList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
+							<b v-else-if="pbList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
+							<b v-else-if="pbList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
+							<b v-else-if="pbList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
+							<b v-else-if="pbList.reviewPointAvg == 0"><span class="starPoint">☆☆☆☆☆</span></b>
+							<span class="reviewCount">후기 {{ pbList.reviewCount }}</span>
+						</div>
+						<div v-else class="review-box">
+							<b><span class="starPoint"></span></b>
+							<span class="reviewCount"></span>
 						</div>
 						<p class="class-price">{{ pbList.classPrice.toLocaleString('ko-KR') }}원</p>
 					</router-link>
@@ -131,9 +146,18 @@
 						</div>
 						<p class="location">{{ nList.classNameAdd }}</p>
 						<p class="classTitle">{{ nList.className }}</p>
-						<div class="review-box">
-							<span class="starPoint">★</span>
-							<span>후기 123</span>
+						<div v-if="nList.reviewCount != 0" class="review-box">
+							<b v-if="nList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
+							<b v-else-if="nList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
+							<b v-else-if="nList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
+							<b v-else-if="nList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
+							<b v-else-if="nList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
+							<b v-else-if="nList.reviewPointAvg == 0"><span class="starPoint">☆☆☆☆☆</span></b>
+							<span class="reviewCount">후기 {{ nList.reviewCount }}</span>
+						</div>
+						<div v-else class="review-box">
+							<b><span class="starPoint"></span></b>
+							<span class="reviewCount"></span>
 						</div>
 						<p class="class-price" v-if="nList.classPrice == 0">무료</p>
 						<p class="class-price" v-else>{{ nList.classPrice.toLocaleString('ko-KR') }}원</p>
