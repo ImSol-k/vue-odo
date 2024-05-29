@@ -24,12 +24,13 @@
 					<div class="orderSelectBox">
 						<select name="" id="" class="" v-model="selectedSchedule" @change="updateOrderDate">
 							<option :value="null">일정/시간</option>
-							<option v-for=" schedule in schList" :key="schedule.id" :value="schedule">{{
-							schedule.startDate }} ~
-								{{ schedule.endDate }}</option>
+							<option v-for=" schedule in schList" :key="schedule.id" :value="schedule">
+								{{ schedule.startDate }} ~ {{ schedule.endDate }}
+							</option>
 						</select>
-						<div class="orderDate" v-if="selectedSchedule">{{ selectedSchedule.startDate }} ~ {{
-							selectedSchedule.endDate }}</div>
+						<div class="orderDate" v-if="selectedSchedule">
+							{{ selectedSchedule.startDate }} ~ {{ selectedSchedule.endDate }}
+						</div>
 						<div class="howMuch">
 							<span>
 								<b v-if="selectedSchedule && classDetailVo.classPrice != 0">주문금액 {{ Number(classDetailVo.classPrice).toLocaleString('ko-KR') }}원</b>
@@ -63,7 +64,7 @@
 			<div class="reviewSection">
 				<ul>
 					<li v-for=" review in classReviewList " :key="review">
-						<router-link to="/reviewpage">
+						<router-link :to="`/reviewpage/${review.reviewNo}`">
 							<img src="../../assets/images/hs/camera.jpg" alt="">
 							<div>
 								<img src="../../assets/images/icon/footer_icons_modify/f_naver.png" alt="">
@@ -158,8 +159,18 @@ export default {
 		}
 	},
 	methods: {
+		goToPay() {
+			if( this.selectedSchedule.scheduleNo != null) {
+				this.$router.push(`/payment/${this.selectedSchedule.scheduleNo}`);
+
+			} else {
+				alert("일정/시간을 선택해주세요");
+			}
+		},
 		updateOrderDate() {
 			// selectedSchedule 데이터 변경으로 인해 div의 내용과 스타일이 자동으로 업데이트 됩니다.
+
+			console.log(this.selectedSchedule.scheduleNo);
 		},
 		getClassDetail() {
 
