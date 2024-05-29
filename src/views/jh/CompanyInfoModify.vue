@@ -22,7 +22,7 @@
         </div> -->
     <!--소개글-->
     <div class="companyJoinTitle">
-      <h1>(주)레모나</h1>
+      <h1>{{this.companyVo.companyName}}</h1>
       <div class="companyJoinImg">
         <div class="preview-image">
           <img :src="previewImage" style="max-width: 300px; max-height: 300px;">
@@ -157,7 +157,24 @@ export default {
 
   methods: {
     modify() {
-      console.log(this.companyVo);
+      const formData = new FormData();
+      formData.append("companyBn", this.companyVo.companyBn);
+      formData.append("companyName", this.companyVo.companyName);
+      formData.append("companyIntro", this.companyVo.companyIntro);
+      formData.append("companyId", this.companyVo.companyId);
+      formData.append("companyPass", this.companyVo.companyPass);
+      formData.append("companyHp", this.companyVo.companyHp);
+      formData.append("companyFile", this.companyVo.companyImage); //파일
+      formData.append("companyZipCode", this.companyVo.companyZipCode);
+      formData.append("companyNameAddress", this.companyVo.companyNameAddress);
+      formData.append("companyNumAddress", this.companyVo.companyNumAddress);
+      formData.append(
+        "companyDetailAddress",
+        this.companyVo.companyDetailAddress
+      );
+      formData.append("companyLatitude", this.companyVo.companyLatitude);
+      formData.append("companyLongitude", this.companyVo.companyLongitude);
+
       if (this.companyVo.companyBn == "") {
         alert("사업자번호를 입력해 주세요");
       } else if (this.companyVo.companyName == "") {
@@ -166,7 +183,7 @@ export default {
         alert("업체소개를 입력해 주세요");
       } else if (this.companyVo.companyId == "") {
         alert("아이디를 입력해 주세요");
-      } else if (this.companyVo.companyPass == "") {
+      } else if (this.companyVo.companyPass == null) {
         alert("비밀번호를 입력해 주세요");
       } else if (this.companyVo.zonecode == "") {
         alert("주소를 입력해 주세요");
@@ -177,24 +194,18 @@ export default {
       } else {
         if (!this.isBn) {
           alert("사업자번호인증 해주세요.");
-        } else if (!this.isId) {
-          alert("아이디 중복확인을 해주세요");
         } else {
+          console.log(this.companyVo);
           axios({
             method: "put",
-            url: `${this.$store.state.apiBaseUrl}/odo/companymodify`, //SpringBoot주소
-            headers: { "Content-Type": "application/json; charset=utf-8", "Authorization": "Bearer " + this.$store.state.token }, //전송타입
-            data: this.companyVo,
+            url: `${this.$store.state.apiBaseUrl}/odo/companymodify`,
+            headers: { "Content-Type": "multipart/form-data", "Authorization": "Bearer " + this.$store.state.token }, //전송타입
+            data: formData,
             responseType: "json",
           })
             .then((response) => {
               console.log(response); //수신데이터
-              if (response.data.result == "success") {
-                alert("회원가입에 성공했습니다.");
-                this.$router.push("/login/company");
-              } else {
-                alert("회원가입에 실패했습니다.\n정보를 다시 입력해주세요.");
-              }
+
             })
             .catch((error) => {
               console.log(error);
@@ -293,7 +304,7 @@ export default {
     handleImageChange(event) {
       // 선택한 파일
       this.profile = event.target.files[0];
-
+      this.companyVo.companyImage = event.target.files[0];
       // FileReader 객체를 사용하여 이미지를 읽음
       const reader = new FileReader();
 
@@ -346,9 +357,9 @@ export default {
         //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: 'json' //수신타입
       }).then(response => {
-        console.log(response); //수신데이타
+        //console.log(response); //수신데이타
         this.companyVo = response.data.apiData;
-        console.log(this.companyVo)
+        //console.log(this.companyVo)
 
       }).catch(error => {
         console.log(error);
