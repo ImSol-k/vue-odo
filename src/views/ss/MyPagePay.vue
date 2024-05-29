@@ -40,6 +40,15 @@
 					<div v-else>
 						<!-- 원데이 클래스-->
 						<div class="div-180" v-if="isClass">
+							<div v-if="paymentData.length === 0">
+								<div class="mymy-nopay">
+									<img id="nopayImg" src="@/assets/images/icon/ss/nopay.png">
+									<span>결제한 내역이 없어요</span>
+									<router-link to="/">홈으로 가기</router-link>
+								</div>
+								<!-- mymy-nopay -->
+							</div>
+
 							<div class="pay clearfix" v-for="(list, index) in paymentData" :key="index">
 								<div class="mymy-pay">
 									<ul>
@@ -94,8 +103,16 @@
 							<!-- pay -->
 						</div>
 						<!-- 원데이클래스 -->
-						
-						<div v-else>
+						<div v-else class="div-180">
+							<div v-if="paymentData.length === 0">
+								<div class="mymy-nopay">
+									<img id="nopayImg" src="@/assets/images/icon/ss/nopay.png">
+									<span>결제한 내역이 없어요</span>
+									<router-link to="/">홈으로 가기</router-link>
+								</div>
+								<!-- mymy-nopay -->
+							</div>
+
 							<!-- 정규클래스 -->
 							<div class="pay clearfix" v-for="(list, index) in paymentData" :key="index">
 								<div class="mymy-pay">
@@ -831,7 +848,7 @@ export default {
 		
 		// 결제정보 가져오기
 		getList(paymentType){
-			paymentType = this.classType;
+			// paymentType = this.classType;
 			axios({
 				method: 'get',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/getpaylist`,
