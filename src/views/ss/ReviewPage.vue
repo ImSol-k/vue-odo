@@ -112,6 +112,8 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 
+
+
 export default {
 	name: "ReviewPage",
 	components: {
@@ -121,7 +123,6 @@ export default {
 	data() {
 		return {
 			type : ['평점높은순','평점낮은순','최신순'], // 리뷰 정렬 할 때 쓸 값들
-			isUp : true,
 			isList : false,
 			whatType : '',
 			classInfo : '',
@@ -131,14 +132,16 @@ export default {
 	methods: {
 
 		// 정렬순서 버튼 눌렀을 때 
-		showType(){
-			this.isUp = !this.isUp;
+		showType(){ 
 			this.isList = !this.isList;
 		},
-
+		// 
 		getType(index){
+			let path =this.$route.fullPath;
+			let classNo = path.split('/')[2];
 			this.whatType = this.type[index];
 			this.isList = false;
+			this.getClassReviewList(classNo,index);
 		},
 
 		// 클래스 별점표시 
@@ -153,12 +156,12 @@ export default {
 		},
 
 		// 클래스 리뷰리스트 가져오기
-		getClassReviewList(classNo){
+		getClassReviewList(classNo,type){
 			axios({
 				method: 'get',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/classreviewlist`,
 				headers: { 'Content-Type': 'application/json; charset=utf-8' },
-				params : {classNo : classNo},
+				params : {classNo : classNo, type : type},
 				responseType: 'json'
 			}).then(response => {
 				if(response.data.result === 'success'){
@@ -196,7 +199,7 @@ export default {
 		let path =this.$route.fullPath;
 		let classNo = path.split('/')[2];
 		this.getClassInfo(classNo);
-		this.getClassReviewList(classNo);
+		this.getClassReviewList(classNo, 0);
 	}
 };
 </script>
