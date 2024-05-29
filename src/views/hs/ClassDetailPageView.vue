@@ -160,12 +160,15 @@ export default {
 	},
 	methods: {
 		goToPay() {
-			if( this.selectedSchedule.scheduleNo != null) {
+			if( this.selectedSchedule.scheduleNo != null && (this.$store.state.authUser != '' && this.$store.state.token != '') ) {
 				this.$router.push(`/payment/${this.selectedSchedule.scheduleNo}`);
 
+			} else if ( (this.$store.state.authUser == '' && this.$store.state.token == '') ) {
+				alert("로그인 후 결제해주세요");
+                this.$router.push('/login/user');
 			} else {
 				alert("일정/시간을 선택해주세요");
-			}
+            }
 		},
 		updateOrderDate() {
 			// selectedSchedule 데이터 변경으로 인해 div의 내용과 스타일이 자동으로 업데이트 됩니다.
