@@ -24,48 +24,61 @@
     <div class="companyJoinTitle">
       <h1>(주)레모나</h1>
       <div class="companyJoinImg">
-        <img src="@/assets/images/icon/man_icon.png" alt="" />
-        <div>
-          <p>업체사진변경</p>
-          <input type="file" name="" id="" />
+        <div class="preview-image">
+          <img :src="previewImage" style="max-width: 300px; max-height: 300px;">
+        </div>
+
+        <div class="input">
+          <input type="file" id="profile" name="profile" class="file-input" style="width: auto;"
+            @change="handleImageChange">
         </div>
       </div>
       <div class="companyJoinInfo">
         <div>
           <!-- <label for="companyNo">사업자번호</label> -->
-          <input type="text" name="" id="businesNumber" placeholder="사업자번호" />
+          <input type="text" name="" id="businesNumber" v-model="companyVo.companyBn" placeholder="사업자번호" />
+          <input type="button" value="사업자 인증" v-on:click="businessNumber" />
+          <p v-if="isBn">✅인증되었습니다</p>
+          <p v-else-if="isBn == null">사업자번호를 입력해주세요.</p>
+          <p v-else>❌다시 인증해주세요</p>
         </div>
         <div>
           <!-- <label for="companyName">업체명</label> -->
-          <input type="text" name="" id="companyName" placeholder="업체명" />
+          <input type="text" name="" id="companyName" v-model="companyVo.companyName" placeholder="업체명" />
         </div>
         <div>
           <!-- <label for="companyName">업체명</label> -->
-          <textarea type="text" id="companyDescription" placeholder="업체소개"></textarea>
+          <textarea type="text" id="companyDescription" v-model="companyVo.companyIntro" placeholder="업체소개">
+            </textarea>
         </div>
         <div>
           <!-- <label for="companyId">아이디</label> -->
-          <input type="text" name="" id="companyId" placeholder="아이디" value="asfd3" disabled />
+          <input type="text" name="" id="companyId" v-model="companyVo.companyId" placeholder="아이디" />
         </div>
         <div>
           <!-- <label for="companyPass">비밀번호</label> -->
-          <input type="text" name="" id="companyPass" placeholder="비밀번호" />
+          <input type="password" name="" id="companyPass" placeholder="비밀번호" v-model="companyPassChack" minlength="8"
+            maxlength="16" />
+          <p>비밀번호를 입력해주세요.(8~16글자)</p>
         </div>
         <div>
           <!-- <label for="companyPassChack">비밀번호확인</label> -->
-          <input type="text" name="" id="companyPassChack" placeholder="비밀번호확인" v-model="companyVo.companyPass" />
-          <p>✅비밀번호 일치</p>
-          <p>❌비밀번호가 일치하지 않습니다.</p>
+          <input type="password" name="" id="companyPassChack" placeholder="비밀번호확인" v-model="companyVo.companyPass" />
+          <p v-if="companyPassChack != '' &&
+            companyPassChack == companyVo.companyPass
+            ">
+            ✅비밀번호 일치
+          </p>
+          <p v-else>❌비밀번호가 일치하지 않습니다.</p>
         </div>
         <div class="companyAddress">
-          <input type="text" id="postcode" placeholder="우편번호" v-model="companyVo.zonecode" readonly />
+          <input type="text" id="companyZipCode" placeholder="우편번호" v-model="companyVo.companyZipCode" readonly />
           <input type="button" v-on:click.prevent="DaumPostcode()" value="우편번호 찾기" /><br />
-          <input type="text" id="roadAddress" placeholder="도로명주소" v-model="companyVo.roadAddress" readonly />
-          <input type="text" id="jibunAddress" placeholder="지번주소" v-model="companyVo.jibunAddress" readonly />
+          <input type="text" id="companyNameAddress" placeholder="도로명주소" v-model="companyVo.companyNameAddress"
+            readonly />
+          <input type="text" id="companyNumAddress" placeholder="지번주소" v-model="companyVo.companyNumAddress" readonly />
           <span id="guide" style="color: #999; display: none"></span>
-          <input type="text" id="sample4_detailAddress" placeholder="상세주소" v-model="companyVo.detailAddress" />
-          <input type="text" name="" v-model="companyVo.y" placeholder="위도" />
-          <input type="text" name="" v-model="companyVo.x" placeholder="경도" />
+          <input type="text" id="companyDetailAddress" placeholder="상세주소" v-model="companyVo.companyDetailAddress" />
         </div>
         <div>
           <!-- <label for="companyPassChack">비밀번호확인</label> -->
@@ -74,14 +87,15 @@
           <div class="companyHpChack">
             <input type="text" name="" id="companyPassChack" placeholder="인증번호" />
             <input type="button" value="확인" />
-            <p>✅인증이 완료되었습니다.</p>
-            <p>❌인증번호가 일치하지 않습니다.</p>
+            <p v-if="isHp">✅인증이 완료되었습니다.</p>
+            <p v-else-if="isHp == null">인증번호를 입력해주세요.</p>
+            <p v-else>❌인증번호가 일치하지 않습니다.</p>
           </div>
         </div>
       </div>
       <div class="companyJoinButton">
         <button>취소</button>
-        <button>수정</button>
+        <button v-on:click="modify">수정</button>
       </div>
       <!--
         <div id="map">
@@ -104,7 +118,6 @@ import "@/assets/css/jh/jh.css";
 import "@/assets/css/Initialization.css";
 
 import axios from "axios";
-import Swal from "sweetalert2";
 
 export default {
   components: {
@@ -114,21 +127,26 @@ export default {
   data() {
     return {
       previewImage: require("@/assets/images/logo.png"),
+      isBn: null,
+      isId: null,
+      isHp: null,
+      //업체정보
+      companyPassChack: "",
       companyVo: {
-        businesNumber: "",
+        companyBn: "",
         companyName: "",
-        companyDescription: "",
+        companyIntro: "",
         companyId: "",
         companyPass: "",
-        companyAddress: "",
         companyHp: "",
+        companyImage: "",
         //주소
-        zonecode: "",
-        roadAddress: "",
-        jibunAddress: "",
-        detailAddress: "",
-        y: "", //위도
-        x: "", //경도
+        companyZipCode: "",
+        companyNameAddress: "",
+        companyNumAddress: "",
+        companyDetailAddress: "",
+        companyLatitude: "", //위도
+        companyLongitude: "", //경도
       },
       message: "",
       accessToken:
@@ -138,11 +156,91 @@ export default {
   },
 
   methods: {
-    test() {
-      Swal.fire({
-        title: "sdf",
-      });
+    modify() {
+      console.log(this.companyVo);
+      if (this.companyVo.companyBn == "") {
+        alert("사업자번호를 입력해 주세요");
+      } else if (this.companyVo.companyName == "") {
+        alert("업체명을 입력해 주세요");
+      } else if (this.companyVo.companyIntro == "") {
+        alert("업체소개를 입력해 주세요");
+      } else if (this.companyVo.companyId == "") {
+        alert("아이디를 입력해 주세요");
+      } else if (this.companyVo.companyPass == "") {
+        alert("비밀번호를 입력해 주세요");
+      } else if (this.companyVo.zonecode == "") {
+        alert("주소를 입력해 주세요");
+      } else if (this.companyVo.detailAddress == "") {
+        alert("상세주소를 입력해 주세요");
+      } else if (this.companyVo.companyHp == "") {
+        alert("핸드폰번호를 입력해 주세요");
+      } else {
+        if (!this.isBn) {
+          alert("사업자번호인증 해주세요.");
+        } else if (!this.isId) {
+          alert("아이디 중복확인을 해주세요");
+        } else {
+          axios({
+            method: "put",
+            url: `${this.$store.state.apiBaseUrl}/odo/companymodify`, //SpringBoot주소
+            headers: { "Content-Type": "application/json; charset=utf-8", "Authorization": "Bearer " + this.$store.state.token }, //전송타입
+            data: this.companyVo,
+            responseType: "json",
+          })
+            .then((response) => {
+              console.log(response); //수신데이터
+              if (response.data.result == "success") {
+                alert("회원가입에 성공했습니다.");
+                this.$router.push("/login/company");
+              } else {
+                alert("회원가입에 실패했습니다.\n정보를 다시 입력해주세요.");
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+      }
     },
+    businessNumber() {
+      //console.log("businessNumber");
+      const data = { b_no: [this.companyVo.companyBn] };
+      axios
+        .post(
+          "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=kLwu8It5iiIWVEWui%2FFpNx7qI2XcPU6H6lfgnHJ1RGVI0nNAR9yfRk7eWA8m9ncjMV%2FSeJ2g36xCarutBsixGw%3D%3D",
+          data,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer GBoS9ElaWUq6vtcfzi1g5xvqS0tBleTdBxI7d6Sal2YAjx+TVLTIID3c+ul1j0bzkUn/AqoXjbXoKI0YZbe7wg==",
+            },
+          }
+        )
+        .then((response) => {
+          //console.log("Response:", response.data);
+
+          if (
+            response.data &&
+            response.data.data &&
+            response.data.data.length > 0
+          ) {
+            const valid = response.data.data[0].b_stt_cd;
+            if (valid === "01") {
+              this.isBn = true;
+            } else {
+              this.isBn = false;
+            }
+          } else {
+            this.isBn = false;
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          this.isBn = false;
+        });
+    },
+
     postToFacebook() {
       const url = `https://graph.facebook.com/${this.pageId}/feed`;
       const params = {
@@ -164,23 +262,30 @@ export default {
       new window.daum.Postcode({
         oncomplete: (data) => {
           //주소 저장
-          this.companyVo.zonecode = data.zonecode;
-          this.companyVo.roadAddress = data.roadAddress;
-          this.companyVo.jibunAddress = data.jibunAddress;
+          this.companyVo.companyZipCode = data.zonecode;
+          this.companyVo.companyNameAddress = data.roadAddress;
+          this.companyVo.companyNumAddress = data.jibunAddress;
           // //검색된주소 위도, 경도로 저장
           var geocoder = new window.kakao.maps.services.Geocoder();
-          geocoder.addressSearch(this.companyVo.roadAddress, (result, status) => {
-            if (status === window.kakao.maps.services.Status.OK) {
-              // 주소 검색 결과가 성공일 경우
-              this.companyVo.y = result[0].y; // 위도
-              this.companyVo.x = result[0].x; // 경도
-              console.log("위도:", this.companyVo.y, "경도:", this.companyVo.x);
-              // 여기서 위도와 경도를 사용하여 원하는 작업을 수행할 수 있습니다.
-            } else {
-              // 주소 검색 실패
-              console.error("주소 검색 실패");
+          geocoder.addressSearch(
+            this.companyVo.companyNameAddress,
+            (result, status) => {
+              if (status === window.kakao.maps.services.Status.OK) {
+                // 주소 검색 결과가 성공일 경우
+                this.companyVo.companyLatitude = result[0].y; // 위도
+                this.companyVo.companyLongitude = result[0].x; // 경도
+                console.log(
+                  "위도:",
+                  this.companyVo.companyLatitude,
+                  "경도:",
+                  this.companyVo.companyLongitude
+                );
+              } else {
+                // 주소 검색 실패
+                console.error("주소 검색 실패");
+              }
             }
-          });
+          );
         },
       }).open();
     },
@@ -232,6 +337,23 @@ export default {
         });
       };
     },
+    list() {
+      axios({
+        method: 'get', // put, post, delete 
+        url: `${this.$store.state.apiBaseUrl}/odo/companymodify`,
+        headers: { "Content-Type": "application/json; charset=utf-8", "Authorization": "Bearer " + this.$store.state.token }, //전송타입
+        //params: guestbookVo, //get방식 파라미터로 값이 전달
+        //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+        responseType: 'json' //수신타입
+      }).then(response => {
+        console.log(response); //수신데이타
+        this.companyVo = response.data.apiData;
+        console.log(this.companyVo)
+
+      }).catch(error => {
+        console.log(error);
+      });
+    }
   },
   mounted() {
     // 네이버 지도 API 로드
@@ -239,6 +361,7 @@ export default {
 
   created() {
     //this.map();
+    this.list();
   },
 };
 </script>

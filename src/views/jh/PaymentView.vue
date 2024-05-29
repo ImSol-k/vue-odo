@@ -9,7 +9,7 @@
       <p>결제/예약 하기</p>
       <div class="paymentBox">
         <div class="paymentClassBox clearfix">
-          <img v-bind:src="require(`@/assets/images/class/${this.pv.classImage}.jpg`)" alt="" />
+          <img v-bind:src="`${this.$store.state.apiBaseUrl}/upload/${this.pv.classImage}`" alt="" />
           <div class="paymentTitle">
             <p>{{ this.pv.className }}</p>
             <p>{{ this.pv.classIntro }}</p>

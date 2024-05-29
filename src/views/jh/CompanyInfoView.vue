@@ -52,7 +52,7 @@
               </div>
             </div>
             <div class="classStarChart">
-              <canvas :id="'chart-' + i" ref="charts" width="220px" height="110px" />
+              <canvas :id="'chart-' + i" ref="charts" width="320px" height="200px" />
             </div>
           </div>
         </div>
@@ -102,22 +102,20 @@ export default {
         const chartData = {
           type: 'bar',
           data: {
-            labels: ['데이터 1', '데이터 2', '데이터 3', '데이터 4'], // 예시 데이터
+            labels: ['수업이 좋아요', '시설이 좋아요', '비용이 좋아요'], // 예시 데이터
             datasets: [
               {
                 label: `Chart ${index + 1}`,
-                data: classData.chartData, // ci2의 차트 데이터를 사용
+                data: [classData.q1, classData.q2, classData.q3], // ci2의 차트 데이터를 사용
                 backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
                   'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
                 ],
                 borderColor: [
                   'rgba(255, 99, 132, 1)',
                   'rgba(54, 162, 235, 1)',
                   'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
                 ],
                 borderWidth: 1,
               },

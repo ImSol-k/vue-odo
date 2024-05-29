@@ -5,6 +5,10 @@
   align-items: center;
   margin: 50px 100px;
 }
+
+.companyInfo{
+  width: 800px;
+}
 .companyInfoBox {
   text-align: left;
 }
@@ -67,6 +71,11 @@
 .infoImg {
   position: relative;
 }
+
+.infoImg>img{
+  width: 150px;
+  height: 200px;
+}
 .infoImg > img {
   width: 150px;
   object-fit: contain;
@@ -87,7 +96,9 @@
   /* justify-items: space-between; */
 }
 .infoContentBox {
-  width: 400px;
+  width: 300px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .infoContentBox > div > img {
   width: 40px;
