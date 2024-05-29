@@ -7,16 +7,16 @@
 	<div class="revMain">
 		<div class="rev-header clearfix">
 			<div class="rev-header1">
-				<span>후기 {{ reviewCount }}개</span>
+				<span>후기 {{ classInfo.totalCount }}개</span>
 				<div class="star-ratings">
-					<div class="star-ratings-fill" :style="{ width: ratingToPercent(starAvg) + '%' }">
+					<div class="star-ratings-fill" :style="{ width: ratingToPercent(classInfo.reviewAvg) + '%' }">
 						<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 					</div>
 					<div class="star-ratings-base">
 						<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 					</div>
 				</div>
-				<span class="star-avg">{{ starScore }}</span>
+				<span class="star-avg">{{ classInfo.reviewAvg }}</span>
 			</div>
 			<!-- rev-header1 -->
 			<div class="rev-header2">
@@ -41,47 +41,48 @@
 		<!-- rev-header -->
 
 		<div class="rev-body clearfix">
-			<div class="rev-box" v-for="(index) in 5" :key="index">
+			<div class="rev-box" v-for="(list,index) in classReivewList" :key="index">
 				<div class="rev-left clearfix">
 					<div class="rev-box1">
-						<img src="@/assets/images/hs/cake.jpg">
-						<span class="rev-box1-txt1">너에게로가는길</span>
+						<img v-if="list.userImage != null" :src="`${this.$store.state.apiBaseUrl}/upload/${list.userImage}`">
+						<img v-else src="@/assets/images/icon/ss/default-profile.png">
+						<span class="rev-box1-txt1">{{ list.userNickname }}</span>
 						<div class="star-ratings">
-							<div class="star-ratings-fill" :style="{ width: ratingToPercent2(starScore2) + '%' }">
+							<div class="star-ratings-fill" :style="{ width: ratingToPercent(list.reviewPoint) + '%' }">
 								<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 							</div>
 							<div class="star-ratings-base">
 								<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 							</div>
 						</div>
-						<span class="rev-box1-txt2">2024년 5월 16일 21:02 </span>
+						<span class="rev-box1-txt2">{{ list.reviewDate }}</span>
 					</div>
 					<!-- revbox1 -->
 
 					<div class="rev-box2 ">
 						<div class="rev-box2-1">
-							수업 듣는 내내 즐거웠어요 
-							수업 듣는 내내 즐거웠어요
-							수업 듣는 내내 즐거웠어요
-							수업 듣는 내내 즐거웠어요
-							수업 듣는 내내 즐거웠어요
-							수업 듣는 내내 즐거웠어요
+							{{ list.reviewContent }}
 						</div>
-						<div class="rev-box2-2" v-on:click.prevent="goPage">누구나 쉽게 배울수 있는 수업이에요</div>
-						<div class="rev-box2-3">[원데이]누구나 쉽게 배우는 커피내리기 연습(초보반)</div>
+						<div class="rev-box2-2" @click="goPage(list.classNo)">{{ list.classIntro }}</div>
+						<div class="rev-box2-3">
+							<span v-if="list.classType == 1">[원데이]</span>
+							<span v-else>[정규]</span>
+							{{ list.className }}
+						</div>
 					</div>
 					<!-- revbox2 -->
 				</div>
 				<!-- rev-left -->
 				<div class="rev-box3">
 					<ul>
-						<li v-for="(index) in 1" :key="index"><img src="@/assets/images/hs/coffee.jpg"></li>
+						<li v-for="(index) in 1" :key="index">
+							<img v-if="list.reviewImage != null" :src="`${this.$store.state.apiBaseUrl}/upload/${list.reviewImage}`">
+							<img v-else style="display: none">
+						</li>
 					</ul>
 									
 				</div>
 				<!-- rev-box3 -->
-				
-
 				
 			</div>
 			<!-- revbox -->
@@ -107,6 +108,8 @@ import '@/assets/css/Initialization.css';
 import '@/assets/css/ss/revpage.css';
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 export default {
@@ -118,13 +121,11 @@ export default {
 	data() {
 		return {
 			type : ['평점높은순','평점낮은순','최신순'], // 리뷰 정렬 할 때 쓸 값들
-			reviewCount : 1245, // 리뷰갯수 
-			// starAvg : 3.5, // 클래스 별점 평균
-			starScore : 4.7, // 클래스 별점 표시
-			starScore2 : 4, // 개인 별점표시 
 			isUp : true,
 			isList : false,
 			whatType : '',
+			classInfo : '',
+			classReivewList : '',
 		};
 	},
 	methods: {
@@ -141,26 +142,61 @@ export default {
 		},
 
 		// 클래스 별점표시 
-		ratingToPercent(starScore){
-			starScore = (this.starScore / 5 ) * 100;
+		ratingToPercent(no){
+			let starScore = (no / 5 ) * 100;
 			return starScore + 1.5;
 		},
 
-		// 개인 리뷰 별점 
-		ratingToPercent2(starScore2){
-			starScore2 = (this.starScore2 / 5 ) * 100;
-			return starScore2 + 1.5;
-		},
-
 		// 페이지 이동
-		goPage(){
-			this.$router.push('/classdetailpage');
+		goPage(classNo){
+			this.$router.push('/classdetailpage/'+ classNo);
 		},
 
+		// 클래스 리뷰리스트 가져오기
+		getClassReviewList(classNo){
+			axios({
+				method: 'get',
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/classreviewlist`,
+				headers: { 'Content-Type': 'application/json; charset=utf-8' },
+				params : {classNo : classNo},
+				responseType: 'json'
+			}).then(response => {
+				if(response.data.result === 'success'){
+					this.classReivewList = response.data.apiData;
+				} else {
+					Swal.fire({text : '통신오류입니다'});
+				}
+			}).catch(error => {
+				console.log(error);
+			});
+		},
+
+		// 클래스 정보 가져오기
+		getClassInfo(classNo){
+			axios({
+				method: 'get',
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/classinfo`,
+				headers: { 'Content-Type': 'application/json; charset=utf-8' },
+				params : {classNo : classNo},
+				responseType: 'json'
+			}).then(response => {
+				if(response.data.result === 'success'){
+					this.classInfo = response.data.apiData;
+				} else {
+					Swal.fire({text : '통신오류입니다'});
+				}
+			}).catch(error => {
+				console.log(error);
+			});
+		}
 
 	},
 	created(){
 		this.whatType = this.type[0];
+		let path =this.$route.fullPath;
+		let classNo = path.split('/')[2];
+		this.getClassInfo(classNo);
+		this.getClassReviewList(classNo);
 	}
 };
 </script>

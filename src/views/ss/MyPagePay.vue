@@ -746,7 +746,14 @@ export default {
 		// 등록버튼 클릭시 
 		insertReview(){
 			const formData = new FormData();
-			formData.append('file', this.file);
+
+			if(this.file == ''){
+				console.log('파일 없음');
+			} else {
+				formData.append('file', this.file);
+			}
+			
+			
 			formData.append('scheduleNo',this.insertReviewVo.scheduleNo);
 			formData.append('reviewPoint',this.insertReviewVo.reviewPoint);
 			formData.append('reviewContent',this.insertReviewVo.reviewContent);

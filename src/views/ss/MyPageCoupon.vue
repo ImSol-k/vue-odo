@@ -36,7 +36,7 @@
 										<div class="">
 											<span class="coupon1-1-txt1">{{ list.couponPrice }} %</span>
 											<!-- <span class="coupon1-1-txt1-1">할인</span> -->
-											<span class="coupon1-1-txt2">사용 기한 : ~ {{ list.couponDate }}</span>
+											<span class="coupon1-1-txt2">발급 날짜 : {{ list.couponDate }}</span>
 										</div>
 										<span class="coupon1-1-txt3">{{ list.companyName }}</span>
 									</div>
@@ -45,7 +45,10 @@
 									</div>
 								</div>
 								<!-- coupon1 -->
-								<div class="coupon2"></div>
+								<div class="coupon2">
+									<span v-if="list.couponState == 0" class="coupon2-txt">미사용</span>
+									<span v-else class="coupon2-txt">사용 완료</span>
+								</div>
 								<!-- coupon2 -->
 							</div>
 						</div>
@@ -103,8 +106,10 @@ export default {
 		getCouponList(){
 			axios({
 				method: 'get',
-				url: `${this.$store.state.apiBaseUrl}/odo/ss/usercoupon/${this.$store.state.authUser.userNo}`,
-				headers: { "Content-Type": "application/json; charset=utf-8" },
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/usercoupon`,
+				headers: { "Content-Type": "application/json; charset=utf-8",
+						'Authorization' : 'Bearer ' + this.$store.state.token
+				},
 				responseType: "json",
 			}).then((response) => {
 				if(response.data.apiData != null){
