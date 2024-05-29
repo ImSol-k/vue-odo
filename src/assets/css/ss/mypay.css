@@ -504,7 +504,7 @@
 }
 
 .rf-2-1 .star-ratings-fill2 {
-    color: #fff58c;
+    color: #8521FF;
     padding: 0;
     position: absolute;
     z-index: 1;
@@ -512,16 +512,14 @@
     top: 0;
     left: 0;
     overflow: hidden;
-    -webkit-text-fill-color: gold;
+    -webkit-text-fill-color: #8521FF;
 }
 .rf-2-1 .star-ratings-base2 {
     z-index: 0;
     padding: 0;
 }
 
-.showRev-modal>.revform1>.review-form1>.filebox {
-    height: 200px;
-}
+
 
 /* 리뷰 수정 */
 
