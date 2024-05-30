@@ -70,7 +70,7 @@ const routes = [
     component: CompanyPageView
   },
   {
-    path: '/membermanager',
+    path: '/membermanager/:type/:no',
     name: 'membermanager',
     component: MemberManagerView
   },
