@@ -106,6 +106,7 @@
 								<!-- mymy-payCon -->
 							</div>
 							<!-- pay -->
+							
 						</div>
 						<!-- 원데이클래스 -->
 						<div v-else class="div-180">
@@ -176,9 +177,11 @@
 								<!-- mymy-payCon -->
 							</div>
 							<!-- pay -->
+							
 						</div>
 						<!-- //정규클래스 -->
 					</div>
+					<Observer @show="loadItem"></Observer>
 				</div>
 				<!--// mymy-paybox  -->
 			</div>
@@ -486,7 +489,9 @@
 </template>
 
 
-
+<script setup>
+import Observer from '@/components/ObserverView.vue';
+</script>
 
 <script>
 import '@/assets/css/Initialization.css';
@@ -517,6 +522,7 @@ export default {
 			isEnd : false, // false면 안보임 , true면 종료표시
 			isPay : false, // 결제여부확인
 			paymentData : [], // 결제정보가져와서 저장될 곳
+			page : 0,
 			attenClassVo:{
 				attenClassName : '',
 				attenClassStartDate : '',
@@ -833,10 +839,14 @@ export default {
 		// 정규클래스 원데이 클래스 선택
 		selectClass(no){
 			if(no == 1){ // true면 원데이클래스
+				this.paymentData = [];
+				this.page = 0;
 				this.classType = 1;
 				this.getList(this.classType);
 				this.isClass = true;
 			} else { // false면 정규클래스
+				this.paymentData = [];
+				this.page = 0;
 				this.classType = 2;
 				this.getList(this.classType);
 				this.isClass = false;
@@ -908,24 +918,32 @@ export default {
 			return starScore + 1.5;
 		},
 		
+		// 결제정보 페이징 용 옵저거 
+		loadItem(){
+			this.page ++;
+			this.getList(this.classType);
+		},
+
 		// 결제정보 가져오기
 		getList(paymentType){
-			// paymentType = this.classType;
+			
 			axios({
 				method: 'get',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/getpaylist`,
 				headers: { 'Content-Type': 'application/json; charset=utf-8', 
 							'Authorization' : 'Bearer ' + this.$store.state.token},
-				params : {classType : paymentType},
+				params : {classType : paymentType, page : this.page},
 				responseType: 'json'
 			}).then(response => {
-				if(response.data.result === 'success'){
-					this.paymentData = response.data.apiData;
+				if(response.data.result === 'success' && response.data.apiData != null){
+					this.paymentData.push(...(response.data.apiData));
 					this.isPay = this.paymentData.length > 0;
 					// this.isClass = this.paymentData.some((item) => item.classType === 1);
 					// if(!this.isPay && this.isClass){
 					// 	this.isClass =false;
 					// }
+				} else {
+					Swal.file({text: '통신오류입니다.'})
 				}
 			}).catch(error => {
 				console.log(error);
