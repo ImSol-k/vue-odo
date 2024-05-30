@@ -28,6 +28,7 @@
 				<!-- mymy-nav -->
 
 				<div class="mymy-paybox">
+					
 					<!-- 결제내역이 없으면 -->
 					<div v-if="!isPay" class="mymy-nopay">
 						<img id="nopayImg" src="@/assets/images/icon/ss/nopay.png">
@@ -181,12 +182,12 @@
 						</div>
 						<!-- //정규클래스 -->
 					</div>
-					<Observer @show="loadItem"></Observer>
+				<Observer @show="loadItem"></Observer>
 				</div>
 				<!--// mymy-paybox  -->
 			</div>
 			<!-- //mymy-main -->
-
+			
 			<!-- 등록모달 -->
 			<div class="rev-modal">
 				<div class="revform1">
@@ -475,12 +476,12 @@
 				<!-- revform1 -->
 			</div>
 			<!-- //showAttendance -->
-
-
+		
 		</div>
 		<!-- //mypage-content -->
 	</div>
 	<!-- //mymy -->
+	
 </div>
 <!-- //wrap -->
 
@@ -899,10 +900,6 @@ export default {
 			}
 		},
 
-		
-
-		
-
 		// 문의요청
 		inquiry(url){
 			console.log(url);
@@ -986,9 +983,7 @@ export default {
 	background-color: #fff;
 }
 
-
 .endClass {
 	display: block;
 }
-
 </style>

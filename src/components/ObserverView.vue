@@ -19,19 +19,27 @@ export default {
     },
     beforeUnmount(){
         if(this.observer){
-            this.observer.diconnect();
+            this.observer.disconnect();
         }
     },
     methods : {
         createObserver(){
-            this.observer = new IntersectionObserver((entries) => {
-                if(entries[0].isIntersecting){
-                    this.$emit('show');
-                } else {
-                    this.$emit('hidden');
-                }
-            }, this.observerOptions);
 
+            if(this.observer){
+                this.observer.disconnect();
+            }
+
+            this.observer = new IntersectionObserver((entries) => {
+                if(entries.length > 0){
+                    const entry = entries[0];
+                    if(entry.isIntersecting){
+                        this.$emit('observer:show');
+                    } else {
+                        this.$emit('observer:hidden');
+                    }
+                }
+                
+            }, this.observerOptions);
             const observerElement = this.$refs.observerElement;
             this.observer.observe(observerElement);
         }
