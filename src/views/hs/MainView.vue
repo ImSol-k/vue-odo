@@ -62,7 +62,7 @@
 		<section class="free-best">
 			<div class="title-box">
 				<h3>무료 베스트 클래스
-					<img src="../../assets/images/하트2.png" alt="">
+					<img src="../../assets/images/icon/hs/like_love_icon.png" alt="">
 				</h3>
 				<router-link to="/searchresultpage/1">전체보기</router-link>
 			</div>
@@ -98,7 +98,7 @@
 		<section class="pay-best">
 			<div class="title-box">
 				<h3>유료 베스트 클래스
-					<img src="../../assets/images/하트2.png" alt="">
+					<img src="../../assets/images/icon/hs/coin_icon.png" alt="">
 				</h3>
 				<router-link to="#">전체보기</router-link>
 			</div>
@@ -133,7 +133,7 @@
 		<section class="new pay-best">
 			<div class="title-box">
 				<h3>신규 클래스
-					<img src="../../assets/images/하트2.png" alt="">
+					<img src="../../assets/images/icon/hs/new_badge_icon.png" alt="">
 				</h3>
 				<router-link to="#">전체보기</router-link>
 			</div>

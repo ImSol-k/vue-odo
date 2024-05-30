@@ -28,24 +28,24 @@
     width: 50px;
     height: 30px;
     position: absolute;
-    right: 200px;
+    right: 265px;
     border: 1px solid #ddd;
     border-top: none;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    background: url('../../images/icon/hs/up_icon.png') no-repeat center / contain #eee;
+    background: url('../../images/icon/hs/up_icon.png') no-repeat center / contain #8521ff;
 }
 .upNDownBtn:hover {
-    background: url('../../images/icon/hs/up_icon.png') no-repeat center / contain #ddd;
+    background: url('../../images/icon/hs/up_icon.png') no-repeat center / contain #999;
 }
 
 .upNDownBtn.close {
-    background: url('../../images/icon/hs/down_icon.png') no-repeat center / contain #eee;
+    background: url('../../images/icon/hs/down_icon.png') no-repeat center / contain #8521ff;
     top: 120px;
 }
 
 .upNDownBtn.close:hover {
-    background: url('../../images/icon/hs/down_icon.png') no-repeat center / contain #ddd;
+    background: url('../../images/icon/hs/down_icon.png') no-repeat center / contain #999;
 }
 
 .category-1st {
