@@ -9,7 +9,7 @@
         <!-- Menu Items -->
         <ul>
             <li @click="toggleSubMenu1">
-                <router-link to="">쿠킹</router-link>
+                <router-link to="" :class="{ 'show': isSubMenuOpen[1] }">쿠킹</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[1] }">
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[0]}?crtPage=1`">한식</router-link></li>
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[1]}?crtPage=1`">일식</router-link></li>
@@ -18,7 +18,7 @@
                 </ul>
             </li>
             <li @click="toggleSubMenu2">
-                <router-link to="">베이킹</router-link>
+                <router-link to="" :class="{ 'show': isSubMenuOpen[2] }">베이킹</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[2] }">
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[4]}?crtPage=1`">제과</router-link></li>
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[5]}?crtPage=1`">제빵</router-link></li>
@@ -27,14 +27,14 @@
                 </ul>
             </li>
             <li>
-                <router-link to="" @click="toggleSubMenu3">음료</router-link>
+                <router-link to="" @click="toggleSubMenu3" :class="{ 'show': isSubMenuOpen[3] }">음료</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[3] }">
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[8]}?crtPage=1`">주류</router-link></li>
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[9]}?crtPage=1`">바리스타</router-link></li>
                 </ul>
             </li>
             <li>
-                <router-link to="" @click="toggleSubMenu4">뷰티</router-link>
+                <router-link to="" @click="toggleSubMenu4" :class="{ 'show': isSubMenuOpen[4] }">뷰티</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[4] }">
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[10]}?crtPage=1`">네일</router-link></li>
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[11]}?crtPage=1`">미용</router-link></li>
@@ -43,7 +43,7 @@
                 </ul>
             </li>
             <li>
-                <router-link to="" @click="toggleSubMenu5">공예</router-link>
+                <router-link to="" @click="toggleSubMenu5" :class="{ 'show': isSubMenuOpen[5] }">공예</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[5] }">
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[14]}?crtPage=1`">비즈</router-link></li>
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[15]}?crtPage=1`">뜨게질</router-link></li>
@@ -53,7 +53,7 @@
                 </ul>
             </li>
             <li>
-                <router-link to="" @click="toggleSubMenu6">스포츠</router-link>
+                <router-link to="" @click="toggleSubMenu6" :class="{ 'show': isSubMenuOpen[6] }">스포츠</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[6] }">
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[19]}?crtPage=1`">수영</router-link></li>
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[20]}?crtPage=1`">축구</router-link></li>
@@ -64,7 +64,7 @@
                 </ul>
             </li>
             <li>
-                <router-link to="" @click="toggleSubMenu7">심리/상담</router-link>
+                <router-link to="" @click="toggleSubMenu7" :class="{ 'show': isSubMenuOpen[7] }">심리/상담</router-link>
                 <ul class="subMenuList" :class="{ 'show': isSubMenuOpen[7] }">
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[25]}?crtPage=1`">부부상담</router-link></li>
                     <li><router-link :to="`/searchresultpage2/${this.subCateNo[26]}?crtPage=1`">가정상담</router-link></li>
