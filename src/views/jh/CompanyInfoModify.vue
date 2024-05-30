@@ -25,7 +25,7 @@
       <h1>{{this.companyVo.companyName}}</h1>
       <div class="companyJoinImg">
         <div class="preview-image">
-          <img :src="previewImage" style="max-width: 300px; max-height: 300px;">
+          <img v-bind:src="previewImage" style="max-width: 300px; max-height: 300px;">
         </div>
 
         <div class="input">
@@ -94,7 +94,7 @@
         </div>
       </div>
       <div class="companyJoinButton">
-        <button>취소</button>
+        <button><router-link to="/companypage">취소</router-link></button>
         <button v-on:click="modify">수정</button>
       </div>
       <!--
@@ -126,7 +126,7 @@ export default {
   },
   data() {
     return {
-      previewImage: require("@/assets/images/logo.png"),
+      previewImage: "",
       isBn: null,
       isId: null,
       isHp: null,
@@ -148,6 +148,7 @@ export default {
         companyLatitude: "", //위도
         companyLongitude: "", //경도
       },
+      file2: '',
       message: "",
       accessToken:
         "EAAN3krJLRh4BOygZACSanLiJZBMg51rLvXr7z0qYo0vJoUAHh090BzGVB02229haKuaqulu9MiG64ERZCFojgoFJ4OHe5QXOszYXRrqsZB7Al4yY7HKV7An7PC3R3rLjEXb0QQg1CTCXZA5uN9SZAtB3sLBRoTa4VT7pU74KBZBEP4lEkZAMl6hK0IsjYfwKufg7", // 페이지 액세스 토큰
@@ -158,13 +159,21 @@ export default {
   methods: {
     modify() {
       const formData = new FormData();
+
+      if(this.file2 == ''){
+				console.log('파일 없음');
+			} else {
+				formData.append('companyFile', this.file2);
+			}
+
       formData.append("companyBn", this.companyVo.companyBn);
       formData.append("companyName", this.companyVo.companyName);
       formData.append("companyIntro", this.companyVo.companyIntro);
       formData.append("companyId", this.companyVo.companyId);
       formData.append("companyPass", this.companyVo.companyPass);
       formData.append("companyHp", this.companyVo.companyHp);
-      formData.append("companyFile", this.companyVo.companyImage); //파일
+      //formData.append("companyFile", this.companyVo.companyImage); //파일
+      formData.append("companyImage", this.companyVo.companyImage);
       formData.append("companyZipCode", this.companyVo.companyZipCode);
       formData.append("companyNameAddress", this.companyVo.companyNameAddress);
       formData.append("companyNumAddress", this.companyVo.companyNumAddress);
@@ -183,7 +192,9 @@ export default {
         alert("업체소개를 입력해 주세요");
       } else if (this.companyVo.companyId == "") {
         alert("아이디를 입력해 주세요");
-      } else if (this.companyVo.companyPass == null) {
+      } else if(this.companyPassChack == "") {
+        alert("비밀번호를 입력해 주세요");
+      }else if (this.companyVo.companyPass == null) {
         alert("비밀번호를 입력해 주세요");
       } else if (this.companyVo.zonecode == "") {
         alert("주소를 입력해 주세요");
@@ -206,6 +217,8 @@ export default {
             .then((response) => {
               console.log(response); //수신데이터
 
+
+              //this.$router.push('/comapnypage');
             })
             .catch((error) => {
               console.log(error);
@@ -304,7 +317,8 @@ export default {
     handleImageChange(event) {
       // 선택한 파일
       this.profile = event.target.files[0];
-      this.companyVo.companyImage = event.target.files[0];
+      this.file2 = event.target.files[0];
+      //console.log(this.companyVo.companyImage)
       // FileReader 객체를 사용하여 이미지를 읽음
       const reader = new FileReader();
 
@@ -312,6 +326,7 @@ export default {
       reader.onload = (e) => {
         // 읽은 이미지 데이터를 previewImage에 할당하여 이미지 미리보기 업데이트
         this.previewImage = e.target.result;
+        
       };
 
       // 파일을 읽음
@@ -359,8 +374,8 @@ export default {
       }).then(response => {
         //console.log(response); //수신데이타
         this.companyVo = response.data.apiData;
-        //console.log(this.companyVo)
-
+        console.log(this.companyVo);
+        this.previewImage = `${this.$store.state.apiBaseUrl}/upload/${this.companyVo.companyImage}`;
       }).catch(error => {
         console.log(error);
       });
