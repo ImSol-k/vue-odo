@@ -1,25 +1,26 @@
 <template>
 	<AppHeader />
 	<!-- //header -->
+	
+	<div class="categorySelectBox" :class="{ close: isCateOpen }">
+		<div class="category-1st">
+			<h1 @click="goCate1ListPage(i)" :class="{ 'cate1-active': clickIndex === i }"
+				v-for=" (cate, i) in category1st " :key="i">{{ cate }}</h1>
+		</div>
+		<div class="catgory-2nd">
+			<ul v-for="(category, catIndex) in categories" :key="catIndex">
+				<li v-for="(item, itemIndex) in category" :key="itemIndex"
+					:class="{ BtnActive: isActive(catIndex, itemIndex) }"
+					@click="activateItem(catIndex, itemIndex, item[0])">
+					{{ item[1] }}
+				</li>
+			</ul>
+		</div>
+	</div>
+	<button @click="toggleCateBox" class="upNDownBtn" :class="{ close: isCateOpen }"></button>
 
 	<div class="inner">
 
-		<div class="categorySelectBox" :class="{ close: isCateOpen }">
-			<div class="category-1st">
-				<h1 @click="goCate1ListPage(i)" :class="{ 'cate1-active': clickIndex === i }"
-					v-for=" (cate, i) in category1st " :key="i">{{ cate }}</h1>
-			</div>
-			<div class="catgory-2nd">
-				<ul v-for="(category, catIndex) in categories" :key="catIndex">
-					<li v-for="(item, itemIndex) in category" :key="itemIndex"
-						:class="{ BtnActive: isActive(catIndex, itemIndex) }"
-						@click="activateItem(catIndex, itemIndex, item[0])">
-						{{ item[1] }}
-					</li>
-				</ul>
-			</div>
-		</div>
-		<button @click="toggleCateBox" class="upNDownBtn" :class="{ close: isCateOpen }"></button>
 
 		<ul v-if="cateList.length != 0" class="classList resultPageClassList">
 			<li v-for=" cateClass in cateList " :key="cateClass">
