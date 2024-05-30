@@ -25,18 +25,18 @@
     right: 270px;
     border: none;
     border-radius: 5px;
-    background: url('../../images/icon/hs/down_icon.png') no-repeat center / contain #ddd;
+    background: url('../../images/icon/hs/down_icon.png') no-repeat center / contain #eee;
 }
 .upNDownBtn:hover {
-    background: url('../../images/icon/hs/down_icon.png') no-repeat center / contain #999;
+    background: url('../../images/icon/hs/down_icon.png') no-repeat center / contain #ddd;
 }
 
 .upNDownBtn.close {
-    background: url('../../images/icon/hs/up_icon.png') no-repeat center / contain #ddd;
+    background: url('../../images/icon/hs/up_icon.png') no-repeat center / contain #eee;
 }
 
 .upNDownBtn.close:hover {
-    background: url('../../images/icon/hs/up_icon.png') no-repeat center / contain #999;
+    background: url('../../images/icon/hs/up_icon.png') no-repeat center / contain #ddd;
 }
 
 .category-1st {

@@ -2,21 +2,21 @@
 	<AppHeader />
 	<!-- //header -->
 
-	<div class="inner">
-		<section class="main-slide">
-			<Carousel :autoplay="2500" :wrap-around="true">
-				<Slide v-for="slide in slides" :key="slide">
-					<div class="carousel__item">
-						<img class="slideImg" :src="slide" alt="">
-					</div>
-				</Slide>
+	<section class="main-slide">
+		<Carousel :autoplay="2500" :wrap-around="true">
+			<Slide v-for="slide in slides" :key="slide">
+				<div class="carousel__item">
+					<img class="slideImg" :src="slide" alt="">
+				</div>
+			</Slide>
 
-				<template #addons>
-					<Pagination />
-					<Navigation />
-				</template>
-			</Carousel>
-		</section>
+			<template #addons>
+				<Pagination />
+				<Navigation />
+			</template>
+		</Carousel>
+	</section>
+	<div class="inner">
 		<ul class="category-icons">
 			<li><router-link to="/searchresultpage/1?crtPage=1">
 					<div><img src="@/assets/images/icon/hs/main_category_icon/cooking.png" alt=""></div>
@@ -241,7 +241,7 @@ export default defineComponent({
 </script>
 <style>
 .carousel__item {
-	max-height: 380px;
+	max-height: 470px;
 	width: 100%;
 	color: var(--vc-clr-white);
 	font-size: 20px;
@@ -254,14 +254,18 @@ export default defineComponent({
 	width: 100%;
 }
 
-.carousel__slide {
-	padding: 10px;
+.carousel__pagination {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .carousel__pagination-button::after {
-	width: 25px;
-	height: 4px;
-	border-radius: 20px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, .6);
 }
 
 .carousel__pagination-button--active::after {
