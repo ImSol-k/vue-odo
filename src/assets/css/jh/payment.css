@@ -5,11 +5,13 @@
   justify-content: center;
   align-items: center;
 }
-.paymentBoxAll > p {
+
+.paymentBoxAll>p {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 40px;
 }
+
 .paymentBox {
   width: 600px;
   /* border: 1px solid #a0a0a0; */
@@ -19,27 +21,32 @@
   padding: 10px 20px;
 }
 
-.paymentBox > p {
+.paymentBox>p {
   font-weight: bold;
   margin: 5px;
 }
+
 .paymentClassBox {
   /* border: 1px solid #8521ff; */
   display: flex;
 }
-.paymentClassBox > img {
+
+.paymentClassBox>img {
   width: 130px;
   float: left;
   padding: 8px;
 }
-.paymentTitle > p {
+
+.paymentTitle>p {
   font-size: 15px;
 }
-.paymentTitle > p:first-child {
+
+.paymentTitle>p:first-child {
   font-size: 20px;
   font-weight: bold;
 }
-.paymentTitle > p:last-child {
+
+.paymentTitle>p:last-child {
   color: #a0a0a0;
   font-size: 13px;
 }
@@ -53,39 +60,49 @@
   padding: 30px 40px;
   /* border: 1px solid #8521ff; */
 }
-.paymentContentBox > p {
+
+.paymentContentBox>p {
   font-size: 20px;
   font-weight: bold;
 }
+
 .paymentType {
   border-bottom: 1px solid #a0a0a0;
 }
-.paymentType > li {
+
+.paymentType>li {
   margin: 20px auto;
 }
-.paymentType > li > select {
+
+.paymentType>li>select {
   width: 150px;
   height: 25px;
   border-radius: 5px;
 }
+
 .paymentType {
   margin-left: 10px;
 }
+
 .paymentCoupon {
   margin: 20px 0px;
 }
-.paymentCoupon > div {
+
+.paymentCoupon>div {
   display: flex;
   justify-content: space-between;
 }
+
 .couponSelect {
   display: flex;
   align-items: center;
 }
-.couponSelect > p {
+
+.couponSelect>p {
   width: 60px;
 }
-.couponSelect > button {
+
+.couponSelect>button {
   width: 80px;
   height: 30px;
   border: none;
@@ -93,6 +110,7 @@
   border-radius: 5px;
   color: #fff;
 }
+
 .paymentPay {
   width: 600px;
   /* margin: 40px; */
@@ -104,22 +122,27 @@
   border-radius: 5px;
   padding: 10px;
 }
-.paymentPay > div > p {
+
+.paymentPay>div>p {
   font-size: 18px;
   margin: 10px;
 }
+
 .paymentContent {
   float: left;
   width: 270px;
 }
-.paymentContent > p {
+
+.paymentContent>p {
   font-weight: bold;
 }
+
 .paymentResult {
   text-align: right;
   width: 270px;
 }
-.paymentBoxAll > div > button {
+
+.paymentBoxAll>div>button {
   margin: 30px;
   border: none;
   border-radius: 5px;
@@ -127,7 +150,8 @@
   height: 60px;
   font-size: 18px;
 }
-.paymentBoxAll > div > button:nth-child(2) {
+
+.paymentBoxAll>div>button:nth-child(2) {
   background-color: #8521ff;
   color: #fff;
 }
@@ -144,34 +168,42 @@
   align-items: center;
   margin: 50px;
 }
-.paymentEndBox > h1 {
+
+.paymentEndBox>h1 {
   color: #8521ff;
   font-size: 25px;
   margin: 30px 0px 20px 0px;
 }
-.paymentEndBox > h2 {
+
+.paymentEndBox>h2 {
   color: #a0a0a0;
   margin: 20px 0px 0px 0px;
 }
+
 .pamentTable {
   margin: 30px;
 }
-.pamentTable > tbody > tr > td > img {
+
+.pamentTable>tbody>tr>td>img {
   width: 200px;
-  margin: 30px;
+  height: 200px;
 }
-.pamentTable > tbody > tr > th {
+
+.pamentTable>tbody>tr>th {
   padding: 3px 30px;
 }
-.pamentTable > tbody > tr > td {
+
+.pamentTable>tbody>tr>td {
   font-size: 18px;
 }
-.pamentTable > tbody > tr:last-child > td {
+
+.pamentTable>tbody>tr:last-child>td {
   color: #8521ff;
   font-size: 23px;
   font-weight: bold;
 }
-.payendButtonBox > button {
+
+.payendButtonBox>button {
   width: 300px;
   height: 50px;
   margin: 50px 30px;
@@ -179,43 +211,89 @@
   border-radius: 10px;
   font-size: 17px;
 }
-.payendButtonBox > button:nth-child(2) {
+
+.payendButtonBox>button:nth-child(2) {
   background-color: #8521ff;
   color: #fff;
 }
 
 /* 결제완료 클래스리스트 */
-.paymentClassList > h3 {
+.paymentClassList>h3 {
   margin: 30px 0px;
   padding-top: 20px;
   border-top: 1px solid #a0a0a0;
   width: 400px;
   text-align: center;
 }
+
 .paymentClass {
   width: 190px;
   margin: 3px;
 }
-.paymentClass > img {
+
+.paymentClass>img {
   width: 180px;
   border-radius: 8px;
 }
-.paymentClass > p {
+
+.paymentClass>p {
   font-size: 15px;
 }
-.paymentClass > p:nth-child(2) {
+
+.paymentClass>p:nth-child(2) {
   color: #a0a0a0;
   font-size: 13px;
 }
-.paymentClass > p:nth-child(4) {
+
+.paymentClass>p:nth-child(4) {
   /* color: #a0a0a0; */
   font-size: 13px;
 }
-.paymentClassStar > .paymentStar {
+
+.paymentClassStar>.paymentStar {
   color: #8521ff;
   font-size: 14px;
   padding-bottom: 5px;
 }
-.paymentClassStar>span:last-child{
+
+.paymentClassStar>span:last-child {
   font-size: 14px;
+}
+
+.paymentEndImage {
+  width: 180px;
+  height: 180px;
+}
+
+.paymentEndAddress {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.paymentEndName{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.paymentEndIntro{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.paymentP{
+  width: 362px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }

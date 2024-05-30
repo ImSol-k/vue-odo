@@ -11,35 +11,35 @@
               <img v-if="pv.classImage != ''" :src="`${this.$store.state.apiBaseUrl}/upload/${pv.classImage}`" alt="" />
             </td>
             <th>업체명</th>
-            <td>{{ pv.companyName }}</td>
+            <td class="paymentP">{{ pv.companyName }}</td>
           </tr>
           <tr>
             <th>클래스명</th>
-            <td>{{pv.className}}</td>
+            <td class="paymentP">{{pv.className}}</td>
           </tr>
           <tr>
             <th>일시</th>
-            <td v-if="pv.endDate == null">{{pv.startDate}}</td>
-            <td v-else>{{pv.startDate}} ~ {{ pv.endDate }}</td>
+            <td class="paymentP" v-if="pv.endDate == null">{{pv.startDate}}</td>
+            <td class="paymentP" v-else>{{pv.startDate}} ~ {{ pv.endDate }}</td>
           </tr>
           <tr>
             <th>결제방법</th>
-            <td colspan="2">{{pv.payType}}</td>
+            <td class="paymentP">{{pv.payType}}</td>
           </tr>
           <tr>
             <th>할인금액</th>
-            <td colspan="2">{{ Number(pv.couponPrice).toLocaleString("ko-KR") }} 원</td>
+            <td class="paymentP">{{ Number(pv.couponPrice).toLocaleString("ko-KR") }} 원</td>
           </tr>
           <tr>
             <th>총결제금액</th>
-            <td colspan="2">{{ Number(pv.payPirce).toLocaleString("ko-KR") }} 원</td>
+            <td class="paymentP">{{ Number(pv.payPirce).toLocaleString("ko-KR") }} 원</td>
           </tr>
         </tbody>
       </table>
 
       <div class="payendButtonBox">
-        <button>결제내역 보러가기</button>
-        <button>홈으로</button>
+        <button><router-link to="/mypage/pay">결제내역 보러가기</router-link></button>
+        <button><router-link to="/">홈으로</router-link></button>
       </div>
 
       <div class="paymentClassList">
@@ -47,10 +47,10 @@
       </div>
       <div class="paymentClassBox">
         <div class="paymentClass" v-for="i in rList" :key="i">
-          <img v-bind:src="`${this.$store.state.apiBaseUrl}/upload/${i.classImage}`" alt="" />
-          <p>{{ i.classAddress }}</p>
-          <p>{{ i.className }}</p>
-          <p>
+          <img class="paymentEndImage" v-bind:src="`${this.$store.state.apiBaseUrl}/upload/${i.classImage}`" alt="" />
+          <p class="paymentEndAddress">{{ i.classAddress }}</p>
+          <p class="paymentEndName">{{ i.className }}</p>
+          <p class="paymentEndIntro">
             {{ i.classIntro }}
           </p>
           <div class="paymentClassStar">
@@ -71,6 +71,7 @@ import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import "@/assets/css/jh/jh.css";
 import "@/assets/css/Initialization.css";
+import "@/assets/css/jh/payment.css"
 
 export default {
   name: "PaymentEndView",

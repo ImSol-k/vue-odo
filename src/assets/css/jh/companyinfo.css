@@ -6,19 +6,23 @@
   margin: 50px 100px;
 }
 
-.companyInfo{
+.companyInfo {
   width: 800px;
 }
+
 .companyInfoBox {
   text-align: left;
 }
-.companyInfoBox > h2 {
+
+.companyInfoBox>h2 {
   font-size: 28px;
 }
+
 .companyTitle {
   margin-bottom: 15px;
   font-size: 22px;
 }
+
 .companyInfotitle {
   display: flex;
   flex-direction: column;
@@ -30,35 +34,42 @@
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
-.companyInfotitle > div {
+
+.companyInfotitle>div {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.companyInfotitle > div > img {
+
+.companyInfotitle>div>img {
   width: 160px;
   margin: 0px 20px 0px 0px;
 }
+
 .infContent {
   display: flex;
 }
-.infContent > div:first-child {
+
+.infContent>div:first-child {
   width: 150px;
 }
-.infContent > div > p {
+
+.infContent>div>p {
   font-size: 17px;
   margin: 5px 0px;
 }
-.infContent > div:first-child > p {
+
+.infContent>div:first-child>p {
   font-weight: bold;
 }
 
 /* 업체클래스 */
-.companyClass > p {
+.companyClass>p {
   margin: 5px;
   font-weight: bold;
 }
+
 .classInfoTotalBox {
   width: 800px;
   display: flex;
@@ -68,54 +79,88 @@
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
+
 .infoImg {
   position: relative;
 }
 
-.infoImg>img{
+.infoImg>img {
   width: 150px;
-  height: 200px;
+  height: 150px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
-.infoImg > img {
+
+.infoImg>img {
   width: 150px;
-  object-fit: contain;
+  /*object-fit: contain;*/
   border-radius: 5px;
   margin-right: 10px;
   /*  */
 }
-.infoImg > img:nth-child(2) {
-  width: 50px;
-  position: absolute; /* 이미지들을 겹치게 배치 */
-  top: 0;
-  left: 0;
-  width: 30px; /* 두 번째 이미지의 너비 */
-  z-index: 1; /* 두 번째 이미지가 위로 올라오도록 설정 */
+
+.infoImg>img:nth-child(2) {
+  position: absolute;
+  /* 이미지들을 겹치게 배치 */
+  top: 55%;
+  left: 70%;
+  width: 30px;
+  /* 두 번째 이미지의 너비 */
+  height: 30px;
+  z-index: 1;
+  /* 두 번째 이미지가 위로 올라오도록 설정 */
+  cursor: pointer;
 }
+
 .flexBox {
   display: flex;
   /* justify-items: space-between; */
 }
+
 .infoContentBox {
   width: 300px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-.infoContentBox > div > img {
+
+.infoContentBox>div>img {
   width: 40px;
 }
+
 .infoClassStar {
   display: flex;
   /* justify-content: center; */
   align-items: center;
 }
-.infoClassStar > span:nth-child(1) {
+
+.infoClassStar>span:nth-child(1) {
   width: 20px;
   color: #8521ff;
 }
-.infoClassStar > p {
+
+.infoClassStar>p {
   font-size: 15px;
   text-align: center;
 }
-.infoClassStar > p {
-  margin: 5px;
+
+.infoClassStar>p {
+  margin-top: 5px;
+  margin-right: 15px;
 }
+
+.infoName {
+  height: 27px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.infoIntro {
+  height: 54px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 15px;
+}
+
