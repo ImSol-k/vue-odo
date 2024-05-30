@@ -174,7 +174,6 @@ import "@/assets/css/hs/main.css";
 import AppHeader from "@/components/HostAppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import axios from "axios";
-// import Swal from 'sweetalert2';
 
 export default {
   name: "CompanyJoinView",

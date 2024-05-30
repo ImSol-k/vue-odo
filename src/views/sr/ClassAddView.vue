@@ -30,6 +30,7 @@
                 class="addPageSelectClassMemory"
                 v-model="selectClassNo"
                 @change="classShow"
+                v-show="isAdd"
               >
                 <option value="" disabled selected>기존클래스 불러오기</option>
                 <option v-for="(cl, i) in cList" :key="i" :value="cl.classNo">
@@ -40,7 +41,13 @@
           </div>
           <!--classAddImg-->
           <div class="classAddInfo">
-            <select name="" id="" class="addPageSelectClass" v-if="isClass" v-model="classVo.recClassNo">
+            <select
+              name=""
+              id=""
+              class="addPageSelectClass"
+              v-if="isClass"
+              v-model="classVo.recClassNo"
+            >
               <option value="" disabled selected>관련 정규클래스 선택</option>
               <option v-for="(c, i) in rClassList" :key="i" :value="c.classNo">
                 {{ c.className }}
@@ -67,6 +74,7 @@
               </div>
               <div class="classParticipation" v-if="!isClass">
                 <label for="">중도참여</label>
+
                 <label
                   class="classRadioText"
                   for="possibility"
@@ -88,21 +96,26 @@
                 <div class="classScheduleFor">
                   <div
                     class="classScheduleBox"
-                    v-for="i in classVo.onedayDate.length"
+                    v-for="i in onedayDate.length"
                     :key="i"
                   >
-                    <VueDatePicker
+                    <input
                       class="VueDatePickerOne"
-                      locale="ko"
-                      time-picker-inline
-                      v-model="classVo.onedayDate[i]"
+                      type="datetime-local"
+                      v-model="onedayDate[i]"
                     />
+                    <!-- <VueDatePicker
+                    class="VueDatePickerOne"
+                    locale="ko"
+                    time-picker-inline
+                    v-model="onedayDate[i]"
+                  /> -->
                     <button v-on:click.prevent="schedulClick(2, i)">
                       삭제
                     </button>
                     <button
                       v-on:click.prevent="schedulClick(1, 0)"
-                      v-show="classVo.onedayDate.length == i"
+                      v-show="onedayDate.length == i"
                     >
                       추가
                     </button>
@@ -115,20 +128,28 @@
               <div class="classSchedule" v-else>
                 <label for="">일정</label>
                 <div>
-                  <VueDatePicker
+                  <p>시작일</p>
+                  <input
+                    class="VueDatePicker"
+                    type="date"
+                    v-model="startDate"
+                  />
+                  <!-- <VueDatePicker
                     class="VueDatePicker"
                     locale="ko"
-                    v-model="classVo.startDate"
+                    v-model="startDate"
                     :enable-time-picker="false"
-                  />
+                  /> -->
                 </div>
                 <div>
-                  <VueDatePicker
+                  <p>종료일</p>
+                  <input class="VueDatePicker" type="date" v-model="endDate" />
+                  <!-- <VueDatePicker
                     class="VueDatePicker"
                     locale="ko"
-                    v-model="classVo.endDate"
+                    v-model="endDate"
                     :enable-time-picker="false"
-                  />
+                  /> -->
                 </div>
               </div>
               <!--classSchedule-->
@@ -281,12 +302,12 @@ export default {
   components: { AppHeader, AppFooter, AppMenu, QuillEditor },
   data() {
     return {
-      isAdd: true,
+      isAdd: false,
       isClass: true,
-
       // ============================
       img: "",
       companyNum: 1,
+      classNo: 2,
       cList: [],
       rClassList: [],
       selectClassNo: "",
@@ -314,17 +335,33 @@ export default {
         classInfo: "",
         classUrl: "",
         recClassNo: "",
-        startDate: null,
-        endDate: null,
-        onedayDate: [null],
       },
+      startDate: null,
+      endDate: null,
+      onedayDate: [null],
     };
   },
   methods: {
+    classUpdate() {
+      axios({
+        method: "post",
+        url: `${this.$store.state.apiBaseUrl}/odo/company/getupdate/${this.classNo}`,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        responseType: "json",
+      })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     classHandle() {
-      //클래스 추가
       const formData = new FormData();
       formData.append("classImageFile", this.classImage);
+      formData.append("classType", this.classVo.classType);
       formData.append("companyNo", this.companyNum);
       formData.append("cate1No", this.classVo.cate1No);
       formData.append("cate2No", this.classVo.cate2No);
@@ -340,51 +377,49 @@ export default {
       formData.append("classMin", this.classVo.classMin);
       formData.append("classMax", this.classVo.classMax);
       formData.append("classUrl", this.classVo.classUrl);
-      formData.append("startDate", this.classVo.startDate);
-      formData.append("endDate", this.classVo.endDate);
-      formData.append("onedayDate", this.classVo.onedayDate);
+      formData.append("startDate", this.startDate);
+      formData.append("endDate", this.endDate);
+      this.onedayDate.forEach((date, index) => {
+        formData.append(`startDateList[${index}]`, date);
+      });
       formData.append("classInfo", this.classVo.classInfo.content);
+      formData.append("recClassNo", this.classVo.recClassNo);
 
       if (this.classVo.className == "") {
         alert("클래스명을 작성해주세요.");
-        } else if (this.classVo.classIntro == "") {
-          alert("클래스 소개를 작성해주세요.");
-        } else if (this.isClass && this.classVo.onedayDate == "") {
-          alert("일정을 입력해 주세요");
-        } else if (
-          !this.isClass &&
-          this.classVo.startDate == "" &&
-          this.classVo.endDate == ""
-        ) {
-          alert("시작일과 종료일을 확인 해 주세요");
-        } else if (
-          this.classVo.classZipcode == "" &&
-          this.classVo.classDetailAddress == ""
-        ) {
-          alert("주소(상세주소)를 입력해 주세요");
-        } else if (this.classVo.cate2No == "") {
-          alert("카테고리를 선택해 주세요");
-        } else if (this.classVo.classMax == "" && this.classVo.classMin == "") {
-          alert("인원수를 입력해주세요.")
-        } else if (this.classVo.classInfo == null) {
-          alert("상세설명을 입력해주세요.")
-        } else if (
-          Number(this.classVo.classMax) <= Number(this.classVo.classMin)
-        ) {
-          alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
+      } else if (this.classVo.classIntro == "") {
+        alert("클래스 소개를 작성해주세요.");
+      } else if (this.isClass && this.onedayDate == "") {
+        alert("일정을 입력해 주세요");
+      } else if (!this.isClass && this.startDate == "" && this.endDate == "") {
+        alert("시작일과 종료일을 확인 해 주세요");
+      } else if (
+        this.classVo.classZipcode == "" &&
+        this.classVo.classDetailAddress == ""
+      ) {
+        alert("주소(상세주소)를 입력해 주세요");
+      } else if (this.classVo.cate2No == "") {
+        alert("카테고리를 선택해 주세요");
+      } else if (this.classVo.classMax == "" && this.classVo.classMin == "") {
+        alert("인원수를 입력해주세요.");
+      } else if (this.classVo.classInfo == null) {
+        alert("상세설명을 입력해주세요.");
+      } else if (
+        Number(this.classVo.classMax) <= Number(this.classVo.classMin)
+      ) {
+        alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
       } else {
-        if (this.isClass) {
+        if (this.isAdd) {
           //클래스 추가
           console.log("클래스 추가");
-          console.log(this.companyNum);
-          console.log(this.classVo.classInfo);
-          // formData.append("recClassNo", this.classVo.recClassNo);
-          // formData.append("startDate", this.classVo.onedayDate);
+          // console.log(this.companyNum);
+          // console.log(this.classVo.classInfo);
           axios({
             method: "post",
-            url: `${this.$store.state.apiBaseUrl}/odo/company/iclass`,
+            url: `${this.$store.state.apiBaseUrl}/odo/company/insert`,
             headers: {
               "Content-Type": "multipart/form-data",
+              // Authorization: "Bearer " + this.$store.state.token,
             },
             data: formData,
             responseType: "json",
@@ -398,6 +433,23 @@ export default {
         } else {
           //클래스 수정
           console.log("클래스 수정");
+          formData.append("classNo", this.classNo);
+          axios({
+            method: "post",
+            url: `${this.$store.state.apiBaseUrl}/odo/company/update`,
+            headers: {
+              "Content-Type": "multipart/form-data",
+              // Authorization: "Bearer " + this.$store.state.token,
+            },
+            data: formData,
+            responseType: "json",
+          })
+            .then((response) => {
+              console.log(response.data);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         }
       }
     },
@@ -439,8 +491,8 @@ export default {
         .then((response) => {
           if (response.data.result == "success") {
             this.cList = response.data.apiData;
-            console.log("기존클래스 ====================")
-            console.log(this.cList);
+            // console.log("기존클래스 ====================");
+            // console.log(this.cList);
           }
         })
         .catch((error) => {
@@ -450,32 +502,25 @@ export default {
 
     //클래스 불러오기
     classShow() {
-      console.log("******************************************");
-      // console.log("클래스 불러오기: " + this.selectClassNo);
-      let tempVo = {
-        companyNum: this.companyNum,
-        classNo: this.selectClassNo,
-      };
-
-      console.log(tempVo);
       axios({
-        method: "post",
+        method: "get",
         url: `${this.$store.state.apiBaseUrl}/odo/company/getclass`,
         headers: {
           //전송타입 + 토큰
           "Content-Type": "application/json; charset=utf-8",
         },
-        data: tempVo,
+        params: this.isAdd
+          ? {
+              companyNo: this.companyNum,
+              classNo: this.selectClassNo,
+            }
+          : { companyNo: this.companyNum, classNo: this.classNo },
         responseType: "json",
       })
         .then((response) => {
-          
           console.log(response.data.apiData);
           if (response.data.result == "success") {
             this.classVo = response.data.apiData;
-            //this.state.content = response.data.apiData.classInfo;
-            console.log(this.classVo);
-            console.log("+++++++++++++++++++++++++++++++++++++++++++++");
           }
         })
         .catch((error) => {
@@ -499,8 +544,8 @@ export default {
           console.log(response.data);
           if (response.data.result == "success") {
             this.rClassList = response.data.apiData;
-            console.log("정규클래스 ==================");
-            console.log(this.rClassList);
+            // console.log("정규클래스 ==================");
+            // console.log(this.rClassList);
           }
         })
         .catch((error) => {
@@ -523,7 +568,6 @@ export default {
         .then((response) => {
           // console.log(response.data.apiData);
           if (response.data.result == "success") {
-
             this.cate1 = response.data.apiData;
           } else {
             console.log("불러오기 실패");
@@ -609,6 +653,7 @@ export default {
     },
     //캘린더
     schedulClick(num, i) {
+      this.onedayDate = this.onedayDate || [null];
       if (this.onedayDate.length >= 10) {
         alert("최대10개까지 등록가능");
       } else if (this.onedayDate.length < 0) {
@@ -687,9 +732,13 @@ export default {
     },
   },
   created() {
-    // this.regularClass();
-    this.classList(this.classVo.classType);
+    this.regularClass();
     this.cate();
+    if (!this.isAdd) {
+      this.classShow();
+    } else {
+      this.classList(this.classVo.classType);
+    }
   },
 };
 </script>
