@@ -4,7 +4,7 @@
 
 	<div class="inner">
 
-		<div class="categorySelectBox">
+		<div class="categorySelectBox" :class="{ close: isCateOpen }">
 			<div class="category-1st">
 				<h1 @click="goCate1ListPage(i)" :class="{ 'cate1-active': clickIndex === i }"
 					v-for=" (cate, i) in category1st " :key="i">{{ cate }}</h1>
@@ -19,13 +19,7 @@
 				</ul>
 			</div>
 		</div>
-
-		<!-- <h2 class="searchResult">어쩌고 검색 결과 123</h2> -->
-
-		<div class="btnBox">
-			<!-- <button class="onedayBtn">원데이</button>
-			<button class="officialBtn">정규</button> -->
-		</div>
+		<button @click="toggleCateBox" class="upNDownBtn" :class="{ close: isCateOpen }"></button>
 
 		<ul v-if="cateList.length != 0" class="classList resultPageClassList">
 			<li v-for=" cateClass in cateList " :key="cateClass">
@@ -101,6 +95,7 @@ export default {
 	},
 	data() {
 		return {
+			isCateOpen: false,
 			clickIndex: null,
 			category1st: ["쿠킹", "베이킹", "음료", "뷰티", "공예", "스포츠", "심리/상담", "IT"],
 			activeIndex: { categoryIndex: null, itemIndex: null },
@@ -128,6 +123,9 @@ export default {
 		}
 	},
 	methods: {
+		toggleCateBox() {
+			this.isCateOpen = !this.isCateOpen;
+		},
 		isActive(categoryIndex, itemIndex) {
 			return this.activeIndex.categoryIndex === categoryIndex && this.activeIndex.itemIndex === itemIndex;
 		},
