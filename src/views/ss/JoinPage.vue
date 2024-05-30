@@ -38,9 +38,10 @@
 				<div class="join2">
 					<div class="join-box">
 						<div class="join2-1">
+							<input id="join-name" type="text" v-model="joinVo.userName" placeholder="이름">
 							<input id="join-nickname" type="text" v-model="joinVo.userNickname" placeholder="닉네임">
 							<input id="join-hp" type="text" v-model="joinVo.userHp" :placeholder="`핸드폰 번호를 '-' 없이 입력하세요`">
-							<input id="join-birth" type="text" v-model="joinVo.userBirth" :placeholder="`생년월일을 '-' 없이 입력하세요 ex)980303`"><br>
+							<input id="join-birth" type="text" v-model="joinVo.userBirth" :placeholder="`생년월일을 '-' 없이 입력하세요 ex)19980303`"><br>
 							<div class="join2-2">
 								<label for="joinVoMale">남자</label>
 								<input id="joinVoMale" type="radio" name="gender" v-model="joinVo.userGender" value="male">
@@ -98,6 +99,7 @@ export default {
 			joinVo : {
 				userId : '',
 				userPw : '',
+				userName : '',
 				userNickname : '',
 				userHp : '',
 				userBirth : '',
@@ -151,7 +153,6 @@ export default {
 				userGender: ''
 			}
 			this.checkPw = '';
-
 			this.loginTitle = '반가워요!';
 			let select = document.querySelector('.select-join');
 			let user = document.querySelector('.user-join');
@@ -207,12 +208,18 @@ export default {
 
 		// 회원가입 버튼 클릭했을 때
 		joinFinish (){
+			let userName = this.joinVo.userName;
 			let nickname = this.joinVo.userNickname;
 			let hp = this.joinVo.userHp;
 			let birth = this.joinVo.userBirth;
 			let gender = this.joinVo.userGender;
 
-			if(nickname === null || nickname === ''){
+
+			if(userName === null || userName === ''){
+				Swal.fire({text : '이름을 확인하세요', icon : 'error',});
+			} else if(userName.search(/\s/) != -1){
+				Swal.fire({ text : '이름에 공백이 포함되어있습니다', icon : 'error', });
+			} else if(nickname === null || nickname === ''){
 				Swal.fire({text : '닉네임을 확인하세요', icon : 'error',});
 			} else if(nickname.search(/\s/) != -1){
 				Swal.fire({ text : '닉네임에 공백이 포함되어있습니다', icon : 'error', });
@@ -232,7 +239,6 @@ export default {
 					url: `${this.$store.state.apiBaseUrl}/odo/ss/userjoin`,
 					headers: { 'Content-Type': 'application/json; charset=utf-8' },
 					data: this.joinVo,
-					// params : id,
 					responseType: 'json'
 				}).then(response => {
 					if(response.data.result === 'success'){
@@ -251,7 +257,7 @@ export default {
 		}
 	},
 	created(){
-		// console.log(this.joinVo);
+
 	}
 };
 </script>

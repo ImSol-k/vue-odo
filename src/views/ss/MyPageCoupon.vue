@@ -35,7 +35,6 @@
 									<div class="coupon1-1">
 										<div class="">
 											<span class="coupon1-1-txt1">{{ list.couponPrice }} %</span>
-											<!-- <span class="coupon1-1-txt1-1">할인</span> -->
 											<span class="coupon1-1-txt2">발급 날짜 : {{ list.couponDate }}</span>
 										</div>
 										<span class="coupon1-1-txt3">{{ list.companyName }}</span>

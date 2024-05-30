@@ -53,9 +53,9 @@
 								<div class="mymy-pay">
 									<ul>
 										<li>
-											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
+											<span class="end-msg" :class="{ endClass : checkDate(list.endDate) }">종료</span>
 											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
-											<div class="heart" @click="wish(list.wishClassNo)" :class="{ red : isRed}"></div>
+											<div class="heart" @click="wish(list.wishClassNo, list.classNo)" :class="{ red : list.whisClassNo !== 0, white : list.wishClassNo === 0 }"></div>
 										</li>
 										<li>
 											<div class="star-ratings">
@@ -74,7 +74,12 @@
 								<div class="mymy-payCon">
 									<div class="paycon1">
 										<span class="paycon1-txt1">결제일 : {{ list.payDate}}</span>
-										<span class="paycon1-txt2">[원데이] {{ list.className }}</span>
+										<span class="paycon1-txt2">
+											<span v-if="list.classType == 1">[원데이]</span>
+											<!-- <span v-else-if="list.classType == 2">[정규]</span>  -->
+											<span v-else>[정규]</span>
+											{{ list.className }}
+										</span>
 										<span class="paycon1-txt3">{{ list.classIntro }}</span>
 										<span class="paycon1-txt4">결제 금액 : {{ list.payPrice }}원</span>
 										<div class="paycon1-btnbox">
@@ -118,9 +123,9 @@
 								<div class="mymy-pay">
 									<ul>
 										<li>
-											<span class="end-msg" :class="{ endClass : isEnd }">종료</span>
+											<span class="end-msg" :class="{ endClass : checkDate(list.endDate) }">종료</span>
 											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
-											<div class="heart" @click="wish(list.wishClassNo)" :class="{ red : isRed}"></div>
+											<div class="heart" @click="wish(list.wishClassNo, list.classNo)" :class="{ red : list.whisClassNo !== 0, white : list.wishClassNo === 0 }"></div>
 										</li>
 										<li>
 											<div class="star-ratings">
@@ -139,14 +144,19 @@
 								<div class="mymy-payCon">
 									<div class="paycon1">
 										<span class="paycon1-txt1">결제일 : {{ list.payDate}}</span>
-										<span class="paycon1-txt2">[정규]{{ list.className }}</span>
+										<span class="paycon1-txt2">
+											<span v-if="list.classType == 1">[원데이]</span>
+											<!-- <span v-else-if="list.classType == 2">[정규]</span>  -->
+											<span v-else>[정규]</span>
+											{{ list.className }}
+										</span>
 										<span class="paycon1-txt3">{{ list.classIntro }}</span>
 										<span class="paycon1-txt4">결제 금액 : {{ list.payPrice }}원</span>
 										<div class="paycon1-btnbox">
 											<button type="button" id="paybtn1" @click="getAttendance(list.scheduleNo)">출석 : {{ list.attenCount }}회</button>
 											<button v-if="list.reviewNo == 0" type="button" id="paybtn2" @click="revForm(list.scheduleNo)">후기 작성</button>
 											<button v-else type="button" id="paybtn2" @click="revShow(list.reviewNo)">후기 보기</button>
-											<button type="button" id="paybtn3" @click="inquiry(list.classUrl)">문의</button>										
+											<button type="button" id="paybtn3" @click="inquiry(list.classUrl)">문의</button>
 										</div>
 									</div>
 									<!-- paycon1 -->
@@ -504,12 +514,8 @@ export default {
 		return {
 			isClass : true, // 정규클래스, 원데이클래스 변환에 사용
 			classType : 1, // 원데이클래스면 1, 정규클래스면 2
-			starScore2 : 3, // 리뷰모달에서 별점 표시할때
-			isRed : true, // 하트 클릭하면 색바뀌고 데이터 보내기
 			isEnd : false, // false면 안보임 , true면 종료표시
-			recClass : true, // 추천클래스 - 있으면 true 없으면 false
 			isPay : false, // 결제여부확인
-			hasRev : true, // 작성한 리뷰 있는지 확인
 			paymentData : [], // 결제정보가져와서 저장될 곳
 			attenClassVo:{
 				attenClassName : '',
@@ -517,7 +523,7 @@ export default {
 				attenClassEndDate : '',
 				attenCount : 0,
 			},
-			attenList : [],
+			attenList : [], // 출석부 보여줄 때 쓸 데이터 
 			getClassImg : require('@/assets/images/hs/cake.jpg'), // 클래스이미지 
 			oneClassVo : { // 리뷰등록모달 켜졌을때 가져올 데이터 
 				classNo : '',
@@ -537,7 +543,7 @@ export default {
 				reviewQ3 : '',
 				reviewContent : ''
 			},
-			showReviewVo: {
+			showReviewVo: { // 작성한 리뷰 볼때 쓸 데이터 - 리뷰보기 / 수정 했을때 
 				classNo : '',
 				classImage : '',
 				className : '',
@@ -554,8 +560,8 @@ export default {
 				reviewQ3 : '',
 				reviewContent : '',
 				reviewImage : ''
-			}, // 리뷰보기 / 수정 했을때 쓸 vo
-			file : document.querySelector('#file'), // 첨부 파일
+			}, 
+			file : '', // 첨부 파일
 			fileName : null, // 파일 이름
 			file2 : '', // 첨부 파일
 			fileName2 : null, // 파일 이름
@@ -567,6 +573,21 @@ export default {
 		// 날짜 변환
 		formatDate(date){
 			return moment(date).format(`YYYY년 MM월 DD일 HH:MM `);
+		},
+
+		// 종료 날짜 계산
+		checkDate(endDate){
+			if(endDate == null){
+				this.isEnd = false;
+			} else {
+				let momentNow = moment();
+				let momentEnd = moment(endDate);
+				if(momentNow.isAfter(momentEnd)){
+					this.isEnd = true;
+				} else {
+					this.isEnd = false;
+				}
+			}
 		},
 
 		/////////////////////////////////// 출석부 //////////////////////////////////////
@@ -615,7 +636,7 @@ export default {
 
 			axios({
 				method: 'get',
-				url: `${this.$store.state.apiBaseUrl}/odo/ss/getreview`,
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/reviews`,
 				headers: { 'Content-Type': 'application/json; charset=utf-8',
 							'Authorization' : 'Bearer ' + this.$store.state.token
 				},
@@ -676,7 +697,7 @@ export default {
 
 			axios({
 				method: 'put',
-				url: `${this.$store.state.apiBaseUrl}/odo/ss/modifyreview`,
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/reviews`,
 				headers: { 'Content-Type': 'multipart/form-data',
 						'Authorization' : 'Bearer ' + this.$store.state.token
 				},
@@ -687,6 +708,7 @@ export default {
 					this.$router.push('/mypage/pay');
 					this.getList(1);
 					this.closeRevForm2();
+					window.location.reload(true);
 				} else {
 					Swal.fire({text : '업데이트에 실패했습니다.'});
 				}
@@ -770,7 +792,6 @@ export default {
 				formData.append('file', this.file);
 			}
 			
-			
 			formData.append('scheduleNo',this.insertReviewVo.scheduleNo);
 			formData.append('reviewPoint',this.insertReviewVo.reviewPoint);
 			formData.append('reviewContent',this.insertReviewVo.reviewContent);
@@ -780,7 +801,7 @@ export default {
 			
 			axios({
 				method: 'post',
-				url: `${this.$store.state.apiBaseUrl}/odo/ss/writereview`,
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/reviews`,
 				headers: { 'Content-Type': 'multipart/form-data',
 						'Authorization' : 'Bearer ' + this.$store.state.token
 				},
@@ -789,6 +810,9 @@ export default {
 			}).then(response => {
 				if(response.data.result === 'success'){
 					this.$router.push('/mypage/pay');
+					this.getList(1);
+					this.closeRevForm();
+					window.location.reload(true);
 				} else {
 					Swal.fire({text: response.data.message});
 				}
@@ -820,17 +844,52 @@ export default {
 		},
 		
 		// 하트이미지 클릭 -> 위시리스트에 담기기 
-		wish(no){
-			console.log(no);
-			this.isRed = !this.isRed;
-			
+		wish(wishClassNo, classNo){
+
+			// no가 0이면 wishclass 추가 + wishClassNo 가져와서 추가 값 바꿔주기 , no가 0 이아니면 삭제  삭제한뒤에 0으로 바꿔준다
+			if(wishClassNo == 0){
+				axios({
+					method: 'post',
+					url: `${this.$store.state.apiBaseUrl}/odo/ss/wishclassis`,
+					headers: { 'Content-Type': 'application/json; charset=utf-8',
+								'Authorization' : 'Bearer ' + this.$store.state.token
+					},
+					params : {classNo : classNo},
+					responseType: 'json'
+				}).then(response => {
+					if(response.data.result === 'success'){
+						wishClassNo = response.data.apiData;
+						window.location.reload(true);
+					} else {
+						Swal.fire({text : response.data.message});
+					}
+				}).catch(error => {
+					console.log(error);
+				});
+			} else {
+				axios({
+					method: 'delete',
+					url: `${this.$store.state.apiBaseUrl}/odo/ss/wishclassis`,
+					headers: { 'Content-Type': 'application/json; charset=utf-8',
+								'Authorization' : 'Bearer ' + this.$store.state.token
+					},
+					params : {classNo : classNo, wClassNo : wishClassNo},
+					responseType: 'json'
+				}).then(response => {
+					if(response.data.result === 'success'){
+						wishClassNo = 0;
+						window.location.reload(true);
+					} else {
+						Swal.fire({text : response.data.message});
+					}
+					
+				}).catch(error => {
+					console.log(error);
+				});
+			}
 		},
 
-		// 별점 퍼센트 보여주기(결제내역 - 결제한 클래스)
-		ratingToPercent(no){
-			let starScore = (no / 5 ) * 100;
-			return starScore + 1.5;
-		},
+		
 
 		
 
@@ -843,8 +902,11 @@ export default {
 		goPage(no){
 			this.$router.push('/classdetailpage/'+ no);
 		},
-
-		
+		// 별점 퍼센트 보여주기(결제내역 - 결제한 클래스)
+		ratingToPercent(no){
+			let starScore = (no / 5 ) * 100;
+			return starScore + 1.5;
+		},
 		
 		// 결제정보 가져오기
 		getList(paymentType){
@@ -860,10 +922,10 @@ export default {
 				if(response.data.result === 'success'){
 					this.paymentData = response.data.apiData;
 					this.isPay = this.paymentData.length > 0;
-					this.isClass = this.paymentData.some((item) => item.classType === 1);
-					if(!this.isPay && this.isClass){
-						this.isClass =false;
-					}
+					// this.isClass = this.paymentData.some((item) => item.classType === 1);
+					// if(!this.isPay && this.isClass){
+					// 	this.isClass =false;
+					// }
 				}
 			}).catch(error => {
 				console.log(error);
@@ -894,6 +956,18 @@ export default {
 .mymy-pay .red::after{
 	background-color: #ea2027;
 }
+
+.mymy-pay .white {
+	background-color: #fff;
+}
+.mymy-pay .white::before {
+	background-color: #fff;
+}
+
+.mymy-pay .white::after{
+	background-color: #fff;
+}
+
 
 .endClass {
 	display: block;

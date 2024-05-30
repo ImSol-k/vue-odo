@@ -1,7 +1,7 @@
 <template>
 <div class="mymy-header clearfix">
 	<img v-if="this.$store.state.authUser.userImage == null" src="@/assets/images/icon/ss/default-profile.png" alt="회원 프로필" @click="goModify">
-	<img v-else :src="`${this.$store.state.authUser.userImage}`" alt="회원 프로필" @click="goModify">
+	<img v-else :src="`${this.$store.state.apiBaseUrl}/upload/${this.$store.state.authUser.userImage}`" alt="회원 프로필" @click="goModify">
 	<ul class="clearfix">
 		<li v-if="this.$store.state.authUser.userNickname == null">{{ this.$store.state.authUser.userId }}<span class="mp-small">님</span></li>
 		<li v-else>{{ this.$store.state.authUser.userNickname }}<span class="mp-small">님</span></li>

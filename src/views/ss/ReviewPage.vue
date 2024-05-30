@@ -21,16 +21,11 @@
 			<!-- rev-header1 -->
 			<div class="rev-header2">
 				<div class="review-select1">
-					<button type="button" @click="showType">
-						{{ whatType }}
-					</button>
+					<button type="button" @click="showType"> {{ whatType }} </button>
 				</div>
 				<!-- review-select1 -->
 				<div class="review-select2" v-show="isList">
-					<button type="button" 
-					v-for="(item , index) in type"
-					:key="index"
-					@click="getType(index)">
+					<button type="button" v-for="(item , index) in type" :key="index" @click="getType(index)">
 						{{ item }}
 					</button>
 				</div>
