@@ -28,7 +28,6 @@
                                 </tr>
                                 <tr>
                                     <td colspan="6">
-                                        나랑 키가 똑같아
                                         {{ MjVo.content }}
                                     </td>
                                 </tr>
