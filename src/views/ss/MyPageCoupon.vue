@@ -45,8 +45,8 @@
 								</div>
 								<!-- coupon1 -->
 								<div class="coupon2">
-									<span v-if="list.couponState == 0" class="coupon2-txt">미사용</span>
-									<span v-else class="coupon2-txt">사용 완료</span>
+									<span v-if="list.couponState === 1" class="coupon2-txt">사용 완료</span>
+									<span v-else class="coupon2-txt">미사용</span>
 								</div>
 								<!-- coupon2 -->
 							</div>

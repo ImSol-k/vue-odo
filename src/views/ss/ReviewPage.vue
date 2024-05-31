@@ -68,7 +68,7 @@
 					<!-- revbox2 -->
 				</div>
 				<!-- rev-left -->
-				<div class="rev-box3">
+				<div v-if="list.reviewImage != null" class="rev-box3">
 					<ul>
 						<li v-for="(index) in 1" :key="index">
 							<img v-if="list.reviewImage != null" :src="`${this.$store.state.apiBaseUrl}/upload/${list.reviewImage}`">
@@ -78,11 +78,11 @@
 									
 				</div>
 				<!-- rev-box3 -->
-				
 			</div>
 			<!-- revbox -->
 		</div>
 		<!-- rev-body -->
+		<Observer @show="loadItem"></Observer>
 	</div>
 	<!-- revMain -->
 </div>
@@ -97,6 +97,9 @@
 	
 </template>
 
+<script setup>
+import Observer from '@/components/ObserverView.vue';
+</script>
 
 <script>
 import '@/assets/css/Initialization.css';
@@ -105,9 +108,6 @@ import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-
-
-
 
 export default {
 	name: "ReviewPage",
@@ -119,9 +119,10 @@ export default {
 		return {
 			type : ['평점높은순','평점낮은순','최신순'], // 리뷰 정렬 할 때 쓸 값들
 			isList : false,
+			page : 0,
 			whatType : '',
 			classInfo : '',
-			classReivewList : '',
+			classReivewList : [],
 		};
 	},
 	methods: {
@@ -136,6 +137,7 @@ export default {
 			let classNo = path.split('/')[2];
 			this.whatType = this.type[index];
 			this.isList = false;
+			this.classReivewList = [];
 			this.getClassReviewList(classNo,index);
 		},
 
@@ -150,17 +152,23 @@ export default {
 			this.$router.push('/classdetailpage/'+ classNo);
 		},
 
+		loadItem(){
+			this.page ++;
+			console.log('옵저버');
+			console.log(this.page);
+		},
+
 		// 클래스 리뷰리스트 가져오기
 		getClassReviewList(classNo,type){
 			axios({
 				method: 'get',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/classreviewlist`,
 				headers: { 'Content-Type': 'application/json; charset=utf-8' },
-				params : {classNo : classNo, type : type},
+				params : {classNo : classNo, type : type, page : this.page},
 				responseType: 'json'
 			}).then(response => {
 				if(response.data.result === 'success'){
-					this.classReivewList = response.data.apiData;
+					this.classReivewList.push(...(response.data.apiData));
 				} else {
 					Swal.fire({text : '통신오류입니다'});
 				}
