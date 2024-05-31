@@ -882,7 +882,6 @@ export default {
 					responseType: 'json'
 				}).then(response => {
 					if(response.data.result === 'success'){
-						wishClassNo = response.data.apiData;
 						window.location.reload(true);
 					} else {
 						Swal.fire({text : response.data.message});
@@ -901,7 +900,6 @@ export default {
 					responseType: 'json'
 				}).then(response => {
 					if(response.data.result === 'success'){
-						wishClassNo = 0;
 						window.location.reload(true);
 					} else {
 						Swal.fire({text : response.data.message});

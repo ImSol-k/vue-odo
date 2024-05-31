@@ -51,6 +51,7 @@
   <!-- footer -->
 </template>
 
+
 <script>
 import "@/assets/css/Initialization.css";
 import "@/assets/css/ss/login-join.css";
@@ -90,15 +91,14 @@ export default {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+    // https://blerang055.tistory.com/3
     kakaoLogin(){
-      console.log('카카오로그인');
-      window.Kakao.Auth.login({
-        scope : 'accuont_email, gender',
-        success : this.GetMe,
+      const url = 'http://kauth.kakao.com/oauth/authorize?client_id=4946b7c22ba5fb9b866b344e8f2f4224&redirect_uri=http://localhost:8080/kakaologin&response_type=code' 
+      window.location.href = url;
 
-      });
     },
+      
+   
 
     
 
