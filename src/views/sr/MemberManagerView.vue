@@ -54,10 +54,9 @@
               <td>
                 <span v-if="m.reviewState > 0">작성</span><span v-else>-</span>
               </td>
-              <td v-if="m.couponState < 0">
+              <td>
                 <button v-on:click.prevent="coupon(1, m.userNo)">지급</button>
               </td>
-              <td v-else>-</td>
             </tbody>
           </table>
         </div>
@@ -104,7 +103,8 @@
               </td>
               <td>{{ m.userHp }}</td>
               <td>{{ m.attend }}</td>
-              <td>{{ m.attendState }}</td>
+              <td v-if="m.attendState != null">{{ m.attendState }}</td>
+              <td>-</td>
             </tbody>
           </table>
         </div>
@@ -149,8 +149,9 @@
               <td v-if="m.userGender == 'male'">남</td>
               <td v-else>여</td>
               <td>{{ m.userHp }}</td>
-              <td>{{ m.startDate }}~{{ m.endDate }}</td>
-              <td>{{ m.attendState }}</td>
+              <td>{{ m.startDate }} ~ {{ m.endDate }}</td>
+              <td v-if="m.attendState != null">{{ m.attendState }}</td>
+              <td>-</td>
             </tbody>
           </table>
         </div>

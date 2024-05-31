@@ -20,6 +20,7 @@ import AppMenu from "@/components/CompanyMenu.vue";
 import FullCalendar from "@fullcalendar/vue3";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default {
   name: "MemberManagerView",
@@ -36,26 +37,20 @@ export default {
         initialView: "dayGridMonth",
         headerToolbar: {
           // 헤더에 표시할 툴 바
-          start: "prev next today",
+          start: "prev",
           center: "title",
-          end: "dayGridMonth,dayGridWeek,dayGridDay",
+          end: "next",
+          // end: "dayGridMonth,dayGridWeek,dayGridDay",
         },
-        contentHeight: 1000,
-        weekend: true,
+        contentHeight: 800,
+        weekend: false,
         locale: "ko",
         events: [
-          { title: "오늘", start: new Date().getDate },
           {
-            title: "컴포즈클래스",
-            start: "2024-05-10 08:00:00",
-            end: "2024-05-22 01:00:00",
-          },
-          {
-            title: "메가클래스",
-            start: "2024-05-11 08:00:00",
-            end: "2024-05-18 01:00:00",
-          },
-          { title: "일일클래스", start: "2024-05-22 18:00:00" },
+            title: "",
+            start: "",
+            end: ""
+          }
         ],
         eventClick: function (info) {
           console.log(info.event.end);
@@ -93,8 +88,29 @@ export default {
       },
     };
   },
-  methods: {},
-  created() {},
+  methods: {
+    getSchedule() {
+      console.log("스케줄 불러오기");
+      axios({
+        method: "get",
+        url: `${this.$store.state.apiBaseUrl}/odo/company/getschedule/${this.$store.state.authCompany.companyNo}`,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        responseType: "json",
+      })
+        .then((response) => {
+          // console.log(response.data);
+          this.calendarOptions.events = response.data.apiData;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  },
+  created() {
+    this.getSchedule();
+  },
 };
 </script>
 

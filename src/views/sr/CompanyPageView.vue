@@ -33,7 +33,7 @@
               <!-- 원데이클래스 -->
               <li>
                 <img
-                  v-bind:src="`${this.$store.state.apiBaseUrl}/upload/${c.classImage}`"
+                  :src="`${this.$store.state.apiBaseUrl}/upload/${c.classImage}`"
                   alt=""
                 />
                 <div class="classListObj">
