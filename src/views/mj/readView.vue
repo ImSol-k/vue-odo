@@ -3,199 +3,102 @@
         <!-- AppHeader -->
         <AppHeader />
         <div class="wrap">
-
-            <MyPageHeader />
-            <!-- mypage-main -->
-
-            <div class="mymy clearfix">
-
+            <!-- <MyPageHeader /> -->
+            <div>
                 <!-- <MyPageSide /> -->
-                <!-- mypage-side -->
-
-                <div class="mymy-content">
+                <div>
                     <div>
                         <table class="ta3334">
                             <thead>
                                 <tr>
-                                    <th style="width: 80px;">번호</th>
-                                    <td style="width: 50px;">111</td>
-                                    <th style="width: 80px;">작성일</th>
-                                    <td style="width: 120px;">2024-05-21</td>
+                                    <th style="width: 100px;">번호</th>
+                                    <td style="width: 50px;">{{ MjVo.idx }}</td>
+                                    <th style="width: 100px;">작성일</th>
+                                    <td style="width: 120px;">{{ MjVo.regDate }}</td>
                                     <th style="width: 80px;">조회수</th>
-                                    <td style="width: 80px;">1111</td>
+                                    <td style="width: 80px;">{{ MjVo.pagesNo }}</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th>제목</th>
-                                    <td colspan="3">공지 전달드립니다</td>
+                                    <td colspan="3">{{ MjVo.title }}</td>
                                     <th>글쓴이</th>
-                                    <td>이미지</td>
+                                    <td>{{ MjVo.notice_name }}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="6">
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해
-                                        나랑 키도 비슷해<br>
-                                   </td>
-
-
-                                </tr>      
+                                        나랑 키가 똑같아
+                                        {{ MjVo.content }}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
-                        <tr>
-                            <button id="notice_btn" @click="goList">목록</button>
-                        </tr>
+                        <button id="notice_btn" @click="goList">목록</button>
                     </div>
-
                 </div>
-                <!-- mymy-main -->
             </div>
-            <!-- mypage-content -->
-
         </div>
-        <!-- mymy -->
+        <!-- 푸터 -->
+        <AppFooter />
     </div>
-    <!-- 푸터 -->
-    <AppFooter />
 </template>
+
 <script>
-import '@/assets/css/Initialization.css'
-import '@/assets/css/mj/read.css'
+import '@/assets/css/Initialization.css';
+import '@/assets/css/mj/read.css';
 import AppFooter from '@/components/AppFooter.vue';
 import AppHeader from '@/components/AppHeader.vue';
-// import MyPageHeader from '@/components/MyPageHeader.vue';
-// import MyPageSide from '@/components/MyPageSide.vue';
+import axios from 'axios';
 
 export default {
-    name: "ModifyView",
+    name: "ReadView",
     components: {
         AppHeader,
         AppFooter,
-        // MyPageSide,
-        // MyPageHeader
     },
     data() {
-        return {};
+        return {
+            MjVo: {
+                idx:'',
+                title:'',
+                notice_name:'',
+                content:'',
+                regDate:'',
+                pagesNo:''
+            }
+        };
     },
     methods: {
-        goList(){
-            this.$router.push('/mypage/notice');
+        fetchNotice() {
+            axios({
+                method: 'get', // put, post, delete                   
+                url: `${this.$store.state.apiBaseUrl}/odo/mypage/notice/${this.$route.params.no}`,
+                headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+                //params: guestbookVo, //get방식 파라미터로 값이 전달
+                //data: guestbookVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+
+                responseType: 'json' //수신타입
+            }).then(response => {
+                console.log(response); //수신데이타
+
+               this.MjVo=response.data;
+
+            }).catch(error => {
+                console.log(error);
+                
+            });
+        },
+        goList() {
+            // 목록 보기로 이동하는 로직을 구현
+            this.$router.push('/mypage/notice'); // 예시 라우팅, 필요에 따라 조정
         }
     },
-    created() { }
+    created() {
+        this.fetchNotice(); // 컴포넌트가 생성될 때 fetchNotice 메소드 호출
+    }
 };
 </script>
 
-<style></style>
+<style>
+</style>

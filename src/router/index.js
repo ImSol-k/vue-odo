@@ -178,7 +178,7 @@ const routes = [
     component: AnnouncementView
   },
   {
-    path: '/mypage/read',
+    path: '/mypage/notice/:no',
     name: 'mypageread',
     component: ReadView
   },
