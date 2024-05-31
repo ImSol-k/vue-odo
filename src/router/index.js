@@ -70,7 +70,7 @@ const routes = [
     component: CompanyPageView
   },
   {
-    path: '/membermanager/:type/:no',
+    path: '/membermanager/:type/:no/:name',
     name: 'membermanager',
     component: MemberManagerView
   },
@@ -80,7 +80,7 @@ const routes = [
     component: ClassCalendarView
   },
   {
-    path: '/classadd',
+    path: '/classadd/:isadd',
     name: 'classadd',
     component: ClassAddView
   },

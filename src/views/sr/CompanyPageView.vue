@@ -25,31 +25,54 @@
 
         <div class="companyInfoClassBox">
           <div>
-            <ul class="companyInfoClassfor clearfix" v-for="(c, i) in classList" :key="i">
+            <ul
+              class="companyInfoClassfor clearfix"
+              v-for="(c, i) in classList"
+              :key="i"
+            >
               <!-- 원데이클래스 -->
-              <li >
-                <img v-bind:src="`${this.$store.state.apiBaseUrl}/upload/${c.classImage}`" alt="" />
+              <li>
+                <img
+                  v-bind:src="`${this.$store.state.apiBaseUrl}/upload/${c.classImage}`"
+                  alt=""
+                />
                 <div class="classListObj">
                   <p>
-                    <router-link class="classRouterLink" to="/classdetailpage"
+                    <router-link
+                      class="classRouterLink"
+                      to="/classdetailpage"
                       >{{ c.className }}</router-link
                     >
                   </p>
-                  <p>{{ c.startDate }} <span  v-if="isClass != 1">~ {{ c.endDate }}</span></p>
+                  <p>
+                    {{ c.startDate }}
+                    <span v-if="isClass != 1">~ {{ c.endDate }}</span>
+                  </p>
                   <p>{{ c.classIntro }}</p>
                   <div class="classListOptionBox">
                     <div class="classListOption">
-                      <router-link v-if="isClass == 1" class="classRouterLink" :to="`/membermanager/1/${c.classNo}`">
+                      <router-link
+                        v-if="isClass == 1"
+                        class="classRouterLink"
+                        :to="`/membermanager/1/${c.scheduleNo}/${c.className}`"
+                      >
                         예약확인
                       </router-link>
-                      <router-link v-else-if="isClass == 2" class="classRouterLink" :to="`/membermanager/2/${c.classNo}`"
-                      >회원관리</router-link>
-                      <router-link v-else class="classRouterLink" :to="`/membermanager/3/${c.classNo}`"
-                      >회원관리</router-link>
-                      <router-link class="classRouterLink" to="/classadd">
-                        수정
-                        </router-link
+                      <router-link
+                        v-else-if="isClass == 2"
+                        class="classRouterLink"
+                        :to="`/membermanager/2/${c.scheduleNo}/${c.className}`"
+                        >회원관리</router-link
                       >
+                      <router-link
+                        v-else
+                        class="classRouterLink"
+                        :to="`/membermanager/3/${c.scheduleNo}/${c.className}`"
+                        >회원관리</router-link
+                      >
+                      <router-link class="classRouterLink" to="/classadd/2">
+                        수정
+                      </router-link>
                     </div>
                     <span>인원수: {{ c.classMin }}/{{ c.classMax }}</span>
                   </div>
@@ -120,7 +143,7 @@ export default {
   data() {
     return {
       isClass: 1,
-      companyNo: 2,
+      companyNo: this.$store.state.authCompany.companyNo,
       classList: [],
     };
   },
@@ -147,7 +170,6 @@ export default {
     },
     selectClass(num) {
       //리스트 불러오기
-      this.classTypeList();
       if (num == 1) {
         this.isClass = 1;
       } else if (num == 2) {
@@ -155,6 +177,7 @@ export default {
       } else {
         this.isClass = 3;
       }
+      this.classTypeList();
     },
   },
   created() {

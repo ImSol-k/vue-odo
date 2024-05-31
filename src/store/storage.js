@@ -8,8 +8,11 @@ export default createStore({
             //apiBaseUrl: "http://54.180.79.237:9090",
             token: "",
             authUser: "",
-            authCompany: "",
-            couponNo: ""
+            authCompany: {
+                companyNo: 1,
+                companyName: "(주)사업자",
+            },
+            couponNo: "",
         };
     },
     mutations: {
@@ -24,11 +27,14 @@ export default createStore({
         },
         setCouponNo(state, payload){
             state.couponNo = payload;
+        },
+        setCompanyNo(state, payload){
+            state.companyNo = payload;
         }
     },
     plugins: [
         createPersistedState({
-            paths: ['token','authUser', 'authCompany']
+            paths: ['token','authUser', 'authCompany', 'companyNo']
         })
     ]
 });
