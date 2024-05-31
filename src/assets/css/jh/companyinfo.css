@@ -163,20 +163,23 @@
   margin-bottom: 15px;
 }
 
+.infoImgBox{
+  width: 190px;
+  height: 165px;
+  position: relative;
+}
+
+.ImgBox{
+  width: 160px;
+  height: 160px;
+  margin: 10px;
+  float: left;
+}
+
 .companyImg{
   width: 160px;
   height: 160px;
   border-radius: 10px;
-  position: relative;
-}
-
-.comapnyImg2{
-  position: absolute;
-  left: 40.5%;
-  top: 44%;
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
 }
 
 .companyContent{
@@ -190,4 +193,22 @@
 
 .infoContent{
   width: 270px;
+}
+
+.infoBox{
+  width: 800px;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  padding: 10px;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.comapnyImg2{
+  position: absolute;
+  top: 75%;
+  left: 63%;
+  cursor: pointer;
 }
