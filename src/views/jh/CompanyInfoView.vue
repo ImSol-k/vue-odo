@@ -38,10 +38,10 @@
             <img v-bind:src="`${this.$store.state.apiBaseUrl}/upload/${c.classImage}`" alt=""
               @click="goDetailPage(c.classNo)" />
             <img v-if="this.data == false"
-              src="../../assets/images/다운로드.svg"
+              src="../../assets/images/하트빨강.svg"
               alt="" v-on:click="ch"/>
             <img v-else-if="this.data == true"
-              src="../../assets/images/다운로드 (1).svg"
+              src="../../assets/images/하트하양.svg"
               alt="" v-on:click="ch"/>
           </div>
           <div class="flexBox">
