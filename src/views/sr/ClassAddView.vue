@@ -4,8 +4,8 @@
     <div class="clearfix">
       <AppMenu />
       <div class="companyInfoClassList">
-        <p>클래스 <span v-if="isAdd">등록</span><span v-else>수정</span></p>
-        <div class="whatClass" v-if="isAdd">
+        <p>클래스 <span v-if="isAdd == 1">등록</span><span v-else>수정</span></p>
+        <div class="whatClass" v-if="isAdd == 1">
           <span
             v-on:click.prevent="selectClass(1)"
             :class="{ classChack: isClass }"
@@ -30,7 +30,7 @@
                 class="addPageSelectClassMemory"
                 v-model="selectClassNo"
                 @change="classShow"
-                v-show="isAdd"
+                v-show="isAdd == 1"
               >
                 <option value="" disabled selected>기존클래스 불러오기</option>
                 <option v-for="(cl, i) in cList" :key="i" :value="cl.classNo">
@@ -277,7 +277,7 @@
           <!--classAddInfo-->
           <div class="isAddBtn">
             <button>취소</button>
-            <button v-if="isAdd" type="button" v-on:click="classHandle">
+            <button v-if="isAdd == 1" type="button" v-on:click="classHandle">
               등록
             </button>
             <button v-else type="button" v-on:click="classHandle">수정</button>
@@ -302,7 +302,7 @@ export default {
   components: { AppHeader, AppFooter, AppMenu, QuillEditor },
   data() {
     return {
-      isAdd: false,
+      isAdd: this.$route.params.isadd,
       isClass: true,
       // ============================
       img: "",
@@ -409,7 +409,7 @@ export default {
       ) {
         alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
       } else {
-        if (this.isAdd) {
+        if (this.isAdd == 1) {
           //클래스 추가
           console.log("클래스 추가");
           // console.log(this.companyNum);
@@ -509,7 +509,7 @@ export default {
           //전송타입 + 토큰
           "Content-Type": "application/json; charset=utf-8",
         },
-        params: this.isAdd
+        params: this.isAdd == 1
           ? {
               companyNo: this.companyNum,
               classNo: this.selectClassNo,
@@ -734,7 +734,7 @@ export default {
   created() {
     this.regularClass();
     this.cate();
-    if (!this.isAdd) {
+    if (!(this.isAdd == 1)) {
       this.classShow();
     } else {
       this.classList(this.classVo.classType);

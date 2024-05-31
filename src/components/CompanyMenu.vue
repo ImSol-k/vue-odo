@@ -1,18 +1,18 @@
 <template>
   <div class="companyInfoMenu">
-    <h1>(주)레모나</h1>
+    <h1>{{ companyName }}</h1>
 
     <ul>
       <li>업체관리</li>
       <li><router-link to="/companyinfo">소개</router-link></li>
-      <li><router-link to="/companyjoin">정보확인/수정</router-link></li>
+      <li><router-link to="/companymodify">정보확인/수정</router-link></li>
       <li><router-link to="/chart">매출통계</router-link></li>
     </ul>
     <ul>
       <li>클래스관리</li>
       <li><router-link to="/companypage">운영중인 클래스</router-link></li>
       <li><router-link to="/classcalender">클래스 일정</router-link></li>
-      <li><router-link to="/classadd">클래스 등록</router-link></li>
+      <li><router-link to="/classadd/1">클래스 등록</router-link></li>
     </ul>
   </div>
 </template>
@@ -21,7 +21,9 @@ export default {
   name: "CompanyMenu",
   components: {},
   data() {
-    return {};
+    return {
+      companyName: this.$store.state.authCompany.companyName
+    };
   },
   methods: {},
   created() {},

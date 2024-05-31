@@ -10,7 +10,7 @@
       <!-- 원데이회원 -->
       <div class="companyInfoClassList" v-if="classType == 1">
         <div class="memberListTitle">
-          <p>예약리스트(원데이클래스)</p>
+          <p>{{ this.$route.params.name }}</p>
           <input
             class="memberVueDatePicker"
             type="date"
@@ -38,16 +38,26 @@
               <th style="width: 100px">후기</th>
               <th style="width: 90px">쿠폰지급</th>
             </thead>
-            <tbody v-for="i in 16" :key="i" style="height: 30px">
-              <td>{{ i }}</td>
-              <td>김소리</td>
-              <td>25</td>
-              <td>여</td>
-              <td>010-3433-4324</td>
-              <td>완료</td>
-              <td v-if="i == 1 || i == 2 || i == 10 || i == 14">작성</td>
+            <tbody v-for="(m, i) in mList" :key="i" style="height: 30px">
+              <td>{{ i + 1 }}</td>
+              <td>{{ m.userName }}</td>
+              <td>{{ m.userAge }}</td>
+              <td>
+                <span v-if="m.userGender == 'male'">남</span
+                ><span v-else>여</span>
+              </td>
+              <td>{{ m.userHp }}</td>
+              <td>
+                <span v-if="m.attendState == '출석'">참여</span
+                ><span v-else>-</span>
+              </td>
+              <td>
+                <span v-if="m.reviewState > 0">작성</span><span v-else>-</span>
+              </td>
+              <td v-if="m.couponState < 0">
+                <button v-on:click.prevent="coupon(1, m.userNo)">지급</button>
+              </td>
               <td v-else>-</td>
-              <td><button>지급</button></td>
             </tbody>
           </table>
         </div>
@@ -58,7 +68,7 @@
       <!-- 정규회원 -->
       <div class="companyInfoClassList" v-else-if="classType == 2">
         <div class="memberListTitle">
-          <p>회원관리(정규클래스)</p>
+          <p>{{ this.$route.params.name }}</p>
           <input
             class="memberVueDatePicker"
             type="date"
@@ -84,14 +94,17 @@
               <th style="width: 130px">출석일수</th>
               <th style="width: 100px">상태</th>
             </thead>
-            <tbody v-for="i in 16" :key="i" style="height: 30px">
-              <td>{{ i }}</td>
-              <td>김소리</td>
-              <td>25</td>
-              <td>여</td>
-              <td>010-3433-4324</td>
-              <td>17/20 <span>(90%)</span></td>
-              <td>결석</td>
+            <tbody v-for="(m, i) in mList" :key="i" style="height: 30px">
+              <td>{{ i + 1 }}</td>
+              <td>{{ m.userName }}</td>
+              <td>{{ m.userAge }}</td>
+              <td>
+                <span v-if="m.userGender == 'male'">남</span
+                ><span v-else>여</span>
+              </td>
+              <td>{{ m.userHp }}</td>
+              <td>{{ m.attend }}</td>
+              <td>{{ m.attendState }}</td>
             </tbody>
           </table>
         </div>
@@ -102,7 +115,7 @@
       <!-- 상시회원 -->
       <div class="companyInfoClassList" v-else-if="classType == 3">
         <div class="memberListTitle">
-          <p>회원관리(상시클래스)</p>
+          <p>{{ this.$route.params.name }}</p>
           <input
             class="memberVueDatePicker"
             type="date"
@@ -129,14 +142,15 @@
               <th style="width: 130px">수강기간</th>
               <th style="width: 100px">상태</th>
             </thead>
-            <tbody v-for="i in 16" :key="i" style="height: 30px">
-              <td>{{ i }}</td>
-              <td>김소리</td>
-              <td>25</td>
-              <td>여</td>
-              <td>010-3433-4324</td>
-              <td>2024-05-15~<br />2024-06-14</td>
-              <td>출석</td>
+            <tbody v-for="(m, i) in mList" :key="i" style="height: 30px">
+              <td>{{ i + 1 }}</td>
+              <td>{{ m.userName }}</td>
+              <td>{{ m.userAge }}</td>
+              <td v-if="m.userGender == 'male'">남</td>
+              <td v-else>여</td>
+              <td>{{ m.userHp }}</td>
+              <td>{{ m.startDate }}~{{ m.endDate }}</td>
+              <td>{{ m.attendState }}</td>
             </tbody>
           </table>
         </div>
@@ -145,31 +159,129 @@
       <!--companyInfoClassList-->
     </div>
   </div>
+
+  <div class="couponModal" v-show="isCoupon">
+    <div class="couponModalContent">
+      <h3>쿠폰지급</h3>
+      <div>
+        <input
+          type="radio"
+          name="coupon"
+          id="coupon5"
+          value="5"
+          v-model="couponType"
+        />
+        <label for="coupon5">5%</label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          name="coupon"
+          id="coupon10"
+          value="10"
+          v-model="couponType"
+        />
+        <label for="coupon10">10%</label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          name="coupon"
+          id="coupon15"
+          value="15"
+          v-model="couponType"
+        />
+        <label for="coupon15">15%</label>
+      </div>
+      <div class="couponBtn">
+        <button v-on:click.prevent="coupon(2)">닫기</button>
+        <button v-on:click="setCoupon">추가</button>
+      </div>
+    </div>
+  </div>
+
   <AppFooter />
 </template>
 <script>
 import AppHeader from "@/components/HostAppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import AppMenu from "@/components/CompanyMenu.vue";
+import axios from "axios";
 
 export default {
   name: "MemberManagerView",
   components: { AppHeader, AppFooter, AppMenu },
   data() {
     return {
+      isCoupon: false,
+      couponType: "",
+      userNo: "",
       classType: this.$route.params.type,
       datepick: new Date(),
-      toDay : new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate(),
+      toDay:
+        new Date().getFullYear() +
+        "-" +
+        (new Date().getMonth() + 1) +
+        "-" +
+        new Date().getDate(),
       mList: [],
     };
   },
   methods: {
     memberList() {
       console.log("회원불러오기");
-      console.log(this.toDay);
+      axios({
+        method: "get",
+        url: `${this.$store.state.apiBaseUrl}/odo/company/member/${this.$route.params.type}/${this.$route.params.no}`, //SpringBoot주소
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+        responseType: "json",
+      })
+        .then((response) => {
+          console.log(response.data.apiData); //수신데이터
+          this.mList = response.data.apiData;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     getDate() {
       console.log(this.datepick);
+    },
+    coupon(state, user) {
+      console.log("쿠폰");
+      this.userNo = user;
+      if (state == 1) {
+        this.isCoupon = true;
+        this.couponType = "";
+      } else {
+        this.isCoupon = false;
+      }
+    },
+    setCoupon() {
+      console.log(this.userNo);
+      axios({
+        method: "post",
+        url: `${this.$store.state.apiBaseUrl}/odo/company/coupon`, //SpringBoot주소
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+        params: {
+          userNo: this.userNo,
+          companyNo: this.$store.state.authCompany.companyNo,
+          couponPrice: this.couponType,
+        },
+        responseType: "json",
+      })
+        .then((response) => {
+          console.log(response.data); //수신데이터
+          this.isCoupon = false;
+          if (response.data.result == "success") {
+            alert("쿠폰이 지급되었습니다.");
+          } else {
+            alert("쿠폰지급 실패");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     asdf(c) {
       if (c === 1) {
