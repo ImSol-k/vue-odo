@@ -56,7 +56,7 @@
                     alt="" />
                 </div>
                 <div class="wishTitleContent">
-                  <p class="">{{ a.classCount }}</p>
+                  <p class="content1">{{ a.companyName }}</p>
                   <div class="wihshCompanyContent">
                     <div>
                       <p class="">클래스</p>
@@ -73,7 +73,7 @@
                   </div>
                 </div>
               </div>
-              <div class="goCompanyInfo">></div>
+              <div class="goCompanyInfo" @click="goCompanyInfo(a.companyNo)">></div>
             </div>
           </div>
 

@@ -23,17 +23,16 @@ export default {
 	created() {
 		this.code = this.$route.query.code;
 		console.log(this.code);
-		this.getToken();
+		this.getToken(this.code);
 	},
 	methods : {
-		getToken(){
-
+		getToken(code){
 
 			axios({
-				method: 'get',
-				url: `${this.$store.state.apiBaseUrl}/odo/ss/token/`+ this.code,
+				method: 'post',
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/token/`,
 				headers: { 'Content-Type': 'application/json; charset=utf-8' },
-				// data: this.loginVo,
+				data : code,
 				responseType: 'json'
 			}).then(response => {
 				console.log(response);

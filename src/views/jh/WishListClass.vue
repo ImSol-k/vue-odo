@@ -72,9 +72,9 @@
                   alt="" />
               </div>
               <div class="wishClassContent">
-                <p class="">{{ a.classAddress }}</p>
-                <p class="">{{ a.className }}</p>
-                <p class="">
+                <p class="content1">{{ a.classAddress }}</p>
+                <p class="content1">{{ a.className }}</p>
+                <p class="content2">
                   {{ a.classIntro }}
                 </p>
                 <p class="">{{ Number(a.classPrice).toLocaleString("ko-KR") }}원</p>

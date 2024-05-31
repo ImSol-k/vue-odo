@@ -32,7 +32,7 @@ import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
 import AnnouncementView from '../views/mj/AnnouncementView.vue'
 import ReadView from '../views/mj/readView.vue'
-// import WriteView from '../views/mj/WriteView.vue'
+import WriteView from '../views/mj/WriteView.vue'
 // import Noticemodify from '../views/mj/Noticemodify.vue'
 import ChartView from '../views/mj/ChartView.vue'
 
@@ -178,9 +178,14 @@ const routes = [
     component: AnnouncementView
   },
   {
-    path: '/mypage/read',
+    path: '/mypage/notice/:no',
     name: 'mypageread',
     component: ReadView
+  },
+  {
+    path: '/mypage/notice/write',
+    name: 'write',
+    component: WriteView
   },
   {
     path: '/chart',
