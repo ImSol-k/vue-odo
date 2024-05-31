@@ -1,15 +1,12 @@
 .revMain {
     box-sizing: border-box;
-    /* border: 1px solid #000; */
     width: 1000px;
-    min-height: 700px;
 }
 
 .rev-header {
     box-sizing: border-box;
     width: 1000px;
     border-bottom: 1px solid #d9d9d9;
-
     margin: 0 auto;
     padding: 20px 0 0 0 ;
 }
@@ -136,8 +133,9 @@
 /* rev-body 후기나오는 곳 */
 .rev-body {
     box-sizing: border-box;
+    /* border: 1px solid #000; */
     width: 1000px;
-    min-height: 500px;
+    min-height: 723px;
 }
 
 .rev-box {

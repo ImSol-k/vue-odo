@@ -58,7 +58,7 @@
 						<div class="rev-box2-1">
 							{{ list.reviewContent }}
 						</div>
-						<div class="rev-box2-2" @click="goPage(list.classNo)">{{ list.classIntro }}</div>
+						<div class="rev-box2-2" @click="goPage">{{ list.classIntro }}</div>
 						<div class="rev-box2-3">
 							<span v-if="list.classType == 1">[원데이]</span>
 							<span v-else>[정규]</span>
@@ -71,27 +71,26 @@
 				<div v-if="list.reviewImage != null" class="rev-box3">
 					<ul>
 						<li v-for="(index) in 1" :key="index">
-							<img v-if="list.reviewImage != null" :src="`${this.$store.state.apiBaseUrl}/upload/${list.reviewImage}`">
-							<img v-else style="display: none">
+							<img  :src="`${this.$store.state.apiBaseUrl}/upload/${list.reviewImage}`">
 						</li>
-					</ul>
-									
+					</ul>		
 				</div>
 				<!-- rev-box3 -->
 			</div>
 			<!-- revbox -->
+			
 		</div>
 		<!-- rev-body -->
-		<Observer @show="loadItem"></Observer>
 	</div>
 	<!-- revMain -->
 </div>
 <!-- wrap -->
 
-<!-- 옵저버 -->
-<!-- https://velog.io/@kbpark9898/Vue-intersection-observer%EB%A1%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%ED%83%90%EC%A7%80%ED%95%98%EA%B8%B0 -->
-<!-- https://powerku.tistory.com/243 -->
 
+<!-- 옵저버 -->
+<!-- <div class="div-300"> -->
+	<Observer @show="loadItem"></Observer>
+<!-- </div> -->
 <AppFooter/>
 <!-- footer -->
 	
@@ -117,12 +116,14 @@ export default {
 	},
 	data() {
 		return {
+			classNo : this.$route.fullPath.split('/')[2], // 주소에서 클래스 넘버 가져오기
 			type : ['평점높은순','평점낮은순','최신순'], // 리뷰 정렬 할 때 쓸 값들
-			isList : false,
-			page : 0,
-			whatType : '',
-			classInfo : '',
+			isList : false, // 버튼누르면 리스트 나오게 할때 쓸 값
+			page : 0, // 현재 페이지
+			whatType : '', // type의 값이 출력되는 데이터
+			classInfo : '', // 클래스 정보 들어가는 데이터
 			classReivewList : [],
+			typeNo : 0,
 		};
 	},
 	methods: {
@@ -131,16 +132,6 @@ export default {
 		showType(){ 
 			this.isList = !this.isList;
 		},
-		// 
-		getType(index){
-			let path =this.$route.fullPath;
-			let classNo = path.split('/')[2];
-			this.whatType = this.type[index];
-			this.isList = false;
-			this.classReivewList = [];
-			this.getClassReviewList(classNo,index);
-		},
-
 		// 클래스 별점표시 
 		ratingToPercent(no){
 			let starScore = (no / 5 ) * 100;
@@ -148,23 +139,32 @@ export default {
 		},
 
 		// 페이지 이동
-		goPage(classNo){
-			this.$router.push('/classdetailpage/'+ classNo);
+		goPage(){
+			this.$router.push('/classdetailpage/'+ this.classNo);
+		},
+
+		// 
+		getType(index){
+			this.page = 0;
+			this.typeNo = index;
+			this.whatType = this.type[index];
+			this.classReivewList = [];
+			this.getClassReviewList(this.typeNo);
+			this.isList = false;
 		},
 
 		loadItem(){
 			this.page ++;
-			console.log('옵저버');
-			console.log(this.page);
+			this.getClassReviewList(this.typeNo);
 		},
 
 		// 클래스 리뷰리스트 가져오기
-		getClassReviewList(classNo,type){
+		getClassReviewList(type){
 			axios({
 				method: 'get',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/classreviewlist`,
 				headers: { 'Content-Type': 'application/json; charset=utf-8' },
-				params : {classNo : classNo, type : type, page : this.page},
+				params : {classNo : this.classNo, type : type, page : this.page},
 				responseType: 'json'
 			}).then(response => {
 				if(response.data.result === 'success'){
@@ -178,12 +178,12 @@ export default {
 		},
 
 		// 클래스 정보 가져오기
-		getClassInfo(classNo){
+		getClassInfo(){
 			axios({
 				method: 'get',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/classinfo`,
 				headers: { 'Content-Type': 'application/json; charset=utf-8' },
-				params : {classNo : classNo},
+				params : {classNo : this.classNo},
 				responseType: 'json'
 			}).then(response => {
 				if(response.data.result === 'success'){
@@ -195,14 +195,10 @@ export default {
 				console.log(error);
 			});
 		}
-
 	},
 	created(){
-		this.whatType = this.type[0];
-		let path =this.$route.fullPath;
-		let classNo = path.split('/')[2];
-		this.getClassInfo(classNo);
-		this.getClassReviewList(classNo, 0);
+		this.whatType = this.type[this.typeNo];
+		this.getClassInfo();
 	}
 };
 </script>

@@ -512,7 +512,6 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import moment from 'moment';
 
-
 export default {
 	name: "MyPagePay",
 	components: {
@@ -699,8 +698,6 @@ export default {
 			}).catch(error => {
 				console.log(error);
 			});
-
-
 		},
 
 		// 파일 가져오기
@@ -718,7 +715,6 @@ export default {
 				this.fileName2 = this.file2.name;
 			}			
 		},
-		
 
 		// 리뷰 수정하기
 		modifyReview(){
@@ -757,7 +753,6 @@ export default {
 			}).catch(error => {
 				console.log(error);
 			});
-
 		},
 
 		// 리뷰 보기 모달 닫기
@@ -947,7 +942,6 @@ export default {
 		},
 		//////////////////////////////////////////////////////////////////////////////////////////
 	},
-	
 	created(){
 		
 	}
