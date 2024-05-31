@@ -43,7 +43,6 @@
 }
 
 .companyInfotitle>div>img {
-  width: 160px;
   margin: 0px 20px 0px 0px;
 }
 
@@ -164,3 +163,31 @@
   margin-bottom: 15px;
 }
 
+.companyImg{
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.comapnyImg2{
+  position: absolute;
+  left: 40.5%;
+  top: 44%;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.companyContent{
+  width: 600px;
+  height: 160px;
+}
+
+.InfoTitle{
+  width: 150px;
+}
+
+.infoContent{
+  width: 270px;
+}
