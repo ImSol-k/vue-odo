@@ -73,7 +73,6 @@ export default {
         userId: "",
         userPw: "",
       },
-      redirect_uri : '',
       pass1: require("@/assets/images/icon/ss/pass1.png"),
       pass2: require("@/assets/images/icon/ss/pass2.png"),
       isPass: true,
@@ -84,19 +83,38 @@ export default {
       },
     };
   },
+  mounted(){
+    
+  },
   methods: {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // https://velog.io/@aocl333/Vue-%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1-%EB%A1%9C%EA%B7%B8%EC%9D%B8
-    kakaoLogin() {
-      const redirect_uri = 'http://localhost:8080/kakaologin';
-      const clientId = '10a7f3623894713c0b64f29c1e5c6854';
-      const Auth_url = `http://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirect_uri}&response_type=code`;
-      window.location.href = Auth_url;
+    
+    kakaoLogin(){
+      console.log('카카오로그인');
+      window.Kakao.Auth.login({
+        scope : 'accuont_email, gender',
+        success : this.GetMe,
 
-
+      });
     },
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -188,7 +206,7 @@ export default {
     }
   },
   created() {
-    
+
   },
 };
 </script>
