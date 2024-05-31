@@ -18,32 +18,43 @@ export default {
         this.createObserver();
     },
     beforeUnmount(){
-        if(this.observer){
-            this.observer.disconnect();
-        }
+        this.disconnectObserver();
     },
     methods : {
         createObserver(){
-
-            if(this.observer){
-                this.observer.disconnect();
-            }
-
-            this.observer = new IntersectionObserver((entries) => {
-                if(entries.length > 0){
-                    const entry = entries[0];
-                    if(entry.isIntersecting){
-                        this.$emit('observer:show');
-                    } else {
-                        this.$emit('observer:hidden');
+            if(!this.observer){
+                this.observer = new IntersectionObserver((entries) => {
+                    if(entries.length > 0){
+                        const entry = entries[0];
+                        if(entry.isIntersecting){
+                            this.handleIntersection(true);
+                        } else {
+                            this.handleIntersection(false);
+                        }
                     }
-                }
-                
-            }, this.observerOptions);
+               
+                }, this.observerOptions);
+            }
+            
             const observerElement = this.$refs.observerElement;
             this.observer.observe(observerElement);
+        },
+        disconnectObserver(){
+            if(this.observer){
+                this.observer.disconnect();
+                this.observer = null;
+            }
+        },
+        handleIntersection(isIntersecting){
+            if(isIntersecting){
+                this.$emit('show');
+            } else {
+                this.$emit('hidden');
+            }
         }
-    }
+
+    },
+
 }
 
 </script>

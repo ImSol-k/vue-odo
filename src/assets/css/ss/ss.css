@@ -171,6 +171,7 @@
     box-sizing: border-box;
     min-height: 600px;
     padding: 10px;
+    margin-bottom: 10px;
 }
 
 .mymy-content .mymy-head {
@@ -187,7 +188,7 @@
 /**********************/
 /* 메인컨텐츠 */
 .mymy-content .mymy-main{
-    /* min-height: 400px; */
+    min-height: 400px;
     box-sizing: border-box;
     /* border: 1px solid #000; */
     padding: 5px;
@@ -212,3 +213,8 @@
 }
 
 /***************************/
+
+.div-300 {
+    height: 300px;
+    border: 1px solid #000;
+}

@@ -108,17 +108,17 @@
 /* 하트 표시 */
 .mymy-pay .heart {
     z-index: 3;
-    width: 13px;
-    height: 13px;
-    background: #fff;
+    width: 33px;
+    height: 33px;
+    display: block;
     position: relative;
-    margin-top: -28px;
-    margin-left: 125px;
-    transform: rotate(45deg);
+    margin-top: -45px;
+    margin-left: 113px;
+    object-fit: contain;
     cursor: pointer;
 }
 
-.mymy-pay .heart::before{
+/* .mymy-pay .heart::before{
     content: "";
     width: 13px;
     height: 13px;
@@ -136,7 +136,7 @@
     top: -50%;
     border-radius: 50%;
     background: #fff;
-}
+} */
 
 
 /* 별점 체크 부분 */
@@ -144,7 +144,7 @@
 .star-ratings {
     color: #aaa9a9;
     position: relative;
-    margin: 5px 0 0 23px;
+    margin: 0 0 0 23px;
     unicode-bidi: bidi-override;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 0.7px;
@@ -176,7 +176,7 @@
     box-sizing: border-box;
     /* border: 1px solid #000; */
     display: block;
-    margin-top: 3px;
+    /* margin-top: 3px; */
     font-size: 13px;
     float: left;
     width: 30px;

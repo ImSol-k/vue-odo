@@ -18,24 +18,22 @@
 				<span>결제내역</span>
 			</div>
 			<!-- mymy-head -->
-
-			<div class="mymy-main">
+			<div class="mymy-main clearfix">
 				<div class="mymy-nav">
 					<span type="button" @click="selectClass(1)" :class="{ pickClass : isClass}">원데이</span>
 					<span>ㅣ</span>
 					<span type="button" @click="selectClass(2)" :class="{ pickClass : !isClass}">정규</span>
 				</div>
 				<!-- mymy-nav -->
-
+				
 				<div class="mymy-paybox">
-					
 					<!-- 결제내역이 없으면 -->
 					<div v-if="!isPay" class="mymy-nopay">
 						<img id="nopayImg" src="@/assets/images/icon/ss/nopay.png">
 						<span>결제한 내역이 없어요</span>
 						<router-link to="/">홈으로 가기</router-link>
 					</div>
-					<!-- mymy-nopay -->
+					<!-- //결제내역이 없으면 mymy-nopay -->
 
 					<!-- 결제내역이 있고 원데이클래스 정규클래스 나오게 -->
 					<div v-else>
@@ -56,7 +54,8 @@
 										<li>
 											<span class="end-msg" :class="{ endClass : checkDate(list.endDate) }">종료</span>
 											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
-											<div class="heart" @click="wish(list.wishClassNo, list.classNo)" :class="{ red : list.whisClassNo !== 0, white : list.wishClassNo === 0 }"></div>
+											<img v-if="list.wishClassNo !== 0" @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/redheart.svg">
+											<img v-if="list.wishClassNo === 0" @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/whiteheart.svg">
 										</li>
 										<li>
 											<div class="star-ratings">
@@ -107,9 +106,10 @@
 								<!-- mymy-payCon -->
 							</div>
 							<!-- pay -->
-							
+							<!-- <Observer @show="loadItem"></Observer> -->
 						</div>
 						<!-- 원데이클래스 -->
+						
 						<div v-else class="div-180">
 							<div v-if="paymentData.length === 0">
 								<div class="mymy-nopay">
@@ -127,7 +127,8 @@
 										<li>
 											<span class="end-msg" :class="{ endClass : checkDate(list.endDate) }">종료</span>
 											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
-											<div class="heart" @click="wish(list.wishClassNo, list.classNo)" :class="{ red : list.whisClassNo !== 0, white : list.wishClassNo === 0 }"></div>
+											<img v-if="list.wishClassNo !== 0" @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/redheart.svg">
+											<img v-if="list.wishClassNo === 0" @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/whiteheart.svg">
 										</li>
 										<li>
 											<div class="star-ratings">
@@ -181,12 +182,14 @@
 							
 						</div>
 						<!-- //정규클래스 -->
+						
 					</div>
-				<Observer @show="loadItem"></Observer>
 				</div>
 				<!--// mymy-paybox  -->
+				
 			</div>
 			<!-- //mymy-main -->
+			
 			
 			<!-- 등록모달 -->
 			<div class="rev-modal">
@@ -429,8 +432,9 @@
 				</div>
 				<!-- //revform1 -->
 			</div>
-			<!-- 리뷰보기 모달 -->
+			<!-- //리뷰보기 모달 -->
 
+			<!-- 출석보기 모달 -->
 			<div class="showAttendance">
 				<div class="revform1">
 					<div class="revform1-header clearfix">
@@ -475,15 +479,16 @@
 				</div>
 				<!-- revform1 -->
 			</div>
-			<!-- //showAttendance -->
+			<!-- //출석보기 모달 -->
 		
 		</div>
 		<!-- //mypage-content -->
+		
 	</div>
 	<!-- //mymy -->
-	
 </div>
 <!-- //wrap -->
+<Observer @show="loadItem"></Observer>
 
 <AppFooter/>
 <!-- //footer -->
@@ -573,10 +578,12 @@ export default {
 			file2 : '', // 첨부 파일
 			fileName2 : null, // 파일 이름
 			// 리뷰 작성 파일에 기본나타낼 이미지, 리뷰등록시 이미지 등록안하면 뜨게할 이미지
-			prevImg : require('@/assets/images/icon/ss/default-photo.png'),   
+			prevImg : require('@/assets/images/icon/ss/default-photo.png'),
 		};
 	},
 	methods: {
+
+		///////////////////  계산  /////////////////////////////
 		// 날짜 변환
 		formatDate(date){
 			return moment(date).format(`YYYY년 MM월 DD일 HH:MM `);
@@ -595,6 +602,34 @@ export default {
 					this.isEnd = false;
 				}
 			}
+		},
+
+		// 정규클래스 원데이 클래스 선택
+		selectClass(no){
+			this.paymentData = [];
+			this.page = 0;
+			if(no == 1){ // true면 원데이클래스
+				this.classType = 1;
+				this.isClass = true;
+			} else { // false면 정규클래스
+				this.classType = 2;
+				this.isClass = false;
+			}
+			this.loadItem();
+		},
+		// 문의요청
+		inquiry(url){
+			console.log(url);
+		},
+
+		// 선택한 페이지 이동
+		goPage(no){
+			this.$router.push('/classdetailpage/'+ no);
+		},
+		// 별점 퍼센트 보여주기(결제내역 - 결제한 클래스)
+		ratingToPercent(no){
+			let starScore = (no / 5 ) * 100;
+			return starScore + 1.5;
 		},
 
 		/////////////////////////////////// 출석부 //////////////////////////////////////
@@ -836,23 +871,6 @@ export default {
 		},		
 
 		///////////////////////////////////////////////////////////////////////////////////
-
-		// 정규클래스 원데이 클래스 선택
-		selectClass(no){
-			if(no == 1){ // true면 원데이클래스
-				this.paymentData = [];
-				this.page = 0;
-				this.classType = 1;
-				this.getList(this.classType);
-				this.isClass = true;
-			} else { // false면 정규클래스
-				this.paymentData = [];
-				this.page = 0;
-				this.classType = 2;
-				this.getList(this.classType);
-				this.isClass = false;
-			}
-		},
 		
 		// 하트이미지 클릭 -> 위시리스트에 담기기 
 		wish(wishClassNo, classNo){
@@ -893,28 +911,14 @@ export default {
 					} else {
 						Swal.fire({text : response.data.message});
 					}
-					
 				}).catch(error => {
 					console.log(error);
 				});
 			}
 		},
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		// 문의요청
-		inquiry(url){
-			console.log(url);
-		},
-
-		// 선택한 페이지 이동
-		goPage(no){
-			this.$router.push('/classdetailpage/'+ no);
-		},
-		// 별점 퍼센트 보여주기(결제내역 - 결제한 클래스)
-		ratingToPercent(no){
-			let starScore = (no / 5 ) * 100;
-			return starScore + 1.5;
-		},
-		
+		//////////////////////////////// 결제내역 가져오기 + 옵저버 /////////////////////////////////////////////////////////////
 		// 결제정보 페이징 용 옵저거 
 		loadItem(){
 			this.page ++;
@@ -923,7 +927,6 @@ export default {
 
 		// 결제정보 가져오기
 		getList(paymentType){
-			
 			axios({
 				method: 'get',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/getpaylist`,
@@ -935,10 +938,6 @@ export default {
 				if(response.data.result === 'success' && response.data.apiData != null){
 					this.paymentData.push(...(response.data.apiData));
 					this.isPay = this.paymentData.length > 0;
-					// this.isClass = this.paymentData.some((item) => item.classType === 1);
-					// if(!this.isPay && this.isClass){
-					// 	this.isClass =false;
-					// }
 				} else {
 					Swal.file({text: '통신오류입니다.'})
 				}
@@ -946,11 +945,11 @@ export default {
 				console.log(error);
 			});
 		},
+		//////////////////////////////////////////////////////////////////////////////////////////
 	},
 	
 	created(){
-		// 데이터가져오는 메소드 실행
-		this.getList(this.classType);
+		
 	}
 };
 </script>
@@ -959,28 +958,6 @@ export default {
 /* 원데이 정규 클릭했을때 */
 .pickClass {
 	border-bottom: 2px solid #8521FF;
-}
-
-/* 하트 클릭했을때  */
-.mymy-pay .red {
-	background-color: #ea2027;
-}
-.mymy-pay .red::before {
-	background-color: #ea2027;
-}
-.mymy-pay .red::after{
-	background-color: #ea2027;
-}
-
-.mymy-pay .white {
-	background-color: #fff;
-}
-.mymy-pay .white::before {
-	background-color: #fff;
-}
-
-.mymy-pay .white::after{
-	background-color: #fff;
 }
 
 .endClass {
