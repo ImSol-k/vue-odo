@@ -2,44 +2,57 @@
 .mymy-main {
   width: 830px;
 }
+
 .wishClassBox {
-  width: 193px;
+  width: 178px;
+  height: 268px;
   margin: 5px;
   padding: 8px;
   float: left;
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
+
 .whsilistImg {
   position: relative;
 }
-.whsilistImg > img {
-  width: 175px;
+
+.whsilistImg>img {
+  width: 160px;
   height: 150px;
   border-radius: 5px;
 }
-.whsilistImg > img:last-child {
-  position: absolute; /* 이미지들을 겹치게 배치 */
+
+.whsilistImg>img:last-child {
+  position: absolute;
+  /* 이미지들을 겹치게 배치 */
   bottom: -30%;
   right: 3%;
-  width: 35px; /* 두 번째 이미지의 너비 */
-  z-index: 1; /* 두 번째 이미지가 위로 올라오도록 설정 */
+  width: 35px;
+  /* 두 번째 이미지의 너비 */
+  z-index: 1;
+  /* 두 번째 이미지가 위로 올라오도록 설정 */
 }
-.wishClassContent > p {
+
+.wishClassContent>p {
   font-size: 15px;
 }
-.wishClassContent > p:first-child {
+
+.wishClassContent>p:first-child {
   color: #a0a0a0;
   font-size: 12px;
 }
-.wishClassContent > p:nth-child(2) {
+
+.wishClassContent>p:nth-child(2) {
   font-weight: bold;
   margin: 5px 0;
 }
-.wishClassContent > p:nth-child(3) {
+
+.wishClassContent>p:nth-child(3) {
   font-size: 13px;
 }
-.wishClassContent > p:last-child {
+
+.wishClassContent>p:last-child {
   font-size: 13px;
   text-align: right;
   color: #a0a0a0;
@@ -50,50 +63,76 @@
   width: 900px;
   /* padding: 20px; */
 }
+
 .wishlistCompanyBox {
   display: flex;
   float: left;
-  width: 410px;
+  width: 368px;
   margin: 5px;
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
-.wishlistCompanyBox > div {
+
+.wishlistCompanyBox>div {
   display: flex;
 }
+
 .wishTitleContent {
-  width: 180px;
+  width: 150px;
   margin-top: 20px;
   margin-left: 10px;
 }
-.wishlistCompanyImg > img {
+
+.wishlistCompanyImg>img {
   width: 150px;
   height: 100px;
   border-radius: 10px;
   margin: 5px;
 }
-.wishlistCompanyImg > img:last-child {
+
+.wishlistCompanyImg>img:last-child {
   bottom: -22%;
   right: 0;
 }
+
 .wihshCompanyContent {
   display: flex;
   flex-direction: row;
   align-items: center;
   text-align: center;
 }
-.wihshCompanyContent > div {
+
+.wihshCompanyContent>div {
   width: 40px;
   margin-top: 8px;
 }
-.wihshCompanyContent > div > p {
+
+.wihshCompanyContent>div>p {
   font-size: 14px;
   color: #a0a0a0;
 }
+
 .goCompanyInfo {
   float: right;
-  padding: 25px 30px;
   font-size: 40px;
   font-weight: bold;
   color: #8521ff;
+  cursor: pointer;
+}
+
+.content1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.content2{
+  height: 34px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }

@@ -47,7 +47,7 @@
       </div>
       <div class="paymentClassBox">
         <div class="paymentClass" v-for="i in rList" :key="i">
-          <img class="paymentEndImage" v-bind:src="`${this.$store.state.apiBaseUrl}/upload/${i.classImage}`" alt="" />
+          <img class="paymentEndImage" v-bind:src="`${this.$store.state.apiBaseUrl}/upload/${i.classImage}`" alt="" v-on:click="go(i.classNo)"/>
           <p class="paymentEndAddress">{{ i.classAddress }}</p>
           <p class="paymentEndName">{{ i.className }}</p>
           <p class="paymentEndIntro">
@@ -97,6 +97,9 @@ export default {
     };
   },
   methods: {
+    go(no){
+      this.$router.push("/classdetailpage/" + no);
+    },
     list(){
       console.log("시작");
       axios({
