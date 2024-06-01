@@ -7,7 +7,9 @@ export default createStore({
             apiBaseUrl: "http://localhost:9090",
             //apiBaseUrl: "http://54.180.79.237:9090",
             token: "",
-            authUser: "",
+            authUser: {
+                userNo: 2
+            },
             authCompany: {
                 companyNo: 1,
                 companyName: "(주)사업자",

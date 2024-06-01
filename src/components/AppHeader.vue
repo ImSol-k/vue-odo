@@ -104,7 +104,7 @@
                 <h1><router-link to="/" class="logo">logo</router-link></h1>
                 <div class="serch-box" @click="searchActive">
                     <img src="../assets/images/icon/header_icons/search.svg" alt="">
-                    <input type="search" name="" id="" placeholder="지금 생각나는 취미를 검색하세요.">
+                    <input type="search" placeholder="지금 생각나는 취미를 검색하세요." v-model="keyword" @keyup.enter="find">
                 </div>
                 <ul>
                     <li><router-link to="/wishlistclass" @click="checkAuth" class="like">위시리스트</router-link></li>
@@ -123,6 +123,7 @@ export default {
     },
     data() {
         return {
+            keyword: "",
             subCateNo: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
             isMenuOpen: false,
             isSubMenuOpen: {
@@ -138,6 +139,10 @@ export default {
         };
     },
     methods: {
+        find() {
+            console.log("검색")
+            this.$emit('update',this.keyword);
+        },
         /////////////////////////////// ss /////////////////////////////////////
         // 로그아웃
         logout() {

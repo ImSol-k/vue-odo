@@ -85,7 +85,7 @@ const routes = [
     component: ClassAddView
   },
   {
-    path: '/classlist',
+    path: '/classlist/:no',
     name: 'classlist',
     component: ClassListView
   },
