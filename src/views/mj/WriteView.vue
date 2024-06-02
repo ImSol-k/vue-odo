@@ -14,7 +14,7 @@
 				</div>
 				<!-- 오른쪽내용영역 -->
 				<div class="MpRight">
-					<form @submit.prevent="handleSubmit" enctype="multipart/form-data">
+					<form @submit.prevent="handleSubmit">
 						<div id="in_title">
 							<textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100"></textarea>
 						</div>
@@ -24,9 +24,6 @@
 						<!-- <div class="wi_line"></div> -->
 						<div id="in_content">
 							<textarea name="content" id="ucontent" placeholder="내용"></textarea>
-						</div>
-						<div id="in_file">
-							<input type="file" name="b_file" />
 						</div>
 						<div class="bt_se">
 							<button type="submit">등록</button>

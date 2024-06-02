@@ -9,6 +9,10 @@
           <!-- <MyPageSide/> -->
         </div>
         <h2>공지사항</h2>
+
+        <div style="text-align:right;">
+          <button type="submit">글쓰기</button>
+        </div>
         <div class="MpRight" style="overflow: hidden;">
           <table class="list-table">
             <thead>

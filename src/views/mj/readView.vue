@@ -9,7 +9,7 @@
                 <div>
                     <div>
                         <table class="ta3334">
-                            <thead>
+                            <thead style="border-top:2px solid #9448e6 ">
                                 <tr>
                                     <th style="width: 100px;">번호</th>
                                     <td style="width: 50px;">{{ MjVo.idx }}</td>
