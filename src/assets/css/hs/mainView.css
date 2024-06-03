@@ -152,6 +152,6 @@ ul.classList span.reviewCount {
 .banner {
     width: 100%;
     height: 131px;
-    margin: 20px 0;
+    margin: 10px 0 70px;
     background: url('../../images/hs/banner_host.png') no-repeat center / contain;
 }
