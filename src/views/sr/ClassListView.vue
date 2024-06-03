@@ -20,9 +20,15 @@
       </div>
 
       <!-- 리스트로보기 -->
-      <div class="findClassListBox clearfix" v-if="!isMap">
+      <div
+        class="findClassListBox clearfix"
+        v-if="!isMap && classList.length > 0"
+      >
         <div class="classListOne" v-for="(c, i) in classList" :key="i">
-          <router-link to="/classdetailpage" class="listRouterLink">
+          <router-link
+            :to="`/classdetailpage/${c.classNo}`"
+            class="listRouterLink"
+          >
             <div class="classListBox">
               <img
                 :src="`${this.$store.state.apiBaseUrl}/upload/${c.classImage}`"
@@ -49,10 +55,16 @@
       </div>
 
       <!-- 지도로 보기 -->
-      <div class="findClassListBox clearfix" v-else>
+      <div
+        class="findClassListBox clearfix"
+        v-else-if="isMap && classList.length > 0"
+      >
         <div class="findMapBox">
           <div class="classMapListOne" v-for="(c, i) in classList" :key="i">
-            <router-link to="/classdetailpage" class="listRouterLinkMap">
+            <router-link
+              :to="`/classdetailpage/${c.classNo}`"
+              class="listRouterLinkMap"
+            >
               <div class="classListBox">
                 <img
                   :src="`${this.$store.state.apiBaseUrl}/upload/${c.classImage}`"
@@ -84,8 +96,10 @@
           <div id="listMap" style="width: 485px; height: 900px"></div>
         </div>
       </div>
+      <div v-else>항목없음</div>
     </div>
   </div>
+
   <Observer @show="paging"></Observer>
   <AppFooter />
 </template>
@@ -110,7 +124,7 @@ export default {
       classList: [],
       page: 0,
       // 카카오맵
-      positions: [],
+      positions: [], //지도 마커출력용
     };
   },
   mounted() {
@@ -158,7 +172,7 @@ export default {
       this.classType();
     },
     classType() {
-      console.log(this.type);
+      // console.log(this.type);
       axios({
         method: "get",
         url: `${this.$store.state.apiBaseUrl}/odo/company/classlist`, //SpringBoot주소
@@ -178,17 +192,61 @@ export default {
             response.data.apiData != null
           ) {
             this.classList.push(...response.data.apiData);
+            /*
+            console.log("==================================");
+            console.log(response.data.apiData);
+            console.log(this.positions);
+            console.log("==================================");
+            */
             this.classList.forEach((list) => {
               let temp = list.classNameAddress.split(" ");
               list.classNameAddress = temp[0];
-              list.classNameAddress += "/" + temp[1];
+              if (list.classNameAddress.length == 2) {
+                list.classNameAddress += "/" + temp[1];
+              }
               if (list.classIntro.length >= 20) {
                 list.classIntro = list.classIntro.substr(0, 20) + "...";
               }
               if (!this.isMap && list.className.length > 12) {
                 list.className = list.className.substr(0, 12) + "..";
               }
+              this.displayMap(
+                list.classLatitude,
+                list.classLongitutde,
+                list.className
+              );
+              // {
+              //   title: "현재위치",
+              //   latlng: new kakao.maps.LatLng(latitude, longitude),
+              // },
+              // this.positions.push({
+              //   title: list.className,
+              //   lating: new kakao.maps.LatLng(
+              //     list.classLatitude,
+              //     list.classLongitutde
+              //   ),
+              // });
             });
+            // var imageSrc =
+            //   "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+            // for (var i = 0; i < this.positions.length; i++) {
+            //   // 마커 이미지의 이미지 크기 입니다
+            //   var imageSize = new kakao.maps.Size(24, 35);
+
+            //   // 마커 이미지를 생성합니다
+            //   var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+            //   // 마커를 생성합니다
+            //   var marker = new kakao.maps.Marker({
+            //     // map: this.displayMap().map, // 마커를 표시할 지도
+            //     position: this.positions[i].latlng, // 마커를 표시할 위치
+            //     title: this.positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            //     image: markerImage, // 마커 이미지
+            //   });
+            //   marker.setMap(this.displayMap().map);
+            // }
+            // console.log("===========================");
+            // console.log(this.displayMap().map);
           } else {
             alert("검색정보 없음");
           }
@@ -207,29 +265,28 @@ export default {
       }
     },
     initMap() {
+      var latitude;
+      var longitude;
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             console.log(position);
-            var latitude = 37.5151081873838;
-            var longitude = 127.107222748544;
-            // var latitude = position.coords.latitude;
-            // var longitude = position.coords.longitude;
-            this.displayMap(latitude, longitude);
+            // var latitude = 37.5151081873838;
+            // var longitude = 127.107222748544;
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
             // this.displayMap(latitude, longitude);
           },
           (error) => {
             console.error("Error occurred. Error code: " + error.code);
             // 기본 위치로 강남
-            this.displayMap(37.498287, 127.027064);
+            // this.displayMap(37.498287, 127.027064);
           }
         );
       } else {
         // Geolocation을 지원하지 않으면 기본 위치 강남
-        this.displayMap(37.498287, 127.027064);
+        // this.displayMap(37.498287, 127.027064);
       }
-    },
-    displayMap(latitude, longitude) {
       var mapContainer = document.getElementById("listMap"), // 지도를 표시할 div
         mapOption = {
           center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
@@ -237,24 +294,10 @@ export default {
         };
       //지도생성
       var map = new kakao.maps.Map(mapContainer, mapOption);
-      //객체생성
-      var geocoder = new kakao.maps.services.Geocoder();
-      var coord = new kakao.maps.LatLng(latitude, longitude);
-      geocoder.coord2Address(coord.getLng(), coord.getLat(), this.callback);
-
-      //핑찍기
-      this.positions = [
-        {
-          latlng: new kakao.maps.LatLng(latitude, longitude),
-        },
-      ];
-      this.positions.forEach(function (pos) {
-        var marker = new kakao.maps.Marker({
-          position: pos.latlng,
-        });
-        marker.setMap(map);
-      });
+      map.setCenter(mapOption.center);
     },
+
+   
     callback(result, status) {
       //상태체크
       if (status === kakao.maps.services.Status.OK) {
@@ -265,21 +308,16 @@ export default {
           pos = pos.replace(/-|1|2|3|4|5|6|7|8|9|0/g, "");
           pos = pos.split(" ");
           this.keyword = pos[1];
-          console.log("Road Address: " + this.keyword);
+          // console.log("Road Address: " + this.keyword);
         } else {
           console.error("Geocoding result is empty");
         }
       } else {
         console.error("Geocoding failed with status: " + status);
       } //
-
-      //리스트불러오기
-      this.classType();
     },
   },
-  created() {
-    this.classType();
-  },
+  created() {},
 };
 </script>
 
