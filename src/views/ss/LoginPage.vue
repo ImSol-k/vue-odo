@@ -98,6 +98,7 @@ export default {
     kakaoLogin(){
       window.Kakao.Auth.authorize({
         redirectUri : 'http://localhost:8080/login/user',
+        prompt : 'login'
       })
     },
 
@@ -116,6 +117,7 @@ export default {
         },
 				responseType: 'json'
 			}).then(response => {
+        console.log('인가코드받기'+response.data);
         this.getUserInfo(response.data.access_token, response.data.scope);
       }).catch(error => {
 				console.log(error);
@@ -133,17 +135,28 @@ export default {
         data : scope,
 				responseType: 'json'
 			}).then(response => {
-        let userVo = {
-          userId : response.data.kakao_account.email,
-          userName : response.data.kakao_account.name,
-          userNickname : response.data.properties.nickname,
-          userHp : response.data.kakao_account.phone_number,
-          userBirth : (response.data.kakao_account.birthyear)+(response.data.kakao_account.birthday),
-          userGender : response.data.kakao_account.gender,
-          userImage : response.data.properties.profile_image,
-          userKakao : true,
+        console.log(response);
+        if(response.status === 200){
+          console.log('토큰에서 아이디 출력'+response.data.id);
+          let userVo = {
+            userId : response.data.kakao_account.email,
+            userName : response.data.kakao_account.name,
+            userNickname : response.data.properties.nickname,
+            userHp : response.data.kakao_account.phone_number,
+            userBirth : (response.data.kakao_account.birthyear)+(response.data.kakao_account.birthday),
+            userGender : response.data.kakao_account.gender,
+            userImage : response.data.properties.profile_image,
+            userKakao : true,
+          }
+          this.kakaoLoignCheck(userVo);
+        } else {
+          Swal.fire({text: '인증실패'});
         }
-        this.kakaoLoignCheck(userVo);
+        
+        
+
+        
+
 			}).catch(error => {
 				console.log(error);
 			});
@@ -161,18 +174,19 @@ export default {
 				responseType: 'json'
 			}).then(response => {
         if(response.data.result === 'success'){
-          const token = response.headers.authorization.split(" ")[1];
-          let authUser = {
-            userNo: response.data.apiData.userNo,
-            userNickname: response.data.apiData.userNickname,
-            userId: response.data.apiData.userId,
-            userImage: response.data.apiData.userImage,
-            userKakao: response.data.apiData.userKakao,
-            userNaver: response.data.apiData.userNaver,
-          };
-          this.$store.commit('setAuthUser', authUser);
-          this.$store.commit('setToken', token);
-          this.$router.push('/');
+          console.log(response.data.apiData);
+          // const token = response.headers.authorization.split(" ")[1];
+          // let authUser = {
+          //   userNo: response.data.apiData.userNo,
+          //   userNickname: response.data.apiData.userNickname,
+          //   userId: response.data.apiData.userId,
+          //   userImage: response.data.apiData.userImage,
+          //   userKakao: response.data.apiData.userKakao,
+          //   userNaver: response.data.apiData.userNaver,
+          // };
+          // this.$store.commit('setAuthUser', authUser);
+          // this.$store.commit('setToken', token);
+          // this.$router.push('/');
         } else {
           Swal.fire({text: '통신오류'})
         }
@@ -205,7 +219,7 @@ export default {
           data: this.loginVo,
           responseType: "json",
         })
-          .then((response) => {
+        .then((response) => {
             if (response.data.result === "success") {
               const token = response.headers.authorization.split(" ")[1];
               let authUser = {
@@ -222,10 +236,9 @@ export default {
             } else {
               Swal.fire({ text: response.data.message, icon: "error" });
             }
-          })
-          .catch((error) => {
+        }).catch((error) => {
             console.log(error);
-          });
+        });
       }
     },
 

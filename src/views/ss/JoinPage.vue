@@ -11,10 +11,9 @@
 				<div class="join-box">
 					<button type="button" @click="userJoin" class="join-select">일반 회원가입</button>
 					<img class="kakao-login" @click=kakaoJoin src="@/assets/images/icon/ss/kakao_login_medium_narrow.png">
-					<button type="button" @click.="naverJoin" class="join-select">네이버로 회원가입</button>
+					<!-- <button type="button" @click.="naverJoin" class="join-select">네이버로 회원가입</button> -->
 				</div>
 			</div>
-			
 
 			<!-- https://sorto.me/docs/Web/HTML/Element/input/email#term-multiple -->
 
@@ -28,8 +27,6 @@
 							<!-- <span class="join1-txt">대/소문자, 숫자, 특수문자 중 2가지 이상의 조합으로 10자이상</span> -->
 							<input id="join-pw2" type="password" v-model="checkPw" placeholder="비밀번호 한 번 더"><br>
 						</div>
-
-
 					</div>
 					<button class="login-btn" type="button" @click="showSelectJoin">뒤로 가기</button>
 					<button class="login-btn" type="button" @click="showJoin2" :disabled="!isJoinIdValid">다음</button>
