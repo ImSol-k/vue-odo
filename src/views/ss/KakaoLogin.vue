@@ -27,21 +27,24 @@ export default {
 	},
 	methods : {
 		getToken(code){
-
 			axios({
 				method: 'post',
-				url: `${this.$store.state.apiBaseUrl}/odo/ss/token/`,
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/token`,
 				headers: { 'Content-Type': 'application/json; charset=utf-8' },
 				data : code,
 				responseType: 'json'
 			}).then(response => {
 				console.log(response);
 				// window.location.href = response.data;
+				
 			}).catch(error => {
 				console.log(error);
 			});
-
 		},
+
+
+
+		
 
 		
 
