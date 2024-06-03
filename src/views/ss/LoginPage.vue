@@ -100,32 +100,70 @@ export default {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // https://blerang055.tistory.com/3
     kakaoLogin(){
-      // const url = 'http://kauth.kakao.com/oauth/authorize?client_id=4946b7c22ba5fb9b866b344e8f2f4224&redirect_uri=http://localhost:8080/kakaologin&response_type=code' ;
-      // window.open(url,'_blank','width=600, height=800, top=100, left=650');
-
       window.Kakao.Auth.authorize({
         redirectUri : 'http://localhost:8080/login/user',
-        // scope : 'account_email,profile_nickname',
-      })      
+      })
     },
 
     getToken(code){
-			axios({
+      axios({
 				method: 'post',
-				url: `${this.$store.state.apiBaseUrl}/odo/ss/token`,
-				headers: { 'Content-Type': 'application/json; charset=utf-8' },
-				data : code,
+				url: `https://kauth.kakao.com/oauth/token`,
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+				params : {
+          'grant_type': 'authorization_code',
+          'client_id' : '10a7f3623894713c0b64f29c1e5c6854',
+          'redirect_uri' : 'http://localhost:8080/login/user',
+          'code' : code,
+          'client_secret' : '377Ja2giI9wqMcjpTmUwNlhKIoNgX7bV'
+        },
 				responseType: 'json'
 			}).then(response => {
-				console.log(response);
-				// window.location.href = response.data;
-				
+        console.log(response);
+        // console.log(response.data.scope.birthday);
+        // console.log(response.data.scope.account_email);
+        // console.log(response.data.scope.profile_image);
+        // console.log(response.data.scope.gender);
+        // console.log(response.data.scope.birthyear);
+        // console.log(response.data.scope.openid);
+        // console.log(response.data.scope.profile_nickname);
+        // console.log(response.data.scope.name);
+        // console.log(response.data.scope.phone_number);
+
+        this.getUserInfo(response.data.access_token, response.data.scope);
+
+
+      }).catch(error => {
+				console.log(error);
+			});
+
+		},
+      
+    getUserInfo(access_token,scope){
+      axios({
+				method: 'get',
+				url: `https://kapi.kakao.com/v2/user/me`,
+				headers: { 
+          'Content-Type' : 'application/x-www-form-urlencoded;charset=utf-8',
+          'Authorization' : 'Bearer ' + access_token
+        },
+        data : scope,
+				responseType: 'json'
+			}).then(response => {
+        console.log('유저정보가져오기');
+        console.log(response.data);
+				console.log(response.data.kakao_account.email);
+        console.log(response.data.kakao_account.name);
+        console.log(response.data.kakao_account.gender);
+        console.log(response.data.kakao_account.birthyear);
+        console.log(response.data.kakao_account.birthday);
+        console.log(response.data.kakao_account.phone_number);
+        console.log(response.data.properties.profile_image);
+        console.log(response.data.properties.nickname);        
 			}).catch(error => {
 				console.log(error);
 			});
-		},
-      
-   
+    },
 
     
 
@@ -233,7 +271,6 @@ export default {
     }
   },
   created() {
-    console.log(this.code)
     if(this.code != undefined){
       this.getToken(this.code);
     }
