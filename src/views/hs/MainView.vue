@@ -71,7 +71,7 @@
 					<router-link :to="`/classdetailpage/${fbList.classNo}`">
 						<div class="img-box">
 							<img :src="`${this.$store.state.apiBaseUrl}/upload/${fbList.classImg}`" alt="">
-							<img src="" alt="">
+							<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
 						</div>
 						<p class="location">{{fbList.classNameAdd}}</p>
 						<p class="classTitle">{{fbList.className}}</p>
@@ -107,7 +107,7 @@
 					<router-link :to="`/classdetailpage/${pbList.classNo}`">
 						<div class="img-box">
 							<img :src="`${this.$store.state.apiBaseUrl}/upload/${pbList.classImg}`" alt="">
-							<img src="" alt="">
+							<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
 						</div>
 						<p class="location">{{ pbList.classNameAdd }}</p>
 						<p class="classTitle">{{ pbList.className }}</p>
@@ -142,7 +142,7 @@
 					<router-link :to="`/classdetailpage/${nList.classNo}`">
 						<div class="img-box">
 							<img :src="`${this.$store.state.apiBaseUrl}/upload/${nList.classImg}`" alt="">
-							<img src="" alt="">
+							<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
 						</div>
 						<p class="location">{{ nList.classNameAdd }}</p>
 						<p class="classTitle">{{ nList.className }}</p>
@@ -209,7 +209,9 @@ export default defineComponent({
 		};
 	},
 	methods: {
-
+		plusWish() {
+			console.log("위시 추가")
+		},
 		//메인 리스트 가져오기
 		getLists() {
 

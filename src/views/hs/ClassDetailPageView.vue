@@ -64,7 +64,7 @@
 			</div>
 			<!-- //headerSection-->
 
-			<div class="reviewSection">
+			<div v-if="this.classReviewList != null" class="reviewSection">
 				<ul>
 					<li v-for=" review in classReviewList " :key="review">
 						<router-link :to="`/reviewpage/${this.$route.params.classNo}`">
