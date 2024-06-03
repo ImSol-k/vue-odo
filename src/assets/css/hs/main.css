@@ -61,9 +61,11 @@ header .bottom .hamberger {
     text-align: center;
     cursor: pointer;
 }
+
 header .bottom .hamberger:hover {
     color: #8521FF;
 }
+
 header .bottom .bar {
     width: 1px;
     height: 56px;
@@ -136,10 +138,12 @@ header .bottom .like {
     color: #888;
     background: url('../../images/icon/header_icons/like.png') no-repeat center / 30px 30px;
 }
+
 header .bottom .like:hover {
     background: url('../../images/icon/header_icons/active_like.png') no-repeat center / 30px 30px;
     color: #8521FF;
 }
+
 header .bottom .my {
     width: 25px;
     height: 45px;
@@ -148,10 +152,12 @@ header .bottom .my {
     color: #888;
     background: url('../../images/icon/header_icons/my.png') no-repeat center / contain;
 }
+
 header .bottom .my:hover {
     background: url('../../images/icon/header_icons/active_my.png') no-repeat center / contain;
     color: #8521FF;
 }
+
 /* ----------- footer ----------------- */
 footer {
     width: 100%;
@@ -238,9 +244,11 @@ footer .hour {
 footer .hour p:first-child {
     margin-bottom: 20px;
 }
+
 footer .inner {
     background: none;
 }
+
 footer .inner>p {
     color: #999;
     letter-spacing: -0.28px;
@@ -347,43 +355,51 @@ footer .icon-box img {
 }
 
 /* 메뉴 리스트 */
-.dropdown-menu > ul {
+.dropdown-menu>ul {
     margin: 40px 0 0 35px;
 }
-.dropdown-menu > ul > li {
+
+.dropdown-menu>ul>li {
     margin-bottom: 20px;
 }
-.dropdown-menu > ul > li > a {
+
+.dropdown-menu>ul>li>a {
     font-size: 18px;
     font-weight: bold;
     color: #2c2c2c;
     display: block;
     padding: 10px 0;
 }
-.dropdown-menu > ul > li > a.show {
+
+.dropdown-menu>ul>li>a.show {
     color: #8521FF;
 }
+
 /* 서브메뉴 리스트 */
-.dropdown-menu ul > li > ul.subMenuList {
+.dropdown-menu ul>li>ul.subMenuList {
     max-height: 0;
     opacity: 0;
     pointer-events: none;
     transition: max-height 0.5s ease;
 }
-.dropdown-menu ul > li > ul.subMenuList.show {
+
+.dropdown-menu ul>li>ul.subMenuList.show {
     max-height: 160px;
     opacity: 1;
     pointer-events: auto;
 }
-.dropdown-menu ul > li > ul.subMenuList li{
+
+.dropdown-menu ul>li>ul.subMenuList li {
     width: 0;
     height: 0px;
 }
-.dropdown-menu ul > li > ul.subMenuList.show li {
+
+.dropdown-menu ul>li>ul.subMenuList.show li {
     width: 100px;
     height: 30px;
 }
-.dropdown-menu ul > li > ul.subMenuList a {
+
+.dropdown-menu ul>li>ul.subMenuList a {
     display: block;
     width: 0;
     height: 0;
@@ -392,12 +408,14 @@ footer .icon-box img {
     color: #999;
     padding: 5px 0;
 }
-.dropdown-menu ul > li > ul.subMenuList.show a {
+
+.dropdown-menu ul>li>ul.subMenuList.show a {
     display: block;
     width: 100px;
     height: 30px;
 }
-.dropdown-menu ul > li > ul.subMenuList a:hover {
+
+.dropdown-menu ul>li>ul.subMenuList a:hover {
     color: #8521FF;
     font-weight: bold;
     text-decoration: underline;
@@ -427,6 +445,7 @@ footer .icon-box img {
     justify-content: space-between;
     align-items: center;
 }
+
 .hostheaderbottom .logo {
     width: 130px;
     height: 42px;
@@ -434,23 +453,27 @@ footer .icon-box img {
     text-indent: -9999px;
     background: url('../../images/icon/header_icons/host_logo.png') no-repeat center / contain;
 }
+
 .brandLogoBox {
     height: 89px;
     /* border: 1px solid #8521FF; */
     font-size: 14px;
 }
+
 .brandLogoBox a {
     height: 89px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .brandLogoBox img {
     width: 60px;
     height: 60px;
     display: block;
     margin-right: 10px;
 }
+
 .brandLogoBox a p {
     width: auto;
 }

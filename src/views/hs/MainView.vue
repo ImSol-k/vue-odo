@@ -73,8 +73,8 @@
 							<img :src="`${this.$store.state.apiBaseUrl}/upload/${fbList.classImg}`" alt="">
 							<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
 						</div>
-						<p class="location">{{fbList.classNameAdd}}</p>
-						<p class="classTitle">{{fbList.className}}</p>
+						<p class="location">{{ fbList.classNameAdd }}</p>
+						<p class="classTitle">{{ fbList.className }}</p>
 						<div v-if="fbList.reviewCount != 0" class="review-box">
 							<b v-if="fbList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
 							<b v-else-if="fbList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
@@ -89,7 +89,7 @@
 							<span class="reviewCount"></span>
 						</div>
 						<p class="class-price" v-if="fbList.classPrice == 0">무료</p>
-						<p class="class-price" v-else>{{fbList.classPrice.toLocaleString('ko-KR')}}</p>
+						<p class="class-price" v-else>{{ fbList.classPrice.toLocaleString('ko-KR') }}</p>
 					</router-link>
 				</li>
 			</ul>
@@ -190,6 +190,7 @@ import AppFooter from "@/components/AppFooter.vue"
 import AppHeader from "@/components/AppHeader.vue"
 
 import axios from 'axios';
+import Swal from "sweetalert2";
 
 export default defineComponent({
 	name: "MainView",
@@ -205,14 +206,36 @@ export default defineComponent({
 		return {
 			slides: [main_slide_1, main_slide_2, main_slide_3, main_slide_4, main_slide_5],
 
-			listOfLists:[],
+			listOfLists: [],
 		};
 	},
 	methods: {
 		plusWish() {
-			console.log("위시 추가")
-			if( this.$store.state.authUser == '' && this.$store.state.token == '' ) {
-				//userNo, classNo 넘기기
+			if (this.$store.state.authUser == '' && this.$store.state.token == '') {
+
+				Swal.fire({
+					title: "로그인 후 이용 가능합니다.",
+					text: "로그인 하시겠습니까?",
+					icon: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "예",
+					cancelButtonText: "아니오"
+				}).then(result => {
+					if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+						// ...실행
+						this.$router.push('/login/user');
+
+					} else if (result.isDismissed) { // 만약 모달창에서 cancel 버튼을 눌렀다면
+						// ...실행
+					}
+				});
+				// alert("로그인 후 결제해주세요");
+
+			} else {
+				//userNo, classNo 넘기기 axios
+				console.log("asdf");
 
 			}
 		},

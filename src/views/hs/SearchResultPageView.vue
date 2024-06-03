@@ -29,7 +29,7 @@
 				<router-link :to="`/classdetailpage/${cateClass.classNo}`">
 					<div class="img-box">
 						<img :src="`${this.$store.state.apiBaseUrl}/upload/${cateClass.classImg}`" alt="">
-						<img src="" alt="">
+						<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
 					</div>
 					<p class="location">{{ cateClass.classNameAdd }}</p>
 					<p class="classTitle">{{ cateClass.className }}</p>
