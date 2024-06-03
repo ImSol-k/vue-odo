@@ -33,7 +33,11 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button id="notice_btn" @click="goList">목록</button>
+                        <div class="table">
+                            <button id="notice_btn" @click="goModify">수정</button>
+                            <button id="notice_btn">삭제</button>
+                            <button id="notice_btn" @click="goList">목록</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,4 +104,7 @@ export default {
 </script>
 
 <style>
+.table{
+    margin-left: 50px;
+}
 </style>

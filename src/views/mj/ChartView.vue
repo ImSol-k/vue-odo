@@ -28,26 +28,6 @@
                 <img src="@/assets/images/icon/header_icons/like.png">
                 <span>인기가 많은 클래스</span>
             </div>
-            <div class="right">
-                <img src="@/assets/images/icon/header_icons/like.png">
-                <span>인기가 많은 클래스</span>
-            </div>
-            <div class="right">
-                <img src="@/assets/images/icon/header_icons/like.png">
-                <span>인기가 많은 클래스</span>
-            </div>
-            <div class="right">
-                <img src="@/assets/images/icon/header_icons/like.png">
-                <span>인기가 많은 클래스</span>
-            </div>
-            <div class="right">
-                <img src="@/assets/images/icon/header_icons/like.png">
-                <span>인기가 많은 클래스</span>
-            </div>
-            <div class="right">
-                <img src="@/assets/images/icon/header_icons/like.png">
-                <span>인기가 많은 클래스</span>
-            </div>
           </div>
 
           <div v-else-if="isClass == 2">
@@ -55,26 +35,7 @@
                 <img src="@/assets/images/icon/header_icons/like.png">
                 <span>정규 인기가 많은 클래스</span>
             </div>
-            <div class="right">
-                <img src="@/assets/images/icon/header_icons/like.png">
-                <span>정규 인기가 많은 클래스</span>
-            </div>
-            <div class="right">
-                <img src="@/assets/images/icon/header_icons/like.png">
-                <span>정규 인기가 많은 클래스</span>
-            </div>
-            <div class="right">
-                <img src="@/assets/images/icon/header_icons/like.png">
-                <span>정규 인기가 많은 클래스</span>
-            </div>
-            <div class="right">
-                <img src="@/assets/images/icon/header_icons/like.png">
-                <span>정규 인기가 많은 클래스</span>
-            </div>
-            <div class="right">
-                <img src="@/assets/images/icon/header_icons/like.png">
-                <span>정규 인기가 많은 클래스</span>
-            </div>
+            
         </div>
       </div>
     </div>
