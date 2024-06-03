@@ -1,6 +1,7 @@
 <template>
 <div class="mymy-header clearfix">
-	<img v-if="this.$store.state.authUser.userImage == null" src="@/assets/images/icon/ss/default-profile.png" alt="회원 프로필" @click="goModify">
+	<img v-if="(this.$store.state.authUser.userImage) == null && (this.$store.state.authUser.userKakao == false && this.$store.state.authUser.userNaver == false)" src="@/assets/images/icon/ss/default-profile.png" alt="회원 프로필" @click="goModify">
+	<img v-else-if="(this.$store.state.authUser.userKakao == true) || (this.$store.state.authUser.userNaver == true)" :src="`${this.$store.state.authUser.userImage}`" @click="goModify">
 	<img v-else :src="`${this.$store.state.apiBaseUrl}/upload/${this.$store.state.authUser.userImage}`" alt="회원 프로필" @click="goModify">
 	<ul class="clearfix">
 		<li v-if="this.$store.state.authUser.userNickname == null">{{ this.$store.state.authUser.userId }}<span class="mp-small">님</span></li>

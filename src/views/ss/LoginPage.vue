@@ -93,18 +93,15 @@ export default {
   },
   methods: {
 
-
-    // https://tyrannocoding.tistory.com/49 api로그인 여러개
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // https://blerang055.tistory.com/3
+    // 카카오 로그인 버튼 눌렀을 때
     kakaoLogin(){
       window.Kakao.Auth.authorize({
         redirectUri : 'http://localhost:8080/login/user',
       })
     },
 
+    // 수신동의하면 토큰 받아와서 유저정보가져오는 메소드 실행
     getToken(code){
       axios({
 				method: 'post',
@@ -119,26 +116,12 @@ export default {
         },
 				responseType: 'json'
 			}).then(response => {
-        console.log(response);
-        // console.log(response.data.scope.birthday);
-        // console.log(response.data.scope.account_email);
-        // console.log(response.data.scope.profile_image);
-        // console.log(response.data.scope.gender);
-        // console.log(response.data.scope.birthyear);
-        // console.log(response.data.scope.openid);
-        // console.log(response.data.scope.profile_nickname);
-        // console.log(response.data.scope.name);
-        // console.log(response.data.scope.phone_number);
-
         this.getUserInfo(response.data.access_token, response.data.scope);
-
-
       }).catch(error => {
 				console.log(error);
 			});
-
 		},
-      
+    // 토큰과 어떤정보가져올지 넣고 유저정보 받아오기 -> 받아온값을 서버로 넘겨서 데이터 확인
     getUserInfo(access_token,scope){
       axios({
 				method: 'get',
@@ -150,67 +133,53 @@ export default {
         data : scope,
 				responseType: 'json'
 			}).then(response => {
-        console.log('유저정보가져오기');
-        console.log(response.data);
-        let email = response.data.kakao_account.email;
-        let name = response.data.kakao_account.name;
-        let gender = response.data.kakao_account.gender;
-        let birthyear = response.data.kakao_account.birthyear;
-        let birthday = response.data.kakao_account.birthday;
-        let phone_number = response.data.kakao_account.phone_number;
-        let profile_image = response.data.properties.profile_image;
-        let nickname = response.data.properties.nickname;
-				console.log(email);
-        console.log(name);
-        console.log(gender);
-        console.log(birthyear);
-        console.log(birthday);
-        console.log(phone_number);
-        console.log(profile_image);
-        console.log(nickname);
-        this.kakaoLoignCheck(email);
-
+        let userVo = {
+          userId : response.data.kakao_account.email,
+          userName : response.data.kakao_account.name,
+          userNickname : response.data.properties.nickname,
+          userHp : response.data.kakao_account.phone_number,
+          userBirth : (response.data.kakao_account.birthyear)+(response.data.kakao_account.birthday),
+          userGender : response.data.kakao_account.gender,
+          userImage : response.data.properties.profile_image,
+          userKakao : true,
+        }
+        this.kakaoLoignCheck(userVo);
 			}).catch(error => {
 				console.log(error);
 			});
     },
 
-    kakaoLoignCheck(email){
+    // 유저정보를 서버로 보내서 회원가입이 안되어있으면 회원가입시키고 로그인, 회원가입이 되어있으면 그냥 로그인처리
+    kakaoLoignCheck(userVo){
       axios({
 				method: 'post',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/kakaocheck`,
 				headers: { 
           'Content-Type': 'application/json; charset=utf-8'
         },
-        data : email,
+        data : userVo,
 				responseType: 'json'
 			}).then(response => {
-        console.log(response);
-        
-
+        if(response.data.result === 'success'){
+          const token = response.headers.authorization.split(" ")[1];
+          let authUser = {
+            userNo: response.data.apiData.userNo,
+            userNickname: response.data.apiData.userNickname,
+            userId: response.data.apiData.userId,
+            userImage: response.data.apiData.userImage,
+            userKakao: response.data.apiData.userKakao,
+            userNaver: response.data.apiData.userNaver,
+          };
+          this.$store.commit('setAuthUser', authUser);
+          this.$store.commit('setToken', token);
+          this.$router.push('/');
+        } else {
+          Swal.fire({text: '통신오류'})
+        }
 			}).catch(error => {
 				console.log(error);
 			});
     },
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     // 로그인
     login() {
