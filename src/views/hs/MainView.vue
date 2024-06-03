@@ -211,6 +211,10 @@ export default defineComponent({
 	methods: {
 		plusWish() {
 			console.log("위시 추가")
+			if( this.$store.state.authUser == '' && this.$store.state.token == '' ) {
+				//userNo, classNo 넘기기
+
+			}
 		},
 		//메인 리스트 가져오기
 		getLists() {
