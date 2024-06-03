@@ -134,10 +134,10 @@ header .bottom .like {
     display: block;
     line-height: 100px;
     color: #888;
-    background: url('../../images/icon/header_icons/like.png') no-repeat center / 30px;
+    background: url('../../images/icon/header_icons/like.png') no-repeat center / 30px 30px;
 }
 header .bottom .like:hover {
-    background: url('../../images/icon/header_icons/active_like.png') no-repeat center / 30px;
+    background: url('../../images/icon/header_icons/active_like.png') no-repeat center / 30px 30px;
     color: #8521FF;
 }
 header .bottom .my {

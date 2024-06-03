@@ -45,7 +45,7 @@
 
 					<div class="companySection">
 						<router-link :to="`/companyinfo/${this.classDetailVo.companyNo}`" class="companyLogo">
-							<img :src="`${this.$store.state.apiBaseUrl}/upload/${this.classDetailVo.companyImg}`"
+							<img :src="`${this.$store.state.apiBaseUrl}/upload/${this.companyInfo.companyImg}`"
 								alt="">
 						</router-link>
 						<router-link :to="`/companyinfo/${this.classDetailVo.companyNo}`" class="nameBox">
