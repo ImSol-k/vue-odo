@@ -124,7 +124,7 @@ export default {
       classList: [],
       page: 0,
       // 카카오맵
-      positions: [], //지도 마커출력용
+      positions: [],
     };
   },
   mounted() {
@@ -192,7 +192,7 @@ export default {
             response.data.apiData != null
           ) {
             this.classList.push(...response.data.apiData);
-            /*
+/*
             console.log("==================================");
             console.log(response.data.apiData);
             console.log(this.positions);
@@ -210,23 +210,25 @@ export default {
               if (!this.isMap && list.className.length > 12) {
                 list.className = list.className.substr(0, 12) + "..";
               }
-              this.displayMap(
-                list.classLatitude,
-                list.classLongitutde,
-                list.className
-              );
+
               // {
               //   title: "현재위치",
               //   latlng: new kakao.maps.LatLng(latitude, longitude),
               // },
-              // this.positions.push({
-              //   title: list.className,
-              //   lating: new kakao.maps.LatLng(
-              //     list.classLatitude,
-              //     list.classLongitutde
-              //   ),
-              // });
+              this.positions.push({
+                title: list.className,
+                lating: new kakao.maps.LatLng(
+                  list.classLatitude,
+                  list.classLongitutde
+                ),
+              });
+
             });
+            if (this.isMap) {
+              this.$nextTick(() => {
+                this.initMap();
+              });
+            }
             // var imageSrc =
             //   "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
             // for (var i = 0; i < this.positions.length; i++) {
@@ -265,28 +267,28 @@ export default {
       }
     },
     initMap() {
-      var latitude;
-      var longitude;
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             console.log(position);
             // var latitude = 37.5151081873838;
             // var longitude = 127.107222748544;
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
-            // this.displayMap(latitude, longitude);
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            this.displayMap(latitude, longitude);
           },
           (error) => {
             console.error("Error occurred. Error code: " + error.code);
             // 기본 위치로 강남
-            // this.displayMap(37.498287, 127.027064);
+            this.displayMap(37.498287, 127.027064);
           }
         );
       } else {
         // Geolocation을 지원하지 않으면 기본 위치 강남
-        // this.displayMap(37.498287, 127.027064);
+        this.displayMap(37.498287, 127.027064);
       }
+    },
+    displayMap(latitude, longitude) {
       var mapContainer = document.getElementById("listMap"), // 지도를 표시할 div
         mapOption = {
           center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
@@ -294,10 +296,31 @@ export default {
         };
       //지도생성
       var map = new kakao.maps.Map(mapContainer, mapOption);
-      map.setCenter(mapOption.center);
-    },
+      //객체생성
+      var geocoder = new kakao.maps.services.Geocoder();
+      var coord = new kakao.maps.LatLng(latitude, longitude);
+      geocoder.coord2Address(coord.getLng(), coord.getLat(), this.callback);
 
-   
+      //핑찍기
+      this.positions = [
+        {
+          title: "현재위치",
+          latlng: new kakao.maps.LatLng(latitude, longitude),
+        },
+      ];
+     
+      this.positions.forEach(function (pos) {
+        var marker = new kakao.maps.Marker({
+          position: pos.latlng,
+        });
+      
+    marker.setMap(map);
+        
+      });
+        console.log("==================================");
+        console.log(this.positions);
+        console.log("==================================");
+    },
     callback(result, status) {
       //상태체크
       if (status === kakao.maps.services.Status.OK) {
