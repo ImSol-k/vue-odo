@@ -84,6 +84,8 @@ export default {
         companyId: "",
         companyPass: "",
       },
+      code: this.$route.query.code,
+
     };
   },
   mounted(){
@@ -102,12 +104,26 @@ export default {
       // window.open(url,'_blank','width=600, height=800, top=100, left=650');
 
       window.Kakao.Auth.authorize({
-        redirectUri : 'http://localhost:8080/kakaologin',
+        redirectUri : 'http://localhost:8080/login/user',
         // scope : 'account_email,profile_nickname',
-      })
-
-      
+      })      
     },
+
+    getToken(code){
+			axios({
+				method: 'post',
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/token`,
+				headers: { 'Content-Type': 'application/json; charset=utf-8' },
+				data : code,
+				responseType: 'json'
+			}).then(response => {
+				console.log(response);
+				// window.location.href = response.data;
+				
+			}).catch(error => {
+				console.log(error);
+			});
+		},
       
    
 
@@ -217,7 +233,11 @@ export default {
     }
   },
   created() {
-    
+    console.log(this.code)
+    if(this.code != undefined){
+      this.getToken(this.code);
+    }
+
   },
 };
 </script>
