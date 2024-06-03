@@ -168,7 +168,7 @@ export default {
 			if (this.selectedSchedule != null && (this.$store.state.authUser != '' && this.$store.state.token != '')) {
 				this.$router.push(`/payment/${this.selectedSchedule.scheduleNo}`);
 
-			} else if ((this.$store.state.authUser == '' && this.$store.state.token == '')) {
+			} else if ( this.$store.state.authUser == '' && this.$store.state.token == '' ) {
 				Swal.fire({
 					title: "로그인 후 이용 가능합니다.",
 					text: "로그인 하시겠습니까?",
