@@ -31,15 +31,15 @@
 					<p>음료</p>
 				</router-link></li>
 			<li><router-link to="/searchresultpage/4?crtPage=1">
-					<div><img src="@/assets/images/icon/hs/main_category_icon/beauty.png" alt=""></div>
+					<div><img src="@/assets/images/icon/hs/main_category_icon/makeup__icon.png" alt=""></div>
 					<p>뷰티</p>
 				</router-link></li>
 			<li><router-link to="/searchresultpage/5?crtPage=1">
-					<div><img src="@/assets/images/icon/hs/main_category_icon/craft.png" alt=""></div>
+					<div><img src="@/assets/images/icon/hs/main_category_icon/penguin_craft_icon.png" alt=""></div>
 					<p>공예</p>
 				</router-link></li>
 			<li><router-link to="/searchresultpage/6?crtPage=1">
-					<div><img src="@/assets/images/icon/hs/main_category_icon/sports.png" alt=""></div>
+					<div><img src="@/assets/images/icon/hs/main_category_icon/soccer_sports_icon.png" alt=""></div>
 					<p>스포츠</p>
 				</router-link></li>
 			<li><router-link to="/searchresultpage/7?crtPage=1">
