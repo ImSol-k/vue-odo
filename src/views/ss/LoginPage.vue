@@ -254,10 +254,14 @@ export default {
             if (response.data.result === "success") {
               const token = response.headers.authorization.split(" ")[1];
               let authCompany = {
+                companyNo: response.data.apiData.companyNo,
+                companyId: response.data.apiData.companyId,
+                companyName: response.data.apiData.companyName,
+                companyImage: response.data.apiData.companyImage,
               };
               this.$store.commit("setAuthCompany", authCompany);
-              this.$store.commit("setToken", token);
-              this.$router.push("/");
+              this.$store.commit("setCToken", token);
+              this.$router.push("/companypage");
             } else {
               Swal.fire({ text: "로그인 실패", icon: "error" });
             }
