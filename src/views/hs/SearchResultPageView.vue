@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	<button @click="toggleCateBox" class="upNDownBtn" :class="{ close: isCateOpen }"></button>
-	
+
 	<!-- <hr class="cateLine"> -->
 
 	<div class="inner">
@@ -89,6 +89,7 @@ import AppHeader from "@/components/AppHeader.vue"
 import "@/assets/css/hs/searchview.css"
 
 import axios from 'axios';
+import Swal from "sweetalert2";
 
 export default {
 	name: "SearchResultPageView",
@@ -126,6 +127,36 @@ export default {
 		}
 	},
 	methods: {
+		plusWish() {
+			if (this.$store.state.authUser == '' && this.$store.state.token == '') {
+
+				Swal.fire({
+					title: "로그인 후 이용 가능합니다.",
+					text: "로그인 하시겠습니까?",
+					icon: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "예",
+					cancelButtonText: "아니오"
+				}).then(result => {
+					if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+						// ...실행
+						this.$router.push('/login/user');
+
+					} else if (result.isDismissed) { // 만약 모달창에서 cancel 버튼을 눌렀다면
+						// ...실행
+					}
+				});
+				// alert("로그인 후 결제해주세요");
+
+			} else {
+				//userNo, classNo 넘기기 axios
+				console.log("asdf");
+
+			}
+
+		},
 		toggleCateBox() {
 			this.isCateOpen = !this.isCateOpen;
 		},
