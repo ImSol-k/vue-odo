@@ -3,7 +3,9 @@
   <div class="wrap">
     <div class="findClassBox">
       <div>
-        <p v-if="isFind == 1">"서울"검색결과</p>
+        <p v-if="isFind == 1 && classList.length > 0">
+          "{{ keyword }}"검색결과
+        </p>
         <p v-else>주변클래스</p>
         <button v-on:click="MapOnOff">
           <span v-if="!isMap">지도로보기</span>
@@ -22,7 +24,7 @@
       <!-- 리스트로보기 -->
       <div
         class="findClassListBox clearfix"
-        v-if="!isMap && classList.length > 0"
+        v-if="!isMap && classList.length != null"
       >
         <div class="classListOne" v-for="(c, i) in classList" :key="i">
           <router-link
@@ -53,13 +55,14 @@
           </router-link>
         </div>
       </div>
+      <div v-else-if="classList <= 0">
+        <p>{{ keyword }}에 대한 결과가 없습니다.</p>
+        <p>다시 검색해주세요</p>
+      </div>
 
       <!-- 지도로 보기 -->
-      <div
-        class="findClassListBox clearfix"
-        v-else-if="isMap && classList.length > 0"
-      >
-        <div class="findMapBox">
+      <div class="findClassListBox clearfix" v-else-if="isMap">
+        <div class="findMapBox" v-if="classList.length > 0">
           <div class="classMapListOne" v-for="(c, i) in classList" :key="i">
             <router-link
               :to="`/classdetailpage/${c.classNo}`"
@@ -91,16 +94,19 @@
             </router-link>
           </div>
         </div>
+        <div v-else-if="classList <= 0">
+          <p>{{ keyword }}에 대한 결과가 없습니다.</p>
+          <p>다시 검색해주세요</p>
+        </div>
+        <Observer @show="paging"></Observer>
         <div class="classMap">
           <!-- <p>강남/ㅓ초</p> -->
           <div id="listMap" style="width: 485px; height: 900px"></div>
         </div>
       </div>
-      <div v-else>항목없음</div>
     </div>
   </div>
 
-  <Observer @show="paging"></Observer>
   <AppFooter />
 </template>
 <script setup>
@@ -117,6 +123,7 @@ export default {
   components: { AppHeader, AppFooter },
   data() {
     return {
+      //1이면 키워드검색, 2면 주소검색
       isFind: this.$route.params.no,
       isMap: true,
       type: 4,
@@ -127,18 +134,7 @@ export default {
       positions: [],
     };
   },
-  mounted() {
-    if (window.kakao && window.kakao.maps) {
-      this.initMap();
-    } else {
-      const script = document.createElement("script");
-
-      script.onload = () => kakao.maps.load(this.initMap);
-      script.src =
-        "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=dcd5445d7a7dc0572e91ed1fd7ad2d2b";
-      document.head.appendChild(script);
-    }
-  },
+  mounted() {},
   methods: {
     whisPlus() {
       axios({
@@ -166,13 +162,15 @@ export default {
       this.classType();
     },
     headerKeyword(message) {
+      console.log("키워드로 검색");
       console.log(message);
+      this.classList = [];
       this.keyword = message;
-      this.isFind = 2;
+      this.isFind = 1;
       this.classType();
     },
     classType() {
-      // console.log(this.type);
+      console.log("키워드: " + this.keyword);
       axios({
         method: "get",
         url: `${this.$store.state.apiBaseUrl}/odo/company/classlist`, //SpringBoot주소
@@ -187,12 +185,14 @@ export default {
         responseType: "json",
       })
         .then((response) => {
+          console.log("======================================");
+          console.log(response.data.apiData);
           if (
             response.data.result == "success" &&
             response.data.apiData != null
           ) {
             this.classList.push(...response.data.apiData);
-/*
+            /*
             console.log("==================================");
             console.log(response.data.apiData);
             console.log(this.positions);
@@ -211,10 +211,7 @@ export default {
                 list.className = list.className.substr(0, 12) + "..";
               }
 
-              // {
-              //   title: "현재위치",
-              //   latlng: new kakao.maps.LatLng(latitude, longitude),
-              // },
+              //포지션 추가
               this.positions.push({
                 title: list.className,
                 lating: new kakao.maps.LatLng(
@@ -222,33 +219,16 @@ export default {
                   list.classLongitutde
                 ),
               });
-
+              // console.log(list.className);
             });
-            if (this.isMap) {
-              this.$nextTick(() => {
-                this.initMap();
-              });
-            }
+
+            // //마커 이미지 주소
             // var imageSrc =
             //   "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-            // for (var i = 0; i < this.positions.length; i++) {
-            //   // 마커 이미지의 이미지 크기 입니다
-            //   var imageSize = new kakao.maps.Size(24, 35);
-
-            //   // 마커 이미지를 생성합니다
-            //   var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-            //   // 마커를 생성합니다
-            //   var marker = new kakao.maps.Marker({
-            //     // map: this.displayMap().map, // 마커를 표시할 지도
-            //     position: this.positions[i].latlng, // 마커를 표시할 위치
-            //     title: this.positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-            //     image: markerImage, // 마커 이미지
-            //   });
-            //   marker.setMap(this.displayMap().map);
-            // }
-            // console.log("===========================");
-            // console.log(this.displayMap().map);
+            // // 마커 이미지의 이미지 크기 입니다
+            // var imageSize = new kakao.maps.Size(24, 35);
+            // // 마커 이미지를 생성합니다
+            // // var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
           } else {
             alert("검색정보 없음");
           }
@@ -260,6 +240,8 @@ export default {
     //지도
     MapOnOff() {
       this.isMap = !this.isMap;
+
+      //리스트->지도 변환시 맵 새로그려주기
       if (this.isMap) {
         this.$nextTick(() => {
           this.initMap();
@@ -267,10 +249,11 @@ export default {
       }
     },
     initMap() {
+      //현재위치 얻어오기
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            console.log(position);
+            console.log("현재위치");
             // var latitude = 37.5151081873838;
             // var longitude = 127.107222748544;
             var latitude = position.coords.latitude;
@@ -299,7 +282,29 @@ export default {
       //객체생성
       var geocoder = new kakao.maps.services.Geocoder();
       var coord = new kakao.maps.LatLng(latitude, longitude);
-      geocoder.coord2Address(coord.getLng(), coord.getLat(), this.callback);
+
+      if (this.isFind == 2) {
+        var callback = function (result, status) {
+          console.log(status); // 상태를 확인하는 로그
+          if (status === kakao.maps.services.Status.OK) {
+            if (result.length > 0) {
+              var pos = result[0].road_address
+                ? result[0].road_address.address_name
+                : result[0].address.address_name;
+              pos = pos.replace(/-|1|2|3|4|5|6|7|8|9|0/g, "");
+              pos = pos.split(" ");
+              this.keyword = pos[1];
+              console.log("Road Address: " + this.keyword);
+              // this.classType();
+              geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+            } else {
+              console.error("Geocoding result is empty");
+            }
+          } else {
+            console.error("Geocoding failed with status: " + status);
+          }
+        }.bind(this);
+      }
 
       //핑찍기
       this.positions = [
@@ -308,39 +313,50 @@ export default {
           latlng: new kakao.maps.LatLng(latitude, longitude),
         },
       ];
-     
+
       this.positions.forEach(function (pos) {
         var marker = new kakao.maps.Marker({
           position: pos.latlng,
         });
-      
-    marker.setMap(map);
-        
+
+        marker.setMap(map);
       });
-        console.log("==================================");
-        console.log(this.positions);
-        console.log("==================================");
+      // console.log("==================================");
+      // console.log(this.positions);
+      // console.log("==================================");
     },
-    callback(result, status) {
-      //상태체크
-      if (status === kakao.maps.services.Status.OK) {
-        if (result.length > 0) {
-          var pos = result[0].road_address
-            ? result[0].road_address.address_name
-            : result[0].address.address_name;
-          pos = pos.replace(/-|1|2|3|4|5|6|7|8|9|0/g, "");
-          pos = pos.split(" ");
-          this.keyword = pos[1];
-          // console.log("Road Address: " + this.keyword);
-        } else {
-          console.error("Geocoding result is empty");
-        }
-      } else {
-        console.error("Geocoding failed with status: " + status);
-      } //
-    },
+    // callback(result, status) {
+    //   //상태체크
+    //   console.log(status);
+    //   if (status === kakao.maps.services.Status.OK) {
+    //     if (result.length > 0) {
+    //       var pos = result[0].road_address
+    //         ? result[0].road_address.address_name
+    //         : result[0].address.address_name;
+    //       pos = pos.replace(/-|1|2|3|4|5|6|7|8|9|0/g, "");
+    //       pos = pos.split(" ");
+    //       this.keyword = pos[1];
+    //       console.log("Road Address: " + this.keyword);
+    //     } else {
+    //       console.error("Geocoding result is empty");
+    //     }
+    //   } else {
+    //     console.error("Geocoding failed with status: " + status);
+    //   } //
+    // },
   },
-  created() {},
+  created() {
+    if (window.kakao && window.kakao.maps) {
+      this.initMap();
+    } else {
+      const script = document.createElement("script");
+
+      script.onload = () => kakao.maps.load(this.initMap);
+      script.src =
+        "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=dcd5445d7a7dc0572e91ed1fd7ad2d2b";
+      document.head.appendChild(script);
+    }
+  },
 };
 </script>
 

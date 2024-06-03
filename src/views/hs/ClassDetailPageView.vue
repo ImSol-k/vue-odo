@@ -17,7 +17,7 @@
 					Number(this.classDetailVo.classPrice).toLocaleString('ko-KR') }}<span>원</span></p>
 							<p v-else>무료</p>
 							<router-link to="" class="class-like-btn">
-								<img src="../../assets/images/하트.png" alt="">
+								<img src="../../assets/images/black_heart_icon.svg" alt="">
 							</router-link>
 						</div>
 					</div>
@@ -57,7 +57,7 @@
 							</p>
 						</router-link>
 						<router-link to="" class="company-like-btn">
-							<img src="../../assets/images/하트.png" alt="">
+							<img src="../../assets/images/black_heart_icon.svg" alt="">
 						</router-link>
 					</div>
 				</div>

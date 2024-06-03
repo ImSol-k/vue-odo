@@ -140,6 +140,7 @@ export default {
     },
     methods: {
         find() {
+            this.$router.push("/classlist/1")
             console.log("검색")
             this.$emit('update',this.keyword);
         },
