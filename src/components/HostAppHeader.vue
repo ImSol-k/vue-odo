@@ -8,8 +8,8 @@
             <div class="hostheaderbottom">
                 <h1><router-link to="/" class="logo">logo</router-link></h1>
                 <ul>
-                    <li class="brandLogoBox"><router-link to="#">
-                        <img src="../assets/images/hs/rainbow_apple_icon.png" alt="">
+                    <li class="brandLogoBox"><router-link to="/companypage">
+                        <img :src="`${this.$store.state.apiBaseUrl}/upload/${this.$store.state.authCompany.companyImage}`" alt="">
                         <p>업체명업체명</p>
                     </router-link></li>
                 </ul>

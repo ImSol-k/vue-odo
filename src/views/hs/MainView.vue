@@ -50,7 +50,7 @@
 					<div><img src="@/assets/images/icon/hs/main_category_icon/it.png" alt=""></div>
 					<p>IT</p>
 				</router-link></li>
-			<li><router-link to="/classlist">
+			<li><router-link to="/classlist/1">
 					<div class="findAroundClass">
 						<img src="../../assets/images/icon/hs/location_icon.png" alt="">
 						<p><b>내 주변 클래스</b>

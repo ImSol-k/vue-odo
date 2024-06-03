@@ -7,19 +7,18 @@ export default createStore({
             apiBaseUrl: "http://localhost:9090",
             //apiBaseUrl: "http://54.180.79.237:9090",
             token: "",
-            authUser: {
-                userNo: 2
-            },
-            authCompany: {
-                companyNo: 1,
-                companyName: "(주)사업자",
-            },
+            authUser: {},
+            cToken: "",
+            authCompany: {},
             couponNo: "",
         };
     },
     mutations: {
         setToken(state, payload){
             state.token = payload;
+        },
+        setCToken(state, payload){
+            state.cToken = payload;
         },
         setAuthUser(state, payload){
             state.authUser = payload;
@@ -36,7 +35,7 @@ export default createStore({
     },
     plugins: [
         createPersistedState({
-            paths: ['token','authUser', 'authCompany', 'companyNo']
+            paths: ['cToken','token','authUser', 'authCompany', 'companyNo']
         })
     ]
 });

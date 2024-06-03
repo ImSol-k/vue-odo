@@ -40,7 +40,7 @@
                   <p>
                     <router-link
                       class="classRouterLink"
-                      to="/classdetailpage"
+                      :to="`/classdetailpage/${c.classNo}`"
                       >{{ c.className }}</router-link
                     >
                   </p>
