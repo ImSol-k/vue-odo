@@ -149,7 +149,7 @@ export default {
 			this.typeNo = index;
 			this.whatType = this.type[index];
 			this.classReivewList = [];
-			this.getClassReviewList(this.typeNo);
+			// this.getClassReviewList(this.typeNo);
 			this.isList = false;
 		},
 
