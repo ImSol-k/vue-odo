@@ -152,20 +152,48 @@ export default {
 			}).then(response => {
         console.log('유저정보가져오기');
         console.log(response.data);
-				console.log(response.data.kakao_account.email);
-        console.log(response.data.kakao_account.name);
-        console.log(response.data.kakao_account.gender);
-        console.log(response.data.kakao_account.birthyear);
-        console.log(response.data.kakao_account.birthday);
-        console.log(response.data.kakao_account.phone_number);
-        console.log(response.data.properties.profile_image);
-        console.log(response.data.properties.nickname);        
+        let email = response.data.kakao_account.email;
+        let name = response.data.kakao_account.name;
+        let gender = response.data.kakao_account.gender;
+        let birthyear = response.data.kakao_account.birthyear;
+        let birthday = response.data.kakao_account.birthday;
+        let phone_number = response.data.kakao_account.phone_number;
+        let profile_image = response.data.properties.profile_image;
+        let nickname = response.data.properties.nickname;
+				console.log(email);
+        console.log(name);
+        console.log(gender);
+        console.log(birthyear);
+        console.log(birthday);
+        console.log(phone_number);
+        console.log(profile_image);
+        console.log(nickname);
+        this.kakaoLoignCheck(email);
+
 			}).catch(error => {
 				console.log(error);
 			});
     },
 
+    kakaoLoignCheck(email){
+      axios({
+				method: 'post',
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/kakaocheck`,
+				headers: { 
+          'Content-Type': 'application/json; charset=utf-8'
+        },
+        data : email,
+				responseType: 'json'
+			}).then(response => {
+        console.log(response);
+        
+
+			}).catch(error => {
+				console.log(error);
+			});
+    },
     
+
 
 
 
