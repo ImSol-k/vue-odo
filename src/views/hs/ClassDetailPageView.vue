@@ -45,7 +45,7 @@
 
 					<div class="companySection">
 						<router-link :to="`/companyinfo/${this.classDetailVo.companyNo}`" class="companyLogo">
-							<img :src="`${this.$store.state.apiBaseUrl}/upload/${this.classDetailVo.companyImg}`"
+							<img :src="`${this.$store.state.apiBaseUrl}/upload/${this.companyInfo.companyImg}`"
 								alt="">
 						</router-link>
 						<router-link :to="`/companyinfo/${this.classDetailVo.companyNo}`" class="nameBox">
@@ -64,7 +64,7 @@
 			</div>
 			<!-- //headerSection-->
 
-			<div class="reviewSection">
+			<div v-if="this.classReviewList != null" class="reviewSection">
 				<ul>
 					<li v-for=" review in classReviewList " :key="review">
 						<router-link :to="`/reviewpage/${this.$route.params.classNo}`">

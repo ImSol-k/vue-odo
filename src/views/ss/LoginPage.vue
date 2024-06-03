@@ -74,6 +74,8 @@ export default {
         userId: "",
         userPw: "",
       },
+      // https://velog.io/@yeoonnii/Vue.js-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%ED%9B%84-%EC%9D%B4%EC%A0%84%ED%8E%98%EC%9D%B4%EC%A7%80%EB%A1%9C-%EB%90%98%EB%8F%8C%EC%95%84%EA%B0%80%EA%B8%B0
+      path : this.$route.fullPath,
       pass1: require("@/assets/images/icon/ss/pass1.png"),
       pass2: require("@/assets/images/icon/ss/pass2.png"),
       isPass: true,
@@ -88,14 +90,23 @@ export default {
     
   },
   methods: {
+
+
+    // https://tyrannocoding.tistory.com/49 api로그인 여러개
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // https://blerang055.tistory.com/3
     kakaoLogin(){
-      const url = 'http://kauth.kakao.com/oauth/authorize?client_id=4946b7c22ba5fb9b866b344e8f2f4224&redirect_uri=http://localhost:8080/kakaologin&response_type=code' 
-      window.location.href = url;
+      // const url = 'http://kauth.kakao.com/oauth/authorize?client_id=4946b7c22ba5fb9b866b344e8f2f4224&redirect_uri=http://localhost:8080/kakaologin&response_type=code' ;
+      // window.open(url,'_blank','width=600, height=800, top=100, left=650');
 
+      window.Kakao.Auth.authorize({
+        redirectUri : 'http://localhost:8080/kakaologin',
+        // scope : 'account_email,profile_nickname',
+      })
+
+      
     },
       
    
@@ -206,7 +217,7 @@ export default {
     }
   },
   created() {
-
+    
   },
 };
 </script>

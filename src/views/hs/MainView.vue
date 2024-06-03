@@ -31,15 +31,15 @@
 					<p>음료</p>
 				</router-link></li>
 			<li><router-link to="/searchresultpage/4?crtPage=1">
-					<div><img src="@/assets/images/icon/hs/main_category_icon/beauty.png" alt=""></div>
+					<div><img src="@/assets/images/icon/hs/main_category_icon/makeup__icon.png" alt=""></div>
 					<p>뷰티</p>
 				</router-link></li>
 			<li><router-link to="/searchresultpage/5?crtPage=1">
-					<div><img src="@/assets/images/icon/hs/main_category_icon/craft.png" alt=""></div>
+					<div><img src="@/assets/images/icon/hs/main_category_icon/penguin_craft_icon.png" alt=""></div>
 					<p>공예</p>
 				</router-link></li>
 			<li><router-link to="/searchresultpage/6?crtPage=1">
-					<div><img src="@/assets/images/icon/hs/main_category_icon/sports.png" alt=""></div>
+					<div><img src="@/assets/images/icon/hs/main_category_icon/soccer_sports_icon.png" alt=""></div>
 					<p>스포츠</p>
 				</router-link></li>
 			<li><router-link to="/searchresultpage/7?crtPage=1">
@@ -71,7 +71,7 @@
 					<router-link :to="`/classdetailpage/${fbList.classNo}`">
 						<div class="img-box">
 							<img :src="`${this.$store.state.apiBaseUrl}/upload/${fbList.classImg}`" alt="">
-							<img src="" alt="">
+							<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
 						</div>
 						<p class="location">{{fbList.classNameAdd}}</p>
 						<p class="classTitle">{{fbList.className}}</p>
@@ -107,7 +107,7 @@
 					<router-link :to="`/classdetailpage/${pbList.classNo}`">
 						<div class="img-box">
 							<img :src="`${this.$store.state.apiBaseUrl}/upload/${pbList.classImg}`" alt="">
-							<img src="" alt="">
+							<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
 						</div>
 						<p class="location">{{ pbList.classNameAdd }}</p>
 						<p class="classTitle">{{ pbList.className }}</p>
@@ -142,7 +142,7 @@
 					<router-link :to="`/classdetailpage/${nList.classNo}`">
 						<div class="img-box">
 							<img :src="`${this.$store.state.apiBaseUrl}/upload/${nList.classImg}`" alt="">
-							<img src="" alt="">
+							<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
 						</div>
 						<p class="location">{{ nList.classNameAdd }}</p>
 						<p class="classTitle">{{ nList.className }}</p>
@@ -209,7 +209,9 @@ export default defineComponent({
 		};
 	},
 	methods: {
-
+		plusWish() {
+			console.log("위시 추가")
+		},
 		//메인 리스트 가져오기
 		getLists() {
 
