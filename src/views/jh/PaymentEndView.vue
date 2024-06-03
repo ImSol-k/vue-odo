@@ -24,11 +24,12 @@
           </tr>
           <tr>
             <th>결제방법</th>
-            <td class="paymentP">{{pv.payType}}</td>
+            <td class="paymentP" v-if="pv.payType == 'naver'">Naver Pay</td>
+            <td class="paymentP" v-else>{{pv.payType}}</td>
           </tr>
           <tr>
             <th>할인금액</th>
-            <td class="paymentP">{{ Number(pv.couponPrice).toLocaleString("ko-KR") }} 원</td>
+            <td class="paymentP">{{ Number(pv.classPrice * pv.couponPrice / 100).toLocaleString("ko-KR") }} 원</td>
           </tr>
           <tr>
             <th>총결제금액</th>
@@ -91,7 +92,8 @@ export default {
         startDate: '',
         nickname: '',
         payPirce: 0,
-        payType: ''
+        payType: '',
+        classPrice: ''
       },
       rList: []
     };

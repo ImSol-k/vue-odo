@@ -66,6 +66,11 @@
                 <button v-on:click.prevent="listup">선택</button>
               </div>
               <p v-if="a == '사용안함'">{{ this.a }}</p>
+              <p v-else>{{ Number(this.pv.classPrice * this.a / 100).toLocaleString("ko-KR") }}원 할인</p>
+            </div>
+            <div>
+              <p class="couponText" v-if="this.couponList.length > 0 ">{{ this.couponList.length }}개의 사용 가능한 쿠폰이 있습니다</p>
+              <p class="couponText" v-else>사용가능한 쿠폰이 없습니다</p>
             </div>
           </div>
         </form>
@@ -98,16 +103,16 @@
 
   <!--모달창-->
   <div id="addModal">
-    <div class="modal-content">
+    <div class="modal-content2">
       <form action="">
         <p class="closeBtn" v-on:click="close">x</p>
         <label for="none">사용안함</label>
         <input id="none" type="radio" name="coupon" value="사용안함" v-model="a" checked="checked"
-          v-on:click="couponNo0" /><br>
+          v-on:click="couponNo0" /><br><br><br>
         <div v-for="(coupon, i) in couponList" v-bind:key="i">
           <label>{{ coupon.coupon_price }}% 할인</label>
           <input type="radio" name="coupon" :value="coupon.coupon_price" v-model="a"
-            v-on:click="couponNo(coupon.coupon_no)" /><br />
+            v-on:click="couponNo(coupon.coupon_no)" /><br /><br><br>
         </div>
         <button v-on:click.prevent="close2">적용하기</button>
       </form>
@@ -204,7 +209,7 @@ export default {
           this.$router.push('/');
           
         } else {
-          //console.log(response); //수신데이타
+          console.log(response); //수신데이타
           this.pv = response.data.apiData.pv;
           this.couponList = response.data.apiData.couponList;
           //console.log(this.pv);

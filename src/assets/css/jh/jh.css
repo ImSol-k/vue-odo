@@ -583,7 +583,7 @@
 }
 
 #addModal .modal-content {
-    width: 800px;
+    width: 300px;
     margin: 100px auto;
     padding: 0px 20px 20px 20px;
     border: 1px solid #000000;
@@ -592,7 +592,7 @@
 }
 
 #addModal .modal-content .closeBtn {
-    margin-left: 750px;
+    margin-left: 250px;
     text-align: right;
     width: 15px;
     color: #000000;
@@ -600,8 +600,25 @@
     font-weight: bold;
     cursor: pointer;
 }
+/*쿠폰모달*/
+#addModal .modal-content2 {
+    width: 300px;
+    margin: 100px auto;
+    padding: 0px 20px 20px 20px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    font-size: 24px;
+}
 
-
+#addModal .modal-content2 .closeBtn {
+    margin-left: 250px;
+    text-align: right;
+    width: 15px;
+    color: #000000;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 
 
@@ -661,6 +678,7 @@
     font-weight: bold;
     cursor: pointer;
 }
+
 
 .p53 {
     float: left;
@@ -829,6 +847,11 @@
 .img61 {
     width: 250px;
     height: 250px;
+}
+
+.couponText{
+    margin-top: 20px;
+    font-size: 15px;
 }
 
 /* 탭바 따온거 ㅋㅋ */
