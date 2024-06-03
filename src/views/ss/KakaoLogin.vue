@@ -1,6 +1,6 @@
 <template>
 <AppHeader/>
-aaaaaaaa
+로그인중입니다.
 <AppFooter/>
 </template>
 
