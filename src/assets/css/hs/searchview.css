@@ -6,16 +6,17 @@
     border-bottom: 1px solid #ddd;
     color: #333;
     opacity: 1;
-    visibility: visible;
+    /* visibility: visible; */
     pointer-events: auto;
 }
 
 .categorySelectBox.close {
     height: 0px;
     overflow: hidden;
-    visibility: hidden;
+    opacity: 0;
+    /* visibility: hidden; */
     pointer-events: none;
-    transition: height 0.5s ease;
+    transition: height 0.3s ease, opacity 0.3s ease;
 }
 
 .cateLine {
@@ -29,6 +30,8 @@
     height: 30px;
     position: absolute;
     right: 265px;
+    top: 580px;
+    transition: top 0.3s ease;
     border: none;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;

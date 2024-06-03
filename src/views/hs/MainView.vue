@@ -64,7 +64,7 @@
 				<h3>무료 베스트 클래스
 					<img src="../../assets/images/icon/hs/like_love_icon.png" alt="">
 				</h3>
-				<router-link to="/searchresultpage/1">전체보기</router-link>
+				<!-- <router-link to="/searchresultpage/1">전체보기</router-link> -->
 			</div>
 			<ul class="classList">
 				<li v-for=" fbList in listOfLists[0] " :key="fbList">
@@ -100,7 +100,7 @@
 				<h3>유료 베스트 클래스
 					<img src="../../assets/images/icon/hs/coin_icon.png" alt="">
 				</h3>
-				<router-link to="#">전체보기</router-link>
+				<!-- <router-link to="#">전체보기</router-link> -->
 			</div>
 			<ul class="classList">
 				<li v-for=" pbList in listOfLists[1] " :key="pbList">
@@ -135,7 +135,7 @@
 				<h3>신규 클래스
 					<img src="../../assets/images/icon/hs/new_badge_icon.png" alt="">
 				</h3>
-				<router-link to="#">전체보기</router-link>
+				<!-- <router-link to="#">전체보기</router-link> -->
 			</div>
 			<ul class="classList">
 				<li v-for=" nList in listOfLists[2] " :key="nList">
