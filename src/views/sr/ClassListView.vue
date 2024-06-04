@@ -32,14 +32,6 @@
                   :src="`${this.$store.state.apiBaseUrl}/upload/${c.classImage}`"
                   alt=""
                 />
-                <img
-                  src="../../assets/images/icon/header_icons/active_like.png"
-                  v-if="c.wish > 0"
-                />
-                <img
-                  src="../../assets/images/icon/header_icons/like.png"
-                  v-else
-                />
               </div>
               <p class="sollocation">{{ c.classNameAddress }}</p>
               <p class="classListTitle">{{ c.className }}</p>
@@ -49,6 +41,16 @@
                 <span class="classListPrice">{{ c.classPrice }}원</span>
               </div>
             </router-link>
+            <img
+              src="../../assets/images/icon/header_icons/active_like.png"
+              v-if="c.wish > 0"
+              v-on:click="whisPM(1, c.classNo, i)"
+            />
+            <img
+              src="../../assets/images/icon/header_icons/like.png"
+              v-else
+              v-on:click="whisPM(2, c.classNo, i)"
+            />
           </div>
         </div>
         <div v-else>
@@ -85,12 +87,12 @@
               <img
                 src="../../assets/images/icon/header_icons/active_like.png"
                 v-if="c.wish > 0"
-                v-on:click="whisPM(1, c.classNo)"
+                v-on:click="whisPM(1, c.classNo, i)"
               />
               <img
                 src="../../assets/images/icon/header_icons/like.png"
                 v-else
-                v-on:click="whisPM(2, c.classNo)"
+                v-on:click="whisPM(2, c.classNo, i)"
               />
             </div>
           </div>
@@ -139,10 +141,10 @@ export default {
   },
   mounted() {},
   methods: {
-    whisPM(num, classNo) {
+    whisPM(num, classNo, i) {
       //1이면 삭제 2면 추가
       if (num == 1) {
-        console.log("위시삭제: " + classNo);//위시삭제 ============================
+        console.log("위시삭제: " + classNo); //위시삭제 ============================
         axios({
           method: "delete",
           url: `${this.$store.state.apiBaseUrl}/odo/company/wish/${classNo}`,
@@ -154,8 +156,8 @@ export default {
         })
           .then((response) => {
             if (response.data.result === "success") {
+              this.classList[i].wish = 0;
               console.log("삭제되었습니다.");
-              this.classList[classNo].wish = 0;
             } else {
               alert("통신오류");
             }
@@ -164,7 +166,7 @@ export default {
             console.log(error);
           });
       } else {
-        console.log("위시추가: "+classNo);//위시추가 ============================
+        console.log("위시추가: " + classNo); //위시추가 ============================
         axios({
           method: "post",
           url: `${this.$store.state.apiBaseUrl}/odo/company/wish/${classNo}`,
@@ -176,8 +178,8 @@ export default {
         })
           .then((response) => {
             if (response.data.result === "success") {
+              this.classList[i].wish = 1;
               console.log("추가되었습니다.");
-              this.classList[classNo].wish = 1;
             } else {
               alert("통신오류");
             }
@@ -191,14 +193,13 @@ export default {
       this.page++;
       this.classType();
     },
-    headerKeyword(keyword) {
-      console.log("키워드로 검색");
-      console.log(keyword);
-      this.classList = [];
-      this.keyword = keyword;
-      this.isFind = 1;
-      this.classType();
-    },
+    // headerKeyword(keyword) {
+    //   console.log("키워드로 검색: " + keyword);
+    //   this.classList = [];
+    //   this.keyword = keyword;
+    //   this.isFind = 1;
+    //   this.classType();
+    // },
     classType() {
       if (this.page == 1) {
         this.classList = [];
@@ -324,7 +325,7 @@ export default {
               pos = pos.replace(/-|1|2|3|4|5|6|7|8|9|0/g, "");
               pos = pos.split(" ");
               this.keyword = pos[1];
-              console.log("Road Address: " + this.keyword);
+              // console.log("Road Address: " + this.keyword);
               // this.classType();
             } else {
               console.error("Geocoding result is empty");
@@ -354,8 +355,8 @@ export default {
     },
   },
   created() {
-    console.log("=============================");
-    console.log(this.$route.params.keyword);
+    // 쿼리 파라미터로부터 keyword 값을 받아서 this.keyword에 저장
+    this.keyword = this.$route.query.keyword || "";
 
     if (window.kakao && window.kakao.maps) {
       this.initMap();

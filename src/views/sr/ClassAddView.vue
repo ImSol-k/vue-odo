@@ -4,7 +4,9 @@
     <div class="clearfix">
       <AppMenu />
       <div class="companyInfoClassList">
-        <p>클래스 <span v-if="isAdd == 1">등록</span><span v-else>수정</span></p>
+        <p>
+          클래스 <span v-if="isAdd == 1">등록</span><span v-else>수정</span>
+        </p>
         <div class="whatClass" v-if="isAdd == 1">
           <span
             v-on:click.prevent="selectClass(1)"
@@ -296,7 +298,7 @@ import AppFooter from "@/components/AppFooter.vue";
 import AppMenu from "@/components/CompanyMenu.vue";
 import { QuillEditor } from "@vueup/vue-quill";
 import axios from "axios";
-import moment from 'moment';
+import moment from "moment";
 
 export default {
   name: "ClassAddView",
@@ -343,9 +345,9 @@ export default {
     };
   },
   methods: {
-    formatDate(date){
-			return moment(date).format(`YYYY-MM-DD HH:MM:SS`);
-		},
+    formatDate(date) {
+      return moment(date).format(`YYYY-MM-DD HH:MM:SS`);
+    },
     classUpdate() {
       axios({
         method: "post",
@@ -363,7 +365,7 @@ export default {
         });
     },
     classHandle() {
-      console.log("========================")
+      console.log("========================");
       console.log(this.formatDate(this.startDate));
       console.log(this.formatDate(this.onedayDate));
 
@@ -398,14 +400,13 @@ export default {
       //에디터 본문내용
       // 에디터 인스턴스 가져오기
       const editorInstance = this.$refs.quillEditor.getQuill();
-      
+
       // HTML 형식으로 에디터의 내용 추출
       const editorHtmlContent = editorInstance.root.innerHTML;
       console.log(editorHtmlContent);
 
       /* fomdata에 추가 */
       formData.append("classInfo", editorHtmlContent);
-
 
       if (this.classVo.className == "") {
         alert("클래스명을 작성해주세요.");
@@ -513,6 +514,7 @@ export default {
         .then((response) => {
           if (response.data.result == "success") {
             this.cList = response.data.apiData;
+
             // console.log("기존클래스 ====================");
             // console.log(this.cList);
           }
@@ -531,18 +533,25 @@ export default {
           //전송타입 + 토큰
           "Content-Type": "application/json; charset=utf-8",
         },
-        params: this.isAdd == 1
-          ? {
-              companyNo: this.companyNum,
-              classNo: this.selectClassNo,
-            }
-          : { companyNo: this.companyNum, classNo: this.classNo },
+        params:
+          this.isAdd == 1
+            ? {
+                companyNo: this.companyNum,
+                classNo: this.selectClassNo,
+              }
+            : { companyNo: this.companyNum, classNo: this.classNo },
         responseType: "json",
       })
         .then((response) => {
           console.log(response.data.apiData);
           if (response.data.result == "success") {
             this.classVo = response.data.apiData;
+            this.classVo.classImage = this.img;
+            // 에디터 인스턴스 가져오기
+            const editorInstance = this.$refs.quillEditor.getQuill();
+
+            //에디터에 내용 적용  //content는 서버에서 받은 내용
+            editorInstance.root.innerHTML = response.data.apiData.classInfo;
           }
         })
         .catch((error) => {
