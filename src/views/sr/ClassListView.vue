@@ -127,6 +127,7 @@ export default {
   components: { AppHeader, AppFooter },
   data() {
     return {
+      map: "",
       //1이면 키워드검색, 2면 주소검색
       isFind: this.$route.params.no,
       isMap: true, //지도로보기/리스트로보기
@@ -254,6 +255,14 @@ export default {
                     list.classLongitutde
                   ),
                 });
+                this.positions.forEach(function (pos) {
+                  var marker = new kakao.maps.Marker({
+                    title: pos.title,
+                    position: pos.latlng,
+                  });
+
+                  marker.setMap(this.map);
+                });
                 // console.log(list.className);
               });
             } else {
@@ -308,7 +317,7 @@ export default {
         };
       // console.log("map: " + mapContainer);
       //지도생성
-      var map = new kakao.maps.Map(mapContainer, mapOption);
+      this.map = new kakao.maps.Map(mapContainer, mapOption);
       //객체생성
       var geocoder = new kakao.maps.services.Geocoder();
       var coord = new kakao.maps.LatLng(latitude, longitude);
@@ -345,13 +354,14 @@ export default {
         },
       ];
 
-      this.positions.forEach(function (pos) {
-        var marker = new kakao.maps.Marker({
-          position: pos.latlng,
-        });
+      // this.positions.forEach(function (pos) {
+      //   var marker = new kakao.maps.Marker({
+      //     title: pos.title,
+      //     position: pos.latlng,
+      //   });
 
-        marker.setMap(map);
-      });
+      //   marker.setMap(map);
+      // });
     },
   },
   created() {
