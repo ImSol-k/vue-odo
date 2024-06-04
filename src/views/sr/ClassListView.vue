@@ -19,6 +19,7 @@
         </div>
       </div>
 
+
       <!-- 리스트로보기 -->
       <div class="findClassListBox clearfix" v-if="!isMap">
         <div v-if="classList.length > 0">
@@ -171,6 +172,10 @@ export default {
       this.classType();
     },
     classType() {
+      if (this.page == 1) {
+        this.classList = [];
+      }
+      
       if (this.keyword != '') {
         
         console.log("키워드: " + this.keyword);
