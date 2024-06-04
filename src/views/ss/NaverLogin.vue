@@ -1,6 +1,6 @@
 <template>
 <AppHeader/>
-로그인중입니다.
+로그인 처리 대기중입니다.
 <AppFooter/>
 </template>
 
@@ -10,7 +10,7 @@ import AppHeader from '@/components/AppHeader.vue';
 import axios from 'axios';
 
 export default {
-	name: "KakaoLogin",
+	name: "NaverLogin",
 	components: {
 		AppHeader,
 		AppFooter

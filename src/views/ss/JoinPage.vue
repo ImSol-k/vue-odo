@@ -15,8 +15,6 @@
 				</div>
 			</div>
 
-			<!-- https://sorto.me/docs/Web/HTML/Element/input/email#term-multiple -->
-
 			<div class="user-join">
 				<div class="join1">
 					<div class="join-box">
@@ -36,7 +34,7 @@
 						<div class="join2-1">
 							<input id="join-name" type="text" v-model="joinVo.userName" placeholder="이름">
 							<input id="join-nickname" type="text" v-model="joinVo.userNickname" placeholder="닉네임">
-							<input id="join-nickname" type="email" v-model="joinVo.userEmail" placeholder="이메일"><br>
+							<input id="join-email" type="email" v-model="joinVo.userEmail" placeholder="이메일"><br>
 							<span v-if="joinVo.userEmail !== null && joinVo.userEmail !== '' && !isJoinIdValid" class="join-id-msg">올바른 이메일 형식이 아닙니다</span>
 							<input id="join-hp" type="text" v-model="joinVo.userHp" :placeholder="`핸드폰 번호를 '-' 없이 입력하세요`">
 							<input id="join-birth" type="text" v-model="joinVo.userBirth" :placeholder="`생년월일을 '-' 없이 입력하세요 ex)19980303`">
@@ -105,8 +103,6 @@ export default {
 				userGender : ''
 			},
 			loginTitle : '반가워요!',
-
-
 		};
 	},
 	computed :{
@@ -114,11 +110,6 @@ export default {
 		isJoinIdValid(){
 			return this.validateEmail(this.joinVo.userEmail);
 		},
-		
-	},
-
-	mounted(){
-
 	},
 	methods: {
 
@@ -133,7 +124,10 @@ export default {
 
 		// 카카오로 회원가입
 		kakaoJoin(){
-			console.log('카카오회원가입');
+			window.Kakao.Auth.authorize({
+				redirectUri : 'http://localhost:8080/login/user',
+				prompt : 'login'
+			})
 		},
 		
 		// 네이버로 회원가입

@@ -22,6 +22,7 @@
 /* 로그인,회원가입 박스 */
 .lj-form {
     box-sizing: border-box;
+    /* border: 1px solid #000; */
     width: 500px;
     height: 500px;
     margin: 0 auto;
@@ -89,16 +90,23 @@
 }
 
 /* 카톡, 네이버 로그인 연동이미지 */
-/* .lj-form img {
-    width: 40px;
+.lj-form img {
+    /* margin: 0 20px; */
+    /* object-fit: contain; */
     cursor: pointer;
-    margin: 20px;
-    border-radius: 30%;
-} */
+    margin: 0 20px;
+}
 
 .lj-form .kakao-login {
-    /* width: 360px; */
-    cursor: pointer;
+    /* width: 150px; */
+    height: 45px;
+    /* border: 1px solid #000; */
+    /* float: left; */
+}
+.lj-form .naver-login{
+    width: 107px;
+    /* width: 80px; */
+    height: 44.5px;
 }
 
 

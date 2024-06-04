@@ -26,7 +26,7 @@ import MyPageCoupon from '../views/ss/MyPageCoupon.vue'
 import LoginPage from '@/views/ss/LoginPage.vue'
 import JoinPage from '@/views/ss/JoinPage.vue'
 import ReviewPage from '@/views/ss/ReviewPage.vue'
-import KakaoLogin from '@/views/ss/KakaoLogin.vue'
+import NaverLogin from '@/views/ss/NaverLogin.vue'
 //미지
 import ModifyView from '../views/mj/ModifyView.vue'
 import Condition from '../views/mj/Condition.vue'
@@ -157,9 +157,9 @@ const routes = [
     component : ReviewPage
   },
   {
-    path : '/kakaologin',
-    name : 'kakaologin',
-    component : KakaoLogin
+    path : '/naverlogin',
+    name : 'NaverLogin',
+    component : NaverLogin
   },
   //=== 미지 =================================
   {
