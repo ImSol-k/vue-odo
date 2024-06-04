@@ -1,6 +1,7 @@
 .ta3334{
     width: 1000px;
     margin-top: 30px;
+    text-align: left;
     /* margin-left: 15px; */
 }
 .ta3334 .button{
@@ -30,8 +31,14 @@
 }
 
 #notice_btn{
-    width:50px;
-    margin:0 auto;
+    font-weight: bold;
+    width: 80px;
+    height: 30px;
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+	transition: all 0.3s ease;
+	border: 1px solid #8521ff;
     
  
 }
@@ -40,6 +47,21 @@
     margin-top: 25px;
     margin-left: 10px;
     margin-bottom: 25px;
+    color: #8521ff;
+}
+
+#notice_btn button:visited {
+	
+}
+
+#notice_btn:hover{
+	background-color: #8521ff;
+	color: #fff;
+	border: 1px solid #999;
+}
+
+#notice_btn:hover a:visited {
+	color: #fff;
 }
 
 .ta3334{
@@ -48,6 +70,11 @@
 }
 
 .ta3334 td, .ta3334 th{
-    text-align: center;
+    text-align: left;
+    padding: 5px 0px 5px 10px;
     border: 1px solid #c7c7c7;
+}
+
+#delete{
+    
 }

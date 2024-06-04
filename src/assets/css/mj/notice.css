@@ -42,3 +42,28 @@ h2{
 .list-table:hover{
 	cursor : pointer;
 }
+
+.write{
+	font-weight: bold;
+    width: 80px;
+    height: 30px;
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+	transition: all 0.3s ease;
+	border: 1px solid #8521ff;
+}
+
+.write a:visited {
+	color: #8521ff;
+}
+
+.write:hover{
+	background-color: #8521ff;
+	color: #fff;
+	border: 1px solid #999;
+}
+
+.write:hover a:visited {
+	color: #fff;
+}

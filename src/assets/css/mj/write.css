@@ -53,3 +53,25 @@
 #in_file {
    margin-top:10px;
 }
+
+#sign{
+   font-weight: bold;
+    width: 70px;
+    height: 30px;
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #8521ff;
+	transition: all 0.3s ease;
+	border: 1px solid #8521ff;
+}
+
+#sign:hover{
+	background-color: #8521ff;
+	color: #fff;
+	border: 1px solid #999;
+}
+
+#sign:hover a:visited {
+	color: #fff;
+}
