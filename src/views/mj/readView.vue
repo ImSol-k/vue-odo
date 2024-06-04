@@ -27,15 +27,14 @@
                                     <td>{{ MjVo.notice_name }}</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="6">
-                                        {{ MjVo.content }}
+                                    <td colspan="6" v-html="subTitle">
+                                        
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class="table">
-                            <button id="notice_btn" @click="goModify">수정</button>
-                            <button id="notice_btn">삭제</button>
+                            <button v-if="this.no==3" id="notice_btn" @click="goDelete">삭제</button>
                             <button id="notice_btn" @click="goList">목록</button>
                         </div>
                     </div>
@@ -69,14 +68,39 @@ export default {
                 content:'',
                 regDate:'',
                 pagesNo:''
-            }
+            },
+            no:""
         };
     },
+    computed: {
+	subTitle() {return this.MjVo.content.replaceAll("\n", "<br />")}
+	},
     methods: {
         fetchNotice() {
             axios({
                 method: 'get', // put, post, delete                   
                 url: `${this.$store.state.apiBaseUrl}/odo/mypage/notice/${this.$route.params.no}`,
+                headers: { 'Content-Type': 'application/json; charset=utf-8',
+								'Authorization' : 'Bearer ' + this.$store.state.token}, //전송타입
+                //params: guestbookVo, //get방식 파라미터로 값이 전달
+                // data: guestbookVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+
+                responseType: 'json' //수신타입
+            }).then(response => {
+                console.log(response); //수신데이타
+
+               this.MjVo=response.data.MjVo;
+               this.no=response.data.num;
+
+            }).catch(error => {
+                console.log(error);
+                
+            });
+        },
+        goDelete() {
+            axios({
+                method: 'delete', // put, post, delete                   
+                url: `${this.$store.state.apiBaseUrl}/odo/mypage/notice/delete/${this.$route.params.no}`,
                 headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
                 //params: guestbookVo, //get방식 파라미터로 값이 전달
                 //data: guestbookVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
@@ -84,8 +108,7 @@ export default {
                 responseType: 'json' //수신타입
             }).then(response => {
                 console.log(response); //수신데이타
-
-               this.MjVo=response.data;
+                this.$router.push('/mypage/notice'); // 예시 라우팅, 필요에 따라 조정
 
             }).catch(error => {
                 console.log(error);

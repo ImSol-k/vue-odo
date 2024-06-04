@@ -11,7 +11,7 @@
         <h2>공지사항</h2>
 
         <div style="text-align:right;">
-          <button type="submit">글쓰기</button>
+          <button v-if="this.no==3" type="submit"><router-link to="/mypage/notice/write">글쓰기</router-link></button>
         </div>
         <div class="MpRight" style="overflow: hidden;">
           <table class="list-table">
@@ -70,6 +70,7 @@ export default {
   data() {
     return {
       MjList: [],
+      no:""
       };
   },
   methods: {
@@ -81,10 +82,13 @@ export default {
       axios({
         method: 'get', // put, post, delete
         url: `${this.$store.state.apiBaseUrl}/odo/mypage/notice`,
-        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        headers: { 'Content-Type': 'application/json; charset=utf-8',
+								'Authorization' : 'Bearer ' + this.$store.state.token},
         responseType:'json'
        }).then( response =>{
-        this.MjList = response.data;
+        console.log(response)
+        this.MjList=response.data.MjList
+        this.no=response.data.no
        }).catch( error =>{
         console.log(error);
       }); //전송타입

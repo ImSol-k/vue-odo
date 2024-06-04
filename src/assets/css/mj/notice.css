@@ -39,3 +39,6 @@ h2{
 
 }
 
+.list-table:hover{
+	cursor : pointer;
+}

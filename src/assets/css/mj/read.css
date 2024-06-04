@@ -25,7 +25,9 @@
     color:white;
     border:0;
 }
-
+.table{
+    text-align: right;
+}
 
 #notice_btn{
     width:50px;
@@ -36,7 +38,7 @@
 #notice_btn{
     text-align: center;
     margin-top: 25px;
-    margin-left: 455px;
+    margin-left: 10px;
     margin-bottom: 25px;
 }
 

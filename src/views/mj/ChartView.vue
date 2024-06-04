@@ -8,7 +8,7 @@
         <div class="chart">
           <h2>매출</h2>
           <div class="left">
-            <canvas id="LineChart" width="100" height="100"></canvas>
+            <canvas id="linechart" ref="MyChart" width="400px" height="500px"/>
           </div>
         </div>
         <div class="list clearfix">
@@ -18,16 +18,16 @@
           </div>
 
           <div v-if="isClass == 1">
-            <div class="right">
+            <div class="right"  v-for="(a,i) in this.list" v-bind:key="i">
               <img src="@/assets/images/icon/header_icons/like.png">
-              <span>인기가 많은 클래스</span>
+              <span  v-on:click="go(a.classNo)">{{ a.className }}</span>
             </div>
           </div>
 
           <div v-else-if="isClass == 2">
-            <div class="right">
+            <div class="right"  v-for="(a,i) in this.list1" v-bind:key="i">
               <img src="@/assets/images/icon/header_icons/like.png">
-              <span>정규 인기가 많은 클래스</span>
+              <span v-on:click="go(a.classNo)">{{ a.className }}</span>
             </div>
 
           </div>
@@ -68,6 +68,9 @@ export default {
     };
   },
   methods: {
+    go(no){
+      this.$router.push("/classdetailpage/" + no);
+    },
     selectClass(num) {
       if (num == 1) {
         this.isClass = 1;
@@ -79,7 +82,7 @@ export default {
       axios({
         method: 'get', // put, post, delete                   
         url: `${this.$store.state.apiBaseUrl}/odo/chart`,
-        headers: { "Content-Type": "application/json; charset=utf-8", "Authorization": "Bearer " + this.$store.state.token }, //전송타입
+        headers: { "Content-Type": "application/json; charset=utf-8", "Authorization": "Bearer " + this.$store.state.cToken }, //전송타입
         //params: guestbookVo, //get방식 파라미터로 값이 전달
         //data: guestbookVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 
@@ -97,47 +100,31 @@ export default {
 
         new Chart(this.$refs.MyChart, {
 
-          type: 'doughnut',
+          //type: 'bar',
           data: {
-            labels: ['지난달', '이번달', '총테이블', '총옷장'],
-            datasets: [{
-              dataIndex: true,
-              display: true,
-              data: [this.allbed, this.allshopa, this.alltable, this.allhanger],
-              datalabels: {
-                color: '#000000'
-              },
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-
-              ],
-              borderWidth: 1
-            }],
-
-          },
-
-          options: {
-            responsive: false,
-            plugins: {
-              datalabels: {
-                color: '#000000'
-              },
-              title: {
-                display: true,
-                text: '총 판매비율'
-              },
-            }
-          }
+        datasets: [{
+            type: 'line',
+            label: '원데이',
+            data: [this.chart.preonedayPrice, this.chart.onedayPrice]
+        }, {
+            type: 'bar',
+            label: '정규/상시',
+            data: [this.chart.preRePrice, this.chart.rePrice],
+        }],
+        labels: ['지난달', '이번달']
+    },
+    options: {
+                        responsive: false,
+                        plugins: {
+                            datalabels: {
+                                color: '#000000'
+                            },
+                            title: {
+                                display: true,
+                                text: '총 판매비율'
+                            },
+                        }
+                    }
         })
 
       }).catch(error => {

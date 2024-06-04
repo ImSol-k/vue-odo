@@ -36,7 +36,7 @@
 }
 .chartArea h2{
     padding-top: 40px;
-    padding-left: 50px;
+    /* padding-left: 50px; */
 }
 .LineChart{
      margin-left:40px;
@@ -44,4 +44,8 @@
 button{
     font-weight: bold;
     padding: 5px 5px 5px 5px;
+}
+
+.right:hover{
+    cursor : pointer;
 }
