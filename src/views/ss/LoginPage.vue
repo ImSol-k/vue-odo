@@ -117,7 +117,7 @@ export default {
         },
 				responseType: 'json'
 			}).then(response => {
-        console.log('인가코드받기'+response.data);
+        // console.log('인가코드받기'+response.data);
         this.getUserInfo(response.data.access_token, response.data.scope);
       }).catch(error => {
 				console.log(error);
@@ -137,8 +137,8 @@ export default {
 			}).then(response => {
         console.log('받아온 유저정보: '+response);
         if(response.status === 200){
-          console.log('토큰에서 아이디 출력 : '+response.data.id);
-          console.log('액세스토큰 : '+ access_token)
+          // console.log('토큰에서 아이디 출력 : '+response.data.id);
+          // console.log('액세스토큰 : '+ access_token);
           let userVo = {
             userId : 'kakao '+response.data.id,
             userEmail : response.data.kakao_account.email,
@@ -146,7 +146,9 @@ export default {
             userNickname : response.data.properties.nickname,
             userType : 1,
           }
-          console.log('userVo: '+userVo)
+          // console.log('userVo: '+userVo)
+          this.$store.commit('setKakaoToken',access_token);
+          // console.log(this.$store.state.kakao)
           this.kakaoLoignCheck(userVo);
         } else {
           Swal.fire({text: '인증실패'});
@@ -168,7 +170,7 @@ export default {
 				responseType: 'json'
 			}).then(response => {
         if(response.data.result === 'success'){
-          console.log(response.data.apiData);
+          // console.log(response.data.apiData);
           const token = response.headers.authorization.split(" ")[1];
           let authUser = {
             userNo: response.data.apiData.userNo,

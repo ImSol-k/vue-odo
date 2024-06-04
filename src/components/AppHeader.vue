@@ -118,6 +118,7 @@
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 export default {
@@ -150,14 +151,23 @@ export default {
         /////////////////////////////// ss /////////////////////////////////////
         // 로그아웃
         logout() {
+            let kakaoToken = this.$store.state.kakaoToken;
             if(this.$store.state.authUser.userType == 1){
                 axios({
                     method: 'get',
-                    url: `https://kauth.kakao.com/oauth/logout?client_id=f30d00965f7c79e1c4bd880684310a86&logout_redirect_uri=http://localhost:8080`,
-                    // headers: { "Content-Type": "application/json; charset=utf-8", },
+                    url: `https://kapi.kakao.com/v1/user/logout`,
+                    headers: { "Content-Type": "application/x-www-form-urlencoded",
+                        Authorization: `Bearer ` + kakaoToken
+                     },
                     responseType: "json",
                 }).then((response) => {
-                    console.log(response);
+                    if(response.status === 200){
+                        this.$store.commit('setAuthUser', '');
+                        this.$store.commit('setToken', '');
+                        this.$router.push('/');
+                    } else {
+                        Swal.fire({text: '통신오류'});
+                    }
                 }).catch((error) => {
                     console.log(error);
                 });

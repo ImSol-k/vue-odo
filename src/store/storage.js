@@ -11,6 +11,7 @@ export default createStore({
             cToken: "",
             authCompany: {},
             couponNo: "",
+            kakaoToken : '',
         };
     },
     mutations: {
@@ -31,6 +32,9 @@ export default createStore({
         },
         setCompanyNo(state, payload){
             state.companyNo = payload;
+        },
+        setKakaoToken(state,payload){
+            state.kakaoToken = payload;
         }
     },
     plugins: [
