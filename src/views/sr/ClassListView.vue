@@ -162,11 +162,11 @@ export default {
       this.page++;
       this.classType();
     },
-    headerKeyword(message) {
+    headerKeyword(keyword) {
       console.log("키워드로 검색");
-      console.log(message);
+      console.log(keyword);
       this.classList = [];
-      this.keyword = message;
+      this.keyword = keyword;
       this.isFind = 1;
       this.classType();
     },
