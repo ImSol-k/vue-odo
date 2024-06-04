@@ -39,7 +39,6 @@
 						<b v-else-if="cateClass.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
 						<b v-else-if="cateClass.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
 						<b v-else-if="cateClass.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
-						<b v-else-if="cateClass.reviewPointAvg == 0"><span class="starPoint">☆☆☆☆☆</span></b>
 						<span class="reviewCount">후기 {{ cateClass.reviewCount }}</span>
 					</div>
 					<div v-else class="review-box">

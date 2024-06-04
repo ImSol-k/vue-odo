@@ -50,7 +50,7 @@
 					<div><img src="@/assets/images/icon/hs/main_category_icon/it.png" alt=""></div>
 					<p>IT</p>
 				</router-link></li>
-			<li><router-link to="/classlist/1">
+			<li><router-link to="/classlist/2">
 					<div class="findAroundClass">
 						<img src="../../assets/images/icon/hs/location_icon.png" alt="">
 						<p><b>내 주변 클래스</b>
@@ -81,7 +81,6 @@
 							<b v-else-if="fbList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
 							<b v-else-if="fbList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
 							<b v-else-if="fbList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
-							<b v-else-if="fbList.reviewPointAvg == 0"><span class="starPoint">☆☆☆☆☆</span></b>
 							<span class="reviewCount">후기 {{ fbList.reviewCount }}</span>
 						</div>
 						<div v-else class="review-box">
@@ -117,7 +116,6 @@
 							<b v-else-if="pbList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
 							<b v-else-if="pbList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
 							<b v-else-if="pbList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
-							<b v-else-if="pbList.reviewPointAvg == 0"><span class="starPoint">☆☆☆☆☆</span></b>
 							<span class="reviewCount">후기 {{ pbList.reviewCount }}</span>
 						</div>
 						<div v-else class="review-box">
@@ -152,7 +150,6 @@
 							<b v-else-if="nList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
 							<b v-else-if="nList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
 							<b v-else-if="nList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
-							<b v-else-if="nList.reviewPointAvg == 0"><span class="starPoint">☆☆☆☆☆</span></b>
 							<span class="reviewCount">후기 {{ nList.reviewCount }}</span>
 						</div>
 						<div v-else class="review-box">
@@ -205,7 +202,6 @@ export default defineComponent({
 	data() {
 		return {
 			slides: [main_slide_1, main_slide_2, main_slide_3, main_slide_4, main_slide_5],
-
 			listOfLists: [],
 		};
 	},
@@ -242,18 +238,37 @@ export default defineComponent({
 		//메인 리스트 가져오기
 		getLists() {
 
-			axios({
-				method: 'get', // put, post, delete
-				url: 'http://localhost:9090/odo/mains',
-				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
-				//params: guestbookVo, //get방식 파라미터로 값이 전달
-				//data: this.listOfLists, //put, post, delete 방식 자동으로 JSON으로 변환 전달
-				responseType: 'json' //수신타입
-			}).then(response => {
-				this.listOfLists = response.data.apiData;
-			}).catch(error => {
-				console.log(error);
-			});
+			// 비로그인
+			if (this.$store.state.authUser == '' && this.$store.state.token == '') {
+				axios({
+					method: 'get', // put, post, delete
+					url: 'http://localhost:9090/odo/mains',
+					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+					//params: guestbookVo, //get방식 파라미터로 값이 전달
+					//data: this.listOfLists, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+					responseType: 'json' //수신타입
+				}).then(response => {
+					this.listOfLists = response.data.apiData;
+				}).catch(error => {
+					console.log(error);
+				});
+
+			} else { //로그인
+
+				axios({
+					method: 'get', // put, post, delete
+					url: 'http://localhost:9090/odo/mains/users',
+					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+					params: { userNo: this.$store.state.authUser.userNo }, //get방식 파라미터로 값이 전달
+					//data: this.listOfLists, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+					responseType: 'json' //수신타입
+				}).then(response => {
+					this.listOfLists = response.data.apiData;
+				}).catch(error => {
+					console.log(error);
+				});
+
+			}
 
 		},
 		//
