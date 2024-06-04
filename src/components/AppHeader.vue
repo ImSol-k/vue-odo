@@ -117,6 +117,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 
 export default {
     name: "AppHeader",
@@ -148,9 +150,24 @@ export default {
         /////////////////////////////// ss /////////////////////////////////////
         // 로그아웃
         logout() {
-            this.$store.commit('setAuthUser', '');
-            this.$store.commit('setToken', '');
-            this.$router.push('/');
+            if(this.$store.state.authUser.userType == 1){
+                axios({
+                    method: 'get',
+                    url: `https://kauth.kakao.com/oauth/logout`,
+                    headers: { "Content-Type": "application/json; charset=utf-8", },
+                    params : {client_id : 'f30d00965f7c79e1c4bd880684310a86', logout_redirect_uri : `http://localhost:8080`},
+                    responseType: "json",
+                }).then((response) => {
+                    console.log(response);
+                }).catch((error) => {
+                    console.log(error);
+                });
+            } else {
+                this.$store.commit('setAuthUser', '');
+                this.$store.commit('setToken', '');
+                this.$router.push('/');
+            }
+            
         },
         // 로그인 체크
         checkAuth() {
