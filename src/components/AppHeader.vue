@@ -144,9 +144,11 @@ export default {
     },
     methods: {
         find() {
-            this.$emit('update',this.keyword);
             console.log("검색: ", this.keyword);
-            this.$router.push("/classlist/1")
+            this.$router.push({ path:"/classlist/1", params: { keyword: 123 }})
+            //this.$emit('update',this.keyword);
+            
+            
         },
         /////////////////////////////// ss /////////////////////////////////////
         // 로그아웃

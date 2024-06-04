@@ -354,6 +354,9 @@ export default {
     },
   },
   created() {
+    console.log("=============================");
+    console.log(this.$route.params.keyword);
+
     if (window.kakao && window.kakao.maps) {
       this.initMap();
     } else {
