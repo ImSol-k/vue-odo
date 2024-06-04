@@ -153,9 +153,8 @@ export default {
             if(this.$store.state.authUser.userType == 1){
                 axios({
                     method: 'get',
-                    url: `https://kauth.kakao.com/oauth/logout`,
-                    headers: { "Content-Type": "application/json; charset=utf-8", },
-                    params : {client_id : 'f30d00965f7c79e1c4bd880684310a86', logout_redirect_uri : `http://localhost:8080`},
+                    url: `https://kauth.kakao.com/oauth/logout?client_id=f30d00965f7c79e1c4bd880684310a86&logout_redirect_uri=http://localhost:8080`,
+                    // headers: { "Content-Type": "application/json; charset=utf-8", },
                     responseType: "json",
                 }).then((response) => {
                     console.log(response);
