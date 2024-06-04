@@ -149,7 +149,7 @@ export default {
         logout() {
             this.$store.commit('setAuthUser', '');
             this.$store.commit('setToken', '');
-            this.$router.push('/login/user');
+            this.$router.push('/');
         },
         // 로그인 체크
         checkAuth() {
