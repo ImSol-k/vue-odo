@@ -3,14 +3,14 @@
     <header>
         <div class="top">
             <div class="inner">
-                <button class="companyLogout" v-on:click="logout">로그아웃</button>
+                <button class="companyLogout" v-if="this.$store.state.cToken != ''" v-on:click="logout">로그아웃</button>
             </div>
         </div>
         <div class="inner">
             <div class="hostheaderbottom">
                 <h1><router-link to="/" class="logo">logo</router-link></h1>
                 <ul>
-                    <li class="brandLogoBox" v-if="this.$store.state.cToken != null"><router-link to="/companypage">
+                    <li class="brandLogoBox" v-if="this.$store.state.cToken != ''"><router-link to="/companypage">
                         <img :src="`${this.$store.state.apiBaseUrl}/upload/${this.$store.state.authCompany.companyImage}`" alt="">
                         <p>{{ this.$store.state.authCompany.companyName }}</p>
                     </router-link></li>

@@ -80,7 +80,8 @@
     <header>
         <div class="top">
             <div class="inner">
-                <router-link to="/companyselect">호스트 지원</router-link>
+                <router-link v-if="this.$store.state.cToken == ''" to="/companyselect">호스트 지원</router-link>
+                <router-link v-else to="/companypage">호스트 지원</router-link>
                 <ul>
                     <li v-if="(this.$store.state.authUser == '' && this.$store.state.token == '')"><router-link
                             to="/join">회원가입</router-link></li>
