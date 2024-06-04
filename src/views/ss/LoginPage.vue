@@ -6,8 +6,8 @@
   <div class="login-join" v-if="isUser == 'user'">
     <span class="lj-txt">로그인</span>
     <div class="lj-form">
-      <form v-on:submit.prevent="login">
-        <input type="text" name="id" v-model="loginVo.userId" placeholder="아이디(이메일)" />
+      <form @submit.prevent="login">
+        <input type="text" name="id" v-model="loginVo.userId" placeholder="아이디" />
         <!-- <img v-if="isPass" class="lj-passImg" :src="pass1" v-on:click.prevent="changeInputImg">
 				<img v-else class="lj-passImg" :src="pass2" v-on:click.prevent="changeInputImg"> -->
         <input type="password" name="password" v-model="loginVo.userPw" placeholder="비밀번호" />
@@ -97,7 +97,7 @@ export default {
     // 카카오 로그인 버튼 눌렀을 때
     kakaoLogin(){
       window.Kakao.Auth.authorize({
-        redirectUri : 'http://localhost:8080/login/user',
+        redirectUri : 'http://localhost:8080/kakaologin',
         prompt : 'login'
       })
     },
@@ -175,18 +175,18 @@ export default {
 			}).then(response => {
         if(response.data.result === 'success'){
           console.log(response.data.apiData);
-          // const token = response.headers.authorization.split(" ")[1];
-          // let authUser = {
-          //   userNo: response.data.apiData.userNo,
-          //   userNickname: response.data.apiData.userNickname,
-          //   userId: response.data.apiData.userId,
-          //   userImage: response.data.apiData.userImage,
-          //   userKakao: response.data.apiData.userKakao,
-          //   userNaver: response.data.apiData.userNaver,
-          // };
-          // this.$store.commit('setAuthUser', authUser);
-          // this.$store.commit('setToken', token);
-          // this.$router.push('/');
+          const token = response.headers.authorization.split(" ")[1];
+          let authUser = {
+            userNo: response.data.apiData.userNo,
+            userNickname: response.data.apiData.userNickname,
+            userId: response.data.apiData.userId,
+            userImage: response.data.apiData.userImage,
+            userKakao: response.data.apiData.userKakao,
+            userNaver: response.data.apiData.userNaver,
+          };
+          this.$store.commit('setAuthUser', authUser);
+          this.$store.commit('setToken', token);
+          this.$router.push('/');
         } else {
           Swal.fire({text: '통신오류'})
         }
@@ -227,8 +227,7 @@ export default {
                 userNickname: response.data.apiData.userNickname,
                 userId: response.data.apiData.userId,
                 userImage: response.data.apiData.userImage,
-                userKakao: response.data.apiData.userKakao,
-                userNaver: response.data.apiData.userNaver,
+                userType : response.data.apiData.userType,
               };
               this.$store.commit("setAuthUser", authUser);
               this.$store.commit("setToken", token);
@@ -288,7 +287,6 @@ export default {
     if(this.code != undefined){
       this.getToken(this.code);
     }
-
   },
 };
 </script>

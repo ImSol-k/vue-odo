@@ -21,15 +21,14 @@
 				<div class="join1">
 					<div class="join-box">
 						<div class="join1-1">
-							<input id="join-id" type="email"  v-model="joinVo.userId" :placeholder="`아이디&nbsp;(이메일)`"><br>
-							<span v-if="joinVo.userId !== null && joinVo.userId !== '' && !isJoinIdValid" class="join-id-msg">올바른 이메일 형식이 아닙니다</span>
+							<input id="join-id" type="text"  v-model="joinVo.userId" placeholder="아이디"><br>
 							<input id="join-pw" type="password" v-model="joinVo.userPw" placeholder="비밀번호">
 							<!-- <span class="join1-txt">대/소문자, 숫자, 특수문자 중 2가지 이상의 조합으로 10자이상</span> -->
 							<input id="join-pw2" type="password" v-model="checkPw" placeholder="비밀번호 한 번 더"><br>
 						</div>
 					</div>
 					<button class="login-btn" type="button" @click="showSelectJoin">뒤로 가기</button>
-					<button class="login-btn" type="button" @click="showJoin2" :disabled="!isJoinIdValid">다음</button>
+					<button class="login-btn" type="button" @click="showJoin2">다음</button>
 				</div>
 				<!-- join1 -->
 				<div class="join2">
@@ -37,8 +36,10 @@
 						<div class="join2-1">
 							<input id="join-name" type="text" v-model="joinVo.userName" placeholder="이름">
 							<input id="join-nickname" type="text" v-model="joinVo.userNickname" placeholder="닉네임">
+							<input id="join-nickname" type="email" v-model="joinVo.userEmail" placeholder="이메일"><br>
+							<span v-if="joinVo.userEmail !== null && joinVo.userEmail !== '' && !isJoinIdValid" class="join-id-msg">올바른 이메일 형식이 아닙니다</span>
 							<input id="join-hp" type="text" v-model="joinVo.userHp" :placeholder="`핸드폰 번호를 '-' 없이 입력하세요`">
-							<input id="join-birth" type="text" v-model="joinVo.userBirth" :placeholder="`생년월일을 '-' 없이 입력하세요 ex)19980303`"><br>
+							<input id="join-birth" type="text" v-model="joinVo.userBirth" :placeholder="`생년월일을 '-' 없이 입력하세요 ex)19980303`">
 							<div class="join2-2">
 								<label for="joinVoMale">남자</label>
 								<input id="joinVoMale" type="radio" name="gender" v-model="joinVo.userGender" value="male">
@@ -95,6 +96,7 @@ export default {
 			checkPw : '',
 			joinVo : {
 				userId : '',
+				userEmail : '',
 				userPw : '',
 				userName : '',
 				userNickname : '',
@@ -110,7 +112,7 @@ export default {
 	computed :{
 		// 이메일 유효성 검증확인되면 다음버튼 활성화
 		isJoinIdValid(){
-			return this.validateEmail(this.joinVo.userId);
+			return this.validateEmail(this.joinVo.userEmail);
 		},
 		
 	},
@@ -187,7 +189,7 @@ export default {
 						join1.style.display = 'none';
 						join2.style.display = 'block';
 					} else if(response.data.apiData == -1) {
-						Swal.fire({text : '이미 등록된 이메일입니다', icon : 'error',});
+						Swal.fire({text : '이미 등록된 아이디입니다', icon : 'error',});
 					}
 				}).catch(error => {
 					console.log(error);
@@ -210,7 +212,7 @@ export default {
 			let hp = this.joinVo.userHp;
 			let birth = this.joinVo.userBirth;
 			let gender = this.joinVo.userGender;
-
+			let email = this.joinVo.userEmail;
 
 			if(userName === null || userName === ''){
 				Swal.fire({text : '이름을 확인하세요', icon : 'error',});
@@ -220,6 +222,8 @@ export default {
 				Swal.fire({text : '닉네임을 확인하세요', icon : 'error',});
 			} else if(nickname.search(/\s/) != -1){
 				Swal.fire({ text : '닉네임에 공백이 포함되어있습니다', icon : 'error', });
+			} else if(email === null || email === ''){
+				Swal.fire({text : '이메일을 확인하세요', icon : 'error',});
 			} else if(hp === null || hp === ''){
 				Swal.fire({text : '핸드폰번호를 확인하세요', icon : 'error',});
 			} else if(hp.search(/\s/) != -1){
