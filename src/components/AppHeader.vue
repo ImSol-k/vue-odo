@@ -105,7 +105,7 @@
                 <h1><router-link to="/" class="logo">logo</router-link></h1>
                 <div class="serch-box" @click="searchActive">
                     <img src="../assets/images/icon/header_icons/search.svg" alt="">
-                    <input type="search" placeholder="지금 생각나는 취미를 검색하세요." v-model="keyword" @keyup.enter="find">
+                    <input type="search" placeholder="지금 생각나는 취미를 검색하세요." v-model="keyword" @input="find" @keyup.enter="find">
                 </div>
                 <ul>
                     <li><router-link to="/wishlistclass" @click="checkAuth" class="like">위시리스트</router-link></li>
@@ -143,9 +143,9 @@ export default {
     },
     methods: {
         find() {
-            this.$router.push("/classlist/1")
-            console.log("검색: ", this.keyword);
             this.$emit('update',this.keyword);
+            console.log("검색: ", this.keyword);
+            this.$router.push("/classlist/1")
         },
         /////////////////////////////// ss /////////////////////////////////////
         // 로그아웃
