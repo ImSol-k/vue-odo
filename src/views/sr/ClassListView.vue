@@ -19,7 +19,6 @@
         </div>
       </div>
 
-
       <!-- 리스트로보기 -->
       <div class="findClassListBox clearfix" v-if="!isMap">
         <div v-if="classList.length > 0">
@@ -72,14 +71,6 @@
                     :src="`${this.$store.state.apiBaseUrl}/upload/${c.classImage}`"
                     alt=""
                   />
-                  <img
-                    src="../../assets/images/icon/header_icons/active_like.png"
-                    v-if="c.wish > 0"
-                  />
-                  <img
-                    src="../../assets/images/icon/header_icons/like.png"
-                    v-else
-                  />
                 </div>
                 <div class="MapListTite">
                   <p>{{ c.className }}</p>
@@ -91,6 +82,16 @@
                   <p>{{ c.classIntro }}</p>
                 </div>
               </router-link>
+              <img
+                src="../../assets/images/icon/header_icons/active_like.png"
+                v-if="c.wish > 0"
+                v-on:click="whisPM(1, c.classNo)"
+              />
+              <img
+                src="../../assets/images/icon/header_icons/like.png"
+                v-else
+                v-on:click="whisPM(2, c.classNo)"
+              />
             </div>
           </div>
           <div v-else>
@@ -126,11 +127,11 @@ export default {
     return {
       //1이면 키워드검색, 2면 주소검색
       isFind: this.$route.params.no,
-      isMap: true,//지도로보기/리스트로보기
-      type: 4,  //기본타입 전체불러오기
+      isMap: true, //지도로보기/리스트로보기
+      type: 4, //기본타입 전체불러오기
       keyword: "",
       classList: [],
-      page: 0,  //페이징용
+      page: 0, //페이징용
 
       // 카카오맵
       positions: [],
@@ -138,26 +139,53 @@ export default {
   },
   mounted() {},
   methods: {
-    whisPlus() {
-      axios({
-        method: "get",
-        url: `${this.$store.state.apiBaseUrl}/odo/company/wish`,
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Authorization: "Bearer " + this.$store.state.token,
-        },
-        responseType: "json",
-      })
-        .then((response) => {
-          if (response.data.result === "success") {
-            console.log();
-          } else {
-            alert("통신오류");
-          }
+    whisPM(num, classNo) {
+      //1이면 삭제 2면 추가
+      if (num == 1) {
+        console.log("위시삭제: " + classNo);//위시삭제 ============================
+        axios({
+          method: "delete",
+          url: `${this.$store.state.apiBaseUrl}/odo/company/wish/${classNo}`,
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            Authorization: "Bearer " + this.$store.state.token,
+          },
+          responseType: "json",
         })
-        .catch((error) => {
-          console.log(error);
-        });
+          .then((response) => {
+            if (response.data.result === "success") {
+              console.log("삭제되었습니다.");
+              this.classList[classNo].wish = 0;
+            } else {
+              alert("통신오류");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        console.log("위시추가: "+classNo);//위시추가 ============================
+        axios({
+          method: "post",
+          url: `${this.$store.state.apiBaseUrl}/odo/company/wish/${classNo}`,
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            Authorization: "Bearer " + this.$store.state.token,
+          },
+          responseType: "json",
+        })
+          .then((response) => {
+            if (response.data.result === "success") {
+              console.log("추가되었습니다.");
+              this.classList[classNo].wish = 1;
+            } else {
+              alert("통신오류");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
     paging() {
       this.page++;
@@ -175,9 +203,8 @@ export default {
       if (this.page == 1) {
         this.classList = [];
       }
-      
-      if (this.keyword != '') {
-        
+
+      if (this.keyword != "") {
         console.log("키워드: " + this.keyword);
         axios({
           method: "get",
@@ -217,7 +244,7 @@ export default {
                 if (!this.isMap && list.className.length > 12) {
                   list.className = list.className.substr(0, 12) + "..";
                 }
-  
+
                 //포지션 추가
                 this.positions.push({
                   title: list.className,
@@ -228,16 +255,8 @@ export default {
                 });
                 // console.log(list.className);
               });
-  
-              // //마커 이미지 주소
-              // var imageSrc =
-              //   "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-              // // 마커 이미지의 이미지 크기 입니다
-              // var imageSize = new kakao.maps.Size(24, 35);
-              // // 마커 이미지를 생성합니다
-              // // var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
             } else {
-              alert("검색정보 없음");
+              console.log("검색정보 없음");
             }
           })
           .catch((error) => {
@@ -293,7 +312,7 @@ export default {
       var geocoder = new kakao.maps.services.Geocoder();
       var coord = new kakao.maps.LatLng(latitude, longitude);
 
-      console.log("isFind: "+this.isFind);
+      console.log("isFind: " + this.isFind);
       if (this.isFind == "2") {
         var callback = function (result, status) {
           console.log(status); // 상태를 확인하는 로그
@@ -332,30 +351,7 @@ export default {
 
         marker.setMap(map);
       });
-      // console.log("==================================");
-      // console.log(this.positions);
-      // console.log("==================================");
-      
     },
-    // callback(result, status) {
-    //   //상태체크
-    //   console.log(status);
-    //   if (status === kakao.maps.services.Status.OK) {
-    //     if (result.length > 0) {
-    //       var pos = result[0].road_address
-    //         ? result[0].road_address.address_name
-    //         : result[0].address.address_name;
-    //       pos = pos.replace(/-|1|2|3|4|5|6|7|8|9|0/g, "");
-    //       pos = pos.split(" ");
-    //       this.keyword = pos[1];
-    //       console.log("Road Address: " + this.keyword);
-    //     } else {
-    //       console.error("Geocoding result is empty");
-    //     }
-    //   } else {
-    //     console.error("Geocoding failed with status: " + status);
-    //   } //
-    // },
   },
   created() {
     if (window.kakao && window.kakao.maps) {
