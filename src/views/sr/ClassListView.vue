@@ -3,7 +3,7 @@
   <div class="wrap">
     <div class="findClassBox">
       <div>
-        <p v-if="isFind == 1 && classList.length > 0">
+        <p v-if="isFind == 1">
           "{{ keyword }}"검색결과
         </p>
         <p v-else>주변클래스</p>
@@ -24,7 +24,7 @@
       <!-- 리스트로보기 -->
       <div
         class="findClassListBox clearfix"
-        v-if="!isMap && classList.length != null"
+        v-if="!isMap"
       >
         <div class="classListOne" v-for="(c, i) in classList" :key="i">
           <router-link
@@ -56,13 +56,13 @@
         </div>
       </div>
       <div v-else-if="classList <= 0">
-        <p>{{ keyword }}에 대한 결과가 없습니다.</p>
+        <p>"{{ keyword }}"에 대한 결과가 없습니다.</p>
         <p>다시 검색해주세요</p>
       </div>
 
       <!-- 지도로 보기 -->
       <div class="findClassListBox clearfix" v-else-if="isMap">
-        <div class="findMapBox" v-if="classList.length > 0">
+        <div class="findMapBox">
           <div class="classMapListOne" v-for="(c, i) in classList" :key="i">
             <router-link
               :to="`/classdetailpage/${c.classNo}`"
@@ -94,13 +94,14 @@
             </router-link>
           </div>
         </div>
-        <div v-else-if="classList <= 0">
+        <div>
           <p>{{ keyword }}에 대한 결과가 없습니다.</p>
           <p>다시 검색해주세요</p>
         </div>
         <Observer @show="paging"></Observer>
         <div class="classMap">
           <!-- <p>강남/ㅓ초</p> -->
+          <!-- 지도 -->
           <div id="listMap" style="width: 485px; height: 900px"></div>
         </div>
       </div>
@@ -253,7 +254,7 @@ export default {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            console.log("현재위치");
+            // console.log("현재위치");
             // var latitude = 37.5151081873838;
             // var longitude = 127.107222748544;
             var latitude = position.coords.latitude;
@@ -272,11 +273,13 @@ export default {
       }
     },
     displayMap(latitude, longitude) {
+      // console.log("displayMap")
       var mapContainer = document.getElementById("listMap"), // 지도를 표시할 div
         mapOption = {
           center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
           level: 3, // 지도의 확대 레벨
         };
+        console.log("map: "+mapContainer)
       //지도생성
       var map = new kakao.maps.Map(mapContainer, mapOption);
       //객체생성
@@ -346,16 +349,17 @@ export default {
     // },
   },
   created() {
+    // this.isFind = this.$route.params.no;
     if (window.kakao && window.kakao.maps) {
-      this.initMap();
-    } else {
-      const script = document.createElement("script");
+			this.initMap();
+		} else {
+			const script = document.createElement('script');
 
-      script.onload = () => kakao.maps.load(this.initMap);
-      script.src =
-        "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=dcd5445d7a7dc0572e91ed1fd7ad2d2b";
-      document.head.appendChild(script);
-    }
+			script.onload = () => kakao.maps.load(this.initMap);
+			script.src =
+				'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=b356b366e6bedbfd5618c9752b2dd60e';
+			document.head.appendChild(script);
+		}
   },
 };
 </script>

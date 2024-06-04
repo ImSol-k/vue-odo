@@ -296,6 +296,7 @@ import AppFooter from "@/components/AppFooter.vue";
 import AppMenu from "@/components/CompanyMenu.vue";
 import { QuillEditor } from "@vueup/vue-quill";
 import axios from "axios";
+import moment from 'moment';
 
 export default {
   name: "ClassAddView",
@@ -336,12 +337,15 @@ export default {
         classUrl: "",
         recClassNo: "",
       },
-      startDate: null,
-      endDate: null,
-      onedayDate: [null],
+      startDate: new Date(),
+      endDate: new Date(),
+      onedayDate: [new Date()],
     };
   },
   methods: {
+    formatDate(date){
+			return moment(date).format(`YYYY-MM-DD HH:MM:SS`);
+		},
     classUpdate() {
       axios({
         method: "post",
@@ -359,6 +363,10 @@ export default {
         });
     },
     classHandle() {
+      console.log("========================")
+      console.log(this.formatDate(this.startDate));
+      console.log(this.formatDate(this.onedayDate));
+
       const formData = new FormData();
       formData.append("classImageFile", this.classImage);
       formData.append("classType", this.classVo.classType);
@@ -377,13 +385,27 @@ export default {
       formData.append("classMin", this.classVo.classMin);
       formData.append("classMax", this.classVo.classMax);
       formData.append("classUrl", this.classVo.classUrl);
-      formData.append("startDate", this.startDate);
-      formData.append("endDate", this.endDate);
-      this.onedayDate.forEach((date, index) => {
-        formData.append(`startDateList[${index}]`, date);
-      });
+      if (this.classVo.classType == 1) {
+        this.onedayDate.forEach((date, index) => {
+          formData.append(`startDateList[${index}]`, this.formatDate(date));
+        });
+      } else {
+        formData.append("startDate", this.formatDate(this.startDate));
+        formData.append("endDate", this.formatDate(this.endDate));
+      }
       formData.append("classInfo", this.classVo.classInfo.content);
       formData.append("recClassNo", this.classVo.recClassNo);
+      //에디터 본문내용
+      // 에디터 인스턴스 가져오기
+      const editorInstance = this.$refs.quillEditor.getQuill();
+      
+      // HTML 형식으로 에디터의 내용 추출
+      const editorHtmlContent = editorInstance.root.innerHTML;
+      console.log(editorHtmlContent);
+
+      /* fomdata에 추가 */
+      formData.append("classInfo", editorHtmlContent);
+
 
       if (this.classVo.className == "") {
         alert("클래스명을 작성해주세요.");
@@ -435,7 +457,7 @@ export default {
           console.log("클래스 수정");
           formData.append("classNo", this.classNo);
           axios({
-            method: "post",
+            method: "put",
             url: `${this.$store.state.apiBaseUrl}/odo/company/update`,
             headers: {
               "Content-Type": "multipart/form-data",
