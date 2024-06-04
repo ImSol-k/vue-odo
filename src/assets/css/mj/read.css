@@ -50,10 +50,6 @@
     color: #8521ff;
 }
 
-#notice_btn button:visited {
-	
-}
-
 #notice_btn:hover{
 	background-color: #8521ff;
 	color: #fff;
@@ -73,8 +69,4 @@
     text-align: left;
     padding: 5px 0px 5px 10px;
     border: 1px solid #c7c7c7;
-}
-
-#delete{
-    
 }
