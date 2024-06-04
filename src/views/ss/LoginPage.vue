@@ -1,29 +1,10 @@
 <template>
-  <AppHeader v-if="isUser == 'user'" />
-  <HostAppHeader v-else />
+  
+  <HostAppHeader v-if="isUser === 'company'" />
+  <AppHeader v-else />
   <!-- header -->
 
-  <div class="login-join" v-if="isUser == 'user'">
-    <span class="lj-txt">로그인</span>
-    <div class="lj-form">
-      <form @submit.prevent="login">
-        <input type="text" name="id" v-model="loginVo.userId" placeholder="아이디" />
-        <!-- <img v-if="isPass" class="lj-passImg" :src="pass1" v-on:click.prevent="changeInputImg">
-				<img v-else class="lj-passImg" :src="pass2" v-on:click.prevent="changeInputImg"> -->
-        <input type="password" name="password" v-model="loginVo.userPw" placeholder="비밀번호" />
-        <button class="login-btn" type="submit">로그인</button>
-      </form>
-      <!-- form -->
-      <span class="other-login">다른 방식으로 로그인</span>
-      <!-- https://henniee.tistory.com/219 -->
-      <img @click="kakaoLogin" class="kakao-login" src="@/assets/images/icon/ss/kakao_login_medium.png" />
-      <img @click="naverLogin" class="naver-login" src="@/assets/images/icon/ss/naver_login2.png" />
-    </div>
-    <!-- lj-form -->
-  </div>
-  <!-- login-join -->
-
-  <div class="login-join" v-else>
+  <div class="login-join" v-if="isUser === 'company'">
     <span class="lj-txt">사업자 로그인</span>
     <div class="lj-form">
       <form v-on:submit.prevent="cLogin">
@@ -46,6 +27,26 @@
     </div>
     <!-- lj-form -->
   </div>
+
+  <div class="login-join" v-else>
+    <span class="lj-txt">로그인</span>
+    <div class="lj-form">
+      <form @submit.prevent="login">
+        <input type="text" name="id" v-model="loginVo.userId" placeholder="아이디" />
+        <!-- <img v-if="isPass" class="lj-passImg" :src="pass1" v-on:click.prevent="changeInputImg">
+				<img v-else class="lj-passImg" :src="pass2" v-on:click.prevent="changeInputImg"> -->
+        <input type="password" name="password" v-model="loginVo.userPw" placeholder="비밀번호" />
+        <button class="login-btn" type="submit">로그인</button>
+      </form>
+      <!-- form -->
+      <span class="other-login">다른 방식으로 로그인</span>
+      <!-- https://henniee.tistory.com/219 -->
+      <img @click="kakaoLogin" class="kakao-login" src="@/assets/images/icon/ss/kakao_login_medium.png" />
+      <img @click="naverLogin" class="naver-login" src="@/assets/images/icon/ss/naver_login2.png" />
+    </div>
+    <!-- lj-form -->
+  </div>
+  <!-- login-join -->
 
   <AppFooter />
   <!-- footer -->
@@ -89,7 +90,7 @@ export default {
     };
   },
   mounted(){
-    
+
   },
   methods: {
 
@@ -97,16 +98,8 @@ export default {
 
     // 네이버 로그인 버튼 눌렀을때
     naverLogin(){
-      console.log('네이버로그인')
+      window.location.replace('https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=G0qt69ejziDW7itLBej_&redirect_uri=http://localhost:8080/naverlogin&state=odo_login');
     },
-
-
-
-
-
-
-
-
 
     // 카카오 로그인 버튼 눌렀을 때
     kakaoLogin(){
@@ -293,9 +286,9 @@ export default {
     }
   },
   created() {
-    if(this.code != undefined){
+    if(this.code != undefined && this.state == undefined){
       this.getToken(this.code);
-    }
+    } 
   },
 };
 </script>

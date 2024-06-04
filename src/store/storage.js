@@ -12,6 +12,7 @@ export default createStore({
             authCompany: {},
             couponNo: "",
             kakaoToken : '',
+            naverToken : '',
         };
     },
     mutations: {
@@ -35,6 +36,9 @@ export default createStore({
         },
         setKakaoToken(state,payload){
             state.kakaoToken = payload;
+        },
+        setNaverToken(state,payload){
+            state.naverToken = payload;
         }
     },
     plugins: [
