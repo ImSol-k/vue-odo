@@ -138,9 +138,22 @@ export default {
 
       // 카카오맵
       positions: [],
+      latitude: "",
+      longitude: "",
     };
   },
-  mounted() {},
+  mounted() {
+    if (window.kakao && window.kakao.maps) {
+      this.initMap();
+    } else {
+      const script = document.createElement("script");
+
+      script.onload = () => kakao.maps.load(this.initMap);
+      script.src =
+        "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=b356b366e6bedbfd5618c9752b2dd60e";
+      document.head.appendChild(script);
+    }
+  },
   methods: {
     whisPM(num, classNo, i) {
       //1이면 삭제 2면 추가
@@ -218,6 +231,8 @@ export default {
             keyword: this.keyword,
             classType: this.type,
             page: this.page,
+            classLatitude: this.latitude,
+            classLongitutde: this.longitude,
           },
           responseType: "json",
         })
@@ -255,16 +270,18 @@ export default {
                     list.classLongitutde
                   ),
                 });
-                this.positions.forEach(function (pos) {
-                  var marker = new kakao.maps.Marker({
-                    title: pos.title,
-                    position: pos.latlng,
-                  });
 
-                  marker.setMap(this.map);
-                });
                 // console.log(list.className);
               });
+              this.displayMap(
+                this.classList[0].classLatitude,
+                this.classList[0].classLongitutde
+              );
+              // if (this.isMap) {
+              //   this.$nextTick(() => {
+              //     this.initMap();
+              //   })
+              // }
             } else {
               console.log("검색정보 없음");
             }
@@ -290,12 +307,9 @@ export default {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            // console.log("현재위치");
-            // var latitude = 37.5151081873838;
-            // var longitude = 127.107222748544;
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            this.displayMap(latitude, longitude);
+            this.latitude = position.coords.latitude;
+            this.longitude = position.coords.longitude;
+            this.displayMap(this.latitude, this.longitude);
           },
           (error) => {
             console.error("Error occurred. Error code: " + error.code);
@@ -347,12 +361,12 @@ export default {
       }
 
       //핑찍기
-      this.positions = [
-        {
-          title: "현재위치",
-          latlng: new kakao.maps.LatLng(latitude, longitude),
-        },
-      ];
+      // this.positions = [
+      //   {
+      //     title: "현재위치",
+      //     latlng: new kakao.maps.LatLng(latitude, longitude),
+      //   },
+      // ];
 
       // this.positions.forEach(function (pos) {
       //   var marker = new kakao.maps.Marker({
@@ -360,24 +374,23 @@ export default {
       //     position: pos.latlng,
       //   });
 
-      //   marker.setMap(map);
+      //   marker.setMap(this.map);
       // });
+      for (var i = 0; i < this.positions.length; i++) {
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+          // map: this.displayMap().map, // 마커를 표시할 지도
+          position: this.positions[i].latlng, // 마커를 표시할 위치
+          title: this.positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+          // image: markerImage, // 마커 이미지
+        });
+        marker.setMap(this.map);
+      }
     },
   },
   created() {
     // 쿼리 파라미터로부터 keyword 값을 받아서 this.keyword에 저장
     this.keyword = this.$route.query.keyword || "";
-
-    if (window.kakao && window.kakao.maps) {
-      this.initMap();
-    } else {
-      const script = document.createElement("script");
-
-      script.onload = () => kakao.maps.load(this.initMap);
-      script.src =
-        "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=b356b366e6bedbfd5618c9752b2dd60e";
-      document.head.appendChild(script);
-    }
   },
 };
 </script>
