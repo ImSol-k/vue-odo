@@ -86,11 +86,9 @@
 </div>
 <!-- wrap -->
 
-
+<Observer @show="loadItem"></Observer>
 <!-- 옵저버 -->
-<!-- <div class="div-300"> -->
-	<Observer @show="loadItem"></Observer>
-<!-- </div> -->
+
 <AppFooter/>
 <!-- footer -->
 	
@@ -149,7 +147,6 @@ export default {
 			this.typeNo = index;
 			this.whatType = this.type[index];
 			this.classReivewList = [];
-			// this.getClassReviewList(this.typeNo);
 			this.isList = false;
 		},
 
