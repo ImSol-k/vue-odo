@@ -2,15 +2,17 @@
 
     <header>
         <div class="top">
-            <div class="inner"></div>
+            <div class="inner">
+                <button class="companyLogout" v-on:click="logout">로그아웃</button>
+            </div>
         </div>
         <div class="inner">
             <div class="hostheaderbottom">
                 <h1><router-link to="/" class="logo">logo</router-link></h1>
                 <ul>
-                    <li class="brandLogoBox"><router-link to="/companypage">
+                    <li class="brandLogoBox" v-if="this.$store.state.cToken != null"><router-link to="/companypage">
                         <img :src="`${this.$store.state.apiBaseUrl}/upload/${this.$store.state.authCompany.companyImage}`" alt="">
-                        <p>업체명업체명</p>
+                        <p>{{ this.$store.state.authCompany.companyName }}</p>
                     </router-link></li>
                 </ul>
             </div>
@@ -30,6 +32,12 @@ export default {
         };
     },
     methods: {
+        logout() {
+            this.$store.commit('setAuthCompany', '');
+            this.$store.commit('setCToken', '');
+            this.$store.commit('setToken', '');
+            this.$router.push('/');
+        },
     },
     created() {
     }

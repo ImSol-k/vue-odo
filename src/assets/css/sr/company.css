@@ -621,3 +621,8 @@ align-items: center; 세로가운데정렬
   background-color: #8521ff;
   color: #fff;
 }
+.inner>.companyLogout{
+  border: none;
+  background-color: transparent;
+  margin-left: auto;
+}
