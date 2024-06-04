@@ -14,10 +14,12 @@
 		<!-- mypage-side -->
 
 		<div class="mymy-content clearfix">
+
 			<div class="mymy-head">
 				<span>결제내역</span>
 			</div>
 			<!-- mymy-head -->
+
 			<div class="mymy-main clearfix">
 				<div class="mymy-nav">
 					<span type="button" @click="selectClass(1)" :class="{ pickClass : isClass}">원데이</span>
@@ -27,6 +29,7 @@
 				<!-- mymy-nav -->
 				
 				<div class="mymy-paybox">
+
 					<!-- 결제내역이 없으면 -->
 					<div v-if="!isPay" class="mymy-nopay">
 						<img id="nopayImg" src="@/assets/images/icon/ss/nopay.png">
@@ -55,7 +58,7 @@
 											<span class="end-msg" :class="{ endClass : checkDate(list.endDate) }">종료</span>
 											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
 											<img v-if="list.wishClassNo !== 0" @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/redheart.svg">
-											<img v-if="list.wishClassNo === 0" @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/whiteheart.svg">
+											<img v-else @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/whiteheart.svg">
 										</li>
 										<li>
 											<div class="star-ratings">
@@ -76,7 +79,6 @@
 										<span class="paycon1-txt1">결제일 : {{ list.payDate}}</span>
 										<span class="paycon1-txt2">
 											<span v-if="list.classType == 1">[원데이]</span>
-											<!-- <span v-else-if="list.classType == 2">[정규]</span>  -->
 											<span v-else>[정규]</span>
 											{{ list.className }}
 										</span>
@@ -106,7 +108,6 @@
 								<!-- mymy-payCon -->
 							</div>
 							<!-- pay -->
-							<!-- <Observer @show="loadItem"></Observer> -->
 						</div>
 						<!-- 원데이클래스 -->
 						
@@ -128,7 +129,7 @@
 											<span class="end-msg" :class="{ endClass : checkDate(list.endDate) }">종료</span>
 											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
 											<img v-if="list.wishClassNo !== 0" @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/redheart.svg">
-											<img v-if="list.wishClassNo === 0" @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/whiteheart.svg">
+											<img v-else @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/whiteheart.svg">
 										</li>
 										<li>
 											<div class="star-ratings">
@@ -149,7 +150,6 @@
 										<span class="paycon1-txt1">결제일 : {{ list.payDate}}</span>
 										<span class="paycon1-txt2">
 											<span v-if="list.classType == 1">[원데이]</span>
-											<!-- <span v-else-if="list.classType == 2">[정규]</span>  -->
 											<span v-else>[정규]</span>
 											{{ list.className }}
 										</span>
@@ -199,12 +199,12 @@
 					</div>
 					<!-- revform1-header -->
 
-					<form @submit="insertReview" enctype="multipart/form-data">
+					<form @submit.prevent="insertReview" enctype="multipart/form-data">
 						<div class="review-form">
 							<div class="rf-1 clearfix">
 								<div class="rf-1-1">
 									<img v-if="oneClassVo.classImage !== ''" :src="`${this.$store.state.apiBaseUrl}/upload/${oneClassVo.classImage}`">
-									<!-- <img src="@/assets/images/icon/ss/default-profile.png"> -->
+									<img v-else src="@/assets/images/icon/ss/default-profile.png">
 									<span class="rf-1-1-title">
 										<span v-if="oneClassVo.classType == 1">[원데이]</span><span v-else>[정규]</span>
 										{{ oneClassVo.className }} 
@@ -296,13 +296,13 @@
 									<input class="upload-name" v-model="fileName" placeholder="선택된 파일이 없습니다" readonly>
 									<label for="file">파일찾기</label>
 									<input id="file" type="file" name="file" @change="getfile">
-								</div>							
+								</div>
 							</div>
 							<!-- filebox / 사진첨부 -->
 							
 							<div class="rf-8">
 								<button class="back-btn" type="button" @click="closeRevForm">뒤로 가기</button>
-								<button id="insert-button" class="insert-btn" type="submit">후기 등록</button>				
+								<button id="insert-button" class="insert-btn" type="submit">후기 등록</button>			
 							</div>
 							<!-- rf-8 / 버튼 -->
 							<div class="rf-9"></div>
