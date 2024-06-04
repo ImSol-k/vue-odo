@@ -374,11 +374,7 @@ export default defineComponent({
 					responseType: 'json' //수신타입
 				}).then(response => {
 					this.listOfLists = null;
-					console.log("데이터 넣기 전");
-					console.log(this.listOfLists);
 					this.listOfLists = response.data.apiData;
-					console.log("비로그인");
-					console.log(this.listOfLists);
 				}).catch(error => {
 					console.log(error);
 				});
@@ -394,11 +390,7 @@ export default defineComponent({
 					responseType: 'json' //수신타입
 				}).then(response => {
 					this.listOfLists = null;
-					console.log("데이터 넣기 전");
-					console.log(this.listOfLists);
 					this.listOfLists = response.data.apiData;
-					console.log("로그인시");
-					console.log(this.listOfLists);
 				}).catch(error => {
 					console.log(error);
 				});
