@@ -23,7 +23,7 @@
 							<textarea v-model="write.content" name="content" id="ucontent" placeholder="내용"></textarea>
 						</div>
 						<div class="bt_se">
-							<button type="submit" v-on:click.prevent="goList">등록</button>
+							<button id="sign" type="submit" v-on:click.prevent="goList">등록</button>
 						</div>
 					
 				</div>

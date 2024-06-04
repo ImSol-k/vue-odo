@@ -61,7 +61,7 @@
 		</ul>
 
 		<!-- -----------------------비로그인 시-------------------------- -->
-		<div v-if=" this.$store.state.authUser != '' && this.$store.state.token != '' " class="list-container">
+		<div v-if="this.$store.state.authUser == null && this.$store.state.token == null" class="list-container">
 			<section class="free-best">
 				<div class="title-box">
 					<h3>무료 베스트 클래스
@@ -74,7 +74,8 @@
 						<router-link :to="`/classdetailpage/${fbList.classNo}`">
 							<div class="img-box">
 								<img :src="`${this.$store.state.apiBaseUrl}/upload/${fbList.classImg}`" alt="">
-								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
+								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt="">
+								</div>
 							</div>
 							<p class="location">{{ fbList.classNameAdd }}</p>
 							<p class="classTitle">{{ fbList.className }}</p>
@@ -109,7 +110,8 @@
 						<router-link :to="`/classdetailpage/${pbList.classNo}`">
 							<div class="img-box">
 								<img :src="`${this.$store.state.apiBaseUrl}/upload/${pbList.classImg}`" alt="">
-								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
+								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt="">
+								</div>
 							</div>
 							<p class="location">{{ pbList.classNameAdd }}</p>
 							<p class="classTitle">{{ pbList.className }}</p>
@@ -143,7 +145,8 @@
 						<router-link :to="`/classdetailpage/${nList.classNo}`">
 							<div class="img-box">
 								<img :src="`${this.$store.state.apiBaseUrl}/upload/${nList.classImg}`" alt="">
-								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
+								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt="">
+								</div>
 							</div>
 							<p class="location">{{ nList.classNameAdd }}</p>
 							<p class="classTitle">{{ nList.className }}</p>
@@ -182,7 +185,10 @@
 						<router-link :to="`/classdetailpage/${fbList.classNo}`">
 							<div class="img-box">
 								<img :src="`${this.$store.state.apiBaseUrl}/upload/${fbList.classImg}`" alt="">
-								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
+								<div @click.prevent="plusWish">
+									<img v-if="fbList.wish == 1" src="../../assets/images/redheart.svg" alt="">
+									<img v-else src="../../assets/images/whiteheart.svg" alt="">
+								</div>
 							</div>
 							<p class="location">{{ fbList.classNameAdd }}</p>
 							<p class="classTitle">{{ fbList.className }}</p>
@@ -217,7 +223,10 @@
 						<router-link :to="`/classdetailpage/${pbList.classNo}`">
 							<div class="img-box">
 								<img :src="`${this.$store.state.apiBaseUrl}/upload/${pbList.classImg}`" alt="">
-								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
+								<div @click.prevent="plusWish">
+									<img v-if="pbList.wish == 1" src="../../assets/images/redheart.svg" alt="">
+									<img v-else src="../../assets/images/whiteheart.svg" alt="">
+								</div>
 							</div>
 							<p class="location">{{ pbList.classNameAdd }}</p>
 							<p class="classTitle">{{ pbList.className }}</p>
@@ -251,7 +260,10 @@
 						<router-link :to="`/classdetailpage/${nList.classNo}`">
 							<div class="img-box">
 								<img :src="`${this.$store.state.apiBaseUrl}/upload/${nList.classImg}`" alt="">
-								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
+								<div @click.prevent="plusWish">
+									<img v-if="nList.wish == 1" src="../../assets/images/redheart.svg" alt="">
+									<img v-else src="../../assets/images/whiteheart.svg" alt="">
+								</div>
 							</div>
 							<p class="location">{{ nList.classNameAdd }}</p>
 							<p class="classTitle">{{ nList.className }}</p>
@@ -319,7 +331,7 @@ export default defineComponent({
 	},
 	methods: {
 		plusWish() {
-			if (this.$store.state.authUser == '' && this.$store.state.token == '') {
+			if (this.$store.state.authUser == null && this.$store.state.token == null) {
 
 				Swal.fire({
 					title: "로그인 후 이용 가능합니다.",
@@ -350,8 +362,9 @@ export default defineComponent({
 		//메인 리스트 가져오기
 		getLists() {
 
+
 			// 비로그인
-			if (this.$store.state.authUser == '' && this.$store.state.token == '') {
+			if (this.$store.state.authUser == "" && this.$store.state.token == "") {
 				axios({
 					method: 'get', // put, post, delete
 					url: 'http://localhost:9090/odo/mains',
@@ -360,12 +373,17 @@ export default defineComponent({
 					//data: this.listOfLists, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 					responseType: 'json' //수신타입
 				}).then(response => {
+					this.listOfLists = null;
+					console.log("데이터 넣기 전");
+					console.log(this.listOfLists);
 					this.listOfLists = response.data.apiData;
+					console.log("비로그인");
+					console.log(this.listOfLists);
 				}).catch(error => {
 					console.log(error);
 				});
-
-			} else { //로그인
+				//로그인
+			} else {
 
 				axios({
 					method: 'get', // put, post, delete
@@ -375,8 +393,12 @@ export default defineComponent({
 					//data: this.listOfLists, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 					responseType: 'json' //수신타입
 				}).then(response => {
+					this.listOfLists = null;
+					console.log("데이터 넣기 전");
+					console.log(this.listOfLists);
 					this.listOfLists = response.data.apiData;
-					console.log(this.listOfLists[0]);
+					console.log("로그인시");
+					console.log(this.listOfLists);
 				}).catch(error => {
 					console.log(error);
 				});
@@ -402,7 +424,7 @@ export default defineComponent({
 		}
 	},
 	watch: {
-		authUser(newVal) { 
+		authUser(newVal) {
 			if (newVal === '') {
 				this.getLists();
 			}

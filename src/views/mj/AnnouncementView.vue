@@ -11,7 +11,7 @@
         <h2>공지사항</h2>
 
         <div style="text-align:right;">
-          <button v-if="this.no==3" type="submit"><router-link to="/mypage/notice/write">글쓰기</router-link></button>
+          <button class="write" v-if="this.no==3" type="submit"><router-link to="/mypage/notice/write">글쓰기</router-link></button>
         </div>
         <div class="MpRight" style="overflow: hidden;">
           <table class="list-table">
@@ -27,7 +27,7 @@
             <tbody>
               <tr v-for="(MjVo,i) in MjList" v-bind:key="i">
                 <td >{{ MjVo.idx }}</td>
-                <td v-on:click="go( MjVo.idx)">{{ MjVo.title }}</td>
+                <td v-on:click="go( MjVo.idx )">{{ MjVo.title }}</td>
                 <td>{{ MjVo.notice_name }}</td>
                 <td>{{ MjVo.regDate }}</td>
                 <td>{{ MjVo.pagesNo }}</td>
