@@ -162,6 +162,7 @@ export default {
                     responseType: "json",
                 }).then((response) => {
                     if(response.status === 200){
+                        this.$store.commit('setKakaoToken', '');
                         this.$store.commit('setAuthUser', '');
                         this.$store.commit('setToken', '');
                         this.$router.push('/');
@@ -172,6 +173,7 @@ export default {
                     console.log(error);
                 });
             } else {
+                this.$store.commit('setKakaoToken', '');
                 this.$store.commit('setAuthUser', '');
                 this.$store.commit('setToken', '');
                 this.$router.push('/');

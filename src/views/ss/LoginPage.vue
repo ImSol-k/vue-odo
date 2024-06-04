@@ -17,7 +17,7 @@
       <span class="other-login">다른 방식으로 로그인</span>
       <!-- https://henniee.tistory.com/219 -->
       <img @click="kakaoLogin" class="kakao-login" src="@/assets/images/icon/ss/kakao_login_medium.png" />
-      <!-- <img src="@/assets/images/icon/ss/na.png" /> -->
+      <img @click="naverLogin" class="naver-login" src="@/assets/images/icon/ss/naver_login2.png" />
     </div>
     <!-- lj-form -->
   </div>
@@ -94,6 +94,20 @@ export default {
   methods: {
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // 네이버 로그인 버튼 눌렀을때
+    naverLogin(){
+      console.log('네이버로그인')
+    },
+
+
+
+
+
+
+
+
+
     // 카카오 로그인 버튼 눌렀을 때
     kakaoLogin(){
       window.Kakao.Auth.authorize({
