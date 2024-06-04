@@ -50,7 +50,7 @@
 					<div><img src="@/assets/images/icon/hs/main_category_icon/it.png" alt=""></div>
 					<p>IT</p>
 				</router-link></li>
-			<li><router-link to="/classlist/1">
+			<li><router-link to="/classlist/2">
 					<div class="findAroundClass">
 						<img src="../../assets/images/icon/hs/location_icon.png" alt="">
 						<p><b>내 주변 클래스</b>
@@ -59,113 +59,222 @@
 					</div>
 				</router-link></li>
 		</ul>
-		<section class="free-best">
-			<div class="title-box">
-				<h3>무료 베스트 클래스
-					<img src="../../assets/images/icon/hs/like_love_icon.png" alt="">
-				</h3>
-				<!-- <router-link to="/searchresultpage/1">전체보기</router-link> -->
-			</div>
-			<ul class="classList">
-				<li v-for=" fbList in listOfLists[0] " :key="fbList">
-					<router-link :to="`/classdetailpage/${fbList.classNo}`">
-						<div class="img-box">
-							<img :src="`${this.$store.state.apiBaseUrl}/upload/${fbList.classImg}`" alt="">
-							<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
-						</div>
-						<p class="location">{{ fbList.classNameAdd }}</p>
-						<p class="classTitle">{{ fbList.className }}</p>
-						<div v-if="fbList.reviewCount != 0" class="review-box">
-							<b v-if="fbList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
-							<b v-else-if="fbList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
-							<b v-else-if="fbList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
-							<b v-else-if="fbList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
-							<b v-else-if="fbList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
-							<b v-else-if="fbList.reviewPointAvg == 0"><span class="starPoint">☆☆☆☆☆</span></b>
-							<span class="reviewCount">후기 {{ fbList.reviewCount }}</span>
-						</div>
-						<div v-else class="review-box">
-							<b><span class="starPoint"></span></b>
-							<span class="reviewCount"></span>
-						</div>
-						<p class="class-price" v-if="fbList.classPrice == 0">무료</p>
-						<p class="class-price" v-else>{{ fbList.classPrice.toLocaleString('ko-KR') }}</p>
-					</router-link>
-				</li>
-			</ul>
-		</section>
-		<div class="banner" @click="goHost"></div>
-		<section class="pay-best">
-			<div class="title-box">
-				<h3>유료 베스트 클래스
-					<img src="../../assets/images/icon/hs/coin_icon.png" alt="">
-				</h3>
-				<!-- <router-link to="#">전체보기</router-link> -->
-			</div>
-			<ul class="classList">
-				<li v-for=" pbList in listOfLists[1] " :key="pbList">
-					<router-link :to="`/classdetailpage/${pbList.classNo}`">
-						<div class="img-box">
-							<img :src="`${this.$store.state.apiBaseUrl}/upload/${pbList.classImg}`" alt="">
-							<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
-						</div>
-						<p class="location">{{ pbList.classNameAdd }}</p>
-						<p class="classTitle">{{ pbList.className }}</p>
-						<div v-if="pbList.reviewCount != 0" class="review-box">
-							<b v-if="pbList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
-							<b v-else-if="pbList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
-							<b v-else-if="pbList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
-							<b v-else-if="pbList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
-							<b v-else-if="pbList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
-							<b v-else-if="pbList.reviewPointAvg == 0"><span class="starPoint">☆☆☆☆☆</span></b>
-							<span class="reviewCount">후기 {{ pbList.reviewCount }}</span>
-						</div>
-						<div v-else class="review-box">
-							<b><span class="starPoint"></span></b>
-							<span class="reviewCount"></span>
-						</div>
-						<p class="class-price">{{ pbList.classPrice.toLocaleString('ko-KR') }}원</p>
-					</router-link>
-				</li>
-			</ul>
-		</section>
-		<div class="banner" @click="goHost"></div>
-		<section class="new pay-best">
-			<div class="title-box">
-				<h3>신규 클래스
-					<img src="../../assets/images/icon/hs/new_badge_icon.png" alt="">
-				</h3>
-				<!-- <router-link to="#">전체보기</router-link> -->
-			</div>
-			<ul class="classList">
-				<li v-for=" nList in listOfLists[2] " :key="nList">
-					<router-link :to="`/classdetailpage/${nList.classNo}`">
-						<div class="img-box">
-							<img :src="`${this.$store.state.apiBaseUrl}/upload/${nList.classImg}`" alt="">
-							<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
-						</div>
-						<p class="location">{{ nList.classNameAdd }}</p>
-						<p class="classTitle">{{ nList.className }}</p>
-						<div v-if="nList.reviewCount != 0" class="review-box">
-							<b v-if="nList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
-							<b v-else-if="nList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
-							<b v-else-if="nList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
-							<b v-else-if="nList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
-							<b v-else-if="nList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
-							<b v-else-if="nList.reviewPointAvg == 0"><span class="starPoint">☆☆☆☆☆</span></b>
-							<span class="reviewCount">후기 {{ nList.reviewCount }}</span>
-						</div>
-						<div v-else class="review-box">
-							<b><span class="starPoint"></span></b>
-							<span class="reviewCount"></span>
-						</div>
-						<p class="class-price" v-if="nList.classPrice == 0">무료</p>
-						<p class="class-price" v-else>{{ nList.classPrice.toLocaleString('ko-KR') }}원</p>
-					</router-link>
-				</li>
-			</ul>
-		</section>
-		<div class="banner" @click="goHost"></div>
+
+		<!-- -----------------------비로그인 시-------------------------- -->
+		<div v-if=" this.$store.state.authUser != '' && this.$store.state.token != '' " class="list-container">
+			<section class="free-best">
+				<div class="title-box">
+					<h3>무료 베스트 클래스
+						<img src="../../assets/images/icon/hs/like_love_icon.png" alt="">
+					</h3>
+					<!-- <router-link to="/searchresultpage/1">전체보기</router-link> -->
+				</div>
+				<ul class="classList">
+					<li v-for=" fbList in listOfLists[0] " :key="fbList">
+						<router-link :to="`/classdetailpage/${fbList.classNo}`">
+							<div class="img-box">
+								<img :src="`${this.$store.state.apiBaseUrl}/upload/${fbList.classImg}`" alt="">
+								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
+							</div>
+							<p class="location">{{ fbList.classNameAdd }}</p>
+							<p class="classTitle">{{ fbList.className }}</p>
+							<div v-if="fbList.reviewCount != 0" class="review-box">
+								<b v-if="fbList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
+								<b v-else-if="fbList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
+								<b v-else-if="fbList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
+								<b v-else-if="fbList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
+								<b v-else-if="fbList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
+								<span class="reviewCount">후기 {{ fbList.reviewCount }}</span>
+							</div>
+							<div v-else class="review-box">
+								<b><span class="starPoint"></span></b>
+								<span class="reviewCount"></span>
+							</div>
+							<p class="class-price" v-if="fbList.classPrice == 0">무료</p>
+							<p class="class-price" v-else>{{ fbList.classPrice.toLocaleString('ko-KR') }}</p>
+						</router-link>
+					</li>
+				</ul>
+			</section>
+			<div class="banner" @click="goHost"></div>
+			<section class="pay-best">
+				<div class="title-box">
+					<h3>유료 베스트 클래스
+						<img src="../../assets/images/icon/hs/coin_icon.png" alt="">
+					</h3>
+					<!-- <router-link to="#">전체보기</router-link> -->
+				</div>
+				<ul class="classList">
+					<li v-for=" pbList in listOfLists[1] " :key="pbList">
+						<router-link :to="`/classdetailpage/${pbList.classNo}`">
+							<div class="img-box">
+								<img :src="`${this.$store.state.apiBaseUrl}/upload/${pbList.classImg}`" alt="">
+								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
+							</div>
+							<p class="location">{{ pbList.classNameAdd }}</p>
+							<p class="classTitle">{{ pbList.className }}</p>
+							<div v-if="pbList.reviewCount != 0" class="review-box">
+								<b v-if="pbList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
+								<b v-else-if="pbList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
+								<b v-else-if="pbList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
+								<b v-else-if="pbList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
+								<b v-else-if="pbList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
+								<span class="reviewCount">후기 {{ pbList.reviewCount }}</span>
+							</div>
+							<div v-else class="review-box">
+								<b><span class="starPoint"></span></b>
+								<span class="reviewCount"></span>
+							</div>
+							<p class="class-price">{{ pbList.classPrice.toLocaleString('ko-KR') }}원</p>
+						</router-link>
+					</li>
+				</ul>
+			</section>
+			<div class="banner" @click="goHost"></div>
+			<section class="new pay-best">
+				<div class="title-box">
+					<h3>신규 클래스
+						<img src="../../assets/images/icon/hs/new_badge_icon.png" alt="">
+					</h3>
+					<!-- <router-link to="#">전체보기</router-link> -->
+				</div>
+				<ul class="classList">
+					<li v-for=" nList in listOfLists[2] " :key="nList">
+						<router-link :to="`/classdetailpage/${nList.classNo}`">
+							<div class="img-box">
+								<img :src="`${this.$store.state.apiBaseUrl}/upload/${nList.classImg}`" alt="">
+								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
+							</div>
+							<p class="location">{{ nList.classNameAdd }}</p>
+							<p class="classTitle">{{ nList.className }}</p>
+							<div v-if="nList.reviewCount != 0" class="review-box">
+								<b v-if="nList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
+								<b v-else-if="nList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
+								<b v-else-if="nList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
+								<b v-else-if="nList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
+								<b v-else-if="nList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
+								<span class="reviewCount">후기 {{ nList.reviewCount }}</span>
+							</div>
+							<div v-else class="review-box">
+								<b><span class="starPoint"></span></b>
+								<span class="reviewCount"></span>
+							</div>
+							<p class="class-price" v-if="nList.classPrice == 0">무료</p>
+							<p class="class-price" v-else>{{ nList.classPrice.toLocaleString('ko-KR') }}원</p>
+						</router-link>
+					</li>
+				</ul>
+			</section>
+			<div class="banner" @click="goHost"></div>
+		</div>
+
+		<!-- ------------------로그인 시---------------------- -->
+		<div v-else class="list-container">
+			<section class="free-best">
+				<div class="title-box">
+					<h3>무료 베스트 클래스
+						<img src="../../assets/images/icon/hs/like_love_icon.png" alt="">
+					</h3>
+					<!-- <router-link to="/searchresultpage/1">전체보기</router-link> -->
+				</div>
+				<ul class="classList">
+					<li v-for=" fbList in listOfLists[0] " :key="fbList">
+						<router-link :to="`/classdetailpage/${fbList.classNo}`">
+							<div class="img-box">
+								<img :src="`${this.$store.state.apiBaseUrl}/upload/${fbList.classImg}`" alt="">
+								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
+							</div>
+							<p class="location">{{ fbList.classNameAdd }}</p>
+							<p class="classTitle">{{ fbList.className }}</p>
+							<div v-if="fbList.reviewCount != 0" class="review-box">
+								<b v-if="fbList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
+								<b v-else-if="fbList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
+								<b v-else-if="fbList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
+								<b v-else-if="fbList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
+								<b v-else-if="fbList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
+								<span class="reviewCount">후기 {{ fbList.reviewCount }}</span>
+							</div>
+							<div v-else class="review-box">
+								<b><span class="starPoint"></span></b>
+								<span class="reviewCount"></span>
+							</div>
+							<p class="class-price" v-if="fbList.classPrice == 0">무료</p>
+							<p class="class-price" v-else>{{ fbList.classPrice.toLocaleString('ko-KR') }}</p>
+						</router-link>
+					</li>
+				</ul>
+			</section>
+			<div class="banner" @click="goHost"></div>
+			<section class="pay-best">
+				<div class="title-box">
+					<h3>유료 베스트 클래스
+						<img src="../../assets/images/icon/hs/coin_icon.png" alt="">
+					</h3>
+					<!-- <router-link to="#">전체보기</router-link> -->
+				</div>
+				<ul class="classList">
+					<li v-for=" pbList in listOfLists[1] " :key="pbList">
+						<router-link :to="`/classdetailpage/${pbList.classNo}`">
+							<div class="img-box">
+								<img :src="`${this.$store.state.apiBaseUrl}/upload/${pbList.classImg}`" alt="">
+								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
+							</div>
+							<p class="location">{{ pbList.classNameAdd }}</p>
+							<p class="classTitle">{{ pbList.className }}</p>
+							<div v-if="pbList.reviewCount != 0" class="review-box">
+								<b v-if="pbList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
+								<b v-else-if="pbList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
+								<b v-else-if="pbList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
+								<b v-else-if="pbList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
+								<b v-else-if="pbList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
+								<span class="reviewCount">후기 {{ pbList.reviewCount }}</span>
+							</div>
+							<div v-else class="review-box">
+								<b><span class="starPoint"></span></b>
+								<span class="reviewCount"></span>
+							</div>
+							<p class="class-price">{{ pbList.classPrice.toLocaleString('ko-KR') }}원</p>
+						</router-link>
+					</li>
+				</ul>
+			</section>
+			<div class="banner" @click="goHost"></div>
+			<section class="new pay-best">
+				<div class="title-box">
+					<h3>신규 클래스
+						<img src="../../assets/images/icon/hs/new_badge_icon.png" alt="">
+					</h3>
+					<!-- <router-link to="#">전체보기</router-link> -->
+				</div>
+				<ul class="classList">
+					<li v-for=" nList in listOfLists[2] " :key="nList">
+						<router-link :to="`/classdetailpage/${nList.classNo}`">
+							<div class="img-box">
+								<img :src="`${this.$store.state.apiBaseUrl}/upload/${nList.classImg}`" alt="">
+								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
+							</div>
+							<p class="location">{{ nList.classNameAdd }}</p>
+							<p class="classTitle">{{ nList.className }}</p>
+							<div v-if="nList.reviewCount != 0" class="review-box">
+								<b v-if="nList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
+								<b v-else-if="nList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
+								<b v-else-if="nList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
+								<b v-else-if="nList.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
+								<b v-else-if="nList.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
+								<span class="reviewCount">후기 {{ nList.reviewCount }}</span>
+							</div>
+							<div v-else class="review-box">
+								<b><span class="starPoint"></span></b>
+								<span class="reviewCount"></span>
+							</div>
+							<p class="class-price" v-if="nList.classPrice == 0">무료</p>
+							<p class="class-price" v-else>{{ nList.classPrice.toLocaleString('ko-KR') }}원</p>
+						</router-link>
+					</li>
+				</ul>
+			</section>
+			<div class="banner" @click="goHost"></div>
+		</div>
 
 	</div> <!-- //inner -->
 
@@ -205,7 +314,6 @@ export default defineComponent({
 	data() {
 		return {
 			slides: [main_slide_1, main_slide_2, main_slide_3, main_slide_4, main_slide_5],
-
 			listOfLists: [],
 		};
 	},
@@ -242,18 +350,38 @@ export default defineComponent({
 		//메인 리스트 가져오기
 		getLists() {
 
-			axios({
-				method: 'get', // put, post, delete
-				url: 'http://localhost:9090/odo/mains',
-				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
-				//params: guestbookVo, //get방식 파라미터로 값이 전달
-				//data: this.listOfLists, //put, post, delete 방식 자동으로 JSON으로 변환 전달
-				responseType: 'json' //수신타입
-			}).then(response => {
-				this.listOfLists = response.data.apiData;
-			}).catch(error => {
-				console.log(error);
-			});
+			// 비로그인
+			if (this.$store.state.authUser == '' && this.$store.state.token == '') {
+				axios({
+					method: 'get', // put, post, delete
+					url: 'http://localhost:9090/odo/mains',
+					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+					//params: guestbookVo, //get방식 파라미터로 값이 전달
+					//data: this.listOfLists, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+					responseType: 'json' //수신타입
+				}).then(response => {
+					this.listOfLists = response.data.apiData;
+				}).catch(error => {
+					console.log(error);
+				});
+
+			} else { //로그인
+
+				axios({
+					method: 'get', // put, post, delete
+					url: 'http://localhost:9090/odo/mains/users',
+					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+					params: { userNo: this.$store.state.authUser.userNo }, //get방식 파라미터로 값이 전달
+					//data: this.listOfLists, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+					responseType: 'json' //수신타입
+				}).then(response => {
+					this.listOfLists = response.data.apiData;
+					console.log(this.listOfLists[0]);
+				}).catch(error => {
+					console.log(error);
+				});
+
+			}
 
 		},
 		//
@@ -265,7 +393,22 @@ export default defineComponent({
 	},
 	created() {
 		this.getLists();
+	},
+	/////////////////////////////////////////////
+	// 로그아웃시 리스트 바뀌게하는 코드
+	computed: {
+		authUser() {
+			return this.$store.state.authUser;
+		}
+	},
+	watch: {
+		authUser(newVal) { 
+			if (newVal === '') {
+				this.getLists();
+			}
+		}
 	}
+	///////////////////////////////////////////////
 });
 </script>
 <style>

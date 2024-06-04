@@ -80,7 +80,8 @@
     <header>
         <div class="top">
             <div class="inner">
-                <router-link to="/companyselect">호스트 지원</router-link>
+                <router-link v-if="this.$store.state.cToken == ''" to="/companyselect">호스트 지원</router-link>
+                <router-link v-else to="/companypage">호스트 지원</router-link>
                 <ul>
                     <li v-if="(this.$store.state.authUser == '' && this.$store.state.token == '')"><router-link
                             to="/join">회원가입</router-link></li>
@@ -104,7 +105,7 @@
                 <h1><router-link to="/" class="logo">logo</router-link></h1>
                 <div class="serch-box" @click="searchActive">
                     <img src="../assets/images/icon/header_icons/search.svg" alt="">
-                    <input type="search" placeholder="지금 생각나는 취미를 검색하세요." v-model="keyword" @keyup.enter="find">
+                    <input type="search" placeholder="지금 생각나는 취미를 검색하세요." v-model="keyword" @input="find" @keyup.enter="find">
                 </div>
                 <ul>
                     <li><router-link to="/wishlistclass" @click="checkAuth" class="like">위시리스트</router-link></li>
@@ -116,6 +117,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 
 export default {
     name: "AppHeader",
@@ -140,16 +143,30 @@ export default {
     },
     methods: {
         find() {
-            this.$router.push("/classlist/1")
-            console.log("검색")
             this.$emit('update',this.keyword);
+            console.log("검색: ", this.keyword);
+            this.$router.push("/classlist/1")
         },
         /////////////////////////////// ss /////////////////////////////////////
         // 로그아웃
         logout() {
-            this.$store.commit('setAuthUser', '');
-            this.$store.commit('setToken', '');
-            this.$router.push('/');
+            if(this.$store.state.authUser.userType == 1){
+                axios({
+                    method: 'get',
+                    url: `https://kauth.kakao.com/oauth/logout?client_id=f30d00965f7c79e1c4bd880684310a86&logout_redirect_uri=http://localhost:8080`,
+                    // headers: { "Content-Type": "application/json; charset=utf-8", },
+                    responseType: "json",
+                }).then((response) => {
+                    console.log(response);
+                }).catch((error) => {
+                    console.log(error);
+                });
+            } else {
+                this.$store.commit('setAuthUser', '');
+                this.$store.commit('setToken', '');
+                this.$router.push('/');
+            }
+            
         },
         // 로그인 체크
         checkAuth() {

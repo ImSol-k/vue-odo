@@ -71,8 +71,8 @@ export default {
   data() {
     return {
       loginVo: {
-        userId: "",
-        userPw: "",
+        userId: '',
+        userPw: '',
       },
       // https://velog.io/@yeoonnii/Vue.js-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%ED%9B%84-%EC%9D%B4%EC%A0%84%ED%8E%98%EC%9D%B4%EC%A7%80%EB%A1%9C-%EB%90%98%EB%8F%8C%EC%95%84%EA%B0%80%EA%B8%B0
       path : this.$route.fullPath,
@@ -97,7 +97,7 @@ export default {
     // 카카오 로그인 버튼 눌렀을 때
     kakaoLogin(){
       window.Kakao.Auth.authorize({
-        redirectUri : 'http://localhost:8080/kakaologin',
+        redirectUri : 'http://localhost:8080/login/user',
         prompt : 'login'
       })
     },
@@ -110,10 +110,10 @@ export default {
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
 				params : {
           'grant_type': 'authorization_code',
-          'client_id' : '10a7f3623894713c0b64f29c1e5c6854',
+          'client_id' : '78707b677a0d5b7e94a82c2a18059218',
           'redirect_uri' : 'http://localhost:8080/login/user',
           'code' : code,
-          'client_secret' : '377Ja2giI9wqMcjpTmUwNlhKIoNgX7bV'
+          'client_secret' : 'qboKDshBeJY0XTfj3xCWFYH5RqXzahpy'
         },
 				responseType: 'json'
 			}).then(response => {
@@ -135,28 +135,22 @@ export default {
         data : scope,
 				responseType: 'json'
 			}).then(response => {
-        console.log(response);
+        console.log('받아온 유저정보: '+response);
         if(response.status === 200){
-          console.log('토큰에서 아이디 출력'+response.data.id);
+          console.log('토큰에서 아이디 출력 : '+response.data.id);
+          console.log('액세스토큰 : '+ access_token)
           let userVo = {
-            userId : response.data.kakao_account.email,
-            userName : response.data.kakao_account.name,
+            userId : 'kakao '+response.data.id,
+            userEmail : response.data.kakao_account.email,
+            userName : response.data.properties.nickname,
             userNickname : response.data.properties.nickname,
-            userHp : response.data.kakao_account.phone_number,
-            userBirth : (response.data.kakao_account.birthyear)+(response.data.kakao_account.birthday),
-            userGender : response.data.kakao_account.gender,
-            userImage : response.data.properties.profile_image,
-            userKakao : true,
+            userType : 1,
           }
+          console.log('userVo: '+userVo)
           this.kakaoLoignCheck(userVo);
         } else {
           Swal.fire({text: '인증실패'});
         }
-        
-        
-
-        
-
 			}).catch(error => {
 				console.log(error);
 			});
@@ -181,8 +175,7 @@ export default {
             userNickname: response.data.apiData.userNickname,
             userId: response.data.apiData.userId,
             userImage: response.data.apiData.userImage,
-            userKakao: response.data.apiData.userKakao,
-            userNaver: response.data.apiData.userNaver,
+            userType : response.data.apiData.userType
           };
           this.$store.commit('setAuthUser', authUser);
           this.$store.commit('setToken', token);

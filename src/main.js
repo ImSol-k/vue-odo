@@ -12,7 +12,6 @@ import { quillEditor } from 'vue3-quill'
 //프론트용app
 const app = createApp(App);
 app.use(store).use(router).use(quillEditor);
-// app.use(quillEditor)
 app.component('VueDatePicker', VueDatePicker);
 app.mount('#app');
 
