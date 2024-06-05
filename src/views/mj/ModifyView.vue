@@ -26,8 +26,8 @@
         <div class="MpRight" style="overflow: hidden">
           
             <label for="file">
-              <img v-if="userVo.userImage == null" :src="prevImg">
-              <img v-else class="profile" :src="`${this.$store.state.apiBaseUrl}/upload/${userVo.userImage}`">
+              <img v-if="userVo.userImage == ''" :src="prevImg">
+              <img v-else class="profile" :src="prevImg">
             </label>
             <br>
             <div id="p-box">
@@ -139,17 +139,24 @@ export default {
         data : formData,
 				responseType: 'json'
 			}).then(response => {
+        console.log(response.data);
         if(response.data.result === 'success'){
-          this.$router.push('/mypage/pay');
+          let authUser = {
+            userNo: response.data.apiData.userNo,
+            userNickname: response.data.apiData.userNickname,
+            userId: response.data.apiData.userId,
+            userImage: response.data.apiData.userImage,
+            userType : response.data.apiData.userType,
+          };
+          this.$store.commit("setAuthUser", authUser);
+          // this.getUserInfo();
+          Swal.fire({text : '수정 완료'});
         } else {
           Swal.fire({text : '통신오류 입니다.'});
         }
-
 			}).catch(error => {
 				console.log(error);
 			});
-
-
     },
 
 
@@ -164,6 +171,7 @@ export default {
 				responseType: 'json'
 			}).then(response => {
         this.userVo = response.data.apiData;
+        this.prevImg = `${this.$store.state.apiBaseUrl}/upload/${response.data.apiData.userImage}`
 			}).catch(error => {
 				console.log(error);
 			});
@@ -193,8 +201,6 @@ export default {
       }
       if(this.file != null){
         this.fileName = this.file.name;
-      } else {
-        this.fileName = '';
       }
     }
 
