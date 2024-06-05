@@ -1,9 +1,17 @@
+.modify-main{
+  box-sizing: border-box;
+  /* border: 1px solid #000; */
+}
+
 .modifyContent {
+  box-sizing: border-box;
   display: block;
   width: 800px;
-  border: 1px solid #000;
-  /* padding: 10px; */
+  /* border: 1px solid #000; */
   letter-spacing: -1.5px;
+  float: left;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 .modify-head {
   display: inline-block;
@@ -13,7 +21,7 @@
 }
 .modify-head > span {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 5px; 
 }
 .MporderContainer {
   width: 1000px;
@@ -22,9 +30,7 @@
 }
 
 /* nav */
-.MporderContainer .MpLeft {
-  width: 250px;
-}
+
 
 /* 오른쪽내용영역 */
 .area {

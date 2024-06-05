@@ -5,54 +5,55 @@
 <div class="wrap">
   <MyPageHeader />
   <!-- MyPageHeader -->
-  <MyPageSide />
-  <!-- MyPageSide -->
-  <div class="modifyContent clearfix">
-    <div class="MpLeft">
-      <!-- nav -->
+  <div class="modify-main clearfix">
+    <MyPageSide />
+    <!-- MyPageSide -->
+    <div class="modifyContent clearfix">
       
-    </div>
-    <!-- 오른쪽내용영역 -->
-    <div class="modify-head">
-      <span>정보수정</span>
-    </div>
-    <form @submit.prevent="modify">
-      <div class="MpRight" style="overflow: hidden">
-        <img class="profile" src="@/assets/images/icon/header_icons/my.png" />
-        <div id="p-box">
-          <input type="file" name="" id="pic" />
-        </div>
-        <div class="area">
-          <label>닉네임</label>
-          <div><input type="text" id="nickname" name="usernickname" v-model="userVo.name" /></div>
-        </div>
-        <div class="area">
-          <label>휴대폰번호</label>
-          <div><input type="text" id="hp" name="userhp" v-model="userVo.hp" /></div>
-        </div>
-        <div class="area">
-          <label>이메일</label>
-          <div><input type="text" id="e-mail" name="useremail" v-model="userVo.email" /></div>
-        </div>
-        <div class="area">
-          <label>비밀번호</label>
-          <div><input type="password" id="password" name="userpw" v-model="required" /></div>
-        </div>
-        <div class="area">
-          <label>생년월일</label>
-          <div><input type="text" id="birth" name="userbirth" disabled v-model="userVo.birth" /></div>
-        </div>
-        <div class="area">
-          <label>성별</label>
-          <div><input type="text" id="gender" name="usergender" disabled placeholder="여자" v-model="required" /></div>
-        </div>
-        <div class="userModifyBtn">
-          <button type="reset">취소</button>
-          <button  @click="goModify">저장</button>
-        </div>
+      <!-- 오른쪽내용영역 -->
+      <div class="modify-head">
+        <span>정보수정</span>
       </div>
-    </form>
+      <form @submit.prevent="modify">
+        <div class="MpRight" style="overflow: hidden">
+          <img class="profile" src="@/assets/images/icon/header_icons/my.png" />
+          <div id="p-box">
+            <input type="file" name="" id="pic" />
+          </div>
+          <div class="area">
+            <label>닉네임</label>
+            <div><input type="text" id="nickname" name="usernickname" v-model="userVo.name" /></div>
+          </div>
+          <div class="area">
+            <label>휴대폰번호</label>
+            <div><input type="text" id="hp" name="userhp" v-model="userVo.hp" /></div>
+          </div>
+          <div class="area">
+            <label>이메일</label>
+            <div><input type="text" id="e-mail" name="useremail" v-model="userVo.email" /></div>
+          </div>
+          <div class="area">
+            <label>비밀번호</label>
+            <div><input type="password" id="password" name="userpw" v-model="required" /></div>
+          </div>
+          <div class="area">
+            <label>생년월일</label>
+            <div><input type="text" id="birth" name="userbirth" disabled v-model="userVo.birth" /></div>
+          </div>
+          <div class="area">
+            <label>성별</label>
+            <div><input type="text" id="gender" name="usergender" disabled placeholder="여자" v-model="required" /></div>
+          </div>
+          <div class="userModifyBtn">
+            <button type="reset">취소</button>
+            <button  @click="goModify">저장</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- modifyContent -->
   </div>
+  <!-- clearfix -->
 </div>
 <!-- wrap -->
   
@@ -94,9 +95,9 @@ export default {
      axios({
        method: 'post', // put, post, delete
        url: `${this.$store.state.apiBaseUrl}/odo/mypage/modify`,
-       headers: { "Content-Type": "application/json; charset=utf-8","Autorization":"Bearer"+this.$store.state }, //전송타입
-       data: this.userVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
-       responseType: 'json' //수신타입
+       headers: { "Content-Type": "application/json; charset=utf-8","Autorization":"Bearer"+this.$store.state },
+       data: this.userVo,
+       responseType: 'json'
      }).then(response => {
          console.log(response);
         alert("수정되었습니다.");
