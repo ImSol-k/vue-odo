@@ -39,7 +39,7 @@
           <br>
           <div class="area">
             <label for="name">이름</label>
-            <div><input type="text" id="name" name="userVo.userName" v-model="userVo.userName"></div>
+            <div><input type="text" id="name" name="userVo.userName" v-model="userVo.userName" disabled></div>
           </div>
           <div class="area">
             <label for="nickname">닉네임</label>
@@ -55,11 +55,11 @@
           </div>
           <div class="area">
             <label for="birth">생년월일</label>
-            <div><input type="text" id="birth" name="userbirth" disabled :value="formatDate(userVo.userBirth)"></div>
+            <div><input type="text" id="birth" name="userbirth" :value="formatDate(userVo.userBirth)" disabled></div>
           </div>
           <div class="area">
             <label for="gender">성별</label>
-            <div><input type="text" id="gender" name="usergender" disabled :value="checkGender(userVo.userGender)"></div>
+            <div><input type="text" id="gender" name="usergender" :value="checkGender(userVo.userGender)" disabled></div>
           </div>
           <div class="userModifyBtn">
             <button type="button" @click.prevent="goMypage">취소</button>
@@ -91,6 +91,7 @@ import MyPageSide from "@/components/MyPageSide.vue";
 import MyPageHeader from "@/components/MyPageHeader.vue";
 import axios from 'axios';
 import moment from "moment";
+import Swal from "sweetalert2";
 
 export default {
   name: "ModifyView",
@@ -126,8 +127,28 @@ export default {
       } else {
         formData.append('file', this.file);
       }
+      formData.append('userNickname', this.userVo.userNickname);
+      formData.append('userEmail', this.userVo.userEmail);
+      formData.append('userHp', this.userVo.userHp);
+      axios({
+				method: 'put',
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/modify`,
+				headers: { 'Content-Type': 'multipart/form-data',
+							'Authorization' : 'Bearer ' + this.$store.state.token
+				},
+        data : formData,
+				responseType: 'json'
+			}).then(response => {
+        if(response.data.result === 'success'){
+          this.$router.push('/mypage/pay');
+        } else {
+          Swal.fire({text : '통신오류 입니다.'});
+        }
 
-      formData.append('');
+			}).catch(error => {
+				console.log(error);
+			});
+
 
     },
 
@@ -143,7 +164,6 @@ export default {
 				responseType: 'json'
 			}).then(response => {
         this.userVo = response.data.apiData;
-        console.log(this.userVo);
 			}).catch(error => {
 				console.log(error);
 			});
