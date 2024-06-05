@@ -86,7 +86,7 @@
 						<div v-if="cateClass.wish == 1" @click.prevent="minusWish(cateClass.wClassNo)">
 							<img src="../../assets/images/redheart.svg" alt="">
 						</div>
-						<div v-else @click.prevent="plusWish">
+						<div v-else @click.prevent="plusWish(cateClass.classNo)">
 							<img src="../../assets/images/whiteheart.svg" alt="">
 						</div>
 					</div>
