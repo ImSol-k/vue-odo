@@ -305,7 +305,7 @@ export default {
   components: { AppHeader, AppFooter, AppMenu, QuillEditor },
   data() {
     return {
-      isAdd: this.$route.params.isadd,  //1추가 2수정
+      isAdd: this.$route.params.isadd, //1추가 2수정
       isClass: true,
       // ============================
       img: "",
@@ -347,7 +347,7 @@ export default {
      * 날짜형식 변환
      */
     formatDate(date) {
-      return moment(date).format(`YYYY-MM-DD HH:MM:SS`);
+      return moment(date).format(`YYYY-MM-DD HH:MM:ss`);
     },
 
     /********************************************************************
@@ -361,7 +361,7 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          for (let i = 0; i < response.data.apiData.length; i++){
+          for (let i = 0; i < response.data.apiData.length; i++) {
             this.onedayDate[i] = response.data.apiData[i].start;
           }
         })
@@ -396,13 +396,14 @@ export default {
      */
     classHandle() {
       const formData = new FormData();
-      if (this.isAdd == 1) {
-        formData.append("classImageFile", this.classImage);
+
+      //파일 값 확인
+      if (this.classImage == "") {
+        console.log("파일이 비어있습니다.");
       } else {
-        if (this.img != "") {
-          formData.append("classImageFile", this.classImage);
-        }
+        formData.append("classImageFile", this.classImage);
       }
+
       formData.append("classType", this.classVo.classType);
       formData.append("companyNo", this.companyNum);
       formData.append("cate1No", this.classVo.cate1No);
@@ -415,20 +416,35 @@ export default {
       formData.append("classDetailAddress", this.classVo.classDetailAddress);
       formData.append("classLatitude", this.classVo.classLatitude);
       formData.append("classLongitutde", this.classVo.classLongitutde);
-      formData.append("classPrice", this.classVo.classPrice);
+      if (this.classVo.classPrice == "") {
+        formData.append("classPrice", 0);
+      } else {
+        formData.append("classPrice", this.classVo.classPrice);
+      }
       formData.append("classMin", this.classVo.classMin);
       formData.append("classMax", this.classVo.classMax);
       formData.append("classUrl", this.classVo.classUrl);
+      
+
+      //클래스 타입별 들어가는 스케줄값이 다름
+      //1이면 배열 아니면 단일값으로 들어감
       if (this.classVo.classType == 1) {
+        if (this.classVo.recClassNo == "") {
+          formData.append("recClassNo", 0);
+        } else {
+          formData.append("recClassNo", this.classVo.recClassNo);
+        }
         this.onedayDate.forEach((date, index) => {
-          formData.append(`startDateList[${index}]`, this.formatDate(date));
+          if (date != null) {
+            formData.append(`startDateList[${index}]`, this.formatDate(date));
+          }
+          console.log(this.formatDate(date));
         });
       } else {
         formData.append("startDate", this.formatDate(this.startDate));
         formData.append("endDate", this.formatDate(this.endDate));
       }
-      formData.append("classInfo", this.classVo.classInfo.content);
-      formData.append("recClassNo", this.classVo.recClassNo);
+
       //에디터 본문내용
       // 에디터 인스턴스 가져오기
       const editorInstance = this.$refs.quillEditor.getQuill();
@@ -463,60 +479,72 @@ export default {
         Number(this.classVo.classMax) <= Number(this.classVo.classMin)
       ) {
         alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
-      } else if (this.isAdd == 1 && this.classImage == null) {
-        alert("파일을 선택해주세요");
       } else {
-        if (this.isAdd == 1) {
-          //클래스 추가 ==============
-          console.log("클래스 추가");
-          axios({
-            method: "post",
-            url: `${this.$store.state.apiBaseUrl}/odo/company/insert`,
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-            data: formData,
-            responseType: "json",
+      if (this.isAdd == 1) {
+        //클래스 추가 ==============
+
+        console.log("클래스 추가");
+        axios({
+          method: "post",
+          url: `${this.$store.state.apiBaseUrl}/odo/company/insert`,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          data: formData,
+          responseType: "json",
+        })
+          .then((response) => {
+            if (response.data.result == "success") {
+              alert("클래스가 추가되었습니다.");
+            } else {
+              alert("클래스 추가 실패");
+            }
           })
-            .then((response) => {
-              console.log(response.data);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        } else {
-          //클래스 수정 =======================
-          console.log("클래스 수정");
-          axios({
-            method: "put",
-            url: `${this.$store.state.apiBaseUrl}/odo/company/update`,
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-            data: formData,
-            responseType: "json",
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        //클래스 수정 =======================
+        console.log("클래스 수정");
+        axios({
+          method: "put",
+          url: `${this.$store.state.apiBaseUrl}/odo/company/update`,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          data: formData,
+          responseType: "json",
+        })
+          .then((response) => {
+            console.log(response.data);
+            if (response.data.result == "success") {
+              alert("클래스가 수정되었습니다.");
+            } else {
+              alert("클래스 수정 실패");
+            }
           })
-            .then((response) => {
-              console.log(response.data);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        }
+          .catch((error) => {
+            console.log(error);
+          });
       }
+      }
+      this.$router.push("/companypage");
     },
     //이미지저장, 미리보기
     imgFile(event) {
       //이미지 저장
       this.classImage = event.target.files[0];
-      //이미지 미리보기
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        this.img = e.target.result;
-      };
 
-      if (this.classImage) {
-        reader.readAsDataURL(this.classImage);
+      if (this.classImage != null) {
+        //이미지 미리보기
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          this.img = e.target.result;
+        };
+
+        if (this.classImage) {
+          reader.readAsDataURL(this.classImage);
+        }
       }
     },
 
@@ -524,7 +552,6 @@ export default {
      * 기존 클래스 리스트
      */
     classList(type) {
-
       //기존클래스 정보
       let tempVo = {
         type: type,
@@ -544,9 +571,8 @@ export default {
         .then((response) => {
           if (response.data.result == "success") {
             this.cList = response.data.apiData;
-
-            // console.log("기존클래스 ====================");
-            // console.log(this.cList);
+          } else {
+            console.log("불러오기 실패");
           }
         })
         .catch((error) => {
@@ -584,6 +610,8 @@ export default {
 
             //에디터에 내용 적용  //content는 서버에서 받은 내용
             editorInstance.root.innerHTML = response.data.apiData.classInfo;
+          } else {
+            alert("클래스를 불러오는데 실패했습니다.");
           }
         })
         .catch((error) => {
@@ -609,8 +637,8 @@ export default {
           console.log(response.data);
           if (response.data.result == "success") {
             this.rClassList = response.data.apiData;
-            // console.log("정규클래스 ==================");
-            // console.log(this.rClassList);
+          } else {
+            alert("불러오기 실패");
           }
         })
         .catch((error) => {
@@ -643,7 +671,7 @@ export default {
           console.log(error);
         });
     },
-    //2차 카테고리 불러오기 
+    //2차 카테고리 불러오기
     cateSelect() {
       if (this.cate1 == null) {
         alert("1차 카테고리를 선택해 주세요.");
@@ -776,14 +804,11 @@ export default {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        //params: { crtPage: this.crtPage, keyword: this.keyword }, //get방식 파라미터로 값이 전달
         data: formData, //이경우는 json이 아님
 
         responseType: "json", //수신타입
       })
         .then((response) => {
-          console.log(response.data.apiData); //수신데이타
-
           // 서버로부터 응답받은 데이터에서 이미지 saveName을 추출합니다.
           const saveName = response.data.apiData; // 예를 들어, 응답 데이터에 이미지 URL이 result 키에 위치한다고 가정합니다.
           // saveName 으로 imageUrl 을 만듭니다.
@@ -808,7 +833,7 @@ export default {
     this.cate();
     if (!(this.isAdd == 1)) {
       this.classShow();
-      this.ondaySchedule()
+      this.ondaySchedule();
     } else {
       this.classList(this.classVo.classType);
     }
