@@ -85,12 +85,12 @@
                 </div>
               </router-link>
               <img
-                src="../../assets/images/icon/header_icons/active_like.png"
+                src="../../assets/images/redheart.svg"
                 v-if="c.wish > 0"
                 v-on:click="whisPM(1, c.classNo, i)"
               />
               <img
-                src="../../assets/images/icon/header_icons/like.png"
+                src="../../assets/images/whiteheart.svg"
                 v-else
                 v-on:click="whisPM(2, c.classNo, i)"
               />
@@ -136,8 +136,10 @@ export default {
       classList: [],
       page: 0, //페이징용
 
-      // 카카오맵
+      // 카카오맵 포지션
       positions: [],
+
+      //기본좌표 강남
       latitude: 37.498287,
       longitude: 127.027064,
     };
@@ -165,47 +167,51 @@ export default {
      *  2 - 추가
      */
     whisPM(num, classNo, i) {
-      if (num == 1) {
-        axios({
-          method: "delete",
-          url: `${this.$store.state.apiBaseUrl}/odo/company/wish/${classNo}`,
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            Authorization: "Bearer " + this.$store.state.token,
-          },
-          responseType: "json",
-        })
-          .then((response) => {
-            if (response.data.result === "success") {
-              this.classList[i].wish = 0;
-            } else {
-              alert("통신오류");
-            }
+      if (this.$store.state.token != null) {
+        if (num == 1) {
+          axios({
+            method: "delete",
+            url: `${this.$store.state.apiBaseUrl}/odo/company/wish/${classNo}`,
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              Authorization: "Bearer " + this.$store.state.token,
+            },
+            responseType: "json",
           })
-          .catch((error) => {
-            console.log(error);
-          });
+            .then((response) => {
+              if (response.data.result === "success") {
+                this.classList[i].wish = 0;
+              } else {
+                alert("통신오류");
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          axios({
+            method: "post",
+            url: `${this.$store.state.apiBaseUrl}/odo/company/wish/${classNo}`,
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              Authorization: "Bearer " + this.$store.state.token,
+            },
+            responseType: "json",
+          })
+            .then((response) => {
+              if (response.data.result === "success") {
+                this.classList[i].wish = 1;
+                console.log("추가되었습니다.");
+              } else {
+                alert("통신오류");
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
       } else {
-        axios({
-          method: "post",
-          url: `${this.$store.state.apiBaseUrl}/odo/company/wish/${classNo}`,
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            Authorization: "Bearer " + this.$store.state.token,
-          },
-          responseType: "json",
-        })
-          .then((response) => {
-            if (response.data.result === "success") {
-              this.classList[i].wish = 1;
-              console.log("추가되었습니다.");
-            } else {
-              alert("통신오류");
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        alert("로그인후 이용가능")
       }
     },
     paging() {
@@ -261,7 +267,7 @@ export default {
                 //포지션 추가
                 this.positions.push({
                   title: list.className,
-                  lating: new kakao.maps.LatLng(
+                  latlng: new kakao.maps.LatLng(
                     list.classLatitude,
                     list.classLongitutde
                   ),
@@ -362,24 +368,26 @@ export default {
       //   },
       // ];
 
-      // this.positions.forEach(function (pos) {
-      //   var marker = new kakao.maps.Marker({
-      //     title: pos.title,
-      //     position: pos.latlng,
-      //   });
-
-      //   marker.setMap(this.map);
-      // });
-      for (var i = 0; i < this.positions.length; i++) {
-        // 마커를 생성합니다
+      console.log("==================================")
+      this.positions.forEach(function (pos) {
+        console.log(pos)
         var marker = new kakao.maps.Marker({
-          // map: this.displayMap().map, // 마커를 표시할 지도
-          position: this.positions[i].latlng, // 마커를 표시할 위치
-          title: this.positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-          // image: markerImage, // 마커 이미지
+          title: pos.title,
+          position: pos.latlng,
         });
+        console.log(marker);
         marker.setMap(this.map);
-      }
+      });
+      // for (var i = 0; i < this.positions.length; i++) {
+      //   // 마커를 생성합니다
+      //   var marker = new kakao.maps.Marker({
+      //     // map: this.displayMap().map, // 마커를 표시할 지도
+      //     position: this.positions[i].latlng, // 마커를 표시할 위치
+      //     title: this.positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+      //     // image: markerImage, // 마커 이미지
+      //   });
+      //   marker.setMap(this.map);
+      // }
     },
   },
   created() {
