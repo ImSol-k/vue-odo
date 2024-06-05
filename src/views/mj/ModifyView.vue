@@ -2,60 +2,80 @@
   
 <AppHeader />
 <!-- AppHeader -->
+
 <div class="wrap">
+
   <MyPageHeader />
   <!-- MyPageHeader -->
+
   <div class="modify-main clearfix">
+
     <MyPageSide />
     <!-- MyPageSide -->
+
     <div class="modifyContent clearfix">
       
       <!-- 오른쪽내용영역 -->
+
       <div class="modify-head">
         <span>정보수정</span>
       </div>
-      <form @submit.prevent="modify">
+      <!-- modify-head -->
+
+      <form @submit.prevent="modifyUser" enctype="multipart/form-data">
         <div class="MpRight" style="overflow: hidden">
-          <img class="profile" src="@/assets/images/icon/header_icons/my.png" />
-          <div id="p-box">
-            <input type="file" name="" id="pic" />
+          
+            <label for="file">
+              <img v-if="userVo.userImage == null" :src="prevImg">
+              <img v-else class="profile" :src="`${this.$store.state.apiBaseUrl}/upload/${userVo.userImage}`">
+            </label>
+            <br>
+            <div id="p-box">
+              <input class="upload-name" v-model="fileName" placeholder="선택된 파일이 없습니다" readonly>
+              <label for="file">파일찾기</label>
+              <input type="file" name="file" id="file" @change="getfile">
+            </div>
+          
+          <br>
+          <div class="area">
+            <label for="name">이름</label>
+            <div><input type="text" id="name" name="userVo.userName" v-model="userVo.userName"></div>
           </div>
           <div class="area">
-            <label>닉네임</label>
-            <div><input type="text" id="nickname" name="usernickname" v-model="userVo.name" /></div>
+            <label for="nickname">닉네임</label>
+            <div><input type="text" id="nickname" name="userVo.userNickname" v-model="userVo.userNickname"></div>
           </div>
           <div class="area">
-            <label>휴대폰번호</label>
-            <div><input type="text" id="hp" name="userhp" v-model="userVo.hp" /></div>
+            <label for="hp">휴대폰번호</label>
+            <div><input type="text" id="hp" name="userVo.userHp" v-model="userVo.userHp"></div>
           </div>
           <div class="area">
-            <label>이메일</label>
-            <div><input type="text" id="e-mail" name="useremail" v-model="userVo.email" /></div>
+            <label for="e-mail">이메일</label>
+            <div><input type="text" id="e-mail" name="userVo.userEmail" v-model="userVo.userEmail"></div>
           </div>
           <div class="area">
-            <label>비밀번호</label>
-            <div><input type="password" id="password" name="userpw" v-model="required" /></div>
+            <label for="birth">생년월일</label>
+            <div><input type="text" id="birth" name="userbirth" disabled :value="formatDate(userVo.userBirth)"></div>
           </div>
           <div class="area">
-            <label>생년월일</label>
-            <div><input type="text" id="birth" name="userbirth" disabled v-model="userVo.birth" /></div>
-          </div>
-          <div class="area">
-            <label>성별</label>
-            <div><input type="text" id="gender" name="usergender" disabled placeholder="여자" v-model="required" /></div>
+            <label for="gender">성별</label>
+            <div><input type="text" id="gender" name="usergender" disabled :value="checkGender(userVo.userGender)"></div>
           </div>
           <div class="userModifyBtn">
-            <button type="reset">취소</button>
+            <button type="button" @click.prevent="goMypage">취소</button>
             <button  @click="goModify">저장</button>
           </div>
         </div>
       </form>
+      <!-- //수정폼 -->
     </div>
-    <!-- modifyContent -->
+    <!-- //modifyContent -->
+
   </div>
-  <!-- clearfix -->
+  <!-- //modify-main -->
+
 </div>
-<!-- wrap -->
+<!-- //wrap -->
   
 <AppFooter />
 <!-- 푸터 -->
@@ -70,7 +90,7 @@ import AppHeader from "@/components/AppHeader.vue";
 import MyPageSide from "@/components/MyPageSide.vue";
 import MyPageHeader from "@/components/MyPageHeader.vue";
 import axios from 'axios';
-
+import moment from "moment";
 
 export default {
   name: "ModifyView",
@@ -83,37 +103,86 @@ export default {
   data() {
     return {
       userVo: {
-        name: "이미지",
-        hp: "010-5443-5432",
-        email: "sss@fds.fds",
-        birth: "990523"
-      }
+        userNo : '',
+        userName : '',
+        userNickname : '',
+        userEmail : '',
+        userImage : '',
+        userType : '',
+        userBirth : '',
+        userId : '',
+        userGender : '',
+      },
+      file : '',
+      fileName : null,
+      prevImg : require('@/assets/images/icon/ss/default-profile.png')
     };
   },
   methods: {
-    modify() {
-     axios({
-       method: 'post', // put, post, delete
-       url: `${this.$store.state.apiBaseUrl}/odo/mypage/modify`,
-       headers: { "Content-Type": "application/json; charset=utf-8","Autorization":"Bearer"+this.$store.state },
-       data: this.userVo,
-       responseType: 'json'
-     }).then(response => {
-         console.log(response);
-        alert("수정되었습니다.");
+    modifyUser(){
+      const formData = new FormData();
+      if(this.file == ''){
+        console.log('파일 없음');
+      } else {
+        formData.append('file', this.file);
+      }
 
-         //수신데이타
-       }).catch(error => {
-         console.log(error);
-       });
-      },
-        goModify(){ 
+      formData.append('');
+
+    },
+
+
+    getUserInfo(){
+      axios({
+				method: 'get',
+				url: `${this.$store.state.apiBaseUrl}/odo/ss/modify`,
+				headers: { 'Content-Type': 'application/json; charset=utf-8',
+							'Authorization' : 'Bearer ' + this.$store.state.token
+				},
+        params : {userNo : this.$store.state.authUser.userNo},
+				responseType: 'json'
+			}).then(response => {
+        this.userVo = response.data.apiData;
+        console.log(this.userVo);
+			}).catch(error => {
+				console.log(error);
+			});
+    },
+    checkGender(type){
+      if(type == 'male'){
+        return '남자';
+      } else {
+        return '여자';
+      }
+    },
+    formatDate(date){
+      return moment(date).format('YYYY년 MM월 DD일');
+    },
+    goMypage(){
       this.$router.push('/mypage/pay');
     },
-  },
-    created() {
+    getfile(event){
+      this.file = event.target.files[0];
+      const READER = new FileReader();
 
+      READER.onload = (e) => {
+        this.prevImg = e.target.result;
+      }
+      if(this.file){
+        READER.readAsDataURL(this.file);
+      }
+      if(this.file != null){
+        this.fileName = this.file.name;
+      } else {
+        this.fileName = '';
+      }
     }
+
+
+  },
+  created() {
+    this.getUserInfo();
+  }
 };
 </script>
 
