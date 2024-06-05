@@ -138,8 +138,8 @@ export default {
 
       // 카카오맵
       positions: [],
-      latitude: "",
-      longitude: "",
+      latitude: 37.498287,
+      longitude: 127.027064,
     };
   },
   mounted() {
@@ -323,12 +323,12 @@ export default {
           (error) => {
             console.error("Error occurred. Error code: " + error.code);
             // 기본 위치로 강남
-            this.displayMap(37.498287, 127.027064);
+            this.displayMap(this.latitude, this.longitude);
           }
         );
       } else {
         // Geolocation을 지원하지 않으면 기본 위치 강남
-        this.displayMap(37.498287, 127.027064);
+        this.displayMap(this.latitude, this.longitude);
       }
     },
     displayMap(latitude, longitude) {
