@@ -16,9 +16,12 @@
 							<p v-if="this.classDetailVo.classPrice != 0">{{
 					Number(this.classDetailVo.classPrice).toLocaleString('ko-KR') }}<span>원</span></p>
 							<p v-else>무료</p>
-							<router-link to="" class="class-like-btn">
+							<div v-if="this.classDetailVo.wish == 1" class="class-like-btn red">
+								<img src="../../assets/images/redheart.svg" alt="">
+							</div>
+							<div v-else class="class-like-btn">
 								<img src="../../assets/images/black_heart_icon.svg" alt="">
-							</router-link>
+							</div>
 						</div>
 					</div>
 
@@ -56,9 +59,12 @@
 								<span>찜 {{ this.cMap.comWishCnt }}</span>
 							</p>
 						</router-link>
-						<router-link to="" class="company-like-btn">
+						<div v-if="this.companyInfo.cWish == 1" class="company-like-btn red">
+							<img src="../../assets/images/redheart.svg" alt="">
+						</div>
+						<div v-else class="company-like-btn">
 							<img src="../../assets/images/black_heart_icon.svg" alt="">
-						</router-link>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -205,23 +211,64 @@ export default {
 		},
 		getClassDetail() {
 
-			axios({
-				method: 'get', // put, post, delete
-				url: 'http://localhost:9090/odo/classdetails',
-				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
-				params: { classNo: this.$route.params.classNo }, //get방식 파라미터로 값이 전달
-				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
-				responseType: 'json' //수신타입
-			}).then(response => {
-				this.cMap = response.data.apiData;
-				this.classDetailVo = this.cMap.classDetailVo;
-				this.companyInfo = this.cMap.companyInfo;
-				this.classReviewList = this.cMap.classReviewList;
-				this.schList = this.cMap.schList;
+			// 비로그인
+			if (this.$store.state.authUser == "" && this.$store.state.token == "") {
+				axios({
+					method: 'get', // put, post, delete
+					url: 'http://localhost:9090/odo/classdetails',
+					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+					params: { classNo: this.$route.params.classNo }, //get방식 파라미터로 값이 전달
+					//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+					responseType: 'json' //수신타입
+				}).then(response => {
+					// 비우고
+					this.cMap = null;
+					this.classDetailVo = null;
+					this.companyInfo = null;
+					this.classReviewList = null;
+					this.schList = null;
+					// 넣기
+					this.cMap = response.data.apiData;
+					this.classDetailVo = this.cMap.classDetailVo;
+					this.companyInfo = this.cMap.companyInfo;
+					this.classReviewList = this.cMap.classReviewList;
+					this.schList = this.cMap.schList;
+	
+				}).catch(error => {
+					console.log(error);
+				});
 
-			}).catch(error => {
-				console.log(error);
-			});
+				// 로그인
+			} else {
+				axios({
+					method: 'get', // put, post, delete
+					url: 'http://localhost:9090/odo/classdetails/users',
+					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+					params: {
+						userNo: this.$store.state.authUser.userNo,
+						classNo: this.$route.params.classNo
+					}, //get방식 파라미터로 값이 전달
+					//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+					responseType: 'json' //수신타입
+				}).then(response => {
+					// 비우고
+					this.cMap = null;
+					this.classDetailVo = null;
+					this.companyInfo = null;
+					this.classReviewList = null;
+					this.schList = null;
+					// 넣기
+					this.cMap = response.data.apiData;
+					this.classDetailVo = this.cMap.classDetailVo;
+					this.companyInfo = this.cMap.companyInfo;
+					this.classReviewList = this.cMap.classReviewList;
+					this.schList = this.cMap.schList;
+	
+				}).catch(error => {
+					console.log(error);
+				});
+
+			}
 
 		},
 		// 지도
