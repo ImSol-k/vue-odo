@@ -44,7 +44,7 @@
                       >{{ c.className }}</router-link
                     >
                   </p>
-                  <p>
+                  <p v-if="isClass != 1">
                     {{ c.startDate }}
                     <span v-if="isClass != 1">~ {{ c.endDate }}</span>
                   </p>
@@ -54,20 +54,20 @@
                       <router-link
                         v-if="isClass == 1"
                         class="classRouterLink"
-                        :to="`/membermanager/1/${c.scheduleNo}/${c.className}`"
+                        :to="`/membermanager/1/${c.scheduleNo}/${c.className}/${c.classNo}`"
                       >
                         예약확인
                       </router-link>
                       <router-link
                         v-else-if="isClass == 2"
                         class="classRouterLink"
-                        :to="`/membermanager/2/${c.scheduleNo}/${c.className}`"
+                        :to="`/membermanager/2/${c.scheduleNo}/${c.className}/${c.classNo}`"
                         >회원관리</router-link
                       >
                       <router-link
                         v-else
                         class="classRouterLink"
-                        :to="`/membermanager/3/${c.scheduleNo}/${c.className}`"
+                        :to="`/membermanager/3/${c.scheduleNo}/${c.className}/${c.classNo}`"
                         >회원관리</router-link
                       >
                       <router-link class="classRouterLink" to="/classadd/2">
@@ -156,7 +156,7 @@ export default {
         headers: { "Content-Type": "application/json; charset=utf-8" },
         params: {
           classType: this.isClass,
-          companyNo: this.companyNo,
+          companyNo: this.companyNo
         },
         responseType: "json",
       })

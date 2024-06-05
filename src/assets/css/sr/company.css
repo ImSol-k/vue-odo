@@ -212,6 +212,9 @@ align-items: center; 세로가운데정렬
   margin: 10px 20px 10px 20px;
   width: 780px;
 }
+.memberListTitle>select{
+  width: 200px;
+}
 .companyInfoClassList > p {
   border-bottom: 1px solid #d9d9d9;
   padding: 5px 10px;

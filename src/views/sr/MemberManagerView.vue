@@ -11,13 +11,17 @@
       <div class="companyInfoClassList" v-if="classType == 1">
         <div class="memberListTitle">
           <p>{{ this.$route.params.name }}</p>
-          <input
+          <select name="" id="" @change="">
+            <option disabled selected>일정선택하기</option>
+            <option v-for="(date, i) in dateList" :key="i" :value="date.scheduleNo" >{{ date.start }}</option>
+          </select>
+          <!-- <input
             class="memberVueDatePicker"
             type="date"
             v-model="datepick"
             name=""
             id=""
-          />
+          /> -->
           <!-- <VueDatePicker
             class="memberVueDatePicker"
             locale="ko"
@@ -226,15 +230,39 @@ export default {
         "-" +
         new Date().getDate(),
       mList: [],
+      scheduleNo: this.$route.params.no,
+      classNo: this.$route.params.cno,
+      dateList: []
     };
   },
   methods: {
+    //원데이일정 불러오기
+    ondaySchedule() {
+      axios({
+        method: "get",
+        url: `${this.$store.state.apiBaseUrl}/odo/company/one/${this.classNo}`, //SpringBoot주소
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+        responseType: "json",
+      })
+        .then((response) => {
+          console.log(response.data.apiData); //수신데이터
+          this.dateList = response.data.apiData;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     memberList() {
       console.log("회원불러오기");
       axios({
         method: "get",
-        url: `${this.$store.state.apiBaseUrl}/odo/company/member/${this.$route.params.type}/${this.$route.params.no}`, //SpringBoot주소
+        url: `${this.$store.state.apiBaseUrl}/odo/company/member`, //SpringBoot주소
         headers: { "Content-Type": "application/json; charset=utf-8" },
+        params: {
+          classType: this.$route.params.type,
+          scheduleNo: this.$route.params.no,
+          classNo: this.classNo,
+        },
         responseType: "json",
       })
         .then((response) => {
@@ -296,6 +324,7 @@ export default {
   },
   created() {
     this.memberList();
+    this.ondaySchedule();
   },
 };
 </script>
