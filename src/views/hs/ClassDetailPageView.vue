@@ -16,7 +16,8 @@
 							<p v-if="this.classDetailVo.classPrice != 0">{{
 					Number(this.classDetailVo.classPrice).toLocaleString('ko-KR') }}<span>원</span></p>
 							<p v-else>무료</p>
-							<div v-if="this.classDetailVo.wish == 1" class="class-like-btn red" @click="minusWish(this.classDetailVo.wClassNo)">
+							<div v-if="this.classDetailVo.wish == 1" class="class-like-btn red"
+								@click="minusWish(this.classDetailVo.wClassNo)">
 								<img src="../../assets/images/redheart.svg" alt="">
 							</div>
 							<div v-else class="class-like-btn" @click="plusWish">
@@ -58,10 +59,10 @@
 								<span>찜 {{ this.cMap.comWishCnt }}</span>
 							</p>
 						</router-link>
-						<div v-if="this.companyInfo.cWish == 1" class="company-like-btn red">
+						<div v-if="this.companyInfo.cWish == 1" class="company-like-btn red" @click="minusComWish(this.companyInfo.wCompanyNo)">
 							<img src="../../assets/images/redheart.svg" alt="">
 						</div>
-						<div v-else class="company-like-btn">
+						<div v-else class="company-like-btn" @click="plusComWish(this.classDetailVo.companyNo)">
 							<img src="../../assets/images/black_heart_icon.svg" alt="">
 						</div>
 					</div>
@@ -173,6 +174,47 @@ export default {
 		}
 	},
 	methods: {
+		minusComWish(wCompanyNo){
+			this.wishVo.classNo = wCompanyNo;
+			this.wishVo.userNo = this.$store.state.authUser.userNo;
+
+			axios({
+				method: 'delete', // put, post, delete
+				url: 'http://localhost:9090/odo/comwishes',
+				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+				//params: guestbookVo, //get방식 파라미터로 값이 전달
+				data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+				responseType: 'json' //수신타입
+			}).then(response => {
+				console.log(response.data.apiData);
+				this.getClassDetail();
+
+			}).catch(error => {
+				console.log(error);
+			});
+
+		},
+		plusComWish(companyNo) {
+
+			this.wishVo.classNo = companyNo;
+			this.wishVo.userNo = this.$store.state.authUser.userNo;
+
+			axios({
+				method: 'post', // put, post, delete
+				url: 'http://localhost:9090/odo/comwishes',
+				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+				//params: guestbookVo, //get방식 파라미터로 값이 전달
+				data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+				responseType: 'json' //수신타입
+			}).then(response => {
+				console.log(response.data.apiData);
+				this.getClassDetail();
+
+			}).catch(error => {
+				console.log(error);
+			});
+
+		},
 		minusWish(wClassNo) {
 
 			this.wishVo.classNo = wClassNo;
