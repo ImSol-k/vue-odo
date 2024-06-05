@@ -74,7 +74,7 @@
 						<router-link :to="`/classdetailpage/${fbList.classNo}`">
 							<div class="img-box">
 								<img :src="`${this.$store.state.apiBaseUrl}/upload/${fbList.classImg}`" alt="">
-								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt="">
+								<div @click.prevent="plusWish(fbList.classNo)"><img src="../../assets/images/whiteheart.svg" alt="">
 								</div>
 							</div>
 							<p class="location">{{ fbList.classNameAdd }}</p>
@@ -110,7 +110,7 @@
 						<router-link :to="`/classdetailpage/${pbList.classNo}`">
 							<div class="img-box">
 								<img :src="`${this.$store.state.apiBaseUrl}/upload/${pbList.classImg}`" alt="">
-								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt="">
+								<div @click.prevent="plusWish(pbList.classNo)"><img src="../../assets/images/whiteheart.svg" alt="">
 								</div>
 							</div>
 							<p class="location">{{ pbList.classNameAdd }}</p>
@@ -145,7 +145,7 @@
 						<router-link :to="`/classdetailpage/${nList.classNo}`">
 							<div class="img-box">
 								<img :src="`${this.$store.state.apiBaseUrl}/upload/${nList.classImg}`" alt="">
-								<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt="">
+								<div @click.prevent="plusWish(nList.classNo)"><img src="../../assets/images/whiteheart.svg" alt="">
 								</div>
 							</div>
 							<p class="location">{{ nList.classNameAdd }}</p>
@@ -188,7 +188,7 @@
 								<div v-if="fbList.wish == 1" @click.prevent="minusWish(fbList.wClassNo)">
 									<img src="../../assets/images/redheart.svg" alt="">
 								</div>
-								<div v-else  @click.prevent="plusWish">
+								<div v-else  @click.prevent="plusWish(fbList.classNo)">
 									<img src="../../assets/images/whiteheart.svg" alt="">
 								</div>
 							</div>
@@ -228,7 +228,7 @@
 								<div v-if="pbList.wish == 1" @click.prevent="minusWish(pbList.wClassNo)">
 									<img src="../../assets/images/redheart.svg" alt="">
 								</div>
-								<div v-else  @click.prevent="plusWish">
+								<div v-else  @click.prevent="plusWish(pbList.classNo)">
 									<img src="../../assets/images/whiteheart.svg" alt="">
 								</div>
 							</div>
@@ -267,7 +267,7 @@
 								<div v-if="nList.wish == 1" @click.prevent="minusWish(nList.wClassNo)">
 									<img src="../../assets/images/redheart.svg" alt="">
 								</div>
-								<div v-else  @click.prevent="plusWish">
+								<div v-else  @click.prevent="plusWish(nList.classNo)">
 									<img src="../../assets/images/whiteheart.svg" alt="">
 								</div>
 							</div>
@@ -333,13 +333,17 @@ export default defineComponent({
 		return {
 			slides: [main_slide_1, main_slide_2, main_slide_3, main_slide_4, main_slide_5],
 			listOfLists: [],
+			wishVo: {
+				userNo: null,
+				classNo: null
+			}
 		};
 	},
 	methods: {
 		minusWish(wClassNo) {
 			console.log(wClassNo);
 		},
-		plusWish() {
+		plusWish(classNo) {
 			if (this.$store.state.authUser == null && this.$store.state.token == null) {
 
 				Swal.fire({
@@ -364,7 +368,21 @@ export default defineComponent({
 
 			} else {
 				//userNo, classNo 넘기기 axios
-				console.log("asdf");
+				this.wishVo.classNo = classNo;
+				this.wishVo.userNo = this.$store.state.authUser.userNo;
+
+				axios({
+					method: 'post', // put, post, delete
+					url: 'http://localhost:9090/odo/wishes',
+					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+					//params: guestbookVo, //get방식 파라미터로 값이 전달
+					data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+					responseType: 'json' //수신타입
+				}).then(response => {
+					console.log(response.data.apiData);
+				}).catch(error => {
+					console.log(error);
+				});
 
 			}
 		},
