@@ -175,6 +175,10 @@ export default {
 			],
 			cateList: [],
 			pMap: {},
+			wishVo: {
+				userNo: null,
+				classNo: null
+			}
 		};
 	},
 	computed: {
@@ -227,7 +231,7 @@ export default {
 					responseType: 'json' //수신타입
 				}).then(response => {
 					console.log(response.data.apiData);
-					this.getLists();
+					this.getcate2List();
 
 				}).catch(error => {
 					console.log(error);
