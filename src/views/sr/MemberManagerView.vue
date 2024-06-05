@@ -11,7 +11,7 @@
       <div class="companyInfoClassList" v-if="classType == 1">
         <div class="memberListTitle">
           <p>{{ this.$route.params.name }}</p>
-          <select name="" id="" @change="">
+          <select name="" id="" @change="memberList">
             <option disabled selected>일정선택하기</option>
             <option v-for="(date, i) in dateList" :key="i" :value="date.scheduleNo" >{{ date.start }}</option>
           </select>
