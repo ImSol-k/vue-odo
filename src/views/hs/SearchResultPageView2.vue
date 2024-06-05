@@ -190,8 +190,8 @@ export default {
 		minusWish(wClassNo) {
 			console.log(wClassNo);
 		},
-		plusWish() {
-			if (this.$store.state.authUser == '' && this.$store.state.token == '') {
+		plusWish(classNo) {
+			if (this.$store.state.authUser == null && this.$store.state.token == null) {
 
 				Swal.fire({
 					title: "로그인 후 이용 가능합니다.",
@@ -215,10 +215,25 @@ export default {
 
 			} else {
 				//userNo, classNo 넘기기 axios
-				console.log("asdf");
+				this.wishVo.classNo = classNo;
+				this.wishVo.userNo = this.$store.state.authUser.userNo;
+
+				axios({
+					method: 'post', // put, post, delete
+					url: 'http://localhost:9090/odo/wishes',
+					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+					//params: guestbookVo, //get방식 파라미터로 값이 전달
+					data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+					responseType: 'json' //수신타입
+				}).then(response => {
+					console.log(response.data.apiData);
+					this.getLists();
+
+				}).catch(error => {
+					console.log(error);
+				});
 
 			}
-
 		},
 		toggleCateBox() {
 			this.isCateOpen = !this.isCateOpen;
