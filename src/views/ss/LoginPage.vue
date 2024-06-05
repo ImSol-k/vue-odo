@@ -42,7 +42,7 @@
       <span class="other-login">다른 방식으로 로그인</span>
       <!-- https://henniee.tistory.com/219 -->
       <img @click="kakaoLogin" class="kakao-login" src="@/assets/images/icon/ss/kakao_login_medium.png" />
-      <img @click="naverLogin" class="naver-login" src="@/assets/images/icon/ss/naver_login2.png" />
+      <!-- <img @click="naverLogin" class="naver-login" src="@/assets/images/icon/ss/naver_login2.png" /> -->
     </div>
     <!-- lj-form -->
   </div>
@@ -97,15 +97,15 @@ export default {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // 네이버 로그인 버튼 눌렀을때
-    naverLogin(){
-      window.location.replace('https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=G0qt69ejziDW7itLBej_&redirect_uri=http://localhost:8080/naverlogin&state=odo_login');
-    },
+    // naverLogin(){
+    //   window.location.replace('https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=G0qt69ejziDW7itLBej_&redirect_uri=http://localhost:8080/naverlogin&state=odo_login');
+    // },
 
     // 카카오 로그인 버튼 눌렀을 때
     kakaoLogin(){
       window.Kakao.Auth.authorize({
         redirectUri : 'http://localhost:8080/login/user',
-        prompt : 'login'
+        // prompt : 'login'
       })
     },
 
@@ -142,7 +142,7 @@ export default {
         data : scope,
 				responseType: 'json'
 			}).then(response => {
-        console.log('받아온 유저정보: '+response);
+        // console.log('받아온 유저정보: '+response);
         if(response.status === 200){
           // console.log('토큰에서 아이디 출력 : '+response.data.id);
           // console.log('액세스토큰 : '+ access_token);
