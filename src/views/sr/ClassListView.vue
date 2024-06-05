@@ -6,8 +6,8 @@
         <p v-if="isFind == 1">"{{ keyword }}"검색결과</p>
         <p v-else>주변클래스</p>
         <button v-on:click="MapOnOff">
-          <span v-if="!isMap">지도로보기</span>
-          <span v-else>리스트로보기</span>
+          <span v-if="!isMap">지도로 보기</span>
+          <span v-else>리스트로 보기</span>
         </button>
         <div class="classTypeSelect">
           <select name="" id="" v-model="type" @change="classType">
