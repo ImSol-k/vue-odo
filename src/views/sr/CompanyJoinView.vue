@@ -205,6 +205,9 @@ export default {
     };
   },
   methods: {
+    /********************************************************************
+     * 사업자 회원가입
+     */
     companyJoin() {
       console.log("companyJoin");
 
@@ -273,6 +276,10 @@ export default {
         }
       }
     },
+
+    /********************************************************************
+     * 사업자번호 인증API
+     */
     businessNumber() {
       console.log("businessNumber");
       const data = { b_no: [this.companyVo.companyBn] };
@@ -310,8 +317,11 @@ export default {
           this.isBn = false;
         });
     },
+
+    /********************************************************************
+     * 사업자가입시 아이디 중복체크
+     */
     companyIdChack() {
-      console.log("아이디 중복체크: " + this.companyVo.companyId);
       if (
         this.companyVo.companyId.length >= 5 &&
         this.companyVo.companyId.length <= 12
@@ -340,8 +350,11 @@ export default {
         alert("길이가 너무 길거나 짧습니다.");
       }
     },
+
+    /********************************************************************
+     * 회사 이미지 업로드
+     */
     imgFile(event) {
-      console.log("이미지업로드");
       this.companyVo.companyImage = event.target.files[0];
 
       console.log(this.companyVo.companyImage);
@@ -355,6 +368,10 @@ export default {
         reader.readAsDataURL(this.companyVo.companyImage);
       }
     },
+
+    /********************************************************************
+     * 주소API
+     */
     DaumPostcode() {
       new window.daum.Postcode({
         oncomplete: (data) => {

@@ -143,6 +143,10 @@ export default {
     };
   },
   mounted() {
+
+    /********************************************************************
+     * 카카오맵
+     */
     if (window.kakao && window.kakao.maps) {
       this.initMap();
     } else {
@@ -155,10 +159,13 @@ export default {
     }
   },
   methods: {
+    /********************************************************************
+     * 위시 추가/ 삭제
+     *  1 - 삭제
+     *  2 - 추가
+     */
     whisPM(num, classNo, i) {
-      //1이면 삭제 2면 추가
       if (num == 1) {
-        console.log("위시삭제: " + classNo); //위시삭제 ============================
         axios({
           method: "delete",
           url: `${this.$store.state.apiBaseUrl}/odo/company/wish/${classNo}`,
@@ -171,7 +178,6 @@ export default {
           .then((response) => {
             if (response.data.result === "success") {
               this.classList[i].wish = 0;
-              console.log("삭제되었습니다.");
             } else {
               alert("통신오류");
             }
@@ -180,7 +186,6 @@ export default {
             console.log(error);
           });
       } else {
-        console.log("위시추가: " + classNo); //위시추가 ============================
         axios({
           method: "post",
           url: `${this.$store.state.apiBaseUrl}/odo/company/wish/${classNo}`,
@@ -207,29 +212,17 @@ export default {
       this.page++;
       this.classType();
     },
-    // headerKeyword(keyword) {
-    //   console.log("키워드로 검색: " + keyword);
-    //   this.classList = [];
-    //   this.keyword = keyword;
-    //   this.isFind = 1;
-    //   this.classType();
-    // },
+
+    /********************************************************************
+     * 클래스 리스트 불러오기
+     * isFind == 1 > 키워드검색
+     * siFind == 2 > 주변클래스찾기
+     */
     classType() {
       if (this.page == 1) {
         this.classList = [];
       }
-      let vo = {
-        userNo: this.$store.state.authUser.userNo,
-            isFind: this.isFind,
-            keyword: this.keyword,
-            classType: this.type,
-            page: this.page,
-            classLatitude: this.latitude,
-            classLongitutde: this.longitude,
-      }
-      console.log(vo);
       if (this.keyword != "") {
-        console.log("키워드: " + this.keyword);
         axios({
           method: "get",
           url: `${this.$store.state.apiBaseUrl}/odo/company/classlist`, //SpringBoot주소
@@ -252,12 +245,6 @@ export default {
               response.data.apiData != null
             ) {
               this.classList.push(...response.data.apiData);
-              /*
-              console.log("==================================");
-              console.log(response.data.apiData);
-              console.log(this.positions);
-              console.log("==================================");
-              */
               this.classList.forEach((list) => {
                 let temp = list.classNameAddress.split(" ");
                 list.classNameAddress = temp[0];
@@ -280,17 +267,11 @@ export default {
                   ),
                 });
 
-                // console.log(list.className);
               });
               this.displayMap(
                 this.classList[0].classLatitude,
                 this.classList[0].classLongitutde
               );
-              // if (this.isMap) {
-              //   this.$nextTick(() => {
-              //     this.initMap();
-              //   })
-              // }
             } else {
               console.log("검색정보 없음");
             }
@@ -300,7 +281,10 @@ export default {
           });
       }
     },
-    //지도
+
+    /********************************************************************
+     * 지도 on/off
+     */
     MapOnOff() {
       this.isMap = !this.isMap;
 
@@ -311,7 +295,12 @@ export default {
         });
       }
     },
+
+    /********************************************************************
+     * 카카오 맵관련 메소드
+     */
     initMap() {
+
       //현재위치 얻어오기
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -321,8 +310,8 @@ export default {
             this.displayMap(this.latitude, this.longitude);
           },
           (error) => {
+            // 현재위치 못얻어올떄 기본 위치 강남
             console.error("Error occurred. Error code: " + error.code);
-            // 기본 위치로 강남
             this.displayMap(this.latitude, this.longitude);
           }
         );
@@ -338,14 +327,12 @@ export default {
           center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
           level: 3, // 지도의 확대 레벨
         };
-      // console.log("map: " + mapContainer);
       //지도생성
       this.map = new kakao.maps.Map(mapContainer, mapOption);
       //객체생성
       var geocoder = new kakao.maps.services.Geocoder();
       var coord = new kakao.maps.LatLng(latitude, longitude);
 
-      console.log("isFind: " + this.isFind);
       if (this.isFind == "2") {
         var callback = function (result, status) {
           console.log(status); // 상태를 확인하는 로그
@@ -357,8 +344,6 @@ export default {
               pos = pos.replace(/-|1|2|3|4|5|6|7|8|9|0/g, "");
               pos = pos.split(" ");
               this.keyword = pos[1];
-              // console.log("Road Address: " + this.keyword);
-              // this.classType();
             } else {
               console.error("Geocoding result is empty");
             }

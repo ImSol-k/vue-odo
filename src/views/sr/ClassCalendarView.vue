@@ -89,8 +89,11 @@ export default {
     };
   },
   methods: {
+
+    /********************************************************************
+     * 스케줄 불러오기
+     */
     getSchedule() {
-      console.log("스케줄 불러오기");
       axios({
         method: "get",
         url: `${this.$store.state.apiBaseUrl}/odo/company/getschedule/${this.$store.state.authCompany.companyNo}`,

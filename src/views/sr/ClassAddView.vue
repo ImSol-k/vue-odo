@@ -318,9 +318,7 @@ export default {
       cate1: [],
       cate2: [],
       classImage: "",
-      // companyNo: this.$store.state.authCompany.companyNo,
       classVo: {
-        // companyNo: Number(this.companyNum),
         cate1No: "",
         cate2No: "",
         className: "",
@@ -345,9 +343,16 @@ export default {
     };
   },
   methods: {
+    /********************************************************************
+     * 날짜형식 변환
+     */
     formatDate(date) {
       return moment(date).format(`YYYY-MM-DD HH:MM:SS`);
     },
+
+    /********************************************************************
+     * 원데이클래스 일정리스트 불러오기
+     */
     ondaySchedule() {
       axios({
         method: "get",
@@ -356,7 +361,6 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          console.log(response.data.apiData); //수신데이터
           for (let i = 0; i < response.data.apiData.length; i++){
             this.onedayDate[i] = response.data.apiData[i].start;
           }
@@ -365,6 +369,10 @@ export default {
           console.log(error);
         });
     },
+
+    /********************************************************************
+     * 클래스 수정
+     */
     classUpdate() {
       axios({
         method: "post",
@@ -381,6 +389,11 @@ export default {
           console.log(error);
         });
     },
+
+    /********************************************************************
+     * 클래스 추가/ 수정
+     * isAdd == 1 > 추가, isAdd == 2 > 수정
+     */
     classHandle() {
       const formData = new FormData();
       if (this.isAdd == 1) {
@@ -454,16 +467,13 @@ export default {
         alert("파일을 선택해주세요");
       } else {
         if (this.isAdd == 1) {
-          //클래스 추가
+          //클래스 추가 ==============
           console.log("클래스 추가");
-          // console.log(this.companyNum);
-          // console.log(this.classVo.classInfo);
           axios({
             method: "post",
             url: `${this.$store.state.apiBaseUrl}/odo/company/insert`,
             headers: {
               "Content-Type": "multipart/form-data",
-              // Authorization: "Bearer " + this.$store.state.token,
             },
             data: formData,
             responseType: "json",
@@ -475,15 +485,13 @@ export default {
               console.log(error);
             });
         } else {
-          //클래스 수정
+          //클래스 수정 =======================
           console.log("클래스 수정");
-          formData.append("classNo", this.classNo);
           axios({
             method: "put",
             url: `${this.$store.state.apiBaseUrl}/odo/company/update`,
             headers: {
               "Content-Type": "multipart/form-data",
-              // Authorization: "Bearer " + this.$store.state.token,
             },
             data: formData,
             responseType: "json",
@@ -497,11 +505,10 @@ export default {
         }
       }
     },
+    //이미지저장, 미리보기
     imgFile(event) {
-      console.log("이미지업로드");
       //이미지 저장
       this.classImage = event.target.files[0];
-      // console.log(this.classImage);
       //이미지 미리보기
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -513,10 +520,12 @@ export default {
       }
     },
 
-    //기존클래스
+    /********************************************************************
+     * 기존 클래스 리스트
+     */
     classList(type) {
-      console.log("기존클래스리스트");
 
+      //기존클래스 정보
       let tempVo = {
         type: type,
         no: this.companyNum,
@@ -545,7 +554,9 @@ export default {
         });
     },
 
-    //클래스 불러오기
+    /********************************************************************
+     * 수정할 클래스정보 불러오기
+     */
     classShow() {
       axios({
         method: "get",
@@ -580,7 +591,9 @@ export default {
         });
     },
 
-    //정규클래스 불러오기
+    /********************************************************************
+     * 정규클래스 리스트
+     */
     regularClass() {
       console.log("정규클래스");
       axios({
@@ -605,9 +618,10 @@ export default {
         });
     },
 
-    //카테고리 불러오기
+    /********************************************************************
+     * 카테고리불러오기
+     */
     cate() {
-      console.log("카테고리 불러오기");
       axios({
         method: "post",
         url: `${this.$store.state.apiBaseUrl}/odo/company/getcate`,
@@ -618,7 +632,6 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          // console.log(response.data.apiData);
           if (response.data.result == "success") {
             this.cate1 = response.data.apiData;
           } else {
@@ -630,9 +643,8 @@ export default {
           console.log(error);
         });
     },
-    //2차 카테고리 불러오기
+    //2차 카테고리 불러오기 
     cateSelect() {
-      console.log("2차 카테고리: " + this.classVo.cate1No);
       if (this.cate1 == null) {
         alert("1차 카테고리를 선택해 주세요.");
       } else {
@@ -646,7 +658,6 @@ export default {
           responseType: "json",
         })
           .then((response) => {
-            console.log(response.data);
             if (response.data.result == "success") {
               this.cate2 = response.data.apiData;
             } else {
@@ -659,8 +670,9 @@ export default {
           });
       }
     },
-
-    //주소
+    /********************************************************************
+     * 주소관련
+     */
     DaumPostcode() {
       new window.daum.Postcode({
         oncomplete: (data) => {
@@ -687,7 +699,9 @@ export default {
       }).open();
     },
 
-    //클래스 타입
+    /********************************************************************
+     * 클래스 타입 변경
+     */
     selectClass(num) {
       if (num == 1) {
         this.isClass = true;
@@ -703,7 +717,10 @@ export default {
         }
       }
     },
-    //캘린더
+
+    /********************************************************************
+     * 일정 추가삭제
+     */
     schedulClick(num, i) {
       this.onedayDate = this.onedayDate || [null];
       if (this.onedayDate.length >= 10) {
@@ -720,7 +737,10 @@ export default {
         }
       }
     },
-    //에디터 저장
+
+    /********************************************************************
+     * 에디터
+     */
     onEditorReady() {
       this.$nextTick(() => {
         // Quill 인스턴스를 가져옵니다.

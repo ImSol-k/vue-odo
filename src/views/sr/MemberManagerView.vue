@@ -3,9 +3,6 @@
   <div class="wrap">
     <div class="clearfix">
       <AppMenu />
-      <!-- <button v-on:click.prevent="asdf('원데이')">원데이</button>
-      <button v-on:click.prevent="asdf('정규')">정규</button>
-      <button v-on:click.prevent="asdf('상시')">상시</button> -->
 
       <!-- 원데이회원 -->
       <div class="companyInfoClassList" v-if="classType == 1">
@@ -15,19 +12,6 @@
             <option disabled selected value="일정선택하기">일정선택하기</option>
             <option v-for="(date, i) in dateList" :key="i" :value="date.scheduleNo" >{{ date.start }}</option>
           </select>
-          <!-- <input
-            class="memberVueDatePicker"
-            type="date"
-            v-model="datepick"
-            name=""
-            id=""
-          /> -->
-          <!-- <VueDatePicker
-            class="memberVueDatePicker"
-            locale="ko"
-            v-model="datepick"
-            :enable-time-picker="false"
-          /> -->
         </div>
 
         <div class="memberListTable" v-if="mList > 0">
@@ -82,12 +66,6 @@
             name=""
             id=""
           />
-          <!-- <VueDatePicker
-              class="memberVueDatePicker"
-              locale="ko"
-              v-model="datepick"
-              :enable-time-picker="false"
-            /> -->
         </div>
         <div class="memberListTable">
           <table>
@@ -131,12 +109,6 @@
             name=""
             id=""
           />
-          <!-- <VueDatePicker
-              class="memberVueDatePicker"
-              locale="ko"
-              v-model="datepick"
-              :enable-time-picker="false"
-            /> -->
         </div>
         <div class="memberListTable">
           <table>
@@ -239,7 +211,10 @@ export default {
     };
   },
   methods: {
-    //원데이일정 불러오기
+
+    /********************************************************************
+     * 원데이클래스 일정 불러오기
+     */
     ondaySchedule() {
       axios({
         method: "get",
@@ -255,8 +230,11 @@ export default {
           console.log(error);
         });
     },
+
+    /********************************************************************
+     * 회원리스트 불러오기
+     */
     memberList() {
-      console.log("회원불러오기");
       axios({
         method: "get",
         url: `${this.$store.state.apiBaseUrl}/odo/company/member`, //SpringBoot주소
@@ -276,11 +254,11 @@ export default {
           console.log(error);
         });
     },
-    getDate() {
-      console.log(this.datepick);
-    },
+
+    /********************************************************************
+     * 쿠폰 모달창
+     */
     coupon(state, user) {
-      console.log("쿠폰");
       this.userNo = user;
       if (state == 1) {
         this.isCoupon = true;
@@ -289,6 +267,10 @@ export default {
         this.isCoupon = false;
       }
     },
+
+    /********************************************************************
+     * 쿠폰지급
+     */
     setCoupon() {
       console.log(this.userNo);
       axios({
@@ -315,6 +297,10 @@ export default {
           console.log(error);
         });
     },
+
+    /********************************************************************
+     * 클래스 타입 변경
+     */
     asdf(c) {
       if (c === 1) {
         this.classType = 1;

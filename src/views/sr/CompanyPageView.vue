@@ -70,57 +70,19 @@
                         :to="`/membermanager/3/${c.scheduleNo}/${c.className}/${c.classNo}`"
                         >회원관리</router-link
                       >
-                      <router-link class="classRouterLink" :to="{ path: '/classadd/2', query:{no:c.classNo}}">
+                      <router-link
+                        class="classRouterLink"
+                        :to="{ path: '/classadd/2', query: { no: c.classNo } }"
+                      >
                         수정
                       </router-link>
                     </div>
-                    <span v-if="isClass != 1">인원수: {{ c.classMin }}/{{ c.classMax }}</span>
-                  </div>
-                </div>
-              </li>
-              <!-- 상시클래스 -->
-              <!-- <li v-else-if="isClass == 2">
-                <img src="@/assets/images/hs/main_slide_2.jpg" alt="" />
-                <div class="classListObj">
-                  <p>
-                    <router-link class="classRouterLink" to="/classdetailpage"
-                      >(정규)레모나클래스</router-link
-                    >
-                  </p>
-                  <p>2024/06/01~2024/07/30</p>
-                  <p>
-                    레모나 클레스 개강 종강일정 상세페이지 확인 설명글 설명글
-                    공간
-                  </p>
-                  <div class="classListOption">
-                    <router-link class="classRouterLink" to="/membermanager"
-                      >회원관리</router-link
-                    >
-                    <router-link class="classRouterLink" to="/classadd"
-                      >클래스수정</router-link
+                    <span v-if="isClass != 1"
+                      >인원수: {{ c.classMin }}/{{ c.classMax }}</span
                     >
                   </div>
                 </div>
               </li>
-              <li v-else>
-                <img src="@/assets/images/hs/main_slide_3.jpg" alt="" />
-                <div class="classListObj">
-                  <p>(상시)레모나클래스</p>
-                  <p>2024/03/01~2024/12/31</p>
-                  <p>
-                    레모나 클레스 개강 종강일정 상세페이지 확인 설명글 설명글
-                    공간
-                  </p>
-                  <div class="classListOption">
-                    <router-link class="classRouterLink" to="/membermanager"
-                      >회원관리</router-link
-                    >
-                    <router-link class="classRouterLink" to="/classadd"
-                      >수정</router-link
-                    >
-                  </div>
-                </div>
-              </li> -->
             </ul>
           </div>
         </div>
@@ -148,15 +110,18 @@ export default {
     };
   },
   methods: {
+
+    /********************************************************************
+     * 회사페이지 클래스 불러오기
+     */
     classTypeList() {
-      console.log("클래스불러오기: ");
       axios({
         method: "get",
         url: `${this.$store.state.apiBaseUrl}/odo/company/list`, //SpringBoot주소
         headers: { "Content-Type": "application/json; charset=utf-8" },
         params: {
           classType: this.isClass,
-          companyNo: this.companyNo
+          companyNo: this.companyNo,
         },
         responseType: "json",
       })
@@ -168,6 +133,10 @@ export default {
           console.log(error);
         });
     },
+
+    /********************************************************************
+     * 클래스 타입 변환
+     */
     selectClass(num) {
       //리스트 불러오기
       if (num == 1) {
