@@ -59,7 +59,8 @@
 								<span>찜 {{ this.cMap.comWishCnt }}</span>
 							</p>
 						</router-link>
-						<div v-if="this.companyInfo.cWish == 1" class="company-like-btn red" @click="minusComWish(this.companyInfo.wCompanyNo)">
+						<div v-if="this.companyInfo.cWish == 1" class="company-like-btn red"
+							@click="minusComWish(this.companyInfo.wCompanyNo)">
 							<img src="../../assets/images/redheart.svg" alt="">
 						</div>
 						<div v-else class="company-like-btn" @click="plusComWish(this.classDetailVo.companyNo)">
@@ -174,7 +175,7 @@ export default {
 		}
 	},
 	methods: {
-		minusComWish(wCompanyNo){
+		minusComWish(wCompanyNo) {
 			this.wishVo.classNo = wCompanyNo;
 			this.wishVo.userNo = this.$store.state.authUser.userNo;
 
