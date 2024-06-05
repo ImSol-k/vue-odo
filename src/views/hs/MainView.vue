@@ -185,9 +185,11 @@
 						<router-link :to="`/classdetailpage/${fbList.classNo}`">
 							<div class="img-box">
 								<img :src="`${this.$store.state.apiBaseUrl}/upload/${fbList.classImg}`" alt="">
-								<div @click.prevent="plusWish">
-									<img v-if="fbList.wish == 1" src="../../assets/images/redheart.svg" alt="">
-									<img v-else src="../../assets/images/whiteheart.svg" alt="">
+								<div v-if="fbList.wish == 1" @click.prevent="minusWish(fbList.wClassNo)">
+									<img src="../../assets/images/redheart.svg" alt="">
+								</div>
+								<div v-else  @click.prevent="plusWish">
+									<img src="../../assets/images/whiteheart.svg" alt="">
 								</div>
 							</div>
 							<p class="location">{{ fbList.classNameAdd }}</p>
@@ -223,9 +225,11 @@
 						<router-link :to="`/classdetailpage/${pbList.classNo}`">
 							<div class="img-box">
 								<img :src="`${this.$store.state.apiBaseUrl}/upload/${pbList.classImg}`" alt="">
-								<div @click.prevent="plusWish">
-									<img v-if="pbList.wish == 1" src="../../assets/images/redheart.svg" alt="">
-									<img v-else src="../../assets/images/whiteheart.svg" alt="">
+								<div v-if="pbList.wish == 1" @click.prevent="minusWish(pbList.wClassNo)">
+									<img src="../../assets/images/redheart.svg" alt="">
+								</div>
+								<div v-else  @click.prevent="plusWish">
+									<img src="../../assets/images/whiteheart.svg" alt="">
 								</div>
 							</div>
 							<p class="location">{{ pbList.classNameAdd }}</p>
@@ -260,9 +264,11 @@
 						<router-link :to="`/classdetailpage/${nList.classNo}`">
 							<div class="img-box">
 								<img :src="`${this.$store.state.apiBaseUrl}/upload/${nList.classImg}`" alt="">
-								<div @click.prevent="plusWish">
-									<img v-if="nList.wish == 1" src="../../assets/images/redheart.svg" alt="">
-									<img v-else src="../../assets/images/whiteheart.svg" alt="">
+								<div v-if="nList.wish == 1" @click.prevent="minusWish(nList.wClassNo)">
+									<img src="../../assets/images/redheart.svg" alt="">
+								</div>
+								<div v-else  @click.prevent="plusWish">
+									<img src="../../assets/images/whiteheart.svg" alt="">
 								</div>
 							</div>
 							<p class="location">{{ nList.classNameAdd }}</p>
@@ -330,6 +336,9 @@ export default defineComponent({
 		};
 	},
 	methods: {
+		minusWish(wClassNo) {
+			console.log(wClassNo);
+		},
 		plusWish() {
 			if (this.$store.state.authUser == null && this.$store.state.token == null) {
 

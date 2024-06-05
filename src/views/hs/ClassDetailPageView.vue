@@ -164,6 +164,7 @@ export default {
 		}
 	},
 	methods: {
+		// 결제하기버튼
 		goToPay() {
 			if (this.selectedSchedule != null && (this.$store.state.authUser != '' && this.$store.state.token != '')) {
 				this.$router.push(`/payment/${this.selectedSchedule.scheduleNo}`);
@@ -223,6 +224,7 @@ export default {
 			});
 
 		},
+		// 지도
 		initMap() {
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 				mapOption = {
@@ -271,9 +273,8 @@ export default {
 			}).catch(error => {
 				console.log(error);
 			});
-
-
 		},
+		// 상세정보 더보기 버튼
 		moreInfo() {
 			this.isMoreInfo = !this.isMoreInfo;
 		},

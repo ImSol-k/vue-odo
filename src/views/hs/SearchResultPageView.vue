@@ -78,15 +78,16 @@
 	<!-- ----------------------------로그인------------------------------------ -->
 	<div v-else class="inner">
 
-		<!-- 데이터가져오면 .length != 0으로 바꾸기 -->
-		<ul v-if="cateList != null" class="classList resultPageClassList">
+		<ul v-if="cateList != 0" class="classList resultPageClassList">
 			<li v-for=" cateClass in cateList " :key="cateClass">
 				<router-link :to="`/classdetailpage/${cateClass.classNo}`">
 					<div class="img-box">
 						<img :src="`${this.$store.state.apiBaseUrl}/upload/${cateClass.classImg}`" alt="">
-						<div @click.prevent="plusWish">
-							<img v-if="cateClass.wish == 1" src="../../assets/images/redheart.svg" alt="">
-							<img v-else src="../../assets/images/whiteheart.svg" alt="">
+						<div v-if="cateClass.wish == 1" @click.prevent="minusWish(cateClass.wClassNo)">
+							<img src="../../assets/images/redheart.svg" alt="">
+						</div>
+						<div v-else @click.prevent="plusWish">
+							<img src="../../assets/images/whiteheart.svg" alt="">
 						</div>
 					</div>
 					<p class="location">{{ cateClass.classNameAdd }}</p>
@@ -110,14 +111,12 @@
 		</ul>
 		<ul v-else>
 			<div class="searchResultNone">
-				<h4 style="color: red;">현재 로그인 상태입니다</h4>
 				<h4>해당하는 검색 결과가 없어요.</h4>
 				<p>다른 검색어로 검색해 주세요!</p>
 			</div>
 		</ul>
 
-		<!-- 데이터 가져오고 주석 해제하기 -->
-		<!-- <div id="paging">
+		<div id="paging">
 			<ul>
 				<li v-if="pMap.prev">
 					<a @click="changePage(pMap.startPageBtnNo - 1)">◀</a>
@@ -132,7 +131,7 @@
 					<a @click="changePage(pMap.endPageBtnNo + 1)">▶</a>
 				</li>
 			</ul>
-		</div> -->
+		</div>
 		<!-- paging -->
 
 	</div><!-- //inner -->
@@ -186,6 +185,9 @@ export default {
 		}
 	},
 	methods: {
+		minusWish(wClassNo) {
+			console.log(wClassNo);
+		},
 		plusWish() {
 			if (this.$store.state.authUser == '' && this.$store.state.token == '') {
 

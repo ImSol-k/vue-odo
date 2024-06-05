@@ -1,7 +1,7 @@
 <template>
 	<AppHeader />
 	<!-- //header -->
-	
+
 	<div class="categorySelectBox" :class="{ close: isCateOpen }">
 		<div class="category-1st">
 			<h1 @click="goCate1ListPage(i)" :class="{ 'cate1-active': clickIndex === i }"
@@ -19,8 +19,8 @@
 	</div>
 	<button @click="toggleCateBox" class="upNDownBtn" :class="{ close: isCateOpen }"></button>
 
-	<div class="inner">
-
+	<!-- ----------------------------비로그인------------------------------------ -->
+	<div v-if="this.$store.state.authUser == null && this.$store.state.token == null" class="inner">
 
 		<ul v-if="cateList.length != 0" class="classList resultPageClassList">
 			<li v-for=" cateClass in cateList " :key="cateClass">
@@ -28,6 +28,68 @@
 					<div class="img-box">
 						<img :src="`${this.$store.state.apiBaseUrl}/upload/${cateClass.classImg}`" alt="">
 						<div @click.prevent="plusWish"><img src="../../assets/images/whiteheart.svg" alt=""></div>
+					</div>
+					<p class="location">{{ cateClass.classNameAdd }}</p>
+					<p class="classTitle">{{ cateClass.className }}</p>
+					<div v-if="cateClass.reviewCount != 0" class="review-box">
+						<b v-if="cateClass.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
+						<b v-else-if="cateClass.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
+						<b v-else-if="cateClass.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
+						<b v-else-if="cateClass.reviewPointAvg == 2"><span class="starPoint">★★☆☆☆</span></b>
+						<b v-else-if="cateClass.reviewPointAvg == 1"><span class="starPoint">★☆☆☆☆</span></b>
+						<span class="reviewCount">후기 {{ cateClass.reviewCount }}</span>
+					</div>
+					<div v-else class="review-box">
+						<b><span class="starPoint"></span></b>
+						<span class="reviewCount"></span>
+					</div>
+					<p class="class-price" v-if="cateClass.classPrice == 0">무료</p>
+					<p class="class-price" v-else>{{ cateClass.classPrice.toLocaleString('ko-KR') }}원</p>
+				</router-link>
+			</li>
+		</ul>
+		<ul v-else>
+			<div class="searchResultNone">
+				<h4>해당하는 검색 결과가 없어요.</h4>
+				<p>다른 검색어로 검색해 주세요!</p>
+			</div>
+
+		</ul>
+
+		<div id="paging">
+			<ul>
+				<li v-if="pMap.prev">
+					<a @click="changePage(pMap.startPageBtnNo - 1)">◀</a>
+				</li>
+
+				<li v-for="page in pages" :key="page"
+					:class="{ pageBtnActive: this.$route.query.crtPage === String(page) }">
+					<a @click="changePage(page)">{{ page }}</a>
+				</li>
+
+				<li v-if="pMap.next">
+					<a @click="changePage(pMap.endPageBtnNo + 1)">▶</a>
+				</li>
+			</ul>
+		</div>
+		<!-- paging -->
+
+	</div>
+
+	<!-- ----------------------------로그인------------------------------------ -->
+	<div v-else class="inner">
+
+		<ul v-if="cateList.length != 0" class="classList resultPageClassList">
+			<li v-for=" cateClass in cateList " :key="cateClass">
+				<router-link :to="`/classdetailpage/${cateClass.classNo}`">
+					<div class="img-box">
+						<img :src="`${this.$store.state.apiBaseUrl}/upload/${cateClass.classImg}`" alt="">
+						<div v-if="cateClass.wish == 1" @click.prevent="minusWish(cateClass.wClassNo)">
+							<img src="../../assets/images/redheart.svg" alt="">
+						</div>
+						<div v-else @click.prevent="plusWish">
+							<img src="../../assets/images/whiteheart.svg" alt="">
+						</div>
 					</div>
 					<p class="location">{{ cateClass.classNameAdd }}</p>
 					<p class="classTitle">{{ cateClass.className }}</p>
@@ -125,6 +187,9 @@ export default {
 		}
 	},
 	methods: {
+		minusWish(wClassNo) {
+			console.log(wClassNo);
+		},
 		plusWish() {
 			if (this.$store.state.authUser == '' && this.$store.state.token == '') {
 
@@ -216,23 +281,58 @@ export default {
 		},
 		getcate2List() {
 
-			axios({
-				method: 'get', // put, post, delete
-				url: 'http://localhost:9090/odo/subcategories',
-				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
-				params: {
-					cate2No: this.$route.params.no,
-					crtPage: this.$route.query.crtPage || 1 // crtPage 파라미터, 기본값 1
-				}, //get방식 파라미터로 값이 전달
-				//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
-				responseType: 'json' //수신타입
-			}).then(response => {
-				this.pMap = response.data.apiData;
-				this.cateList = this.pMap.cate2List;
+			// 비로그인
+			if (this.$store.state.authUser == "" && this.$store.state.token == "") {
 
-			}).catch(error => {
-				console.log(error);
-			});
+				axios({
+					method: 'get', // put, post, delete
+					url: 'http://localhost:9090/odo/subcategories',
+					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+					params: {
+						cate2No: this.$route.params.no,
+						crtPage: this.$route.query.crtPage || 1 // crtPage 파라미터, 기본값 1
+					}, //get방식 파라미터로 값이 전달
+					//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+					responseType: 'json' //수신타입
+				}).then(response => {
+					//비우고
+					this.pMap = null;
+					this.cateList = null;
+					//넣기
+					this.pMap = response.data.apiData;
+					this.cateList = this.pMap.cate2List;
+
+				}).catch(error => {
+					console.log(error);
+				});
+
+				//로그인
+			} else {
+
+				axios({
+					method: 'get', // put, post, delete
+					url: 'http://localhost:9090/odo/subcategories/users',
+					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+					params: {
+						userNo: this.$store.state.authUser.userNo,
+						cate2No: this.$route.params.no,
+						crtPage: this.$route.query.crtPage || 1 // crtPage 파라미터, 기본값 1
+					}, //get방식 파라미터로 값이 전달
+					//data: this.$route.params.no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+					responseType: 'json' //수신타입
+				}).then(response => {
+					//비우고
+					this.pMap = null;
+					this.cateList = null;
+					//넣기
+					this.pMap = response.data.apiData;
+					this.cateList = this.pMap.cate2List;
+
+				}).catch(error => {
+					console.log(error);
+				});
+
+			}
 		},
 		goCate1ListPage(i) {
 			this.$router.push(`/searchresultpage/${i + 1}?crtPage=1`);
