@@ -57,8 +57,8 @@
 										<li>
 											<span class="end-msg" :class="{ endClass : checkDate(list.endDate) }">종료</span>
 											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
-											<img v-if="list.wishClassNo !== 0" @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/redheart.svg">
-											<img v-else @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/whiteheart.svg">
+											<img v-if="list.wishClassNo > 0" @click="wish(list.wishClassNo, list.classNo, index)" class="heart" src="@/assets/images/redheart.svg">
+											<img v-else @click="wish(list.wishClassNo, list.classNo,index)" class="heart" src="@/assets/images/whiteheart.svg">
 										</li>
 										<li>
 											<div class="star-ratings">
@@ -128,8 +128,8 @@
 										<li>
 											<span class="end-msg" :class="{ endClass : checkDate(list.endDate) }">종료</span>
 											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
-											<img v-if="list.wishClassNo !== 0" @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/redheart.svg">
-											<img v-else @click="wish(list.wishClassNo, list.classNo)" class="heart" src="@/assets/images/whiteheart.svg">
+											<img v-if="list.wishClassNo !== 0" @click="wish(list.wishClassNo, list.classNo, index)" class="heart" src="@/assets/images/redheart.svg">
+											<img v-else @click="wish(list.wishClassNo, list.classNo, index)" class="heart" src="@/assets/images/whiteheart.svg">
 										</li>
 										<li>
 											<div class="star-ratings">
@@ -868,7 +868,7 @@ export default {
 		///////////////////////////////////////////////////////////////////////////////////
 		
 		// 하트이미지 클릭 -> 위시리스트에 담기기 
-		wish(wishClassNo, classNo){
+		wish(wishClassNo, classNo, index){
 
 			// no가 0이면 wishclass 추가 + wishClassNo 가져와서 추가 값 바꿔주기 , no가 0 이아니면 삭제  삭제한뒤에 0으로 바꿔준다
 			if(wishClassNo == 0){
@@ -882,7 +882,8 @@ export default {
 					responseType: 'json'
 				}).then(response => {
 					if(response.data.result === 'success'){
-						window.location.reload(true);
+						this.paymentData[index].wishClassNo = response.data.apiData;
+						wishClassNo = response.data.apiData;
 					} else {
 						Swal.fire({text : response.data.message});
 					}
@@ -900,7 +901,7 @@ export default {
 					responseType: 'json'
 				}).then(response => {
 					if(response.data.result === 'success'){
-						window.location.reload(true);
+						this.paymentData[index].wishClassNo = 0;
 					} else {
 						Swal.fire({text : response.data.message});
 					}
