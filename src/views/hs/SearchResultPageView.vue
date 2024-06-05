@@ -190,7 +190,23 @@ export default {
 	},
 	methods: {
 		minusWish(wClassNo) {
-			console.log(wClassNo);
+			this.wishVo.classNo = wClassNo;
+			this.wishVo.userNo = this.$store.state.authUser.userNo;
+
+			axios({
+				method: 'delete', // put, post, delete
+				url: 'http://localhost:9090/odo/wishes',
+				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+				//params: guestbookVo, //get방식 파라미터로 값이 전달
+				data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+				responseType: 'json' //수신타입
+			}).then(response => {
+				console.log(response.data.apiData);
+				this.getcateList();
+
+			}).catch(error => {
+				console.log(error);
+			});
 		},
 		plusWish(classNo) {
 			if (this.$store.state.authUser == null && this.$store.state.token == null) {
