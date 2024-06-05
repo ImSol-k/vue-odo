@@ -70,11 +70,11 @@
                         :to="`/membermanager/3/${c.scheduleNo}/${c.className}/${c.classNo}`"
                         >회원관리</router-link
                       >
-                      <router-link class="classRouterLink" to="/classadd/2">
+                      <router-link class="classRouterLink" :to="{ path: '/classadd/2', query:{no:c.classNo}}">
                         수정
                       </router-link>
                     </div>
-                    <span>인원수: {{ c.classMin }}/{{ c.classMax }}</span>
+                    <span v-if="isClass != 1">인원수: {{ c.classMin }}/{{ c.classMax }}</span>
                   </div>
                 </div>
               </li>

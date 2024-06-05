@@ -11,8 +11,8 @@
       <div class="companyInfoClassList" v-if="classType == 1">
         <div class="memberListTitle">
           <p>{{ this.$route.params.name }}</p>
-          <select name="" id="" @change="memberList">
-            <option disabled selected>일정선택하기</option>
+          <select name="" id="" v-model="scheduleNo" @change="memberList">
+            <option disabled selected value="일정선택하기">일정선택하기</option>
             <option v-for="(date, i) in dateList" :key="i" :value="date.scheduleNo" >{{ date.start }}</option>
           </select>
           <!-- <input
@@ -30,7 +30,7 @@
           /> -->
         </div>
 
-        <div class="memberListTable">
+        <div class="memberListTable" v-if="mList > 0">
           <table>
             <thead style="height: 40px">
               <th style="width: 40px">번호</th>
@@ -63,6 +63,9 @@
               </td>
             </tbody>
           </table>
+        </div>
+        <div v-else class="noUser">
+          <p>참여자가 없습니다</p>
         </div>
         <!--memberListTable-->
       </div>
@@ -260,7 +263,7 @@ export default {
         headers: { "Content-Type": "application/json; charset=utf-8" },
         params: {
           classType: this.$route.params.type,
-          scheduleNo: this.$route.params.no,
+          scheduleNo: this.scheduleNo,
           classNo: this.classNo,
         },
         responseType: "json",

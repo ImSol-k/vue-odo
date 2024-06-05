@@ -305,12 +305,12 @@ export default {
   components: { AppHeader, AppFooter, AppMenu, QuillEditor },
   data() {
     return {
-      isAdd: this.$route.params.isadd,
+      isAdd: this.$route.params.isadd,  //1추가 2수정
       isClass: true,
       // ============================
       img: "",
-      companyNum: 1,
-      classNo: 2,
+      companyNum: this.$store.state.authCompany.companyNo,
+      classNo: this.$route.query.no,
       cList: [],
       rClassList: [],
       selectClassNo: "",
@@ -348,6 +348,23 @@ export default {
     formatDate(date) {
       return moment(date).format(`YYYY-MM-DD HH:MM:SS`);
     },
+    ondaySchedule() {
+      axios({
+        method: "get",
+        url: `${this.$store.state.apiBaseUrl}/odo/company/one/${this.classNo}`, //SpringBoot주소
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+        responseType: "json",
+      })
+        .then((response) => {
+          console.log(response.data.apiData); //수신데이터
+          for (let i = 0; i < response.data.apiData.length; i++){
+            this.onedayDate[i] = response.data.apiData[i].start;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     classUpdate() {
       axios({
         method: "post",
@@ -365,12 +382,14 @@ export default {
         });
     },
     classHandle() {
-      console.log("========================");
-      console.log(this.formatDate(this.startDate));
-      console.log(this.formatDate(this.onedayDate));
-
       const formData = new FormData();
-      formData.append("classImageFile", this.classImage);
+      if (this.isAdd == 1) {
+        formData.append("classImageFile", this.classImage);
+      } else {
+        if (this.img != "") {
+          formData.append("classImageFile", this.classImage);
+        }
+      }
       formData.append("classType", this.classVo.classType);
       formData.append("companyNo", this.companyNum);
       formData.append("cate1No", this.classVo.cate1No);
@@ -431,6 +450,8 @@ export default {
         Number(this.classVo.classMax) <= Number(this.classVo.classMin)
       ) {
         alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
+      } else if (this.isAdd == 1 && this.classImage == null) {
+        alert("파일을 선택해주세요");
       } else {
         if (this.isAdd == 1) {
           //클래스 추가
@@ -767,6 +788,7 @@ export default {
     this.cate();
     if (!(this.isAdd == 1)) {
       this.classShow();
+      this.ondaySchedule()
     } else {
       this.classList(this.classVo.classType);
     }
