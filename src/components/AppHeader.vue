@@ -367,10 +367,11 @@ export default {
             console.log(error);
           });
       } else {
-        this.$store.commit("setKakaoToken", "");
-        this.$store.commit("setAuthUser", "");
-        this.$store.commit("setToken", "");
-        this.$router.push("/");
+        // this.$store.commit('setNaverToken', '');
+        this.$store.commit('setKakaoToken', '');
+        this.$store.commit('setAuthUser', '');
+        this.$store.commit('setToken', '');
+        this.$router.push('/');
       }
     },
     // 로그인 체크
