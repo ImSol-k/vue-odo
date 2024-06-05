@@ -218,7 +218,16 @@ export default {
       if (this.page == 1) {
         this.classList = [];
       }
-
+      let vo = {
+        userNo: this.$store.state.authUser.userNo,
+            isFind: this.isFind,
+            keyword: this.keyword,
+            classType: this.type,
+            page: this.page,
+            classLatitude: this.latitude,
+            classLongitutde: this.longitude,
+      }
+      console.log(vo);
       if (this.keyword != "") {
         console.log("키워드: " + this.keyword);
         axios({
