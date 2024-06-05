@@ -380,6 +380,8 @@ export default defineComponent({
 					responseType: 'json' //수신타입
 				}).then(response => {
 					console.log(response.data.apiData);
+					this.getLists();
+
 				}).catch(error => {
 					console.log(error);
 				});
