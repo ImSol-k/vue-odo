@@ -65,12 +65,13 @@
 
 /***************************/
 /* 마이페이지 사이드 */
-.mymy-side {
+.wrap .mymy-side {
     width: 200px;
     height: 600px;
     padding: 0 15px;
     float: left;
     box-sizing: border-box;
+    letter-spacing: -1.5px;
 }
 
 .mymy-side ul {

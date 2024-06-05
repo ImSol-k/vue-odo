@@ -1,6 +1,9 @@
 .modifyContent {
   display: block;
-  padding: 10px;
+  width: 800px;
+  border: 1px solid #000;
+  /* padding: 10px; */
+  letter-spacing: -1.5px;
 }
 .modify-head {
   display: inline-block;
@@ -15,16 +18,12 @@
 .MporderContainer {
   width: 1000px;
   height: 650px;
-  /* background-color: antiquewhite; */
-  /* display: flex; */
   padding: 25px 0;
 }
 
 /* nav */
 .MporderContainer .MpLeft {
-  /* background-color: aquamarine; */
   width: 250px;
-  margin-left: 10px;
 }
 
 /* 오른쪽내용영역 */

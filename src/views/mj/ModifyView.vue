@@ -1,73 +1,66 @@
 <template>
-  <div>
-    <!-- AppHeader -->
-    <AppHeader />
-    <div class="wrap">
-      <MyPageHeader />
-      <!-- container 부분 -->
-      <div class="modifyContent">
-        <div class="MpLeft">
-          <!-- nav -->
-          <MyPageSide />
-        </div>
-        <!-- 오른쪽내용영역 -->
-        <div class="modify-head">
-          <span>정보수정</span>
-        </div>
-        <form v-on:submit.prevent="modify">
-        <div class="MpRight" style="overflow: hidden">
-          <img class="profile" src="@/assets/images/icon/header_icons/my.png" />
-          <div id="p-box">
-            <input type="file" name="" id="pic" />
-          </div>
-          <div class="area">
-            <label>닉네임</label>
-            <div>
-              <input type="text" id="nickname" name="usernickname" v-model="userVo.name" />
-            </div>
-          </div>
-          <div class="area">
-            <label>휴대폰번호</label>
-            <div>
-              <input type="text" id="hp" name="userhp" v-model="userVo.hp" />
-            </div>
-          </div>
-          <div class="area">
-            <label>이메일</label>
-            <div>
-              <input type="text" id="e-mail" name="useremail" v-model="userVo.email" />
-            </div>
-          </div>
-          <div class="area">
-            <label>비밀번호</label>
-            <div>
-              <input type="password" id="password" name="userpw" v-model="required" />
-            </div>
-          </div>
-          <div class="area">
-            <label>생년월일</label>
-            <div>
-              <input type="text" id="birth" name="userbirth" disabled v-model="userVo.birth" />
-            </div>
-          </div>
-          <div class="area">
-            <label>성별</label>
-            <div>
-              <input type="text" id="gender" name="usergender" disabled placeholder="여자" v-model="required" />
-            </div>
-          </div>
-          <div class="userModifyBtn">
-            <button type="reset">취소</button>
-            <button  @click="goModify">저장</button>
-          </div>
-        </div>
-</form>
-      </div>
+  
+<AppHeader />
+<!-- AppHeader -->
+<div class="wrap">
+  <MyPageHeader />
+  <!-- MyPageHeader -->
+  <MyPageSide />
+  <!-- MyPageSide -->
+  <div class="modifyContent clearfix">
+    <div class="MpLeft">
+      <!-- nav -->
+      
     </div>
+    <!-- 오른쪽내용영역 -->
+    <div class="modify-head">
+      <span>정보수정</span>
+    </div>
+    <form @submit.prevent="modify">
+      <div class="MpRight" style="overflow: hidden">
+        <img class="profile" src="@/assets/images/icon/header_icons/my.png" />
+        <div id="p-box">
+          <input type="file" name="" id="pic" />
+        </div>
+        <div class="area">
+          <label>닉네임</label>
+          <div><input type="text" id="nickname" name="usernickname" v-model="userVo.name" /></div>
+        </div>
+        <div class="area">
+          <label>휴대폰번호</label>
+          <div><input type="text" id="hp" name="userhp" v-model="userVo.hp" /></div>
+        </div>
+        <div class="area">
+          <label>이메일</label>
+          <div><input type="text" id="e-mail" name="useremail" v-model="userVo.email" /></div>
+        </div>
+        <div class="area">
+          <label>비밀번호</label>
+          <div><input type="password" id="password" name="userpw" v-model="required" /></div>
+        </div>
+        <div class="area">
+          <label>생년월일</label>
+          <div><input type="text" id="birth" name="userbirth" disabled v-model="userVo.birth" /></div>
+        </div>
+        <div class="area">
+          <label>성별</label>
+          <div><input type="text" id="gender" name="usergender" disabled placeholder="여자" v-model="required" /></div>
+        </div>
+        <div class="userModifyBtn">
+          <button type="reset">취소</button>
+          <button  @click="goModify">저장</button>
+        </div>
+      </div>
+    </form>
   </div>
-  <!-- 푸터 -->
-  <AppFooter />
+</div>
+<!-- wrap -->
+  
+<AppFooter />
+<!-- 푸터 -->
+
 </template>
+
 <script>
 import "@/assets/css/Initialization.css";
 import "@/assets/css/mj/modify.css";
