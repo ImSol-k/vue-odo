@@ -4,13 +4,14 @@
         <!-- AppHeader -->
 		<AppHeader />
         <div class="wrap">
+            <MyPageHeader />
             <div class="MporderContainer" style="height: 800px;">
-                <div class="MpLeft">
+                <!-- <div class="MpLeft"> -->
                 
                 <!-- nav -->
 				<MyPageSide/>
 
-                </div>
+                <!-- </div> -->
                 <div class="MpRight">
                     <div class="tabmenu out-tabmenu">
                         <ul>
@@ -563,18 +564,20 @@
 		<AppFooter/>
 </template>
 <script>
-import '@/assets/css/Initialization.css'
-import "@/assets/css/mj/condition.css"
+import '@/assets/css/Initialization.css';
+import "@/assets/css/mj/condition.css";
 import AppFooter from '@/components/AppFooter.vue';
 import AppHeader from '@/components/AppHeader.vue';
-import MyPageSide from '@/components/MyPageSide.vue'
+import MyPageSide from '@/components/MyPageSide.vue';
+import MyPageHeader from '@/components/MyPageHeader.vue';
 
 	export default {
 		name: "ConditionView",
 		components: {
 			AppHeader,
             AppFooter,
-            MyPageSide
+            MyPageSide,
+            MyPageHeader
 		},
 		data() {
 			return {};
