@@ -141,19 +141,6 @@
               placeholder="대표 핸드폰번호"
               v-model="companyVo.companyHp"
             />
-            <input type="button" value="번호인증" />
-            <div class="companyHpChack">
-              <input
-                type="text"
-                name=""
-                id="companyPassChack"
-                placeholder="인증번호"
-              />
-              <input type="button" value="확인" />
-              <p v-if="isHp">✅인증이 완료되었습니다.</p>
-              <p v-else-if="isHp == null">인증번호를 입력해주세요.</p>
-              <p v-else>❌인증번호가 일치하지 않습니다.</p>
-            </div>
           </div>
         </div>
         <div class="companyJoinButton">

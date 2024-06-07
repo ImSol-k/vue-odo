@@ -10,12 +10,12 @@
         <div class="whatClass" v-if="isAdd == 1">
           <span
             v-on:click.prevent="selectClass(1)"
-            :class="{ classChack: isClass }"
+            :class="{ classChack: isClass == 1 }"
             >원데이</span
           >
           <span
             v-on:click.prevent="selectClass(2)"
-            :class="{ classChack: !isClass }"
+            :class="{ classChack: isClass == 2 }"
             >정규</span
           >
         </div>
@@ -47,7 +47,7 @@
               name=""
               id=""
               class="addPageSelectClass"
-              v-if="isClass"
+              v-if="isClass == 1"
               v-model="classVo.recClassNo"
             >
               <option value="" disabled selected>관련 정규클래스 선택</option>
@@ -306,7 +306,7 @@ export default {
   data() {
     return {
       isAdd: this.$route.params.isadd, //1추가 2수정
-      isClass: true,
+      isClass: "",
       // ============================
       img: "",
       companyNum: this.$store.state.authCompany.companyNo,
@@ -322,7 +322,7 @@ export default {
         cate1No: "",
         cate2No: "",
         className: "",
-        classType: 1,
+        classType: "",
         classIntro: "",
         classZipcode: "",
         classNameAddress: "",
@@ -729,11 +729,11 @@ export default {
      */
     selectClass(num) {
       if (num == 1) {
-        this.isClass = true;
+        this.isClass = 1;
         this.classVo.classType = 1;
         this.classList(1);
       } else {
-        this.isClass = false;
+        this.isClass = 2;
         this.classList(2);
         if (num == 2) {
           this.classVo.classType = 2;
@@ -833,6 +833,7 @@ export default {
       this.classShow();
       this.ondaySchedule();
     } else {
+      this.classVo.classType = 2;
       this.classList(this.classVo.classType);
     }
   },
