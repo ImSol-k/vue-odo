@@ -2,9 +2,9 @@
 /* 오른쪽내용영역 */
 ul{list-style: none;}
 .tabmenu{
-    max-width: 800px;
-    width: 700px;
-    margin: 10px auto;
+    max-width: 900px;
+    width: 900px;
+    margin: 30px auto;
     position: relative;
 }
 .tabmenu ul{
