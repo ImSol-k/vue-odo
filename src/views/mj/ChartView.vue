@@ -8,7 +8,7 @@
         <div class="chart">
           <h2>매출</h2>
           <div class="left">
-            <canvas id="linechart" ref="MyChart" width="400px" height="500px"/>
+            <canvas id="linechart" ref="MyChart" width="400px" height="380px" />
           </div>
         </div>
         <div class="list clearfix">
@@ -19,14 +19,14 @@
           </div>
 
           <div v-if="isClass == 1">
-            <div class="right"  v-for="(a,i) in this.list" v-bind:key="i">
+            <div class="right" v-for="(a, i) in this.list" v-bind:key="i">
               <!-- <img src="@/assets/images/icon/header_icons/like.png"> -->
-              <span  v-on:click="go(a.classNo)">{{ a.className }}</span>
+              <span v-on:click="go(a.classNo)">{{ a.className }}</span>
             </div>
           </div>
 
           <div v-else-if="isClass == 2">
-            <div class="right"  v-for="(a,i) in this.list1" v-bind:key="i">
+            <div class="right" v-for="(a, i) in this.list1" v-bind:key="i">
               <!-- <img src="@/assets/images/icon/header_icons/like.png"> -->
               <span v-on:click="go(a.classNo)">{{ a.className }}</span>
             </div>
@@ -69,7 +69,7 @@ export default {
     };
   },
   methods: {
-    go(no){
+    go(no) {
       this.$router.push("/classdetailpage/" + no);
     },
     selectClass(num) {
@@ -103,29 +103,29 @@ export default {
 
           //type: 'bar',
           data: {
-        datasets: [{
-            type: 'line',
-            label: '원데이',
-            data: [this.chart.preonedayPrice, this.chart.onedayPrice]
-        }, {
-            type: 'bar',
-            label: '정규/상시',
-            data: [this.chart.preRePrice, this.chart.rePrice],
-        }],
-        labels: ['지난달', '이번달']
-    },
-    options: {
-                        responsive: false,
-                        plugins: {
-                            datalabels: {
-                                color: '#000000'
-                            },
-                            title: {
-                                display: true,
-                                text: '총 판매비율'
-                            },
-                        }
-                    }
+            datasets: [{
+              type: 'line',
+              label: '원데이',
+              data: [this.chart.preonedayPrice, this.chart.onedayPrice]
+            }, {
+              type: 'bar',
+              label: '정규/상시',
+              data: [this.chart.preRePrice, this.chart.rePrice],
+            }],
+            labels: ['지난달', '이번달']
+          },
+          options: {
+            responsive: false,
+            plugins: {
+              datalabels: {
+                color: '#000000'
+              },
+              title: {
+                display: true,
+                text: '총 판매비율'
+              },
+            }
+          }
         })
 
       }).catch(error => {
