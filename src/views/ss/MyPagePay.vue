@@ -721,7 +721,7 @@ export default {
 			const formData = new FormData();
 
 			if(this.file2 == ''){
-				console.log('파일 없음');
+				// console.log('파일 없음');
 			} else {
 				formData.append('file', this.file2);
 			}
@@ -824,7 +824,7 @@ export default {
 			const formData = new FormData();
 
 			if(this.file == ''){
-				console.log('파일 없음');
+				// console.log('파일 없음');
 			} else {
 				formData.append('file', this.file);
 			}
