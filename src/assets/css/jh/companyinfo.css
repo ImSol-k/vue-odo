@@ -148,9 +148,13 @@
 }
 
 .infoName {
-  height: 27px;
-  margin-bottom: 15px;
+  height: 30px;
+  width: 290px;
   font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 15px;
 }
 
 .infoIntro {
