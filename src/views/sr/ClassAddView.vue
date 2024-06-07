@@ -361,6 +361,7 @@ export default {
         responseType: "json",
       })
         .then((response) => {
+          console.log(response.data.apiData);
           for (let i = 0; i < response.data.apiData.length; i++) {
             this.onedayDate[i] = response.data.apiData[i].start;
           }
@@ -424,7 +425,6 @@ export default {
       formData.append("classMin", this.classVo.classMin);
       formData.append("classMax", this.classVo.classMax);
       formData.append("classUrl", this.classVo.classUrl);
-      
 
       //클래스 타입별 들어가는 스케줄값이 다름
       //1이면 배열 아니면 단일값으로 들어감
@@ -473,60 +473,61 @@ export default {
         alert("카테고리를 선택해 주세요");
       } else if (this.classVo.classMax == "" && this.classVo.classMin == "") {
         alert("인원수를 입력해주세요.");
-      } else if (this.classVo.classInfo == null) {
+      } else if (editorHtmlContent == null) {
         alert("상세설명을 입력해주세요.");
       } else if (
         Number(this.classVo.classMax) <= Number(this.classVo.classMin)
       ) {
         alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
       } else {
-      if (this.isAdd == 1) {
-        //클래스 추가 ==============
+        if (this.isAdd == 1) {
+          //클래스 추가 ==============
 
-        console.log("클래스 추가");
-        axios({
-          method: "post",
-          url: `${this.$store.state.apiBaseUrl}/odo/company/insert`,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          data: formData,
-          responseType: "json",
-        })
-          .then((response) => {
-            if (response.data.result == "success") {
-              alert("클래스가 추가되었습니다.");
-            } else {
-              alert("클래스 추가 실패");
-            }
+          console.log("클래스 추가");
+          axios({
+            method: "post",
+            url: `${this.$store.state.apiBaseUrl}/odo/company/insert`,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            data: formData,
+            responseType: "json",
           })
-          .catch((error) => {
-            console.log(error);
-          });
-      } else {
-        //클래스 수정 =======================
-        console.log("클래스 수정");
-        axios({
-          method: "put",
-          url: `${this.$store.state.apiBaseUrl}/odo/company/update`,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          data: formData,
-          responseType: "json",
-        })
-          .then((response) => {
-            console.log(response.data);
-            if (response.data.result == "success") {
-              alert("클래스가 수정되었습니다.");
-            } else {
-              alert("클래스 수정 실패");
-            }
+            .then((response) => {
+              if (response.data.result == "success") {
+                alert("클래스가 추가되었습니다.");
+              } else {
+                alert("클래스 추가 실패");
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          //클래스 수정 =======================
+          console.log("클래스 수정");
+          formData.append("classNo", this.classNo);
+          axios({
+            method: "put",
+            url: `${this.$store.state.apiBaseUrl}/odo/company/update`,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            data: formData,
+            responseType: "json",
           })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
+            .then((response) => {
+              console.log(response.data);
+              if (response.data.result == "success") {
+                alert("클래스가 수정되었습니다.");
+              } else {
+                alert("클래스 수정 실패");
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
       }
       this.$router.push("/companypage");
     },
@@ -610,6 +611,9 @@ export default {
 
             //에디터에 내용 적용  //content는 서버에서 받은 내용
             editorInstance.root.innerHTML = response.data.apiData.classInfo;
+
+            //스케줄 불러오기
+            this.getschedule();
           } else {
             alert("클래스를 불러오는데 실패했습니다.");
           }
@@ -829,6 +833,7 @@ export default {
     },
   },
   created() {
+    console.log(this.$route.query.no);
     this.regularClass();
     this.cate();
     if (!(this.isAdd == 1)) {
