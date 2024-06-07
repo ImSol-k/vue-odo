@@ -60,13 +60,13 @@
           <div class="paymentClassStar">
             <div v-if="i.reviewPoint != 0" class="review-box">
               <b v-if="i.reviewPoint == 5"><span class="starPoint">★★★★★</span></b>
-              <b v-else-if="i.reviewPoint == 4"><span class="starPoint">★★★★☆</span></b>
-              <b v-else-if="i.reviewPoint == 3"><span class="starPoint">★★★☆☆</span></b>
-              <b v-else-if="i.reviewPoint == 2"><span class="starPoint">★★☆☆☆</span></b>
-              <b v-else-if="i.reviewPoint == 1"><span class="starPoint">★☆☆☆☆</span></b>
+              <b v-else-if="i.reviewPoint > 4"><span class="starPoint">★★★★☆</span></b>
+              <b v-else-if="i.reviewPoint > 3"><span class="starPoint">★★★☆☆</span></b>
+              <b v-else-if="i.reviewPoint > 2"><span class="starPoint">★★☆☆☆</span></b>
+              <b v-else-if="i.reviewPoint > 1"><span class="starPoint">★☆☆☆☆</span></b>
             </div>
             <div v-else class="review-box2">
-
+              <b v-if="i.reviewPoint == 0"><span class="starPoint">☆☆☆☆☆</span></b>
             </div>
             <span>후기 {{ i.reviewCount }}</span>
           </div>
@@ -127,8 +127,8 @@ export default {
         // console.log(response); //수신데이타
         this.pv = response.data.apiData.pv;
         this.rList = response.data.apiData.rList;
-        // console.log(this.pv);
-        // console.log(this.rList);
+        console.log(this.pv);
+        console.log(this.rList);
       }).catch(error => {
         console.log(error);
       });
