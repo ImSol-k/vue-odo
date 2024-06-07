@@ -4,6 +4,7 @@
 
   <HostHeader />
   <div class="wrap">
+    <AppMenu />
     <!-- <div>
             <div class="clearfix cover20">
                 <div class="preview-image">
@@ -21,7 +22,7 @@
             </div>
         </div> -->
     <!--소개글-->
-    <div class="companyJoinTitle">
+    <div class="companyJoinTitleJ">
       <h1>{{this.companyVo.companyName}}</h1>
       <div class="companyJoinImg">
         <div class="preview-image">
@@ -102,6 +103,7 @@
 <script>
 import HostHeader from "@/components/HostAppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
+import AppMenu from "@/components/CompanyMenu.vue";
 import "@/assets/css/jh/jh.css";
 import "@/assets/css/Initialization.css";
 
@@ -110,7 +112,7 @@ import axios from "axios";
 export default {
   components: {
     HostHeader,
-    AppFooter,
+    AppFooter,AppMenu
   },
   data() {
     return {
