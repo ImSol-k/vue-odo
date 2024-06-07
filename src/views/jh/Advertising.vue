@@ -32,7 +32,7 @@
         message: "",
         photo: null,
         photoPreview: null,
-        placeholderImage: require("../../assets/images/company/nope.png"),
+        placeholderImage: require("../../assets/images/nope.png"),
         accessToken: "EAAN3krJLRh4BOygZACSanLiJZBMg51rLvXr7z0qYo0vJoUAHh090BzGVB02229haKuaqulu9MiG64ERZCFojgoFJ4OHe5QXOszYXRrqsZB7Al4yY7HKV7An7PC3R3rLjEXb0QQg1CTCXZA5uN9SZAtB3sLBRoTa4VT7pU74KBZBEP4lEkZAMl6hK0IsjYfwKufg7",
         pageId: "320016071194453",
         loading: false,
