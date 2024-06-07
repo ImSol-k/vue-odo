@@ -10,7 +10,7 @@
             <td rowspan="7">
               <img class="payImg" v-if="pv.classImage != ''"
                 :src="`${this.$store.state.apiBaseUrl}/upload/${pv.classImage}`" alt="" />
-              <img class="payImg" v-else src="../../assets/images/company/nope.png" alt="">
+              <img class="payImg" v-else src="../../assets/images/nope.png" alt="">
             </td>
             <th>업체명</th>
             <td class="paymentP">{{ pv.companyName }}</td>
