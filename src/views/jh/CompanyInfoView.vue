@@ -122,8 +122,13 @@ export default {
           responseType: 'json' //수신타입
           /* eslint-disable */
         }).then(response => {
-          // console.log(response); //수신데이타
-          this.ci2[i].wishNo = 1;
+          console.log(response); //수신데이타
+          if(response.data.message != "fail"){
+            this.ci2[i].wishNo = 1;
+          }else{
+            this.ci2[i].wishNo = 0;
+          }
+          
 
         }).catch(error => {
           console.log(error);
