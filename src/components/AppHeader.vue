@@ -240,17 +240,13 @@
         >
         <router-link v-else to="/companypage">{{ this.$store.state.authCompany.companyName }} &nbsp;관리페이지 이동</router-link>
         <ul>
-          <li
-            v-if="
-              this.$store.state.authUser == '' && this.$store.state.token == ''
-            "
-          >
+          <li v-if="(this.$store.state.authUser) == '' && (this.$store.state.token) == ''">
             <router-link to="/join">회원가입</router-link>
           </li>
           <li v-else>
-            <router-link to="/mypage/pay" @click="goMypage"
-              >{{ this.$store.state.authUser.userNickname }}님</router-link
-            >
+            <router-link to="/mypage/pay" @click="goMypage">
+              {{ this.$store.state.authUser.userNickname }}님
+            </router-link>
           </li>
           <li
             v-if="
@@ -355,9 +351,9 @@ export default {
         })
           .then((response) => {
             if (response.status === 200) {
-              this.$store.commit("setKakaoToken", "");
-              this.$store.commit("setAuthUser", "");
-              this.$store.commit("setToken", "");
+              this.$store.commit("setKakaoToken", '');
+              this.$store.commit("setAuthUser", '');
+              this.$store.commit("setToken", '');
               this.$router.push("/");
             } else {
               Swal.fire({ text: "통신오류" });
@@ -376,7 +372,7 @@ export default {
     },
     // 로그인 체크
     checkAuth() {
-      if (this.$store.state.authUser == "" && this.$store.state.token == "") {
+      if (this.$store.state.authUser == '' && this.$store.state.token == '') {
         this.$router.push("/login/user");
       } 
     },
