@@ -96,7 +96,7 @@
         </div>
       </div>
       <div class="pamentButtonBox">
-        <button><router-link :to="`/classdetailpage${this.$route.params.no}`">취소</router-link></button>
+        <button><router-link to="/">취소</router-link></button>
         <button v-on:click="pay">결제하기</button>
       </div>
     </div>
@@ -207,6 +207,7 @@ export default {
           this.$store.commit('setAuthUser', '');
           this.$store.commit('setToken', '');
           this.$router.push('/');
+          //console.log(response)
 
         } else {
           // console.log(response); //수신데이타
