@@ -118,7 +118,7 @@ export default {
 				params : {
           'grant_type': 'authorization_code',
           'client_id' : '78707b677a0d5b7e94a82c2a18059218',
-          'redirect_uri' : 'http://localhost:8080/login/user',
+          'redirect_uri' : `${this.$store.state.apiBaseUrl}/login/user`,
           'code' : code,
           'client_secret' : 'qboKDshBeJY0XTfj3xCWFYH5RqXzahpy'
         },
