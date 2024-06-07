@@ -127,8 +127,8 @@ export default {
         // console.log(response); //수신데이타
         this.pv = response.data.apiData.pv;
         this.rList = response.data.apiData.rList;
-        console.log(this.pv);
-        console.log(this.rList);
+        //console.log(this.pv);
+        //console.log(this.rList);
       }).catch(error => {
         console.log(error);
       });
