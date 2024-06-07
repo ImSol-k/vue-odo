@@ -7,7 +7,7 @@
     <div class="companyInfoBox">
       <h2>업체소개</h2>
       <!--업체소개글-->
-      
+
 
       <div class="companyInfo">
         <div class="companyInfotitle">
@@ -15,11 +15,12 @@
           <div class="comapnyContent">
             <div class="infoImgBox">
               <img class="companyImg" v-bind:src="`${this.$store.state.apiBaseUrl}/upload/${ci.companyImage}`" alt="" />
-              
+
               <img v-if="this.ci.wishNo > 0" class="comapnyImg2" src="../../assets/images/redheart.svg" alt=""
                 v-on:click="change(ci.wishNo)">
-              <img v-else class="comapnyImg2" src="../../assets/images/whiteheart.svg" alt="" v-on:click="change(ci.wishNo)">
-              
+              <img v-else class="comapnyImg2" src="../../assets/images/whiteheart.svg" alt=""
+                v-on:click="change(ci.wishNo)">
+
             </div>
             <div class="infContent">
               <div class="InfoTitle">
@@ -83,8 +84,8 @@ import "@/assets/css/Initialization.css";
 
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
-import ChartDataLabels from "chartjs-plugin-datalabels";
-Chart.register(ChartDataLabels);
+//import ChartDataLabels from "chartjs-plugin-datalabels";
+//Chart.register(ChartDataLabels);
 
 export default {
   components: {
@@ -147,7 +148,7 @@ export default {
     },
     change(no) {  //회사 위시 등록 삭제
       console.log(no)
-      if(no > 0){
+      if (no > 0) {
         axios({
           method: 'delete', // put, post, delete 
           url: `${this.$store.state.apiBaseUrl}/odo/companyinfo/wishDelete2`,
@@ -157,13 +158,13 @@ export default {
           responseType: 'json' //수신타입
         }).then(response => {
           console.log(response); //수신데이타
-          
+
           this.ci.wishNo = 0;
 
         }).catch(error => {
           console.log(error);
         });
-      }else {
+      } else {
         axios({
           method: 'post', // put, post, delete 
           url: `${this.$store.state.apiBaseUrl}/odo/companyinfo/wishInsert2`,
@@ -194,7 +195,7 @@ export default {
             labels: ['수업이 좋아요', '시설이 좋아요', '비용이 좋아요'], // 예시 데이터
             datasets: [
               {
-                label: `Chart ${index + 1}`,
+                //label: `${classData.className} 후기`,
                 data: [classData.q1, classData.q2, classData.q3], // ci2의 차트 데이터를 사용
                 backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
@@ -210,15 +211,21 @@ export default {
               },
             ],
           },
+
           options: {
+
             responsive: false,
             plugins: {
+              legend: {
+                display: false // 라벨 표시를 false로 설정하여 제거합니다.
+              },
               datalabels: {
                 display: true,
                 color: 'black',
               },
             },
           },
+
         };
 
         // 차트 생성
