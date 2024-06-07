@@ -63,6 +63,7 @@
             class="memberVueDatePicker"
             type="date"
             v-model="datepick"
+            @change="memberList"
             name=""
             id=""
           />
@@ -105,7 +106,7 @@
             class="memberVueDatePicker"
             type="date"
             v-model="datepick"
-            v-on:click="getDate"
+            @change="memberList"
             name=""
             id=""
           />
@@ -187,6 +188,7 @@ import AppHeader from "@/components/HostAppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import AppMenu from "@/components/CompanyMenu.vue";
 import axios from "axios";
+import moment from "moment";
 
 export default {
   name: "MemberManagerView",
@@ -223,7 +225,7 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          // console.log(response.data.apiData); //수신데이터
+          console.log(response.data.apiData); //수신데이터
           this.dateList = response.data.apiData;
         })
         .catch((error) => {
@@ -243,6 +245,7 @@ export default {
           classType: this.$route.params.type,
           scheduleNo: this.scheduleNo,
           classNo: this.classNo,
+          start: moment(this.datepick).format(`YYYY-MM-DD`)
         },
         responseType: "json",
       })

@@ -200,16 +200,16 @@ export default {
           axios({
             method: "put",
             url: `${this.$store.state.apiBaseUrl}/odo/companymodify`,
-            headers: { "Content-Type": "multipart/form-data", "Authorization": "Bearer " + this.$store.state.token }, //전송타입
+            headers: { "Content-Type": "multipart/form-data", "Authorization": "Bearer " + this.$store.state.cToken }, //전송타입
             data: formData,
             responseType: "json",
           })
           /* eslint-disable */
             .then((response) => {
-              // console.log(response); //수신데이터
-
-
-              //this.$router.push('/comapnypage');
+              if (response.data.result == "success") {
+                alert("수정되었습니다.");
+                this.$router.push('/comapnypage');
+              }
             })
             .catch((error) => {
               console.log(error);
