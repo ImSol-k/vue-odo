@@ -4,22 +4,6 @@
   <div class="wrap">
     
     <MyPageHeader />
-    <!-- <div class="mymy-header clearfix">
-      <img
-        src="@/assets/images/icon/ss/default-profile.png"
-        alt="회원 프로필"
-        v-on:click.prevent="goModify"
-      />
-      <ul>
-        <li>mypage@naver.com(닉네임나올자리)</li>
-        <li>일반회원</li>
-        <li>
-          <router-link class="goLogin" to="/mypage/modify"
-            >정보 수정</router-link
-          >
-        </li>
-      </ul>
-    </div> -->
 
     <div class="mymy clearfix">
       <mymyside />
@@ -144,11 +128,11 @@ export default {
 
   methods: {
     modalUp(a) {
-      console.log("업");
+      // console.log("업");
       let viewModal = document.querySelector("#newModal");
 
       this.c = a;
-      console.log(this.c);
+      // console.log(this.c);
 
       viewModal.style.display = "block";
     },
@@ -171,11 +155,11 @@ export default {
         //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: 'json' //수신타입
       }).then(response => {
-        console.log(response); //수신데이타
+        // console.log(response); //수신데이타
 
-        console.log(response.data.apiData);
+        // console.log(response.data.apiData);
         this.b = response.data.apiData
-        console.log(this.b);
+        // console.log(this.b);
       }).catch(error => {
         console.log(error);
       });
@@ -188,8 +172,9 @@ export default {
         //params: guestbookVo, //get방식 파라미터로 값이 전달
         data: this.c, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: 'json' //수신타입
+        /* eslint-disable */
       }).then(response => {
-        console.log(response); //수신데이타
+        // console.log(response); //수신데이타
         window.location.reload(true);
       }).catch(error => {
         console.log(error);
