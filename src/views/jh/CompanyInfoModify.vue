@@ -149,7 +149,7 @@ export default {
       const formData = new FormData();
 
       if(this.file2 == ''){
-				console.log('파일 없음');
+				// console.log('파일 없음');
 			} else {
 				formData.append('companyFile', this.file2);
 			}
@@ -202,8 +202,9 @@ export default {
             data: formData,
             responseType: "json",
           })
+          /* eslint-disable */
             .then((response) => {
-              console.log(response); //수신데이터
+              // console.log(response); //수신데이터
 
 
               //this.$router.push('/comapnypage');
@@ -269,12 +270,12 @@ export default {
                 // 주소 검색 결과가 성공일 경우
                 this.companyVo.companyLatitude = result[0].y; // 위도
                 this.companyVo.companyLongitude = result[0].x; // 경도
-                console.log(
-                  "위도:",
-                  this.companyVo.companyLatitude,
-                  "경도:",
-                  this.companyVo.companyLongitude
-                );
+                // console.log(
+                //   "위도:",
+                //   this.companyVo.companyLatitude,
+                //   "경도:",
+                //   this.companyVo.companyLongitude
+                // );
               } else {
                 // 주소 검색 실패
                 console.error("주소 검색 실패");
@@ -345,7 +346,7 @@ export default {
       }).then(response => {
         //console.log(response); //수신데이타
         this.companyVo = response.data.apiData;
-        console.log(this.companyVo);
+        // console.log(this.companyVo);
         this.previewImage = `${this.$store.state.apiBaseUrl}/upload/${this.companyVo.companyImage}`;
       }).catch(error => {
         console.log(error);

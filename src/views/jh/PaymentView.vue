@@ -177,7 +177,7 @@ export default {
       viewModal.style.display = "none";
     },
     payType(type) {
-      console.log(type);
+      // console.log(type);
       if (type == "신용카드") {
         this.paymenType = "신용카드";
       } else if (type == "naver") {
@@ -189,7 +189,7 @@ export default {
       }
     },
     list() {
-      console.log("시작");
+      // console.log("시작");
       axios({
         method: 'get', // put, post, delete 
         url: `${this.$store.state.apiBaseUrl}/odo/payment/${this.$route.params.no}`,
@@ -209,7 +209,7 @@ export default {
           this.$router.push('/');
           
         } else {
-          console.log(response); //수신데이타
+          // console.log(response); //수신데이타
           this.pv = response.data.apiData.pv;
           this.couponList = response.data.apiData.couponList;
           //console.log(this.pv);
@@ -242,7 +242,7 @@ export default {
         data: this.payVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: 'json' //수신타입
       }).then(response => {
-        console.log(response.data.apiData.message); //수신데이타
+        // console.log(response.data.apiData.message); //수신데이타
         if (response.data.apiData.message == "실패") {
           Swal.fire({
             title: "결제에 실패하였습니다",
@@ -254,7 +254,7 @@ export default {
           this.$router.push('/login/user');
           window.location.reload(true);
         } else {
-          console.log(response.data.apiData.apiData);
+          // console.log(response.data.apiData.apiData);
 
           this.$router.push('/paymentend/'+ response.data.apiData.apiData);
         }

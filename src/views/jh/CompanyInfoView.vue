@@ -120,8 +120,9 @@ export default {
           //params: guestbookVo, //get방식 파라미터로 값이 전달
           data: classNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
           responseType: 'json' //수신타입
+          /* eslint-disable */
         }).then(response => {
-          console.log(response); //수신데이타
+          // console.log(response); //수신데이타
           this.ci2[i].wishNo = 1;
 
         }).catch(error => {
@@ -136,8 +137,9 @@ export default {
           //params: guestbookVo, //get방식 파라미터로 값이 전달
           data: classNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
           responseType: 'json' //수신타입
+          /* eslint-disable */
         }).then(response => {
-          console.log(response); //수신데이타
+          // console.log(response); //수신데이타
 
           this.ci2[i].wishNo = 0;
 
@@ -147,7 +149,7 @@ export default {
       }
     },
     change(no) {  //회사 위시 등록 삭제
-      console.log(no)
+      // console.log(no)
       if (no > 0) {
         axios({
           method: 'delete', // put, post, delete 
@@ -156,8 +158,9 @@ export default {
           //params: guestbookVo, //get방식 파라미터로 값이 전달
           data: no, //put, post, delete 방식 자동으로 JSON으로 변환 전달
           responseType: 'json' //수신타입
+          /* eslint-disable */
         }).then(response => {
-          console.log(response); //수신데이타
+          // console.log(response); //수신데이타
 
           this.ci.wishNo = 0;
 
@@ -245,14 +248,14 @@ export default {
         //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: 'json' //수신타입
       }).then(response => {
-        console.log(response); //수신데이타
+        // console.log(response); //수신데이타
         this.ci = response.data.ci;
         this.ci2 = response.data.ci2;
         this.$nextTick(() => {
           this.createCharts();
         });
 
-        console.log(this.ci2);
+        // console.log(this.ci2);
       }).catch(error => {
         console.log(error);
       });
