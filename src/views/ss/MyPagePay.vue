@@ -926,7 +926,8 @@ export default {
 				method: 'get',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/getpaylist`,
 				headers: { 'Content-Type': 'application/json; charset=utf-8', 
-							'Authorization' : 'Bearer ' + this.$store.state.token},
+							'Authorization' : 'Bearer ' + this.$store.state.token
+						},			
 				params : {classType : paymentType, page : this.page},
 				responseType: 'json'
 			}).then(response => {
