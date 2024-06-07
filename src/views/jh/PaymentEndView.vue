@@ -115,7 +115,7 @@ export default {
       this.$router.push("/classdetailpage/" + no);
     },
     list() {
-      console.log("시작");
+      // console.log("시작");
       axios({
         method: 'get', // put, post, delete 
         url: `${this.$store.state.apiBaseUrl}/odo/payend/${this.$route.params.no}`,
@@ -124,11 +124,11 @@ export default {
         //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: 'json' //수신타입
       }).then(response => {
-        console.log(response); //수신데이타
+        // console.log(response); //수신데이타
         this.pv = response.data.apiData.pv;
         this.rList = response.data.apiData.rList;
-        console.log(this.pv);
-        console.log(this.rList);
+        // console.log(this.pv);
+        // console.log(this.rList);
       }).catch(error => {
         console.log(error);
       });

@@ -83,14 +83,6 @@
         <div>
           <!-- <label for="companyPassChack">비밀번호확인</label> -->
           <input type="text" name="" id="companyPassChack" placeholder="대표 핸드폰번호" v-model="companyVo.companyHp" />
-          <input type="button" value="번호인증" />
-          <div class="companyHpChack">
-            <input type="text" name="" id="companyPassChack" placeholder="인증번호" />
-            <input type="button" value="확인" />
-            <p v-if="isHp">✅인증이 완료되었습니다.</p>
-            <p v-else-if="isHp == null">인증번호를 입력해주세요.</p>
-            <p v-else>❌인증번호가 일치하지 않습니다.</p>
-          </div>
         </div>
       </div>
       <div class="companyJoinButton">
@@ -102,11 +94,7 @@
         
         </div>
         -->
-      <div>
-        <h1>Post to Facebook Page</h1>
-        <input v-model="message" placeholder="Write your post here" />
-        <button @click="postToFacebook">Post</button>
-      </div>
+
     </div>
   </div>
   <AppFooter />
@@ -161,7 +149,7 @@ export default {
       const formData = new FormData();
 
       if(this.file2 == ''){
-				console.log('파일 없음');
+				// console.log('파일 없음');
 			} else {
 				formData.append('companyFile', this.file2);
 			}
@@ -214,8 +202,9 @@ export default {
             data: formData,
             responseType: "json",
           })
+          /* eslint-disable */
             .then((response) => {
-              console.log(response); //수신데이터
+              // console.log(response); //수신데이터
 
 
               //this.$router.push('/comapnypage');
@@ -265,23 +254,6 @@ export default {
         });
     },
 
-    postToFacebook() {
-      const url = `https://graph.facebook.com/${this.pageId}/feed`;
-      const params = {
-        message: this.message,
-        access_token: this.accessToken,
-      };
-
-      axios
-        .post(url, null, { params })
-        .then((response) => {
-          console.log("Post successful:", response.data);
-        })
-        .catch((error) => {
-          console.error("Error posting to Facebook:", error);
-        });
-    },
-
     DaumPostcode() {
       new window.daum.Postcode({
         oncomplete: (data) => {
@@ -298,12 +270,12 @@ export default {
                 // 주소 검색 결과가 성공일 경우
                 this.companyVo.companyLatitude = result[0].y; // 위도
                 this.companyVo.companyLongitude = result[0].x; // 경도
-                console.log(
-                  "위도:",
-                  this.companyVo.companyLatitude,
-                  "경도:",
-                  this.companyVo.companyLongitude
-                );
+                // console.log(
+                //   "위도:",
+                //   this.companyVo.companyLatitude,
+                //   "경도:",
+                //   this.companyVo.companyLongitude
+                // );
               } else {
                 // 주소 검색 실패
                 console.error("주소 검색 실패");
@@ -374,7 +346,7 @@ export default {
       }).then(response => {
         //console.log(response); //수신데이타
         this.companyVo = response.data.apiData;
-        console.log(this.companyVo);
+        // console.log(this.companyVo);
         this.previewImage = `${this.$store.state.apiBaseUrl}/upload/${this.companyVo.companyImage}`;
       }).catch(error => {
         console.log(error);
