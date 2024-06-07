@@ -641,3 +641,6 @@ align-items: center; 세로가운데정렬
   flex-direction: column; /*세로*/
   align-items: center; /*세로정렬*/
 }
+.companyModifyName{
+  height: 60px;
+}

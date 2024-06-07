@@ -23,79 +23,160 @@
         </div> -->
     <!--소개글-->
     <div class="companyJoinTitleJ">
-      <h1>{{this.companyVo.companyName}}</h1>
+      <h1 class="companyModifyName">{{ this.companyVo.companyName }}</h1>
       <div class="companyJoinImg">
         <div class="preview-image">
-          <img v-bind:src="previewImage" style="width: 180px; height: 180px; border-radius: 10px;">
+          <img
+            v-bind:src="previewImage"
+            style="width: 180px; height: 180px; border-radius: 10px"
+          />
         </div>
 
         <div class="input">
-          <input type="file" id="profile" name="profile" class="file-input" style="width: auto;"
-            @change="handleImageChange">
+          <input
+            type="file"
+            id="profile"
+            name="profile"
+            class="file-input"
+            style="width: auto"
+            @change="handleImageChange"
+          />
         </div>
       </div>
       <div class="companyJoinInfo">
         <div>
           <!-- <label for="companyNo">사업자번호</label> -->
-          <input type="text" name="" id="businesNumber" v-model="companyVo.companyBn" placeholder="사업자번호" />
-          <input type="button" value="사업자 인증" v-on:click="businessNumber" />
-          <p v-if="isBn">✅인증되었습니다</p>
+          <input
+            type="text"
+            name=""
+            id="businesNumber"
+            v-model="companyVo.companyBn"
+            placeholder="사업자번호"
+            disabled
+          />
+          <!-- <input type="button" value="사업자 인증" v-on:click="businessNumber" /> -->
+          <!-- <p v-if="isBn">✅인증되었습니다</p>
           <p v-else-if="isBn == null">사업자번호를 입력해주세요.</p>
-          <p v-else>❌다시 인증해주세요</p>
+          <p v-else>❌다시 인증해주세요</p> -->
         </div>
         <div>
           <!-- <label for="companyName">업체명</label> -->
-          <input type="text" name="" id="companyName" v-model="companyVo.companyName" placeholder="업체명" />
+          <input
+            type="text"
+            name=""
+            id="companyName"
+            v-model="companyVo.companyName"
+            placeholder="업체명"
+          />
         </div>
         <div>
           <!-- <label for="companyName">업체명</label> -->
-          <textarea type="text" id="companyDescription" v-model="companyVo.companyIntro" placeholder="업체소개">
-            </textarea>
+          <textarea
+            type="text"
+            id="companyDescription"
+            v-model="companyVo.companyIntro"
+            placeholder="업체소개"
+          >
+          </textarea>
         </div>
         <div>
           <!-- <label for="companyId">아이디</label> -->
-          <input type="text" name="" id="companyId" v-model="companyVo.companyId" placeholder="아이디" />
+          <input
+            type="text"
+            name=""
+            id="companyId"
+            v-model="companyVo.companyId"
+            placeholder="아이디"
+            disabled
+          />
         </div>
         <div>
           <!-- <label for="companyPass">비밀번호</label> -->
-          <input type="password" name="" id="companyPass" placeholder="비밀번호" v-model="companyPassChack" minlength="8"
-            maxlength="16" />
+          <input
+            type="password"
+            name=""
+            id="companyPass"
+            placeholder="비밀번호 변경"
+            v-model="companyPassChack"
+            minlength="8"
+            maxlength="16"
+          />
           <p>비밀번호를 입력해주세요.(8~16글자)</p>
         </div>
         <div>
           <!-- <label for="companyPassChack">비밀번호확인</label> -->
-          <input type="password" name="" id="companyPassChack" placeholder="비밀번호확인" v-model="companyVo.companyPass" />
-          <p v-if="companyPassChack != '' &&
-            companyPassChack == companyVo.companyPass
-            ">
+          <input
+            type="password"
+            name=""
+            id="companyPassChack"
+            placeholder="비밀번호 확인"
+            v-model="companyVo.companyPass"
+          />
+          <p
+            v-if="
+              companyPassChack != '' &&
+              companyPassChack == companyVo.companyPass
+            "
+          >
             ✅비밀번호 일치
           </p>
           <p v-else>❌비밀번호가 일치하지 않습니다.</p>
         </div>
         <div class="companyAddress">
-          <input type="text" id="companyZipCode" placeholder="우편번호" v-model="companyVo.companyZipCode" readonly />
-          <input type="button" v-on:click.prevent="DaumPostcode()" value="우편번호 찾기" /><br />
-          <input type="text" id="companyNameAddress" placeholder="도로명주소" v-model="companyVo.companyNameAddress"
-            readonly />
-          <input type="text" id="companyNumAddress" placeholder="지번주소" v-model="companyVo.companyNumAddress" readonly />
+          <input
+            type="text"
+            id="companyZipCode"
+            placeholder="우편번호"
+            v-model="companyVo.companyZipCode"
+            readonly
+          />
+          <input
+            type="button"
+            v-on:click.prevent="DaumPostcode()"
+            value="우편번호 찾기"
+          /><br />
+          <input
+            type="text"
+            id="companyNameAddress"
+            placeholder="도로명주소"
+            v-model="companyVo.companyNameAddress"
+            readonly
+          />
+          <input
+            type="text"
+            id="companyNumAddress"
+            placeholder="지번주소"
+            v-model="companyVo.companyNumAddress"
+            readonly
+          />
           <span id="guide" style="color: #999; display: none"></span>
-          <input type="text" id="companyDetailAddress" placeholder="상세주소" v-model="companyVo.companyDetailAddress" />
+          <input
+            type="text"
+            id="companyDetailAddress"
+            placeholder="상세주소"
+            v-model="companyVo.companyDetailAddress"
+          />
         </div>
         <div>
           <!-- <label for="companyPassChack">비밀번호확인</label> -->
-          <input type="text" name="" id="companyPassChack" placeholder="대표 핸드폰번호" v-model="companyVo.companyHp" />
+          <input
+            type="text"
+            name=""
+            id="companyPassChack"
+            placeholder="대표 핸드폰번호"
+            v-model="companyVo.companyHp"
+          />
         </div>
       </div>
       <div class="companyJoinButton">
         <button><router-link to="/companypage">취소</router-link></button>
-        <button v-on:click="modify">수정</button>
+        <button v-on:click.prevent="modify">수정</button>
       </div>
       <!--
         <div id="map">
         
         </div>
         -->
-
     </div>
   </div>
   <AppFooter />
@@ -112,7 +193,8 @@ import axios from "axios";
 export default {
   components: {
     HostHeader,
-    AppFooter,AppMenu
+    AppFooter,
+    AppMenu,
   },
   data() {
     return {
@@ -138,7 +220,7 @@ export default {
         companyLatitude: "", //위도
         companyLongitude: "", //경도
       },
-      file2: '',
+      file2: "",
       message: "",
       accessToken:
         "EAAN3krJLRh4BOygZACSanLiJZBMg51rLvXr7z0qYo0vJoUAHh090BzGVB02229haKuaqulu9MiG64ERZCFojgoFJ4OHe5QXOszYXRrqsZB7Al4yY7HKV7An7PC3R3rLjEXb0QQg1CTCXZA5uN9SZAtB3sLBRoTa4VT7pU74KBZBEP4lEkZAMl6hK0IsjYfwKufg7", // 페이지 액세스 토큰
@@ -150,11 +232,11 @@ export default {
     modify() {
       const formData = new FormData();
 
-      if(this.file2 == ''){
-				// console.log('파일 없음');
-			} else {
-				formData.append('companyFile', this.file2);
-			}
+      if (this.file2 == "") {
+        // console.log('파일 없음');
+      } else {
+        formData.append("companyFile", this.file2);
+      }
 
       formData.append("companyBn", this.companyVo.companyBn);
       formData.append("companyName", this.companyVo.companyName);
@@ -182,9 +264,9 @@ export default {
         alert("업체소개를 입력해 주세요");
       } else if (this.companyVo.companyId == "") {
         alert("아이디를 입력해 주세요");
-      } else if(this.companyPassChack == "") {
+      } else if (this.companyPassChack == "") {
         alert("비밀번호를 입력해 주세요");
-      }else if (this.companyVo.companyPass == null) {
+      } else if (this.companyVo.companyPass == null) {
         alert("비밀번호를 입력해 주세요");
       } else if (this.companyVo.zonecode == "") {
         alert("주소를 입력해 주세요");
@@ -193,28 +275,27 @@ export default {
       } else if (this.companyVo.companyHp == "") {
         alert("핸드폰번호를 입력해 주세요");
       } else {
-        if (!this.isBn) {
-          alert("사업자번호인증 해주세요.");
-        } else {
-          // console.log(this.companyVo);
-          axios({
-            method: "put",
-            url: `${this.$store.state.apiBaseUrl}/odo/companymodify`,
-            headers: { "Content-Type": "multipart/form-data", "Authorization": "Bearer " + this.$store.state.cToken }, //전송타입
-            data: formData,
-            responseType: "json",
-          })
+        // console.log(this.companyVo);
+        axios({
+          method: "put",
+          url: `${this.$store.state.apiBaseUrl}/odo/companymodify`,
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: "Bearer " + this.$store.state.cToken,
+          }, //전송타입
+          data: formData,
+          responseType: "json",
+        })
           /* eslint-disable */
-            .then((response) => {
-              if (response.data.result == "success") {
-                alert("수정되었습니다.");
-                this.$router.push('/comapnypage');
-              }
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        }
+          .then((response) => {
+            if (response.data.result == "success") {
+              alert("수정되었습니다.");
+              this.$router.push("/companypage");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     },
     businessNumber() {
@@ -300,7 +381,6 @@ export default {
       reader.onload = (e) => {
         // 읽은 이미지 데이터를 previewImage에 할당하여 이미지 미리보기 업데이트
         this.previewImage = e.target.result;
-        
       };
 
       // 파일을 읽음
@@ -339,21 +419,26 @@ export default {
     },
     list() {
       axios({
-        method: 'get', // put, post, delete 
+        method: "get", // put, post, delete
         url: `${this.$store.state.apiBaseUrl}/odo/companymodify`,
-        headers: { "Content-Type": "application/json; charset=utf-8", "Authorization": "Bearer " + this.$store.state.cToken }, //전송타입
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Authorization: "Bearer " + this.$store.state.cToken,
+        }, //전송타입
         //params: guestbookVo, //get방식 파라미터로 값이 전달
         //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
-        responseType: 'json' //수신타입
-      }).then(response => {
-        //console.log(response); //수신데이타
-        this.companyVo = response.data.apiData;
-        // console.log(this.companyVo);
-        this.previewImage = `${this.$store.state.apiBaseUrl}/upload/${this.companyVo.companyImage}`;
-      }).catch(error => {
-        console.log(error);
-      });
-    }
+        responseType: "json", //수신타입
+      })
+        .then((response) => {
+          //console.log(response); //수신데이타
+          this.companyVo = response.data.apiData;
+          // console.log(this.companyVo);
+          this.previewImage = `${this.$store.state.apiBaseUrl}/upload/${this.companyVo.companyImage}`;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
   mounted() {
     // 네이버 지도 API 로드

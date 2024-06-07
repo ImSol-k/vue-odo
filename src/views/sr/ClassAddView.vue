@@ -104,7 +104,7 @@
                     <input
                       class="VueDatePickerOne"
                       type="datetime-local"
-                      v-model="onedayDate[i]"
+                      v-model="onedayDate[i-1]"
                     />
                     <!-- <VueDatePicker
                     class="VueDatePickerOne"
@@ -112,12 +112,12 @@
                     time-picker-inline
                     v-model="onedayDate[i]"
                   /> -->
-                    <button v-on:click.prevent="schedulClick(2, i)">
+                    <button v-on:click.prevent="schedulClick(2, i-1)">
                       삭제
                     </button>
                     <button
-                      v-on:click.prevent="schedulClick(1, 0)"
-                      v-show="onedayDate.length == i"
+                      v-on:click.prevent="schedulClick(1, i-1)"
+                      v-show="onedayDate.length == i-1"
                     >
                       추가
                     </button>
