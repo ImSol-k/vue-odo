@@ -378,7 +378,7 @@ export default {
     checkAuth() {
       if (this.$store.state.authUser == "" && this.$store.state.token == "") {
         this.$router.push("/login/user");
-      }
+      } 
     },
     goMypage() {
       this.$router.push("/mypage/pay");

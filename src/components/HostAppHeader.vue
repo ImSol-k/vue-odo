@@ -35,7 +35,6 @@ export default {
         logout() {
             this.$store.commit('setAuthCompany', '');
             this.$store.commit('setCToken', '');
-            this.$store.commit('setToken', '');
             this.$router.push('/');
         },
     },
