@@ -25,7 +25,7 @@
       <h1>{{this.companyVo.companyName}}</h1>
       <div class="companyJoinImg">
         <div class="preview-image">
-          <img v-bind:src="previewImage" style="max-width: 300px; max-height: 300px;">
+          <img v-bind:src="previewImage" style="width: 180px; height: 180px; border-radius: 10px;">
         </div>
 
         <div class="input">
@@ -367,7 +367,7 @@ export default {
       axios({
         method: 'get', // put, post, delete 
         url: `${this.$store.state.apiBaseUrl}/odo/companymodify`,
-        headers: { "Content-Type": "application/json; charset=utf-8", "Authorization": "Bearer " + this.$store.state.token }, //전송타입
+        headers: { "Content-Type": "application/json; charset=utf-8", "Authorization": "Bearer " + this.$store.state.cToken }, //전송타입
         //params: guestbookVo, //get방식 파라미터로 값이 전달
         //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: 'json' //수신타입

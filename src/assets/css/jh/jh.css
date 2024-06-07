@@ -854,6 +854,25 @@
     font-size: 15px;
 }
 
+.review-box{
+    border-bottom: 1px solid #919191;
+    width: 180px;
+}
+
+.review-box2{
+    width: 180px;
+    height: 28px;
+    border-bottom: 1px solid #919191;
+}
+
+.starPoint{
+    color: #8521FF;
+}
+
+.companyJoinImg{
+    padding-left: 100px;
+}
+
 /* 탭바 따온거 ㅋㅋ */
 /*
 .tabmenu{
