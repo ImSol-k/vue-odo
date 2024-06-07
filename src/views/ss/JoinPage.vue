@@ -125,7 +125,7 @@ export default {
 		// 카카오로 회원가입
 		kakaoJoin(){
 			window.Kakao.Auth.authorize({
-				redirectUri : 'http://localhost:8080/login/user',
+				redirectUri : `${this.$store.state.apiBaseUrl}/login/user`,
 				prompt : 'login'
 			})
 		},

@@ -104,7 +104,7 @@ export default {
     // 카카오 로그인 버튼 눌렀을 때
     kakaoLogin(){
       window.Kakao.Auth.authorize({
-        redirectUri : 'http://localhost:8080/login/user',
+        redirectUri : `${this.$store.state.apiBaseUrl}/login/user`,
         prompt : 'login'
       })
     },
