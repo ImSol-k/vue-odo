@@ -69,7 +69,8 @@
               <p v-else>{{ Number(this.pv.classPrice * this.a / 100).toLocaleString("ko-KR") }}원 할인</p>
             </div>
             <div>
-              <p class="couponText" v-if="this.couponList.length > 0 ">{{ this.couponList.length }}개의 사용 가능한 쿠폰이 있습니다</p>
+              <p class="couponText" v-if="this.couponList.length > 0">{{ this.couponList.length }}개의 사용 가능한 쿠폰이 있습니다
+              </p>
               <p class="couponText" v-else>사용가능한 쿠폰이 없습니다</p>
             </div>
           </div>
@@ -102,17 +103,37 @@
   </div>
 
   <!--모달창-->
+  <div>
+    <button id="btn-modal">모달창 열려랏!</button>
+  </div>
+
+
+  <div id="modal" class="modal-overlay">
+    <div class="modal-window">
+      <div class="title">
+        <h2>제목</h2>
+      </div>
+      <div class="close-area">X</div>
+      <div class="content">
+        <p>안녕하세요</p>
+        <p>이건 모달창이에요</p>
+
+      </div>
+    </div>
+  </div>
+
+
   <div id="addModal">
     <div class="modal-content2">
       <form action="">
         <p class="closeBtn" v-on:click="close">x</p>
         <label for="none">사용안함</label>
-        <input id="none" type="radio" name="coupon" value="사용안함" v-model="a" checked="checked"
-          v-on:click="couponNo0" /><br><br><br>
+        <input  id="none" type="radio" name="coupon" value="사용안함" v-model="a" checked="checked"
+          v-on:click="couponNo0" /><br><br>
         <div v-for="(coupon, i) in couponList" v-bind:key="i">
-          <label>{{ coupon.coupon_price }}% 할인</label>
-          <input type="radio" name="coupon" :value="coupon.coupon_price" v-model="a"
-            v-on:click="couponNo(coupon.coupon_no)" /><br /><br><br>
+          <label :for="'coupon_' + i">{{ coupon.coupon_price }}% 할인</label>
+          <input :id="'coupon_' + i" type="radio" name="coupon" :value="coupon.coupon_price" v-model="a"
+            @click="couponNo(coupon.coupon_no)" /><br><br>
         </div>
         <button v-on:click.prevent="close2">적용하기</button>
       </form>
@@ -207,7 +228,7 @@ export default {
           this.$store.commit('setAuthUser', '');
           this.$store.commit('setToken', '');
           this.$router.push('/');
-          
+
         } else {
           // console.log(response); //수신데이타
           this.pv = response.data.apiData.pv;
@@ -256,7 +277,7 @@ export default {
         } else {
           // console.log(response.data.apiData.apiData);
 
-          this.$router.push('/paymentend/'+ response.data.apiData.apiData);
+          this.$router.push('/paymentend/' + response.data.apiData.apiData);
         }
 
       }).catch(error => {
