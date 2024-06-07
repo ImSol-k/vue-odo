@@ -20,6 +20,7 @@ import WishListClass from '../views/jh/WishListClass.vue'
 import WishListCompany from '../views/jh/WishListCompany.vue'
 import PaymentView from '../views/jh/PaymentView.vue'
 import PaymentEndView from '../views/jh/PaymentEndView.vue'
+import Advertising from '../views/jh/Advertising.vue'
 //승수
 import MyPagePay from '../views/ss/MyPagePay.vue'
 import MyPageCoupon from '../views/ss/MyPageCoupon.vue'
@@ -100,6 +101,11 @@ const routes = [
     component: TestView
   },
   //=== 재현 =================================
+  {
+    path: '/advertising',
+    name: 'advertising',
+    component: Advertising
+  },
   {
     path: '/companyinfo/:no',
     name: 'companyinfo',
