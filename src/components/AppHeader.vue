@@ -238,7 +238,7 @@
         <router-link v-if="this.$store.state.cToken == ''" to="/companyselect"
           >호스트 지원</router-link
         >
-        <router-link v-else to="/companypage">호스트 지원</router-link>
+        <router-link v-else to="/companypage">업체 페이지로 이동</router-link>
         <ul>
           <li
             v-if="
