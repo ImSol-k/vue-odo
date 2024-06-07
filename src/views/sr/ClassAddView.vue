@@ -74,7 +74,7 @@
                   v-model="classVo.classIntro"
                 />
               </div>
-              <div class="classParticipation" v-if="!isClass">
+              <div class="classParticipation" v-if="isClass == 2">
                 <label for="">중도참여</label>
 
                 <label
@@ -93,7 +93,7 @@
                 <input type="radio" name="possibility" id="impossibility" />
               </div>
               <!-- 원데이일정 -->
-              <div class="classSchedule" v-if="isClass">
+              <div class="classSchedule" v-if="isClass == 1">
                 <label for="">일정</label>
                 <div class="classScheduleFor">
                   <div
@@ -133,7 +133,7 @@
                   <p>시작일</p>
                   <input
                     class="VueDatePicker"
-                    type="date"
+                    type="datetime-local"
                     v-model="startDate"
                   />
                   <!-- <VueDatePicker
@@ -145,7 +145,7 @@
                 </div>
                 <div>
                   <p>종료일</p>
-                  <input class="VueDatePicker" type="date" v-model="endDate" />
+                  <input class="VueDatePicker" type="datetime-local" v-model="endDate" />
                   <!-- <VueDatePicker
                     class="VueDatePicker"
                     locale="ko"
@@ -278,7 +278,7 @@
           </div>
           <!--classAddInfo-->
           <div class="isAddBtn">
-            <button>취소</button>
+            <button><router-link to="/companypage">취소</router-link></button>
             <button v-if="isAdd == 1" type="button" v-on:click="classHandle">
               등록
             </button>
@@ -371,26 +371,6 @@ export default {
         });
     },
 
-    /********************************************************************
-     * 클래스 수정
-     */
-    classUpdate() {
-      axios({
-        method: "post",
-        url: `${this.$store.state.apiBaseUrl}/odo/company/getupdate/${this.classNo}`,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        responseType: "json",
-      })
-      /* eslint-disable */
-        .then((response) => {
-          // console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
 
     /********************************************************************
      * 클래스 추가/ 수정
@@ -444,6 +424,9 @@ export default {
       } else {
         formData.append("startDate", this.formatDate(this.startDate));
         formData.append("endDate", this.formatDate(this.endDate));
+      }
+      if (this.classVo.classNo != null) {
+        formData.append("classNo", this.classNo);
       }
 
       //에디터 본문내용
@@ -507,7 +490,7 @@ export default {
         } else {
           //클래스 수정 =======================
           // console.log("클래스 수정");
-          formData.append("classNo", this.classNo);
+          
           axios({
             method: "put",
             url: `${this.$store.state.apiBaseUrl}/odo/company/update`,
@@ -603,16 +586,24 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          // console.log(response.data.apiData);
+          console.log(response.data.apiData);
           if (response.data.result == "success") {
             this.classVo = response.data.apiData;
-            this.classVo.classImage = this.img;
+            this.onedayDate = response.data.apiData.startDateList;
+            this.startDate = response.data.apiData.startDate;
+            this.endDate = response.data.apiData.endDate;
+            // this.classVo.classImage = this.img;
             // 에디터 인스턴스 가져오기
             const editorInstance = this.$refs.quillEditor.getQuill();
 
             //에디터에 내용 적용  //content는 서버에서 받은 내용
             editorInstance.root.innerHTML = response.data.apiData.classInfo;
 
+            if (this.classVo.classType == 1) {
+              this.isClass = 1;
+            } else {
+              this.isClass = 2;
+            }
             //스케줄 불러오기
             this.getschedule();
           } else {
@@ -642,6 +633,7 @@ export default {
           console.log(response.data);
           if (response.data.result == "success") {
             this.rClassList = response.data.apiData;
+            this.isClass = 2;
           } else {
             alert("불러오기 실패");
           }

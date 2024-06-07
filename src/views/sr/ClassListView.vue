@@ -158,6 +158,7 @@ export default {
         "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=b356b366e6bedbfd5618c9752b2dd60e";
       document.head.appendChild(script);
     }
+    
   },
   methods: {
     /********************************************************************
@@ -272,6 +273,8 @@ export default {
                   ),
                 });
               });
+              this.latitude = this.classList[0].classLatitude;
+              this.longitude = this.classList[0].classLongitutde;
               this.displayMap(
                 this.classList[0].classLatitude,
                 this.classList[0].classLongitutde
@@ -304,6 +307,49 @@ export default {
      * 카카오 맵관련 메소드
      */
     initMap() {
+      //현재위치 얻어오기
+      if (this.isFind == 2) {
+        //객체생성
+        var geocoder = new kakao.maps.services.Geocoder();
+        var coord = new kakao.maps.LatLng(this.latitude, this.longitude);
+        var callback = function (result, status) {
+          // console.log(status); // 상태를 확인하는 로그
+          if (status === kakao.maps.services.Status.OK) {
+            if (result.length > 0) {
+              var pos = result[0].road_address
+                ? result[0].road_address.address_name
+                : result[0].address.address_name;
+              pos = pos.replace(/-|1|2|3|4|5|6|7|8|9|0/g, "");
+              pos = pos.split(" ");
+              this.keyword = pos[1];
+            } else {
+              // console.error("Geocoding result is empty");
+            }
+          } else {
+            // console.error("Geocoding failed with status: " + status);
+          }
+        }.bind(this);
+        geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+        
+        // if (navigator.geolocation) {
+        //   navigator.geolocation.getCurrentPosition(
+        //     (position) => {
+        //       this.latitude = position.coords.latitude;
+        //       this.longitude = position.coords.longitude;
+        //       // this.displayMap(this.latitude, this.longitude);
+        //       let locPosition = new kakao.maps.LatLng(
+        //         this.latitude,
+        //         this.longitude
+        //       );
+        //       this.map.setCenter(locPosition);
+        //     },
+        //     (error) => {
+        //       // 현재위치 못얻어올떄
+        //       console.error("Error occurred. Error code: " + error.code);
+        //     }
+        //   );
+        // } 
+      }
       //맵을 그린다 기본위치를 표시------------------------------------------------------------
       var mapContainer = document.getElementById("listMap"); // 지도를 표시할 div
       var mapOption = {
@@ -314,35 +360,8 @@ export default {
       //지도생성
       this.map = new kakao.maps.Map(mapContainer, mapOption);
 
-      //현재위치 얻어오기
-      if (this.isFind == 2) {
-        
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            (position) => {
-              this.latitude = position.coords.latitude;
-              this.longitude = position.coords.longitude;
-              // this.displayMap(this.latitude, this.longitude);
-              let locPosition = new kakao.maps.LatLng(
-                this.latitude,
-                this.longitude
-              );
-              this.map.setCenter(locPosition);
-            },
-            (error) => {
-              // 현재위치 못얻어올떄 기본 위치 강남
-              console.error("Error occurred. Error code: " + error.code);
-              this.displayMap(this.latitude, this.longitude);
-            }
-          );
-        } else {
-          // Geolocation을 지원하지 않으면 기본 위치 강남
-          this.displayMap(this.latitude, this.longitude);
-        }
-      }
     },
-    displayMap(latitude, longitude) {
-
+    displayMap() {
       //마커 이미지
       var imageSrc =
         "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
@@ -365,36 +384,6 @@ export default {
       }
 
       this.map.setCenter(this.positions[0].latlng);
-
-
-
-
-
-      //객체생성
-      var geocoder = new kakao.maps.services.Geocoder();
-      var coord = new kakao.maps.LatLng(latitude, longitude);
-
-      if (this.isFind == "2") {
-        var callback = function (result, status) {
-          // console.log(status); // 상태를 확인하는 로그
-          if (status === kakao.maps.services.Status.OK) {
-            if (result.length > 0) {
-              var pos = result[0].road_address
-                ? result[0].road_address.address_name
-                : result[0].address.address_name;
-              pos = pos.replace(/-|1|2|3|4|5|6|7|8|9|0/g, "");
-              pos = pos.split(" ");
-              this.keyword = pos[1];
-            } else {
-              // console.error("Geocoding result is empty");
-            }
-          } else {
-            // console.error("Geocoding failed with status: " + status);
-          }
-        }.bind(this);
-        geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
-      }
-
     },
   },
   created() {
