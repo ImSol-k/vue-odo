@@ -12,14 +12,14 @@
                     <h4>고객센터</h4>
                     <div>
                         <span>채팅상담:</span>
-                        <button>카카오톡 채널 원데이원클래스</button>
+                        <button id="KakaoTalk1">카카오톡 채널 원데이원클래스</button>
                     </div>
                 </div>
                 <div>
                     <h4>호스트 지원센터</h4>
                     <div>
                         <span>채팅상담:</span>
-                        <button>카카오톡 채널 원데이원클래스 호스트</button>
+                        <button id="KakaoTalk2">카카오톡 채널 원데이원클래스 호스트</button>
                     </div>
                 </div>
             </div>
@@ -62,6 +62,8 @@
 </template>
 
 <script>
+
+
 export default {
     name: "AppFooter",
     components: {},
@@ -69,6 +71,15 @@ export default {
         return {};
     },
     methods: {},
+    mounted() {
+        document.getElementById("KakaoTalk1").addEventListener("click", function () {
+            window.open("https://open.kakao.com/o/ghymk2vg", "_blank");
+        });
+
+        document.getElementById("KakaoTalk2").addEventListener("click", function () {
+            window.open("https://open.kakao.com/o/go2lp2vg", "_blank");
+        });
+    },
     created() { }
 };
 </script>

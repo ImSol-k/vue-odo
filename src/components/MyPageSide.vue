@@ -14,11 +14,11 @@
 
 	<div class="cli-image">
 		<div class="cli-1">
-			<img src="@/assets/images/icon/ss/kakao.png"><br>
+			<a href="https://open.kakao.com/o/ghymk2vg" target="_blank"><img src="@/assets/images/icon/ss/kakao.png"><br></a>
 			<span>ODO 채널</span>
 		</div>
 		<div class="cli-2 clearfix">
-			<img src="@/assets/images/icon/ss/kakao.png"><br>
+			<a href="https://open.kakao.com/o/go2lp2vg" target="_blank"><img src="@/assets/images/icon/ss/kakao.png"><br></a>
 			<span>ODO 호스트</span>
 		</div>
 		<div class="cli-3">
