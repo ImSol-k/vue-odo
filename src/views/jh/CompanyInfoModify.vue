@@ -194,7 +194,7 @@ export default {
         if (!this.isBn) {
           alert("사업자번호인증 해주세요.");
         } else {
-          console.log(this.companyVo);
+          // console.log(this.companyVo);
           axios({
             method: "put",
             url: `${this.$store.state.apiBaseUrl}/odo/companymodify`,

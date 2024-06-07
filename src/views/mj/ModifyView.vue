@@ -139,7 +139,7 @@ export default {
         data : formData,
 				responseType: 'json'
 			}).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         if(response.data.result === 'success'){
           let authUser = {
             userNo: response.data.apiData.userNo,

@@ -106,8 +106,9 @@ export default {
                 //data: guestbookVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 
                 responseType: 'json' //수신타입
+                /* eslint-disable */
             }).then(response => {
-                console.log(response); //수신데이타
+                // console.log(response); //수신데이타
                 this.$router.push('/mypage/notice'); // 예시 라우팅, 필요에 따라 조정
 
             }).catch(error => {

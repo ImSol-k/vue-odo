@@ -89,15 +89,15 @@ export default {
 
         responseType: 'json' //수신타입
       }).then(response => {
-        console.log(response.data.chart); //수신데이타
+        // console.log(response.data.chart); //수신데이타
         this.chart = response.data.chart;
 
         this.list = response.data.list;
         this.list1 = response.data.list1;
 
-        console.log(this.chart);
-        console.log(this.list);
-        console.log(this.list1);
+        // console.log(this.chart);
+        // console.log(this.list);
+        // console.log(this.list1);
 
         new Chart(this.$refs.MyChart, {
 

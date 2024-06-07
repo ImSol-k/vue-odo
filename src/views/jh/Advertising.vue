@@ -69,8 +69,8 @@
   
         axios.post(photoUrl, formData)
           .then((response) => {
-            console.log(response)
-            console.log(response.data.id)
+            // console.log(response)
+            // console.log(response.data.id)
             const photoId = response.data.id;
             this.createPost(photoId); // 업로드가 성공하면 게시물 생성 메서드 호출
           })
@@ -82,7 +82,7 @@
               icon: "error",
               text: error.message,
             });
-            console.error("페이스북에 사진 업로드 중 오류 발생:", error);
+            // console.error("페이스북에 사진 업로드 중 오류 발생:", error);
           });
       },
       createPost(photoId = null) {
@@ -96,6 +96,7 @@
         }
   
         axios.post(url, null, { params })
+        /* eslint-disable */
           .then((response) => {
             this.loading = false; // 로딩 상태 종료
             Swal.close();
@@ -104,7 +105,7 @@
               icon: "success",
             });
             this.resetForm();
-            console.log("게시 성공:", response.data);
+            // console.log("게시 성공:", response.data);
           })
           .catch((error) => {
             this.loading = false; // 로딩 상태 종료
@@ -114,7 +115,7 @@
               icon: "error",
               text: error.message,
             });
-            console.error("페이스북에 게시 중 오류 발생:", error);
+            // console.error("페이스북에 게시 중 오류 발생:", error);
           });
       },
       resetForm() {
