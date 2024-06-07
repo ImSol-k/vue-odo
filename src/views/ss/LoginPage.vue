@@ -105,7 +105,7 @@ export default {
     kakaoLogin(){
       window.Kakao.Auth.authorize({
         redirectUri : 'http://localhost:8080/login/user',
-        // prompt : 'login'
+        prompt : 'login'
       })
     },
 

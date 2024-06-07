@@ -16,10 +16,11 @@
 							<p v-if="this.classDetailVo.classPrice != 0">{{
 					Number(this.classDetailVo.classPrice).toLocaleString('ko-KR') }}<span>원</span></p>
 							<p v-else>무료</p>
-							<div v-if="this.classDetailVo.wish == 1" class="class-like-btn red">
+							<div v-if="this.classDetailVo.wish == 1" class="class-like-btn red"
+								@click="minusWish(this.classDetailVo.wClassNo)">
 								<img src="../../assets/images/redheart.svg" alt="">
 							</div>
-							<div v-else class="class-like-btn">
+							<div v-else class="class-like-btn" @click="plusWish">
 								<img src="../../assets/images/black_heart_icon.svg" alt="">
 							</div>
 						</div>
@@ -48,8 +49,7 @@
 
 					<div class="companySection">
 						<router-link :to="`/companyinfo/${this.classDetailVo.companyNo}`" class="companyLogo">
-							<img :src="`${this.$store.state.apiBaseUrl}/upload/${this.companyInfo.companyImg}`"
-								alt="">
+							<img :src="`${this.$store.state.apiBaseUrl}/upload/${this.companyInfo.companyImg}`" alt="">
 						</router-link>
 						<router-link :to="`/companyinfo/${this.classDetailVo.companyNo}`" class="nameBox">
 							<p>{{ this.companyInfo.companyName }}</p>
@@ -59,10 +59,11 @@
 								<span>찜 {{ this.cMap.comWishCnt }}</span>
 							</p>
 						</router-link>
-						<div v-if="this.companyInfo.cWish == 1" class="company-like-btn red">
+						<div v-if="this.companyInfo.cWish == 1" class="company-like-btn red"
+							@click="minusComWish(this.companyInfo.wCompanyNo)">
 							<img src="../../assets/images/redheart.svg" alt="">
 						</div>
-						<div v-else class="company-like-btn">
+						<div v-else class="company-like-btn" @click="plusComWish(this.classDetailVo.companyNo)">
 							<img src="../../assets/images/black_heart_icon.svg" alt="">
 						</div>
 					</div>
@@ -155,6 +156,10 @@ export default {
 			nameAdd: "",
 			schList: [],
 			classReviewList: [],
+			wishVo: {
+				userNo: null,
+				classNo: null
+			}
 		};
 	},
 	mounted() {
@@ -170,12 +175,118 @@ export default {
 		}
 	},
 	methods: {
+		minusComWish(wCompanyNo) {
+			this.wishVo.classNo = wCompanyNo;
+			this.wishVo.userNo = this.$store.state.authUser.userNo;
+
+			axios({
+				method: 'delete', // put, post, delete
+				url: 'http://localhost:9090/odo/comwishes',
+				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+				//params: guestbookVo, //get방식 파라미터로 값이 전달
+				data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+				responseType: 'json' //수신타입
+			}).then(response => {
+				console.log(response.data.apiData);
+				this.getClassDetail();
+
+			}).catch(error => {
+				console.log(error);
+			});
+
+		},
+		plusComWish(companyNo) {
+
+			this.wishVo.classNo = companyNo;
+			this.wishVo.userNo = this.$store.state.authUser.userNo;
+
+			axios({
+				method: 'post', // put, post, delete
+				url: 'http://localhost:9090/odo/comwishes',
+				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+				//params: guestbookVo, //get방식 파라미터로 값이 전달
+				data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+				responseType: 'json' //수신타입
+			}).then(response => {
+				console.log(response.data.apiData);
+				this.getClassDetail();
+
+			}).catch(error => {
+				console.log(error);
+			});
+
+		},
+		minusWish(wClassNo) {
+
+			this.wishVo.classNo = wClassNo;
+			this.wishVo.userNo = this.$store.state.authUser.userNo;
+
+			axios({
+				method: 'delete', // put, post, delete
+				url: 'http://localhost:9090/odo/wishes',
+				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+				//params: guestbookVo, //get방식 파라미터로 값이 전달
+				data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+				responseType: 'json' //수신타입
+			}).then(response => {
+				console.log(response.data.apiData);
+				this.getClassDetail();
+
+			}).catch(error => {
+				console.log(error);
+			});
+
+		},
+		plusWish() {
+			if (this.$store.state.authUser == null && this.$store.state.token == null) {
+
+				Swal.fire({
+					title: "로그인 후 이용 가능합니다.",
+					text: "로그인 하시겠습니까?",
+					icon: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "예",
+					cancelButtonText: "아니오"
+				}).then(result => {
+					if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+						// ...실행
+						this.$router.push('/login/user');
+
+					} else if (result.isDismissed) { // 만약 모달창에서 cancel 버튼을 눌렀다면
+						// ...실행
+					}
+				});
+				// alert("로그인 후 결제해주세요");
+
+			} else {
+				this.wishVo.classNo = this.$route.params.classNo;
+				this.wishVo.userNo = this.$store.state.authUser.userNo;
+
+				axios({
+					method: 'post', // put, post, delete
+					url: 'http://localhost:9090/odo/wishes',
+					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+					//params: guestbookVo, //get방식 파라미터로 값이 전달
+					data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+					responseType: 'json' //수신타입
+				}).then(response => {
+					console.log(response.data.apiData);
+					this.getClassDetail();
+
+				}).catch(error => {
+					console.log(error);
+				});
+
+			}
+		},
 		// 결제하기버튼
 		goToPay() {
 			if (this.selectedSchedule != null && (this.$store.state.authUser != '' && this.$store.state.token != '')) {
 				this.$router.push(`/payment/${this.selectedSchedule.scheduleNo}`);
 
-			} else if ( this.$store.state.authUser == '' && this.$store.state.token == '' ) {
+			} else if (this.$store.state.authUser == '' && this.$store.state.token == '') {
 				Swal.fire({
 					title: "로그인 후 이용 가능합니다.",
 					text: "로그인 하시겠습니까?",
@@ -196,11 +307,11 @@ export default {
 				});
 				// alert("로그인 후 결제해주세요");
 			} else {
-				Swal.fire({ 
-					text: "일정/시간을 선택해주세요", 
-					icon: "warning", 
+				Swal.fire({
+					text: "일정/시간을 선택해주세요",
+					icon: "warning",
 					confirmButtonColor: "#3085d6",
-					confirmButtonText: "확인" 
+					confirmButtonText: "확인"
 				});
 				// alert("일정/시간을 선택해주세요");
 			}
@@ -233,7 +344,7 @@ export default {
 					this.companyInfo = this.cMap.companyInfo;
 					this.classReviewList = this.cMap.classReviewList;
 					this.schList = this.cMap.schList;
-	
+
 				}).catch(error => {
 					console.log(error);
 				});
@@ -263,7 +374,7 @@ export default {
 					this.companyInfo = this.cMap.companyInfo;
 					this.classReviewList = this.cMap.classReviewList;
 					this.schList = this.cMap.schList;
-	
+
 				}).catch(error => {
 					console.log(error);
 				});

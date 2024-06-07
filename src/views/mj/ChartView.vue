@@ -12,6 +12,7 @@
           </div>
         </div>
         <div class="list clearfix">
+          <span>인기 클래스순위</span>
           <div class="whatClass">
             <span v-on:click.prevent="selectClass(1)" :class="{ classChack: isClass == 1 }">원데이</span>
             <span v-on:click.prevent="selectClass(2)" :class="{ classChack: isClass == 2 }">정규/상시</span>
