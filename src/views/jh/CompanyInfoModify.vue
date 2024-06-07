@@ -1,7 +1,7 @@
 <template>
   <!--업체 소개페이지-->
   <!--헤더-->
-
+    
   <HostHeader />
   <div class="wrap">
     <AppMenu />
@@ -111,7 +111,7 @@ import AppFooter from "@/components/AppFooter.vue";
 import AppMenu from "@/components/CompanyMenu.vue";
 import "@/assets/css/jh/jh.css";
 import "@/assets/css/Initialization.css";
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 import axios from "axios";
 
