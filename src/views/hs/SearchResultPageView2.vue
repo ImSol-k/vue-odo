@@ -20,7 +20,7 @@
 	<button @click="toggleCateBox" class="upNDownBtn" :class="{ close: isCateOpen }"></button>
 
 	<!-- ----------------------------비로그인------------------------------------ -->
-	<div v-if="this.$store.state.authUser == null && this.$store.state.token == null" class="inner">
+	<div v-if="this.$store.state.authUser == '' && this.$store.state.token == ''" class="inner">
 
 		<ul v-if="cateList.length != 0" class="classList resultPageClassList">
 			<li v-for=" cateClass in cateList " :key="cateClass">
@@ -192,28 +192,49 @@ export default {
 	},
 	methods: {
 		minusWish(wClassNo) {
-			this.wishVo.classNo = wClassNo;
-			this.wishVo.userNo = this.$store.state.authUser.userNo;
+			if(this.$store.state.authUser == '' && this.$store.state.token == ''){
+				Swal.fire({
+					title: "로그인 후 이용 가능합니다.",
+					text: "로그인 하시겠습니까?",
+					icon: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "예",
+					cancelButtonText: "아니오"
+				}).then(result => {
+					if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+						// ...실행
+						this.$router.push('/login/user');
 
-			axios({
-				method: 'delete', // put, post, delete
-				url: 'http://localhost:9090/odo/wishes',
-				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
-				//params: guestbookVo, //get방식 파라미터로 값이 전달
-				data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
-				responseType: 'json' //수신타입
-				/* eslint-disable */
-			}).then(response => {
-				// console.log(response.data.apiData);
-				this.getcate2List();
+					} else if (result.isDismissed) { // 만약 모달창에서 cancel 버튼을 눌렀다면
+						// ...실행
+					}
+				});
+			} else {
+				this.wishVo.classNo = wClassNo;
+				this.wishVo.userNo = this.$store.state.authUser.userNo;
 
-			}).catch(error => {
-				console.log(error);
-			});
+				axios({
+					method: 'delete', // put, post, delete
+					url: `${this.$store.state.apiBaseUrl}/odo/wishes`,
+					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
+					//params: guestbookVo, //get방식 파라미터로 값이 전달
+					data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+					responseType: 'json' //수신타입
+					/* eslint-disable */
+				}).then(response => {
+					// console.log(response.data.apiData);
+					this.getcate2List();
+
+				}).catch(error => {
+					console.log(error);
+				});
+			}
+			
 		},
 		plusWish(classNo) {
-			if (this.$store.state.authUser == null && this.$store.state.token == null) {
-
+			if (this.$store.state.authUser == '' && this.$store.state.token == '') {
 				Swal.fire({
 					title: "로그인 후 이용 가능합니다.",
 					text: "로그인 하시겠습니까?",
@@ -241,7 +262,7 @@ export default {
 
 				axios({
 					method: 'post', // put, post, delete
-					url: 'http://localhost:9090/odo/wishes',
+					url: `${this.$store.state.apiBaseUrl}/odo/wishes`,
 					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
 					//params: guestbookVo, //get방식 파라미터로 값이 전달
 					data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
@@ -323,7 +344,7 @@ export default {
 
 				axios({
 					method: 'get', // put, post, delete
-					url: 'http://localhost:9090/odo/subcategories',
+					url: `${this.$store.state.apiBaseUrl}/odo/subcategories`,					
 					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
 					params: {
 						cate2No: this.$route.params.no,
@@ -348,7 +369,7 @@ export default {
 
 				axios({
 					method: 'get', // put, post, delete
-					url: 'http://localhost:9090/odo/subcategories/users',
+					url: `${this.$store.state.apiBaseUrl}/odo/subcategories/users`,					
 					headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
 					params: {
 						userNo: this.$store.state.authUser.userNo,
