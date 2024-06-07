@@ -96,7 +96,7 @@
         </div>
       </div>
       <div class="pamentButtonBox">
-        <button>취소</button>
+        <button><router-link :to="`/classdetailpage${this.$route.params.no}`">취소</router-link></button>
         <button v-on:click="pay">결제하기</button>
       </div>
     </div>
