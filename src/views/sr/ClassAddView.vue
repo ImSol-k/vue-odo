@@ -80,17 +80,17 @@
                 <label
                   class="classRadioText"
                   for="possibility"
-                  v-on:click.prevent="selectClass(3)"
+                  
                   >가능</label
                 >
-                <input type="radio" name="possibility" id="possibility" />
+                <input type="radio" name="possibility" id="possibility" @change="selectClass(3)"/>
                 <label
                   class="classRadioText"
                   for="impossibility"
-                  v-on:click.prevent="selectClass(2)"
+                  
                   >불가능</label
                 >
-                <input type="radio" name="possibility" id="impossibility" />
+                <input type="radio" name="possibility" id="impossibility" @change="selectClass(2)"/>
               </div>
               <!-- 원데이일정 -->
               <div class="classSchedule" v-if="isClass == 1">
@@ -279,10 +279,10 @@
           <!--classAddInfo-->
           <div class="isAddBtn">
             <button><router-link to="/companypage">취소</router-link></button>
-            <button v-if="isAdd == 1" type="button" v-on:click="classHandle">
+            <button v-if="isAdd == 1" type="button" v-on:click.prevent="classHandle">
               등록
             </button>
-            <button v-else type="button" v-on:click="classHandle">수정</button>
+            <button v-else type="button" v-on:click.prevent="classHandle">수정</button>
           </div>
         </div>
         <!--classAddBox---->
@@ -728,18 +728,19 @@ export default {
      * 클래스 타입 변경
      */
     selectClass(num) {
+      console.log(num)
       if (num == 1) {
         this.isClass = 1;
         this.classVo.classType = 1;
         this.classList(1);
       } else {
         this.isClass = 2;
-        this.classList(2);
         if (num == 2) {
           this.classVo.classType = 2;
         } else {
           this.classVo.classType = 3;
         }
+        this.classList(2);
       }
     },
 
