@@ -137,7 +137,7 @@
             <input
               type="text"
               name=""
-              id="companyPassChack"
+              id="companyHp"
               placeholder="대표 핸드폰번호"
               v-model="companyVo.companyHp"
             />

@@ -381,7 +381,7 @@ export default {
 
       //파일 값 확인
       if (this.classImage == "") {
-        // console.log("파일이 비어있습니다.");
+        alert("파일이 비어있습니다.");
       } else {
         formData.append("classImageFile", this.classImage);
       }
@@ -442,6 +442,8 @@ export default {
 
       if (this.classVo.className == "") {
         alert("클래스명을 작성해주세요.");
+      } else if (this.classVo.classType == "") {
+        alert("클래스타입을 선택해주세요")
       } else if (this.classVo.classIntro == "") {
         alert("클래스 소개를 작성해주세요.");
       } else if (this.isClass && this.onedayDate == "") {
@@ -480,6 +482,7 @@ export default {
             .then((response) => {
               if (response.data.result == "success") {
                 alert("클래스가 추가되었습니다.");
+                this.$router.push("/companypage");
               } else {
                 alert("클래스 추가 실패");
               }
@@ -504,6 +507,7 @@ export default {
               // console.log(response.data);
               if (response.data.result == "success") {
                 alert("클래스가 수정되었습니다.");
+                this.$router.push("/companypage");
               } else {
                 alert("클래스 수정 실패");
               }
@@ -513,7 +517,7 @@ export default {
             });
         }
       }
-      this.$router.push("/companypage");
+      
     },
     //이미지저장, 미리보기
     imgFile(event) {
@@ -556,9 +560,7 @@ export default {
         .then((response) => {
           if (response.data.result == "success") {
             this.cList = response.data.apiData;
-          } else {
-            console.log("불러오기 실패");
-          }
+          } 
         })
         .catch((error) => {
           console.log(error);
@@ -810,7 +812,7 @@ export default {
           // 서버로부터 응답받은 데이터에서 이미지 saveName을 추출합니다.
           const saveName = response.data.apiData; // 예를 들어, 응답 데이터에 이미지 URL이 result 키에 위치한다고 가정합니다.
           // saveName 으로 imageUrl 을 만듭니다.
-          const imageUrl = "http://localhost:9090/upload/" + saveName;
+          const imageUrl = `"${this.$store.state.apiBaseUrl}/upload/"` + saveName;
 
           // Quill 에디터 인스턴스를 가져옵니다.
           const editorInstance = this.$refs.quillEditor.getQuill();

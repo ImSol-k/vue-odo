@@ -162,7 +162,7 @@
           <input
             type="text"
             name=""
-            id="companyPassChack"
+            id="companyHp"
             placeholder="대표 핸드폰번호"
             v-model="companyVo.companyHp"
           />
@@ -290,6 +290,8 @@ export default {
           .then((response) => {
             if (response.data.result == "success") {
               alert("수정되었습니다.");
+              let authCompany = response.data.apiData;
+              this.$store.commit("setAuthCompany", authCompany);
               this.$router.push("/companypage");
             }
           })
