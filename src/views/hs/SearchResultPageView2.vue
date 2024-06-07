@@ -202,8 +202,9 @@ export default {
 				//params: guestbookVo, //get방식 파라미터로 값이 전달
 				data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 				responseType: 'json' //수신타입
+				/* eslint-disable */
 			}).then(response => {
-				console.log(response.data.apiData);
+				// console.log(response.data.apiData);
 				this.getcate2List();
 
 			}).catch(error => {
@@ -245,8 +246,9 @@ export default {
 					//params: guestbookVo, //get방식 파라미터로 값이 전달
 					data: this.wishVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 					responseType: 'json' //수신타입
+					/* eslint-disable */
 				}).then(response => {
-					console.log(response.data.apiData);
+					// console.log(response.data.apiData);
 					this.getcate2List();
 
 				}).catch(error => {

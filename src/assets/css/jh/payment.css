@@ -282,6 +282,8 @@
 }
 
 .paymentEndIntro{
+  width: 180px;
+  height: 34px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

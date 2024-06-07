@@ -123,7 +123,7 @@ export default {
     modifyUser(){
       const formData = new FormData();
       if(this.file == ''){
-        console.log('파일 없음');
+        // console.log('파일 없음');
       } else {
         formData.append('file', this.file);
       }

@@ -3,12 +3,13 @@
   <div class="wrap">
     <div class="paymentEndBox">
       <h1>결제가 완료되었습니다</h1>
-      <h2>예약자: <span>{{pv.nickname}}</span></h2>
+      <h2>예약자: <span>{{ pv.nickname }}</span></h2>
       <table class="pamentTable">
         <tbody>
           <tr>
             <td rowspan="7">
-              <img class="payImg" v-if="pv.classImage != ''" :src="`${this.$store.state.apiBaseUrl}/upload/${pv.classImage}`" alt="" />
+              <img class="payImg" v-if="pv.classImage != ''"
+                :src="`${this.$store.state.apiBaseUrl}/upload/${pv.classImage}`" alt="" />
               <img class="payImg" v-else src="../../assets/images/company/nope.png" alt="">
             </td>
             <th>업체명</th>
@@ -16,17 +17,17 @@
           </tr>
           <tr>
             <th>클래스명</th>
-            <td class="paymentP">{{pv.className}}</td>
+            <td class="paymentP">{{ pv.className }}</td>
           </tr>
           <tr>
             <th>일시</th>
-            <td class="paymentP" v-if="pv.endDate == null">{{pv.startDate}}</td>
-            <td class="paymentP" v-else>{{pv.startDate}} ~ {{ pv.endDate }}</td>
+            <td class="paymentP" v-if="pv.endDate == null">{{ pv.startDate }}</td>
+            <td class="paymentP" v-else>{{ pv.startDate }} ~ {{ pv.endDate }}</td>
           </tr>
           <tr>
             <th>결제방법</th>
             <td class="paymentP" v-if="pv.payType == 'naver'">Naver Pay</td>
-            <td class="paymentP" v-else>{{pv.payType}}</td>
+            <td class="paymentP" v-else>{{ pv.payType }}</td>
           </tr>
           <tr>
             <th>할인금액</th>
@@ -49,15 +50,25 @@
       </div>
       <div class="paymentClassBox">
         <div class="paymentClass" v-for="i in rList" :key="i">
-          <img class="paymentEndImage" v-bind:src="`${this.$store.state.apiBaseUrl}/upload/${i.classImage}`" alt="" v-on:click="go(i.classNo)"/>
+          <img class="paymentEndImage" v-bind:src="`${this.$store.state.apiBaseUrl}/upload/${i.classImage}`" alt=""
+            v-on:click="go(i.classNo)" />
           <p class="paymentEndAddress">{{ i.classAddress }}</p>
           <p class="paymentEndName">{{ i.className }}</p>
           <p class="paymentEndIntro">
             {{ i.classIntro }}
           </p>
           <div class="paymentClassStar">
-            <span class="paymentStar" v-for="(i) in 5" :key="i">★</span>
-            <span>후기 {{i.reviewCount}}</span>
+            <div v-if="i.reviewPoint != 0" class="review-box">
+              <b v-if="i.reviewPoint == 5"><span class="starPoint">★★★★★</span></b>
+              <b v-else-if="i.reviewPoint == 4"><span class="starPoint">★★★★☆</span></b>
+              <b v-else-if="i.reviewPoint == 3"><span class="starPoint">★★★☆☆</span></b>
+              <b v-else-if="i.reviewPoint == 2"><span class="starPoint">★★☆☆☆</span></b>
+              <b v-else-if="i.reviewPoint == 1"><span class="starPoint">★☆☆☆☆</span></b>
+            </div>
+            <div v-else class="review-box2">
+
+            </div>
+            <span>후기 {{ i.reviewCount }}</span>
           </div>
           <p>무료</p>
         </div>
@@ -100,10 +111,10 @@ export default {
     };
   },
   methods: {
-    go(no){
+    go(no) {
       this.$router.push("/classdetailpage/" + no);
     },
-    list(){
+    list() {
       console.log("시작");
       axios({
         method: 'get', // put, post, delete 

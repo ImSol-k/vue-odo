@@ -256,7 +256,7 @@ export default {
 
     // 사업자로그인
     cLogin() {
-      console.log("사업자 로그인");
+      // console.log("사업자 로그인");
       axios({
           method: "post",
           url: `${this.$store.state.apiBaseUrl}/odo/company/login`,

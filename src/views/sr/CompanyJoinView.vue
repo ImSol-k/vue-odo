@@ -209,7 +209,7 @@ export default {
      * 사업자 회원가입
      */
     companyJoin() {
-      console.log("companyJoin");
+      // console.log("companyJoin");
 
       // console.log(typeof(this.companyVo.companyLatitude) );
       const formData = new FormData();
@@ -262,7 +262,7 @@ export default {
             responseType: "json",
           })
             .then((response) => {
-              console.log(response); //수신데이터
+              // console.log(response); //수신데이터
               if (response.data.result == "success") {
                 alert("회원가입에 성공했습니다.");
                 this.$router.push("/login/company");
@@ -281,7 +281,7 @@ export default {
      * 사업자번호 인증API
      */
     businessNumber() {
-      console.log("businessNumber");
+      // console.log("businessNumber");
       const data = { b_no: [this.companyVo.companyBn] };
       axios
         .post(
@@ -296,7 +296,7 @@ export default {
           }
         )
         .then((response) => {
-          console.log("Response:", response.data);
+          // console.log("Response:", response.data);
           if (
             response.data &&
             response.data.data &&
@@ -336,7 +336,7 @@ export default {
           responseType: "json",
         })
           .then((response) => {
-            console.log(response); //수신데이터
+            // console.log(response); //수신데이터
             if (response.data.result == "success") {
               this.isId = true;
             } else {
@@ -357,7 +357,7 @@ export default {
     imgFile(event) {
       this.companyVo.companyImage = event.target.files[0];
 
-      console.log(this.companyVo.companyImage);
+      // console.log(this.companyVo.companyImage);
 
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -388,12 +388,12 @@ export default {
                 // 주소 검색 결과가 성공일 경우
                 this.companyVo.companyLatitude = result[0].y; // 위도
                 this.companyVo.companyLongitude = result[0].x; // 경도
-                console.log(
-                  "위도:",
-                  this.companyVo.companyLatitude,
-                  "경도:",
-                  this.companyVo.companyLongitude
-                );
+                // console.log(
+                //   "위도:",
+                //   this.companyVo.companyLatitude,
+                //   "경도:",
+                //   this.companyVo.companyLongitude
+                // );
               } else {
                 // 주소 검색 실패
                 console.error("주소 검색 실패");

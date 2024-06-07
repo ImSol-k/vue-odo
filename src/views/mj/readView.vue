@@ -73,7 +73,7 @@ export default {
         };
     },
     computed: {
-	subTitle() {return this.MjVo.content.replaceAll("\n", "<br />")}
+        subTitle() {return this.MjVo.content.replaceAll("\n", "<br />")}
 	},
     methods: {
         fetchNotice() {
@@ -87,7 +87,7 @@ export default {
 
                 responseType: 'json' //수신타입
             }).then(response => {
-                console.log(response); //수신데이타
+                // console.log(response); //수신데이타
 
                this.MjVo=response.data.MjVo;
                this.no=response.data.num;
