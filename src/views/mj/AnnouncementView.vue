@@ -86,7 +86,7 @@ export default {
 								'Authorization' : 'Bearer ' + this.$store.state.token},
         responseType:'json'
        }).then( response =>{
-        console.log(response)
+        // console.log(response)
         this.MjList=response.data.MjList
         this.no=response.data.no
        }).catch( error =>{
