@@ -4,9 +4,10 @@
 
     <ul>
       <li>업체관리</li>
-      <li><router-link to="/companyinfo">소개</router-link></li>
+      <li><router-link :to="'/companyinfo/' + companyNo">소개</router-link></li>
       <li><router-link to="/companymodify">정보확인/수정</router-link></li>
       <li><router-link to="/chart">매출통계</router-link></li>
+      <li><router-link to="/advertising">페이스북 글올리기</router-link></li>
     </ul>
     <ul>
       <li>클래스관리</li>
@@ -22,11 +23,18 @@ export default {
   components: {},
   data() {
     return {
-      companyName: this.$store.state.authCompany.companyName
+      companyName: this.$store.state.authCompany.companyName,
+      companyNo: this.$store.state.authCompany.companyNo
+      
     };
   },
-  methods: {},
-  created() {},
+  methods: {
+    a(){
+      console.log(this.companyNo)
+    }
+  },
+  created() {
+  },
 };
 </script>
 
