@@ -102,27 +102,6 @@
     </div>
   </div>
 
-  <!--모달창-->
-  <div>
-    <button id="btn-modal">모달창 열려랏!</button>
-  </div>
-
-
-  <div id="modal" class="modal-overlay">
-    <div class="modal-window">
-      <div class="title">
-        <h2>제목</h2>
-      </div>
-      <div class="close-area">X</div>
-      <div class="content">
-        <p>안녕하세요</p>
-        <p>이건 모달창이에요</p>
-
-      </div>
-    </div>
-  </div>
-
-
   <div id="addModal">
     <div class="modal-content2">
       <form action="">
