@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="list clearfix">
-          <span>인기 클래스순위</span>
+          <span class="Ranking">인기 클래스</span>
           <div class="whatClass">
             <span v-on:click.prevent="selectClass(1)" :class="{ classChack: isClass == 1 }">원데이</span>
             <span v-on:click.prevent="selectClass(2)" :class="{ classChack: isClass == 2 }">정규/상시</span>
@@ -20,14 +20,14 @@
 
           <div v-if="isClass == 1">
             <div class="right"  v-for="(a,i) in this.list" v-bind:key="i">
-              <img src="@/assets/images/icon/header_icons/like.png">
+              <!-- <img src="@/assets/images/icon/header_icons/like.png"> -->
               <span  v-on:click="go(a.classNo)">{{ a.className }}</span>
             </div>
           </div>
 
           <div v-else-if="isClass == 2">
             <div class="right"  v-for="(a,i) in this.list1" v-bind:key="i">
-              <img src="@/assets/images/icon/header_icons/like.png">
+              <!-- <img src="@/assets/images/icon/header_icons/like.png"> -->
               <span v-on:click="go(a.classNo)">{{ a.className }}</span>
             </div>
 

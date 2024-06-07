@@ -201,7 +201,7 @@ export default {
             .then((response) => {
               if (response.data.result === "success") {
                 this.classList[i].wish = 1;
-                console.log("추가되었습니다.");
+                // console.log("추가되었습니다.");
               } else {
                 alert("통신오류");
               }
@@ -245,7 +245,7 @@ export default {
           responseType: "json",
         })
           .then((response) => {
-            console.log(response.data.apiData);
+            // console.log(response.data.apiData);
             if (
               response.data.result == "success" &&
               response.data.apiData != null
@@ -341,7 +341,7 @@ export default {
 
       if (this.isFind == "2") {
         var callback = function (result, status) {
-          console.log(status); // 상태를 확인하는 로그
+          // console.log(status); // 상태를 확인하는 로그
           if (status === kakao.maps.services.Status.OK) {
             if (result.length > 0) {
               var pos = result[0].road_address
@@ -351,10 +351,10 @@ export default {
               pos = pos.split(" ");
               this.keyword = pos[1];
             } else {
-              console.error("Geocoding result is empty");
+              // console.error("Geocoding result is empty");
             }
           } else {
-            console.error("Geocoding failed with status: " + status);
+            // console.error("Geocoding failed with status: " + status);
           }
         }.bind(this);
         geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
@@ -368,14 +368,14 @@ export default {
       //   },
       // ];
 
-      console.log("==================================")
+      // console.log("==================================")
       this.positions.forEach(function (pos) {
-        console.log(pos)
+        // console.log(pos)
         var marker = new kakao.maps.Marker({
           title: pos.title,
           position: pos.latlng,
         });
-        console.log(marker);
+        // console.log(marker);
         marker.setMap(this.map);
       });
       // for (var i = 0; i < this.positions.length; i++) {
