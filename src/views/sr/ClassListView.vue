@@ -145,7 +145,6 @@ export default {
     };
   },
   mounted() {
-
     /********************************************************************
      * 카카오맵
      */
@@ -211,7 +210,7 @@ export default {
             });
         }
       } else {
-        alert("로그인후 이용가능")
+        alert("로그인후 이용가능");
       }
     },
     paging() {
@@ -272,7 +271,6 @@ export default {
                     list.classLongitutde
                   ),
                 });
-
               });
               this.displayMap(
                 this.classList[0].classLatitude,
@@ -306,35 +304,72 @@ export default {
      * 카카오 맵관련 메소드
      */
     initMap() {
+      //맵을 그린다 기본위치를 표시------------------------------------------------------------
+      var mapContainer = document.getElementById("listMap"); // 지도를 표시할 div
+      var mapOption = {
+        //옵션세팅
+        center: new kakao.maps.LatLng(this.latitude, this.longitude), // 지도의 중심좌표
+        level: 3, // 지도의 확대 레벨
+      };
+      //지도생성
+      this.map = new kakao.maps.Map(mapContainer, mapOption);
 
       //현재위치 얻어오기
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            this.latitude = position.coords.latitude;
-            this.longitude = position.coords.longitude;
-            this.displayMap(this.latitude, this.longitude);
-          },
-          (error) => {
-            // 현재위치 못얻어올떄 기본 위치 강남
-            console.error("Error occurred. Error code: " + error.code);
-            this.displayMap(this.latitude, this.longitude);
-          }
-        );
-      } else {
-        // Geolocation을 지원하지 않으면 기본 위치 강남
-        this.displayMap(this.latitude, this.longitude);
+      if (this.isFind == 2) {
+        
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              this.latitude = position.coords.latitude;
+              this.longitude = position.coords.longitude;
+              // this.displayMap(this.latitude, this.longitude);
+              let locPosition = new kakao.maps.LatLng(
+                this.latitude,
+                this.longitude
+              );
+              this.map.setCenter(locPosition);
+            },
+            (error) => {
+              // 현재위치 못얻어올떄 기본 위치 강남
+              console.error("Error occurred. Error code: " + error.code);
+              this.displayMap(this.latitude, this.longitude);
+            }
+          );
+        } else {
+          // Geolocation을 지원하지 않으면 기본 위치 강남
+          this.displayMap(this.latitude, this.longitude);
+        }
       }
     },
     displayMap(latitude, longitude) {
-      // console.log("displayMap")
-      var mapContainer = document.getElementById("listMap"), // 지도를 표시할 div
-        mapOption = {
-          center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
-          level: 3, // 지도의 확대 레벨
-        };
-      //지도생성
-      this.map = new kakao.maps.Map(mapContainer, mapOption);
+
+      //마커 이미지
+      var imageSrc =
+        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+      for (var i = 0; i < this.positions.length; i++) {
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new kakao.maps.Size(24, 35);
+
+        // 마커 이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+          position: this.positions[i].latlng, // 마커를 표시할 위치
+          title: this.positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+          image: markerImage, // 마커 이미지
+        });
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(this.map);
+      }
+
+      this.map.setCenter(this.positions[0].latlng);
+
+
+
+
+
       //객체생성
       var geocoder = new kakao.maps.services.Geocoder();
       var coord = new kakao.maps.LatLng(latitude, longitude);
@@ -360,34 +395,6 @@ export default {
         geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
       }
 
-      //핑찍기
-      // this.positions = [
-      //   {
-      //     title: "현재위치",
-      //     latlng: new kakao.maps.LatLng(latitude, longitude),
-      //   },
-      // ];
-
-      // console.log("==================================")
-      this.positions.forEach(function (pos) {
-        // console.log(pos)
-        var marker = new kakao.maps.Marker({
-          title: pos.title,
-          position: pos.latlng,
-        });
-        // console.log(marker);
-        marker.setMap(this.map);
-      });
-      // for (var i = 0; i < this.positions.length; i++) {
-      //   // 마커를 생성합니다
-      //   var marker = new kakao.maps.Marker({
-      //     // map: this.displayMap().map, // 마커를 표시할 지도
-      //     position: this.positions[i].latlng, // 마커를 표시할 위치
-      //     title: this.positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-      //     // image: markerImage, // 마커 이미지
-      //   });
-      //   marker.setMap(this.map);
-      // }
     },
   },
   created() {
