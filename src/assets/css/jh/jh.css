@@ -873,6 +873,37 @@
     padding-left: 100px;
 }
 
+.photo-preview {
+    margin-top: 10px;
+    margin-left: 200px;
+    float: left;
+}
+
+.photo-preview img {
+    width: 300px;
+    height: 300px;
+}
+
+.under{
+    margin-top: 280px;
+    margin-left: 20px;
+}
+
+.inputText{
+    margin-top: 20px;
+    margin-left: 300px;
+}
+
+.inputText input{
+    width: 500px;
+    height: 40px;
+}
+
+.inputText button{
+    margin-left: 600px;
+    margin-top: 30px;
+}
+
 /* 탭바 따온거 ㅋㅋ */
 /*
 .tabmenu{
