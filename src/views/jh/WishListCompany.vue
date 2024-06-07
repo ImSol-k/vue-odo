@@ -44,15 +44,15 @@
                   <div class="wihshCompanyContent">
                     <div>
                       <p class="">클래스</p>
-                      <p class="">{{  }}</p>
+                      <p class="">{{ a.classCount }}</p>
                     </div>
                     <div>
                       <p class="">리뷰</p>
-                      <p class="">00</p>
+                      <p class="">{{a.reviewCount}}</p>
                     </div>
                     <div>
                       <p class="">찜</p>
-                      <p class="">00</p>
+                      <p class="">{{ a.wishCount }}</p>
                     </div>
                   </div>
                 </div>
@@ -155,7 +155,7 @@ export default {
         //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: 'json' //수신타입
       }).then(response => {
-        // console.log(response); //수신데이타
+        console.log(response); //수신데이타
 
         // console.log(response.data.apiData);
         this.b = response.data.apiData
