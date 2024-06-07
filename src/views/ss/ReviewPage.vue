@@ -94,9 +94,9 @@
 	
 </template>
 
-<script setup>
+<!-- <script setup>
 import Observer from '@/components/ObserverView.vue';
-</script>
+</script> -->
 
 <script>
 import '@/assets/css/Initialization.css';
@@ -105,12 +105,14 @@ import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import Observer from '@/components/ObserverView.vue';
 
 export default {
 	name: "ReviewPage",
 	components: {
 		AppHeader,
-		AppFooter
+		AppFooter,
+		Observer
 	},
 	data() {
 		return {

@@ -113,18 +113,19 @@
 
   <AppFooter />
 </template>
-<script setup>
+<!-- <script setup>
 import Observer from "@/components/ObserverView.vue";
-</script>
+</script> -->
 <script>
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import "@/assets/css/sr/classList.css";
 import axios from "axios";
+import Observer from '@/components/ObserverView.vue';
 
 export default {
   name: "ClassListView",
-  components: { AppHeader, AppFooter },
+  components: { AppHeader, AppFooter, Observer },
   data() {
     return {
       map: "",

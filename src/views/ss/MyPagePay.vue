@@ -55,7 +55,6 @@
 								<div class="mymy-pay">
 									<ul>
 										<li>
-											<span class="end-msg" :class="{ endClass : checkDate(list.endDate) }">종료</span>
 											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
 											<img v-if="list.wishClassNo > 0" @click="wish(list.wishClassNo, list.classNo, index)" class="heart" src="@/assets/images/redheart.svg">
 											<img v-else @click="wish(list.wishClassNo, list.classNo,index)" class="heart" src="@/assets/images/whiteheart.svg">
@@ -126,7 +125,6 @@
 								<div class="mymy-pay">
 									<ul>
 										<li>
-											<span class="end-msg" :class="{ endClass : checkDate(list.endDate) }">종료</span>
 											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
 											<img v-if="list.wishClassNo !== 0" @click="wish(list.wishClassNo, list.classNo, index)" class="heart" src="@/assets/images/redheart.svg">
 											<img v-else @click="wish(list.wishClassNo, list.classNo, index)" class="heart" src="@/assets/images/whiteheart.svg">
@@ -147,7 +145,7 @@
 								<!-- mymy-pay -->
 								<div class="mymy-payCon">
 									<div class="paycon1">
-										<span class="paycon1-txt1">결제일 : {{ list.payDate}}</span>
+										<span class="paycon1-txt1">결제일 : {{ list.payDate }}</span>
 										<span class="paycon1-txt2">
 											<span v-if="list.classType == 1">[원데이]</span>
 											<span v-else>[정규]</span>
@@ -189,7 +187,6 @@
 				
 			</div>
 			<!-- //mymy-main -->
-			
 			
 			<!-- 등록모달 -->
 			<div class="rev-modal">
@@ -315,7 +312,6 @@
 				<!-- revform1 -->
 			</div>
 			<!-- //등록모달 -->
-
 
 			<!-- 리뷰보기 모달 -->
 			<div class="showRev-modal">
@@ -495,9 +491,9 @@
 </template>
 
 
-<script setup>
+<!-- <script setup>
 import Observer from '@/components/ObserverView.vue';
-</script>
+</script> -->
 
 <script>
 import '@/assets/css/Initialization.css';
@@ -511,6 +507,7 @@ import MyPageSide from '@/components/MyPageSide.vue';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import moment from 'moment';
+import Observer from '@/components/ObserverView.vue';
 
 export default {
 	name: "MyPagePay",
@@ -518,7 +515,8 @@ export default {
 		AppHeader,
 		AppFooter,
 		MyPageHeader,
-		MyPageSide
+		MyPageSide,
+		Observer
 	},
 	data() {
 		return {
@@ -536,7 +534,6 @@ export default {
 				attenCount : 0,
 			},
 			attenList : [], // 출석부 보여줄 때 쓸 데이터 
-			getClassImg : require('@/assets/images/hs/cake.jpg'), // 클래스이미지 
 			oneClassVo : { // 리뷰등록모달 켜졌을때 가져올 데이터 
 				classNo : '',
 				classImage : '',
@@ -587,22 +584,7 @@ export default {
 		// 날짜 변환
 		formatDate(date){
 			return moment(date).format(`YYYY년 MM월 DD일 HH:MM `);
-		},
-
-		// 종료 날짜 계산
-		checkDate(endDate){
-			if(endDate == null){
-				this.isEnd = false;
-			} else {
-				let momentNow = moment();
-				let momentEnd = moment(endDate);
-				if(momentNow.isAfter(momentEnd)){
-					this.isEnd = true;
-				} else {
-					this.isEnd = false;
-				}
-			}
-		},
+		},		
 
 		// 정규클래스 원데이 클래스 선택
 		selectClass(no){
@@ -926,8 +908,7 @@ export default {
 				method: 'get',
 				url: `${this.$store.state.apiBaseUrl}/odo/ss/getpaylist`,
 				headers: { 'Content-Type': 'application/json; charset=utf-8', 
-							'Authorization' : 'Bearer ' + this.$store.state.token
-						},			
+							'Authorization' : 'Bearer ' + this.$store.state.token},			
 				params : {classType : paymentType, page : this.page},
 				responseType: 'json'
 			}).then(response => {

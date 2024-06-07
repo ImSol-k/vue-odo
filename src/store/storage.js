@@ -12,7 +12,6 @@ export default createStore({
             authCompany: {},
             couponNo: "",
             kakaoToken : '',
-            naverToken : '',
         };
     },
     mutations: {
@@ -43,7 +42,7 @@ export default createStore({
     },
     plugins: [
         createPersistedState({
-            paths: ['cToken','token','authUser', 'authCompany', 'companyNo']
+            paths: ['cToken','token','authUser', 'authCompany', 'kakaoToken']
         })
     ]
 });
