@@ -44,7 +44,7 @@
                   <div class="wihshCompanyContent">
                     <div>
                       <p class="">클래스</p>
-                      <p class="">00</p>
+                      <p class="">{{  }}</p>
                     </div>
                     <div>
                       <p class="">리뷰</p>

@@ -80,7 +80,7 @@ import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import "@/assets/css/jh/companyinfo.css";
 import "@/assets/css/Initialization.css";
-//import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
@@ -112,7 +112,27 @@ export default {
   },
   methods: {
     change2(wishNo, classNo, i) { //클래스 위시 등록 삭제
-      if (wishNo == 0) {
+      if(this.$store.state.authUser == '' && this.$store.state.token == ''){
+				Swal.fire({
+					title: "로그인 후 이용 가능합니다.",
+					text: "로그인 하시겠습니까?",
+					icon: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "예",
+					cancelButtonText: "아니오"
+				}).then(result => {
+					if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+						// ...실행
+						this.$router.push('/login/user');
+
+					} else if (result.isDismissed) { // 만약 모달창에서 cancel 버튼을 눌렀다면
+						// ...실행
+					}
+				});
+
+      } else if (wishNo == 0) {
         axios({
           method: 'post', // put, post, delete 
           url: `${this.$store.state.apiBaseUrl}/odo/companyinfo/wishInsert`,
@@ -155,7 +175,26 @@ export default {
     },
     change(no) {  //회사 위시 등록 삭제
       // console.log(no)
-      if (no > 0) {
+      if(this.$store.state.authUser == '' && this.$store.state.token == ''){
+				Swal.fire({
+					title: "로그인 후 이용 가능합니다.",
+					text: "로그인 하시겠습니까?",
+					icon: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "예",
+					cancelButtonText: "아니오"
+				}).then(result => {
+					if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+						// ...실행
+						this.$router.push('/login/user');
+
+					} else if (result.isDismissed) { // 만약 모달창에서 cancel 버튼을 눌렀다면
+						// ...실행
+					}
+				});
+      }else if (no > 0) {
         axios({
           method: 'delete', // put, post, delete 
           url: `${this.$store.state.apiBaseUrl}/odo/companyinfo/wishDelete2`,
