@@ -32,7 +32,7 @@
 
 					<!-- 결제내역이 없으면 -->
 					<div v-if="!isPay" class="mymy-nopay">
-						<img id="nopayImg" src="@/assets/images/icon/ss/nopay.png">
+						<img id="nopayImg" :src="noPayImg">
 						<span>결제한 내역이 없어요</span>
 						<router-link to="/">홈으로 가기</router-link>
 					</div>
@@ -44,7 +44,7 @@
 						<div class="div-180" v-if="isClass">
 							<div v-if="paymentData.length === 0">
 								<div class="mymy-nopay">
-									<img id="nopayImg" src="@/assets/images/icon/ss/nopay.png">
+									<img id="nopayImg" :src="noPayImg">
 									<span>결제한 내역이 없어요</span>
 									<router-link to="/">홈으로 가기</router-link>
 								</div>
@@ -114,7 +114,7 @@
 						<div v-else class="div-180">
 							<div v-if="paymentData.length === 0">
 								<div class="mymy-nopay">
-									<img id="nopayImg" src="@/assets/images/icon/ss/nopay.png">
+									<img id="nopayImg" :src="noPayImg">
 									<span>결제한 내역이 없어요</span>
 									<router-link to="/">홈으로 가기</router-link>
 								</div>
@@ -528,6 +528,7 @@ export default {
 			isPay : false, // 결제여부확인
 			paymentData : [], // 결제정보가져와서 저장될 곳
 			page : 0,
+			noPayImg : require('@/assets/images/icon/ss/nopay.png'),
 			attenClassVo:{
 				attenClassName : '',
 				attenClassStartDate : '',
