@@ -223,7 +223,7 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          console.log(response.data.apiData); //수신데이터
+          // console.log(response.data.apiData); //수신데이터
           this.dateList = response.data.apiData;
         })
         .catch((error) => {
@@ -247,7 +247,7 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          console.log(response.data.apiData); //수신데이터
+          // console.log(response.data.apiData); //수신데이터
           this.mList = response.data.apiData;
         })
         .catch((error) => {
@@ -285,7 +285,7 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          console.log(response.data); //수신데이터
+          // console.log(response.data); //수신데이터
           this.isCoupon = false;
           if (response.data.result == "success") {
             alert("쿠폰이 지급되었습니다.");
