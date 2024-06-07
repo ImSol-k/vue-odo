@@ -158,7 +158,6 @@ export default {
         "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=b356b366e6bedbfd5618c9752b2dd60e";
       document.head.appendChild(script);
     }
-    
   },
   methods: {
     /********************************************************************
@@ -250,35 +249,39 @@ export default {
               response.data.result == "success" &&
               response.data.apiData != null
             ) {
-              this.classList.push(...response.data.apiData);
-              this.classList.forEach((list) => {
-                let temp = list.classNameAddress.split(" ");
-                list.classNameAddress = temp[0];
-                if (list.classNameAddress.length == 2) {
-                  list.classNameAddress += "/" + temp[1];
-                }
-                if (list.classIntro.length >= 20) {
-                  list.classIntro = list.classIntro.substr(0, 20) + "...";
-                }
-                if (!this.isMap && list.className.length > 12) {
-                  list.className = list.className.substr(0, 12) + "..";
-                }
+              if (Array.isArray(response.data.apiData)) {
+                this.classList.push(...response.data.apiData);
+                this.classList.forEach((list) => {
+                  let temp = list.classNameAddress.split(" ");
+                  list.classNameAddress = temp[0];
+                  if (list.classNameAddress.length == 2) {
+                    list.classNameAddress += "/" + temp[1];
+                  }
+                  if (list.classIntro.length >= 20) {
+                    list.classIntro = list.classIntro.substr(0, 20) + "...";
+                  }
+                  if (!this.isMap && list.className.length > 12) {
+                    list.className = list.className.substr(0, 12) + "..";
+                  }
 
-                //포지션 추가
-                this.positions.push({
-                  title: list.className,
-                  latlng: new kakao.maps.LatLng(
-                    list.classLatitude,
-                    list.classLongitutde
-                  ),
+                  //포지션 추가
+                  this.positions.push({
+                    title: list.className,
+                    latlng: new kakao.maps.LatLng(
+                      list.classLatitude,
+                      list.classLongitutde
+                    ),
+                  });
                 });
-              });
-              this.latitude = this.classList[0].classLatitude;
-              this.longitude = this.classList[0].classLongitutde;
-              this.displayMap(
-                this.classList[0].classLatitude,
-                this.classList[0].classLongitutde
-              );
+                this.latitude = this.classList[0].classLatitude;
+                this.longitude = this.classList[0].classLongitutde;
+                this.displayMap(
+                  this.classList[0].classLatitude,
+                  this.classList[0].classLongitutde
+                );
+              } else {
+                this.classList = response.data.apiData;
+              }
             } else {
               console.log("검색정보 없음");
             }
@@ -330,7 +333,7 @@ export default {
           }
         }.bind(this);
         geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
-        
+
         // if (navigator.geolocation) {
         //   navigator.geolocation.getCurrentPosition(
         //     (position) => {
@@ -348,7 +351,7 @@ export default {
         //       console.error("Error occurred. Error code: " + error.code);
         //     }
         //   );
-        // } 
+        // }
       }
       //맵을 그린다 기본위치를 표시------------------------------------------------------------
       var mapContainer = document.getElementById("listMap"); // 지도를 표시할 div
@@ -359,7 +362,6 @@ export default {
       };
       //지도생성
       this.map = new kakao.maps.Map(mapContainer, mapOption);
-
     },
     displayMap() {
       //마커 이미지
