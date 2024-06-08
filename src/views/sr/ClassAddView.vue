@@ -22,7 +22,7 @@
         <!-- 원데이클래스 등록 -->
         <div class="classAddBox">
           <div class="classAddImg">
-            <img :src="img" alt="" />
+            <img :src="img" alt="" style="width: 150px; height: 150px;"/>
             <div class="classAddImgTitle">
               <p>클래스 대표이미지</p>
               <input type="file" name="" id="" v-on:change="imgFile" />

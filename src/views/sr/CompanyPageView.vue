@@ -34,7 +34,7 @@
               <li>
                 <img
                   :src="`${this.$store.state.apiBaseUrl}/upload/${c.classImage}`"
-                  alt=""
+                  alt="" style="width: 90px; height: 67.5px;"
                 />
                 <div class="classListObj">
                   <p>
