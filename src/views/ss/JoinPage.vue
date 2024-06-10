@@ -258,9 +258,6 @@ export default {
 </script>
 
 
-
-
-
 <style>
 .swal-wide{
 	width : 100px;

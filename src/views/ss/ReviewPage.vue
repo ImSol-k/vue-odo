@@ -94,10 +94,6 @@
 	
 </template>
 
-<!-- <script setup>
-import Observer from '@/components/ObserverView.vue';
-</script> -->
-
 <script>
 import '@/assets/css/Initialization.css';
 import '@/assets/css/ss/revpage.css';

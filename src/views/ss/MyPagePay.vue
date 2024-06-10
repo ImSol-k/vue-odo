@@ -55,7 +55,9 @@
 								<div class="mymy-pay">
 									<ul>
 										<li>
-											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
+											<router-link :to="`/classdetailpage/${list.classNo}`" target="_blank">
+												<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`">
+											</router-link>
 											<img v-if="list.wishClassNo > 0" @click="wish(list.wishClassNo, list.classNo, index)" class="heart" src="@/assets/images/redheart.svg">
 											<img v-else @click="wish(list.wishClassNo, list.classNo,index)" class="heart" src="@/assets/images/whiteheart.svg">
 										</li>
@@ -95,7 +97,9 @@
 									<div class="paycon2">
 										<div v-if="list.recClassNo != 0" class="paycon2-1">
 											<span class="paycon2-txt1">추천!</span>
-											<img :src="`${this.$store.state.apiBaseUrl}/upload/${list.recClassImage}`" @click="goPage(list.recClassNo)">
+											<router-link :to="`/classdetailpage/${list.recClassNo}`" target="_blank">
+												<img :src="`${this.$store.state.apiBaseUrl}/upload/${list.recClassImage}`">
+											</router-link>
 											<span class="paycon2-txt2">{{ list.recClassName }}</span>
 										</div>
 										<div v-else class="paycon2-noClass">
@@ -125,7 +129,9 @@
 								<div class="mymy-pay">
 									<ul>
 										<li>
-											<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`" @click="goPage(list.classNo)">
+											<router-link :to="`/classdetailpage/${list.classNo}`" target="_blank">
+												<img id="pay-pro" :src="`${this.$store.state.apiBaseUrl}/upload/${list.classImage}`">
+											</router-link>
 											<img v-if="list.wishClassNo !== 0" @click="wish(list.wishClassNo, list.classNo, index)" class="heart" src="@/assets/images/redheart.svg">
 											<img v-else @click="wish(list.wishClassNo, list.classNo, index)" class="heart" src="@/assets/images/whiteheart.svg">
 										</li>
@@ -165,7 +171,9 @@
 									<div class="paycon2">
 										<div v-if="list.recClassNo != 0" class="paycon2-1">
 											<span class="paycon2-txt1">추천!</span>
-											<img :src="`${this.$store.state.apiBaseUrl}/upload/${list.recClassImage}`" @click="goPage(list.recClassNo)">
+											<router-link :to="`/classdetailpage/${list.recClassNo}`" target="_blank">
+												<img :src="`${this.$store.state.apiBaseUrl}/upload/${list.recClassImage}`">
+											</router-link>
 											<span class="paycon2-txt2">{{ list.recClassName }}</span>
 										</div>
 										<div v-else class="paycon2-noClass">
@@ -491,10 +499,6 @@
 </template>
 
 
-<!-- <script setup>
-import Observer from '@/components/ObserverView.vue';
-</script> -->
-
 <script>
 import '@/assets/css/Initialization.css';
 import '@/assets/css/ss/ss.css';
@@ -602,11 +606,6 @@ export default {
 		// 문의요청
 		inquiry(url){
 			console.log(url);
-		},
-
-		// 선택한 페이지 이동
-		goPage(no){
-			this.$router.push('/classdetailpage/'+ no);
 		},
 		// 별점 퍼센트 보여주기(결제내역 - 결제한 클래스)
 		ratingToPercent(no){
