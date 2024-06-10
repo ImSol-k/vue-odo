@@ -598,7 +598,7 @@ export default {
             this.onedayDate = response.data.apiData.startDateList;
             this.startDate = response.data.apiData.startDate;
             this.endDate = response.data.apiData.endDate;
-            this.img = `${this.$store.state.apiBaseUrl}/upload/${response.data.apiData.classImage}`;
+            this.img = response.data.apiData.classImage;
            
             // 에디터 인스턴스 가져오기
             const editorInstance = this.$refs.quillEditor.getQuill();
