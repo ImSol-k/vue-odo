@@ -30,16 +30,10 @@
 				
 				<div class="mymy-paybox">
 
-					<!-- 결제내역이 없으면 -->
-					<div v-if="!isPay" class="mymy-nopay">
-						<img id="nopayImg" :src="noPayImg">
-						<span>결제한 내역이 없어요</span>
-						<router-link to="/">홈으로 가기</router-link>
-					</div>
-					<!-- //결제내역이 없으면 mymy-nopay -->
+					
 
 					<!-- 결제내역이 있고 원데이클래스 정규클래스 나오게 -->
-					<div v-else>
+					<div v-if="isPay">
 						<!-- 원데이 클래스-->
 						<div class="div-180" v-if="isClass">
 							<div v-if="paymentData.length === 0">
@@ -190,6 +184,14 @@
 						<!-- //정규클래스 -->
 						
 					</div>
+
+					<!-- 결제내역이 없으면 -->
+					<div v-else class="mymy-nopay">
+						<img id="nopayImg" :src="noPayImg">
+						<span>결제한 내역이 없어요</span>
+						<router-link to="/">홈으로 가기</router-link>
+					</div>
+					<!-- //결제내역이 없으면 mymy-nopay -->
 				</div>
 				<!--// mymy-paybox  -->
 				
