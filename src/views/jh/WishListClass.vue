@@ -148,8 +148,6 @@ export default {
         //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: 'json' //수신타입
       }).then(response => {
-        // console.log(response); //수신데이타
-        // console.log(response.data.result);
         this.b = response.data.apiData
       }).catch(error => {
         console.log(error);
@@ -165,7 +163,6 @@ export default {
         responseType: 'json' //수신타입
         /* eslint-disable */
       }).then(response => {
-        // console.log(response); //수신데이타
         window.location.reload(true);
       }).catch(error => {
         console.log(error);

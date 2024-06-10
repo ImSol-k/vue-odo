@@ -568,16 +568,12 @@ import '@/assets/css/Initialization.css';
 import "@/assets/css/mj/condition.css";
 import AppFooter from '@/components/AppFooter.vue';
 import AppHeader from '@/components/AppHeader.vue';
-// import MyPageSide from '@/components/MyPageSide.vue';
-// import MyPageHeader from '@/components/MyPageHeader.vue';
 
-	export default {
+export default {
 		name: "ConditionView",
 		components: {
 			AppHeader,
             AppFooter,
-            // MyPageSide,
-            // MyPageHeader
 		},
 		data() {
 			return {};

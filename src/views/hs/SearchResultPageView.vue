@@ -222,7 +222,6 @@ export default {
 					responseType: 'json' //수신타입
 					/* eslint-disable */
 				}).then(response => {
-					// console.log(response.data.apiData);
 					this.getcateList();
 
 				}).catch(error => {
@@ -267,7 +266,6 @@ export default {
 					responseType: 'json' //수신타입
 					/* eslint-disable */
 				}).then(response => {
-					// console.log(response.data.apiData);
 					this.getcateList();
 
 				}).catch(error => {

@@ -373,7 +373,6 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          // console.log(response.data.apiData);
           for (let i = 0; i < response.data.apiData.length; i++) {
             this.onedayDate[i] = response.data.apiData[i].start;
           }
@@ -431,7 +430,6 @@ export default {
           if (date != null) {
             formData.append(`startDateList[${index}]`, this.formatDate(date));
           }
-          // console.log(this.formatDate(date));
         });
       } else {
         formData.append("startDate", this.formatDate(this.startDate));
@@ -447,7 +445,6 @@ export default {
 
       // HTML 형식으로 에디터의 내용 추출
       const editorHtmlContent = editorInstance.root.innerHTML;
-      // console.log(editorHtmlContent);
 
       /* fomdata에 추가 */
       formData.append("classInfo", editorHtmlContent);
@@ -485,7 +482,6 @@ export default {
         if (this.isAdd == 1) {
           //클래스 추가 ==============
 
-          // console.log("클래스 추가");
           axios({
             method: "post",
             url: `${this.$store.state.apiBaseUrl}/odo/company/insert`,
@@ -508,9 +504,9 @@ export default {
             });
         } else {
           //클래스 수정 =======================
-          for (let key of formData.keys()) {
-            console.log(key, ":", formData.get(key));
-          }
+          // for (let key of formData.keys()) {
+          //   console.log(key, ":", formData.get(key));
+          // }
 
           axios({
             method: "put",
@@ -522,7 +518,6 @@ export default {
             responseType: "json",
           })
             .then((response) => {
-              // console.log(response.data);
               if (response.data.result == "success") {
                 alert("클래스가 수정되었습니다.");
                 this.$router.push("/companypage");
@@ -607,7 +602,6 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          // console.log(response.data.apiData);
           if (response.data.result == "success") {
             this.classVo = response.data.apiData;
             this.onedayDate = response.data.apiData.startDateList;
@@ -641,7 +635,6 @@ export default {
      * 정규클래스 리스트
      */
     regularClass() {
-      // console.log("정규클래스");
       axios({
         method: "post",
         url: `${this.$store.state.apiBaseUrl}/odo/company/getrclass/${this.companyNum}`,
@@ -652,7 +645,6 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          // console.log(response.data);
           if (response.data.result == "success") {
             this.rClassList = response.data.apiData;
             this.isClass = 2;
@@ -682,9 +674,8 @@ export default {
           if (response.data.result == "success") {
             this.cate1 = response.data.apiData;
           } else {
-            // console.log("불러오기 실패");
+
           }
-          // console.log(this.cateList);
         })
         .catch((error) => {
           console.log(error);
@@ -708,9 +699,8 @@ export default {
             if (response.data.result == "success") {
               this.cate2 = response.data.apiData;
             } else {
-              // console.log("불러오기 실패");
+
             }
-            // console.log(this.cateList);
           })
           .catch((error) => {
             console.log(error);
@@ -737,8 +727,7 @@ export default {
                 this.classVo.classLatitude = result[0].y; // 위도
                 this.classVo.classLongitutde = result[0].x; // 경도
               } else {
-                // 주소 검색 실패
-                // console.error("주소 검색 실패");
+              
               }
             }
           );
@@ -750,7 +739,6 @@ export default {
      * 클래스 타입 변경
      */
     selectClass(num) {
-      console.log(num);
       if (num == 1) {
         this.isClass = 1;
         this.classVo.classType = 1;
@@ -777,10 +765,8 @@ export default {
         alert("1개이상 등록필수");
       } else {
         if (num == 1) {
-          // console.log("일정추가");
           this.onedayDate.push(null);
         } else {
-          // console.log("일정삭제");
           this.onedayDate.splice(i, 1);
         }
       }
@@ -849,7 +835,6 @@ export default {
     },
   },
   created() {
-    // console.log(this.$route.query.no);
     this.regularClass();
     this.cate();
     if (!(this.isAdd == 1)) {

@@ -201,7 +201,6 @@ export default {
             .then((response) => {
               if (response.data.result === "success") {
                 this.classList[i].wish = 1;
-                // console.log("추가되었습니다.");
               } else {
                 alert("통신오류");
               }
@@ -225,7 +224,6 @@ export default {
      * siFind == 2 > 주변클래스찾기
      */
     classType() {
-      console.log("키ㅝ드: "+this.keyword)
       if (this.page == 1) {
         this.classList = [];
       }
@@ -246,12 +244,10 @@ export default {
           responseType: "json",
         })
           .then((response) => {
-            // console.log(response.data.apiData);
             if (
               response.data.result == "success" &&
               response.data.apiData != null
             ) {
-              console.log(response.data.apiData)
               if (Array.isArray(response.data.apiData)) {
                 this.classList.push(...response.data.apiData);
                 this.classList.forEach((list) => {
@@ -286,7 +282,7 @@ export default {
                 this.classList = response.data.apiData;
               }
             } else {
-              console.log("검색정보 없음");
+
             }
           })
           .catch((error) => {
@@ -320,7 +316,6 @@ export default {
         var geocoder = new kakao.maps.services.Geocoder();
         var coord = new kakao.maps.LatLng(this.latitude, this.longitude);
         var callback = function (result, status) {
-          // console.log(status); // 상태를 확인하는 로그
           if (status === kakao.maps.services.Status.OK) {
             if (result.length > 0) {
               var pos = result[0].road_address
@@ -329,16 +324,15 @@ export default {
               pos = pos.replace(/-|1|2|3|4|5|6|7|8|9|0/g, "");
               pos = pos.split(" ");
               var center = this.map.getCenter();
-              // console.log(center);
               this.latitude = center.La;
               this.longitude = center.Ma;
               this.keyword = pos[1];
               this.classType();
             } else {
-              // console.error("Geocoding result is empty");
+
             }
           } else {
-            // console.error("Geocoding failed with status: " + status);
+
           }
         }.bind(this);
         geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);

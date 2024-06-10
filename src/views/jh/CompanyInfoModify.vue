@@ -158,7 +158,7 @@ export default {
       const formData = new FormData();
 
       if (this.file2 == "") {
-        // console.log('파일 없음');
+        
       } else {
         formData.append("companyFile", this.file2);
       }
@@ -200,7 +200,6 @@ export default {
       } else if (this.companyVo.companyHp == "") {
         alert("핸드폰번호를 입력해 주세요");
       } else {
-        // console.log(this.companyVo);
         axios({
           method: "put",
           url: `${this.$store.state.apiBaseUrl}/odo/companymodify`,
@@ -226,7 +225,6 @@ export default {
       }
     },
     businessNumber() {
-      //console.log("businessNumber");
       const data = { b_no: [this.companyVo.companyBn] };
       axios
         .post(
@@ -241,7 +239,6 @@ export default {
           }
         )
         .then((response) => {
-          //console.log("Response:", response.data);
 
           if (
             response.data &&
@@ -280,12 +277,6 @@ export default {
                 // 주소 검색 결과가 성공일 경우
                 this.companyVo.companyLatitude = result[0].y; // 위도
                 this.companyVo.companyLongitude = result[0].x; // 경도
-                // console.log(
-                //   "위도:",
-                //   this.companyVo.companyLatitude,
-                //   "경도:",
-                //   this.companyVo.companyLongitude
-                // );
               } else {
                 // 주소 검색 실패
                 console.error("주소 검색 실패");
@@ -300,7 +291,6 @@ export default {
       // 선택한 파일
       this.profile = event.target.files[0];
       this.file2 = event.target.files[0];
-      //console.log(this.companyVo.companyImage)
       // FileReader 객체를 사용하여 이미지를 읽음
       const reader = new FileReader();
 
@@ -352,14 +342,10 @@ export default {
           "Content-Type": "application/json; charset=utf-8",
           Authorization: "Bearer " + this.$store.state.cToken,
         }, //전송타입
-        //params: guestbookVo, //get방식 파라미터로 값이 전달
-        //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: "json", //수신타입
       })
         .then((response) => {
-          //console.log(response); //수신데이타
           this.companyVo = response.data.apiData;
-          // console.log(this.companyVo);
           this.previewImage = `${this.$store.state.apiBaseUrl}/upload/${this.companyVo.companyImage}`;
         })
         .catch((error) => {

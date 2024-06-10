@@ -127,7 +127,6 @@ export default {
       })
         .then((response) => {
           this.classList = response.data.apiData;
-          console.log(this.classList); //수신데이터
         })
         .catch((error) => {
           console.log(error);

@@ -123,7 +123,7 @@ export default {
     modifyUser(){
       const formData = new FormData();
       if(this.file == ''){
-        // console.log('파일 없음');
+
       } else {
         formData.append('file', this.file);
       }
@@ -139,7 +139,6 @@ export default {
         data : formData,
 				responseType: 'json'
 			}).then(response => {
-        // console.log(response.data);
         if(response.data.result === 'success'){
           let authUser = {
             userNo: response.data.apiData.userNo,

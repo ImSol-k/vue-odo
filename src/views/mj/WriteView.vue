@@ -61,8 +61,6 @@ import axios from 'axios';
 		methods: {
 			
 			goList() {
-				// console.log("안녕하세요");
-				// console.log(this.write);
 				axios({
                 method: 'post', // put, post, delete                   
                 url: `${this.$store.state.apiBaseUrl}/odo/mypage/notice/write`,
@@ -74,7 +72,6 @@ import axios from 'axios';
                 responseType: 'json' //수신타입
 				/* eslint-disable */
             }).then(response => {
-                // console.log(response); //수신데이타
                 this.$router.push('/mypage/notice'); // 예시 라우팅, 필요에 따라 조정
 
             }).catch(error => {

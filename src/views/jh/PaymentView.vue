@@ -179,7 +179,6 @@ export default {
       viewModal.style.display = "none";
     },
     payType(type) {
-      // console.log(type);
       if (type == "신용카드") {
         this.paymenType = "신용카드";
       } else if (type == "naver") {
@@ -191,7 +190,6 @@ export default {
       }
     },
     list() {
-      // console.log("시작");
       axios({
         method: 'get', // put, post, delete 
         url: `${this.$store.state.apiBaseUrl}/odo/payment/${this.$route.params.no}`,
@@ -209,34 +207,27 @@ export default {
           this.$store.commit('setAuthUser', '');
           this.$store.commit('setToken', '');
           this.$router.push('/');
-          //console.log(response)
 
         } else {
-          // console.log(response); //수신데이타
           this.pv = response.data.apiData.pv;
           this.couponList = response.data.apiData.couponList;
-          //console.log(this.pv);
-          //console.log(this.couponList);
+    
         }
       }).catch(error => {
         console.log(error);
       });
     },
     pay() {
-      //console.log(`${this.$route.params.no}`);
-      //console.log(this.paymenType);
+    
       if (this.a == "사용안함") {
         this.total = this.pv.classPrice
       } else {
         this.total = this.pv.classPrice - this.pv.classPrice * this.a / 100
       }
-      //.log(this.total);
-      //.log(this.$store.state.couponNo);
       this.payVo.scheduleNo = `${this.$route.params.no}`;
       this.payVo.payType = this.paymenType;
       this.payVo.total = this.total;
       this.payVo.couponNo = this.$store.state.couponNo;
-      //console.log(this.payVo);
       axios({
         method: 'put', // put, post, delete 
         url: `${this.$store.state.apiBaseUrl}/odo/pay`,
@@ -245,7 +236,6 @@ export default {
         data: this.payVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: 'json' //수신타입
       }).then(response => {
-        // console.log(response.data.apiData.message); //수신데이타
         if (response.data.apiData.message == "실패") {
           Swal.fire({
             title: "결제에 실패하였습니다",
@@ -257,8 +247,6 @@ export default {
           this.$router.push('/login/user');
           window.location.reload(true);
         } else {
-          // console.log(response.data.apiData.apiData);
-
           this.$router.push('/paymentend/' + response.data.apiData.apiData);
         }
 

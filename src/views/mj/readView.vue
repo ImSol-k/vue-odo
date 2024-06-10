@@ -87,8 +87,6 @@ export default {
 
                 responseType: 'json' //수신타입
             }).then(response => {
-                // console.log(response); //수신데이타
-
                this.MjVo=response.data.MjVo;
                this.no=response.data.num;
 
@@ -108,7 +106,6 @@ export default {
                 responseType: 'json' //수신타입
                 /* eslint-disable */
             }).then(response => {
-                // console.log(response); //수신데이타
                 this.$router.push('/mypage/notice'); // 예시 라우팅, 필요에 따라 조정
 
             }).catch(error => {

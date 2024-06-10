@@ -377,7 +377,6 @@ export default defineComponent({
 					responseType: 'json' //수신타입
 					/* eslint-disable */
 				}).then(response => {
-					// console.log(response.data.apiData);
 					this.getLists();
 
 				}).catch(error => {
@@ -423,7 +422,6 @@ export default defineComponent({
 					responseType: 'json' //수신타입
 					/* eslint-disable */
 				}).then(response => {
-					// console.log(response.data.apiData);
 					this.getLists();
 
 				}).catch(error => {

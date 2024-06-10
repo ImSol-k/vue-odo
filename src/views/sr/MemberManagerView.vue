@@ -218,7 +218,6 @@ export default {
      * 원데이클래스 일정 불러오기
      */
     ondaySchedule() {
-      console.log(this.scheduleNo);
       axios({
         method: "get",
         url: `${this.$store.state.apiBaseUrl}/odo/company/one/${this.classNo}`, //SpringBoot주소
@@ -226,7 +225,6 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          console.log(response.data.apiData); //수신데이터
           this.dateList = response.data.apiData;
         })
         .catch((error) => {
@@ -251,7 +249,6 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          // console.log(response.data.apiData); //수신데이터
           this.mList = response.data.apiData;
         })
         .catch((error) => {
@@ -276,7 +273,6 @@ export default {
      * 쿠폰지급
      */
     setCoupon() {
-      console.log(this.userNo);
       axios({
         method: "post",
         url: `${this.$store.state.apiBaseUrl}/odo/company/coupon`, //SpringBoot주소
@@ -289,7 +285,6 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          // console.log(response.data); //수신데이터
           this.isCoupon = false;
           if (response.data.result == "success") {
             alert("쿠폰이 지급되었습니다.");
@@ -316,7 +311,6 @@ export default {
     },
   },
   created() {
-    console.log(this.$route.params.name);
     this.memberList();
     this.ondaySchedule();
   },

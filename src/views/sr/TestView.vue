@@ -55,7 +55,6 @@ export default {
 
         responseType: 'json' //수신타입
       }).then(response => {
-        // console.log(response.data.apiData); //수신데이타
 
         // 서버로부터 응답받은 데이터에서 이미지 saveName을 추출합니다.
         const saveName  = response.data.apiData; // 예를 들어, 응답 데이터에 이미지 URL이 result 키에 위치한다고 가정합니다.

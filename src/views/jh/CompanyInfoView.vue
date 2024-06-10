@@ -142,7 +142,6 @@ export default {
           responseType: 'json' //수신타입
           /* eslint-disable */
         }).then(response => {
-          // console.log(response); //수신데이타
           if(response.data.message != "fail"){
             this.ci2[i].wishNo = 1;
           }else{
@@ -164,8 +163,6 @@ export default {
           responseType: 'json' //수신타입
           /* eslint-disable */
         }).then(response => {
-          // console.log(response); //수신데이타
-
           this.ci2[i].wishNo = 0;
 
         }).catch(error => {
@@ -174,7 +171,6 @@ export default {
       }
     },
     change(no) {  //회사 위시 등록 삭제
-      // console.log(no)
       if(this.$store.state.authUser == '' && this.$store.state.token == ''){
 				Swal.fire({
 					title: "로그인 후 이용 가능합니다.",
@@ -204,8 +200,6 @@ export default {
           responseType: 'json' //수신타입
           /* eslint-disable */
         }).then(response => {
-          // console.log(response); //수신데이타
-
           this.ci.wishNo = 0;
 
         }).catch(error => {
@@ -220,8 +214,6 @@ export default {
           data: `${this.$route.params.no}`, //put, post, delete 방식 자동으로 JSON으로 변환 전달
           responseType: 'json' //수신타입
         }).then(response => {
-          //console.log(response.data.apiData); //수신데이타
-
           this.ci.wishNo = response.data.apiData;
 
         }).catch(error => {
@@ -292,14 +284,12 @@ export default {
         //data: this.$store.state.authUser.userNo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
         responseType: 'json' //수신타입
       }).then(response => {
-        // console.log(response); //수신데이타
         this.ci = response.data.ci;
         this.ci2 = response.data.ci2;
         this.$nextTick(() => {
           this.createCharts();
         });
 
-        // console.log(this.ci2);
       }).catch(error => {
         console.log(error);
       });

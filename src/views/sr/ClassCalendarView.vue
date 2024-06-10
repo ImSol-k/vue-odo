@@ -53,7 +53,6 @@ export default {
           }
         ],
         eventClick: function (info) {
-          // console.log(info.event.end);
           if (info.event.end == null) {
             Swal.fire({
               title: "일정",
@@ -103,7 +102,6 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          // console.log(response.data);
           this.calendarOptions.events = response.data.apiData;
         })
         .catch((error) => {

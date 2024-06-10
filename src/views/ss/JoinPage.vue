@@ -132,7 +132,7 @@ export default {
 		
 		// 네이버로 회원가입
 		naverJoin(){
-			console.log('네이버회원가입');
+
 		},
 
 		// 회원가입에서 뒤로가기 눌렀을 때 
