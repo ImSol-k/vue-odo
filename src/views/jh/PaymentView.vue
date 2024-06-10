@@ -106,10 +106,12 @@
     <div class="modal-content2">
       <form action="">
         <p class="closeBtn" v-on:click="close">x</p>
+        <div class="radio">
         <label for="none">사용안함</label>
         <input  id="none" type="radio" name="coupon" value="사용안함" v-model="a" checked="checked"
           v-on:click="couponNo0" /><br><br>
-        <div v-for="(coupon, i) in couponList" v-bind:key="i">
+        </div>
+        <div class="radio" v-for="(coupon, i) in couponList" v-bind:key="i">
           <label :for="'coupon_' + i">{{ coupon.coupon_price }}% 할인</label>
           <input :id="'coupon_' + i" type="radio" name="coupon" :value="coupon.coupon_price" v-model="a"
             @click="couponNo(coupon.coupon_no)" /><br><br>

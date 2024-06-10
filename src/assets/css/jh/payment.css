@@ -303,3 +303,20 @@
 .payImg{
   border-radius: 10px;
 }
+
+.radio{
+  display: flex;
+  align-items: center;
+}
+
+.radio label{
+  width: 100px;
+}
+
+.radio input[type="radio"] {
+  margin-left: 20px;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  border: 1px;
+}
