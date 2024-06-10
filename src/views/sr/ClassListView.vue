@@ -4,19 +4,19 @@
     <div class="findClassBox">
       <div>
         <p v-if="isFind == 1">"{{ keyword }}"검색결과</p>
-        <p v-else>주변클래스</p>
+        <p v-else>"{{ keyword }}"주변클래스</p>
         <button v-on:click="MapOnOff">
           <span v-if="!isMap">지도로 보기</span>
           <span v-else>리스트로 보기</span>
         </button>
-        <div class="classTypeSelect">
-          <select name="" id="" v-model="type" @change="classType">
+        <!-- <div class="classTypeSelect">
+          <select name="" id="" v-model="type" @change="initMap">
             <option :value="4" selected>전체클래스</option>
             <option :value="1">원데이</option>
             <option :value="2">정규</option>
             <option :value="3">상시</option>
           </select>
-        </div>
+        </div> -->
       </div>
 
       <!-- 리스트로보기 -->
@@ -38,7 +38,7 @@
               <div class="listRreviewBox">
                 <span class="liststarPoint">★</span>
                 <span>{{ c.review }}</span>
-                <span class="classListPrice">{{ c.classPrice }}원</span>
+                <!-- <span class="classListPrice">{{ c.classPrice }}원</span> -->
               </div>
             </router-link>
             <img
@@ -225,6 +225,7 @@ export default {
      * siFind == 2 > 주변클래스찾기
      */
     classType() {
+      console.log("키ㅝ드: "+this.keyword)
       if (this.page == 1) {
         this.classList = [];
       }
@@ -250,6 +251,7 @@ export default {
               response.data.result == "success" &&
               response.data.apiData != null
             ) {
+              console.log(response.data.apiData)
               if (Array.isArray(response.data.apiData)) {
                 this.classList.push(...response.data.apiData);
                 this.classList.forEach((list) => {
@@ -311,6 +313,7 @@ export default {
      * 카카오 맵관련 메소드
      */
     initMap() {
+      
       //현재위치 얻어오기
       if (this.isFind == 2) {
         //객체생성
@@ -325,7 +328,12 @@ export default {
                 : result[0].address.address_name;
               pos = pos.replace(/-|1|2|3|4|5|6|7|8|9|0/g, "");
               pos = pos.split(" ");
+              var center = this.map.getCenter();
+              // console.log(center);
+              this.latitude = center.La;
+              this.longitude = center.Ma;
               this.keyword = pos[1];
+              this.classType();
             } else {
               // console.error("Geocoding result is empty");
             }
@@ -334,25 +342,7 @@ export default {
           }
         }.bind(this);
         geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
-
-        // if (navigator.geolocation) {
-        //   navigator.geolocation.getCurrentPosition(
-        //     (position) => {
-        //       this.latitude = position.coords.latitude;
-        //       this.longitude = position.coords.longitude;
-        //       // this.displayMap(this.latitude, this.longitude);
-        //       let locPosition = new kakao.maps.LatLng(
-        //         this.latitude,
-        //         this.longitude
-        //       );
-        //       this.map.setCenter(locPosition);
-        //     },
-        //     (error) => {
-        //       // 현재위치 못얻어올떄
-        //       console.error("Error occurred. Error code: " + error.code);
-        //     }
-        //   );
-        // }
+        
       }
       //맵을 그린다 기본위치를 표시------------------------------------------------------------
       var mapContainer = document.getElementById("listMap"); // 지도를 표시할 div

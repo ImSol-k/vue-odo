@@ -139,6 +139,7 @@ import AppHeader from "@/components/AppHeader.vue"
 
 import axios from 'axios';
 import Swal from "sweetalert2";
+import "@vueup/vue-quill";
 
 export default {
 	name: "ClassDetailPageView",

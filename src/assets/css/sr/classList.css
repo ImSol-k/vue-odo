@@ -9,9 +9,12 @@
   display: flex;
   align-items: center;
 }
+.findClassBox > div:first-child > button{
+  float: right;
+}
 .findClassBox > div > p {
   padding: 20px 10px;
-  width: 680px;
+  width: 860px;
   font-size: 23px;
   font-weight: bold;
 }

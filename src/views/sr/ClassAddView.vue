@@ -22,11 +22,21 @@
         <!-- 원데이클래스 등록 -->
         <div class="classAddBox">
           <div class="classAddImg">
-            <img :src="img" alt="" style="width: 150px; height: 150px;" v-if="isAdd == 1"/>
-            <img :src="`${this.$store.state.apiBaseUrl}/upload/${img}`" alt="" style="width: 150px; height: 150px;" v-else/>
+            <img
+              :src="img"
+              alt=""
+              style="width: 150px; height: 150px"
+              v-if="showImage"
+            />
+            <img
+              :src="`${this.$store.state.apiBaseUrl}/upload/${img}`"
+              alt=""
+              style="width: 150px; height: 150px"
+              v-else
+            />
             <div class="classAddImgTitle">
               <p>클래스 대표이미지</p>
-              <input type="file" name="" id="" v-on:change="imgFile"/>
+              <input type="file" name="" id="" v-on:change="imgFile" />
               <select
                 name=""
                 id=""
@@ -78,20 +88,20 @@
               <div class="classParticipation" v-if="isClass == 2">
                 <label for="">중도참여</label>
 
-                <label
-                  class="classRadioText"
-                  for="possibility"
-                  
-                  >가능</label
-                >
-                <input type="radio" name="possibility" id="possibility" @change="selectClass(3)"/>
-                <label
-                  class="classRadioText"
-                  for="impossibility"
-                  
-                  >불가능</label
-                >
-                <input type="radio" name="possibility" id="impossibility" @change="selectClass(2)"/>
+                <label class="classRadioText" for="possibility">가능</label>
+                <input
+                  type="radio"
+                  name="possibility"
+                  id="possibility"
+                  @change="selectClass(3)"
+                />
+                <label class="classRadioText" for="impossibility">불가능</label>
+                <input
+                  type="radio"
+                  name="possibility"
+                  id="impossibility"
+                  @change="selectClass(2)"
+                />
               </div>
               <!-- 원데이일정 -->
               <div class="classSchedule" v-if="isClass == 1">
@@ -105,7 +115,7 @@
                     <input
                       class="VueDatePickerOne"
                       type="datetime-local"
-                      v-model="onedayDate[i-1]"
+                      v-model="onedayDate[i - 1]"
                     />
                     <!-- <VueDatePicker
                     class="VueDatePickerOne"
@@ -113,12 +123,12 @@
                     time-picker-inline
                     v-model="onedayDate[i]"
                   /> -->
-                    <button v-on:click.prevent="schedulClick(2, i-1)">
+                    <button v-on:click.prevent="schedulClick(2, i - 1)">
                       삭제
                     </button>
                     <button
-                      v-on:click.prevent="schedulClick(1, i-1)"
-                      v-show="onedayDate.length == i-1"
+                      v-on:click.prevent="schedulClick(1, i - 1)"
+                      v-show="onedayDate.length == i - 1"
                     >
                       추가
                     </button>
@@ -146,7 +156,11 @@
                 </div>
                 <div>
                   <p>종료일</p>
-                  <input class="VueDatePicker" type="datetime-local" v-model="endDate" />
+                  <input
+                    class="VueDatePicker"
+                    type="datetime-local"
+                    v-model="endDate"
+                  />
                   <!-- <VueDatePicker
                     class="VueDatePicker"
                     locale="ko"
@@ -280,10 +294,16 @@
           <!--classAddInfo-->
           <div class="isAddBtn">
             <button><router-link to="/companypage">취소</router-link></button>
-            <button v-if="isAdd == 1" type="button" v-on:click.prevent="classHandle">
+            <button
+              v-if="isAdd == 1"
+              type="button"
+              v-on:click.prevent="classHandle"
+            >
               등록
             </button>
-            <button v-else type="button" v-on:click.prevent="classHandle">수정</button>
+            <button v-else type="button" v-on:click.prevent="classHandle">
+              수정
+            </button>
           </div>
         </div>
         <!--classAddBox---->
@@ -306,6 +326,7 @@ export default {
   components: { AppHeader, AppFooter, AppMenu, QuillEditor },
   data() {
     return {
+      showImage: true,
       isAdd: this.$route.params.isadd, //1추가 2수정
       isClass: "",
       // ============================
@@ -372,7 +393,6 @@ export default {
         });
     },
 
-
     /********************************************************************
      * 클래스 추가/ 수정
      * isAdd == 1 > 추가, isAdd == 2 > 수정
@@ -382,146 +402,154 @@ export default {
 
       //파일 값 확인
       if (this.classImage == "") {
-        alert("파일이 비어있습니다.");
+        if (this.isAdd == 1) {
+          alert("파일이 비어있습니다.");
+        } else {
+          formData.append("classImage", this.img);
+        }
       } else {
         formData.append("classImageFile", this.classImage);
-      }
-
-      formData.append("classType", this.classVo.classType);
-      formData.append("companyNo", this.companyNum);
-      formData.append("cate1No", this.classVo.cate1No);
-      formData.append("cate2No", this.classVo.cate2No);
-      formData.append("className", this.classVo.className);
-      formData.append("classIntro", this.classVo.classIntro);
-      formData.append("classZipcode", this.classVo.classZipcode);
-      formData.append("classNameAddress", this.classVo.classNameAddress);
-      formData.append("classNumAddress", this.classVo.classNumAddress);
-      formData.append("classDetailAddress", this.classVo.classDetailAddress);
-      formData.append("classLatitude", this.classVo.classLatitude);
-      formData.append("classLongitutde", this.classVo.classLongitutde);
-      if (this.classVo.classPrice == "") {
-        formData.append("classPrice", 0);
-      } else {
-        formData.append("classPrice", this.classVo.classPrice);
-      }
-      formData.append("classMin", this.classVo.classMin);
-      formData.append("classMax", this.classVo.classMax);
-      formData.append("classUrl", this.classVo.classUrl);
-
-      //클래스 타입별 들어가는 스케줄값이 다름
-      //1이면 배열 아니면 단일값으로 들어감
-      if (this.classVo.classType == 1) {
-        if (this.classVo.recClassNo == "") {
-          formData.append("recClassNo", 0);
+        formData.append("classType", this.classVo.classType);
+        formData.append("companyNo", this.companyNum);
+        formData.append("cate1No", this.classVo.cate1No);
+        formData.append("cate2No", this.classVo.cate2No);
+        formData.append("className", this.classVo.className);
+        formData.append("classIntro", this.classVo.classIntro);
+        formData.append("classZipcode", this.classVo.classZipcode);
+        formData.append("classNameAddress", this.classVo.classNameAddress);
+        formData.append("classNumAddress", this.classVo.classNumAddress);
+        formData.append("classDetailAddress", this.classVo.classDetailAddress);
+        formData.append("classLatitude", this.classVo.classLatitude);
+        formData.append("classLongitutde", this.classVo.classLongitutde);
+        if (this.classVo.classPrice == "") {
+          formData.append("classPrice", 0);
         } else {
-          formData.append("recClassNo", this.classVo.recClassNo);
+          formData.append("classPrice", this.classVo.classPrice);
         }
-        this.onedayDate.forEach((date, index) => {
-          if (date != null) {
-            formData.append(`startDateList[${index}]`, this.formatDate(date));
+        formData.append("classMin", this.classVo.classMin);
+        formData.append("classMax", this.classVo.classMax);
+        formData.append("classUrl", this.classVo.classUrl);
+
+        //클래스 타입별 들어가는 스케줄값이 다름
+        //1이면 배열 아니면 단일값으로 들어감
+        if (this.classVo.classType == 1) {
+          if (this.classVo.recClassNo == "") {
+            formData.append("recClassNo", 0);
+          } else {
+            formData.append("recClassNo", this.classVo.recClassNo);
           }
-          // console.log(this.formatDate(date));
-        });
-      } else {
-        formData.append("startDate", this.formatDate(this.startDate));
-        formData.append("endDate", this.formatDate(this.endDate));
-      }
-      if (this.classVo.classNo != null) {
-        formData.append("classNo", this.classNo);
-      }
-
-      //에디터 본문내용
-      // 에디터 인스턴스 가져오기
-      const editorInstance = this.$refs.quillEditor.getQuill();
-
-      // HTML 형식으로 에디터의 내용 추출
-      const editorHtmlContent = editorInstance.root.innerHTML;
-      // console.log(editorHtmlContent);
-
-      /* fomdata에 추가 */
-      formData.append("classInfo", editorHtmlContent);
-
-      if (this.classVo.className == "") {
-        alert("클래스명을 작성해주세요.");
-      } else if (this.classVo.classType == "") {
-        alert("클래스타입을 선택해주세요")
-      } else if (this.classVo.classIntro == "") {
-        alert("클래스 소개를 작성해주세요.");
-      } else if (this.isClass && this.onedayDate == "") {
-        alert("일정을 입력해 주세요");
-      } else if (!this.isClass && this.startDate == "" && this.endDate == "") {
-        alert("시작일과 종료일을 확인 해 주세요");
-      } else if (
-        this.classVo.classZipcode == "" &&
-        this.classVo.classDetailAddress == ""
-      ) {
-        alert("주소(상세주소)를 입력해 주세요");
-      } else if (this.classVo.cate2No == "") {
-        alert("카테고리를 선택해 주세요");
-      } else if (this.classVo.classMax == "" && this.classVo.classMin == "") {
-        alert("인원수를 입력해주세요.");
-      } else if (editorHtmlContent == null) {
-        alert("상세설명을 입력해주세요.");
-      } else if (
-        Number(this.classVo.classMax) <= Number(this.classVo.classMin)
-      ) {
-        alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
-      } else {
-        if (this.isAdd == 1) {
-          //클래스 추가 ==============
-
-          // console.log("클래스 추가");
-          axios({
-            method: "post",
-            url: `${this.$store.state.apiBaseUrl}/odo/company/insert`,
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-            data: formData,
-            responseType: "json",
-          })
-            .then((response) => {
-              if (response.data.result == "success") {
-                alert("클래스가 추가되었습니다.");
-                this.$router.push("/companypage");
-              } else {
-                alert("클래스 추가 실패");
-              }
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+          this.onedayDate.forEach((date, index) => {
+            if (date != null) {
+              formData.append(`startDateList[${index}]`, this.formatDate(date));
+            }
+            // console.log(this.formatDate(date));
+          });
         } else {
-          //클래스 수정 =======================
-          // console.log("클래스 수정");
-          
-          axios({
-            method: "put",
-            url: `${this.$store.state.apiBaseUrl}/odo/company/update`,
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-            data: formData,
-            responseType: "json",
-          })
-            .then((response) => {
-              // console.log(response.data);
-              if (response.data.result == "success") {
-                alert("클래스가 수정되었습니다.");
-                this.$router.push("/companypage");
-              } else {
-                alert("클래스 수정 실패");
-              }
+          formData.append("startDate", this.formatDate(this.startDate));
+          formData.append("endDate", this.formatDate(this.endDate));
+        }
+        if (this.classVo.classNo != null) {
+          formData.append("classNo", this.classNo);
+        }
+
+        //에디터 본문내용
+        // 에디터 인스턴스 가져오기
+        const editorInstance = this.$refs.quillEditor.getQuill();
+
+        // HTML 형식으로 에디터의 내용 추출
+        const editorHtmlContent = editorInstance.root.innerHTML;
+        // console.log(editorHtmlContent);
+
+        /* fomdata에 추가 */
+        formData.append("classInfo", editorHtmlContent);
+
+        if (this.classVo.className == "") {
+          alert("클래스명을 작성해주세요.");
+        } else if (this.classVo.classType == "") {
+          alert("클래스타입을 선택해주세요");
+        } else if (this.classVo.classIntro == "") {
+          alert("클래스 소개를 작성해주세요.");
+        } else if (this.isClass && this.onedayDate == "") {
+          alert("일정을 입력해 주세요");
+        } else if (
+          !this.isClass &&
+          this.startDate == "" &&
+          this.endDate == ""
+        ) {
+          alert("시작일과 종료일을 확인 해 주세요");
+        } else if (
+          this.classVo.classZipcode == "" &&
+          this.classVo.classDetailAddress == ""
+        ) {
+          alert("주소(상세주소)를 입력해 주세요");
+        } else if (this.classVo.cate2No == "") {
+          alert("카테고리를 선택해 주세요");
+        } else if (this.classVo.classMax == "" && this.classVo.classMin == "") {
+          alert("인원수를 입력해주세요.");
+        } else if (editorHtmlContent == null) {
+          alert("상세설명을 입력해주세요.");
+        } else if (
+          Number(this.classVo.classMax) <= Number(this.classVo.classMin)
+        ) {
+          alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
+        } else {
+          if (this.isAdd == 1) {
+            //클래스 추가 ==============
+
+            // console.log("클래스 추가");
+            axios({
+              method: "post",
+              url: `${this.$store.state.apiBaseUrl}/odo/company/insert`,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+              data: formData,
+              responseType: "json",
             })
-            .catch((error) => {
-              console.log(error);
-            });
+              .then((response) => {
+                if (response.data.result == "success") {
+                  alert("클래스가 추가되었습니다.");
+                  this.$router.push("/companypage");
+                } else {
+                  alert("클래스 추가 실패");
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          } else {
+            //클래스 수정 =======================
+            // console.log("클래스 수정");
+
+            axios({
+              method: "put",
+              url: `${this.$store.state.apiBaseUrl}/odo/company/update`,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+              data: formData,
+              responseType: "json",
+            })
+              .then((response) => {
+                // console.log(response.data);
+                if (response.data.result == "success") {
+                  alert("클래스가 수정되었습니다.");
+                  this.$router.push("/companypage");
+                } else {
+                  alert("클래스 수정 실패");
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
         }
       }
-      
     },
     //이미지저장, 미리보기
     imgFile(event) {
+
+      this.showImage = true;
       //이미지 저장
       this.classImage = event.target.files[0];
 
@@ -561,7 +589,7 @@ export default {
         .then((response) => {
           if (response.data.result == "success") {
             this.cList = response.data.apiData;
-          } 
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -731,7 +759,7 @@ export default {
      * 클래스 타입 변경
      */
     selectClass(num) {
-      console.log(num)
+      console.log(num);
       if (num == 1) {
         this.isClass = 1;
         this.classVo.classType = 1;
@@ -836,6 +864,7 @@ export default {
     if (!(this.isAdd == 1)) {
       this.classShow();
       this.ondaySchedule();
+      this.showImage = false;
     } else {
       this.classVo.classType = 2;
       this.classList(this.classVo.classType);
