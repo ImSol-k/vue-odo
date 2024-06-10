@@ -58,7 +58,7 @@
             {{ i.classIntro }}
           </p>
           <div class="paymentClassStar">
-            <div v-if="i.reviewPoint != 0" class="review-box">
+            <div v-if="i.reviewPoint != 0" class="review-box3">
               <b v-if="i.reviewPoint == 5"><span class="starPoint">★★★★★</span></b>
               <b v-else-if="i.reviewPoint > 4"><span class="starPoint">★★★★☆</span></b>
               <b v-else-if="i.reviewPoint > 3"><span class="starPoint">★★★☆☆</span></b>
