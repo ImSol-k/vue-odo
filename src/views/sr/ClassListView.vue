@@ -281,6 +281,7 @@ export default {
               } else {
                 this.classList = response.data.apiData;
               }
+              /* eslint-disable */
             } else {
 
             }

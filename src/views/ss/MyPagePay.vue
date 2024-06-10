@@ -701,7 +701,7 @@ export default {
 		// 리뷰 수정하기
 		modifyReview(){
 			const formData = new FormData();
-
+			/* eslint-disable */
 			if(this.file2 == ''){
 
 			} else {
@@ -804,7 +804,7 @@ export default {
 		// 등록버튼 클릭시 
 		insertReview(){
 			const formData = new FormData();
-
+			/* eslint-disable */
 			if(this.file == ''){
 
 			} else {

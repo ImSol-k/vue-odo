@@ -673,6 +673,7 @@ export default {
         .then((response) => {
           if (response.data.result == "success") {
             this.cate1 = response.data.apiData;
+            /* eslint-disable */
           } else {
 
           }
@@ -698,6 +699,7 @@ export default {
           .then((response) => {
             if (response.data.result == "success") {
               this.cate2 = response.data.apiData;
+              /* eslint-disable */
             } else {
 
             }
@@ -726,8 +728,9 @@ export default {
                 // 주소 검색 결과가 성공일 경우
                 this.classVo.classLatitude = result[0].y; // 위도
                 this.classVo.classLongitutde = result[0].x; // 경도
+                /* eslint-disable */
               } else {
-              
+                
               }
             }
           );

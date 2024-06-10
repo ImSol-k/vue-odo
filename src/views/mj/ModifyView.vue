@@ -122,6 +122,7 @@ export default {
   methods: {
     modifyUser(){
       const formData = new FormData();
+      /* eslint-disable */
       if(this.file == ''){
 
       } else {

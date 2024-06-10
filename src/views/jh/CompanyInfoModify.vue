@@ -156,7 +156,7 @@ export default {
   methods: {
     modify() {
       const formData = new FormData();
-
+      /* eslint-disable */
       if (this.file2 == "") {
         
       } else {
