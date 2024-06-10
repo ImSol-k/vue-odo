@@ -439,7 +439,7 @@ export default {
 					this.schList = this.cMap.schList;
 
 					let classIntroImgBox = document.querySelector('.classIntroImgBox');
-					classIntroImgBox.insertAdjacentHTML("afterbegin", editorInstance.root.innerHTML);
+					classIntroImgBox.insertAdjacentHTML("afterbegin", this.classDetailVo.classInfo);
 
 				}).catch(error => {
 					console.log(error);

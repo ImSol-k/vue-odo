@@ -311,7 +311,7 @@ import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 
 import main_slide_1 from "@/assets/images/hs/main_slide_1n.gif"
-import main_slide_2 from "@/assets/images/hs/main_slide_2.jpg"
+import main_slide_2 from "@/assets/images/hs/main_slide_2n.jpg"
 import main_slide_3 from "@/assets/images/hs/main_slide_3.jpg"
 import main_slide_4 from "@/assets/images/hs/main_slide_4.jpg"
 import main_slide_5 from "@/assets/images/hs/main_slide_5.jpg"
