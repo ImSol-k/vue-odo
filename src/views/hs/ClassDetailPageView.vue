@@ -6,14 +6,15 @@
 		<div class="detail-inner">
 
 			<div class="headSection">
-				<img class="representImg" :src="`${this.$store.state.apiBaseUrl}/upload/${this.classDetailVo.classImg}`">
+				<img class="representImg"
+					:src="`${this.$store.state.apiBaseUrl}/upload/${this.classDetailVo.classImg}`">
 
 				<div class="headInfoBox">
 					<div>
 						<h1>{{ this.classDetailVo.className }}</h1>
 						<div>
 							<p v-if="this.classDetailVo.classPrice != 0">{{
-					Number(this.classDetailVo.classPrice).toLocaleString('ko-KR') }}<span>원</span></p>
+						Number(this.classDetailVo.classPrice).toLocaleString('ko-KR') }}<span>원</span></p>
 							<p v-else>무료</p>
 							<div v-if="this.classDetailVo.wish == 1" class="class-like-btn red"
 								@click="minusWish(this.classDetailVo.wClassNo)">
@@ -24,7 +25,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="orderSelectBox">
 						<select name="" id="" class="" v-model="selectedSchedule" @change="updateOrderDate">
 							<option :value="null">일정/시간</option>
@@ -38,7 +39,7 @@
 						<div class="howMuch">
 							<span>
 								<b v-if="selectedSchedule && classDetailVo.classPrice != 0">주문금액 {{
-					Number(classDetailVo.classPrice).toLocaleString('ko-KR') }}원</b>
+						Number(classDetailVo.classPrice).toLocaleString('ko-KR') }}원</b>
 								<b v-else-if="selectedSchedule">무료</b>
 								<b v-else></b>
 							</span>
@@ -85,7 +86,7 @@
 				</ul>
 				<router-link v-if="this.cMap.classReviewCnt != 0" class="moreReviewBtn"
 					:to="`/reviewpage/${this.$route.params.classNo}`">{{
-					this.cMap.classReviewCnt }}개 후기 더보기 ></router-link>
+						this.cMap.classReviewCnt }}개 후기 더보기 ></router-link>
 			</div>
 			<!-- //reviewSection -->
 
@@ -100,7 +101,7 @@
 			<div class="classIntroduceSection">
 				<h2>클래스 소개</h2>
 				<div class="classIntroImgBox" :class="{ 'show': isMoreInfo }">
-					<img src="../../assets/images/hs/macbookintro.jpg" alt="">
+					<!-- 이자리 -->
 					<div class="shadowBox" :class="{ 'show': isMoreInfo }"></div>
 				</div>
 				<button class="moreInfoBtn" :class="{ 'show': isMoreInfo }" @click="moreInfo">상세정보 더보기</button>
@@ -158,7 +159,7 @@ export default {
 			wishVo: {
 				userNo: null,
 				classNo: null
-			}
+			},
 		};
 	},
 	mounted() {
@@ -175,7 +176,7 @@ export default {
 	},
 	methods: {
 		minusComWish(wCompanyNo) {
-			if(this.$store.state.authUser == '' && this.$store.state.token == ''){
+			if (this.$store.state.authUser == '' && this.$store.state.token == '') {
 				Swal.fire({
 					title: "로그인 후 이용 가능합니다.",
 					text: "로그인 하시겠습니까?",
@@ -238,7 +239,7 @@ export default {
 			} else {
 				this.wishVo.classNo = companyNo;
 				this.wishVo.userNo = this.$store.state.authUser.userNo;
-				
+
 				axios({
 					method: 'post', // put, post, delete
 					url: `${this.$store.state.apiBaseUrl}/odo/comwishes`,
@@ -257,7 +258,7 @@ export default {
 			}
 		},
 		minusWish(wClassNo) {
-			if(this.$store.state.authUser == '' && this.$store.state.token == ''){
+			if (this.$store.state.authUser == '' && this.$store.state.token == '') {
 				Swal.fire({
 					title: "로그인 후 이용 가능합니다.",
 					text: "로그인 하시겠습니까?",
@@ -403,6 +404,16 @@ export default {
 					this.classReviewList = this.cMap.classReviewList;
 					this.schList = this.cMap.schList;
 
+					// 에디터 인스턴스 가져오기
+					const editorInstance = this.$refs.quillEditor.getQuill();
+
+					//에디터에 내용 적용  //content는 서버에서 받은 내용
+					editorInstance.root.innerHTML = content;
+
+					let classIntroImgBox = document.querySelector('.classIntroImgBox');
+					classIntroImgBox.insertAdjacentHTML("afterbegin", this.classDetailVo.classInfo);
+
+
 				}).catch(error => {
 					console.log(error);
 				});
@@ -432,6 +443,17 @@ export default {
 					this.companyInfo = this.cMap.companyInfo;
 					this.classReviewList = this.cMap.classReviewList;
 					this.schList = this.cMap.schList;
+
+					console.log("asdfadfsd"+this.classDetailVo.classInfo);
+
+					// 에디터 인스턴스 가져오기
+					const editorInstance = this.$refs.quillEditor.getQuill();
+
+					//에디터에 내용 적용  //content는 서버에서 받은 내용
+					editorInstance.root.innerHTML = this.classDetailVo.classInfo;
+
+					let classIntroImgBox = document.querySelector('.classIntroImgBox');
+					classIntroImgBox.insertAdjacentHTML("afterbegin", editorInstance.root.innerHTML);
 
 				}).catch(error => {
 					console.log(error);
