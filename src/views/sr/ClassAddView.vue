@@ -22,8 +22,12 @@
         <!-- 원데이클래스 등록 -->
         <div class="classAddBox">
           <div class="classAddImg">
-            <img :src="img" alt="" style="width: 150px; height: 150px;" v-if="isAdd == 1"/>
-            <img :src="`${this.$store.state.apiBaseUrl}/upload/${img}`" alt="" style="width: 150px; height: 150px;" v-else/>
+            <!-- 등록 -->
+            <img v-if="isAdd == 1" :src="img" alt="" style="width: 150px; height: 150px;" />
+
+            <!-- 수정 -->
+            <!-- `${this.$store.state.apiBaseUrl}/upload/${img}` -->
+            <img v-else :src="img" alt="" style="width: 150px; height: 150px;" />
             <div class="classAddImgTitle">
               <p>클래스 대표이미지</p>
               <input type="file" name="" id="" v-on:change="imgFile"/>
@@ -524,17 +528,16 @@ export default {
     imgFile(event) {
       //이미지 저장
       this.classImage = event.target.files[0];
-
+      const READER = new FileReader();
+      READER.onload = (e) => {
+        this.img = e.target.result;
+      };
+      if (this.classImage) {
+         READER.readAsDataURL(this.classImage);
+        }
       if (this.classImage != null) {
         //이미지 미리보기
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          this.img = e.target.result;
-        };
-
-        if (this.classImage) {
-          reader.readAsDataURL(this.classImage);
-        }
+        this.img = this.classImage
       }
     },
 
@@ -595,7 +598,8 @@ export default {
             this.onedayDate = response.data.apiData.startDateList;
             this.startDate = response.data.apiData.startDate;
             this.endDate = response.data.apiData.endDate;
-            this.img = response.data.apiData.classImage;
+            this.img = `${this.$store.state.apiBaseUrl}/upload/${response.data.apiData.classImage}`;
+           
             // 에디터 인스턴스 가져오기
             const editorInstance = this.$refs.quillEditor.getQuill();
 
@@ -608,7 +612,7 @@ export default {
               this.isClass = 2;
             }
             //스케줄 불러오기
-            this.getschedule();
+            // this.getschedule();
           } else {
             alert("클래스를 불러오는데 실패했습니다.");
           }
