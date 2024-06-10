@@ -28,9 +28,7 @@
 				</div>
 				<!-- mymy-nav -->
 				
-				<div class="mymy-paybox">
-
-					
+				<div class="mymy-paybox">					
 
 					<!-- 결제내역이 있고 원데이클래스 정규클래스 나오게 -->
 					<div v-if="isPay">
@@ -83,7 +81,7 @@
 											<button type="button" id="paybtn1" @click="getAttendance(list.scheduleNo)">출석 : {{ list.attenCount }}회</button>
 											<button v-if="list.reviewNo == 0" type="button" id="paybtn2" @click="revForm(list.scheduleNo)">후기 작성</button>
 											<button v-else type="button" id="paybtn2" @click="revShow(list.reviewNo)">후기 보기</button>
-											<button type="button" id="paybtn3" @click="inquiry(list.classUrl)">문의</button>
+											<button type="button" id="paybtn3" @click="inquiry(list.companyNo)">문의</button>
 										</div>
 									</div>
 									<!-- paycon1 -->
@@ -157,7 +155,7 @@
 											<button type="button" id="paybtn1" @click="getAttendance(list.scheduleNo)">출석 : {{ list.attenCount }}회</button>
 											<button v-if="list.reviewNo == 0" type="button" id="paybtn2" @click="revForm(list.scheduleNo)">후기 작성</button>
 											<button v-else type="button" id="paybtn2" @click="revShow(list.reviewNo)">후기 보기</button>
-											<button type="button" id="paybtn3" @click="inquiry(list.classUrl)">문의</button>
+											<button type="button" id="paybtn3" @click="inquiry(list.companyNo)">문의</button>
 										</div>
 									</div>
 									<!-- paycon1 -->
@@ -606,8 +604,8 @@ export default {
 			this.loadItem();
 		},
 		// 문의요청
-		inquiry(url){
-			console.log(url);
+		inquiry(companyNo){
+			this.$router.push('/companyinfo/'+companyNo);
 		},
 		// 별점 퍼센트 보여주기(결제내역 - 결제한 클래스)
 		ratingToPercent(no){
