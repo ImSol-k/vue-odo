@@ -59,14 +59,14 @@
       <div class="companyInfoClassList" v-else-if="classType == 2">
         <div class="memberListTitle">
           <p>{{ this.$route.params.name }}</p>
-          <input
+          <!-- <input
             class="memberVueDatePicker"
             type="date"
             v-model="datepick"
             @change="memberList"
             name=""
             id=""
-          />
+          /> -->
         </div>
         <div class="memberListTable">
           <table>
@@ -102,14 +102,14 @@
       <div class="companyInfoClassList" v-else-if="classType == 3">
         <div class="memberListTitle">
           <p>{{ this.$route.params.name }}</p>
-          <input
+          <!-- <input
             class="memberVueDatePicker"
             type="date"
             v-model="datepick"
             @change="memberList"
             name=""
             id=""
-          />
+          /> -->
         </div>
         <div class="memberListTable">
           <table>
@@ -218,6 +218,7 @@ export default {
      * 원데이클래스 일정 불러오기
      */
     ondaySchedule() {
+      console.log(this.scheduleNo);
       axios({
         method: "get",
         url: `${this.$store.state.apiBaseUrl}/odo/company/one/${this.classNo}`, //SpringBoot주소

@@ -54,20 +54,20 @@
                       <router-link
                         v-if="isClass == 1"
                         class="classRouterLink"
-                        :to="`/membermanager/1/${c.scheduleNo}/${c.className}/${c.classNo}`"
+                        :to="`/membermanager/1/${c.scheduleNo}/${c.className.replace(/\s+/g, '').replace(/\//g, '')}/${c.classNo}`"
                       >
                         예약확인
                       </router-link>
                       <router-link
                         v-else-if="isClass == 2"
                         class="classRouterLink"
-                        :to="`/membermanager/2/${c.scheduleNo}/${c.className}/${c.classNo}`"
+                        :to="`/membermanager/2/${c.scheduleNo}/${c.className.replace(/\s+/g, '').replace(/\//g, '')}/${c.classNo}`"
                         >회원관리</router-link
                       >
                       <router-link
                         v-else
                         class="classRouterLink"
-                        :to="`/membermanager/3/${c.scheduleNo}/${c.className}/${c.classNo}`"
+                        :to="`/membermanager/3/${c.scheduleNo}/${c.className.replace(/\s+/g, '').replace(/\//g, '')}/${c.classNo}`"
                         >회원관리</router-link
                       >
                       <router-link
@@ -127,7 +127,7 @@ export default {
       })
         .then((response) => {
           this.classList = response.data.apiData;
-          // console.log(this.classList); //수신데이터
+          console.log(this.classList); //수신데이터
         })
         .catch((error) => {
           console.log(error);
