@@ -438,14 +438,6 @@ export default {
 					this.classReviewList = this.cMap.classReviewList;
 					this.schList = this.cMap.schList;
 
-					console.log("asdfadfsd"+this.classDetailVo.classInfo);
-
-					// 에디터 인스턴스 가져오기
-					const editorInstance = this.$refs.quillEditor.getQuill();
-
-					//에디터에 내용 적용  //content는 서버에서 받은 내용
-					editorInstance.root.innerHTML = this.classDetailVo.classInfo;
-
 					let classIntroImgBox = document.querySelector('.classIntroImgBox');
 					classIntroImgBox.insertAdjacentHTML("afterbegin", editorInstance.root.innerHTML);
 
