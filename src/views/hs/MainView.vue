@@ -80,7 +80,7 @@
 							</div>
 							<p class="location">{{ fbList.classNameAdd }}</p>
 							<p class="classTitle">{{ fbList.className }}</p>
-							<div v-if="fbList.reviewCount != 0" class="review-box">
+							<div v-if="fbList.reviewPointAvg != 0" class="review-box">
 								<b v-if="fbList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
 								<b v-else-if="fbList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
 								<b v-else-if="fbList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
@@ -89,8 +89,8 @@
 								<span class="reviewCount">후기 {{ fbList.reviewCount }}</span>
 							</div>
 							<div v-else class="review-box">
-								<b><span class="starPoint"></span></b>
-								<span class="reviewCount"></span>
+								<b v-if="fbList.reviewPointAvg == 0"><span class="starPoint">☆☆☆☆☆</span></b>
+								<span class="reviewCount">후기 {{ fbList.reviewCount }}</span>
 							</div>
 							<p class="class-price" v-if="fbList.classPrice == 0">무료</p>
 							<p class="class-price" v-else>{{ fbList.classPrice.toLocaleString('ko-KR') }}</p>
@@ -117,7 +117,7 @@
 							</div>
 							<p class="location">{{ pbList.classNameAdd }}</p>
 							<p class="classTitle">{{ pbList.className }}</p>
-							<div v-if="pbList.reviewCount != 0" class="review-box">
+							<div v-if="pbList.reviewPointAvg != 0" class="review-box">
 								<b v-if="pbList.reviewPointAvg == 5"><span class="starPoint">★★★★★</span></b>
 								<b v-else-if="pbList.reviewPointAvg == 4"><span class="starPoint">★★★★☆</span></b>
 								<b v-else-if="pbList.reviewPointAvg == 3"><span class="starPoint">★★★☆☆</span></b>
