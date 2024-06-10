@@ -58,7 +58,7 @@
 }
 .classListOne > img{
   position: absolute;
-  top: 0;
+  top: 50%;
   right: 0;
   width: 48px; /* 두 번째 이미지의 너비 */
   height: 48px;

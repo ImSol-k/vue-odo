@@ -315,6 +315,7 @@ export default {
     },
   },
   created() {
+    console.log(this.$route.params.name);
     this.memberList();
     this.ondaySchedule();
   },

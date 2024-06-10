@@ -22,10 +22,11 @@
         <!-- 원데이클래스 등록 -->
         <div class="classAddBox">
           <div class="classAddImg">
-            <img :src="img" alt="" style="width: 150px; height: 150px;"/>
+            <img :src="img" alt="" style="width: 150px; height: 150px;" v-if="isAdd == 1"/>
+            <img :src="`${this.$store.state.apiBaseUrl}/upload/${img}`" alt="" style="width: 150px; height: 150px;" v-else/>
             <div class="classAddImgTitle">
               <p>클래스 대표이미지</p>
-              <input type="file" name="" id="" v-on:change="imgFile" />
+              <input type="file" name="" id="" v-on:change="imgFile"/>
               <select
                 name=""
                 id=""
@@ -594,7 +595,7 @@ export default {
             this.onedayDate = response.data.apiData.startDateList;
             this.startDate = response.data.apiData.startDate;
             this.endDate = response.data.apiData.endDate;
-            // this.classVo.classImage = this.img;
+            this.img = response.data.apiData.classImage;
             // 에디터 인스턴스 가져오기
             const editorInstance = this.$refs.quillEditor.getQuill();
 
@@ -812,7 +813,7 @@ export default {
           // 서버로부터 응답받은 데이터에서 이미지 saveName을 추출합니다.
           const saveName = response.data.apiData; // 예를 들어, 응답 데이터에 이미지 URL이 result 키에 위치한다고 가정합니다.
           // saveName 으로 imageUrl 을 만듭니다.
-          const imageUrl = `"${this.$store.state.apiBaseUrl}/upload/"` + saveName;
+          const imageUrl = `${this.$store.state.apiBaseUrl}/upload/` + saveName;
 
           // Quill 에디터 인스턴스를 가져옵니다.
           const editorInstance = this.$refs.quillEditor.getQuill();

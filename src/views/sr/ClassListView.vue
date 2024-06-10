@@ -42,12 +42,12 @@
               </div>
             </router-link>
             <img
-              src="../../assets/images/icon/header_icons/active_like.png"
+              src="../../assets/images/redheart.svg"
               v-if="c.wish > 0"
               v-on:click="whisPM(1, c.classNo, i)"
             />
             <img
-              src="../../assets/images/icon/header_icons/like.png"
+              src="../../assets/images/whiteheart.svg"
               v-else
               v-on:click="whisPM(2, c.classNo, i)"
             />
@@ -121,7 +121,7 @@ import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import "@/assets/css/sr/classList.css";
 import axios from "axios";
-import Observer from '@/components/ObserverView.vue';
+import Observer from "@/components/ObserverView.vue";
 
 export default {
   name: "ClassListView",
