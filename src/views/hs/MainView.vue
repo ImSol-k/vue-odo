@@ -206,8 +206,8 @@
 								<span class="reviewCount">후기 {{ fbList.reviewCount }}</span>
 							</div>
 							<div v-else class="review-box">
-								<b><span class="starPoint"></span></b>
-								<span class="reviewCount"></span>
+								<b><span class="starPoint">☆☆☆☆☆</span></b>
+								<span class="reviewCount">후기 {{ fbList.reviewCount }}</span>
 							</div>
 							<p class="class-price" v-if="fbList.classPrice == 0">무료</p>
 							<p class="class-price" v-else>{{ fbList.classPrice.toLocaleString('ko-KR') }}</p>
@@ -246,8 +246,8 @@
 								<span class="reviewCount">후기 {{ pbList.reviewCount }}</span>
 							</div>
 							<div v-else class="review-box">
-								<b><span class="starPoint"></span></b>
-								<span class="reviewCount"></span>
+								<b><span class="starPoint">☆☆☆☆☆</span></b>
+								<span class="reviewCount">후기 {{ pbList.reviewCount }}</span>
 							</div>
 							<p class="class-price">{{ pbList.classPrice.toLocaleString('ko-KR') }}원</p>
 						</router-link>
@@ -285,8 +285,8 @@
 								<span class="reviewCount">후기 {{ nList.reviewCount }}</span>
 							</div>
 							<div v-else class="review-box">
-								<b><span class="starPoint"></span></b>
-								<span class="reviewCount"></span>
+								<b><span class="starPoint">☆☆☆☆☆</span></b>
+								<span class="reviewCount">후기 {{ nList.reviewCount }}</span>
 							</div>
 							<p class="class-price" v-if="nList.classPrice == 0">무료</p>
 							<p class="class-price" v-else>{{ nList.classPrice.toLocaleString('ko-KR') }}원</p>

@@ -101,8 +101,8 @@
 						<span class="reviewCount">후기 {{ cateClass.reviewCount }}</span>
 					</div>
 					<div v-else class="review-box">
-						<b><span class="starPoint"></span></b>
-						<span class="reviewCount"></span>
+						<b><span class="starPoint">☆☆☆☆☆</span></b>
+						<span class="reviewCount">후기 {{ cateClass.reviewCount }}</span>
 					</div>
 					<p class="class-price" v-if="cateClass.classPrice == 0">무료</p>
 					<p class="class-price" v-else>{{ cateClass.classPrice.toLocaleString('ko-KR') }}원</p>
@@ -190,7 +190,7 @@ export default {
 	},
 	methods: {
 		minusWish(wClassNo) {
-			if(this.$store.state.authUser == '' && this.$store.state.token == ''){
+			if (this.$store.state.authUser == '' && this.$store.state.token == '') {
 				Swal.fire({
 					title: "로그인 후 이용 가능합니다.",
 					text: "로그인 하시겠습니까?",
@@ -229,7 +229,7 @@ export default {
 					console.log(error);
 				});
 			}
-			
+
 		},
 		plusWish(classNo) {
 			if (this.$store.state.authUser == '' && this.$store.state.token == '') {

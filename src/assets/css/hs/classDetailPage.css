@@ -41,18 +41,18 @@
     font-size: 17px;
 }
 .headInfoBox .class-like-btn {
-    width: 35px;
+    width: 40px;
     margin-right: 5px;
     cursor: pointer;
 }
 .headInfoBox .class-like-btn.red {
-    width: 44px;
+    width: 40px;
 }
 .headInfoBox .class-like-btn.red img {
     width: 100%;
 }
 .headInfoBox .class-like-btn img {
-    width: 35px;
+    width: 100%;
 }
 /* 날짜 선택 결제 박스 */
 .orderSelectBox {
@@ -159,7 +159,7 @@
 }
 /* 찜 버튼 */
 .company-like-btn {
-    width: 35px;
+    width: 40px;
     position: absolute;
     top: 50%;
     right: 0;
@@ -167,7 +167,7 @@
     cursor: pointer;
 }
 .company-like-btn.red {
-    width: 44px;
+    width: 40px;
 }
 .company-like-btn img {
     width: 100%;

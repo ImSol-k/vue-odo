@@ -17,10 +17,10 @@
 							<p v-else>무료</p>
 							<div v-if="this.classDetailVo.wish == 1" class="class-like-btn red"
 								@click="minusWish(this.classDetailVo.wClassNo)">
-								<img src="../../assets/images/redheart.svg" alt="">
+								<img src="../../assets/images/icon/hs/red_heart.png" alt="">
 							</div>
 							<div v-else class="class-like-btn" @click="plusWish">
-								<img src="../../assets/images/black_heart_icon.svg" alt="">
+								<img src="../../assets/images/icon/hs/black_heart_icon.png" alt="">
 							</div>
 						</div>
 					</div>
@@ -60,10 +60,10 @@
 						</router-link>
 						<div v-if="this.companyInfo.cWish == 1" class="company-like-btn red"
 							@click="minusComWish(this.companyInfo.wCompanyNo)">
-							<img src="../../assets/images/redheart.svg" alt="">
+							<img src="../../assets/images/icon/hs/red_heart.png" alt="">
 						</div>
 						<div v-else class="company-like-btn" @click="plusComWish(this.classDetailVo.companyNo)">
-							<img src="../../assets/images/black_heart_icon.svg" alt="">
+							<img src="../../assets/images/icon/hs/black_heart_icon.png" alt="">
 						</div>
 					</div>
 				</div>
