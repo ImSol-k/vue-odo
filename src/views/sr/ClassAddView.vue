@@ -23,7 +23,7 @@
         <div class="classAddBox">
           <div class="classAddImg">
             <img :src="img" alt="" style="width: 150px; height: 150px;" v-if="isAdd == 1"/>
-            <img :src="`${this.$store.state.apiBaseUrl}/upload/${img}`" alt="" style="width: 150px; height: 150px;" v-else/>
+            <img :src="img" alt="" style="width: 150px; height: 150px;" v-else/>
             <div class="classAddImgTitle">
               <p>클래스 대표이미지</p>
               <input type="file" name="" id="" v-on:change="imgFile" />
@@ -394,147 +394,148 @@ export default {
       if (this.classImage == "") {
         if (this.isAdd == 1) {
           alert("파일이 비어있습니다.");
-        } else {
-          formData.append("classImage", this.img);
         }
       } else {
         formData.append("classImageFile", this.classImage);
-        formData.append("classType", this.classVo.classType);
-        formData.append("companyNo", this.companyNum);
-        formData.append("cate1No", this.classVo.cate1No);
-        formData.append("cate2No", this.classVo.cate2No);
-        formData.append("className", this.classVo.className);
-        formData.append("classIntro", this.classVo.classIntro);
-        formData.append("classZipcode", this.classVo.classZipcode);
-        formData.append("classNameAddress", this.classVo.classNameAddress);
-        formData.append("classNumAddress", this.classVo.classNumAddress);
-        formData.append("classDetailAddress", this.classVo.classDetailAddress);
-        formData.append("classLatitude", this.classVo.classLatitude);
-        formData.append("classLongitutde", this.classVo.classLongitutde);
-        if (this.classVo.classPrice == "") {
-          formData.append("classPrice", 0);
-        } else {
-          formData.append("classPrice", this.classVo.classPrice);
-        }
-        formData.append("classMin", this.classVo.classMin);
-        formData.append("classMax", this.classVo.classMax);
-        formData.append("classUrl", this.classVo.classUrl);
+      }
+      formData.append("classType", this.classVo.classType);
+      formData.append("companyNo", this.companyNum);
+      formData.append("cate1No", this.classVo.cate1No);
+      formData.append("cate2No", this.classVo.cate2No);
+      formData.append("className", this.classVo.className);
+      formData.append("classIntro", this.classVo.classIntro);
+      formData.append("classZipcode", this.classVo.classZipcode);
+      formData.append("classNameAddress", this.classVo.classNameAddress);
+      formData.append("classNumAddress", this.classVo.classNumAddress);
+      formData.append("classDetailAddress", this.classVo.classDetailAddress);
+      formData.append("classLatitude", this.classVo.classLatitude);
+      formData.append("classLongitutde", this.classVo.classLongitutde);
+      if (this.classVo.classPrice == "") {
+        formData.append("classPrice", 0);
+      } else {
+        formData.append("classPrice", this.classVo.classPrice);
+      }
+      formData.append("classMin", this.classVo.classMin);
+      formData.append("classMax", this.classVo.classMax);
+      formData.append("classUrl", this.classVo.classUrl);
 
-        //클래스 타입별 들어가는 스케줄값이 다름
-        //1이면 배열 아니면 단일값으로 들어감
-        if (this.classVo.classType == 1) {
-          if (this.classVo.recClassNo == "") {
-            formData.append("recClassNo", 0);
-          } else {
-            formData.append("recClassNo", this.classVo.recClassNo);
+      //클래스 타입별 들어가는 스케줄값이 다름
+      //1이면 배열 아니면 단일값으로 들어감
+      if (this.classVo.classType == 1) {
+        if (this.classVo.recClassNo == "") {
+          formData.append("recClassNo", 0);
+        } else {
+          formData.append("recClassNo", this.classVo.recClassNo);
+        }
+        this.onedayDate.forEach((date, index) => {
+          if (date != null) {
+            formData.append(`startDateList[${index}]`, this.formatDate(date));
           }
-          this.onedayDate.forEach((date, index) => {
-            if (date != null) {
-              formData.append(`startDateList[${index}]`, this.formatDate(date));
-            }
-            // console.log(this.formatDate(date));
-          });
-        } else {
-          formData.append("startDate", this.formatDate(this.startDate));
-          formData.append("endDate", this.formatDate(this.endDate));
-        }
-        if (this.classVo.classNo != null) {
-          formData.append("classNo", this.classNo);
-        }
+          // console.log(this.formatDate(date));
+        });
+      } else {
+        formData.append("startDate", this.formatDate(this.startDate));
+        formData.append("endDate", this.formatDate(this.endDate));
+      }
+      if (this.classVo.classNo != null) {
+        formData.append("classNo", this.classNo);
+      }
 
-        //에디터 본문내용
-        // 에디터 인스턴스 가져오기
-        const editorInstance = this.$refs.quillEditor.getQuill();
+      //에디터 본문내용
+      // 에디터 인스턴스 가져오기
+      const editorInstance = this.$refs.quillEditor.getQuill();
 
-        // HTML 형식으로 에디터의 내용 추출
-        const editorHtmlContent = editorInstance.root.innerHTML;
-        // console.log(editorHtmlContent);
+      // HTML 형식으로 에디터의 내용 추출
+      const editorHtmlContent = editorInstance.root.innerHTML;
+      // console.log(editorHtmlContent);
 
-        /* fomdata에 추가 */
-        formData.append("classInfo", editorHtmlContent);
+      /* fomdata에 추가 */
+      formData.append("classInfo", editorHtmlContent);
 
-        if (this.classVo.className == "") {
-          alert("클래스명을 작성해주세요.");
-        } else if (this.classVo.classType == "") {
-          alert("클래스타입을 선택해주세요");
-        } else if (this.classVo.classIntro == "") {
-          alert("클래스 소개를 작성해주세요.");
-        } else if (this.isClass && this.onedayDate == "") {
-          alert("일정을 입력해 주세요");
-        } else if (
-          !this.isClass &&
-          this.startDate == "" &&
-          this.endDate == ""
-        ) {
-          alert("시작일과 종료일을 확인 해 주세요");
-        } else if (
-          this.classVo.classZipcode == "" &&
-          this.classVo.classDetailAddress == ""
-        ) {
-          alert("주소(상세주소)를 입력해 주세요");
-        } else if (this.classVo.cate2No == "") {
-          alert("카테고리를 선택해 주세요");
-        } else if (this.classVo.classMax == "" && this.classVo.classMin == "") {
-          alert("인원수를 입력해주세요.");
-        } else if (editorHtmlContent == null) {
-          alert("상세설명을 입력해주세요.");
-        } else if (
-          Number(this.classVo.classMax) <= Number(this.classVo.classMin)
-        ) {
-          alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
-        } else {
-          if (this.isAdd == 1) {
-            //클래스 추가 ==============
+      if (this.classVo.className == "") {
+        alert("클래스명을 작성해주세요.");
+      } else if (this.classVo.classType == "") {
+        alert("클래스타입을 선택해주세요");
+      } else if (this.classVo.classIntro == "") {
+        alert("클래스 소개를 작성해주세요.");
+      } else if (this.isClass && this.onedayDate == "") {
+        alert("일정을 입력해 주세요");
+      } else if (
+        !this.isClass &&
+        this.startDate == "" &&
+        this.endDate == ""
+      ) {
+        alert("시작일과 종료일을 확인 해 주세요");
+      } else if (
+        this.classVo.classZipcode == "" &&
+        this.classVo.classDetailAddress == ""
+      ) {
+        alert("주소(상세주소)를 입력해 주세요");
+      } else if (this.classVo.cate2No == "") {
+        alert("카테고리를 선택해 주세요");
+      } else if (this.classVo.classMax == "" && this.classVo.classMin == "") {
+        alert("인원수를 입력해주세요.");
+      } else if (editorHtmlContent == null) {
+        alert("상세설명을 입력해주세요.");
+      } else if (
+        Number(this.classVo.classMax) <= Number(this.classVo.classMin)
+      ) {
+        alert("최소인원은 총 모집인원보다 작게 입력해주세요.");
+      } else {
+        if (this.isAdd == 1) {
+          //클래스 추가 ==============
 
-            // console.log("클래스 추가");
-            axios({
-              method: "post",
-              url: `${this.$store.state.apiBaseUrl}/odo/company/insert`,
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-              data: formData,
-              responseType: "json",
+          // console.log("클래스 추가");
+          axios({
+            method: "post",
+            url: `${this.$store.state.apiBaseUrl}/odo/company/insert`,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            data: formData,
+            responseType: "json",
+          })
+            .then((response) => {
+              if (response.data.result == "success") {
+                alert("클래스가 추가되었습니다.");
+                this.$router.push("/companypage");
+              } else {
+                alert("클래스 추가 실패");
+              }
             })
-              .then((response) => {
-                if (response.data.result == "success") {
-                  alert("클래스가 추가되었습니다.");
-                  this.$router.push("/companypage");
-                } else {
-                  alert("클래스 추가 실패");
-                }
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-          } else {
-            //클래스 수정 =======================
-            // console.log("클래스 수정");
-
-            axios({
-              method: "put",
-              url: `${this.$store.state.apiBaseUrl}/odo/company/update`,
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-              data: formData,
-              responseType: "json",
-            })
-              .then((response) => {
-                // console.log(response.data);
-                if (response.data.result == "success") {
-                  alert("클래스가 수정되었습니다.");
-                  this.$router.push("/companypage");
-                } else {
-                  alert("클래스 수정 실패");
-                }
-              })
-              .catch((error) => {
-                console.log(error);
-              });
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          //클래스 수정 =======================
+          for (let key of formData.keys()) {
+            console.log(key, ":", formData.get(key));
           }
+
+          axios({
+            method: "put",
+            url: `${this.$store.state.apiBaseUrl}/odo/company/update`,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            data: formData,
+            responseType: "json",
+          })
+            .then((response) => {
+              // console.log(response.data);
+              if (response.data.result == "success") {
+                alert("클래스가 수정되었습니다.");
+                this.$router.push("/companypage");
+              } else {
+                alert("클래스 수정 실패");
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         }
       }
+      
     },
     //이미지저장, 미리보기
     imgFile(event) {
@@ -606,13 +607,13 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          console.log(response.data.apiData);
+          // console.log(response.data.apiData);
           if (response.data.result == "success") {
             this.classVo = response.data.apiData;
             this.onedayDate = response.data.apiData.startDateList;
             this.startDate = response.data.apiData.startDate;
             this.endDate = response.data.apiData.endDate;
-            this.img = response.data.apiData.classImage;
+            this.img = `${this.$store.state.apiBaseUrl}/upload/${response.data.apiData.classImage}`;
            
             // 에디터 인스턴스 가져오기
             const editorInstance = this.$refs.quillEditor.getQuill();
@@ -651,7 +652,7 @@ export default {
         responseType: "json",
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           if (response.data.result == "success") {
             this.rClassList = response.data.apiData;
             this.isClass = 2;
