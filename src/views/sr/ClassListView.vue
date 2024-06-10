@@ -359,7 +359,7 @@ export default {
       var mapOption = {
         //옵션세팅
         center: new kakao.maps.LatLng(this.latitude, this.longitude), // 지도의 중심좌표
-        level: 3, // 지도의 확대 레벨
+        level: 4, // 지도의 확대 레벨
       };
       //지도생성
       this.map = new kakao.maps.Map(mapContainer, mapOption);
