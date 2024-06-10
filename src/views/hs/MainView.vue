@@ -3,7 +3,7 @@
 	<!-- //header -->
 
 	<section class="main-slide">
-		<Carousel :autoplay="2500" :wrap-around="true">
+		<Carousel :autoplay="3000" :wrap-around="true">
 			<Slide v-for="slide in slides" :key="slide">
 				<div class="carousel__item">
 					<img class="slideImg" :src="slide" alt="">
@@ -310,7 +310,7 @@ import { defineComponent } from 'vue'
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 
-import main_slide_1 from "@/assets/images/hs/main_slide_1.jpg"
+import main_slide_1 from "@/assets/images/hs/main_slide_1n.gif"
 import main_slide_2 from "@/assets/images/hs/main_slide_2.jpg"
 import main_slide_3 from "@/assets/images/hs/main_slide_3.jpg"
 import main_slide_4 from "@/assets/images/hs/main_slide_4.jpg"
