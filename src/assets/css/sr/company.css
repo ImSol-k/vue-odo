@@ -314,7 +314,7 @@ align-items: center; 세로가운데정렬
 .memberListTitle > .memberVueDatePicker {
   /* display: inline; */
   margin: 3px;
-  width: 200px;
+  width: 300px;
   height: 30px;
   float: right;
   padding: 5px;
@@ -451,6 +451,7 @@ align-items: center; 세로가운데정렬
   align-items: center;
 }
 .classScheduleBox > button {
+  display: none;
   width: 50px;
   height: 30px;
   border: none;

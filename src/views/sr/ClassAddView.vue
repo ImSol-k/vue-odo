@@ -620,8 +620,6 @@ export default {
             } else {
               this.isClass = 2;
             }
-            //스케줄 불러오기
-            // this.getschedule();
           } else {
             alert("클래스를 불러오는데 실패했습니다.");
           }
