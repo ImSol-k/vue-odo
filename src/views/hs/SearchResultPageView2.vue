@@ -40,8 +40,8 @@
 						<span class="reviewCount">후기 {{ cateClass.reviewCount }}</span>
 					</div>
 					<div v-else class="review-box">
-						<b><span class="starPoint"></span></b>
-						<span class="reviewCount"></span>
+						<b><span class="starPoint">☆☆☆☆☆</span></b>
+						<span class="reviewCount">후기 {{ cateClass.reviewCount }}</span>
 					</div>
 					<p class="class-price" v-if="cateClass.classPrice == 0">무료</p>
 					<p class="class-price" v-else>{{ cateClass.classPrice.toLocaleString('ko-KR') }}원</p>
