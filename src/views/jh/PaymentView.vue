@@ -12,8 +12,8 @@
           <img v-bind:src="`${this.$store.state.apiBaseUrl}/upload/${this.pv.classImage}`" alt="" />
           <div class="paymentTitle">
             <p>{{ this.pv.className }}</p>
-            <p>{{ this.pv.classIntro }}</p>
-            <p>{{ this.pv.companyName }}</p>
+            <p class="paymentTitle-2nd">{{ this.pv.classIntro }}</p>
+            <p class="paymentTitle-name">{{ this.pv.companyName }}</p>
             <div v-if="this.pv.endDate == null" class="paymentTitle">
               <p>날짜: <span>{{ this.pv.startDate }}</span></p>
             </div>
@@ -34,14 +34,6 @@
                   v-model="paymenType" checked="checked" />
                 <label>신용카드</label>
               </div>
-              <!-- <select name="" id="">
-                <option value="" disabled selected>카드사 선택</option>
-                <option value="">신한</option>
-                <option value="">삼성</option>
-                <option value="">하나</option>
-                <option value="">비씨</option>
-                <option value="">카카오</option>
-              </select> -->
             </li>
             <li>
               <input type="radio" style="width: 15px; border: 1px" name="pay" v-bind:value="'naver'"

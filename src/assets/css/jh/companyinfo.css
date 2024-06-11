@@ -55,7 +55,7 @@
 }
 
 .infContent>div>p {
-  font-size: 17px;
+  font-size: 15px;
   margin: 5px 0px;
 }
 
@@ -158,13 +158,14 @@
 }
 
 .infoIntro {
-  height: 54px;
+  height: 60px;
+  font-size: 15px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .infoImgBox{
@@ -197,7 +198,20 @@
 
 .infoContent{
   width: 270px;
+  height: 160px;
+  
 }
+
+.infoContent .last-p{
+  box-sizing: border-box;
+  display: block;
+  overflow-y: auto;
+  text-overflow: ellipsis;
+  white-space: no-wrap;
+  max-height: 100px;
+}
+
+
 
 .infoBox{
   width: 800px;

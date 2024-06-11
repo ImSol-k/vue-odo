@@ -31,7 +31,7 @@
               <div class="infoContent">
                 <p>{{ this.ci.companyHp }}</p>
                 <p>{{ this.ci.companyAddress }}</p>
-                <p>
+                <p class="last-p">
                   {{ this.ci.companyIntro }}
                 </p>
               </div>

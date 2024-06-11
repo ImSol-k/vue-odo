@@ -13,6 +13,7 @@
 }
 
 .paymentBox {
+  box-sizing: border-box;
   width: 600px;
   /* border: 1px solid #a0a0a0; */
   /* margin: 20px auto; */
@@ -27,28 +28,55 @@
 }
 
 .paymentClassBox {
+  box-sizing: border-box;
   /* border: 1px solid #8521ff; */
   display: flex;
 }
 
 .paymentClassBox>img {
-  width: 130px;
-  float: left;
+  width: 180px;
+  height: 180px;
+  /* float: left; */
   padding: 8px;
 }
 
+.paymentTitle {
+  width: 380px;
+  height: 200px;
+  padding: 10px;
+}
+
+
 .paymentTitle>p {
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .paymentTitle>p:first-child {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
+  margin-bottom: 10px;
 }
+
+.paymentTitle-2nd {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  height: 95px;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
+  white-space: no-wrap;
+  text-overflow: ellipsis;
+  margin-bottom: 5px;
+}
+
+.paymentTitle-name {
+  font-size: 10px;
+}
+
 
 .paymentTitle>p:last-child {
   color: #a0a0a0;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 /* 결제수단 */
@@ -58,7 +86,6 @@
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 30px 40px;
-  /* border: 1px solid #8521ff; */
 }
 
 .paymentContentBox>p {
@@ -301,6 +328,8 @@
 }
 
 .payImg{
+  width: 200px;
+  height: 200px;
   border-radius: 10px;
 }
 
