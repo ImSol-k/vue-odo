@@ -14,7 +14,7 @@
           </select>
         </div>
 
-        <div class="memberListTable" v-if="mList > 0">
+        <div class="memberListTable" v-if="mList != null">
           <table>
             <thead style="height: 40px">
               <th style="width: 40px">번호</th>
@@ -57,7 +57,7 @@
 
       <!-- 정규회원 -->
       <div class="companyInfoClassList" v-else-if="classType == 2">
-        <div class="memberListTitle">
+        <div class="memberListTitle" >
           <p>{{ this.$route.params.name }}</p>
           <!-- <input
             class="memberVueDatePicker"
@@ -68,7 +68,7 @@
             id=""
           /> -->
         </div>
-        <div class="memberListTable">
+        <div class="memberListTable" v-if="mList != null">
           <table>
             <thead style="height: 40px">
               <th style="width: 40px">번호</th>
@@ -95,6 +95,10 @@
           </table>
         </div>
         <!--memberListTable-->
+        <div v-else class="noUser">
+          <p>참여자가 없습니다</p>
+        </div>
+        <!--memberListTable-->
       </div>
       <!--companyInfoClassList-->
 
@@ -111,7 +115,7 @@
             id=""
           /> -->
         </div>
-        <div class="memberListTable">
+        <div class="memberListTable"  v-if="mList != null">
           <table>
             <thead style="height: 40px">
               <th style="width: 40px">번호</th>
@@ -134,6 +138,10 @@
               <td>-</td>
             </tbody>
           </table>
+        </div>
+        <!--memberListTable-->
+        <div v-else class="noUser">
+          <p>참여자가 없습니다</p>
         </div>
         <!--memberListTable-->
       </div>
@@ -188,11 +196,15 @@ import AppHeader from "@/components/HostAppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import AppMenu from "@/components/CompanyMenu.vue";
 import axios from "axios";
-import moment from "moment";
+// import moment from "moment";
 
 export default {
   name: "MemberManagerView",
-  components: { AppHeader, AppFooter, AppMenu },
+  components: { 
+    AppHeader, 
+    AppFooter, 
+    AppMenu 
+  },
   data() {
     return {
       isCoupon: false,
@@ -241,14 +253,12 @@ export default {
         url: `${this.$store.state.apiBaseUrl}/odo/company/member`, //SpringBoot주소
         headers: { "Content-Type": "application/json; charset=utf-8" },
         params: {
-          classType: this.$route.params.type,
           scheduleNo: this.scheduleNo,
-          classNo: this.classNo,
-          start: moment(this.datepick).format(`YYYY-MM-DD`)
         },
         responseType: "json",
       })
         .then((response) => {
+          console.log(response.data.apiData);
           this.mList = response.data.apiData;
         })
         .catch((error) => {
@@ -297,18 +307,6 @@ export default {
         });
     },
 
-    /********************************************************************
-     * 클래스 타입 변경
-     */
-    asdf(c) {
-      if (c === 1) {
-        this.classType = 1;
-      } else if (c === 2) {
-        this.classType = 2;
-      } else if (c === 3) {
-        this.classType = 3;
-      }
-    },
   },
   created() {
     this.memberList();
