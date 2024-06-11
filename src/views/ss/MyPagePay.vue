@@ -70,11 +70,13 @@
 								<div class="mymy-payCon">
 									<div class="paycon1">
 										<span class="paycon1-txt1">결제일 : {{ list.payDate}}</span>
-										<span class="paycon1-txt2">
-											<span v-if="list.classType == 1">[원데이]</span>
-											<span v-else>[정규]</span>
-											{{ list.className }}
-										</span>
+										<router-link :to="`/classdetailpage/${list.classNo}`" target="_blank">
+											<span class="paycon1-txt2">
+												<span v-if="list.classType == 1">[원데이]</span>
+												<span v-else>[정규]</span>
+												{{ list.className }}
+											</span>
+										</router-link>
 										<span class="paycon1-txt3">{{ list.classIntro }}</span>
 										<span class="paycon1-txt4">결제 금액 : {{ list.payPrice }}원</span>
 										<div class="paycon1-btnbox">
@@ -144,11 +146,13 @@
 								<div class="mymy-payCon">
 									<div class="paycon1">
 										<span class="paycon1-txt1">결제일 : {{ list.payDate }}</span>
-										<span class="paycon1-txt2">
-											<span v-if="list.classType == 1">[원데이]</span>
-											<span v-else>[정규]</span>
-											{{ list.className }}
-										</span>
+										<router-link :to="`/classdetailpage/${list.classNo}`" target="_blank">
+											<span class="paycon1-txt2">
+												<span v-if="list.classType == 1">[원데이]</span>
+												<span v-else>[정규]</span>
+												{{ list.className }}
+											</span>
+										</router-link>
 										<span class="paycon1-txt3">{{ list.classIntro }}</span>
 										<span class="paycon1-txt4">결제 금액 : {{ list.payPrice }}원</span>
 										<div class="paycon1-btnbox">
