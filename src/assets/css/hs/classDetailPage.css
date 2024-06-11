@@ -252,6 +252,21 @@
     margin-bottom: 50px;
     position: relative;
 }
+
+.classIntroImgBox iframe{
+    width: 100%; /* 원하는 너비 설정 */
+    max-width: 1000px; /* 최대 너비 설정 */
+    height: auto; /* 자동 높이 설정 */
+    aspect-ratio: 16 / 9; /* 비율 유지 */
+}
+
+.classIntroImgBox img{
+    width: 100%; /* 원하는 너비 설정 */
+    max-width: 1000px; /* 최대 너비 설정 */
+    height: auto; /* 자동 높이 설정 */
+    aspect-ratio: 16 / 9; /* 비율 유지 */
+}
+
 .classIntroduceSection .classIntroImgBox {
     width: 100%;
     height: 700px;
