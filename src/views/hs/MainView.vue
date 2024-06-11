@@ -217,7 +217,7 @@
 					</li>
 				</ul>
 			</section>
-			<div class="banner" @click="goHost"></div>
+			<div class="banner first" @click="goHost"></div>
 			<section class="pay-best">
 				<div class="title-box">
 					<h3>유료 베스트 클래스
@@ -256,7 +256,7 @@
 					</li>
 				</ul>
 			</section>
-			<div class="banner" @click="goHost"></div>
+			<div class="banner second" @click="goHost"></div>
 			<section class="new pay-best">
 				<div class="title-box">
 					<h3>신규 클래스
@@ -296,7 +296,7 @@
 					</li>
 				</ul>
 			</section>
-			<div class="banner" @click="goHost"></div>
+			<div class="banner third" @click="goHost"></div>
 		</div>
 
 	</div> <!-- //inner -->
@@ -315,8 +315,8 @@ import 'vue3-carousel/dist/carousel.css'
 import main_slide_1 from "@/assets/images/hs/main_slide_1n.gif"
 import main_slide_2 from "@/assets/images/hs/main_slide_2n.jpg"
 import main_slide_3 from "@/assets/images/hs/main_slide_3n.jpg"
-import main_slide_4 from "@/assets/images/hs/main_slide_4.jpg"
-import main_slide_5 from "@/assets/images/hs/main_slide_5.jpg"
+import main_slide_4 from "@/assets/images/hs/main_slide_4n.jpg"
+import main_slide_5 from "@/assets/images/hs/main_slide_5n.jpg"
 
 import AppFooter from "@/components/AppFooter.vue"
 import AppHeader from "@/components/AppHeader.vue"

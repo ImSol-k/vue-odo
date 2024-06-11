@@ -163,4 +163,7 @@ ul.classList span.reviewCount {
     height: 131px;
     margin: 10px 0 70px;
     background: url('../../images/hs/banner_host.png') no-repeat center / contain;
+    }
+.banner.first{        
+    background: url('../../images/hs/onedayclass_free_banner.jpg') no-repeat center / contain;
 }
