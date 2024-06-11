@@ -6,7 +6,9 @@
 		<Carousel :autoplay="3500" :wrap-around="true">
 			<Slide v-for="slide in slides" :key="slide">
 				<div class="carousel__item">
-					<img class="slideImg" :src="slide" alt="">
+					<router-link :to="slide[1]">
+						<img class="slideImg" :src="slide[0]" alt="">
+					</router-link>
 				</div>
 			</Slide>
 
@@ -312,7 +314,7 @@ import 'vue3-carousel/dist/carousel.css'
 
 import main_slide_1 from "@/assets/images/hs/main_slide_1n.gif"
 import main_slide_2 from "@/assets/images/hs/main_slide_2n.jpg"
-import main_slide_3 from "@/assets/images/hs/main_slide_3.jpg"
+import main_slide_3 from "@/assets/images/hs/main_slide_3n.jpg"
 import main_slide_4 from "@/assets/images/hs/main_slide_4.jpg"
 import main_slide_5 from "@/assets/images/hs/main_slide_5.jpg"
 
@@ -334,7 +336,8 @@ export default defineComponent({
 	},
 	data() {
 		return {
-			slides: [main_slide_1, main_slide_2, main_slide_3, main_slide_4, main_slide_5],
+			slideLink: [],
+			slides: [[main_slide_1,"#"], [main_slide_2,"/classdetailpage/187"], [main_slide_3,"#"], [main_slide_4,"#"], [main_slide_5,"#"]],
 			listOfLists: [],
 			wishVo: {
 				userNo: null,
@@ -495,13 +498,17 @@ export default defineComponent({
 </script>
 <style>
 .carousel__item {
+	width: 1920px;
 	max-height: 470px;
-	width: 100%;
 	color: var(--vc-clr-white);
 	font-size: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.carousel__item a {
+	width: 100%;
 }
 
 .slideImg {
