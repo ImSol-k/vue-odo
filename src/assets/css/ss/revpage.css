@@ -253,6 +253,7 @@
 .rev-box2-2 {
     /* border: 1px solid #000; */
     display: inline-block;
+    max-width: 780px;
     font-size: 10px;
     cursor: pointer;
     text-overflow: ellipsis;
