@@ -25,24 +25,15 @@
 
         <div class="companyInfoClassBox">
           <div>
-            <ul
-              class="companyInfoClassfor clearfix"
-              v-for="(c, i) in classList"
-              :key="i"
-            >
+            <ul class="companyInfoClassfor clearfix" v-for="(c, i) in classList" :key="i">
               <!-- 원데이클래스 -->
               <li>
-                <img
-                  :src="`${this.$store.state.apiBaseUrl}/upload/${c.classImage}`"
-                  alt="" style="width: 90px; height: 67.5px;"
-                />
+                <img :src="`${this.$store.state.apiBaseUrl}/upload/${c.classImage}`" alt=""/>
                 <div class="classListObj">
-                  <p>
-                    <router-link
-                      class="classRouterLink"
-                      :to="`/classdetailpage/${c.classNo}`"
-                      >{{ c.className }}</router-link
-                    >
+                  <p class="">
+                    <router-link class="classRouterLink" :to="`/classdetailpage/${c.classNo}`">
+                      {{ c.className }}
+                    </router-link>
                   </p>
                   <p v-if="isClass != 1">
                     {{ c.startDate }}
@@ -51,35 +42,22 @@
                   <p>{{ c.classIntro }}</p>
                   <div class="classListOptionBox">
                     <div class="classListOption">
-                      <router-link
-                        v-if="isClass == 1"
-                        class="classRouterLink"
-                        :to="`/membermanager/1/${c.scheduleNo}/${c.className.replace(/\s+/g, '').replace(/\//g, '')}/${c.classNo}`"
-                      >
+                      <router-link v-if="isClass == 1" class="classRouterLink" :to="`/membermanager/1/${c.scheduleNo}/${c.className.replace(/\s+/g, '').replace(/\//g, '')}/${c.classNo}`">
                         예약확인
                       </router-link>
-                      <router-link
-                        v-else-if="isClass == 2"
-                        class="classRouterLink"
-                        :to="`/membermanager/2/${c.scheduleNo}/${c.className.replace(/\s+/g, '').replace(/\//g, '')}/${c.classNo}`"
-                        >회원관리</router-link
-                      >
-                      <router-link
-                        v-else
-                        class="classRouterLink"
-                        :to="`/membermanager/3/${c.scheduleNo}/${c.className.replace(/\s+/g, '').replace(/\//g, '')}/${c.classNo}`"
-                        >회원관리</router-link
-                      >
-                      <router-link
-                        class="classRouterLink"
-                        :to="{ path: '/classadd/2', query: { no: c.classNo } }"
-                      >
+                      <router-link v-else-if="isClass == 2" class="classRouterLink" :to="`/membermanager/2/${c.scheduleNo}/${c.className.replace(/\s+/g, '').replace(/\//g, '')}/${c.classNo}`">
+                        회원관리
+                      </router-link>
+                      <router-link v-else class="classRouterLink" :to="`/membermanager/3/${c.scheduleNo}/${c.className.replace(/\s+/g, '').replace(/\//g, '')}/${c.classNo}`">
+                        회원관리
+                      </router-link>
+                      <router-link class="classRouterLink" :to="{ path: '/classadd/2', query: { no: c.classNo } }">
                         수정
                       </router-link>
                     </div>
-                    <span v-if="isClass != 1"
-                      >인원수: {{ c.classMin }}/{{ c.classMax }}</span
-                    >
+                    <span v-if="isClass != 1">
+                      인원수: {{ c.classMin }}/{{ c.classMax }}
+                    </span>
                   </div>
                 </div>
               </li>

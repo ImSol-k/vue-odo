@@ -9,14 +9,6 @@
           <span v-if="!isMap">지도로 보기</span>
           <span v-else>리스트로 보기</span>
         </button>
-        <!-- <div class="classTypeSelect">
-          <select name="" id="" v-model="type" @change="initMap">
-            <option :value="4" selected>전체클래스</option>
-            <option :value="1">원데이</option>
-            <option :value="2">정규</option>
-            <option :value="3">상시</option>
-          </select>
-        </div> -->
       </div>
 
       <!-- 리스트로보기 -->
