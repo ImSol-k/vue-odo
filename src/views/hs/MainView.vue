@@ -3,7 +3,7 @@
 	<!-- //header -->
 
 	<section class="main-slide">
-		<Carousel :autoplay="3000" :wrap-around="true">
+		<Carousel :autoplay="3500" :wrap-around="true">
 			<Slide v-for="slide in slides" :key="slide">
 				<div class="carousel__item">
 					<img class="slideImg" :src="slide" alt="">
