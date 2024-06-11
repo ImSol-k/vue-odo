@@ -30,17 +30,20 @@
               <li>
                 <img :src="`${this.$store.state.apiBaseUrl}/upload/${c.classImage}`" alt=""/>
                 <div class="classListObj">
-                  <p class="">
+                  <p class="classListObj-1">
                     <router-link class="classRouterLink" :to="`/classdetailpage/${c.classNo}`">
                       {{ c.className }}
                     </router-link>
                   </p>
-                  <p v-if="isClass != 1">
+                  <p class="classListObj-2" v-if="isClass != 1">
                     {{ c.startDate }}
                     <span v-if="isClass != 1">~ {{ c.endDate }}</span>
                   </p>
-                  <p>{{ c.classIntro }}</p>
-                  <div class="classListOptionBox">
+                  <p class="classListObj-2" v-else>
+                    
+                  </p>
+                  <p class="classListObj-3">{{ c.classIntro }}</p>
+                  <div class="classListOptionBox clearfix">
                     <div class="classListOption">
                       <router-link v-if="isClass == 1" class="classRouterLink" :to="`/membermanager/1/${c.scheduleNo}/${c.className.replace(/\s+/g, '').replace(/\//g, '')}/${c.classNo}`">
                         예약확인

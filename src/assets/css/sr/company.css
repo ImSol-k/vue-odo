@@ -262,19 +262,34 @@ align-items: center; 세로가운데정렬
 .companyInfoClassfor > li > div {
   float: left;
 }
-.companyInfoClassfor > li > div > p:nth-child(1) {
+
+.classListObj-1 {
   font-size: 18px;
 }
-.companyInfoClassfor > li > div > p:nth-child(2) {
-  font-size: 13px;
+
+.classListObj-2 {
+  font-size: 12px;
   color: #a0a0a0;
-  /* height: 40px; */
+  height: 16px;
 }
+
+.classListObj-3 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  /* border: 1px solid #000; */
+  height: 60px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: no-wrap;
+  /* display: flex; */
+  font-size: 12px;
+}
+
 .classListObj {
   box-sizing: border-box;
   display: block;
   float: left;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   width: 500px;
   height: 150px;
   cursor: pointer;
@@ -284,39 +299,45 @@ align-items: center; 세로가운데정렬
   margin-bottom: 5px;
 }
 
-.classListObj > p:nth-child(2) {
-  /* height: 40px; */
-  display: flex;
-  font-size: 12px;
-}
+
 .classListObj > p:nth-child(3) {
-  /* height: 40px; */
-  display: flex;
+  box-sizing: border-box;
+  display: -webkit-box;
+  /* border: 1px solid #000; */
+  color: #a0a0a0;
+  height: 65px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  white-space: no-wrap;
   font-size: 12px;
 }
 .classListOptionBox {
   display: flex;
-  width: 540px;
+  width: 500px;
   align-items: center;
 }
 .classListOption {
-  display: flex;
+  display: block;
   flex-direction: row;
-  margin: 5px 0px;
-  width: 440px;
+  /* margin: 5px 0px; */
+  float: left;
+  width: 400px;
 }
 .classListOptionBox > span {
-  /* display: block; */
+  display: block;
   float: right;
   color: #a0a0a0;
   font-size: 14px;
 }
 .classListOption > .classRouterLink {
-  display: flex;
+  display: block;
   /* margin: 2px; */
   height: 24px;
   width: 70px;
   font-size: 13px;
+  float: left;
 }
 /* 날짜선택 */
 .memberListTitle {
