@@ -100,7 +100,9 @@
 					</li>
 				</ul>
 			</section>
-			<div class="banner" @click="goHost"></div>
+			<div class="banner" @click="goHost">
+				<img src="../../assets/images/hs/onedayclass_free_banner.jpg" alt="">
+			</div>
 			<section class="pay-best">
 				<div class="title-box">
 					<h3>유료 베스트 클래스
@@ -173,7 +175,7 @@
 					</li>
 				</ul>
 			</section>
-			<div class="banner" @click="goHost"></div>
+			<!-- <div class="banner" @click="goHost"></div> -->
 		</div>
 
 		<!-- ------------------로그인 시---------------------- -->
@@ -217,7 +219,9 @@
 					</li>
 				</ul>
 			</section>
-			<div class="banner first" @click="goHost"></div>
+			<div class="banner first" @click="goHost">
+				<img src="../../assets/images/hs/onedayclass_free_banner.jpg" alt="">
+			</div>
 			<section class="pay-best">
 				<div class="title-box">
 					<h3>유료 베스트 클래스
@@ -296,7 +300,7 @@
 					</li>
 				</ul>
 			</section>
-			<div class="banner third" @click="goHost"></div>
+			<!-- <div class="banner third" @click="goHost"></div> -->
 		</div>
 
 	</div> <!-- //inner -->
