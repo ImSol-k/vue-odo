@@ -3,8 +3,8 @@
         <div class="inner">
             <ul class="f-t-ul">
                 <li><router-link to="/companyselect">호스트 지원</router-link></li>
-                <li><a href="#">인재채용</a></li>
-                <li><a href="#">제휴문의</a></li>
+                <li><router-link to="/">인재채용</router-link></li>
+                <li><router-link to="/">제휴문의</router-link></li>
             </ul>
 
             <div class="center-box">
@@ -26,15 +26,15 @@
 
             <div class="hour">
                 <p>운영시간: 평일/주말 10:00 - 17:00 (점심 : 12:00 - 13:00)</p>
-                <p>광고/제휴: contact@Onedayone.com</p>
+                <p>광고/제휴: contact@onedayone.com</p>
             </div>
 
             <h4 class="en">OneDayOne</h4>
             <p>㈜원데이원 | 사업자 등록번호 : 261-81-04385 <br>
                 통신판매업신고번호 : 2016-서울성동-01088 <br>
-                대표 : 임수열 | 개인정보 관리 책임자 : 양사열 <br>
-                서울시 성동구 왕십리로 115 헤이그라운드 서울숲점 G703 <br>
-                ㈜원데이원은 통신판매중개자로서 거래당사자가 아니며, 호스트가 등록한 상품정보 및 거래에 대해 ㈜프렌트립은 일체의 책임을 지지 않습니다. <br>
+                대표 : 유승수 | 개인정보 관리 책임자 : 유승수 <br>
+                서울 서초구 강남대로 405 통영빌딩 8층 <br>
+                ㈜원데이원은 통신판매중개자로서 거래당사자가 아니며, 호스트가 등록한 상품정보 및 거래에 대해 ㈜원데이원은 일체의 책임을 지지 않습니다. <br>
                 NICEPAY 안전거래 서비스 : 고객님의 안전거래를 위해 현금 결제 시, 저희 사이트에서 가입한 구매안전 서비스를 이용할 수 있습니다. 가입 확인 <br>
             </p>
 

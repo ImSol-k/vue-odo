@@ -75,10 +75,9 @@
         >
         <ul class="subMenuList" :class="{ show: isSubMenuOpen[3] }">
           <li>
-            <router-link
-              :to="`/searchresultpage2/${this.subCateNo[8]}?crtPage=1`"
-              >주류</router-link
-            >
+            <router-link :to="`/searchresultpage2/${this.subCateNo[8]}?crtPage=1`">
+              주류
+            </router-link>
           </li>
           <li>
             <router-link
@@ -133,7 +132,7 @@
           <li>
             <router-link
               :to="`/searchresultpage2/${this.subCateNo[15]}?crtPage=1`"
-              >뜨게질</router-link
+              >뜨개질</router-link
             >
           </li>
           <li>
@@ -240,7 +239,7 @@
         >
         <router-link v-else to="/companypage">{{ this.$store.state.authCompany.companyName }} &nbsp;관리페이지 이동</router-link>
         <ul>
-          <li v-if="(this.$store.state.authUser) == '' && (this.$store.state.token) == ''">
+          <li v-if="(this.$store.state.authUser) == '' || (this.$store.state.token) == ''">
             <router-link to="/join">회원가입</router-link>
           </li>
           <li v-else>
@@ -459,6 +458,10 @@ export default {
     },
     ///////////////////////////////////////////////////////////////////////////////////////////////
   },
-  created() {},
+  created() {
+    if(this.$store.state.authUser == '' || this.$store.state.token == '' || this.$store.state.authCompany || this.$store.state.cToken){
+      console.log('현재 서비스 버전 : 1.0.1 ㅣ OneDayOne 최신 서비스 버전 : 1.0.1 ㅣ OneDayOne 최신 버전을 이용 중입니다! :)');
+    }
+  },
 };
 </script>
