@@ -321,6 +321,7 @@ import main_slide_2 from "@/assets/images/hs/main_slide_2n.jpg"
 import main_slide_3 from "@/assets/images/hs/main_slide_3n.jpg"
 import main_slide_4 from "@/assets/images/hs/main_slide_4n.jpg"
 import main_slide_5 from "@/assets/images/hs/main_slide_5n.jpg"
+import main_slide_6 from "@/assets/images/hs/main_slide_6nn.jpg"
 
 import AppFooter from "@/components/AppFooter.vue"
 import AppHeader from "@/components/AppHeader.vue"
@@ -341,7 +342,7 @@ export default defineComponent({
 	data() {
 		return {
 			slideLink: [],
-			slides: [[main_slide_1,"#"], [main_slide_2,"/classdetailpage/187"], [main_slide_3,"#"], [main_slide_4,"#"], [main_slide_5,"#"]],
+			slides: [[main_slide_1,"#"], [main_slide_2,"/classdetailpage/187"], [main_slide_3,"#"], [main_slide_4,"#"], [main_slide_5,"#"], [main_slide_6, "#"]],
 			listOfLists: [],
 			wishVo: {
 				userNo: null,

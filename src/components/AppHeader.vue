@@ -258,7 +258,7 @@
           <li v-else>
             <router-link to="/" @click="logout">로그아웃</router-link>
           </li>
-          <li><router-link to="">자주 묻는 질문</router-link></li>
+          <li><router-link to="/">Home</router-link></li>
           <li><router-link to="/mypage/notice">공지사항</router-link></li>
         </ul>
       </div>
