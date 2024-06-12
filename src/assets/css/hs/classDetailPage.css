@@ -4,6 +4,7 @@
 }
 /* head section */
 .headSection {
+    height: 540px;
     padding: 40px 0;
     display: flex;
     border-bottom: 1px solid #dedede;
