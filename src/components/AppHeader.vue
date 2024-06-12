@@ -459,9 +459,7 @@ export default {
     ///////////////////////////////////////////////////////////////////////////////////////////////
   },
   created() {
-    if(this.$store.state.authUser == '' || this.$store.state.token == '' || this.$store.state.authCompany || this.$store.state.cToken){
-      console.log('현재 서비스 버전 : 1.0.1 ㅣ OneDayOne 최신 서비스 버전 : 1.0.1 ㅣ OneDayOne 최신 버전을 이용 중입니다! :)');
-    }
+    
   },
 };
 </script>
