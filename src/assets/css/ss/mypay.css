@@ -578,6 +578,10 @@
 
 .atten1 {
     font-size: 23px;
+    max-width: 400px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     margin: 5px 0 ;
 }
 
