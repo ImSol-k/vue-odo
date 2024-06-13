@@ -18,7 +18,7 @@
 
         <div class="mymy-main clearfix">
           <div class="mymy-nav">
-            <span type="button" class="isClass">클래스</span>
+            <span type="button" class="isClass border">클래스</span>
             <span>ㅣ</span>
             <span type="button" class="isClass">
               <RouterLink to="wishlistcompany">업체</RouterLink>

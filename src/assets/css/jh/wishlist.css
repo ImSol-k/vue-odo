@@ -120,6 +120,10 @@
   cursor: pointer;
 }
 
+.border{
+  border-bottom: 2px solid #8521ff;
+}
+
 .content1 {
   overflow: hidden;
   text-overflow: ellipsis;
