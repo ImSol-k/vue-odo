@@ -21,7 +21,7 @@
               <RouterLink to="/wishlistclass">클래스</RouterLink>
             </span>
             <span>ㅣ</span>
-            <span type="button" class="isClass">업체</span>
+            <span type="button" class="isClass border">업체</span>
           </div>
           <!-- mymy-nav -->
           <!--위시 리스트 없을때-->
