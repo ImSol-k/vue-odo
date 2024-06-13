@@ -32,9 +32,12 @@ ul{list-style: none;}
     font-size: 10px;
     line-height: 15px;
     overflow-y:scroll;
+    border-bottom: #852bde;
 }
 .tabmenu input:checked ~ label{
     background: #f4f4f4;
+    color: #852bde;
+    border-bottom: 2px solid #852bde;
 }
 .tabmenu input:checked ~ .tabCon{
     display: block;
