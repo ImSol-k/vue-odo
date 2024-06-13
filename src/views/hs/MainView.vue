@@ -525,7 +525,7 @@ export default defineComponent({
 
 .carousel__pagination {
 	position: absolute;
-	bottom: 10px;
+	bottom: 45px;
 	left: 50%;
 	transform: translateX(-50%);
 }
